@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Planet Data with Blog-like Content (Same as ksandk.com pattern)
+// ===== PLANET DATA (same) =====
 const planets = [
   { 
     id: 'rights', 
@@ -151,7 +151,7 @@ const planets = [
   },
 ];
 
-// Category Filters (Like ksandk.com)
+// ===== CATEGORIES =====
 const categories = [
   "All",
   "Data Rights",
@@ -164,26 +164,6 @@ const categories = [
   "Overview"
 ];
 
-// Floating Planet Animation
-const FloatingPlanet = ({ children, delay = 0, duration = 20 }) => {
-  return (
-    <motion.div
-      animate={{
-        y: [0, -15, 0, 15, 0],
-        rotate: [0, 3, -3, 2, 0],
-      }}
-      transition={{
-        duration: duration,
-        delay: delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
 export default function Galaxy() {
   const router = useRouter();
   const [hoveredPlanet, setHoveredPlanet] = useState<string | null>(null);
@@ -192,7 +172,6 @@ export default function Galaxy() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Filter planets based on search and category (Exact like ksandk.com)
   const filteredPlanets = planets.filter(planet => {
     const matchesSearch = planet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           planet.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -203,17 +182,15 @@ export default function Galaxy() {
     return matchesSearch && matchesCategory;
   });
 
-  // Get unique categories for mobile filter
   const uniqueCategories = ["All", ...new Set(planets.map(p => p.category))];
 
-  // Scroll to top on category change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [selectedCategory, searchQuery]);
 
   return (
-    <main className="min-h-screen text-white py-16 px-4 relative overflow-hidden">
-      {/* ===== GALAXY BACKGROUND WITH MAP EFFECT ===== */}
+    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32">
+      {/* ===== BACKGROUND (same) ===== */}
       <div className="absolute inset-0 -z-10">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
@@ -223,7 +200,6 @@ export default function Galaxy() {
         />
         <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
         
-        {/* Animated Galaxy Map Grid */}
         <div className="absolute inset-0 opacity-10">
           {[...Array(20)].map((_, i) => (
             <div
@@ -241,12 +217,10 @@ export default function Galaxy() {
           ))}
         </div>
         
-        {/* Nebula Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         
-        {/* Connected Star Map (Like constellation) */}
         <svg className="absolute inset-0 w-full h-full opacity-20">
           {[...Array(30)].map((_, i) => {
             const x1 = Math.random() * 100;
@@ -268,7 +242,6 @@ export default function Galaxy() {
           })}
         </svg>
         
-        {/* Twinkling Stars */}
         {[...Array(150)].map((_, i) => {
           const size = Math.random() * 3 + 1;
           const duration = Math.random() * 4 + 2;
@@ -296,7 +269,6 @@ export default function Galaxy() {
           );
         })}
 
-        {/* Shooting Stars */}
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={`shooting-${i}`}
@@ -323,7 +295,7 @@ export default function Galaxy() {
 
       {/* ===== CONTENT ===== */}
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header with Animation - Like "Data Privacy Insights" */}
+        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -331,9 +303,7 @@ export default function Galaxy() {
           className="text-center mb-12"
         >
           <motion.div
-            animate={{ 
-              scale: [1, 1.02, 1],
-            }}
+            animate={{ scale: [1, 1.02, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="inline-block"
           >
@@ -348,14 +318,13 @@ export default function Galaxy() {
           </p>
         </motion.div>
 
-        {/* Search & Filter Bar - Like ksandk.com */}
+        {/* Search & Filter */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col md:flex-row gap-4 mb-8"
         >
-          {/* Search */}
           <div className="flex-1 relative">
             <input
               type="text"
@@ -375,7 +344,6 @@ export default function Galaxy() {
             )}
           </div>
           
-          {/* Category Filters - Desktop (Like ksandk.com tabs) */}
           <div className="hidden md:flex gap-2 flex-wrap">
             {categories.map((category) => (
               <button
@@ -392,7 +360,6 @@ export default function Galaxy() {
             ))}
           </div>
           
-          {/* Filter Toggle - Mobile */}
           <button
             onClick={() => setIsFilterOpen(!isFilterOpen)}
             className="md:hidden flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md text-white"
@@ -439,7 +406,7 @@ export default function Galaxy() {
           Showing {filteredPlanets.length} of {planets.length} planets
         </div>
 
-        {/* Planets Grid - Like ksandk.com cards */}
+        {/* ===== PLANETS GRID — NO FLOATING ===== */}
         <motion.div 
           ref={containerRef}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -465,83 +432,79 @@ export default function Galaxy() {
                   onMouseLeave={() => setHoveredPlanet(null)}
                   onClick={() => router.push(planet.path)}
                 >
-                  {/* Floating Orbit Animation */}
-                  <FloatingPlanet delay={index * 0.3} duration={18 + index * 2}>
+                  {/* ===== DIRECT CARD — NO FLOATING WRAPPER ===== */}
+                  <div className={`relative p-6 rounded-2xl bg-white/5 border ${planet.borderColor} backdrop-blur-sm hover:bg-white/10 transition-all duration-500 ${
+                    isHovered ? 'shadow-2xl shadow-purple-500/20 scale-105' : ''
+                  }`}>
                     {/* Card Glow */}
                     <div className={`absolute -inset-1 rounded-2xl bg-gradient-to-br ${planet.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
                     
-                    {/* Card */}
-                    <div className={`relative p-6 rounded-2xl bg-white/5 border ${planet.borderColor} backdrop-blur-sm hover:bg-white/10 transition-all duration-500 ${
-                      isHovered ? 'shadow-2xl shadow-purple-500/20 scale-105' : ''
-                    }`}>
-                      {/* Category Tag (Like ksandk.com) */}
-                      <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${planet.bgColor} ${planet.borderColor} border mb-3`}>
-                        {planet.category}
-                      </div>
-                      
-                      {/* Planet Icon */}
-                      <motion.div 
-                        className={`w-14 h-14 rounded-full bg-gradient-to-br ${planet.color} flex items-center justify-center mb-4 shadow-lg shadow-purple-500/20`}
-                        animate={{
-                          scale: isHovered ? 1.15 : 1,
-                          rotate: isHovered ? [0, 10, -10, 0] : 0,
-                        }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <Icon className="w-7 h-7 text-white" />
-                      </motion.div>
-                      
-                      {/* Title */}
-                      <h3 className={`text-lg font-semibold text-white transition-all duration-300 mb-2 ${
-                        isHovered ? 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' : ''
-                      }`}>
-                        {planet.name}
-                      </h3>
-                      
-                      {/* Excerpt (Like ksandk.com) */}
-                      <p className="text-sm text-gray-400 line-clamp-2 mb-3">
-                        {planet.excerpt}
-                      </p>
-                      
-                      {/* Author & Date (Like ksandk.com) */}
-                      <div className="flex items-center justify-between text-xs text-gray-500">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {planet.date}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {planet.readTime}
-                        </span>
-                      </div>
-                      <div className="text-xs text-gray-500 mt-1">
-                        By {planet.author}
-                      </div>
-                      
-                      {/* Tags */}
-                      <div className="flex gap-2 mt-3 flex-wrap">
-                        {planet.tags.map((tag) => (
-                          <span 
-                            key={tag}
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${planet.bgColor} ${planet.borderColor} border`}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      
-                      {/* Explore Badge */}
-                      <motion.div 
-                        className={`absolute bottom-4 right-4 transition-all duration-500 ${
-                          isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-                        }`}
-                      >
-                        <div className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium flex items-center gap-1">
-                          Explore <ChevronRight className="w-3 h-3" />
-                        </div>
-                      </motion.div>
+                    {/* Category Tag */}
+                    <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${planet.bgColor} ${planet.borderColor} border mb-3 relative z-10`}>
+                      {planet.category}
                     </div>
-                  </FloatingPlanet>
+                    
+                    {/* Planet Icon */}
+                    <motion.div 
+                      className={`w-14 h-14 rounded-full bg-gradient-to-br ${planet.color} flex items-center justify-center mb-4 shadow-lg shadow-purple-500/20 relative z-10`}
+                      animate={{
+                        scale: isHovered ? 1.15 : 1,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Icon className="w-7 h-7 text-white" />
+                    </motion.div>
+                    
+                    {/* Title */}
+                    <h3 className={`text-lg font-semibold text-white transition-all duration-300 mb-2 relative z-10 ${
+                      isHovered ? 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' : ''
+                    }`}>
+                      {planet.name}
+                    </h3>
+                    
+                    {/* Excerpt */}
+                    <p className="text-sm text-gray-400 line-clamp-2 mb-3 relative z-10">
+                      {planet.excerpt}
+                    </p>
+                    
+                    {/* Author & Date */}
+                    <div className="flex items-center justify-between text-xs text-gray-500 relative z-10">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {planet.date}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {planet.readTime}
+                      </span>
+                    </div>
+                    <div className="text-xs text-gray-500 mt-1 relative z-10">
+                      By {planet.author}
+                    </div>
+                    
+                    {/* Tags */}
+                    <div className="flex gap-2 mt-3 flex-wrap relative z-10">
+                      {planet.tags.map((tag) => (
+                        <span 
+                          key={tag}
+                          className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${planet.bgColor} ${planet.borderColor} border`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Explore Badge */}
+                    <motion.div 
+                      className={`absolute bottom-4 right-4 transition-all duration-500 z-20 ${
+                        isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+                      }`}
+                    >
+                      <div className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium flex items-center gap-1">
+                        Explore <ChevronRight className="w-3 h-3" />
+                      </div>
+                    </motion.div>
+                  </div>
                 </motion.div>
               );
             })}
