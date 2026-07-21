@@ -20,8 +20,6 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const animationIdRef = useRef<number | null>(null);
   const globeRef = useRef<THREE.Mesh | null>(null);
-  const markerGroupRef = useRef<THREE.Group | null>(null);
-  const markerMeshesRef = useRef<THREE.Mesh[]>([]);
 
   const cleanupGlobe = () => {
     if (animationIdRef.current) {
@@ -42,8 +40,6 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     }
     controlsRef.current = null;
     globeRef.current = null;
-    markerGroupRef.current = null;
-    markerMeshesRef.current = [];
     mountedRef.current = false;
   };
 
@@ -101,61 +97,9 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     const glow = new THREE.Mesh(glowGeometry, glowMaterial);
     scene.add(glow);
 
-    // ===== COUNTRY MARKERS (Subtle - for hover only) =====
-    const markerGroup = new THREE.Group();
-    markerGroupRef.current = markerGroup;
-    const markerMeshes: THREE.Mesh[] = [];
-
-    countries.forEach((country) => {
-      const phi = (90 - country.coordinates.lat) * Math.PI / 180;
-      const theta = country.coordinates.lng * Math.PI / 180;
-      
-      const x = radius * Math.sin(phi) * Math.cos(theta);
-      const y = radius * Math.cos(phi);
-      const z = radius * Math.sin(phi) * Math.sin(theta);
-      
-      const isSelected = selectedCountryId === country.id;
-      const isHovered = hoveredCountry === country.id;
-      
-      // Small subtle marker
-      const markerSize = isSelected ? 0.12 : (isHovered ? 0.10 : 0.04);
-      const markerGeo = new THREE.SphereGeometry(markerSize, 8, 8);
-      const markerMat = new THREE.MeshBasicMaterial({ 
-        color: isSelected ? 0x22D3EE : (isHovered ? 0x8B5CF6 : 0x6B21A8),
-        transparent: true,
-        opacity: isSelected ? 1 : (isHovered ? 1 : 0.15),
-      });
-      const marker = new THREE.Mesh(markerGeo, markerMat);
-      marker.position.set(x, y, z);
-      marker.userData = { 
-        countryId: country.id,
-        countryName: country.name,
-        flag: country.flag,
-      };
-      markerGroup.add(marker);
-      markerMeshes.push(marker);
-      
-      if (isSelected || isHovered) {
-        const ringGeo = new THREE.TorusGeometry(isSelected ? 0.22 : 0.16, 0.02, 8, 16);
-        const ringMat = new THREE.MeshBasicMaterial({
-          color: isSelected ? 0x22D3EE : 0x8B5CF6,
-          transparent: true,
-          opacity: isSelected ? 0.8 : 0.4,
-        });
-        const ring = new THREE.Mesh(ringGeo, ringMat);
-        ring.position.set(x, y, z);
-        ring.lookAt(0, 0, 0);
-        ring.userData = { isRing: true };
-        markerGroup.add(ring);
-      }
-    });
-
-    scene.add(markerGroup);
-    markerMeshesRef.current = markerMeshes;
-
     // ===== STARS =====
     const starsGeometry = new THREE.BufferGeometry();
-    const starsCount = 2000;
+    const starsCount = 3000;
     const starsPositions = new Float32Array(starsCount * 3);
     
     for (let i = 0; i < starsCount; i++) {
@@ -170,9 +114,9 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     
     starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
     const starsMaterial = new THREE.PointsMaterial({
-      size: 0.1,
+      size: 0.12,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.9,
       color: 0xffffff,
       sizeAttenuation: true,
     });
@@ -190,7 +134,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     scene.add(backLight);
 
     // ===== CAMERA =====
-    camera.position.set(0, 0.5, 7.5);
+    camera.position.set(0, 0.5, 6.5);
 
     // ===== CONTROLS =====
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -198,12 +142,12 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.6;
+    controls.autoRotateSpeed = 0.4;
     controls.enableZoom = true;
     controls.zoomSpeed = 0.8;
     controls.enablePan = false;
-    controls.minDistance = 4;
-    controls.maxDistance = 14;
+    controls.minDistance = 3.5;
+    controls.maxDistance = 12;
     controls.maxPolarAngle = Math.PI / 1.8;
     controls.target.set(0, 0, 0);
 
@@ -227,13 +171,33 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
       
       raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(markerMeshes);
+      const intersects = raycaster.intersectObject(globe);
       
       if (intersects.length > 0) {
-        const countryId = intersects[0].object.userData.countryId;
-        if (countryId) {
-          setHoveredCountry(countryId);
+        const point = intersects[0].point;
+        const lat = Math.asin(point.y / radius) * 180 / Math.PI;
+        const lng = Math.atan2(point.z, point.x) * 180 / Math.PI;
+        
+        let nearestCountry = null;
+        let minDistance = Infinity;
+        
+        countries.forEach(country => {
+          const d = Math.sqrt(
+            Math.pow(lat - country.coordinates.lat, 2) + 
+            Math.pow(lng - country.coordinates.lng, 2)
+          );
+          if (d < minDistance) {
+            minDistance = d;
+            nearestCountry = country;
+          }
+        });
+        
+        if (nearestCountry && minDistance < 15) {
+          setHoveredCountry(nearestCountry.id);
           renderer.domElement.style.cursor = 'pointer';
+        } else {
+          setHoveredCountry(null);
+          renderer.domElement.style.cursor = 'default';
         }
       } else {
         setHoveredCountry(null);
@@ -241,7 +205,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       }
     };
 
-    // ===== CLICK — ON GLOBE SURFACE (NO MARKER NEEDED) =====
+    // ===== CLICK =====
     const onPointerUp = (event: PointerEvent) => {
       if (isDragging) return;
       
@@ -250,18 +214,13 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
       
       raycaster.setFromCamera(mouse, camera);
-      
-      // ===== FIX: Check intersection with globe surface =====
       const intersects = raycaster.intersectObject(globe);
       
       if (intersects.length > 0) {
         const point = intersects[0].point;
-        
-        // Convert point to lat/lng
         const lat = Math.asin(point.y / radius) * 180 / Math.PI;
         const lng = Math.atan2(point.z, point.x) * 180 / Math.PI;
         
-        // Find nearest country
         let nearestCountry = null;
         let minDistance = Infinity;
         
@@ -310,16 +269,10 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     const animate = () => {
       animationIdRef.current = requestAnimationFrame(animate);
       
-      if (globeRef.current) globeRef.current.rotation.y += 0.0008;
-      glow.rotation.y += 0.0008;
-      if (markerGroupRef.current) {
-        markerGroupRef.current.rotation.y += 0.0008;
-        markerGroupRef.current.children.forEach((child) => {
-          if (child.userData?.isRing) {
-            child.rotation.z += 0.02;
-          }
-        });
+      if (globeRef.current) {
+        globeRef.current.rotation.y += 0.0008;
       }
+      glow.rotation.y += 0.0008;
       
       controls.update();
       renderer.render(scene, camera);
@@ -334,7 +287,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       window.removeEventListener('resize', handleResize);
       cleanupGlobe();
     };
-  }, [onCountryClick, selectedCountryId, hoveredCountry]);
+  }, [onCountryClick, selectedCountryId]);
 
   const hoveredCountryData = countries.find(c => c.id === hoveredCountry);
 
@@ -363,7 +316,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 pointer-events-none">
         <span className="text-xs text-gray-400 flex items-center gap-2">
           <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-          Hover on any country • Click to explore • Drag to rotate
+          Click anywhere on globe • Drag to rotate
         </span>
       </div>
     </div>
