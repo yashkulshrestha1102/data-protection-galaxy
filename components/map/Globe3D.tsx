@@ -217,7 +217,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     scene.add(backLight);
 
     // ===== CAMERA =====
-    camera.position.set(0, 0.5, 5.5);
+    camera.position.set(0, 0.5, 10);
 
     // ===== ORBIT CONTROLS =====
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -229,8 +229,8 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     controls.enableZoom = true;
     controls.zoomSpeed = 0.8;
     controls.enablePan = false;
-    controls.minDistance = 3;
-    controls.maxDistance = 12;
+    controls.minDistance = 4;
+    controls.maxDistance = 14;
     controls.maxPolarAngle = Math.PI / 1.8;
     controls.target.set(0, 0, 0);
 
