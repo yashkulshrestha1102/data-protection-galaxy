@@ -29,10 +29,13 @@ export const Header = () => {
           <Link href="/" className="flex flex-col group cursor-pointer" prefetch={true}>
             <div className="flex items-center gap-2.5">
               <div className="relative">
-                <div className="absolute inset-0 bg-teal-400/20 blur-xl rounded-full group-hover:bg-teal-400/30 transition-all" />
-                <Shield className="w-8 h-8 text-teal-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10" />
+                {/* Glow */}
+                <div className="absolute inset-0 bg-purple-400/20 blur-xl rounded-full group-hover:bg-purple-400/30 transition-all" />
+                {/* Icon */}
+                <Shield className="w-8 h-8 text-purple-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 relative z-10" />
               </div>
-              <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-teal-300 via-teal-400 to-cyan-400 bg-clip-text text-transparent tracking-wide">
+              {/* Text — Galaxy Theme Gradient */}
+              <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 bg-clip-text text-transparent tracking-wide">
                 Legal Galaxy
               </span>
             </div>
@@ -52,8 +55,8 @@ export const Header = () => {
                   prefetch={true}
                   className={`text-sm transition-all duration-200 ${
                     isActive 
-                      ? 'text-white font-semibold border-b-2 border-teal-400 pb-1' 
-                      : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-teal-400/50 pb-1'
+                      ? 'text-white font-semibold border-b-2 border-purple-400 pb-1' 
+                      : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-purple-400/50 pb-1'
                   }`}
                 >
                   {link.label}
@@ -86,7 +89,7 @@ export const Header = () => {
                     onClick={() => setIsOpen(false)}
                     className={`px-4 py-2.5 rounded-lg transition-all ${
                       isActive 
-                        ? 'bg-gradient-to-r from-teal-500/20 to-cyan-500/20 text-white font-semibold border border-teal-400/30' 
+                        ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' 
                         : 'text-gray-300/80 hover:text-white hover:bg-white/10'
                     }`}
                   >
