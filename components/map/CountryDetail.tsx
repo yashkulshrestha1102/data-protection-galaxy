@@ -1,4 +1,3 @@
-// components/map/CountryDetail.tsx
 "use client";
 
 import Link from 'next/link';
@@ -35,6 +34,7 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
 
   const totalTopics = country.topics.length;
   const addressedTopics = country.topics.filter(t => t.status === 'Addressed').length;
+  const partialTopics = country.topics.filter(t => t.status === 'Partial').length;
   const compliancePercentage = Math.round((addressedTopics / totalTopics) * 100);
 
   const levelColors = {
@@ -58,7 +58,7 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="h-full max-h-[600px] overflow-y-auto pr-2"
+      className="h-full max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-500/20 scrollbar-track-transparent"
     >
       {/* Header */}
       <div className="flex items-start gap-4 mb-6">
@@ -70,7 +70,7 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
       </div>
 
       {/* Authority */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10 mb-6">
+      <div className="flex items-start gap-3 p-4 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
         <Building className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-400">Authority</p>
@@ -80,13 +80,13 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
 
       {/* Region & Level */}
       <div className="flex flex-wrap gap-3 mb-6">
-        <div className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300">
+        <div className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm text-gray-300">
           {country.region}
         </div>
         <div className={`px-3 py-1.5 rounded-full border text-sm font-medium ${levelColors[country.level]}`}>
           {levelEmojis[country.level]} {country.level}
         </div>
-        <div className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300">
+        <div className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm text-gray-300">
           {addressedTopics}/{totalTopics} Addressed
         </div>
       </div>
@@ -101,12 +101,12 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-sm font-semibold text-gray-300">14-Topic Coverage</h4>
-          <span className="text-xs text-green-400">{addressedTopics}/{totalTopics} Addressed</span>
+          <span className="text-xs text-purple-400">{addressedTopics}/{totalTopics} Addressed</span>
         </div>
 
         <div className="w-full h-1.5 bg-white/10 rounded-full mb-4 overflow-hidden">
           <motion.div 
-            className="h-full bg-gradient-to-r from-green-400 to-blue-400 rounded-full"
+            className="h-full bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${compliancePercentage}%` }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -159,17 +159,16 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
         </div>
       </div>
 
-      {/* Buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 sticky bottom-0 bg-[#0a0a2e]/80 backdrop-blur-sm pt-4 -mx-2 px-2">
-        {/* ===== VIEW FULL COUNTRY PAGE — DYNAMIC LINK ===== */}
+      {/* ===== FIXED BUTTONS — Galaxy Theme (Purple-Pink) ===== */}
+<div className="flex flex-col sm:flex-row gap-3 sticky bottom-0 pt-4 -mx-2 px-2">
         <Link 
           href={`/country/${country.id}`}
-          className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium text-sm hover:scale-105 transition-all flex items-center justify-center gap-2"
+          className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium text-sm hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50"
         >
           View Full Country Page
           <ExternalLink className="w-4 h-4" />
         </Link>
-        <button className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium text-sm hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+        <button className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white font-medium text-sm hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105">
           Check Compliance Score
           <ChevronRight className="w-4 h-4" />
         </button>
