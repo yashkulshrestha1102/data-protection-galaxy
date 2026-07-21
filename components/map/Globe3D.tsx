@@ -17,26 +17,19 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
   const controlsRef = useRef<OrbitControls | null>(null);
   const markerMeshesRef = useRef<THREE.Mesh[]>([]);
   
-  // ===== ADD THIS: Prevent double mount =====
   const mountedRef = useRef(false);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const animationIdRef = useRef<number | null>(null);
 
-  // ===== CLEANUP FUNCTION =====
   const cleanupGlobe = () => {
-    // Cancel animation frame
     if (animationIdRef.current) {
       cancelAnimationFrame(animationIdRef.current);
       animationIdRef.current = null;
     }
-
-    // Dispose renderer
     if (rendererRef.current) {
       rendererRef.current.dispose();
       rendererRef.current = null;
     }
-
-    // Remove canvas from DOM
     if (containerRef.current) {
       const canvas = containerRef.current.querySelector('canvas');
       if (canvas) {
@@ -45,14 +38,12 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
         } catch (_) {}
       }
     }
-
     controlsRef.current = null;
     markerMeshesRef.current = [];
     mountedRef.current = false;
   };
 
   useEffect(() => {
-    // ===== PREVENT DOUBLE MOUNT =====
     if (mountedRef.current) {
       return cleanupGlobe;
     }
@@ -60,7 +51,6 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
 
     if (!containerRef.current) return;
 
-    // ===== SCENE SETUP =====
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, containerRef.current.clientWidth / containerRef.current.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ 
@@ -106,12 +96,11 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     const glow = new THREE.Mesh(glowGeometry, glowMaterial);
     scene.add(glow);
 
-    // ===== COUNTRY MARKERS =====
+    // ===== COUNTRY MARKERS — ONLY SHOW ON HOVER OR SELECTED =====
     const markerGroup = new THREE.Group();
     const markerMeshes: THREE.Mesh[] = [];
 
     countries.forEach((country) => {
-      // ===== EXACT COORDINATE CONVERSION (FIXED) =====
       const phi = (90 - country.coordinates.lat) * Math.PI / 180;
       const theta = country.coordinates.lng * Math.PI / 180;
       
@@ -122,24 +111,26 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       const isSelected = selectedCountryId === country.id;
       const isHovered = hoveredCountry === country.id;
       
-      const markerSize = isSelected ? 0.15 : (isHovered ? 0.12 : 0.08);
-      const markerGeo = new THREE.SphereGeometry(markerSize, 16, 16);
-      const markerMat = new THREE.MeshBasicMaterial({ 
-        color: isSelected ? 0x22D3EE : (isHovered ? 0x8B5CF6 : 0x6B21A8),
-        transparent: true,
-        opacity: isSelected ? 1 : (isHovered ? 1 : 0.6),
-      });
-      const marker = new THREE.Mesh(markerGeo, markerMat);
-      marker.position.set(x, y, z);
-      marker.userData = { 
-        countryId: country.id,
-        countryName: country.name,
-        flag: country.flag,
-      };
-      markerGroup.add(marker);
-      markerMeshes.push(marker);
-      
+      // ===== FIX: Only show marker if selected or hovered =====
       if (isSelected || isHovered) {
+        const markerSize = isSelected ? 0.15 : 0.12;
+        const markerGeo = new THREE.SphereGeometry(markerSize, 16, 16);
+        const markerMat = new THREE.MeshBasicMaterial({ 
+          color: isSelected ? 0x22D3EE : 0x8B5CF6,
+          transparent: true,
+          opacity: 1,
+        });
+        const marker = new THREE.Mesh(markerGeo, markerMat);
+        marker.position.set(x, y, z);
+        marker.userData = { 
+          countryId: country.id,
+          countryName: country.name,
+          flag: country.flag,
+        };
+        markerGroup.add(marker);
+        markerMeshes.push(marker);
+        
+        // Ring
         const ringGeo = new THREE.TorusGeometry(isSelected ? 0.25 : 0.18, 0.02, 12, 24);
         const ringMat = new THREE.MeshBasicMaterial({
           color: isSelected ? 0x22D3EE : 0x8B5CF6,
@@ -151,20 +142,21 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
         ring.lookAt(0, 0, 0);
         ring.userData = { countryId: country.id, isRing: true };
         markerGroup.add(ring);
-      }
-      
-      if (isSelected) {
-        const pulseGeo = new THREE.TorusGeometry(0.35, 0.015, 12, 24);
-        const pulseMat = new THREE.MeshBasicMaterial({
-          color: 0x22D3EE,
-          transparent: true,
-          opacity: 0.4,
-        });
-        const pulse = new THREE.Mesh(pulseGeo, pulseMat);
-        pulse.position.set(x, y, z);
-        pulse.lookAt(0, 0, 0);
-        pulse.userData = { countryId: country.id, isPulse: true };
-        markerGroup.add(pulse);
+        
+        // Pulse ring for selected
+        if (isSelected) {
+          const pulseGeo = new THREE.TorusGeometry(0.35, 0.015, 12, 24);
+          const pulseMat = new THREE.MeshBasicMaterial({
+            color: 0x22D3EE,
+            transparent: true,
+            opacity: 0.4,
+          });
+          const pulse = new THREE.Mesh(pulseGeo, pulseMat);
+          pulse.position.set(x, y, z);
+          pulse.lookAt(0, 0, 0);
+          pulse.userData = { countryId: country.id, isPulse: true };
+          markerGroup.add(pulse);
+        }
       }
     });
 
@@ -217,7 +209,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     scene.add(backLight);
 
     // ===== CAMERA =====
-    camera.position.set(0, 0.5, 10);
+    camera.position.set(0, 0.5, 7.5);
 
     // ===== ORBIT CONTROLS =====
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -241,7 +233,6 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     let mouseDownX = 0;
     let mouseDownY = 0;
 
-    // ===== POINTER EVENTS =====
     const onPointerDown = (event: PointerEvent) => {
       mouseDownX = event.clientX;
       mouseDownY = event.clientY;
@@ -339,14 +330,11 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     
     animate();
 
-    // ===== CLEANUP =====
     return () => {
-      // Remove event listeners
       renderer.domElement.removeEventListener('pointerdown', onPointerDown);
       renderer.domElement.removeEventListener('pointermove', onPointerMove);
       renderer.domElement.removeEventListener('pointerup', onPointerUp);
       window.removeEventListener('resize', handleResize);
-      
       cleanupGlobe();
     };
   }, [onCountryClick, selectedCountryId, hoveredCountry]);
