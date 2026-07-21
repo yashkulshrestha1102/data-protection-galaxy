@@ -134,7 +134,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     scene.add(backLight);
 
     // ===== CAMERA =====
-    camera.position.set(0, 0.5, 6.5);
+    camera.position.set(0, 0.5, 10);
 
     // ===== CONTROLS =====
     const controls = new OrbitControls(camera, renderer.domElement);
