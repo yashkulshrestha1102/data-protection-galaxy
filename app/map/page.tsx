@@ -108,7 +108,7 @@ export default function MapPage() {
   const hasActiveFilters = searchQuery || selectedRegion !== 'All' || selectedLevel !== 'All';
 
   return (
-    <main className="min-h-screen text-white px-4 pb-8 relative overflow-hidden mt-24 md:mt-28 lg:mt-32">
+<main className="min-h-screen text-white px-4 pb-8 relative overflow-hidden pt-28 md:pt-32">
       {/* ===== BACKGROUND IMAGE (Home Page Jaisi) ===== */}
       <div className="absolute inset-0 -z-10">
         <div 
