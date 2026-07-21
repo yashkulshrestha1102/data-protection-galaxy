@@ -1,12 +1,8 @@
+"use client";
+
+import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
-'use client';
-import { useState } from 'react';
-
-export const metadata = {
-  title: 'FAQs | DPDP Act Resources',
-  description: 'Frequently asked questions about India\'s Digital Personal Data Protection Act 2023.',
-};
 
 export default function FAQsPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
