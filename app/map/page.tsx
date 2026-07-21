@@ -30,6 +30,27 @@ export default function MapPage() {
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [stars, setStars] = useState<React.ReactNode[]>([]);
+
+  // ===== GENERATE STARS =====
+  useEffect(() => {
+    const starElements = [];
+    for (let i = 0; i < 50; i++) {
+      starElements.push(
+        <div
+          key={i}
+          className="absolute w-0.5 h-0.5 bg-white rounded-full animate-twinkle"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            opacity: Math.random() * 0.5 + 0.1,
+          }}
+        />
+      );
+    }
+    setStars(starElements);
+  }, []);
 
   const selectedCountry = getCountryById(selectedCountryId);
 
@@ -88,12 +109,18 @@ export default function MapPage() {
 
   return (
     <main className="min-h-screen text-white px-4 pb-8 relative overflow-hidden mt-24 md:mt-28 lg:mt-32">
-      {/* Background */}
+      {/* ===== BACKGROUND IMAGE (Home Page Jaisi) ===== */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-black/90" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+        >
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        {stars}
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -108,12 +135,12 @@ export default function MapPage() {
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Home
             </Link>
-            <h1 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-3 drop-shadow-2xl">
               <GlobeIcon className="w-8 h-8 text-white" />
               Data Protection Galaxy Map
             </h1>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-400">
+          <div className="flex items-center gap-2 text-sm text-gray-300">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             {countries.length} Countries
           </div>
@@ -127,7 +154,7 @@ export default function MapPage() {
               placeholder="Search countries or laws..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-3 pl-11 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 transition-all"
+              className="w-full px-4 py-3 pl-11 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 transition-all"
             />
             <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-gray-400" />
             {searchQuery && (
@@ -144,7 +171,7 @@ export default function MapPage() {
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none cursor-pointer hover:bg-white/10 transition-all"
+              className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none cursor-pointer hover:bg-white/20 transition-all"
             >
               {regions.map(r => (
                 <option key={r} value={r} className="bg-black">{r === 'All' ? 'All Regions' : r}</option>
@@ -153,7 +180,7 @@ export default function MapPage() {
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
-              className="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none cursor-pointer hover:bg-white/10 transition-all"
+              className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none cursor-pointer hover:bg-white/20 transition-all"
             >
               {levels.map(l => (
                 <option key={l} value={l} className="bg-black">{l === 'All' ? 'All Levels' : l}</option>
@@ -162,7 +189,7 @@ export default function MapPage() {
             {hasActiveFilters && (
               <button
                 onClick={resetFilters}
-                className="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all text-sm"
+                className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-gray-400 hover:text-white hover:bg-white/20 transition-all text-sm"
               >
                 Reset
               </button>
@@ -171,7 +198,7 @@ export default function MapPage() {
 
           <button
             onClick={() => setIsFilterOpen(!isFilterOpen)}
-            className="md:hidden flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white"
+            className="md:hidden flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white"
           >
             <Filter className="w-4 h-4" />
             Filters
@@ -191,11 +218,11 @@ export default function MapPage() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden overflow-hidden mb-4"
             >
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-3">
+              <div className="p-4 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm space-y-3">
                 <select
                   value={selectedRegion}
                   onChange={(e) => setSelectedRegion(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none"
                 >
                   {regions.map(r => (
                     <option key={r} value={r} className="bg-black">{r === 'All' ? 'All Regions' : r}</option>
@@ -204,7 +231,7 @@ export default function MapPage() {
                 <select
                   value={selectedLevel}
                   onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white text-sm focus:outline-none focus:border-blue-400/50 appearance-none"
                 >
                   {levels.map(l => (
                     <option key={l} value={l} className="bg-black">{l === 'All' ? 'All Levels' : l}</option>
@@ -213,7 +240,7 @@ export default function MapPage() {
                 {hasActiveFilters && (
                   <button
                     onClick={resetFilters}
-                    className="w-full px-4 py-2 rounded-xl bg-white/10 text-white text-sm hover:bg-white/20 transition-all"
+                    className="w-full px-4 py-2 rounded-xl bg-white/20 text-white text-sm hover:bg-white/30 transition-all"
                   >
                     Reset Filters
                   </button>
@@ -234,7 +261,7 @@ export default function MapPage() {
             </Suspense>
           </div>
 
-          <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm p-6 max-h-[600px] overflow-y-auto">
+          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 max-h-[600px] overflow-y-auto">
             <Suspense fallback={<div className="flex items-center justify-center h-full"><Loader2 className="w-8 h-8 text-purple-400 animate-spin" /></div>}>
               <CountryDetail country={selectedCountry || null} />
             </Suspense>
@@ -244,7 +271,7 @@ export default function MapPage() {
         {/* Country List */}
         <div className="mt-8">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-white flex items-center gap-2">
+            <h2 className="text-xl font-semibold text-white flex items-center gap-2 drop-shadow-md">
               <MapPin className="w-5 h-5 text-purple-400" />
               All Countries
               <span className="text-sm font-normal text-gray-400">({filteredCountries.length})</span>
@@ -267,12 +294,12 @@ export default function MapPage() {
                 className={`p-3 rounded-xl text-center transition-all ${
                   selectedCountryId === country.id
                     ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-purple-500/30 shadow-lg shadow-purple-500/10'
-                    : 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20'
+                    : 'bg-white/10 border border-white/20 backdrop-blur-sm hover:bg-white/20 hover:border-white/30'
                 }`}
               >
                 <div className="text-2xl mb-0.5">{country.flag}</div>
                 <div className="text-xs font-medium text-white truncate">{country.name}</div>
-                <div className="text-[10px] text-gray-500 truncate">{country.lawName.split('(')[0].trim()}</div>
+                <div className="text-[10px] text-gray-400 truncate">{country.lawName.split('(')[0].trim()}</div>
                 <div className={`text-[10px] mt-0.5 ${levelColors[country.level] || 'text-gray-400'}`}>
                   {levelEmojis[country.level] || '•'} {country.level}
                 </div>
