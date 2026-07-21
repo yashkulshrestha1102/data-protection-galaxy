@@ -1,5 +1,5 @@
 ﻿import Link from 'next/link';
-import { ArrowLeft, BookOpen, FileText, Users, HelpCircle, Video, Link2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, FileText, Users, HelpCircle, Video, Link2, ChevronRight } from 'lucide-react';
 
 export const metadata = {
   title: 'Data Protection Resources | DPDP Act 2023',
@@ -8,12 +8,42 @@ export const metadata = {
 
 export default function ResourcesPage() {
   const resources = [
-    { icon: FileText, title: 'Guidelines & Circulars', description: 'Official guidelines and circulars issued by the Data Protection Board.' },
-    { icon: BookOpen, title: 'Forms & Templates', description: 'Standard forms and templates for data protection compliance.' },
-    { icon: Users, title: 'Case Studies', description: 'Real-world case studies on data protection and compliance.' },
-    { icon: HelpCircle, title: 'FAQs', description: 'Frequently asked questions about the DPDP Act 2023.' },
-    { icon: Video, title: 'Training Material', description: 'Training materials and resources for data protection awareness.' },
-    { icon: Link2, title: 'External Links', description: 'Links to relevant laws, regulations, and official websites.' },
+    { 
+      icon: FileText, 
+      title: 'Guidelines & Circulars', 
+      description: 'Official guidelines and circulars issued by the Data Protection Board.',
+      slug: 'guidelines'
+    },
+    { 
+      icon: BookOpen, 
+      title: 'Forms & Templates', 
+      description: 'Standard forms and templates for data protection compliance.',
+      slug: 'forms'
+    },
+    { 
+      icon: Users, 
+      title: 'Case Studies', 
+      description: 'Real-world case studies on data protection and compliance.',
+      slug: 'case-studies'
+    },
+    { 
+      icon: HelpCircle, 
+      title: 'FAQs', 
+      description: 'Frequently asked questions about the DPDP Act 2023.',
+      slug: 'faqs'
+    },
+    { 
+      icon: Video, 
+      title: 'Training Material', 
+      description: 'Training materials and resources for data protection awareness.',
+      slug: 'training'
+    },
+    { 
+      icon: Link2, 
+      title: 'External Links', 
+      description: 'Links to relevant laws, regulations, and official websites.',
+      slug: 'links'
+    },
   ];
 
   return (
@@ -40,13 +70,22 @@ export default function ResourcesPage() {
           {resources.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div key={index} className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 flex items-center justify-center mb-4">
+              <Link
+                key={index}
+                href={`/resources/${item.slug}`}
+                className="group bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
-              </div>
+                <div className="flex items-start justify-between">
+                  <h3 className="text-xl font-semibold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all">
+                    {item.title}
+                  </h3>
+                  <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all flex-shrink-0 ml-2 mt-1" />
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed mt-2">{item.description}</p>
+              </Link>
             );
           })}
         </div>
