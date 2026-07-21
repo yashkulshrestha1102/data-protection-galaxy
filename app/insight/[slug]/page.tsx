@@ -48,8 +48,19 @@ export default function InsightDetailPage() {
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+      {/* ===== BACKGROUND IMAGE (HOME PAGE Jaisi) ===== */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-black/90" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/home1.jpeg')",
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
+        
+        {/* Nebula Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
@@ -65,7 +76,7 @@ export default function InsightDetailPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-sm font-semibold text-blue-400 mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-sm font-semibold text-blue-400 mb-6"
         >
           <IconComponent className="w-4 h-4" />
           {insight.category}
@@ -75,7 +86,7 @@ export default function InsightDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 drop-shadow-2xl"
         >
           {insight.title}
         </motion.h1>
@@ -84,7 +95,7 @@ export default function InsightDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap items-center gap-6 text-sm text-gray-400 mb-8 pb-8 border-b border-white/10"
+          className="flex flex-wrap items-center gap-6 text-sm text-gray-200 mb-8 pb-8 border-b border-white/10"
         >
           <span className="flex items-center gap-2"><User className="w-4 h-4" />{insight.author}</span>
           <span className="flex items-center gap-2"><Calendar className="w-4 h-4" />{insight.date}</span>
@@ -115,7 +126,7 @@ export default function InsightDetailPage() {
                   <Link
                     key={related.id}
                     href={`/insight/${related.slug}`}
-                    className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all hover:scale-105"
+                    className="group p-4 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all hover:scale-105"
                   >
                     <div className="flex items-center gap-2 text-xs text-blue-400 mb-2">
                       <RelatedIcon className="w-3 h-3" />
@@ -124,7 +135,7 @@ export default function InsightDetailPage() {
                     <h4 className="text-sm font-medium text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all line-clamp-2">
                       {related.title}
                     </h4>
-                    <div className="flex items-center gap-2 text-xs text-gray-500 mt-2">
+                    <div className="flex items-center gap-2 text-xs text-gray-300 mt-2">
                       <Calendar className="w-3 h-3" />
                       {related.date}
                     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -174,7 +174,7 @@ const InsightCard = ({ insight }) => {
         boxShadow: "0 20px 60px rgba(139, 92, 246, 0.15)",
       }}
       transition={{ duration: 0.3 }}
-      className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+      className="group relative bg-white/10 border border-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer"
     >
       {/* Category Tag */}
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-4">
@@ -188,12 +188,12 @@ const InsightCard = ({ insight }) => {
       </h3>
       
       {/* Excerpt */}
-      <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">
+      <p className="text-sm text-gray-300 leading-relaxed mb-4 line-clamp-3">
         {insight.excerpt}
       </p>
       
       {/* Author & Date */}
-      <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-white/5">
+      <div className="flex items-center justify-between text-xs text-gray-300 pt-4 border-t border-white/10">
         <span className="flex items-center gap-1.5">
           <User className="w-3.5 h-3.5" />
           {insight.author}
@@ -293,7 +293,32 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 export default function InsightPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
+  const [stars, setStars] = useState<React.ReactNode[]>([]);
   const itemsPerPage = 6;
+
+  // ===== GENERATE STARS ON CLIENT SIDE ONLY =====
+  useEffect(() => {
+    const starElements = [];
+    for (let i = 0; i < 50; i++) {
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const opacity = Math.random() * 0.5 + 0.1;
+      starElements.push(
+        <div
+          key={i}
+          className="absolute w-0.5 h-0.5 bg-white rounded-full animate-twinkle"
+          style={{
+            top: `${top}%`,
+            left: `${left}%`,
+            animationDelay: `${delay}s`,
+            opacity: opacity,
+          }}
+        />
+      );
+    }
+    setStars(starElements);
+  }, []);
   
   const filteredInsights = selectedCategory === 'all'
     ? insightsData
@@ -310,12 +335,25 @@ export default function InsightPage() {
   
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ===== BACKGROUND ===== */}
+      {/* ===== BACKGROUND IMAGE (HOME PAGE Jaisi) ===== */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-black/90" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/home1.jpeg')",
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
+        
+        {/* Nebula Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        
+        {/* Stars */}
+        {stars}
       </div>
       
       {/* ===== CONTENT ===== */}
@@ -337,10 +375,14 @@ export default function InsightPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-semibold text-blue-400 mb-4">
+            <BookOpen className="w-4 h-4" />
+            Latest Insights
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-2xl mb-4">
             Insights
           </h1>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          <p className="text-gray-200 text-lg max-w-3xl mx-auto drop-shadow-lg">
             In-depth analysis and practical guidance on India's Digital Personal Data Protection Act, 
             GDPR, cross-border transfers and global privacy law — from the data-privacy team at Legal Galaxy.
           </p>
@@ -364,7 +406,7 @@ export default function InsightPage() {
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   isActive
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
-                    : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+                    : 'bg-white/10 border border-white/20 backdrop-blur-sm text-gray-300 hover:text-white hover:bg-white/20'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -375,7 +417,7 @@ export default function InsightPage() {
         </motion.div>
         
         {/* ===== RESULTS COUNT ===== */}
-        <div className="text-sm text-gray-400 mb-6">
+        <div className="text-sm text-gray-300 mb-6">
           Showing {currentInsights.length} of {filteredInsights.length} insights
         </div>
         
@@ -411,8 +453,8 @@ export default function InsightPage() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10 backdrop-blur-sm">
-            <span className="text-gray-300">Have questions about data protection?</span>
+          <div className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm">
+            <span className="text-gray-200">Have questions about data protection?</span>
             <Link 
               href="/contact"
               className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all shadow-lg shadow-purple-500/30"
