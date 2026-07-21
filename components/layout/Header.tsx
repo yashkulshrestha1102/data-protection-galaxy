@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/map", label: "Map" },
   { href: "/insight", label: "Insight" },
   { href: "/resources", label: "Resources" },
+  { href: "/scorecard", label: "Scorecard" },
   { href: "/generator", label: "Generator" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
