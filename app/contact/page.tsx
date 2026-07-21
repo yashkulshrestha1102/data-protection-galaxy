@@ -20,7 +20,6 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [stars, setStars] = useState<React.ReactNode[]>([]);
 
-  // ===== GENERATE STARS ON CLIENT SIDE ONLY =====
   useEffect(() => {
     const starElements = [];
     for (let i = 0; i < 50; i++) {
@@ -118,18 +117,29 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+      {/* ===== BACKGROUND IMAGE (HOME PAGE Jaisi) ===== */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-black/90" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/home1.jpeg')",
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
+        
+        {/* Nebula Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         
-        {/* ===== STARS — CLIENT SIDE ONLY ===== */}
+        {/* Stars */}
         {stars}
       </div>
 
-      {/* ===== REST OF THE PAGE (SAME) ===== */}
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* ===== BACK BUTTON ===== */}
         <Link 
           href="/" 
           className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 group"
@@ -138,24 +148,26 @@ export default function ContactPage() {
           Back to Home
         </Link>
 
+        {/* ===== HEADER ===== */}
         <motion.div 
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-sm font-semibold text-blue-400 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-sm font-semibold text-blue-400 mb-4">
             <Sparkles className="w-4 h-4" />
             Get in Touch
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
             Contact Us
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-200 text-lg max-w-2xl mx-auto drop-shadow-lg">
             Have questions about data protection? We're here to help. Reach out to us through any of the channels below.
           </p>
         </motion.div>
 
+        {/* ===== CONTACT METHODS ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -170,31 +182,33 @@ export default function ContactPage() {
                 href={method.href}
                 target={method.label === 'Address' || method.label === 'Working Hours' ? '_blank' : '_self'}
                 rel="noopener noreferrer"
-                className={`group relative p-6 rounded-2xl bg-white/5 border ${method.border} hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10`}
+                className={`group relative p-6 rounded-2xl bg-white/10 border ${method.border} backdrop-blur-md hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20`}
               >
                 <div className={`w-12 h-12 rounded-full ${method.bg} bg-gradient-to-br ${method.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-sm font-semibold text-gray-400 mb-1">{method.label}</h3>
+                <h3 className="text-sm font-semibold text-gray-300 mb-1">{method.label}</h3>
                 <p className="text-white font-medium">{method.value}</p>
               </a>
             );
           })}
         </motion.div>
 
+        {/* ===== MAIN CONTENT: FORM + SOCIAL ===== */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* ===== FORM ===== */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="lg:col-span-2"
           >
-            <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm p-6 md:p-8">
+            <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6 md:p-8">
               <h2 className="text-2xl font-semibold text-white mb-2 flex items-center gap-2">
                 <MessageSquare className="w-6 h-6 text-purple-400" />
                 Send us a Message
               </h2>
-              <p className="text-gray-400 text-sm mb-6">
+              <p className="text-gray-300 text-sm mb-6">
                 Fill in the form below and we'll get back to you within 24 hours.
               </p>
 
@@ -206,7 +220,7 @@ export default function ContactPage() {
                 >
                   <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
                   <h3 className="text-xl font-semibold text-white">Message Sent!</h3>
-                  <p className="text-gray-400">Thank you for reaching out. We'll get back to you soon.</p>
+                  <p className="text-gray-300">Thank you for reaching out. We'll get back to you soon.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -223,7 +237,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all"
                       />
                     </div>
                     <div>
@@ -238,7 +252,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all"
                       />
                     </div>
                   </div>
@@ -254,7 +268,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       placeholder="Data Protection Query"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all"
                     />
                   </div>
 
@@ -269,7 +283,7 @@ export default function ContactPage() {
                       required
                       rows={5}
                       placeholder="Write your message here..."
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all resize-none"
                     />
                   </div>
 
@@ -297,13 +311,14 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
+          {/* ===== SIDEBAR: SOCIAL + QUICK LINKS ===== */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="space-y-6"
           >
-            <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm p-6">
+            <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                 <ExternalLink className="w-5 h-5 text-purple-400" />
                 Connect with Us
@@ -317,17 +332,17 @@ export default function ContactPage() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex flex-col items-center gap-1 p-3 rounded-xl bg-white/5 border border-white/10 ${social.bg} transition-all hover:scale-105`}
+                      className={`flex flex-col items-center gap-1 p-3 rounded-xl bg-white/10 border border-white/20 ${social.bg} transition-all hover:scale-105`}
                     >
                       <Icon className={`w-6 h-6 ${social.color}`} />
-                      <span className="text-[10px] text-gray-400">{social.label}</span>
+                      <span className="text-[10px] text-gray-300">{social.label}</span>
                     </a>
                   );
                 })}
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm p-6">
+            <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6">
               <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                 <Globe className="w-5 h-5 text-purple-400" />
                 Quick Links
@@ -337,7 +352,7 @@ export default function ContactPage() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200"
+                    className="text-sm text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200"
                   >
                     {link.label}
                   </Link>
@@ -349,7 +364,7 @@ export default function ContactPage() {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 hover:scale-105 transition-all duration-300 group"
+              className="flex items-center justify-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
             >
               <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
@@ -358,20 +373,21 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-sm font-medium text-white">Chat on WhatsApp</p>
-                <p className="text-xs text-gray-400">Quick response within minutes</p>
+                <p className="text-xs text-gray-300">Quick response within minutes</p>
               </div>
               <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
             </a>
           </motion.div>
         </div>
 
+        {/* ===== MAP SECTION ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-12"
         >
-          <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm p-6 overflow-hidden">
+          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6 overflow-hidden">
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-purple-400" />
               Find Us
