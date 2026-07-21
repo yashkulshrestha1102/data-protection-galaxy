@@ -170,7 +170,32 @@ export default function Galaxy() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [stars, setStars] = useState<React.ReactNode[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // ===== GENERATE STARS ON CLIENT SIDE ONLY =====
+  useEffect(() => {
+    const starElements = [];
+    for (let i = 0; i < 50; i++) {
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const opacity = Math.random() * 0.5 + 0.1;
+      starElements.push(
+        <div
+          key={i}
+          className="absolute w-0.5 h-0.5 bg-white rounded-full animate-twinkle"
+          style={{
+            top: `${top}%`,
+            left: `${left}%`,
+            animationDelay: `${delay}s`,
+            opacity: opacity,
+          }}
+        />
+      );
+    }
+    setStars(starElements);
+  }, []);
 
   const filteredPlanets = planets.filter(planet => {
     const matchesSearch = planet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -189,108 +214,26 @@ export default function Galaxy() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32">
-      {/* ===== BACKGROUND (same) ===== */}
+    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+      {/* ===== BACKGROUND IMAGE (HOME PAGE Jaisi) ===== */}
       <div className="absolute inset-0 -z-10">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/galaxy-map-bg.jpg')",
+            backgroundImage: "url('/images/home1.jpeg')",
           }}
-        />
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
-        
-        <div className="absolute inset-0 opacity-10">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={`grid-h-${i}`}
-              className="absolute w-full h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"
-              style={{ top: `${i * 5}%` }}
-            />
-          ))}
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={`grid-v-${i}`}
-              className="absolute h-full w-px bg-gradient-to-b from-transparent via-purple-500/30 to-transparent"
-              style={{ left: `${i * 5}%` }}
-            />
-          ))}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
         
+        {/* Nebula Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         
-        <svg className="absolute inset-0 w-full h-full opacity-20">
-          {[...Array(30)].map((_, i) => {
-            const x1 = Math.random() * 100;
-            const y1 = Math.random() * 100;
-            const x2 = Math.random() * 100;
-            const y2 = Math.random() * 100;
-            return (
-              <line
-                key={`line-${i}`}
-                x1={`${x1}%`}
-                y1={`${y1}%`}
-                x2={`${x2}%`}
-                y2={`${y2}%`}
-                stroke="#8B5CF6"
-                strokeWidth="0.5"
-                opacity="0.3"
-              />
-            );
-          })}
-        </svg>
-        
-        {[...Array(150)].map((_, i) => {
-          const size = Math.random() * 3 + 1;
-          const duration = Math.random() * 4 + 2;
-          return (
-            <motion.div
-              key={i}
-              className="absolute bg-white rounded-full"
-              animate={{
-                opacity: [0.1, 0.8, 0.1],
-                scale: [0.5, 1.2, 0.5],
-              }}
-              transition={{
-                duration: duration,
-                delay: Math.random() * 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                width: `${size}px`,
-                height: `${size}px`,
-              }}
-            />
-          );
-        })}
-
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={`shooting-${i}`}
-            className="absolute w-1 h-1 bg-white rounded-full shadow-[0_0_10px_#fff]"
-            animate={{
-              x: [0, 400, 800],
-              y: [0, 150, 300],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3,
-              delay: i * 5 + 2,
-              repeat: Infinity,
-              repeatDelay: 8,
-              ease: "linear",
-            }}
-            style={{
-              top: `${20 + i * 25}%`,
-              left: `${-50 + i * 20}%`,
-            }}
-          />
-        ))}
+        {/* Stars */}
+        {stars}
       </div>
 
       {/* ===== CONTENT ===== */}
@@ -307,13 +250,15 @@ export default function Galaxy() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="inline-block"
           >
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 flex items-center justify-center gap-4">
-              <Orbit className="w-12 h-12 text-purple-400" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-semibold text-blue-400 mb-4">
+              <Orbit className="w-4 h-4" />
+              Galaxy Explorer
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl mb-4 flex items-center justify-center gap-4">
               Explore the Universe
-              <Satellite className="w-12 h-12 text-blue-400" />
             </h1>
           </motion.div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-200 text-lg max-w-2xl mx-auto drop-shadow-lg">
             Navigate through the galaxy of data protection — each planet holds essential knowledge
           </p>
         </motion.div>
@@ -331,7 +276,7 @@ export default function Galaxy() {
               placeholder="Search planets..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-3 pl-12 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 transition-all"
+              className="w-full px-6 py-3 pl-12 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 transition-all"
             />
             <Search className="absolute left-4 top-3.5 w-5 h-5 text-gray-400" />
             {searchQuery && (
@@ -352,7 +297,7 @@ export default function Galaxy() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
                   selectedCategory === category
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
-                    : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+                    : 'bg-white/10 border border-white/20 backdrop-blur-sm text-gray-300 hover:text-white hover:bg-white/20'
                 }`}
               >
                 {category}
@@ -362,7 +307,7 @@ export default function Galaxy() {
           
           <button
             onClick={() => setIsFilterOpen(!isFilterOpen)}
-            className="md:hidden flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md text-white"
+            className="md:hidden flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm text-white"
           >
             <Filter className="w-5 h-5" />
             Filter
@@ -379,7 +324,7 @@ export default function Galaxy() {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden mb-4 overflow-hidden"
             >
-              <div className="flex flex-wrap gap-2 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <div className="flex flex-wrap gap-2 p-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm">
                 {uniqueCategories.map((category) => (
                   <button
                     key={category}
@@ -390,7 +335,7 @@ export default function Galaxy() {
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                       selectedCategory === category
                         ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                        : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white'
+                        : 'bg-white/10 border border-white/20 text-gray-300 hover:text-white'
                     }`}
                   >
                     {category}
@@ -402,7 +347,7 @@ export default function Galaxy() {
         </AnimatePresence>
 
         {/* Results Count */}
-        <div className="text-sm text-gray-400 mb-6">
+        <div className="text-sm text-gray-300 mb-6">
           Showing {filteredPlanets.length} of {planets.length} planets
         </div>
 
@@ -433,7 +378,7 @@ export default function Galaxy() {
                   onClick={() => router.push(planet.path)}
                 >
                   {/* ===== DIRECT CARD — NO FLOATING WRAPPER ===== */}
-                  <div className={`relative p-6 rounded-2xl bg-white/5 border ${planet.borderColor} backdrop-blur-sm hover:bg-white/10 transition-all duration-500 ${
+                  <div className={`relative p-6 rounded-2xl bg-white/10 border ${planet.borderColor} backdrop-blur-sm hover:bg-white/20 transition-all duration-500 ${
                     isHovered ? 'shadow-2xl shadow-purple-500/20 scale-105' : ''
                   }`}>
                     {/* Card Glow */}
@@ -463,12 +408,12 @@ export default function Galaxy() {
                     </h3>
                     
                     {/* Excerpt */}
-                    <p className="text-sm text-gray-400 line-clamp-2 mb-3 relative z-10">
+                    <p className="text-sm text-gray-300 line-clamp-2 mb-3 relative z-10">
                       {planet.excerpt}
                     </p>
                     
                     {/* Author & Date */}
-                    <div className="flex items-center justify-between text-xs text-gray-500 relative z-10">
+                    <div className="flex items-center justify-between text-xs text-gray-300 relative z-10">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         {planet.date}
@@ -478,7 +423,7 @@ export default function Galaxy() {
                         {planet.readTime}
                       </span>
                     </div>
-                    <div className="text-xs text-gray-500 mt-1 relative z-10">
+                    <div className="text-xs text-gray-300 mt-1 relative z-10">
                       By {planet.author}
                     </div>
                     
@@ -526,7 +471,7 @@ export default function Galaxy() {
               🪐
             </motion.div>
             <h3 className="text-2xl font-semibold text-gray-300">No planets found</h3>
-            <p className="text-gray-500 mt-2">Try adjusting your search or filter</p>
+            <p className="text-gray-400 mt-2">Try adjusting your search or filter</p>
             <button
               onClick={() => {
                 setSearchQuery("");
