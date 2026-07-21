@@ -4,7 +4,7 @@ import { Rocket, Shield, Globe, Sparkles } from "lucide-react";
 export default function Home() {
   return (
     // ===== FIX: min-h-screen and pt-28 for header spacing =====
-    <main className="min-h-screen text-white flex flex-col items-center justify-center px-4 relative overflow-hidden pt-28 md:pt-32 lg:pt-36">
+    <main className="min-h-screen text-white flex flex-col items-center justify-center px-4 relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-8">
       {/* ===== BACKGROUND IMAGE ===== */}
       <div 
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
@@ -39,9 +39,9 @@ export default function Home() {
       </div>
 
       {/* ===== CONTENT ===== */}
-      <div className="max-w-5xl mx-auto text-center relative z-10">
+      <div className="max-w-5xl mx-auto text-center relative z-10 flex-1 flex flex-col justify-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-xs md:text-sm text-gray-200 hover:bg-white/20 transition-all mb-6 md:mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-xs md:text-sm text-gray-200 hover:bg-white/20 transition-all mx-auto mb-6 md:mb-8">
           <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-400" />
           Digital Personal Data Protection Act, 2023
         </div>
@@ -86,8 +86,8 @@ export default function Home() {
           })}
         </div>
 
-        {/* CTA Button */}
-        <div>
+        {/* CTA Button - Added margin bottom for footer spacing */}
+        <div className="mb-8 md:mb-12">
           <Link
             href="/galaxy"
             className="inline-flex items-center gap-2 md:gap-3 px-8 md:px-10 py-3 md:py-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold text-sm md:text-lg hover:scale-105 transition-all hover:shadow-2xl hover:shadow-blue-500/40 shadow-lg shadow-blue-500/20"
