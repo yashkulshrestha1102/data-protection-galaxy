@@ -40,21 +40,16 @@ export default function Home() {
 
       {/* ===== CONTENT ===== */}
       <div className="max-w-5xl mx-auto text-center relative z-10 flex-1 flex flex-col justify-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-xs md:text-sm text-gray-200 hover:bg-white/20 transition-all mx-auto mb-6 md:mb-8">
-          <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-400" />
-          Digital Personal Data Protection Act, 2023
-        </div>
 
         {/* Main Heading */}
         <div className="mb-4 md:mb-6">
           <p className="text-lg md:text-2xl lg:text-3xl text-gray-200 font-light tracking-wide drop-shadow-lg">
             Welcome to the
           </p>
-          <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold leading-tight drop-shadow-2xl">
-            <span className="text-white">Data Protection</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-2xl">
+            <span className="text-white">Privacy & AI Governance</span>
             <br />
-            <span className="text-white">Galaxy</span>
+            <span className="text-white">Universe</span>
           </h1>
         </div>
 
