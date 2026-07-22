@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/insight", label: "Insight" },
    { href: "/resources/guides", label: "Guides" },
   { href: "/resources", label: "Resources" },
+  { href: "/certificate-course", label: "Certificate Course" },
    { href: "/map", label: "Map" },
   { href: "/generator", label: "Generator" },
   { href: "/about", label: "About" },
