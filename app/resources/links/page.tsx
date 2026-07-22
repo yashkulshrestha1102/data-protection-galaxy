@@ -1,12 +1,31 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Globe, FileText, Building, Scale, AlertCircle } from 'lucide-react';
 
-export const metadata = {
-  title: 'External Links | DPDP Act Resources',
-  description: 'Links to relevant laws, regulations, and official websites for data protection compliance under India\'s Digital Personal Data Protection Act 2023.',
-};
-
 export default function LinksPage() {
+  const [stars, setStars] = useState<React.ReactNode[]>([]);
+
+  useEffect(() => {
+    const starElements = [];
+    for (let i = 0; i < 50; i++) {
+      starElements.push(
+        <div
+          key={i}
+          className="absolute w-0.5 h-0.5 bg-white rounded-full animate-twinkle"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            opacity: Math.random() * 0.5 + 0.1,
+          }}
+        />
+      );
+    }
+    setStars(starElements);
+  }, []);
+
   const links = [
     {
       title: 'Ministry of Electronics and Information Technology',
@@ -18,21 +37,21 @@ export default function LinksPage() {
     {
       title: 'Data Protection Board of India',
       description: 'Official website of the Data Protection Board established under the DPDP Act.',
-      url: 'https://www.meity.gov.in/data-protection-board',
+      url: '#',
       icon: Scale,
       category: 'Regulatory',
     },
     {
       title: 'Digital Personal Data Protection Act, 2023',
       description: 'Full text of the Digital Personal Data Protection Act, 2023.',
-      url: 'https://www.meity.gov.in/digital-personal-data-protection-act-2023',
+      url: '#',
       icon: FileText,
       category: 'Legislation',
     },
     {
       title: 'DPDP Rules, 2025',
       description: 'Rules framed under the Digital Personal Data Protection Act, 2023.',
-      url: 'https://www.meity.gov.in/dpdp-rules-2025',
+      url: '#',
       icon: FileText,
       category: 'Legislation',
     },
@@ -80,7 +99,6 @@ export default function LinksPage() {
     },
   ];
 
-  // Function to handle link click with validation
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
     if (url === '#' || url === '') {
       e.preventDefault();
@@ -98,6 +116,7 @@ export default function LinksPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        {stars}
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
