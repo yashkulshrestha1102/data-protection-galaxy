@@ -182,12 +182,10 @@ export default function TrainingPage() {
           {trainingMaterials.map((item, index) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <Link
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+                href={`/resources/training/${item.slug}`}
+                className="group bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
@@ -221,7 +219,7 @@ export default function TrainingPage() {
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
-              </motion.div>
+              </Link>
             );
           })}
         </div>
