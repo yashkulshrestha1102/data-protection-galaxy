@@ -3,7 +3,6 @@ import { Rocket, Shield, Globe, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
-    // ===== FIX: min-h-screen and pt-28 for header spacing =====
     <main className="min-h-screen text-white flex flex-col items-center justify-center px-4 relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-8">
       {/* ===== BACKGROUND IMAGE ===== */}
       <div 
@@ -58,30 +57,51 @@ export default function Home() {
           Your interactive guide to understanding the Digital Personal Data Protection Act, 2023 in a holistic view.
         </p>
 
-        {/* Feature Cards */}
+        {/* ===== FEATURE CARDS — CLICKABLE ===== */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
           {[
-            { icon: Shield, title: "Data Protection", desc: "Know your rights and obligations", color: "from-blue-400 to-blue-600" },
-            { icon: Globe, title: "Interactive Guide", desc: "Explore the galaxy of provisions", color: "from-purple-400 to-purple-600" },
-            { icon: Rocket, title: "Start Exploring", desc: "Navigate through the universe", color: "from-pink-400 to-pink-600" },
+            { 
+              icon: Shield, 
+              title: "Data Protection", 
+              desc: "Know your rights and obligations", 
+              color: "from-blue-400 to-blue-600",
+              href: "/rights"
+            },
+            { 
+              icon: Globe, 
+              title: "Interactive Guide", 
+              desc: "Explore the galaxy of provisions", 
+              color: "from-purple-400 to-purple-600",
+              href: "/resources/guides"  // ← FIX: Guides page
+            },
+            { 
+              icon: Rocket, 
+              title: "Start Exploring", 
+              desc: "Navigate through the universe", 
+              color: "from-pink-400 to-pink-600",
+              href: "/galaxy"
+            },
           ].map((item, index) => {
             const Icon = item.icon;
             return (
-              <div
+              <Link
                 key={index}
-                className="group p-5 md:p-6 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20"
+                href={item.href}
+                className="group p-5 md:p-6 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 cursor-pointer"
               >
                 <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20`}>
                   <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
                 </div>
-                <h3 className="font-semibold text-white text-base md:text-lg drop-shadow-md">{item.title}</h3>
-                <p className="text-xs md:text-sm text-gray-300 mt-1 drop-shadow-md">{item.desc}</p>
-              </div>
+                <h3 className="font-semibold text-white text-base md:text-lg group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all">
+                  {item.title}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-300 mt-1">{item.desc}</p>
+              </Link>
             );
           })}
         </div>
 
-        {/* CTA Button - Added margin bottom for footer spacing */}
+        {/* CTA Button */}
         <div className="mb-8 md:mb-12">
           <Link
             href="/galaxy"
