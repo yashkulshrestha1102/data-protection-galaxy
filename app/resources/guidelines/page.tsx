@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, FileText, Download, Calendar } from 'lucide-react';
-import html2pdf from 'html2pdf.js';
 
 export default function GuidelinesPage() {
   const [downloading, setDownloading] = useState<string | null>(null);
@@ -20,7 +19,6 @@ export default function GuidelinesPage() {
         <h1 style="color: #1a1a2e; font-size: 24px; border-bottom: 3px solid #8B5CF6; padding-bottom: 10px;">DPDP Act Implementation Guidelines 2026</h1>
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">1. Introduction</h2>
         <p style="color: #444; line-height: 1.6;">The Digital Personal Data Protection Act, 2023 (DPDP Act) establishes a comprehensive framework for processing personal data in India. These guidelines provide practical steps for organizations to achieve compliance.</p>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">2. Key Compliance Areas</h2>
         <h3 style="color: #3d3d5c; font-size: 16px;">2.1 Notice and Consent</h3>
         <ul style="color: #444; line-height: 1.6;">
@@ -28,21 +26,18 @@ export default function GuidelinesPage() {
           <li>Obtain valid consent for processing personal data</li>
           <li>Enable individuals to withdraw consent easily</li>
         </ul>
-        
         <h3 style="color: #3d3d5c; font-size: 16px;">2.2 Data Security</h3>
         <ul style="color: #444; line-height: 1.6;">
           <li>Implement reasonable security safeguards</li>
           <li>Conduct regular security audits</li>
           <li>Encrypt sensitive personal data</li>
         </ul>
-        
         <h3 style="color: #3d3d5c; font-size: 16px;">2.3 Breach Response</h3>
         <ul style="color: #444; line-height: 1.6;">
           <li>Establish incident response protocols</li>
           <li>Notify the Board and affected individuals</li>
           <li>Maintain breach logs and documentation</li>
         </ul>
-        
         <h3 style="color: #3d3d5c; font-size: 16px;">2.4 Governance</h3>
         <ul style="color: #444; line-height: 1.6;">
           <li>Appoint a Data Protection Officer</li>
@@ -50,7 +45,6 @@ export default function GuidelinesPage() {
           <li>Provide staff training</li>
           <li>Conduct regular compliance audits</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">3. Implementation Timeline</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li><strong>Phase 1:</strong> Assessment and Gap Analysis (Month 1-2)</li>
@@ -58,14 +52,12 @@ export default function GuidelinesPage() {
           <li><strong>Phase 3:</strong> Training and Awareness (Month 5)</li>
           <li><strong>Phase 4:</strong> Monitoring and Continuous Improvement (Month 6+)</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">4. Resources</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>DPDP Act 2023 Full Text</li>
           <li>Data Protection Board Guidelines</li>
           <li>Industry Best Practices</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">5. Contact</h2>
         <p style="color: #444; line-height: 1.6;">For queries, contact the Data Protection Board or your legal advisor.</p>
       `,
@@ -81,14 +73,12 @@ export default function GuidelinesPage() {
         <h1 style="color: #1a1a2e; font-size: 24px; border-bottom: 3px solid #8B5CF6; padding-bottom: 10px;">Data Breach Notification Guidelines</h1>
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">1. Overview</h2>
         <p style="color: #444; line-height: 1.6;">Under the DPDP Act, data fiduciaries must notify the Data Protection Board within 72 hours of becoming aware of a data breach.</p>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">2. When to Notify</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>Any unauthorized access, acquisition, or disclosure of personal data</li>
           <li>Loss of personal data</li>
           <li>Any incident that may compromise the security of personal data</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">3. What to Include</h2>
         <h3 style="color: #3d3d5c; font-size: 16px;">To the Board:</h3>
         <ul style="color: #444; line-height: 1.6;">
@@ -117,7 +107,6 @@ export default function GuidelinesPage() {
         <h1 style="color: #1a1a2e; font-size: 24px; border-bottom: 3px solid #8B5CF6; padding-bottom: 10px;">Consent Management Framework</h1>
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">1. Introduction</h2>
         <p style="color: #444; line-height: 1.6;">Under Section 6 of the DPDP Act, consent must be free, specific, informed, unconditional, unambiguous, and a clear affirmative action.</p>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">2. Consent Requirements</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li><strong>Free:</strong> No coercion or undue influence</li>
@@ -125,7 +114,6 @@ export default function GuidelinesPage() {
           <li><strong>Informed:</strong> Clear and transparent notice</li>
           <li><strong>Unambiguous:</strong> Clear affirmative action</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">3. Consent Withdrawal</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>Must be as easy as giving consent</li>
@@ -146,7 +134,6 @@ export default function GuidelinesPage() {
         <h1 style="color: #1a1a2e; font-size: 24px; border-bottom: 3px solid #8B5CF6; padding-bottom: 10px;">Data Protection Impact Assessment (DPIA) Guidelines</h1>
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">1. What is a DPIA?</h2>
         <p style="color: #444; line-height: 1.6;">A Data Protection Impact Assessment (DPIA) is a process to identify and mitigate risks associated with high-risk data processing activities.</p>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">2. When is a DPIA Required?</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>Processing of sensitive personal data</li>
@@ -154,7 +141,6 @@ export default function GuidelinesPage() {
           <li>Automated decision-making</li>
           <li>Profiling</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">3. DPIA Process</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li><strong>Step 1:</strong> Identify Processing Activities</li>
@@ -176,14 +162,12 @@ export default function GuidelinesPage() {
         <h1 style="color: #1a1a2e; font-size: 24px; border-bottom: 3px solid #8B5CF6; padding-bottom: 10px;">Cross-Border Data Transfer Guidelines</h1>
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">1. Introduction</h2>
         <p style="color: #444; line-height: 1.6;">The DPDP Act regulates cross-border data transfers to ensure adequate protection of personal data.</p>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">2. Permissible Transfers</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>Countries notified by the Central Government</li>
           <li>Transfers subject to prescribed conditions</li>
           <li>Transfers with appropriate safeguards</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">3. Safeguards</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>Standard contractual clauses</li>
@@ -204,14 +188,12 @@ export default function GuidelinesPage() {
         <h1 style="color: #1a1a2e; font-size: 24px; border-bottom: 3px solid #8B5CF6; padding-bottom: 10px;">DPO Appointment Circular</h1>
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">1. DPO Requirement</h2>
         <p style="color: #444; line-height: 1.6;">Under the DPDP Act, certain organisations must appoint a Data Protection Officer (DPO).</p>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">2. When is a DPO Required?</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>Significant Data Fiduciaries (SDFs)</li>
           <li>Data fiduciaries with high-volume processing</li>
           <li>Data fiduciaries processing sensitive data</li>
         </ul>
-        
         <h2 style="color: #2d2d44; font-size: 18px; margin-top: 20px;">3. DPO Responsibilities</h2>
         <ul style="color: #444; line-height: 1.6;">
           <li>Monitor compliance with DPDP Act</li>
@@ -228,6 +210,9 @@ export default function GuidelinesPage() {
     setDownloading(id);
 
     try {
+      // ===== DYNAMIC IMPORT =====
+      const html2pdf = (await import('html2pdf.js')).default;
+
       const element = document.createElement('div');
       element.innerHTML = `
         <div style="padding: 40px; font-family: Arial, sans-serif; color: #333; max-width: 800px; margin: 0 auto;">
