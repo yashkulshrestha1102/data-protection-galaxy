@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Globe, FileText, Building, Scale } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Globe, FileText, Building, Scale, AlertCircle } from 'lucide-react';
 
 export const metadata = {
   title: 'External Links | DPDP Act Resources',
@@ -18,21 +18,21 @@ export default function LinksPage() {
     {
       title: 'Data Protection Board of India',
       description: 'Official website of the Data Protection Board established under the DPDP Act.',
-      url: '#',
+      url: 'https://www.meity.gov.in/data-protection-board',
       icon: Scale,
       category: 'Regulatory',
     },
     {
       title: 'Digital Personal Data Protection Act, 2023',
       description: 'Full text of the Digital Personal Data Protection Act, 2023.',
-      url: '#',
+      url: 'https://www.meity.gov.in/digital-personal-data-protection-act-2023',
       icon: FileText,
       category: 'Legislation',
     },
     {
       title: 'DPDP Rules, 2025',
       description: 'Rules framed under the Digital Personal Data Protection Act, 2023.',
-      url: '#',
+      url: 'https://www.meity.gov.in/dpdp-rules-2025',
       icon: FileText,
       category: 'Legislation',
     },
@@ -64,10 +64,33 @@ export default function LinksPage() {
       icon: Scale,
       category: 'International',
     },
+    {
+      title: 'UK Information Commissioner\'s Office (ICO)',
+      description: 'Official website of the UK\'s data protection authority.',
+      url: 'https://ico.org.uk',
+      icon: Building,
+      category: 'International',
+    },
+    {
+      title: 'UNCTAD Data Protection Laws',
+      description: 'Global overview of data protection laws by country.',
+      url: 'https://unctad.org/page/data-protection-and-privacy-legislation-worldwide',
+      icon: Globe,
+      category: 'International',
+    },
   ];
+
+  // Function to handle link click with validation
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    if (url === '#' || url === '') {
+      e.preventDefault();
+      alert('This link is currently unavailable. Please check back later.');
+    }
+  };
 
   return (
     <main className="min-h-screen text-white px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
@@ -83,40 +106,80 @@ export default function LinksPage() {
           Back to Resources
         </Link>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">External Links</h1>
-        <p className="text-gray-300 text-lg max-w-3xl mb-12">Links to relevant laws, regulations, and official websites for data protection compliance.</p>
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">External Links</h1>
+          <p className="text-gray-300 text-lg max-w-3xl">Links to relevant laws, regulations, and official websites for data protection compliance.</p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {links.map((item, index) => {
             const Icon = item.icon;
+            const isPlaceholder = item.url === '#' || item.url === '';
+            
             return (
               <a
                 key={index}
                 href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 group"
+                target={!isPlaceholder ? "_blank" : undefined}
+                rel={!isPlaceholder ? "noopener noreferrer" : undefined}
+                onClick={(e) => handleLinkClick(e, item.url)}
+                className={`bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 transition-all hover:scale-105 group ${
+                  isPlaceholder 
+                    ? 'opacity-60 cursor-not-allowed hover:bg-white/10' 
+                    : 'hover:bg-white/20 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer'
+                }`}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-6 h-6 text-white" />
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                    isPlaceholder 
+                      ? 'bg-gray-500/20' 
+                      : 'bg-gradient-to-r from-purple-500 to-pink-600'
+                  }`}>
+                    <Icon className={`w-6 h-6 ${isPlaceholder ? 'text-gray-400' : 'text-white'}`} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between">
-                      <h3 className="text-xl font-semibold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all">
+                      <h3 className={`text-xl font-semibold transition-all ${
+                        isPlaceholder 
+                          ? 'text-gray-400' 
+                          : 'text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text'
+                      }`}>
                         {item.title}
                       </h3>
-                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors flex-shrink-0 ml-2" />
+                      {isPlaceholder ? (
+                        <AlertCircle className="w-4 h-4 text-gray-400 flex-shrink-0 ml-2" />
+                      ) : (
+                        <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors flex-shrink-0 ml-2" />
+                      )}
                     </div>
-                    <p className="text-gray-300 text-sm leading-relaxed mt-1">{item.description}</p>
-                    <span className="inline-block mt-2 px-2 py-0.5 rounded text-xs bg-white/10 text-gray-400 border border-white/10">
-                      {item.category}
-                    </span>
+                    <p className={`text-sm leading-relaxed mt-1 ${isPlaceholder ? 'text-gray-500' : 'text-gray-300'}`}>
+                      {item.description}
+                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className={`inline-block px-2 py-0.5 rounded text-xs border ${
+                        isPlaceholder 
+                          ? 'bg-gray-500/10 text-gray-500 border-gray-500/20' 
+                          : 'bg-white/10 text-gray-400 border-white/10'
+                      }`}>
+                        {item.category}
+                      </span>
+                      {isPlaceholder && (
+                        <span className="inline-block px-2 py-0.5 rounded text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+                          Coming Soon
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </a>
             );
           })}
+        </div>
+
+        {/* Note about links */}
+        <div className="mt-8 p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-sm text-yellow-400 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+          <p>Links marked as "Coming Soon" are currently being updated. Please check back later for the latest resources.</p>
         </div>
       </div>
     </main>
