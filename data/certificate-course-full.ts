@@ -40,6 +40,15 @@ export interface Module {
   };
 }
 
+// data/certificate-course-full.ts — Add at the bottom
+
+export const examData = {
+  totalQuestions: 100,
+  duration: 120, // minutes
+  passingScore: 80,
+  correctNeeded: 80,
+};
+
 // ===== COMPLETE 20 MODULES DATA =====
 export const fullModulesData: Module[] = [
   // ===== MODULE 1: Foundation of Privacy & DPDPA =====
@@ -833,3 +842,4 @@ export const fullModulesData: Module[] = [
     quiz: { questions: [{ question: 'A compliance program must include:', options: ['Data inventory', 'Risk assessment', 'Policies', 'All of the above'], correct: 3 }], passingScore: 80 },
   },
 ];
+
