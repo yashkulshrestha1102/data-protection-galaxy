@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { fullModulesData, examData } from '@/data/modules';
 import { 
   Shield, Clock, Building, FileText, CheckCircle, Users, 
   Star, Scale, AlertTriangle, Globe, Wrench, Database,
   BarChart, Brain, Award, Sparkles, ArrowRight, Target,
-  BookOpen, GraduationCap, X, Play, Loader2
+  BookOpen, GraduationCap, X, Play, Loader2, Lock
 } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
@@ -17,6 +17,7 @@ const iconMap: Record<string, any> = {
 };
 
 export default function CertificateCoursePage() {
+  // ===== EXAM STATE =====
   const [showExamModal, setShowExamModal] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
   const [examStarted, setExamStarted] = useState(false);
@@ -29,6 +30,45 @@ export default function CertificateCoursePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [examTimer, setExamTimer] = useState(120 * 60);
 
+  // ===== PROGRESS STATE =====
+  const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [allModulesComplete, setAllModulesComplete] = useState(false);
+  const [moduleProgress, setModuleProgress] = useState<Record<number, number>>({});
+
+  // ===== LOAD COMPLETED LESSONS FROM LOCALSTORAGE =====
+  useEffect(() => {
+    const stored = localStorage.getItem('dpdpa_completed_lessons');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        setCompletedLessons(parsed);
+      } catch {
+        setCompletedLessons([]);
+      }
+    }
+  }, []);
+
+  // ===== CALCULATE MODULE PROGRESS =====
+  useEffect(() => {
+    const progress: Record<number, number> = {};
+    let allComplete = true;
+
+    fullModulesData.forEach((module) => {
+      const allLessonIds = module.chapters.flatMap(ch => 
+        ch.lessons.map(l => `${module.id}-${l.id}`)
+      );
+      const completedCount = allLessonIds.filter(id => completedLessons.includes(id)).length;
+      const percentage = Math.round((completedCount / allLessonIds.length) * 100);
+      progress[module.id] = percentage;
+
+      if (percentage < 100) allComplete = false;
+    });
+
+    setModuleProgress(progress);
+    setAllModulesComplete(allComplete);
+  }, [completedLessons]);
+
+  // ===== EXAM QUESTIONS =====
   const examQuestions = [
     { id: 1, question: 'When was the Puttaswamy judgment delivered?', options: ['2015', '2017', '2018', '2019'], correct: 1 },
     { id: 2, question: 'Article 21 of the Indian Constitution deals with?', options: ['Right to Education', 'Right to Life', 'Right to Equality', 'Right to Freedom'], correct: 1 },
@@ -44,7 +84,14 @@ export default function CertificateCoursePage() {
 
   const getIcon = (iconName: string) => iconMap[iconName] || Shield;
 
-  const handleStartExam = () => setShowInstructions(true);
+  // ===== EXAM HANDLERS =====
+  const handleStartExam = () => {
+    if (!allModulesComplete) {
+      alert('⚠️ Please complete all 20 modules before starting the final exam!');
+      return;
+    }
+    setShowInstructions(true);
+  };
   
   const handleBeginExam = () => {
     setShowInstructions(false);
@@ -107,8 +154,13 @@ export default function CertificateCoursePage() {
 
   const progress = Object.keys(examAnswers).length;
 
+  // ===== GET TOTAL COMPLETED MODULES =====
+  const completedModulesCount = Object.values(moduleProgress).filter(p => p === 100).length;
+  const totalModules = fullModulesData.length;
+
   return (
     <div suppressHydrationWarning className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
+      {/* ===== BACKGROUND ===== */}
       <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       </div>
@@ -127,6 +179,7 @@ export default function CertificateCoursePage() {
       </div>
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
+        {/* ===== HEADER ===== */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-400 mb-2">
@@ -140,6 +193,7 @@ export default function CertificateCoursePage() {
           </Link>
         </div>
 
+        {/* ===== STATS ===== */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           <div className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-colors">
             <BookOpen className="w-5 h-5 text-purple-400 mx-auto mb-1" />
@@ -163,17 +217,35 @@ export default function CertificateCoursePage() {
           </div>
         </div>
 
+        {/* ===== MODULES ===== */}
         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
           <span>All Modules</span>
           <span className="text-sm text-gray-400 font-normal">({fullModulesData.length} modules)</span>
+          <span className="text-sm text-emerald-400 font-normal ml-4">
+            {completedModulesCount}/{totalModules} completed
+          </span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {fullModulesData.map((module) => {
             const Icon = getIcon(module.icon);
             const totalLessons = module.chapters.reduce((acc, ch) => acc + ch.lessons.length, 0);
+            const progress = moduleProgress[module.id] || 0;
+            const isComplete = progress === 100;
+
             return (
-              <Link key={module.id} href={`/certificate-course/${module.id}`} className="bg-white/10 border border-white/20 rounded-xl p-5 hover:bg-white/15 transition-all group">
+              <Link 
+                key={module.id} 
+                href={`/certificate-course/${module.id}`} 
+                className="bg-white/10 border border-white/20 rounded-xl p-5 hover:bg-white/15 transition-all group relative overflow-hidden"
+              >
+                {isComplete && (
+                  <div className="absolute top-2 right-2">
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                      <CheckCircle className="w-3 h-3" /> Complete
+                    </span>
+                  </div>
+                )}
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5 text-white" />
@@ -191,6 +263,15 @@ export default function CertificateCoursePage() {
                       <span>•</span>
                       <span>{module.chapters.length} chapters</span>
                     </div>
+                    {/* Progress bar */}
+                    <div className="mt-2 w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          isComplete ? 'bg-emerald-500' : 'bg-gradient-to-r from-purple-500 to-pink-500'
+                        }`}
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
                   </div>
                   <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all flex-shrink-0 mt-2" />
                 </div>
@@ -199,10 +280,31 @@ export default function CertificateCoursePage() {
           })}
         </div>
 
-        <div className="mt-10 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6 md:p-8 text-center">
+        {/* ===== CERTIFICATION SECTION WITH LOCK ===== */}
+        <div className="mt-10 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6 md:p-8 text-center relative overflow-hidden">
           <GraduationCap className="w-12 h-12 text-purple-400 mx-auto mb-3" />
           <h2 className="text-2xl font-bold text-white mb-2">Ready for Certification?</h2>
-          <p className="text-gray-300 text-sm mb-6 max-w-2xl mx-auto">Complete all 20 modules and take the comprehensive certification exam to earn your official DPDPA certificate.</p>
+          
+          {/* Progress display */}
+          <div className="max-w-md mx-auto mb-4">
+            <div className="flex justify-between text-sm text-gray-400 mb-1">
+              <span>Progress</span>
+              <span>{completedModulesCount}/{totalModules} modules complete</span>
+            </div>
+            <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-500"
+                style={{ width: `${(completedModulesCount / totalModules) * 100}%` }}
+              />
+            </div>
+          </div>
+
+          <p className="text-gray-300 text-sm mb-6 max-w-2xl mx-auto">
+            {allModulesComplete 
+              ? '🎉 All modules complete! You are ready to take the final certification exam.' 
+              : `Complete all ${totalModules} modules to unlock the final certification exam. (${totalModules - completedModulesCount} remaining)`}
+          </p>
+
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
               <FileText className="w-4 h-4 text-blue-400" />
@@ -217,12 +319,37 @@ export default function CertificateCoursePage() {
               <span className="text-white/80">{examData.passingScore}% to Pass</span>
             </div>
           </div>
-          <button onClick={handleStartExam} className="mt-6 px-8 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 mx-auto shadow-lg shadow-purple-500/25">
-            <Sparkles className="w-4 h-4" /> Start Certification Exam
+
+          {/* ===== START EXAM BUTTON - LOCKED UNTIL ALL MODULES COMPLETE ===== */}
+          <button 
+            onClick={handleStartExam} 
+            disabled={!allModulesComplete}
+            className={`mt-6 px-8 py-3 rounded-xl font-semibold transition-all flex items-center gap-2 mx-auto shadow-lg ${
+              allModulesComplete 
+                ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:scale-105 shadow-purple-500/25' 
+                : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+            }`}
+          >
+            {allModulesComplete ? (
+              <>
+                <Sparkles className="w-4 h-4" /> Start Certification Exam
+              </>
+            ) : (
+              <>
+                <Lock className="w-4 h-4" /> Complete All Modules First
+              </>
+            )}
           </button>
+          
+          {!allModulesComplete && (
+            <p className="text-xs text-yellow-400 mt-3">
+              ⚠️ Complete all {totalModules} modules to unlock the exam
+            </p>
+          )}
         </div>
       </div>
 
+      {/* ===== INSTRUCTIONS MODAL ===== */}
       {showInstructions && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#0a0a2e] border border-white/20 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative">
@@ -256,6 +383,7 @@ export default function CertificateCoursePage() {
         </div>
       )}
 
+      {/* ===== EXAM MODAL ===== */}
       {showExamModal && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#0a0a2e] border border-white/20 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 relative">

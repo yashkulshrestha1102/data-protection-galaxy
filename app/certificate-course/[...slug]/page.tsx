@@ -1,14 +1,35 @@
-// app/certificate-course/[...slug]/page.tsx
+"use client";
 
+import { use, useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { fullModulesData } from '@/data/modules';
-import { Clock, BookOpen, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Clock, BookOpen, CheckCircle, ArrowLeft, Lock } from 'lucide-react';
+import CompleteLessonButton from '@/components/certificate-course/CompleteLessonButton';
 
-export default async function CoursePage({ params }: { params: Promise<{ slug: string[] }> }) {
-  const { slug } = await params;
+export default function CoursePage({ params }: { params: Promise<{ slug: string[] }> }) {
+  // ===== USE() TO UNWRAP PARAMS =====
+  const { slug } = use(params);
   const slugArray = slug || [];
-  const [moduleId, , lessonId] = slug;
+  const [moduleId, , lessonId] = slugArray;
+
+  // ===== STATE FOR PROGRESS =====
+  const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [isModuleComplete, setIsModuleComplete] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // ===== LOAD COMPLETED LESSONS =====
+  useEffect(() => {
+    setMounted(true);
+    const stored = localStorage.getItem('dpdpa_completed_lessons');
+    if (stored) {
+      try {
+        setCompletedLessons(JSON.parse(stored));
+      } catch {
+        setCompletedLessons([]);
+      }
+    }
+  }, []);
 
   // ===== MODULE PAGE =====
   if (moduleId && !lessonId) {
@@ -17,6 +38,15 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
     if (!module) notFound();
 
     const totalLessons = module.chapters.reduce((acc, ch) => acc + ch.lessons.length, 0);
+    const allLessonIds = module.chapters.flatMap(ch => ch.lessons.map(l => `${module.id}-${l.id}`));
+
+    // Check if all lessons completed
+    useEffect(() => {
+      if (mounted) {
+        const allCompleted = allLessonIds.every(id => completedLessons.includes(id));
+        setIsModuleComplete(allCompleted);
+      }
+    }, [completedLessons, allLessonIds, mounted]);
 
     return (
       <div suppressHydrationWarning className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
@@ -79,23 +109,58 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                   <span className="text-xs text-gray-400">{chapter.lessons.length} lessons</span>
                 </div>
                 <div className="p-4 space-y-1">
-                  {chapter.lessons.map((lesson, lessonIdx) => (
-                    <Link key={lesson.id} href={`/certificate-course/${module.id}/lesson/${lesson.id}`} className="flex items-center justify-between px-3 py-2 hover:bg-white/5 rounded-lg transition-colors group">
-                      <span className="text-white/80 group-hover:text-white transition-colors text-sm">{idx + 1}.{lessonIdx + 1} {lesson.title}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 capitalize">{lesson.type}</span>
-                        <span className="text-xs text-gray-500">{lesson.duration}</span>
-                      </div>
-                    </Link>
-                  ))}
+                  {chapter.lessons.map((lesson, lessonIdx) => {
+                    const lessonKey = `${module.id}-${lesson.id}`;
+                    const isCompleted = completedLessons.includes(lessonKey);
+                    return (
+                      <Link 
+                        key={lesson.id} 
+                        href={`/certificate-course/${module.id}/lesson/${lesson.id}`} 
+                        className="flex items-center justify-between px-3 py-2 hover:bg-white/5 rounded-lg transition-colors group"
+                      >
+                        <span className="text-white/80 group-hover:text-white transition-colors text-sm">
+                          {idx + 1}.{lessonIdx + 1} {lesson.title}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400 capitalize">{lesson.type}</span>
+                          <span className="text-xs text-gray-500">{lesson.duration}</span>
+                          {isCompleted && <span className="text-xs text-emerald-400">✅</span>}
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 bg-green-500/10 border border-green-500/30 rounded-xl p-4">
-            <h3 className="text-lg font-semibold text-green-400 mb-2">📝 Module Quiz</h3>
-            <p className="text-sm text-gray-300">{module.quiz.questions.length} questions • {module.quiz.passingScore}% to pass</p>
+          {/* ===== MODULE QUIZ - DYNAMIC LOCK/UNLOCK ===== */}
+          <div className="mt-8 rounded-xl p-4 border">
+            {!isModuleComplete ? (
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-400 mb-1">📝 Module Quiz</h3>
+                  <p className="text-sm text-gray-500">{module.quiz.questions.length} questions • {module.quiz.passingScore}% to pass</p>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-yellow-500/20 border border-yellow-500/30">
+                  <Lock className="w-4 h-4 text-yellow-400" />
+                  <span className="text-xs text-yellow-400 font-medium">Complete all lessons first</span>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold text-green-400 mb-1">📝 Module Quiz</h3>
+                  <p className="text-sm text-gray-300">{module.quiz.questions.length} questions • {module.quiz.passingScore}% to pass</p>
+                </div>
+                <Link
+                  href={`/certificate-course/${module.id}/quiz`}
+                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 text-white font-medium hover:scale-105 transition-all"
+                >
+                  Start Quiz 🚀
+                </Link>
+              </div>
+            )}
           </div>
 
           {module.id < fullModulesData.length && (
@@ -127,6 +192,8 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
     const currentIndex = allLessons.findIndex((l) => l.id === lid);
     const prevLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
     const nextLesson = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
+
+    const lessonKey = `${module.id}-${lesson.id}`;
 
     return (
       <div suppressHydrationWarning className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
@@ -211,10 +278,13 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
             </div>
           )}
 
+          {/* ===== COMPLETE LESSON BUTTON - CLIENT COMPONENT ===== */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10">
             {prevLesson ? <Link href={`/certificate-course/${moduleId}/lesson/${prevLesson.id}`} className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 w-full sm:w-auto justify-center">← Previous</Link> : <div />}
-            <span className="text-xs text-gray-500">{currentIndex + 1} / {allLessons.length}</span>
-            {nextLesson ? <Link href={`/certificate-course/${moduleId}/lesson/${nextLesson.id}`} className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 w-full sm:w-auto justify-center">Next →</Link> : <Link href={`/certificate-course/${moduleId}`} className="text-purple-400 hover:text-purple-300 transition-colors text-sm flex items-center gap-1 bg-purple-500/10 px-4 py-2 rounded-lg border border-purple-500/20 hover:bg-purple-500/20 w-full sm:w-auto justify-center"><CheckCircle className="w-4 h-4" /> Complete</Link>}
+            
+            <CompleteLessonButton lessonKey={lessonKey} moduleId={moduleId} />
+
+            {nextLesson ? <Link href={`/certificate-course/${moduleId}/lesson/${nextLesson.id}`} className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 w-full sm:w-auto justify-center">Next →</Link> : <Link href={`/certificate-course/${moduleId}`} className="text-purple-400 hover:text-purple-300 transition-colors text-sm flex items-center gap-1 bg-purple-500/10 px-4 py-2 rounded-lg border border-purple-500/20 hover:bg-purple-500/20 w-full sm:w-auto justify-center"><CheckCircle className="w-4 h-4" /> Complete Module</Link>}
           </div>
         </div>
       </div>
