@@ -69,7 +69,7 @@ export default function Certificate({
               </span>
               <Sparkles className="w-5 h-5 text-amber-500" />
             </div>
-            <p className="text-[10px] text-gray-400 tracking-[0.3em] uppercase font-medium">
+            <p className="text-[10px] text-blue-700/60 tracking-[0.3em] uppercase font-medium">
               Powered by Business Excellence
             </p>
             <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-2" />
@@ -80,7 +80,7 @@ export default function Certificate({
             <h2 className="text-2xl md:text-3xl font-serif text-gray-700 tracking-wider">
               Certificate of Completion
             </h2>
-            <p className="text-xs text-gray-400 mt-1">This certifies that</p>
+            <p className="text-xs text-blue-700/60 mt-1">This certifies that</p>
           </div>
 
           {/* ===== USER NAME ===== */}
@@ -93,13 +93,13 @@ export default function Certificate({
 
           {/* ===== COURSE DETAILS ===== */}
           <div className="text-center -mt-2">
-            <p className="text-sm text-gray-500 tracking-widest uppercase">
+            <p className="text-sm text-blue-700/60 tracking-widest uppercase">
               has successfully completed the comprehensive course on
             </p>
             <h4 className="text-lg md:text-xl font-semibold text-gray-700 mt-1">
               Digital Personal Data Protection Act, 2023
             </h4>
-            <p className="text-sm text-gray-500 font-medium tracking-wider">
+            <p className="text-sm text-blue-700/60 font-medium tracking-wider">
               Master Course
             </p>
           </div>
@@ -108,21 +108,21 @@ export default function Certificate({
           <div className="w-full max-w-md">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <div className="bg-gray-50 rounded-xl p-2.5 text-center border border-gray-100">
-                <p className="text-[10px] text-gray-400 uppercase tracking-wider">Score</p>
+                <p className="text-[10px] text-blue-700/50 uppercase tracking-wider font-semibold">Score</p>
                 <p className="text-xl font-bold text-gray-800">{score}%</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-2.5 text-center border border-gray-100">
-                <p className="text-[10px] text-gray-400 uppercase tracking-wider">Grade</p>
+                <p className="text-[10px] text-blue-700/50 uppercase tracking-wider font-semibold">Grade</p>
                 <p className={`text-sm font-semibold ${getGradeColor(score)}`}>
                   {getGrade(score)}
                 </p>
               </div>
               <div className="bg-gray-50 rounded-xl p-2.5 text-center border border-gray-100">
-                <p className="text-[10px] text-gray-400 uppercase tracking-wider">Date</p>
+                <p className="text-[10px] text-blue-700/50 uppercase tracking-wider font-semibold">Date</p>
                 <p className="text-sm font-semibold text-gray-700">{date}</p>
               </div>
               <div className="bg-gray-50 rounded-xl p-2.5 text-center border border-gray-100">
-                <p className="text-[10px] text-gray-400 uppercase tracking-wider">Modules</p>
+                <p className="text-[10px] text-blue-700/50 uppercase tracking-wider font-semibold">Modules</p>
                 <p className="text-sm font-semibold text-gray-700">{modulesCompleted}/{totalModules}</p>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function Certificate({
               {/* Left Signature */}
               <div className="text-center">
                 <div className="w-28 h-0.5 bg-gray-300 mx-auto mb-1" />
-                <p className="text-[10px] text-gray-400">Course Director</p>
+                <p className="text-[10px] text-blue-700/50">Course Director</p>
                 <p className="text-sm font-semibold text-gray-700">Ms. Priya Sharma</p>
               </div>
 
@@ -142,23 +142,23 @@ export default function Certificate({
               <div className="text-center">
                 <div className="flex items-center gap-2 justify-center">
                   <Shield className="w-4 h-4 text-amber-500" />
-                  <span className="text-[10px] text-gray-400 tracking-wider font-medium">VERIFIED</span>
+                  <span className="text-[10px] text-blue-700/50 tracking-wider font-medium">VERIFIED</span>
                   <Shield className="w-4 h-4 text-amber-500" />
                 </div>
-                <p className="text-[9px] text-gray-300 font-mono mt-1">{certificateId}</p>
+                <p className="text-[9px] text-blue-400/50 font-mono mt-1">{certificateId}</p>
               </div>
 
               {/* Right Signature */}
               <div className="text-center">
                 <div className="w-28 h-0.5 bg-gray-300 mx-auto mb-1" />
-                <p className="text-[10px] text-gray-400">Head of Academics</p>
+                <p className="text-[10px] text-blue-700/50">Head of Academics</p>
                 <p className="text-sm font-semibold text-gray-700">Dr. Vikram Singh</p>
               </div>
             </div>
 
             {/* ===== BOTTOM BAR ===== */}
             <div className="mt-3 pt-2 border-t border-gray-100 text-center">
-              <p className="text-[8px] text-gray-300 tracking-widest uppercase">
+              <p className="text-[8px] text-blue-700/40 tracking-widest uppercase font-medium">
                 ⭐ Verified by Legal Galaxy Academy ⭐
               </p>
             </div>
