@@ -5,9 +5,10 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   ArrowLeft, Mail, Phone, MapPin, Send, User, MessageSquare,
-  Clock, CheckCircle, Loader2, ExternalLink, Sparkles, Globe
+  CheckCircle, Loader2, ExternalLink, Sparkles, Globe
 } from 'lucide-react';
-import { FaLinkedin, FaTwitter, FaInstagram, FaYoutube, FaGlobe } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaInstagram, FaYoutube, FaGlobe, FaWhatsapp } from 'react-icons/fa';
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -88,13 +89,13 @@ export default function ContactPage() {
       border: 'border-purple-500/30'
     },
     {
-      icon: Clock,
-      label: 'Working Hours',
-      value: 'Mon-Fri: 9:00 AM - 6:00 PM',
-      href: '#',
-      color: 'from-orange-500 to-orange-600',
-      bg: 'bg-orange-500/10',
-      border: 'border-orange-500/30'
+      icon: FaWhatsapp,
+      label: 'WhatsApp',
+      value: '+91 98765 43210',
+      href: 'https://wa.me/919876543210',
+      color: 'from-green-500 to-emerald-600',
+      bg: 'bg-green-500/10',
+      border: 'border-green-500/30'
     }
   ];
 
@@ -115,9 +116,11 @@ export default function ContactPage() {
     { label: 'Resources', href: '/resources' },
   ];
 
+ 
+
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ===== BACKGROUND IMAGE (HOME PAGE Jaisi) ===== */}
+      {/* ===== BACKGROUND IMAGE ===== */}
       <div className="absolute inset-0 -z-10">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -125,16 +128,13 @@ export default function ContactPage() {
             backgroundImage: "url('/images/home1.jpeg')",
           }}
         >
-          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
         
-        {/* Nebula Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         
-        {/* Stars */}
         {stars}
       </div>
 
@@ -180,7 +180,7 @@ export default function ContactPage() {
               <a
                 key={index}
                 href={method.href}
-                target={method.label === 'Address' || method.label === 'Working Hours' ? '_blank' : '_self'}
+                target={method.label === 'Address' ? '_blank' : '_self'}
                 rel="noopener noreferrer"
                 className={`group relative p-6 rounded-2xl bg-white/10 border ${method.border} backdrop-blur-md hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20`}
               >
