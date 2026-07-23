@@ -1,15 +1,16 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+// Resend initialize karo
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
     const { name, email, score, passingScore, passed } = await request.json();
 
-    // Send email with certificate
+    // ===== SEND EMAIL =====
     const { data, error } = await resend.emails.send({
-      from: 'Legal Galaxy <certificates@legalgalaxy.com>',
+      from: 'Legal Galaxy <certificates@data-protection-galaxy.vercel.app>',
       to: [email],
       subject: '🎉 Your DPDPA Certificate - Legal Galaxy',
       html: `
