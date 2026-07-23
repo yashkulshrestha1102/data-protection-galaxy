@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef } from 'react';
-import { Award, Shield, Sparkles, CheckCircle, Download } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Award, Shield, Sparkles, CheckCircle, Download, Loader2 } from 'lucide-react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 interface CertificateProps {
   userName: string;
@@ -23,6 +25,7 @@ export default function Certificate({
   certificateId
 }: CertificateProps) {
   const certificateRef = useRef<HTMLDivElement>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const getGrade = (score: number) => {
     if (score >= 90) return '🌟 Distinction';
@@ -36,6 +39,32 @@ export default function Certificate({
     if (score >= 80) return 'text-blue-600';
     if (score >= 70) return 'text-purple-600';
     return 'text-gray-600';
+  };
+
+  const downloadPDF = async () => {
+    if (!certificateRef.current) return;
+    
+    setIsDownloading(true);
+    try {
+      const canvas = await html2canvas(certificateRef.current, {
+        scale: 3,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+      });
+      
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('landscape', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`Certificate_${userName.replace(/\s/g, '_')}_DPDPA.pdf`);
+    } catch (error) {
+      console.error('PDF download failed:', error);
+      alert('Failed to download certificate. Please try again.');
+    }
+    setIsDownloading(false);
   };
 
   return (
@@ -168,11 +197,23 @@ export default function Certificate({
 
       {/* ===== DOWNLOAD BUTTON ===== */}
       <button
-        onClick={() => alert('📥 PDF Download coming soon!')}
-        className="mt-6 px-8 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-amber-500/25"
+        onClick={downloadPDF}
+        disabled={isDownloading}
+        className={`mt-6 px-8 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold transition-all flex items-center gap-2 shadow-lg shadow-amber-500/25 ${
+          isDownloading ? 'opacity-70 cursor-not-allowed' : 'hover:scale-105'
+        }`}
       >
-        <Download className="w-5 h-5" />
-        Download Certificate (PDF)
+        {isDownloading ? (
+          <>
+            <Loader2 className="w-5 h-5 animate-spin" />
+            Generating PDF...
+          </>
+        ) : (
+          <>
+            <Download className="w-5 h-5" />
+            Download Certificate (PDF)
+          </>
+        )}
       </button>
     </div>
   );
