@@ -1,79 +1,72 @@
-import Link from "next/link";
-import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { Rocket } from "lucide-react";
+// components/layout/Footer.tsx
 
-const footerLinks = [
-  { href: "/", label: "Home" },
-  { href: "/galaxy", label: "Explore" },
-  { href: "/provisions", label: "Key Provisions" },
-  { href: "/rights", label: "Rights" },
-  { href: "/obligations", label: "Obligations" },
-  { href: "/penalties", label: "Penalties" },
-  { href: "/resources", label: "Resources" },
-  { href: "/contact", label: "Contact" },
-];
+'use client';
 
-const socialLinks = [
-  { icon: FaGithub, href: "#" },
-  { icon: FaTwitter, href: "#" },
-  { icon: FaLinkedin, href: "#" },
-  { icon: FaEnvelope, href: "#" },
-];
+import Link from 'next/link';
+import { FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 
-export const Footer = () => {
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="w-full border-t border-white/10 bg-[#0a1628] mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Brand */}
-          <div>
-            <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3 flex items-center gap-2">
-              <Rocket className="w-5 h-5 text-purple-400" />
-              DPA Galaxy
-            </h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Your interactive guide to understanding the Digital Personal Data Protection Act, 2023.
-            </p>
+    <footer className="bg-black/90 border-t border-white/10 text-white/60 text-sm">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          {/* Logo */}
+          <div className="col-span-2 md:col-span-1">
+            <h3 className="text-lg font-bold text-white mb-2">Legal Galaxy</h3>
+            <p className="text-xs text-white/40">Privacy & AI Governance Universe</p>
           </div>
 
-          {/* Quick Links */}
+          {/* Explore */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-lg">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {footerLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            <h4 className="text-white font-semibold text-sm mb-3">Explore</h4>
+            <ul className="space-y-2 text-xs">
+              <li><Link href="/scorecard" className="hover:text-white transition-colors">Scoreboard</Link></li>
+              <li><Link href="/galaxy" className="hover:text-white transition-colors">Galaxy</Link></li>
+              <li><Link href="/insight" className="hover:text-white transition-colors">Insights</Link></li>
+              <li><Link href="/resources/guides" className="hover:text-white transition-colors">Guides</Link></li>
+              <li><Link href="/map" className="hover:text-white transition-colors">Map</Link></li>
+            </ul>
           </div>
 
-          {/* Connect */}
+          {/* Tools */}
           <div>
-            <h4 className="text-white font-semibold mb-4 text-lg">Connect</h4>
-            <div className="flex gap-4 mb-6">
-              {socialLinks.map(({ icon: Icon, href }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  className="text-gray-400 hover:text-white transition-all p-3 rounded-full hover:bg-white/10 hover:scale-110"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
-            <p className="text-xs text-gray-500 border-t border-white/5 pt-4">
-              © 2026 Data Protection Board of India. All rights reserved.
+            <h4 className="text-white font-semibold text-sm mb-3">Tools</h4>
+            <ul className="space-y-2 text-xs">
+              <li><Link href="/generator" className="hover:text-white transition-colors">Generator</Link></li>
+              <li><Link href="/certificate-course" className="hover:text-white transition-colors">Certification</Link></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-white font-semibold text-sm mb-3">Company</h4>
+            <ul className="space-y-2 text-xs">
+              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
+              <li><Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+          <div className="text-center md:text-left">
+            <p>© {currentYear} Legal Galaxy | Powered by BusinezExcellence StartX LLP</p>
+            <p className="text-white/30 mt-1 text-[10px]">
+              This content is for educational/informational purposes only and does not constitute legal advice.
             </p>
+          </div>
+          <div className="flex gap-4">
+            <a href="#" className="hover:text-white transition-colors"><FaLinkedin className="w-4 h-4" /></a>
+            <a href="#" className="hover:text-white transition-colors"><FaTwitter className="w-4 h-4" /></a>
+            <a href="#" className="hover:text-white transition-colors"><FaYoutube className="w-4 h-4" /></a>
           </div>
         </div>
       </div>
     </footer>
   );
-};
+}

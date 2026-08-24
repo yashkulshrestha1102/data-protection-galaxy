@@ -64,8 +64,8 @@ export default function ContactPage() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'info@legalgalaxy.com',
-      href: 'mailto:info@legalgalaxy.com',
+      value: 'info@businezexcellence.com',
+      href: 'mailto:info@businezexcellence.com',
       color: 'from-blue-500 to-blue-600',
       bg: 'bg-blue-500/10',
       border: 'border-blue-500/30'
