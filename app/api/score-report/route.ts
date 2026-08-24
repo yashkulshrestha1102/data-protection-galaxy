@@ -34,7 +34,7 @@ export async function POST(request: Request) {
       }
 
       const { data, error } = await resend.emails.send({
-        from: 'Legal Galaxy <reports@data-protection-galaxy.vercel.app>',
+        from: 'Legal Galaxy <onboarding@resend.dev>',
         to: [email],
         subject: '📊 Your Privacy & AI Governance Readiness Report',
         html: `

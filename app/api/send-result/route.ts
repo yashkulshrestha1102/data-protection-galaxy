@@ -10,8 +10,7 @@ export async function POST(request: Request) {
 
     // ===== SEND EMAIL =====
     const { data, error } = await resend.emails.send({
-      from: 'Legal Galaxy <certificates@data-protection-galaxy.vercel.app>',
-      to: [email],
+from: 'Legal Galaxy <onboarding@resend.dev>',      to: [email],
       subject: '🎉 Your DPDPA Certificate - Legal Galaxy',
       html: `
         <!DOCTYPE html>
