@@ -6,7 +6,8 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { 
   Shield, Sparkles, Target, BookOpen, FileText, 
   Map, Globe, Award, Users, Rocket, Brain, 
-  Scale, Lock, Zap, Star, Compass, Eye
+  Scale, Lock, Zap, Star, Compass, Eye,
+  ArrowRight
 } from "lucide-react";
 
 // ===== SHIMMER TEXT COMPONENT =====
