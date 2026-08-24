@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Legal Galaxy | Data Protection",
+  title: "Legal Galaxy |  Privacy & AI Governance",
   description: "Your interactive guide to understanding the Digital Personal Data Protection Act, 2023",
 };
 
