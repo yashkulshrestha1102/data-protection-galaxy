@@ -1,11 +1,19 @@
 import { NextResponse } from 'next/server';
+import { google } from 'googleapis';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// ===== GOOGLE SHEETS AUTH (Workload Identity) =====
+const auth = new google.auth.GoogleAuth({
+  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+});
+
+const sheets = google.sheets({ version: 'v4', auth });
+
 export async function POST(request: Request) {
   try {
-    const { email, tool, type, name } = await request.json();
+    const { email, tool, type, name, phone, company } = await request.json();
 
     if (!email) {
       return NextResponse.json(
@@ -14,29 +22,33 @@ export async function POST(request: Request) {
       );
     }
 
-    const { data, error } = await resend.emails.send({
+    // ===== STORE IN GOOGLE SHEETS =====
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Sheet1!A:G',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [[
+          new Date().toISOString(),
+          email,
+          name || '',
+          phone || '',
+          company || '',
+          tool || '',
+          type || ''
+        ]],
+      },
+    });
+
+    // ===== SEND EMAIL =====
+    await resend.emails.send({
       from: 'Legal Galaxy <onboarding@resend.dev>',
       to: [email],
       subject: `📄 Your ${tool || 'Privacy'} Document`,
-      html: `
-        <h1>Your Document is Ready!</h1>
-        <p>Dear ${name || 'User'},</p>
-        <p>Thank you for using Legal Galaxy Generator.</p>
-        <p><strong>Document:</strong> ${tool}</p>
-        <p><strong>Category:</strong> ${type === 'privacy' ? 'Privacy' : 'AI Governance'}</p>
-        <a href="${process.env.NEXT_PUBLIC_APP_URL}/generator">Generate More</a>
-      `,
+      html: `<h1>Your Document is Ready!</h1><p>Thank you for using Legal Galaxy.</p>`,
     });
 
-    if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json(
-        { success: false, message: 'Email failed: ' + error.message },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({ success: true, message: 'Email sent!' });
+    return NextResponse.json({ success: true, message: 'Lead captured!' });
   } catch (error) {
     console.error('Error:', error);
     return NextResponse.json(
