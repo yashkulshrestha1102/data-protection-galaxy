@@ -55,15 +55,13 @@ export default function Home() {
             Privacy & AI Governance
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
-            Are you ready for the <br />
+            How ready is your organisation for the new world of<br />
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Age of AI?
+              Privacy & AI Governance?
             </span>
           </h1>
           <p className="text-gray-200 text-lg max-w-2xl mx-auto drop-shadow-lg">
-            Assess your organisation's privacy and AI governance readiness. 
-            Get your score and actionable insights.
-          </p>
+          Take our quick assessment and discover your organisation's DPDPA readiness.          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link
               href="/scorecard"
@@ -120,7 +118,6 @@ export default function Home() {
             {[
               { icon: Shield, label: "Privacy", href: "/galaxy?category=privacy", color: "from-blue-500 to-blue-600" },
               { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-purple-500 to-purple-600" },
-              { icon: Scale, label: "Regulation", href: "/galaxy?category=regulation", color: "from-amber-500 to-amber-600" },
               { icon: Lock, label: "Digital Trust", href: "/galaxy?category=trust", color: "from-emerald-500 to-emerald-600" },
             ].map((item, idx) => (
               <Link key={idx} href={item.href} className="group">
