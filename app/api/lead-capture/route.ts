@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { rateLimiter, emailRateLimiter } from '@/lib/rate-limit';
-import { queueEmail } from '@/lib/email-queue';
+import { rateLimiter, emailRateLimiter } from '@/app/lib/rate-limit';
+import { queueEmail } from '@/app/lib/email-queue';
 
 export async function POST(request: Request) {
   try {
