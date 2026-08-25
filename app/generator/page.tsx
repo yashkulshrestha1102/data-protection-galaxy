@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
   ArrowLeft, Shield, Brain, FileText, CheckCircle, 
-  Download, Sparkles, ChevronRight, Lock, Users,
+  Download, Sparkles, ArrowRight, Lock, Users,
   AlertCircle, Clipboard, Database, Globe, Scale,
   Mail, Send, Loader2
 } from 'lucide-react';
@@ -63,28 +63,40 @@ export default function GeneratorPage() {
   const activeTools = activeTab === 'privacy' ? privacyTools : aiTools;
 
   const handleGenerate = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
+  e.preventDefault();
+  if (!email) return;
+  
+  setIsSubmitting(true);
+  try {
+    const response = await fetch('/api/lead-capture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        email, 
+        tool: selectedTool,
+        type: activeTab,
+        source: 'generator' 
+      }),
+    });
+    const data = await response.json();
+    console.log('Response:', data);
     
-    setIsSubmitting(true);
-    try {
-      await fetch('/api/lead-capture', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email, 
-          tool: selectedTool,
-          type: activeTab,
-          source: 'generator' 
-        }),
-      });
+    if (data.success) {
       setIsSubmitted(true);
-      setTimeout(() => setIsSubmitted(false), 5000);
-    } catch (error) {
-      console.error('Error:', error);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setEmail('');
+        setSelectedTool(null);
+      }, 5000);
+    } else {
+      alert('Something went wrong. Please try again.');
     }
-    setIsSubmitting(false);
-  };
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Failed to generate document. Please try again.');
+  }
+  setIsSubmitting(false);
+};
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
