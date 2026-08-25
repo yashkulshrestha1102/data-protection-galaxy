@@ -10,6 +10,8 @@ import {
   Mail, Send, Loader2, Eye, Edit, Printer, Save,
   Languages, FileDown, FileJson
 } from 'lucide-react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 // ===== ALL 15 TOOLS DATA =====
 const privacyTools = [
@@ -605,6 +607,21 @@ const FormField = ({ field, value, onChange }: any) => {
       return null;
   }
 };
+
+const handleExportPDF = async () => {
+  const content = document.getElementById('preview-content');
+  if (!content) return;
+  
+  const canvas = await html2canvas(content);
+  const imgData = canvas.toDataURL('image/png');
+  const pdf = new jsPDF('p', 'mm', 'a4');
+  pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
+  pdf.save('document.pdf');
+};
+
+
+
+
 
 // ===== MAIN PAGE =====
 export default function GeneratorPage() {
