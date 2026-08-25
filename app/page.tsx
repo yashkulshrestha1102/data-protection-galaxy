@@ -50,11 +50,11 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-400 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-white-400 mb-4">
             <Sparkles className="w-4 h-4" />
             Privacy & AI Governance
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
+          <h1 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl">
             How ready is your organisation for the new world of<br />
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Privacy & AI Governance?
