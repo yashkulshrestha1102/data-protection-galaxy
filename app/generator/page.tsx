@@ -7,10 +7,11 @@ import {
   ArrowLeft, Shield, Brain, FileText, CheckCircle, 
   Download, Sparkles, ArrowRight, Lock, Users,
   AlertCircle, Clipboard, Database, Globe, Scale,
-  Mail, Send, Loader2, Eye, Edit, Printer
+  Mail, Send, Loader2, Eye, Edit, Printer, Save,
+  Languages, FileDown, FileJson
 } from 'lucide-react';
 
-// ===== TOOLS DATA =====
+// ===== ALL 15 TOOLS DATA =====
 const privacyTools = [
   { id: 'privacy-notice', label: 'Privacy Notice/Policy', icon: FileText, desc: 'Generate a comprehensive privacy policy for your website/app' },
   { id: 'consent-notice', label: 'Consent Notice', icon: CheckCircle, desc: 'Create a consent notice for data collection' },
@@ -32,7 +33,7 @@ const aiTools = [
   { id: 'ai-impact-assessment', label: 'AI Impact Assessment', icon: Globe, desc: 'Create a comprehensive AI impact assessment' },
 ];
 
-// ===== TEMPLATE CONTENT GENERATOR =====
+// ===== ALL TEMPLATES =====
 const generateTemplate = (toolId: string, formData: any) => {
   const templates: Record<string, string> = {
     'privacy-notice': `
@@ -79,44 +80,352 @@ ${(formData.securityMeasures || ['Encryption', 'Access Controls']).join(', ')}
 Data Protection Officer: ${formData.dpoName || '[DPO Name]'} - ${formData.dpoEmail || '[DPO Email]'}
 Grievance Officer: ${formData.grievanceName || '[Grievance Officer Name]'} - ${formData.grievanceEmail || '[Grievance Officer Email]'}
     `,
+    'consent-notice': `
+# Consent Notice
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Introduction
+${formData.orgName || '[Organisation Name]'} collects and processes your personal data with your explicit consent.
+
+## 2. What Data We Collect
+${(formData.dataTypes || ['Name', 'Email', 'Phone']).join(', ')}
+
+## 3. Purpose of Collection
+${(formData.purposes || ['Service Delivery', 'Communication']).join(', ')}
+
+## 4. Consent Withdrawal
+You may withdraw your consent at any time by contacting us.
+
+## 5. Contact
+For any queries, contact us at ${formData.email || 'privacy@company.com'}
+    `,
+    'cookies-notice': `
+# Cookies Notice
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. What Are Cookies
+Cookies are small text files stored on your device.
+
+## 2. Types of Cookies We Use
+- Essential Cookies
+- Functional Cookies
+- Analytics Cookies
+- Marketing Cookies
+
+## 3. Managing Cookies
+You can manage cookies through your browser settings.
+
+## 4. Contact
+For any queries, contact us at ${formData.email || 'privacy@company.com'}
+    `,
+    'dpa': `
+# Data Processing Agreement
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Parties
+This DPA is between ${formData.orgName || '[Organisation Name]'} ("Data Controller") and [Processor Name].
+
+## 2. Scope
+This agreement covers all processing of personal data.
+
+## 3. Data Subjects
+Data subjects include customers, employees, and other individuals.
+
+## 4. Processing Activities
+Processing includes collection, storage, use, and deletion.
+
+## 5. Security Measures
+${(formData.securityMeasures || ['Encryption', 'Access Controls']).join(', ')}
+
+## 6. Sub-processing
+Processor may engage sub-processors with prior written consent.
+
+## 7. Data Breach Notification
+Processor shall notify Controller within 48 hours of any breach.
+
+## 8. Duration
+This agreement remains in effect for the duration of the processing.
+    `,
+    'retention-policy': `
+# Data Retention Policy
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This policy outlines how ${formData.orgName || '[Organisation Name]'} manages data retention and deletion.
+
+## 2. Retention Periods
+${formData.retentionPeriod || 'Data is retained for 5 years or as per legal requirements.'}
+
+## 3. Data Categories
+- Customer Data: ${formData.retentionPeriod || '5 years'}
+- Employee Data: ${formData.retentionPeriod || '7 years'}
+- Financial Data: ${formData.retentionPeriod || '10 years'}
+
+## 4. Deletion Process
+Data is securely deleted after the retention period expires.
+
+## 5. Responsibilities
+The Data Protection Officer is responsible for compliance.
+    `,
+    'breach-response': `
+# Data Breach Response Template
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This template outlines the response procedure for data breaches.
+
+## 2. Immediate Actions
+1. Identify the breach
+2. Contain the breach
+3. Assess the risk
+
+## 3. Notification
+- Internal: Inform DPO within 24 hours
+- External: Inform affected individuals within 72 hours
+
+## 4. Investigation
+Conduct a thorough investigation and document findings.
+
+## 5. Remediation
+Implement corrective measures to prevent future breaches.
+
+## 6. Documentation
+Maintain a detailed record of the breach and response.
+    `,
+    'dsr-procedure': `
+# Data Subject Rights Procedure
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This procedure outlines how ${formData.orgName || '[Organisation Name]'} handles data subject rights requests.
+
+## 2. Rights Covered
+- Right to Access
+- Right to Correction
+- Right to Erasure
+- Right to Portability
+- Right to Object
+
+## 3. Request Process
+1. Submit request via email or portal
+2. Verify identity
+3. Acknowledge within 48 hours
+4. Respond within 30 days
+
+## 4. Contact
+Submit requests to: ${formData.dpoEmail || 'dpo@company.com'}
+    `,
+    'vendor-checklist': `
+# Vendor Data Processing Checklist
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This checklist ensures vendors comply with data protection requirements.
+
+## 2. Assessment Criteria
+- [ ] Data processing purpose
+- [ ] Data categories processed
+- [ ] Security measures in place
+- [ ] Data transfer mechanisms
+- [ ] Breach notification process
+
+## 3. Compliance Requirements
+- [ ] GDPR/DPDP compliance
+- [ ] Data Protection Officer appointment
+- [ ] Data processing agreement signed
+
+## 4. Review Frequency
+Vendor assessments are conducted annually.
+    `,
     'ai-usage-policy': `
 # AI Usage Policy
 
 **Effective Date:** ${new Date().toLocaleDateString()}
 
 ## 1. Purpose
-This policy outlines the acceptable use of AI tools and systems within ${formData.orgName || '[Organisation Name]'}.
+This policy outlines acceptable use of AI tools within ${formData.orgName || '[Organisation Name]'}.
 
 ## 2. Scope
-This policy applies to all employees, contractors, and third parties using AI systems.
+Applies to all employees, contractors, and third parties.
 
 ## 3. Permitted Use
-- AI may be used for approved business purposes
-- All AI use must comply with applicable laws
-- AI outputs must be reviewed by humans
+- Approved business purposes
+- Compliance with laws
+- Human review of AI outputs
 
 ## 4. Prohibited Use
-- AI cannot be used for discriminatory purposes
-- AI cannot be used to make automated decisions without human oversight
-- AI cannot process sensitive personal data without explicit consent
+- Discriminatory purposes
+- Automated decisions without human oversight
+- Processing sensitive data without consent
 
 ## 5. AI Risk Assessment
-All AI systems must undergo risk assessment before deployment.
+All AI systems must undergo risk assessment.
 
 ## 6. Human Oversight
-All AI decisions must have human review and override capability.
+All AI decisions require human review and override capability.
 
 ## 7. Transparency
-AI use must be disclosed to relevant stakeholders.
+AI use must be disclosed to stakeholders.
 
-## 8. Compliance
-All AI use must comply with applicable privacy and AI regulations.
+## 8. Reporting
+AI-related incidents must be reported immediately.
+    `,
+    'responsible-ai-policy': `
+# Responsible AI Policy
 
-## 9. Reporting
-Any AI-related incidents must be reported immediately.
+**Effective Date:** ${new Date().toLocaleDateString()}
 
-## 10. Review
-This policy will be reviewed annually.
+## 1. Principles
+- Fairness
+- Transparency
+- Accountability
+- Privacy
+- Security
+
+## 2. Governance
+AI systems are governed by the AI Governance Committee.
+
+## 3. Risk Management
+Regular risk assessments are conducted for all AI systems.
+
+## 4. Compliance
+All AI systems comply with applicable laws and regulations.
+    `,
+    'ai-governance-framework': `
+# AI Governance Framework
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This framework establishes governance for AI systems.
+
+## 2. Governance Structure
+- AI Governance Committee
+- AI Risk Assessment Team
+- AI Compliance Team
+
+## 3. Policies
+- AI Usage Policy
+- Responsible AI Policy
+- AI Risk Management Policy
+
+## 4. Procedures
+- AI lifecycle management
+- AI risk assessment
+- AI incident response
+
+## 5. Compliance
+Regular audits and compliance reviews.
+    `,
+    'ai-risk-assessment': `
+# AI Risk Assessment
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This template assesses risks associated with AI systems.
+
+## 2. Assessment Areas
+- Data privacy
+- Bias and fairness
+- Security
+- Compliance
+- Transparency
+
+## 3. Risk Matrix
+| Risk Level | Impact | Likelihood |
+|------------|--------|------------|
+| High | Severe | Likely |
+| Medium | Moderate | Possible |
+| Low | Minor | Unlikely |
+
+## 4. Mitigation
+Implement measures to reduce identified risks.
+    `,
+    'ai-vendor-questionnaire': `
+# AI Vendor Questionnaire
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This questionnaire assesses AI vendors' compliance.
+
+## 2. Vendor Information
+- Vendor Name:
+- Contact Person:
+- AI Services Provided:
+
+## 3. Compliance Checklist
+- [ ] Data protection policy
+- [ ] AI governance framework
+- [ ] Risk assessment process
+- [ ] Incident response plan
+- [ ] Transparency reporting
+
+## 4. Security Assessment
+- [ ] Encryption in place
+- [ ] Access controls
+- [ ] Regular audits
+
+## 5. Review
+Vendor assessments are conducted annually.
+    `,
+    'ai-acceptable-use': `
+# AI Acceptable Use Policy
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This policy defines acceptable use of AI tools.
+
+## 2. Permitted Uses
+- Business operations
+- Research and development
+- Customer support
+- Data analysis
+
+## 3. Prohibited Uses
+- Unauthorized data processing
+- Bias or discrimination
+- Automated decision-making without oversight
+
+## 4. Responsibilities
+Users are responsible for ensuring AI use complies with this policy.
+
+## 5. Reporting
+Violations must be reported immediately.
+    `,
+    'ai-impact-assessment': `
+# AI Impact Assessment
+
+**Effective Date:** ${new Date().toLocaleDateString()}
+
+## 1. Purpose
+This assessment evaluates the impact of AI systems.
+
+## 2. Impact Areas
+- Data privacy
+- Human rights
+- Bias and fairness
+- Security
+- Compliance
+
+## 3. Assessment Process
+1. Identify AI system
+2. Assess risks
+3. Identify mitigation measures
+4. Implement measures
+5. Monitor and review
+
+## 4. Documentation
+Maintain detailed records of assessments.
     `,
   };
 
@@ -309,7 +618,10 @@ export default function GeneratorPage() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [stars, setStars] = useState<React.ReactNode[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [savedDrafts, setSavedDrafts] = useState<any[]>([]);
 
   useEffect(() => {
     const starElements = [];
@@ -330,6 +642,16 @@ export default function GeneratorPage() {
     setStars(starElements);
   }, []);
 
+  useEffect(() => {
+    // Load saved drafts from localStorage
+    const drafts = localStorage.getItem('generator_drafts');
+    if (drafts) {
+      try {
+        setSavedDrafts(JSON.parse(drafts));
+      } catch {}
+    }
+  }, []);
+
   const activeTools = activeTab === 'privacy' ? privacyTools : aiTools;
   const selectedToolData = activeTools.find(t => t.id === selectedTool);
   const currentStepData = formSteps[currentStep];
@@ -337,9 +659,16 @@ export default function GeneratorPage() {
 
   const handleFieldChange = (fieldId: string, value: any) => {
     setFormData(prev => ({ ...prev, [fieldId]: value }));
+    // Auto-save draft
+    saveDraft({ ...formData, [fieldId]: value });
+  };
+
+  const saveDraft = (data: any) => {
+    localStorage.setItem('generator_draft', JSON.stringify(data));
   };
 
   const handleNext = () => {
+    setError(null);
     if (currentStep < totalSteps - 1) {
       setCurrentStep(prev => prev + 1);
     }
@@ -365,37 +694,66 @@ export default function GeneratorPage() {
 
   const handleGenerate = () => {
     setIsGenerating(true);
-    const content = generateTemplate(selectedTool || 'privacy-notice', formData);
-    setGeneratedContent(content);
-    setShowPreview(true);
+    setError(null);
+    try {
+      const content = generateTemplate(selectedTool || 'privacy-notice', formData);
+      setGeneratedContent(content);
+      setShowPreview(true);
+    } catch (err) {
+      setError('Failed to generate document. Please try again.');
+    }
     setIsGenerating(false);
   };
 
   const handleSubmitEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email) {
+      setError('Please enter your email address.');
+      return;
+    }
     
     setIsSubmitting(true);
+    setError(null);
     try {
-      await fetch('/api/lead-capture', {
+      const response = await fetch('/api/lead-capture', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           email, 
           tool: selectedTool,
           type: activeTab,
-          source: 'generator' 
+          source: 'generator',
+          document: generatedContent,
+          formData
         }),
       });
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setEmail('');
-      }, 5000);
-    } catch (error) {
-      console.error('Error:', error);
+      const data = await response.json();
+      if (data.success) {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setEmail('');
+        }, 5000);
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Failed to send document. Please try again.');
     }
     setIsSubmitting(false);
+  };
+
+  const handleExportPDF = () => {
+    alert('PDF export coming soon! 📄');
+  };
+
+  const handleExportWord = () => {
+    alert('Word export coming soon! 📝');
+  };
+
+  const handleSaveDraft = () => {
+    localStorage.setItem('generator_draft', JSON.stringify({ tool: selectedTool, formData, timestamp: new Date().toISOString() }));
+    alert('✅ Draft saved!');
   };
 
   // ===== TOOL SELECTION =====
@@ -528,12 +886,21 @@ export default function GeneratorPage() {
                 </h3>
                 <p className="text-sm text-gray-400">{currentStepData.description}</p>
               </div>
-              <button
-                onClick={() => setSelectedTool(null)}
-                className="text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Change Template
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setSelectedTool(null)}
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                  Change Template
+                </button>
+                <button
+                  onClick={handleSaveDraft}
+                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1"
+                >
+                  <Save className="w-4 h-4" />
+                  Save Draft
+                </button>
+              </div>
             </div>
 
             {/* Progress */}
@@ -548,6 +915,13 @@ export default function GeneratorPage() {
               ))}
               <span className="text-xs text-gray-400 ml-2">{currentStep + 1}/{totalSteps}</span>
             </div>
+
+            {/* Error */}
+            {error && (
+              <div className="mb-4 p-3 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
+                {error}
+              </div>
+            )}
 
             {/* Fields */}
             <div className="space-y-4">
@@ -637,6 +1011,20 @@ export default function GeneratorPage() {
                     <Edit className="w-4 h-4" />
                     Copy
                   </button>
+                  <button 
+                    onClick={handleExportPDF}
+                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
+                  >
+                    <FileDown className="w-4 h-4" />
+                    PDF
+                  </button>
+                  <button 
+                    onClick={handleExportWord}
+                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
+                  >
+                    <FileJson className="w-4 h-4" />
+                    Word
+                  </button>
                   <button className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1">
                     <Printer className="w-4 h-4" />
                     Print
@@ -675,6 +1063,12 @@ export default function GeneratorPage() {
               Enter your email to receive the generated document instantly.
             </p>
             
+            {error && (
+              <div className="mb-4 p-3 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
+                {error}
+              </div>
+            )}
+            
             {isSubmitted ? (
               <div className="p-4 rounded-xl bg-green-500/20 border border-green-500/30">
                 <CheckCircle className="w-8 h-8 text-green-400 mx-auto mb-2" />
@@ -703,7 +1097,7 @@ export default function GeneratorPage() {
                     </>
                   ) : (
                     <>
-                      <Download className="w-4 h-4" />
+                      <Send className="w-4 h-4" />
                       Download Document
                     </>
                   )}
