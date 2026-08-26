@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// ===== GOOGLE SHEETS AUTH (Workload Identity) =====
+// ===== GOOGLE SHEETS AUTH (Workload Identity - NO PRIVATE KEY) =====
 const auth = new google.auth.GoogleAuth({
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
