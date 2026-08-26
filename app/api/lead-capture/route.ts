@@ -59,11 +59,33 @@ export async function POST(request: Request) {
         to: [email],
         subject: `📄 Your ${tool || 'Privacy'} Document`,
         html: `
-          <h1>Your Document is Ready!</h1>
-          <p>Thank you for using Legal Galaxy.</p>
-          <p><strong>Document:</strong> ${tool}</p>
-          <p><strong>Category:</strong> ${type === 'privacy' ? 'Privacy' : 'AI Governance'}</p>
-          <a href="${process.env.NEXT_PUBLIC_APP_URL}/generator">Generate More</a>
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Your Document is Ready</title>
+          </head>
+          <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f8fafc;">
+            <div style="background: linear-gradient(to right, #7c3aed, #6d28d9); color: white; padding: 30px 20px; text-align: center; border-radius: 12px 12px 0 0;">
+              <h1 style="margin: 0; font-size: 28px;">✨ Legal Galaxy</h1>
+              <p style="margin: 5px 0 0; opacity: 0.8;">Privacy & AI Governance</p>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: 0 0 12px 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+              <h2 style="color: #1a1a2e; margin-top: 0;">📄 Your Document is Ready!</h2>
+              <p style="color: #334155;">Thank you for using Legal Galaxy Document Generator.</p>
+              <div style="background: #f1f5f9; padding: 16px; border-radius: 8px; margin: 20px 0;">
+                <p style="margin: 4px 0;"><strong>Document:</strong> ${tool}</p>
+                <p style="margin: 4px 0;"><strong>Category:</strong> ${type === 'privacy' ? 'Privacy' : 'AI Governance'}</p>
+              </div>
+              <a href="${process.env.NEXT_PUBLIC_APP_URL}/generator" style="display: inline-block; background: #7c3aed; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600;">Generate More</a>
+            </div>
+            <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
+              <p>© ${new Date().getFullYear()} Legal Galaxy. All rights reserved.</p>
+              <p style="font-size: 10px;">Powered by BusinezExcellence StartX LLP</p>
+            </div>
+          </body>
+          </html>
         `,
       });
       emailSuccess = true;
