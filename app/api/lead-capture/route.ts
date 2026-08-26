@@ -55,7 +55,7 @@ export async function POST(request: Request) {
     try {
       console.log('📧 4. Sending email to:', email);
       await resend.emails.send({
-        from: 'Legal Galaxy <yash.kulshrestha@businexcellence.com>',
+        from: 'Legal Galaxy <onboarding@resend.dev>',
         to: [email],
         subject: `📄 Your ${tool || 'Privacy'} Document`,
         html: `
