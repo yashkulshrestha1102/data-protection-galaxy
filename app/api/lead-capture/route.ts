@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { generatePDF } from '@/app/lib/pdf-generator';
 import { google } from 'googleapis';
+import { generatePDF } from '@/app/lib/pdf-generator';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

@@ -1,4 +1,5 @@
-"use client";
+// ===== NO "use client" =====
+// This is a Server Component
 
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
@@ -91,9 +92,7 @@ export function PDFDocument({ tool, type, formData, generatedContent }: PDFDocum
 
         {/* Content */}
         <View>
-          <Text style={styles.bodyText}>
-            {generatedContent.split('\n').map((line, i) => `${line}\n`).join('')}
-          </Text>
+          <Text style={styles.bodyText}>{generatedContent}</Text>
         </View>
 
         {/* Footer */}

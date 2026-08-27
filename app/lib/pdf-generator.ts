@@ -1,10 +1,10 @@
-import { renderToString } from '@react-pdf/renderer';
+import { renderToBuffer } from '@react-pdf/renderer';
 import { PDFDocument } from '@/components/generator/PDFDocument';
 
 export async function generatePDF(tool: string, type: string, formData: any, content: string) {
   try {
-    // ===== RENDER TO STRING =====
-    const pdfString = await renderToString(
+    // ===== RENDER TO BUFFER (Server-side) =====
+    const pdfBuffer = await renderToBuffer(
       PDFDocument({
         tool,
         type,
@@ -13,8 +13,6 @@ export async function generatePDF(tool: string, type: string, formData: any, con
       })
     );
     
-    // ===== CONVERT TO BUFFER =====
-    const pdfBuffer = Buffer.from(pdfString, 'utf-8');
     return pdfBuffer;
   } catch (error) {
     console.error('PDF generation error:', error);
