@@ -383,7 +383,7 @@ export async function POST(request: Request) {
 
     // ===== SEND EMAIL =====
     const { data, error } = await resend.emails.send({
-      from: 'Legal Galaxy <noreply@businezexcellence.com>',
+      from: 'Legal Galaxy <office@businezexcellence.com>',
       to: [email],
       subject: `Your ${tool.replace('-', ' ')} Document from Legal Galaxy`,
       html: `

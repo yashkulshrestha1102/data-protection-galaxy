@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
     // ===== SEND EMAIL =====
     const { data, error } = await resend.emails.send({
-from: 'Legal Galaxy <onboarding@resend.dev>',      to: [email],
+from: 'Legal Galaxy <office@businezexcellence.com>',      to: [email],
       subject: '🎉 Your DPDPA Certificate - Legal Galaxy',
       html: `
         <!DOCTYPE html>
