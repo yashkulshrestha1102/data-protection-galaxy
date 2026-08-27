@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { PDFDocument } from '@/components/generator/PDFDocument';
-import { renderToStream } from '@react-pdf/renderer';
+import { renderToBuffer } from '@react-pdf/renderer';
 import { google } from 'googleapis';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -31,7 +31,6 @@ Right to Access, Correction, Erasure, Portability, Withdraw Consent.
 5. CONTACT
 Data Protection Officer: ${formData.dpoName || '[DPO Name]'} - ${formData.dpoEmail || '[DPO Email]'}
     `,
-    // Add other templates here
   };
 
   return templates[tool] || templates['privacy-notice'];
@@ -57,8 +56,8 @@ export async function POST(request: Request) {
       © ${new Date().getFullYear()} Legal Galaxy
     `;
 
-    // ===== GENERATE PDF =====
-    const pdfStream = await renderToStream(
+    // ===== GENERATE PDF BUFFER =====
+    const pdfBuffer = await renderToBuffer(
       PDFDocument({
         tool,
         type,
@@ -105,7 +104,7 @@ export async function POST(request: Request) {
       attachments: [
         {
           filename: `${tool.replace('-', '_')}_${new Date().toISOString().slice(0, 10)}.pdf`,
-          content: pdfStream,
+          content: pdfBuffer,
         },
       ],
     });
