@@ -1,74 +1,58 @@
-// app/components/PDFDocument.tsx
-import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
+"use client";
 
-Font.register({
-  family: 'Helvetica',
-  fonts: [
-    { src: 'https://fonts.gstatic.com/s/helvetica/v1/Helvetica.ttf' }
-  ]
-});
+import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   page: {
-    padding: 40,
+    padding: 50,
     backgroundColor: '#ffffff',
-    fontFamily: 'Helvetica',
   },
   header: {
-    backgroundColor: '#7c3aed',
-    color: 'white',
+    backgroundColor: '#004d40',
     padding: 20,
     marginBottom: 20,
-    borderRadius: 8,
+    borderRadius: 4,
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'white',
+    color: '#ffffff',
   },
   headerSub: {
-    fontSize: 12,
+    fontSize: 11,
     textAlign: 'center',
-    color: '#e2e8f0',
+    color: '#80cbc4',
     marginTop: 4,
   },
-  section: {
-    marginBottom: 12,
-  },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
-    color: '#1a1a2e',
-    marginBottom: 6,
-    borderBottom: '1px solid #e2e8f0',
+    color: '#004d40',
+    marginTop: 12,
+    marginBottom: 4,
+    borderBottom: '1px solid #e0e8e4',
     paddingBottom: 4,
   },
   bodyText: {
     fontSize: 10,
     color: '#334155',
     lineHeight: 1.6,
-    marginBottom: 4,
-  },
-  listItem: {
-    fontSize: 10,
-    color: '#334155',
-    marginLeft: 12,
     marginBottom: 2,
   },
   footer: {
     marginTop: 30,
     paddingTop: 10,
-    borderTop: '1px solid #e2e8f0',
+    borderTop: '1px solid #e0e8e4',
     textAlign: 'center',
   },
   footerText: {
     fontSize: 8,
-    color: '#94a3b8',
+    color: '#8aaa9a',
   },
   disclaimer: {
     fontSize: 7,
-    color: '#94a3b8',
+    color: '#aac0b5',
     textAlign: 'center',
     marginTop: 6,
     fontStyle: 'italic',
@@ -93,21 +77,23 @@ export function PDFDocument({ tool, type, formData, generatedContent }: PDFDocum
         </View>
 
         {/* Title */}
-        <View style={styles.section}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1a1a2e', textAlign: 'center', marginBottom: 8 }}>
+        <View style={{ marginBottom: 16 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#004d40', textAlign: 'center', marginBottom: 6 }}>
             {tool.replace('-', ' ').toUpperCase()}
           </Text>
-          <Text style={{ fontSize: 10, color: '#64748b', textAlign: 'center' }}>
+          <Text style={{ fontSize: 10, color: '#6a8a7a', textAlign: 'center' }}>
             Organisation: {formData.orgName || '[Organisation Name]'}
           </Text>
-          <Text style={{ fontSize: 10, color: '#64748b', textAlign: 'center' }}>
+          <Text style={{ fontSize: 10, color: '#6a8a7a', textAlign: 'center' }}>
             Effective Date: {new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
           </Text>
         </View>
 
         {/* Content */}
-        <View style={styles.section}>
-          <Text style={styles.bodyText}>{generatedContent}</Text>
+        <View>
+          <Text style={styles.bodyText}>
+            {generatedContent.split('\n').map((line, i) => `${line}\n`).join('')}
+          </Text>
         </View>
 
         {/* Footer */}
