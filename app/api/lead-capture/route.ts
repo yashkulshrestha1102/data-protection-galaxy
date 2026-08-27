@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { PDFDocument } from '@/components/generator/PDFDocument';
-import { renderToBuffer } from '@react-pdf/renderer';
+import { generatePDF } from '@/lib/pdf-generator';
 import { google } from 'googleapis';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -327,26 +326,15 @@ Powered by BusinezExcellence StartX LLP
 This document is for informational purposes and does not constitute legal advice.
     `;
 
-    // ===== GENERATE PDF BUFFER =====
-    const pdfBuffer = await renderToBuffer(
-      PDFDocument({
-        tool,
-        type,
-        formData,
-        generatedContent: fullContent,
-      })
-    );
-
-    // ===== CONVERT TO BASE64 =====
+    // ===== GENERATE PDF =====
+    const pdfBuffer = await generatePDF(tool, type, formData, fullContent);
     const pdfBase64 = pdfBuffer.toString('base64');
 
-    // ===== SEND EMAIL WITH PDF ATTACHMENT =====
+    // ===== SEND EMAIL =====
     const { data, error } = await resend.emails.send({
       from: 'Legal Galaxy <noreply@businezexcellence.com>',
       to: [email],
       subject: `Your ${tool.replace('-', ' ')} Document from Legal Galaxy`,
-      
-      // ===== HTML VERSION =====
       html: `
         <!DOCTYPE html>
         <html>
@@ -451,8 +439,6 @@ This document is for informational purposes and does not constitute legal advice
         </body>
         </html>
       `,
-      
-      // ===== PLAIN TEXT VERSION =====
       text: `
 Hello,
 
@@ -479,8 +465,6 @@ BusinezExcellence StartX LLP
 © ${new Date().getFullYear()} Legal Galaxy. All rights reserved.
 This document is for informational purposes and does not constitute legal advice.
 `,
-      
-      // ===== PDF ATTACHMENT =====
       attachments: [
         {
           filename: `${tool.replace('-', '_')}_${new Date().toISOString().slice(0, 10)}.pdf`,
