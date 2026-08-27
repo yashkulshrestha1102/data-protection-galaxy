@@ -16,286 +16,346 @@ function generateTemplateContent(tool: string, formData: any): string {
   const templates: Record<string, string> = {
     'privacy-notice': `
 1. INTRODUCTION
-${formData.orgName || '[Organisation Name]'} is committed to protecting your privacy.
+${formData.orgName || '[Organisation Name]'} is committed to protecting your privacy and personal data in compliance with the Digital Personal Data Protection Act, 2023.
 
 2. DATA WE COLLECT
-${(formData.dataTypes || ['Name', 'Email', 'Phone']).join(', ')}
+We collect the following categories of personal data:
+${(formData.dataTypes || ['Name', 'Email', 'Phone']).map(d => `• ${d}`).join('\n')}
 
 3. PURPOSE OF PROCESSING
-${(formData.purposes || ['Service Delivery', 'Communication']).join(', ')}
+We process your personal data for the following purposes:
+${(formData.purposes || ['Service Delivery', 'Communication']).map(p => `• ${p}`).join('\n')}
 
 4. YOUR RIGHTS
-Right to Access, Correction, Erasure, Portability, Withdraw Consent.
+Under DPDPA, you have the following rights:
+• Right to Access your personal data
+• Right to Correction of inaccurate data
+• Right to Erasure (Right to be forgotten)
+• Right to Data Portability
+• Right to Withdraw Consent at any time
+• Right to Grievance Redressal
+• Right to Nominate a representative
 
-5. CONTACT
+5. DATA RETENTION
+We retain your personal data for ${formData.retentionPeriod || 'as per legal requirements'} or until the purpose of processing is complete.
+
+6. DATA SECURITY
+We implement appropriate technical and organizational measures to protect your personal data.
+
+7. CONTACT
 Data Protection Officer: ${formData.dpoName || '[DPO Name]'} - ${formData.dpoEmail || '[DPO Email]'}
+Grievance Officer: ${formData.grievanceName || '[Grievance Officer Name]'} - ${formData.grievanceEmail || '[Grievance Officer Email]'}
     `,
     'consent-notice': `
 1. CONSENT NOTICE
-${formData.orgName || '[Organisation Name]'} collects your data with your explicit consent.
+${formData.orgName || '[Organisation Name]'} collects and processes your personal data with your explicit, informed, and unambiguous consent.
 
 2. DATA COLLECTED
-${(formData.dataTypes || ['Name', 'Email']).join(', ')}
+The following personal data is collected:
+${(formData.dataTypes || ['Name', 'Email']).map(d => `• ${d}`).join('\n')}
 
-3. PURPOSE
-${(formData.purposes || ['Service Delivery']).join(', ')}
+3. PURPOSE OF PROCESSING
+Your data is processed for:
+${(formData.purposes || ['Service Delivery']).map(p => `• ${p}`).join('\n')}
 
-4. WITHDRAWAL
-You may withdraw consent at any time.
+4. CONSENT WITHDRAWAL
+You have the right to withdraw your consent at any time by contacting us. Withdrawal of consent will not affect the lawfulness of processing based on consent before its withdrawal.
 
 5. CONTACT
-${formData.dpoEmail || 'privacy@company.com'}
+For any queries regarding consent, contact: ${formData.dpoEmail || 'privacy@company.com'}
     `,
     'cookies-notice': `
 1. COOKIES NOTICE
-${formData.orgName || '[Organisation Name]'} uses cookies to enhance your experience.
+${formData.orgName || '[Organisation Name]'} uses cookies and similar tracking technologies to enhance your browsing experience.
 
-2. TYPES OF COOKIES
-- Essential Cookies
-- Functional Cookies
-- Analytics Cookies
-- Marketing Cookies
+2. TYPES OF COOKIES WE USE
+• Essential Cookies: Required for basic website functionality
+• Functional Cookies: Remember your preferences
+• Analytics Cookies: Help us understand user behavior
+• Marketing Cookies: Used for targeted advertising
 
 3. MANAGING COOKIES
-You can manage cookies through your browser settings.
+You can manage or disable cookies through your browser settings. However, disabling certain cookies may affect website functionality.
 
 4. CONTACT
-${formData.dpoEmail || 'privacy@company.com'}
+For more information about our cookie practices, contact: ${formData.dpoEmail || 'privacy@company.com'}
     `,
     'dpa': `
 1. DATA PROCESSING AGREEMENT
-This DPA is between ${formData.orgName || '[Organisation Name]'} and [Processor Name].
+This Data Processing Agreement ("DPA") is entered into between ${formData.orgName || '[Organisation Name]'} ("Data Controller") and [Processor Name] ("Data Processor").
 
-2. SCOPE
-Processing of personal data as per DPDPA 2023.
+2. SCOPE OF PROCESSING
+This DPA governs the processing of personal data by the Processor on behalf of the Controller as per the Digital Personal Data Protection Act, 2023.
 
 3. DATA SUBJECTS
-Customers, employees, and other individuals.
+The personal data processed under this DPA relates to:
+• Customers
+• Employees
+• Business Partners
+• Other individuals as specified
 
 4. SECURITY MEASURES
-${(formData.securityMeasures || ['Encryption', 'Access Controls']).join(', ')}
+The Processor shall implement and maintain the following security measures:
+${(formData.securityMeasures || ['Encryption', 'Access Controls']).map(m => `• ${m}`).join('\n')}
 
 5. BREACH NOTIFICATION
-Processor shall notify Controller within 48 hours.
+The Processor shall notify the Controller within 48 hours of becoming aware of any personal data breach.
 
-6. DURATION
-For the duration of processing activities.
+6. SUB-PROCESSING
+The Processor may engage sub-processors with prior written consent of the Controller.
+
+7. DURATION
+This DPA shall remain in effect for the duration of the processing activities.
     `,
     'retention-policy': `
 1. DATA RETENTION POLICY
-${formData.orgName || '[Organisation Name]'} retains data as per legal requirements.
+${formData.orgName || '[Organisation Name]'} is committed to retaining personal data only for as long as necessary.
 
 2. RETENTION PERIODS
-${formData.retentionPeriod || '5 years or as per legal requirements.'}
+${formData.retentionPeriod || 'Data is retained for 5 years or as per legal requirements.'}
 
-3. DATA CATEGORIES
-- Customer Data: ${formData.retentionPeriod || '5 years'}
-- Employee Data: ${formData.retentionPeriod || '7 years'}
-- Financial Data: ${formData.retentionPeriod || '10 years'}
+3. DATA CATEGORIES AND RETENTION
+• Customer Data: ${formData.retentionPeriod || '5 years'}
+• Employee Data: ${formData.retentionPeriod || '7 years'}
+• Financial Data: ${formData.retentionPeriod || '10 years'}
+• Marketing Data: ${formData.retentionPeriod || '3 years'}
 
 4. DELETION PROCESS
-Data is securely deleted after retention period.
+Personal data is securely deleted upon expiry of the retention period or upon request.
 
 5. RESPONSIBILITY
-DPO is responsible for compliance.
+The Data Protection Officer is responsible for ensuring compliance with this policy.
     `,
     'breach-response': `
 1. DATA BREACH RESPONSE PLAN
-${formData.orgName || '[Organisation Name]'} follows this procedure for data breaches.
+${formData.orgName || '[Organisation Name]'} has established this response plan to handle personal data breaches effectively.
 
 2. IMMEDIATE ACTIONS
-- Identify the breach
-- Contain the breach
-- Assess the risk
+• Identify and assess the breach
+• Contain the breach to prevent further damage
+• Assess the risk to affected individuals
 
-3. NOTIFICATION
-- Internal: Within 24 hours
-- External: Within 72 hours
+3. NOTIFICATION PROCEDURE
+• Internal Notification: Within 24 hours to the Data Protection Officer
+• External Notification: Within 72 hours to the Data Protection Board
+• Individual Notification: Without undue delay, if high risk
 
 4. INVESTIGATION
-Conduct thorough investigation and document findings.
+A thorough investigation shall be conducted to determine the cause and impact of the breach.
 
 5. REMEDIATION
-Implement corrective measures to prevent future breaches.
+Corrective measures shall be implemented to prevent future breaches.
+
+6. DOCUMENTATION
+All breaches and responses shall be documented for compliance purposes.
     `,
     'dsr-procedure': `
 1. DATA SUBJECT RIGHTS PROCEDURE
-${formData.orgName || '[Organisation Name]'} handles data subject rights requests as follows.
+${formData.orgName || '[Organisation Name]'} respects and facilitates the exercise of data subject rights under DPDPA.
 
 2. RIGHTS COVERED
-- Right to Access
-- Right to Correction
-- Right to Erasure
-- Right to Portability
-- Right to Object
+• Right to Access
+• Right to Correction
+• Right to Erasure
+• Right to Data Portability
+• Right to Object
+• Right to Withdraw Consent
+• Right to Nomination
+• Right to Grievance Redressal
 
 3. REQUEST PROCESS
-- Submit request via email
-- Verify identity
-- Acknowledge within 48 hours
-- Respond within 30 days
+• Submit request via email or web form
+• Verify identity of the requester
+• Acknowledge receipt within 48 hours
+• Respond to the request within 30 days
 
 4. CONTACT
-${formData.dpoEmail || 'dpo@company.com'}
+Submit requests to: ${formData.dpoEmail || 'dpo@company.com'}
     `,
     'vendor-checklist': `
 1. VENDOR DATA PROCESSING CHECKLIST
-${formData.orgName || '[Organisation Name]'} assesses vendors for data protection compliance.
+${formData.orgName || '[Organisation Name]'} conducts due diligence on vendors processing personal data.
 
 2. ASSESSMENT CRITERIA
-- [ ] Data processing purpose
-- [ ] Data categories processed
-- [ ] Security measures in place
-- [ ] Data transfer mechanisms
-- [ ] Breach notification process
+• [ ] Purpose and nature of data processing
+• [ ] Categories of personal data processed
+• [ ] Security measures implemented
+• [ ] Data transfer mechanisms
+• [ ] Breach notification procedures
+• [ ] Sub-processing arrangements
+• [ ] Data retention and deletion practices
 
 3. COMPLIANCE REQUIREMENTS
-- [ ] GDPR/DPDP compliance
-- [ ] DPO appointment
-- [ ] Data processing agreement signed
+• [ ] DPDPA compliance
+• [ ] Data Protection Officer appointment
+• [ ] Data Processing Agreement in place
+• [ ] Privacy Policy available
+• [ ] Incident response plan documented
 
 4. REVIEW FREQUENCY
-Vendor assessments are conducted annually.
+Vendor assessments shall be conducted annually and upon material changes.
     `,
     'ai-usage-policy': `
 1. AI USAGE POLICY
-${formData.orgName || '[Organisation Name]'} uses AI responsibly as per this policy.
+${formData.orgName || '[Organisation Name]'} is committed to the responsible and ethical use of Artificial Intelligence.
 
 2. PERMITTED USE
-- Approved business purposes
-- Compliance with laws
-- Human review of AI outputs
+AI may be used for approved business purposes including:
+• Data analysis and insights
+• Customer support and engagement
+• Process automation
+• Content generation (with human review)
+• Decision support (not autonomous)
 
 3. PROHIBITED USE
-- Discriminatory purposes
-- Automated decisions without human oversight
-- Processing sensitive data without consent
+AI shall not be used for:
+• Discriminatory or biased applications
+• Automated decisions without human oversight
+• Processing sensitive personal data without explicit consent
+• Unauthorized surveillance or monitoring
 
 4. AI RISK ASSESSMENT
-All AI systems must undergo risk assessment.
+All AI systems must undergo a risk assessment prior to deployment.
 
 5. HUMAN OVERSIGHT
-All AI decisions require human review.
+All AI decisions require human review and override capability.
 
 6. REPORTING
-AI-related incidents must be reported immediately.
+AI-related incidents must be reported to the AI Governance Committee immediately.
     `,
     'responsible-ai-policy': `
 1. RESPONSIBLE AI POLICY
-${formData.orgName || '[Organisation Name]'} follows these AI principles.
+${formData.orgName || '[Organisation Name]'} adopts the following principles for responsible AI.
 
 2. PRINCIPLES
-- Fairness
-- Transparency
-- Accountability
-- Privacy
-- Security
+• Fairness: AI systems shall not discriminate
+• Transparency: AI decisions shall be explainable
+• Accountability: Humans remain responsible for AI outcomes
+• Privacy: AI systems shall protect personal data
+• Security: AI systems shall be secure by design
 
 3. GOVERNANCE
-AI systems are governed by the AI Governance Committee.
+The AI Governance Committee oversees all AI systems.
 
 4. COMPLIANCE
-All AI systems comply with applicable laws.
+All AI systems comply with applicable laws including DPDPA and EU AI Act.
     `,
     'ai-governance-framework': `
 1. AI GOVERNANCE FRAMEWORK
-${formData.orgName || '[Organisation Name]'} establishes this AI governance framework.
+${formData.orgName || '[Organisation Name]'} establishes this framework to govern AI systems.
 
 2. GOVERNANCE STRUCTURE
-- AI Governance Committee
-- AI Risk Assessment Team
-- AI Compliance Team
+• AI Governance Committee
+• AI Risk Assessment Team
+• AI Compliance Team
+• AI Ethics Advisory Board
 
 3. POLICIES
-- AI Usage Policy
-- Responsible AI Policy
-- AI Risk Management Policy
+• AI Usage Policy
+• Responsible AI Policy
+• AI Risk Management Policy
+• AI Incident Response Policy
 
-4. COMPLIANCE
-Regular audits and compliance reviews.
+4. PROCEDURES
+• AI lifecycle management
+• AI risk assessment
+• AI incident response
+• AI compliance review
+
+5. COMPLIANCE
+Regular audits and compliance reviews are conducted.
     `,
     'ai-risk-assessment': `
 1. AI RISK ASSESSMENT
-${formData.orgName || '[Organisation Name]'} assesses AI risks as per this template.
+${formData.orgName || '[Organisation Name]'} conducts risk assessments for all AI systems.
 
 2. ASSESSMENT AREAS
-- Data privacy
-- Bias and fairness
-- Security
-- Compliance
-- Transparency
+• Data privacy and protection
+• Bias and fairness
+• Security and reliability
+• Compliance and regulatory
+• Transparency and explainability
 
 3. RISK MATRIX
-High: Severe impact, likely
-Medium: Moderate impact, possible
-Low: Minor impact, unlikely
+• High Risk: Severe impact, likely to occur
+• Medium Risk: Moderate impact, possible
+• Low Risk: Minor impact, unlikely
 
-4. MITIGATION
-Implement measures to reduce identified risks.
+4. MITIGATION MEASURES
+Appropriate controls shall be implemented based on risk level.
+
+5. REVIEW
+Risk assessments shall be reviewed annually and upon significant changes.
     `,
     'ai-vendor-questionnaire': `
 1. AI VENDOR QUESTIONNAIRE
 ${formData.orgName || '[Organisation Name]'} assesses AI vendors using this questionnaire.
 
 2. VENDOR INFORMATION
-- Vendor Name:
-- AI Services Provided:
+• Vendor Name:
+• AI Services Provided:
+• Data Processing Locations:
 
 3. COMPLIANCE CHECKLIST
-- [ ] Data protection policy
-- [ ] AI governance framework
-- [ ] Risk assessment process
-- [ ] Incident response plan
+• [ ] Data protection policy in place
+• [ ] AI governance framework documented
+• [ ] Risk assessment process established
+• [ ] Incident response plan documented
+• [ ] Transparency reporting
 
 4. SECURITY ASSESSMENT
-- [ ] Encryption in place
-- [ ] Access controls
-- [ ] Regular audits
+• [ ] Encryption in place
+• [ ] Access controls implemented
+• [ ] Regular security audits conducted
 
 5. REVIEW
-Vendor assessments are conducted annually.
+Vendor assessments shall be conducted annually.
     `,
     'ai-acceptable-use': `
 1. AI ACCEPTABLE USE POLICY
-${formData.orgName || '[Organisation Name]'} defines acceptable use of AI tools.
+${formData.orgName || '[Organisation Name]'} defines acceptable use of AI tools and systems.
 
 2. PERMITTED USES
-- Business operations
-- Research and development
-- Customer support
-- Data analysis
+• Business operations and decision support
+• Research and development
+• Customer support and service
+• Data analysis and insights
 
 3. PROHIBITED USES
-- Unauthorized data processing
-- Bias or discrimination
-- Automated decision-making without oversight
+• Unauthorized data processing
+• Bias or discrimination
+• Automated decision-making without human oversight
+• Processing sensitive data without consent
 
 4. RESPONSIBILITIES
-Users must ensure AI use complies with this policy.
+Users must ensure AI use complies with all applicable policies and laws.
 
 5. REPORTING
-Violations must be reported immediately.
+Violations must be reported to the AI Governance Committee immediately.
     `,
     'ai-impact-assessment': `
 1. AI IMPACT ASSESSMENT
-${formData.orgName || '[Organisation Name]'} evaluates AI impact using this template.
+${formData.orgName || '[Organisation Name]'} evaluates the impact of AI systems using this template.
 
 2. IMPACT AREAS
-- Data privacy
-- Human rights
-- Bias and fairness
-- Security
-- Compliance
+• Data privacy and protection
+• Human rights and dignity
+• Bias and fairness
+• Security and reliability
+• Compliance and regulatory
 
 3. ASSESSMENT PROCESS
-- Identify AI system
-- Assess risks
-- Identify mitigation measures
-- Implement measures
-- Monitor and review
+• Identify AI system and scope
+• Assess potential impacts
+• Identify mitigation measures
+• Implement measures
+• Monitor and review effectiveness
 
 4. DOCUMENTATION
-Maintain detailed records of assessments.
+All assessments shall be documented and maintained.
+
+5. REVIEW
+Assessments shall be reviewed annually and upon significant changes.
     `,
   };
 
@@ -315,16 +375,7 @@ export async function POST(request: Request) {
 
     // ===== GENERATE CONTENT =====
     const content = generateTemplateContent(tool, formData);
-    const fullContent = `
-${content}
-
----
-Generated by Legal Galaxy
-© ${new Date().getFullYear()} Legal Galaxy
-Powered by BusinezExcellence StartX LLP
-
-This document is for informational purposes and does not constitute legal advice.
-    `;
+    const fullContent = content;
 
     // ===== GENERATE PDF =====
     const pdfBuffer = await generatePDF(tool, type, formData, fullContent);
