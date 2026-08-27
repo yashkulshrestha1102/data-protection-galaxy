@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { PDFDocument } from '@/app/components/PDFDocument';
+import { PDFDocument } from '@/components/generator/PDFDocument';
 import { renderToStream } from '@react-pdf/renderer';
 import { google } from 'googleapis';
 
