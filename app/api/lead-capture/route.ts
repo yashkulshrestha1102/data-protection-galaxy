@@ -68,46 +68,145 @@ export async function POST(request: Request) {
 
     // ===== SEND EMAIL WITH PDF ATTACHMENT =====
     const { data, error } = await resend.emails.send({
-      from: 'Legal Galaxy <info@businezexcellence.com>',
-      to: [email],
-      subject: `📄 Your ${tool.replace('-', ' ')} Document`,
-      html: `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Your Document is Ready</title>
-        </head>
-        <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f8fafc;">
-          <div style="background: linear-gradient(to right, #7c3aed, #6d28d9); color: white; padding: 30px 20px; text-align: center; border-radius: 12px 12px 0 0;">
-            <h1 style="margin: 0; font-size: 28px;">✨ Legal Galaxy</h1>
-            <p style="margin: 5px 0 0; opacity: 0.8;">Privacy & AI Governance</p>
+  from: 'Legal Galaxy <info@businezexcellence.com>',
+  to: [email],
+  subject: `📄 Your ${tool.replace('-', ' ')} Document`,
+  
+  // ===== HTML VERSION =====
+  html: `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Your Document is Ready</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 0; background: #f4f7f6;">
+      
+      <!-- Main Container -->
+      <div style="background: #ffffff; border-radius: 16px; margin: 20px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        
+        <!-- Header -->
+        <div style="background: #2E8B57; padding: 30px 20px; text-align: center; border-bottom: 4px solid #1a5c3a;">
+          <div style="font-size: 20px; font-weight: 600; color: #ffffff; letter-spacing: 1px;">
+            BusinezExcellence
           </div>
-          <div style="background: white; padding: 30px; border-radius: 0 0 12px 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h2 style="color: #1a1a2e; margin-top: 0;">📄 Your Document is Ready!</h2>
-            <p style="color: #334155;">Thank you for using Legal Galaxy Document Generator.</p>
-            <div style="background: #f1f5f9; padding: 16px; border-radius: 8px; margin: 20px 0;">
-              <p style="margin: 4px 0;"><strong>Document:</strong> ${tool.replace('-', ' ')}</p>
-              <p style="margin: 4px 0;"><strong>Category:</strong> ${type === 'privacy' ? 'Privacy' : 'AI Governance'}</p>
-            </div>
-            <p style="color: #334155;">Your PDF document is attached to this email.</p>
-            <a href="${process.env.NEXT_PUBLIC_APP_URL}/generator" style="display: inline-block; background: #7c3aed; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 10px;">Generate More</a>
+          <div style="font-size: 13px; color: #b8d9c4; margin-top: 4px; letter-spacing: 0.5px;">
+            Legal Galaxy · Document Generator
           </div>
-          <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
-            <p>© ${new Date().getFullYear()} Legal Galaxy. All rights reserved.</p>
-            <p style="font-size: 10px;">Powered by BusinezExcellence StartX LLP</p>
+        </div>
+        
+        <!-- Content -->
+        <div style="padding: 35px 30px;">
+          
+          <p style="color: #1a2a2a; font-size: 16px; font-weight: 500; margin: 0 0 8px 0;">
+            Hello,
+          </p>
+          
+          <p style="color: #3a5a5a; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">
+            We're pleased to inform you that your document has been successfully generated through 
+            <strong>Legal Galaxy Document Generator</strong>.
+          </p>
+          
+          <p style="color: #3a5a5a; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">
+            Please find the requested PDF attached to this email.
+          </p>
+          
+          <!-- Document Details -->
+          <div style="background: #f0f7f3; border-left: 4px solid #2E8B57; padding: 16px 20px; border-radius: 6px; margin: 20px 0;">
+            <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 600; color: #1a3a2a;">
+              📄 Document Information
+            </p>
+            <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;">
+              <strong>Document:</strong> ${tool.replace('-', ' ').toUpperCase()}
+            </p>
+            <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;">
+              <strong>Category:</strong> ${type === 'privacy' ? 'Privacy' : 'AI Governance'}
+            </p>
+            <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;">
+              <strong>Generation Status:</strong> <span style="color: #2E8B57;">✅ Completed</span>
+            </p>
           </div>
-        </body>
-        </html>
-      `,
-      attachments: [
-        {
-          filename: `${tool.replace('-', '_')}_${new Date().toISOString().slice(0, 10)}.pdf`,
-          content: pdfBuffer,
-        },
-      ],
-    });
+          
+          <p style="color: #3a5a5a; font-size: 14px; line-height: 1.6; margin: 20px 0 0 0;">
+            The attached document has been prepared based on the information and options selected during 
+            the document generation process.
+          </p>
+          
+          <p style="color: #3a5a5a; font-size: 14px; line-height: 1.6; margin: 16px 0 0 0;">
+            Thank you for choosing Legal Galaxy. We're committed to making legal and data protection 
+            documentation simpler, faster, and more accessible.
+          </p>
+          
+          <!-- CTA Button -->
+          <div style="text-align: center; margin: 30px 0 10px 0;">
+            <a href="${process.env.NEXT_PUBLIC_APP_URL}/generator" 
+               style="display: inline-block; background: #2E8B57; color: #ffffff; 
+                      padding: 12px 36px; border-radius: 8px; text-decoration: none; 
+                      font-weight: 600; font-size: 14px;">
+              Generate Another Document →
+            </a>
+          </div>
+          
+          <p style="color: #3a5a5a; font-size: 14px; line-height: 1.6; margin: 20px 0 0 0;">
+            If you need any assistance or would like to generate another document, please feel free 
+            to reach out.
+          </p>
+          
+          <p style="color: #1a2a2a; font-size: 14px; margin: 20px 0 0 0; font-weight: 500;">
+            Warm regards,
+            <br>
+            <span style="color: #2E8B57;">Team Legal Galaxy</span>
+          </p>
+        </div>
+        
+        <!-- Footer -->
+        <div style="background: #f4f7f6; padding: 16px 20px; text-align: center; border-top: 1px solid #e0e8e4;">
+          <p style="margin: 0 0 4px 0; font-size: 11px; color: #6a8a7a;">
+            BusinezExcellence StartX LLP
+          </p>
+          <p style="margin: 0; font-size: 10px; color: #8aaa9a;">
+            © ${new Date().getFullYear()} Legal Galaxy. All rights reserved.
+          </p>
+          <p style="margin: 6px 0 0 0; font-size: 9px; color: #aac0b5; font-style: italic;">
+            This document is for informational purposes and does not constitute legal advice.
+          </p>
+        </div>
+        
+      </div>
+      
+    </body>
+    </html>
+  `,
+  
+  // ===== PLAIN TEXT VERSION =====
+  text: `
+Hello,
+
+We're pleased to inform you that your document has been successfully generated through Legal Galaxy Document Generator.
+
+Please find the requested PDF attached to this email.
+
+Document Information:
+- Document: ${tool.replace('-', ' ').toUpperCase()}
+- Category: ${type === 'privacy' ? 'Privacy' : 'AI Governance'}
+- Generation Status: Completed
+
+The attached document has been prepared based on the information and options selected during the document generation process.
+
+Thank you for choosing Legal Galaxy. We're committed to making legal and data protection documentation simpler, faster, and more accessible.
+
+If you need any assistance or would like to generate another document, please feel free to reach out.
+
+Warm regards,
+Team Legal Galaxy
+
+---
+BusinezExcellence StartX LLP
+© ${new Date().getFullYear()} Legal Galaxy. All rights reserved.
+This document is for informational purposes and does not constitute legal advice.
+`,
+});
 
     if (error) {
       console.error('Email error:', error);
