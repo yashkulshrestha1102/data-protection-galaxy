@@ -325,7 +325,7 @@ export async function POST(request: Request) {
     `;
 
     const { data, error } = await resend.emails.send({
-      from: 'Legal Galaxy <onboarding@resend.dev>',
+      from: 'Legal Galaxy <office@businezexcellence.com>',
       to: [email],
       subject: '📊 Your AI Governance Assessment Report',
       html,
