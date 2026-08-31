@@ -16,7 +16,6 @@ const resourcesDropdown = [
 const toolsDropdown = [
   { href: "/generator", label: "Generator" },
   { href: "/scorecard", label: "Scoreboard" },
-  { href: "/templates", label: "Templates" },
 ];
 
 // ===== LEARN DROPDOWN ITEMS =====
