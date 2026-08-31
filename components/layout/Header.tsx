@@ -32,22 +32,39 @@ export const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* ===== LOGO ===== */}
+                   {/* ===== LOGO ===== */}
           <Link href="/" className="flex flex-col group cursor-pointer" prefetch={true}>
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="absolute inset-0 bg-purple-400/20 blur-2xl rounded-full group-hover:bg-purple-400/30 transition-all scale-150" />
-                <img 
-                  src="/images/logo.png"
-                  alt="Legal Galaxy Logo"
-                  className="w-10 h-10 object-contain relative z-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]"
-                />
-              </div>
-              <span className="text-2xl md:text-3xl font-bold text-white tracking-wide drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]">
-                Legal Galaxy
+            
+            {/* HOLLOW GLASS LOGO START */}
+            <div className="relative flex flex-col items-center">
+              
+              {/* TOP TEXT: LEGAL */}
+              <span 
+                className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-transparent mb-1"
+                style={{
+                  WebkitTextStroke: '1.5px rgba(255,255,255,0.9)', // Hollow outline
+                  textShadow: '0 0 10px rgba(255,255,255,0.2)'      // Subtle glow
+                }}
+              >
+                Legal
               </span>
+
+              {/* MAIN TEXT: GALAXY (Hollow Glass Style) */}
+              <span 
+                className="text-4xl md:text-6xl font-black uppercase tracking-wider text-transparent leading-none"
+                style={{
+                  WebkitTextStroke: '2px rgba(255,255,255,0.95)', // Hollow Outline (Thick)
+                  textShadow: '0 0 20px rgba(255,255,255,0.3), 0 4px 15px rgba(0,0,0,0.3)', // Glass Glow
+                  fontFamily: 'Arial, sans-serif'
+                }}
+              >
+                Galaxy
+              </span>
+              
             </div>
-            <span className="text-[10px] md:text-xs text-gray-300/70 tracking-wider ml-14 -mt-0.5 font-light">
+            {/* HOLLOW GLASS LOGO END */}
+
+            <span className="text-[10px] md:text-xs text-gray-300/70 tracking-wider mt-2 font-light text-center">
               Privacy & AI Governance
             </span>
           </Link>
