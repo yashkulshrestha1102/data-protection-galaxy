@@ -23,6 +23,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Legal Galaxy |  Privacy & AI Governance",
   description: "Your interactive guide to understanding the Digital Personal Data Protection Act, 2023",
+
+  icons: {
+    icon: '/favicon.ico',        // ← YEH LINE ADD KARO
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
