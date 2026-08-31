@@ -3,13 +3,13 @@
 'use client';
 
 import Link from 'next/link';
-import { FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaYoutube, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black/90 border-t border-white/10 text-white/60 text-sm">
+    <footer className="bg-gradient-to-b from-black via-[#1a1a1a] to-[#0a1428] border-t border-white/10 text-white/60 text-sm">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Logo */}
@@ -61,9 +61,11 @@ export function Footer() {
             </p>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors"><FaLinkedin className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-white transition-colors"><FaTwitter className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-white transition-colors"><FaYoutube className="w-4 h-4" /></a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-blue-400 transition-colors"><FaLinkedin className="w-4 h-4" /></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-sky-400 transition-colors"><FaTwitter className="w-4 h-4" /></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-red-500 transition-colors"><FaYoutube className="w-4 h-4" /></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-pink-500 transition-colors"><FaInstagram className="w-4 h-4" /></a>
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-green-400 transition-colors"><FaWhatsapp className="w-4 h-4" /></a>
           </div>
         </div>
       </div>
