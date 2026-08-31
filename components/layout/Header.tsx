@@ -39,11 +39,27 @@ export const Header = () => {
         {/* Yahan h-20 hataya aur py-3 lagaya hai taaki content fit rahe */}
         <div className="flex items-center justify-between py-3">
           
-          {/* ===== FIXED LOGO (Single Line + Tagline) ===== */}
+                      {/* ===== FIXED LOGO ===== */}
           <Link href="/" className="flex flex-col group cursor-pointer" prefetch={true}>
             <div className="relative flex flex-col items-start">
+              
+              {/* 3D ROTATING FAVICON LOGO START */}
+              <div className="absolute -left-9 top-1/2 -translate-y-1/2 flex items-center justify-center">
+                <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-logo-3d overflow-hidden">
+                  {/* Favicon Image */}
+                  <img 
+                    src="/favicon.ico"
+                    alt="Legal Galaxy Logo"
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                  {/* Glossy Reflection Effect */}
+                  <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-white/30 to-transparent pointer-events-none" />
+                </div>
+              </div>
+              {/* 3D ROTATING FAVICON LOGO END */}
+
               <span 
-                className="text-base md:text-lg font-black uppercase tracking-[0.15em] text-transparent leading-none"
+                className="text-base md:text-lg font-black uppercase tracking-[0.15em] text-transparent leading-none pl-11"
                 style={{
                   WebkitTextStroke: '1px rgba(255,255,255,0.9)',
                   textShadow: '0 0 8px rgba(255,255,255,0.2)'
@@ -51,8 +67,9 @@ export const Header = () => {
               >
                 Legal Galaxy
               </span>
-              <span className="text-[8px] md:text-[9px] text-gray-300/70 tracking-wider mt-0.5 font-light">
-                 Privacy & AI Governance
+              
+              <span className="text-[8px] md:text-[9px] text-gray-300/70 tracking-wider mt-0.5 font-light pl-11">
+                Navigating Privacy & AI Governance
               </span>
             </div>
           </Link>

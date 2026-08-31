@@ -41,6 +41,30 @@
   }
 }
 
+
+
+
+/* ===== 3D LOGO ROTATE (360) ===== */
+@layer utilities {
+  .animate-logo-3d {
+    animation: logo3d 5s linear infinite;
+    transform-style: preserve-3d;
+    perspective: 500px;
+  }
+}
+
+@keyframes logo3d {
+  0% {
+    transform: perspective(500px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(500px) rotateY(360deg);
+  }
+}
+
+
+
+
 /* ===== GLOBAL SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 8px;
