@@ -46,12 +46,12 @@ export const Header = () => {
         {/* Yahan h-20 hataya aur py-3 lagaya hai taaki content fit rahe */}
         <div className="flex items-center justify-between py-3">
           
-                      {/* ===== FIXED LOGO (Bada & White Fill) ===== */}
+                      {/* ===== FIXED LOGO (Clear & Visible Tagline) ===== */}
           <Link href="/" className="flex flex-col group cursor-pointer" prefetch={true}>
             <div className="relative flex flex-col items-start">
               
-              {/* 3D ROTATING FAVICON LOGO START (Bada kiya) */}
-              <div className="absolute -left-11 top-1/2 -translate-y-1/2 flex items-center justify-center">
+              {/* 3D ROTATING FAVICON LOGO START */}
+              <div className="absolute -left-8 top-1/2 -translate-y-1/2 flex items-center justify-center">
                 <div className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-logo-3d overflow-hidden">
                   {/* Favicon Image */}
                   <img 
@@ -65,32 +65,30 @@ export const Header = () => {
               </div>
               {/* 3D ROTATING FAVICON LOGO END */}
 
-              {/* Solid White Fill Text (Hollow hata diya) */}
+              {/* Solid White Fill Text - Simple & Clear */}
               <span 
-                className="text-base md:text-lg font-black uppercase tracking-[0.15em] text-white leading-none pl-12"
-                style={{
-                  textShadow: '0 0 10px rgba(255,255,255,0.3)'
-                }}
+                className="text-base md:text-lg font-black uppercase tracking-normal text-white leading-none pl-9"
               >
                 Legal Galaxy
               </span>
               
-              <span className="text-[8px] md:text-[9px] text-gray-300/70 tracking-wider mt-0.5 font-light pl-12">
+              {/* Tagline - Clear, Solid White & Bada */}
+              <span className="text-[10px] md:text-xs text-white/90 tracking-wide mt-0.5 font-medium pl-9">
                  Privacy & AI Governance
               </span>
             </div>
           </Link>
 
-          {/* ===== DESKTOP NAVIGATION ===== */}
-          <nav className="hidden md:flex items-center gap-5">
+          {/* ===== DESKTOP NAVIGATION (Bada & Clear + Hover Effect) ===== */}
+          <nav className="hidden md:flex items-center gap-6">
             {/* Scoreboard (Direct Link) */}
             <Link
               href="/scorecard"
               prefetch={true}
-              className={`text-sm transition-all duration-200 ${ 
+              className={`text-base font-medium transition-all duration-200 ${ 
                 pathname === "/scorecard" 
-                  ? 'text-white font-semibold border-b-2 border-purple-400 pb-1' 
-                  : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-purple-400/50 pb-1'
+                  ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
+                  : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
               }`}
             >
               Scoreboard
@@ -103,14 +101,14 @@ export const Header = () => {
               onMouseLeave={handleMouseLeave}
             >
               <button
-                className={`text-sm transition-all duration-200 flex items-center gap-1 ${ 
+                className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ 
                   openDropdown === 'resources' || resourcesDropdown.some(item => pathname === item.href)
-                    ? 'text-white font-semibold border-b-2 border-purple-400 pb-1'
-                    : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-purple-400/50 pb-1'
+                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1'
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
                 }`}
               >
                 Resources
-                <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'resources' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'resources' ? 'rotate-180' : ''}`} />
               </button>
               
               {openDropdown === 'resources' && (
@@ -120,7 +118,7 @@ export const Header = () => {
                       key={item.href}
                       href={item.href}
                       prefetch={true}
-                      className={`block px-4 py-2.5 text-sm transition-colors ${ 
+                      className={`block px-4 py-2.5 text-base transition-colors ${ 
                         pathname === item.href
                           ? 'text-white bg-purple-500/20'
                           : 'text-gray-300/80 hover:text-white hover:bg-white/10'
@@ -140,14 +138,14 @@ export const Header = () => {
               onMouseLeave={handleMouseLeave}
             >
               <button
-                className={`text-sm transition-all duration-200 flex items-center gap-1 ${ 
+                className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ 
                   openDropdown === 'tools' || toolsDropdown.some(item => pathname === item.href)
-                    ? 'text-white font-semibold border-b-2 border-purple-400 pb-1'
-                    : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-purple-400/50 pb-1'
+                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1'
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
                 }`}
               >
                 Tools
-                <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'tools' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'tools' ? 'rotate-180' : ''}`} />
               </button>
               
               {openDropdown === 'tools' && (
@@ -157,7 +155,7 @@ export const Header = () => {
                       key={item.href}
                       href={item.href}
                       prefetch={true}
-                      className={`block px-4 py-2.5 text-sm transition-colors ${ 
+                      className={`block px-4 py-2.5 text-base transition-colors ${ 
                         pathname === item.href
                           ? 'text-white bg-purple-500/20'
                           : 'text-gray-300/80 hover:text-white hover:bg-white/10'
@@ -177,14 +175,14 @@ export const Header = () => {
               onMouseLeave={handleMouseLeave}
             >
               <button
-                className={`text-sm transition-all duration-200 flex items-center gap-1 ${ 
+                className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ 
                   openDropdown === 'learn' || learnDropdown.some(item => pathname === item.href)
-                    ? 'text-white font-semibold border-b-2 border-purple-400 pb-1'
-                    : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-purple-400/50 pb-1'
+                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1'
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
                 }`}
               >
                 Learn
-                <ChevronDown className={`w-3 h-3 transition-transform ${openDropdown === 'learn' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'learn' ? 'rotate-180' : ''}`} />
               </button>
               
               {openDropdown === 'learn' && (
@@ -195,10 +193,10 @@ export const Header = () => {
                       <div
                         key={item.href}
                         onClick={() => handleLockedClick(item.label)}
-                        className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-400 cursor-not-allowed hover:bg-white/5"
+                        className="flex items-center justify-between px-4 py-2.5 text-base text-gray-400 cursor-not-allowed hover:bg-white/5"
                       >
                         <span>{item.label}</span>
-                        <Lock className="w-3 h-3 text-yellow-500" />
+                        <Lock className="w-4 h-4 text-yellow-500" />
                       </div>
                     ) : (
                       // Open Item (Guides)
@@ -206,7 +204,7 @@ export const Header = () => {
                         key={item.href}
                         href={item.href}
                         prefetch={true}
-                        className={`block px-4 py-2.5 text-sm transition-colors ${ 
+                        className={`block px-4 py-2.5 text-base transition-colors ${ 
                           pathname === item.href
                             ? 'text-white bg-purple-500/20'
                             : 'text-gray-300/80 hover:text-white hover:bg-white/10'
@@ -224,10 +222,10 @@ export const Header = () => {
             <Link
               href="/about"
               prefetch={true}
-              className={`text-sm transition-all duration-200 ${ 
+              className={`text-base font-medium transition-all duration-200 ${ 
                 pathname === "/about" 
-                  ? 'text-white font-semibold border-b-2 border-purple-400 pb-1' 
-                  : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-purple-400/50 pb-1'
+                  ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
+                  : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
               }`}
             >
               About
@@ -237,10 +235,10 @@ export const Header = () => {
             <Link
               href="/contact"
               prefetch={true}
-              className={`text-sm transition-all duration-200 ${ 
+              className={`text-base font-medium transition-all duration-200 ${ 
                 pathname === "/contact" 
-                  ? 'text-white font-semibold border-b-2 border-purple-400 pb-1' 
-                  : 'text-gray-300/80 hover:text-white hover:border-b-2 hover:border-purple-400/50 pb-1'
+                  ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
+                  : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
               }`}
             >
               Contact
