@@ -103,7 +103,7 @@ export default function AboutPage() {
             backgroundImage: "url('/images/home1.jpeg')",
           }}
         >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
         
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
@@ -114,6 +114,44 @@ export default function AboutPage() {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
+        
+        {/* ===== HERO SECTION (START) ===== */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative mb-16 rounded-3xl overflow-hidden border border-white/20 shadow-2xl"
+        >
+          {/* Hero Image Background */}
+          <div className="relative h-[350px] md:h-[450px] w-full">
+            <Image
+              src="/images/about-hero.jpg" // Yahan apni hero image ka path daalo
+              alt="Legal Galaxy Team"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+            
+            {/* Hero Content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-semibold text-blue-400 mb-4">
+                <Sparkles className="w-4 h-4" />
+                About Legal Galaxy
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-2xl mb-4">
+                About Us
+              </h1>
+              <p className="text-gray-200 text-lg max-w-3xl mx-auto drop-shadow-lg">
+                We provide trusted Business Legal Solutions for startups and growth-stage ventures.
+                We make things easier for business that leads to higher productivity.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+        {/* ===== HERO SECTION (END) ===== */}
+
         {/* ===== BACK BUTTON ===== */}
         <Link 
           href="/" 
@@ -122,26 +160,6 @@ export default function AboutPage() {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Home
         </Link>
-
-        {/* ===== HEADER ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-semibold text-blue-400 mb-4">
-            <Sparkles className="w-4 h-4" />
-            About Legal Galaxy
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl mb-4">
-            About Us
-          </h1>
-          <p className="text-gray-200 text-lg max-w-3xl mx-auto drop-shadow-lg">
-            We provide trusted Business Legal Solutions for startups and growth-stage ventures.
-            We make things easier for business that leads to higher productivity.
-          </p>
-        </motion.div>
 
         {/* ===== CEO SECTION ===== */}
         <motion.div 

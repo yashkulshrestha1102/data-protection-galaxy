@@ -46,13 +46,13 @@ export const Header = () => {
         {/* Yahan h-20 hataya aur py-3 lagaya hai taaki content fit rahe */}
         <div className="flex items-center justify-between py-3">
           
-                      {/* ===== FIXED LOGO ===== */}
+                      {/* ===== FIXED LOGO (Bada & White Fill) ===== */}
           <Link href="/" className="flex flex-col group cursor-pointer" prefetch={true}>
             <div className="relative flex flex-col items-start">
               
-              {/* 3D ROTATING FAVICON LOGO START */}
-              <div className="absolute -left-9 top-1/2 -translate-y-1/2 flex items-center justify-center">
-                <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-logo-3d overflow-hidden">
+              {/* 3D ROTATING FAVICON LOGO START (Bada kiya) */}
+              <div className="absolute -left-11 top-1/2 -translate-y-1/2 flex items-center justify-center">
+                <div className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-logo-3d overflow-hidden">
                   {/* Favicon Image */}
                   <img 
                     src="/favicon.ico"
@@ -65,17 +65,17 @@ export const Header = () => {
               </div>
               {/* 3D ROTATING FAVICON LOGO END */}
 
+              {/* Solid White Fill Text (Hollow hata diya) */}
               <span 
-                className="text-base md:text-lg font-black uppercase tracking-[0.15em] text-transparent leading-none pl-11"
+                className="text-base md:text-lg font-black uppercase tracking-[0.15em] text-white leading-none pl-12"
                 style={{
-                  WebkitTextStroke: '1px rgba(255,255,255,0.9)',
-                  textShadow: '0 0 8px rgba(255,255,255,0.2)'
+                  textShadow: '0 0 10px rgba(255,255,255,0.3)'
                 }}
               >
                 Legal Galaxy
               </span>
               
-              <span className="text-[8px] md:text-[9px] text-gray-300/70 tracking-wider mt-0.5 font-light pl-11">
+              <span className="text-[8px] md:text-[9px] text-gray-300/70 tracking-wider mt-0.5 font-light pl-12">
                  Privacy & AI Governance
               </span>
             </div>
@@ -128,7 +128,7 @@ export const Header = () => {
                     >
                       {item.label}
                     </Link>
-                  ))}
+                  ))} 
                 </div>
               )}
             </div>
