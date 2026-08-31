@@ -69,7 +69,7 @@ export const Header = () => {
               </span>
               
               <span className="text-[8px] md:text-[9px] text-gray-300/70 tracking-wider mt-0.5 font-light pl-11">
-                Navigating Privacy & AI Governance
+                 Privacy & AI Governance
               </span>
             </div>
           </Link>
