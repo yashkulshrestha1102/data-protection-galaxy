@@ -5,12 +5,13 @@ import { motion } from "framer-motion";
 import { 
   Shield, Sparkles, Target, BookOpen, FileText, 
   Map, Globe, Award, Users, Rocket, Brain, 
-  Scale, Lock, Zap, ArrowRight
+  Scale, Lock, Zap, ArrowRight, Info
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [stars, setStars] = useState<React.ReactNode[]>([]);
+  const [showLockMessage, setShowLockMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const starElements = [];
@@ -33,6 +34,12 @@ export default function Home() {
     }
     setStars(starElements);
   }, []);
+
+  // Locked section par click hone par message
+  const handleLockedClick = (label: string) => {
+    setShowLockMessage(`${label} section is Coming Soon. Under Maintenance!`);
+    setTimeout(() => setShowLockMessage(null), 3000);
+  };
 
   return (
     <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
@@ -80,47 +87,24 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 2: SCORE PREVIEW ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
-        >
-          {[
-            { icon: Shield, label: "Privacy Score", value: "—", color: "from-blue-500 to-blue-600" },
-            { icon: Brain, label: "AI Governance Score", value: "—", color: "from-purple-500 to-purple-600" },
-            { icon: Award, label: "Digital Trust Score", value: "—", color: "from-amber-500 to-amber-600" },
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white/10 border border-white/20 rounded-2xl p-6 text-center backdrop-blur-sm">
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3`}>
-                <item.icon className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-sm text-gray-300 mb-1">{item.label}</h3>
-              <p className="text-3xl font-bold text-white">{item.value}</p>
-              <p className="text-xs text-gray-500 mt-2">Take the test to get your score</p>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* ===== SECTION 3: GALAXY EXPLORER ===== */}
+        {/* ===== SECTION 3: GALAXY EXPLORER (CENTER ALIGNED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-16"
         >
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 justify-center">
             <Globe className="w-6 h-6 text-purple-400" />
             Explore the Galaxy
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center max-w-4xl mx-auto">
             {[
               { icon: Shield, label: "Privacy", href: "/galaxy?category=privacy", color: "from-blue-500 to-blue-600" },
               { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-purple-500 to-purple-600" },
               { icon: Lock, label: "Digital Trust", href: "/galaxy?category=trust", color: "from-emerald-500 to-emerald-600" },
             ].map((item, idx) => (
-              <Link key={idx} href={item.href} className="group">
+              <Link key={idx} href={item.href} className="group w-full max-w-xs">
                 <div className="bg-white/10 border border-white/20 rounded-xl p-6 text-center hover:bg-white/15 transition-all hover:scale-105">
                   <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
                     <item.icon className="w-6 h-6 text-white" />
@@ -159,7 +143,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 5: TOOLS + CERTIFICATION ===== */}
+        {/* ===== SECTION 5: TOOLS + CERTIFICATION (Lock Added) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -178,16 +162,23 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Certification */}
+          {/* Certification (LOCKED) */}
           <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-2">
-              <Award className="w-5 h-5 text-amber-400" />
+              <div className="relative">
+                <Award className="w-5 h-5 text-amber-400" />
+                <Lock className="w-3 h-3 text-yellow-500 absolute -top-1 -right-1" />
+              </div>
               <h3 className="text-lg font-semibold text-white">Certification</h3>
             </div>
             <p className="text-gray-300 text-sm mb-4">Build expertise. Get certified in Privacy & AI Governance.</p>
-            <Link href="/certificate-course" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium">
-              Explore Certification →
-            </Link>
+            <button 
+              onClick={() => handleLockedClick("Certification")}
+              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium cursor-not-allowed"
+            >
+              <Lock className="w-4 h-4" />
+              Explore Certification (Coming Soon) →
+            </button>
           </div>
         </motion.div>
 
@@ -232,6 +223,14 @@ export default function Home() {
           </Link>
         </motion.div>
       </div>
+
+      {/* ===== LOCKED MESSAGE TOAST (Popup) ===== */}
+      {showLockMessage && (
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-black/90 border border-yellow-500/30 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-xl">
+          <Info className="w-5 h-5 text-yellow-400" />
+          <span className="text-sm font-medium">{showLockMessage}</span>
+        </div>
+      )}
     </main>
   );
 }
