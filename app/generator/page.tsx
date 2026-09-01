@@ -10,8 +10,7 @@ import {
   Mail, Send, Loader2, Eye, Edit, Printer, Save,
   Languages, FileDown, FileJson
 } from 'lucide-react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import { useRouter } from 'next/navigation';
 
 // ===== ALL 15 TOOLS DATA =====
 const privacyTools = [
@@ -443,8 +442,8 @@ const formSteps = [
     fields: [
       { id: 'orgName', label: 'Organisation Name *', type: 'text', placeholder: 'ABC Pvt. Ltd.' },
       { id: 'email', label: 'Contact Email *', type: 'email', placeholder: 'privacy@company.com' },
-      { id: 'address', label: 'Registered Address', type: 'textarea', placeholder: 'Full registered address' },
-      { id: 'industry', label: 'Industry', type: 'select', options: ['Select...', 'Technology', 'Healthcare', 'Finance', 'E-Commerce', 'Education', 'Manufacturing', 'Consulting', 'Other'] },
+      { id: 'address', label: 'Registered Address (Optional)', type: 'textarea', placeholder: 'Full registered address' },
+      { id: 'industry', label: 'Industry (Optional)', type: 'select', options: ['Select...', 'Technology', 'Healthcare', 'Finance', 'E-Commerce', 'Education', 'Manufacturing', 'Consulting', 'Other'] },
     ]
   },
   {
@@ -479,12 +478,12 @@ const formSteps = [
     fields: [
       { 
         id: 'thirdParties', 
-        label: 'Third Parties Data is Shared With', 
+        label: 'Third Parties Data is Shared With (Optional)', 
         type: 'checkbox-group',
         options: ['Cloud Service Providers', 'Payment Processors', 'Analytics Providers', 'Marketing Platforms', 'Legal / Regulatory Bodies', 'Group Companies']
       },
       { id: 'transferOutsideIndia', label: 'Do you transfer data outside India? *', type: 'radio', options: ['Yes', 'No'] },
-      { id: 'transferCountries', label: 'Countries Data is Transferred To', type: 'text', placeholder: 'e.g., USA, EU, Singapore', conditional: 'transferOutsideIndia' }
+      { id: 'transferCountries', label: 'Countries Data is Transferred To (Optional)', type: 'text', placeholder: 'e.g., USA, EU, Singapore', conditional: 'transferOutsideIndia' }
     ]
   },
   {
@@ -492,10 +491,10 @@ const formSteps = [
     title: 'Data Protection Officer',
     description: 'Contact details for data protection queries',
     fields: [
-      { id: 'dpoName', label: 'Data Protection Officer / Contact Person *', type: 'text', placeholder: 'Name of DPO' },
-      { id: 'dpoEmail', label: 'Privacy Contact Email *', type: 'email', placeholder: 'privacy@example.com' },
-      { id: 'grievanceName', label: 'Grievance Officer Name *', type: 'text', placeholder: 'Name of Grievance Officer' },
-      { id: 'grievanceEmail', label: 'Grievance Officer Email *', type: 'email', placeholder: 'grievance@example.com' },
+      { id: 'dpoName', label: 'Data Protection Officer / Contact Person (Optional)', type: 'text', placeholder: 'Name of DPO' },
+      { id: 'dpoEmail', label: 'Privacy Contact Email (Optional)', type: 'email', placeholder: 'privacy@example.com' },
+      { id: 'grievanceName', label: 'Grievance Officer Name (Optional)', type: 'text', placeholder: 'Name of Grievance Officer' },
+      { id: 'grievanceEmail', label: 'Grievance Officer Email (Optional)', type: 'email', placeholder: 'grievance@example.com' },
     ]
   },
   {
@@ -509,7 +508,7 @@ const formSteps = [
         type: 'checkbox-group',
         options: ['Encryption (at rest & in transit)', 'Access Controls & RBAC', 'Regular Security Audits', 'Employee Training', 'Incident Response Plan', 'Data Backup & Recovery']
       },
-      { id: 'retentionPeriod', label: 'Default Data Retention Period *', type: 'select', options: ['Select...', '1 Year', '2 Years', '3 Years', '5 Years', '7 Years', '10 Years', 'As per legal requirement'] },
+      { id: 'retentionPeriod', label: 'Default Data Retention Period (Optional)', type: 'select', options: ['Select...', '1 Year', '2 Years', '3 Years', '5 Years', '7 Years', '10 Years', 'As per legal requirement'] },
     ]
   },
   {
@@ -608,21 +607,6 @@ const FormField = ({ field, value, onChange }: any) => {
   }
 };
 
-const handleExportPDF = async () => {
-  const content = document.getElementById('preview-content');
-  if (!content) return;
-  
-  const canvas = await html2canvas(content);
-  const imgData = canvas.toDataURL('image/png');
-  const pdf = new jsPDF('p', 'mm', 'a4');
-  pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
-  pdf.save('document.pdf');
-};
-
-
-
-
-
 // ===== MAIN PAGE =====
 export default function GeneratorPage() {
   const [activeTab, setActiveTab] = useState<'privacy' | 'ai'>('privacy');
@@ -639,6 +623,7 @@ export default function GeneratorPage() {
   const [stars, setStars] = useState<React.ReactNode[]>([]);
   const [loading, setLoading] = useState(false);
   const [savedDrafts, setSavedDrafts] = useState<any[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const starElements = [];
@@ -697,15 +682,24 @@ export default function GeneratorPage() {
     }
   };
 
+  // ===== SMART VALIDATION: Sirf * wali fields mandatory hain =====
   const isStepComplete = () => {
     const step = formSteps[currentStep];
     if (!step.fields.length) return true;
+    
     return step.fields.every(field => {
+      // Conditional field handling
       if (field.conditional) {
         const condValue = formData[field.conditional];
-        if (condValue === 'No') return true;
+        if (condValue === 'No') return true; // Agar condition 'No' hai, toh field skip
       }
-      return formData[field.id] !== undefined && formData[field.id] !== '';
+      
+      // Sirf required (label mein * hai) fields check karo
+      const isRequired = field.label.includes('*');
+      if (!isRequired) return true; // Optional fields ke liye hamesha true
+      
+      return formData[field.id] !== undefined && formData[field.id] !== '' && 
+             !(Array.isArray(formData[field.id]) && formData[field.id].length === 0);
     });
   };
 
@@ -771,6 +765,17 @@ export default function GeneratorPage() {
   const handleSaveDraft = () => {
     localStorage.setItem('generator_draft', JSON.stringify({ tool: selectedTool, formData, timestamp: new Date().toISOString() }));
     alert('✅ Draft saved!');
+  };
+
+  const handleBackToTemplates = () => {
+    // Method 1: selectedTool ko null karke wapas tool selection par le jao
+    setSelectedTool(null);
+    setCurrentStep(0);
+    setFormData({});
+    setGeneratedContent('');
+    
+    // Method 2 (Optional): Agar URL bhi change karna hai, toh router use karo
+    router.push('/generator');
   };
 
   // ===== TOOL SELECTION =====
@@ -879,10 +884,13 @@ export default function GeneratorPage() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex items-center justify-between mb-6">
-          <Link href="/generator" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+          <button
+            onClick={handleBackToTemplates}
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+          >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Templates
-          </Link>
+          </button>
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-400">
               {selectedToolData?.label}
@@ -905,7 +913,7 @@ export default function GeneratorPage() {
               </div>
               <div className="flex gap-2">
                 <button
-                  onClick={() => setSelectedTool(null)}
+                  onClick={handleBackToTemplates}
                   className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
                   Change Template
