@@ -364,8 +364,84 @@ Assessments shall be reviewed annually and upon significant changes.
 
 export async function POST(request: Request) {
   try {
-    const { email, tool, type, name, phone, company, formData } = await request.json();
+    const body = await request.json();
+    console.log('📥 1. Received body:', body);
 
+    const { source, email, tool, type, name, phone, company, formData } = body;
+
+    // ============================================================
+    // ===== CASE 1: DEMO FORM =====
+    // ============================================================
+    if (source === 'demo') {
+      const { firstName, lastName, email, company, jobTitle, phone, companySize, industry, challenges, consent } = body;
+
+      if (!email || !firstName || !lastName) {
+        return NextResponse.json(
+          { success: false, message: 'Required fields missing' },
+          { status: 400 }
+        );
+      }
+
+      // ===== SAVE TO GOOGLE SHEETS =====
+      try {
+        await sheets.spreadsheets.values.append({
+          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          range: 'Sheet1!A:K',
+          valueInputOption: 'USER_ENTERED',
+          requestBody: {
+            values: [[
+              new Date().toISOString(),
+              'Demo Request',
+              firstName,
+              lastName,
+              email,
+              company,
+              jobTitle,
+              phone,
+              companySize,
+              industry,
+              challenges || '',
+              consent ? 'Yes' : 'No'
+            ]],
+          },
+        });
+        console.log('✅ Demo data saved to Google Sheets');
+      } catch (sheetError) {
+        console.error('❌ Sheet error:', sheetError);
+      }
+
+      // ===== SEND NOTIFICATION EMAIL =====
+      try {
+        await resend.emails.send({
+          from: 'Legal Galaxy <office@businezexcellence.com>',
+          to: ['yash.kulshrestha@businexcellence.com'],
+          subject: '📋 New Demo Request',
+          html: `
+            <h1>New Demo Request</h1>
+            <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+            <p><strong>Job Title:</strong> ${jobTitle || 'Not provided'}</p>
+            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Company Size:</strong> ${companySize || 'Not provided'}</p>
+            <p><strong>Industry:</strong> ${industry || 'Not provided'}</p>
+            <p><strong>Challenges:</strong> ${challenges || 'Not specified'}</p>
+          `,
+        });
+        console.log('✅ Notification email sent');
+      } catch (emailError) {
+        console.error('❌ Email error:', emailError);
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: 'Demo request submitted successfully!'
+      });
+    }
+
+    // ============================================================
+    // ===== CASE 2: GENERATOR FORM (Original) =====
+    // ============================================================
     if (!email) {
       return NextResponse.json(
         { success: false, message: 'Email is required' },

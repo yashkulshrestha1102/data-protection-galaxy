@@ -243,6 +243,16 @@ export const Header = () => {
             >
               Contact
             </Link>
+
+
+
+            
+<Link
+  href="#book-demo"
+  className="px-4 py-2 rounded-lg bg-white text-black font-medium text-sm hover:bg-white/80 transition-all"
+>
+  Book a Demo
+</Link>
           </nav>
 
           {/* ===== MOBILE MENU BUTTON ===== */}

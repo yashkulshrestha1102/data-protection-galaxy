@@ -5,13 +5,29 @@ import { motion } from "framer-motion";
 import { 
   Shield, Sparkles, Target, BookOpen, FileText, 
   Map, Globe, Award, Users, Rocket, Brain, 
-  Scale, Lock, Zap, ArrowRight, Info
+  Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [stars, setStars] = useState<React.ReactNode[]>([]);
   const [showLockMessage, setShowLockMessage] = useState<string | null>(null);
+
+  // ===== DEMO FORM STATE =====
+  const [demoForm, setDemoForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    jobTitle: '',
+    phone: '',
+    companySize: '',
+    industry: '',
+    challenges: '',
+    consent: false
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [demoSubmitted, setDemoSubmitted] = useState(false);
 
   useEffect(() => {
     const starElements = [];
@@ -41,6 +57,55 @@ export default function Home() {
     setTimeout(() => setShowLockMessage(null), 3000);
   };
 
+  // ===== DEMO FORM SUBMIT HANDLER =====
+  const handleDemoSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...demoForm, source: 'demo' }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setDemoSubmitted(true);
+        setDemoForm({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          jobTitle: '',
+          phone: '',
+          companySize: '',
+          industry: '',
+          challenges: '',
+          consent: false
+        });
+        setTimeout(() => setDemoSubmitted(false), 5000);
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to submit. Please try again.');
+    }
+    setIsSubmitting(false);
+  };
+
+  // ===== DEMO FORM CHANGE HANDLER =====
+  const handleDemoChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked;
+      setDemoForm({ ...demoForm, [name]: checked });
+    } else {
+      setDemoForm({ ...demoForm, [name]: value });
+    }
+  };
+
   return (
     <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
       {/* ===== BACKGROUND ===== */}
@@ -68,7 +133,8 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-gray-200 text-lg max-w-2xl mx-auto drop-shadow-lg">
-          Take our quick assessment and discover your organisation's DPDPA readiness.          </p>
+            Take our quick assessment and discover your organisation's DPDPA readiness.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link
               href="/scorecard"
@@ -87,7 +153,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 3: GALAXY EXPLORER (CENTER ALIGNED) ===== */}
+        {/* ===== SECTION 3: GALAXY EXPLORER ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -143,7 +209,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 5: TOOLS + CERTIFICATION (Lock Added) ===== */}
+        {/* ===== SECTION 5: TOOLS + CERTIFICATION ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -179,6 +245,206 @@ export default function Home() {
               <Lock className="w-4 h-4" />
               Explore Certification (Coming Soon) →
             </button>
+          </div>
+        </motion.div>
+
+        {/* ===== BOOK A DEMO SECTION ===== */}
+        <motion.div 
+          id="book-demo"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
+          className="mt-16 mb-16 bg-black border border-white/10 rounded-2xl p-8 md:p-10"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            
+            {/* Left - Text */}
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white/70">
+                <Calendar className="w-4 h-4" />
+                Book a Demo
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">
+                Talk to Our <span className="text-white/80">DPDP Act Experts</span>
+              </h2>
+              <p className="text-white/60 text-sm">
+                Fill in your details and a compliance expert will be in touch within one business day.
+              </p>
+              <div className="flex flex-col gap-2 text-xs text-white/40">
+                <span className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  Responding within 1 business day
+                </span>
+                <span className="flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  Indian compliance experts
+                </span>
+              </div>
+            </div>
+
+            {/* Right - Form with White Text */}
+            <div className="bg-black/50 border border-white/10 rounded-xl p-6">
+              {demoSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="text-4xl mb-4">✅</div>
+                  <h3 className="text-xl font-semibold text-white mb-2">Demo Request Submitted!</h3>
+                  <p className="text-white/60 text-sm">Our team will contact you within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleDemoSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs text-white/60 mb-1">First Name *</label>
+                      <input
+                        type="text"
+                        name="firstName"
+                        value={demoForm.firstName}
+                        onChange={handleDemoChange}
+                        placeholder="Your first name"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-white/60 mb-1">Last Name *</label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        value={demoForm.lastName}
+                        onChange={handleDemoChange}
+                        placeholder="Your last name"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-white/60 mb-1">Work Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={demoForm.email}
+                      onChange={handleDemoChange}
+                      placeholder="you@company.com"
+                      className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                      required
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs text-white/60 mb-1">Company *</label>
+                      <input
+                        type="text"
+                        name="company"
+                        value={demoForm.company}
+                        onChange={handleDemoChange}
+                        placeholder="Your company name"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-white/60 mb-1">Job Title</label>
+                      <input
+                        type="text"
+                        name="jobTitle"
+                        value={demoForm.jobTitle}
+                        onChange={handleDemoChange}
+                        placeholder="e.g. Privacy Officer"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs text-white/60 mb-1">Phone (India) *</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={demoForm.phone}
+                        onChange={handleDemoChange}
+                        placeholder="+91 98765 43210"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-white/60 mb-1">Company Size *</label>
+                      <select
+                        name="companySize"
+                        value={demoForm.companySize}
+                        onChange={handleDemoChange}
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+                        required
+                      >
+                        <option className="bg-black text-white" value="">Select company size</option>
+                        <option className="bg-black text-white" value="1-50">1–50 employees</option>
+                        <option className="bg-black text-white" value="51-200">51–200 employees</option>
+                        <option className="bg-black text-white" value="201-1000">201–1,000 employees</option>
+                        <option className="bg-black text-white" value="1001-5000">1,001–5,000 employees</option>
+                        <option className="bg-black text-white" value="5000+">5,000+ employees</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-white/60 mb-1">Industry *</label>
+                    <select
+                      name="industry"
+                      value={demoForm.industry}
+                      onChange={handleDemoChange}
+                      className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+                      required
+                    >
+                      <option className="bg-black text-white" value="">Select your industry</option>
+                      <option className="bg-black text-white" value="Financial Services">Financial Services</option>
+                      <option className="bg-black text-white" value="Healthcare">Healthcare</option>
+                      <option className="bg-black text-white" value="Technology">Technology</option>
+                      <option className="bg-black text-white" value="Retail">Retail & E-commerce</option>
+                      <option className="bg-black text-white" value="Manufacturing">Manufacturing</option>
+                      <option className="bg-black text-white" value="Education">Education</option>
+                      <option className="bg-black text-white" value="Government">Government</option>
+                      <option className="bg-black text-white" value="Media">Media & Entertainment</option>
+                      <option className="bg-black text-white" value="Professional Services">Professional Services</option>
+                      <option className="bg-black text-white" value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs text-white/60 mb-1">What are your biggest DPDP compliance challenges?</label>
+                    <textarea
+                      name="challenges"
+                      value={demoForm.challenges}
+                      onChange={handleDemoChange}
+                      placeholder="e.g. Need to implement consent management for multiple languages..."
+                      rows={2}
+                      className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 resize-none"
+                    />
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <input
+                      type="checkbox"
+                      name="consent"
+                      checked={demoForm.consent}
+                      onChange={handleDemoChange}
+                      className="w-4 h-4 mt-0.5 accent-white/20 rounded"
+                      required
+                    />
+                    <label className="text-xs text-white/40">
+                      I agree to Legal Galaxy's Privacy Policy and consent to being contacted about my enquiry.
+                    </label>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/80 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                  </button>
+                  <p className="text-center text-[10px] text-white/20">
+                    Responding within 1 business day · Indian compliance experts
+                  </p>
+                </form>
+              )}
+            </div>
           </div>
         </motion.div>
 
@@ -224,7 +490,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* ===== LOCKED MESSAGE TOAST (Popup) ===== */}
+      {/* ===== LOCKED MESSAGE TOAST ===== */}
       {showLockMessage && (
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-black/90 border border-yellow-500/30 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-xl">
           <Info className="w-5 h-5 text-yellow-400" />
