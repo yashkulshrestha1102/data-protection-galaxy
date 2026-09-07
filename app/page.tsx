@@ -141,7 +141,7 @@ export default function Home() {
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-purple-500/30"
             >
               <Target className="w-5 h-5" />
-              TAKE THE TEST →
+              TAKE THE Free TEST →
             </Link>
             <Link
               href="/galaxy"
@@ -153,70 +153,8 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 3: GALAXY EXPLORER ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-16"
-        >
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 justify-center">
-            <Globe className="w-6 h-6 text-purple-400" />
-            Explore the Galaxy
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center max-w-4xl mx-auto">
-            {[
-              { icon: Shield, label: "Privacy", href: "/galaxy?category=privacy", color: "from-blue-500 to-blue-600" },
-              { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-purple-500 to-purple-600" },
-              { icon: Lock, label: "Digital Trust", href: "/galaxy?category=trust", color: "from-emerald-500 to-emerald-600" },
-            ].map((item, idx) => (
-              <Link key={idx} href={item.href} className="group w-full max-w-xs">
-                <div className="bg-white/10 border border-white/20 rounded-xl p-6 text-center hover:bg-white/15 transition-all hover:scale-105">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
-                    <item.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-white font-medium">{item.label}</h3>
-                  <p className="text-xs text-gray-400 mt-1">Explore →</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
 
-        {/* ===== SECTION 4: RESOURCES ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-16"
-        >
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
-            Resources
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: Globe, label: "Galaxy", href: "/galaxy" },
-              { icon: FileText, label: "Insights", href: "/insight" },
-              { icon: BookOpen, label: "Guides", href: "/resources/guides" },
-              { icon: Map, label: "Map", href: "/map" },
-            ].map((item, idx) => (
-              <Link key={idx} href={item.href} className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-all hover:scale-105">
-                <item.icon className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                <span className="text-sm text-white">{item.label}</span>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== SECTION 5: TOOLS + CERTIFICATION ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
-        >
-          {/* Generator */}
+{/* Generator */}
           <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-2">
               <Zap className="w-5 h-5 text-purple-400" />
@@ -228,27 +166,9 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Certification (LOCKED) */}
-          <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="relative">
-                <Award className="w-5 h-5 text-amber-400" />
-                <Lock className="w-3 h-3 text-yellow-500 absolute -top-1 -right-1" />
-              </div>
-              <h3 className="text-lg font-semibold text-white">Certification</h3>
-            </div>
-            <p className="text-gray-300 text-sm mb-4">Build expertise. Get certified in Privacy & AI Governance.</p>
-            <button 
-              onClick={() => handleLockedClick("Certification")}
-              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium cursor-not-allowed"
-            >
-              <Lock className="w-4 h-4" />
-              Explore Certification (Coming Soon) →
-            </button>
-          </div>
-        </motion.div>
 
-        {/* ===== BOOK A DEMO SECTION ===== */}
+
+{/* ===== BOOK A DEMO SECTION ===== */}
         <motion.div 
           id="book-demo"
           initial={{ opacity: 0, y: 20 }}
@@ -447,6 +367,94 @@ export default function Home() {
             </div>
           </div>
         </motion.div>
+
+
+        {/* ===== SECTION 3: GALAXY EXPLORER ===== */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 justify-center">
+            <Globe className="w-6 h-6 text-purple-400" />
+            Explore the Galaxy
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center max-w-4xl mx-auto">
+            {[
+              { icon: Shield, label: "Privacy", href: "/galaxy?category=privacy", color: "from-blue-500 to-blue-600" },
+              { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-purple-500 to-purple-600" },
+              { icon: Lock, label: "Digital Trust", href: "/galaxy?category=trust", color: "from-emerald-500 to-emerald-600" },
+            ].map((item, idx) => (
+              <Link key={idx} href={item.href} className="group w-full max-w-xs">
+                <div className="bg-white/10 border border-white/20 rounded-xl p-6 text-center hover:bg-white/15 transition-all hover:scale-105">
+                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
+                    <item.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-white font-medium">{item.label}</h3>
+                  <p className="text-xs text-gray-400 mt-1">Explore →</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ===== SECTION 4: RESOURCES ===== */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <BookOpen className="w-6 h-6 text-purple-400" />
+            Resources
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: Globe, label: "Galaxy", href: "/galaxy" },
+              { icon: FileText, label: "Insights", href: "/insight" },
+              { icon: BookOpen, label: "Guides", href: "/resources/guides" },
+              { icon: Map, label: "Map", href: "/map" },
+            ].map((item, idx) => (
+              <Link key={idx} href={item.href} className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-all hover:scale-105">
+                <item.icon className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+                <span className="text-sm text-white">{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ===== SECTION 5: TOOLS + CERTIFICATION ===== */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
+        >
+          
+
+          {/* Certification (LOCKED) */}
+          <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="relative">
+                <Award className="w-5 h-5 text-amber-400" />
+                <Lock className="w-3 h-3 text-yellow-500 absolute -top-1 -right-1" />
+              </div>
+              <h3 className="text-lg font-semibold text-white">Certification</h3>
+            </div>
+            <p className="text-gray-300 text-sm mb-4">Build expertise. Get certified in Privacy & AI Governance.</p>
+            <button 
+              onClick={() => handleLockedClick("Certification")}
+              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium cursor-not-allowed"
+            >
+              <Lock className="w-4 h-4" />
+              Explore Certification (Coming Soon) →
+            </button>
+          </div>
+        </motion.div>
+
+        
 
         {/* ===== SECTION 6: ABOUT ===== */}
         <motion.div 
