@@ -206,7 +206,7 @@ const QuestionCard = ({ question, value, onChange }: any) => {
 };
 
 // ============================================================
-// ===== RESULT SECTION =====
+// ===== RESULT SECTION WITH BACKGROUND =====
 // ============================================================
 const ResultSection = ({ answers, onReset }: any) => {
   const [showEmailForm, setShowEmailForm] = useState(true);
@@ -254,10 +254,22 @@ const ResultSection = ({ answers, onReset }: any) => {
     setIsSubmitting(false);
   };
 
+  // ===== SUBMITTED STATE =====
   if (isSubmitted) {
     return (
-      <div className="pt-28 md:pt-32 pb-16">
-        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center">
+      <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/home1.jpeg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
+        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center relative z-10">
           <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-2">Report Sent! ✅</h2>
           <p className="text-gray-300 mb-4">
@@ -279,14 +291,26 @@ const ResultSection = ({ answers, onReset }: any) => {
             </Link>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 
+  // ===== EMAIL FORM STATE =====
   if (showEmailForm) {
     return (
-      <div className="pt-28 md:pt-32 pb-16">
-        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
+      <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/home1.jpeg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
+        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8 relative z-10">
           <div className="text-center mb-6">
             <div className="text-6xl font-bold text-white mb-2">{score}%</div>
             <div className="flex items-center justify-center gap-3">
@@ -403,13 +427,25 @@ const ResultSection = ({ answers, onReset }: any) => {
             </form>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 
+  // ===== INITIAL RESULT STATE =====
   return (
-    <div className="pt-28 md:pt-32 pb-16">
-      <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
+    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/home1.jpeg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+      </div>
+      <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8 relative z-10">
         <div className="text-center mb-8">
           <div className="text-6xl font-bold text-white mb-2">{score}%</div>
           <div className="flex items-center justify-center gap-3">
@@ -459,12 +495,12 @@ const ResultSection = ({ answers, onReset }: any) => {
           </button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
 // ============================================================
-// ===== MAIN PAGE - FIXED BACKGROUND =====
+// ===== MAIN PAGE =====
 // ============================================================
 export default function ScorecardPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -543,7 +579,7 @@ export default function ScorecardPage() {
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
       
-      {/* ✅ BACKGROUND - Sirf Next.js Image (Recommended) */}
+      {/* Background */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/home1.jpeg"
