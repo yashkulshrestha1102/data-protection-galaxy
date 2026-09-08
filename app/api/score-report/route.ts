@@ -2,8 +2,6 @@
 
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { renderToBuffer } from '@react-pdf/renderer';
-import { PDFReport } from '@/components/generator/PDFReport';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -121,23 +119,28 @@ export async function POST(request: Request) {
     const actions = getRecommendedActions(baseScore);
     const actionPlan = getActionPlan();
 
+    // ===== PDF DATA =====
+    const pdfData = {
+      company: company || 'Not Provided',
+      score: baseScore,
+      riskLevel: riskLevel || 'High',
+      categoryScores: categories,
+      risks: risks,
+      gaps: gaps,
+      roadmap: roadmap,
+      frameworks: frameworks,
+      actions: actions,
+      actionPlan: actionPlan,
+      maturity: maturity,
+    };
+
+    // ===== DYNAMIC IMPORT - @react-pdf/renderer (Server-side) =====
+    const { renderToBuffer } = await import('@react-pdf/renderer');
+    const { PDFReport } = await import('@/components/generator/PDFReport');
+
     // ===== PDF GENERATE KARO =====
     const pdfBuffer = await renderToBuffer(
-      <PDFReport 
-        data={{
-          company: company || 'Not Provided',
-          score: baseScore,
-          riskLevel: riskLevel || 'High',
-          categoryScores: categories,
-          risks: risks,
-          gaps: gaps,
-          roadmap: roadmap,
-          frameworks: frameworks,
-          actions: actions,
-          actionPlan: actionPlan,
-          maturity: maturity,
-        }}
-      />
+      <PDFReport data={pdfData} />
     );
 
     // ===== PDF KO BASE64 MEIN CONVERT KARO =====
