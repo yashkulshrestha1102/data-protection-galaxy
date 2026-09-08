@@ -11,7 +11,9 @@ import {
 } from 'lucide-react';
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 
-// ===== CHECKBOX QUESTION =====
+// ============================================================
+// ===== CHECKBOX QUESTION WITH SELECT ALL =====
+// ============================================================
 const CheckboxQuestion = ({ question, value, onChange }: any) => {
   const handleToggle = (optionId: string) => {
     const current = value || [];
@@ -21,23 +23,87 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
     onChange(newValue);
   };
 
+  // ✅ Select All toggle function
+  const handleSelectAll = (option: any) => {
+    const current = value || [];
+    const allItemIds = option.items || [];
+    
+    // Check if all items are selected
+    const allSelected = allItemIds.length > 0 && allItemIds.every((item: string) => current.includes(item));
+    
+    if (allSelected) {
+      // Deselect all items of this option
+      const newValue = current.filter((id: string) => !allItemIds.includes(id));
+      onChange(newValue);
+    } else {
+      // Select all items of this option
+      const newValue = [...current];
+      allItemIds.forEach((item: string) => {
+        if (!newValue.includes(item)) {
+          newValue.push(item);
+        }
+      });
+      onChange(newValue);
+    }
+  };
+
+  // Check if all items of an option are selected
+  const isAllSelected = (option: any) => {
+    const current = value || [];
+    const allItemIds = option.items || [];
+    return allItemIds.length > 0 && allItemIds.every((item: string) => current.includes(item));
+  };
+
   return (
     <div className="space-y-3">
       {question.options.map((option: any) => (
         <div key={option.id} className="space-y-1">
-          <label className="flex items-start gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={(value || []).includes(option.id)}
-              onChange={() => handleToggle(option.id)}
-              className="w-4 h-4 mt-0.5 text-purple-500 focus:ring-purple-500 rounded"
-            />
-            <span className="text-white text-sm font-medium">{option.label}</span>
-          </label>
+          {/* ✅ Option Label with Select All */}
+          <div className="flex items-center gap-2">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={(value || []).includes(option.id)}
+                onChange={() => handleToggle(option.id)}
+                className="w-4 h-4 mt-0.5 text-purple-500 focus:ring-purple-500 rounded"
+              />
+              <span className="text-white text-sm font-medium">{option.label}</span>
+            </label>
+            
+            {/* ✅ Select All Button for items */}
+            {option.items && option.items.length > 0 && (
+              <button
+                onClick={() => handleSelectAll(option)}
+                className={`ml-2 px-2 py-0.5 rounded text-xs font-medium transition-all ${
+                  isAllSelected(option)
+                    ? 'bg-purple-600 text-white border border-purple-400 shadow-lg shadow-purple-500/30'
+                    : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
+                }`}
+              >
+                {isAllSelected(option) ? 'Deselect All' : 'Select All'}
+              </button>
+            )}
+          </div>
+          
+          {/* ✅ Individual Items */}
           {option.items && (
             <div className="ml-6 space-y-0.5">
               {option.items.map((item: string, idx: number) => (
-                <p key={idx} className="text-xs text-gray-400">• {item}</p>
+                <label key={idx} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={(value || []).includes(item)}
+                    onChange={() => {
+                      const current = value || [];
+                      const newValue = current.includes(item)
+                        ? current.filter((id: string) => id !== item)
+                        : [...current, item];
+                      onChange(newValue);
+                    }}
+                    className="w-3.5 h-3.5 text-purple-500 focus:ring-purple-500 rounded"
+                  />
+                  <span className="text-xs text-gray-300">• {item}</span>
+                </label>
               ))}
             </div>
           )}
@@ -47,7 +113,9 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
   );
 };
 
+// ============================================================
 // ===== RADIO GROUP QUESTION =====
+// ============================================================
 const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   const handleChange = (subId: string, val: string) => {
     const current = value || {};
@@ -67,9 +135,9 @@ const RadioGroupQuestion = ({ question, value, onChange }: any) => {
                 className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
                   (value || {})[sub.id] === option
                     ? option === 'Yes' 
-                      ? 'bg-green-500/30 text-green-400 border border-green-500/50'
-                      : 'bg-yellow-500/30 text-yellow-400 border border-yellow-500/50'
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                      ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
+                      : 'bg-yellow-700 text-white border border-yellow-500 shadow-lg shadow-yellow-500/30'
+                    : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
                 }`}
               >
                 {option}
@@ -82,7 +150,9 @@ const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   );
 };
 
+// ============================================================
 // ===== YES/NO QUESTION =====
+// ============================================================
 const YesNoQuestion = ({ question, value, onChange }: any) => (
   <div className="flex gap-4">
     {['Yes', 'No'].map((option) => (
@@ -92,9 +162,9 @@ const YesNoQuestion = ({ question, value, onChange }: any) => (
         className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
           value === option
             ? option === 'Yes'
-              ? 'bg-green-500/30 text-green-400 border border-green-500/50'
-              : 'bg-red-500/30 text-red-400 border border-red-500/50'
-            : 'bg-white/5 text-gray-400 hover:bg-white/10'
+              ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
+              : 'bg-red-700 text-white border border-red-500 shadow-lg shadow-red-500/30'
+            : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
         }`}
       >
         {option}
@@ -103,7 +173,9 @@ const YesNoQuestion = ({ question, value, onChange }: any) => (
   </div>
 );
 
+// ============================================================
 // ===== CONDITIONAL QUESTION =====
+// ============================================================
 const ConditionalQuestion = ({ question, value, onChange }: any) => {
   const mainValue = value?.main || '';
   const subValue = value?.sub || {};
@@ -126,9 +198,9 @@ const ConditionalQuestion = ({ question, value, onChange }: any) => {
             className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
               mainValue === option
                 ? option === 'Yes'
-                  ? 'bg-green-500/30 text-green-400 border border-green-500/50'
-                  : 'bg-red-500/30 text-red-400 border border-red-500/50'
-                : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                  ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
+                  : 'bg-red-700 text-white border border-red-500 shadow-lg shadow-red-500/30'
+                : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
             }`}
           >
             {option}
@@ -148,9 +220,9 @@ const ConditionalQuestion = ({ question, value, onChange }: any) => {
                     className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
                       (subValue || {})[sub.id] === option
                         ? option === 'Yes'
-                          ? 'bg-green-500/30 text-green-400 border border-green-500/50'
-                          : 'bg-yellow-500/30 text-yellow-400 border border-yellow-500/50'
-                        : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                          ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
+                          : 'bg-yellow-700 text-white border border-yellow-500 shadow-lg shadow-yellow-500/30'
+                        : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
                     }`}
                   >
                     {option}
@@ -165,7 +237,9 @@ const ConditionalQuestion = ({ question, value, onChange }: any) => {
   );
 };
 
+// ============================================================
 // ===== QUESTION CARD =====
+// ============================================================
 const QuestionCard = ({ question, value, onChange }: any) => {
   let content;
   
@@ -257,7 +331,6 @@ const ResultSection = ({ answers, onReset }: any) => {
   if (isSubmitted) {
     return (
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        {/* ✅ CSS BACKGROUND - No zoom, original quality */}
         <div 
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
           style={{ 
@@ -298,7 +371,6 @@ const ResultSection = ({ answers, onReset }: any) => {
   if (showEmailForm) {
     return (
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        {/* ✅ CSS BACKGROUND - No zoom, original quality */}
         <div 
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
           style={{ 
@@ -433,7 +505,6 @@ const ResultSection = ({ answers, onReset }: any) => {
   // ===== INITIAL RESULT STATE =====
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ✅ CSS BACKGROUND - No zoom, original quality */}
       <div 
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
         style={{ 
