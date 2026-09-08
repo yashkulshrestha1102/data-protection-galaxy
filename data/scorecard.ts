@@ -1,6 +1,6 @@
 // data/scorecard.ts
 
-import { Shield, Users, Database, Globe, Building, AlertCircle, Scale, Lock, FileText, UserCheck, Clipboard } from 'lucide-react';
+import { Shield, Users, Database, Globe, Building, AlertCircle, Scale, Lock, FileText, UserCheck, Clipboard, Sparkles} from 'lucide-react';
 
 // ===== TYPE DEFINITIONS =====
 type BaseQuestion = {
@@ -266,7 +266,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
     {
       id: 'sdf',
       name: 'SDF Requirements',
-      icon: 'Star',
+      icon: Sparkles,
       questions: [
         {
           id: 12,

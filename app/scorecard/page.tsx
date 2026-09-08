@@ -12,6 +12,141 @@ import {
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 
 // ============================================================
+// ===== 3D PIE CHART COMPONENT (SECTOR STYLE) =====
+// ============================================================
+const PieChart3D = ({ answered, total }: { answered: number; total: number }) => {
+  const percentage = Math.round((answered / total) * 100);
+  const unanswered = total - answered;
+  const answeredAngle = (answered / total) * 360;
+  const unansweredAngle = (unanswered / total) * 360;
+
+  return (
+    <div className="flex flex-col items-center">
+      {/* 3D Pie Chart Container */}
+      <div 
+        className="relative w-56 h-56"
+        style={{
+          perspective: '600px',
+          transformStyle: 'preserve-3d'
+        }}
+      >
+        {/* Shadow/Base */}
+        <div 
+          className="absolute inset-0 rounded-full blur-2xl opacity-40"
+          style={{
+            background: 'radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%)',
+            transform: 'rotateX(70deg) translateZ(-40px) scale(0.8)',
+          }}
+        />
+        
+        {/* 3D Pie Chart */}
+        <div 
+          className="relative w-full h-full"
+          style={{
+            transform: 'rotateX(20deg) rotateY(-15deg) rotateZ(-5deg)',
+            transformStyle: 'preserve-3d',
+          }}
+        >
+          {/* SVG Pie Chart with 3D effect */}
+          <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90 drop-shadow-2xl">
+            {/* Background */}
+            <circle
+              cx="50"
+              cy="50"
+              r="40"
+              fill="none"
+              stroke="#1e1e32"
+              strokeWidth="22"
+              className="drop-shadow-lg"
+            />
+            
+            {/* Answered portion */}
+            {answered > 0 && (
+              <>
+                {/* Main slice */}
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  fill="none"
+                  stroke="url(#pieGradient3D)"
+                  strokeWidth="22"
+                  strokeDasharray={`${answeredAngle} ${360 - answeredAngle}`}
+                  strokeLinecap="round"
+                  className="transition-all duration-1000 ease-out"
+                  style={{
+                    filter: 'drop-shadow(0 8px 25px rgba(139, 92, 246, 0.5)) drop-shadow(0 2px 10px rgba(168, 85, 247, 0.3))',
+                  }}
+                />
+                
+                {/* 3D Edge/Highlight effect */}
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="38"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.08)"
+                  strokeWidth="4"
+                  strokeDasharray={`${answeredAngle * 0.3} ${360 - answeredAngle * 0.3}`}
+                  strokeLinecap="round"
+                  style={{
+                    transform: 'rotate(8deg)',
+                    opacity: 0.5,
+                  }}
+                />
+              </>
+            )}
+            
+            {/* Gradients */}
+            <defs>
+              <linearGradient id="pieGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#6d28d9" />
+                <stop offset="25%" stopColor="#7c3aed" />
+                <stop offset="50%" stopColor="#8b5cf6" />
+                <stop offset="75%" stopColor="#a855f7" />
+                <stop offset="100%" stopColor="#d946ef" />
+              </linearGradient>
+              
+              <radialGradient id="gloss3D" cx="35%" cy="25%" r="60%">
+                <stop offset="0%" stopColor="rgba(255,255,255,0.2)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              </radialGradient>
+            </defs>
+          </svg>
+          
+          {/* Gloss overlay */}
+          <div 
+            className="absolute inset-0 rounded-full pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 55%)',
+              transform: 'rotateX(5deg)',
+            }}
+          />
+        </div>
+        
+        {/* Center Text */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-4xl font-bold text-white drop-shadow-lg">{percentage}%</span>
+          <span className="text-[10px] text-gray-300 font-medium tracking-wider">COMPLETED</span>
+        </div>
+      </div>
+      
+      {/* Legend */}
+      <div className="flex flex-wrap justify-center gap-6 mt-6 text-sm">
+        <div className="flex items-center gap-2.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
+          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 shadow-lg shadow-purple-500/30" />
+          <span className="text-gray-300">Answered <span className="text-white font-medium">{answered}</span></span>
+        </div>
+        <div className="flex items-center gap-2.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
+          <div className="w-3 h-3 rounded-full bg-[#1e1e32] border border-white/5" />
+          <span className="text-gray-400">Unanswered <span className="text-white font-medium">{unanswered}</span></span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ============================================================
 // ===== CHECKBOX QUESTION WITH SELECT ALL =====
 // ============================================================
 const CheckboxQuestion = ({ question, value, onChange }: any) => {
@@ -23,20 +158,15 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
     onChange(newValue);
   };
 
-  // ✅ Select All toggle function
   const handleSelectAll = (option: any) => {
     const current = value || [];
     const allItemIds = option.items || [];
-    
-    // Check if all items are selected
     const allSelected = allItemIds.length > 0 && allItemIds.every((item: string) => current.includes(item));
     
     if (allSelected) {
-      // Deselect all items of this option
       const newValue = current.filter((id: string) => !allItemIds.includes(id));
       onChange(newValue);
     } else {
-      // Select all items of this option
       const newValue = [...current];
       allItemIds.forEach((item: string) => {
         if (!newValue.includes(item)) {
@@ -47,7 +177,6 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
     }
   };
 
-  // Check if all items of an option are selected
   const isAllSelected = (option: any) => {
     const current = value || [];
     const allItemIds = option.items || [];
@@ -58,7 +187,6 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
     <div className="space-y-3">
       {question.options.map((option: any) => (
         <div key={option.id} className="space-y-1">
-          {/* ✅ Option Label with Select All */}
           <div className="flex items-center gap-2">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -69,8 +197,6 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
               />
               <span className="text-white text-sm font-medium">{option.label}</span>
             </label>
-            
-            {/* ✅ Select All Button for items */}
             {option.items && option.items.length > 0 && (
               <button
                 onClick={() => handleSelectAll(option)}
@@ -84,8 +210,6 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
               </button>
             )}
           </div>
-          
-          {/* ✅ Individual Items */}
           {option.items && (
             <div className="ml-6 space-y-0.5">
               {option.items.map((item: string, idx: number) => (
@@ -279,7 +403,7 @@ const QuestionCard = ({ question, value, onChange }: any) => {
 };
 
 // ============================================================
-// ===== RESULT SECTION - CSS BACKGROUND (NO ZOOM) =====
+// ===== RESULT SECTION WITH 3D PIE CHART =====
 // ============================================================
 const ResultSection = ({ answers, onReset }: any) => {
   const [showEmailForm, setShowEmailForm] = useState(true);
@@ -295,6 +419,20 @@ const ResultSection = ({ answers, onReset }: any) => {
   const score = getOverallScore(answers);
   const risk = getRiskLevel(score);
   const categoryScores = getCategoryScores(answers);
+  const allQuestions = getAllQuestions();
+  const totalQuestions = allQuestions.length;
+
+  let answeredCount = 0;
+  allQuestions.forEach(q => {
+    if (answers[q.id] !== undefined) {
+      const answer = answers[q.id];
+      if (typeof answer === 'object') {
+        if (Object.keys(answer).length > 0) answeredCount++;
+      } else if (answer !== undefined && answer !== null && answer !== '') {
+        answeredCount++;
+      }
+    }
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -381,121 +519,135 @@ const ResultSection = ({ answers, onReset }: any) => {
         >
           <div className="absolute inset-0 bg-black/30" />
         </div>
-        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8 relative z-10">
-          <div className="text-center mb-6">
-            <div className="text-6xl font-bold text-white mb-2">{score}%</div>
-            <div className="flex items-center justify-center gap-3">
-              <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
-                {risk.emoji} {risk.label}
-              </span>
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          {/* ===== 3D PIE CHART ===== */}
+          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 mb-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+              <PieChart3D answered={answeredCount} total={totalQuestions} />
+              <div>
+                <h3 className="text-lg font-semibold text-white">Assessment Progress</h3>
+                <p className="text-sm text-gray-400">{answeredCount} of {totalQuestions} questions answered</p>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            {categoryScores.slice(0, 4).map((cat: any, idx: number) => (
-              <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
-                <p className="text-xs text-gray-400">{cat.name}</p>
-                <p className="text-lg font-bold text-white">{cat.score}%</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-6">
-            <h4 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center gap-2">
-              <AlertCircle className="w-4 h-4" />
-              Priority Areas
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {categoryScores.filter((cat: any) => cat.score < 60).map((cat: any, idx: number) => (
-                <span key={idx} className="text-xs px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
-                  {cat.name}
+          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
+            <div className="text-center mb-6">
+              <div className="text-6xl font-bold text-white mb-2">{score}%</div>
+              <div className="flex items-center justify-center gap-3">
+                <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
+                  {risk.emoji} {risk.label}
                 </span>
-              ))}
-              {categoryScores.filter((cat: any) => cat.score < 60).length === 0 && (
-                <span className="text-xs text-green-400">✨ All areas are well-covered!</span>
-              )}
+              </div>
             </div>
-          </div>
 
-          <div className="bg-white/5 border border-white/20 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-              <Mail className="w-5 h-5 text-purple-400" />
-              Get Your Detailed Report
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">
-              Enter your details to receive a comprehensive readiness report with personalised recommendations.
-            </p>
-            <form onSubmit={handleSubmitReport} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm text-gray-300 mb-1">Full Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="John Doe"
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                  />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+              {categoryScores.slice(0, 4).map((cat: any, idx: number) => (
+                <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                  <p className="text-xs text-gray-400">{cat.name}</p>
+                  <p className="text-lg font-bold text-white">{cat.score}%</p>
                 </div>
-                <div>
-                  <label className="block text-sm text-gray-300 mb-1">Email Address *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="john@company.com"
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm text-gray-300 mb-1">Company Name</label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    placeholder="Your Company"
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-300 mb-1">Designation</label>
-                  <input
-                    type="text"
-                    name="designation"
-                    value={formData.designation}
-                    onChange={handleInputChange}
-                    placeholder="e.g., Privacy Officer"
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                  />
-                </div>
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 ${
-                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Generating Report...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Get My Detailed Report
-                  </>
+              ))}
+            </div>
+
+            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-6">
+              <h4 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center gap-2">
+                <AlertCircle className="w-4 h-4" />
+                Priority Areas
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {categoryScores.filter((cat: any) => cat.score < 60).map((cat: any, idx: number) => (
+                  <span key={idx} className="text-xs px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
+                    {cat.name}
+                  </span>
+                ))}
+                {categoryScores.filter((cat: any) => cat.score < 60).length === 0 && (
+                  <span className="text-xs text-green-400">✨ All areas are well-covered!</span>
                 )}
-              </button>
-            </form>
+              </div>
+            </div>
+
+            <div className="bg-white/5 border border-white/20 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+                <Mail className="w-5 h-5 text-purple-400" />
+                Get Your Detailed Report
+              </h3>
+              <p className="text-sm text-gray-400 mb-4">
+                Enter your details to receive a comprehensive readiness report with personalised recommendations.
+              </p>
+              <form onSubmit={handleSubmitReport} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-1">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="John Doe"
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-1">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="john@company.com"
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-1">Company Name</label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      placeholder="Your Company"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-1">Designation</label>
+                    <input
+                      type="text"
+                      name="designation"
+                      value={formData.designation}
+                      onChange={handleInputChange}
+                      placeholder="e.g., Privacy Officer"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Generating Report...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Get My Detailed Report
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </main>
@@ -515,54 +667,68 @@ const ResultSection = ({ answers, onReset }: any) => {
       >
         <div className="absolute inset-0 bg-black/30" />
       </div>
-      <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8 relative z-10">
-        <div className="text-center mb-8">
-          <div className="text-6xl font-bold text-white mb-2">{score}%</div>
-          <div className="flex items-center justify-center gap-3">
-            <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
-              {risk.emoji} {risk.label}
-            </span>
+      
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* ===== 3D PIE CHART ===== */}
+        <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 mb-6">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+            <PieChart3D answered={answeredCount} total={totalQuestions} />
+            <div>
+              <h3 className="text-lg font-semibold text-white">Assessment Progress</h3>
+              <p className="text-sm text-gray-400">{answeredCount} of {totalQuestions} questions answered</p>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          {categoryScores.map((cat: any, idx: number) => {
-            const Icon = cat.icon;
-            return (
-              <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Icon className="w-4 h-4 text-purple-400" />
-                  <span className="text-sm font-medium text-white">{cat.name}</span>
-                  <span className="ml-auto text-sm text-gray-400">{cat.score}%</span>
-                </div>
-                <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                  <div 
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      cat.score >= 80 ? 'bg-green-400' : cat.score >= 50 ? 'bg-yellow-400' : 'bg-red-400'
-                    }`}
-                    style={{ width: `${cat.score}%` }}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
+          <div className="text-center mb-8">
+            <div className="text-6xl font-bold text-white mb-2">{score}%</div>
+            <div className="flex items-center justify-center gap-3">
+              <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
+                {risk.emoji} {risk.label}
+              </span>
+            </div>
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          <button
-            onClick={() => setShowEmailForm(true)}
-            className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
-          >
-            <Mail className="w-5 h-5" />
-            Get Detailed Report
-          </button>
-          <button
-            onClick={onReset}
-            className="flex-1 px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Retake Assessment
-          </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {categoryScores.map((cat: any, idx: number) => {
+              const Icon = cat.icon;
+              return (
+                <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className="w-4 h-4 text-purple-400" />
+                    <span className="text-sm font-medium text-white">{cat.name}</span>
+                    <span className="ml-auto text-sm text-gray-400">{cat.score}%</span>
+                  </div>
+                  <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        cat.score >= 80 ? 'bg-green-400' : cat.score >= 50 ? 'bg-yellow-400' : 'bg-red-400'
+                      }`}
+                      style={{ width: `${cat.score}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={() => setShowEmailForm(true)}
+              className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+            >
+              <Mail className="w-5 h-5" />
+              Get Detailed Report
+            </button>
+            <button
+              onClick={onReset}
+              className="flex-1 px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Retake Assessment
+            </button>
+          </div>
         </div>
       </div>
     </main>
@@ -570,7 +736,7 @@ const ResultSection = ({ answers, onReset }: any) => {
 };
 
 // ============================================================
-// ===== MAIN PAGE - CSS BACKGROUND (NO ZOOM) =====
+// ===== MAIN PAGE =====
 // ============================================================
 export default function ScorecardPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -648,8 +814,6 @@ export default function ScorecardPage() {
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      
-      {/* ✅ CSS BACKGROUND - No zoom, original quality, no compression */}
       <div 
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
         style={{ 
@@ -661,7 +825,6 @@ export default function ScorecardPage() {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Stars Effect */}
       <div className="absolute inset-0 -z-10">{stars}</div>
 
       <div className="max-w-6xl mx-auto relative z-10">

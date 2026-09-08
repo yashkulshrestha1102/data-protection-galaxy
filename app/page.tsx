@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { 
   Shield, Sparkles, Target, BookOpen, FileText, 
   Map, Globe, Award, Users, Rocket, Brain, 
-  Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info
+  Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info,Phone
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -368,6 +368,37 @@ export default function Home() {
           </div>
         </motion.div>
 
+
+
+
+
+{/* ===== CONTACT NUMBER - ALWAYS VISIBLE ===== */}
+<motion.div 
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 0.6 }}
+  className="text-center pb-8"
+>
+  <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
+    <div className="flex items-center gap-2 text-gray-400">
+      <Phone className="w-4 h-4 text-purple-400" />
+      <span className="text-sm">📞 For immediate assistance, call us at:</span>
+    </div>
+    <a 
+      href="tel:+919999999999" 
+      className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+    >
+      +91 8800138008
+    </a>
+    <span className="text-xs text-gray-500">|</span>
+    <a 
+      href="mailto:contact@legalgalaxy.com" 
+      className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+    >
+      shilpi.kulshrestha@businezexcellence.com
+    </a>
+  </div>
+</motion.div>
 
         {/* ===== SECTION 3: GALAXY EXPLORER ===== */}
         <motion.div 
