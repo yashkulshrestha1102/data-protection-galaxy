@@ -2,7 +2,45 @@
 
 import { Shield, Users, Database, Globe, Building, AlertCircle, Scale, Lock, FileText, UserCheck, Clipboard } from 'lucide-react';
 
-export const scorecardData = {
+// ===== TYPE DEFINITIONS =====
+type BaseQuestion = {
+  id: number;
+  text: string;
+  description: string;
+  type: 'checkbox' | 'radio-group' | 'conditional' | 'yes-no';
+};
+
+type CheckboxQuestion = BaseQuestion & {
+  type: 'checkbox';
+  options: { id: string; label: string; items?: string[] }[];
+};
+
+type RadioGroupQuestion = BaseQuestion & {
+  type: 'radio-group';
+  subOptions: { id: string; label: string }[];
+};
+
+type ConditionalQuestion = BaseQuestion & {
+  type: 'conditional';
+  mainOption: string;
+  subOptions: { id: string; label: string }[];
+};
+
+type YesNoQuestion = BaseQuestion & {
+  type: 'yes-no';
+};
+
+type Question = CheckboxQuestion | RadioGroupQuestion | ConditionalQuestion | YesNoQuestion;
+
+type Category = {
+  id: string;
+  name: string;
+  icon: any;
+  questions: Question[];
+};
+
+// ===== DATA =====
+export const scorecardData: { title: string; subtitle: string; categories: Category[] } = {
   title: 'DPDPA Compliance Scorecard',
   subtitle: 'Answer 13 questions to assess your readiness for India\'s data protection law.',
   categories: [
@@ -28,7 +66,7 @@ export const scorecardData = {
             { id: 'behavioural', label: 'Behavioural / Preference Data', items: ['Purchase / transaction history', 'Customer preferences', 'Marketing / communication preferences', 'Behavioural / profiling information'] },
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 2. CONSENT =====
     {
@@ -46,7 +84,7 @@ export const scorecardData = {
             { id: 'processing-consent', label: 'Obtain consent before processing personal data' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 3. SECURITY MEASURES =====
     {
@@ -66,7 +104,7 @@ export const scorecardData = {
             { id: 'mfa', label: 'Multi-factor authentication' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 4. BREACH RESPONSE =====
     {
@@ -85,7 +123,7 @@ export const scorecardData = {
             { id: 'notify-individuals', label: 'Notify affected individuals of the breach' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 5. INDIVIDUAL RIGHTS =====
     {
@@ -107,7 +145,7 @@ export const scorecardData = {
             { id: 'right-withdraw', label: 'Right to Withdraw Consent' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 6. RETENTION & DELETION =====
     {
@@ -126,7 +164,7 @@ export const scorecardData = {
             { id: 'delete-consent', label: 'Process to delete data after withdrawal of consent, where applicable' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 7. CHILDREN'S DATA =====
     {
@@ -144,7 +182,7 @@ export const scorecardData = {
             { id: 'additional-safeguards', label: 'Have additional safeguards for children\'s data' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 8. GRIEVANCE REDRESSAL =====
     {
@@ -163,7 +201,7 @@ export const scorecardData = {
             { id: 'grievance-contact', label: 'Published grievance contact details' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 9. PRIVACY POLICIES =====
     {
@@ -183,7 +221,7 @@ export const scorecardData = {
             { id: 'internal-policy', label: 'Internal data protection policy' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 10. THIRD-PARTY SHARING =====
     {
@@ -202,7 +240,7 @@ export const scorecardData = {
             { id: 'sharing-controls', label: 'Controls on sharing personal data' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 11. CROSS-BORDER TRANSFER =====
     {
@@ -222,7 +260,7 @@ export const scorecardData = {
             { id: 'transfer-contracts', label: 'Contracts with overseas processors' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 12. SDF REQUIREMENTS =====
     {
@@ -243,7 +281,7 @@ export const scorecardData = {
             { id: 'audit', label: 'Conducted a periodic data protection audit' }
           ]
         }
-      ]
+      ] as Question[]
     },
     // ===== 13. STAFF TRAINING =====
     {
@@ -257,13 +295,13 @@ export const scorecardData = {
           description: 'Select Yes or No.',
           type: 'yes-no'
         }
-      ]
+      ] as Question[]
     }
   ]
 };
 
 // ===== HELPER FUNCTIONS =====
-export const getAllQuestions = () => {
+export const getAllQuestions = (): Question[] => {
   return scorecardData.categories.flatMap(cat => cat.questions);
 };
 
@@ -281,43 +319,59 @@ export const getTotalQuestions = () => {
 };
 
 export const getCategoryScores = (answers: Record<number, any>) => {
+  if (!answers || typeof answers !== 'object' || Object.keys(answers).length === 0) {
+    return scorecardData.categories.map(cat => ({
+      name: cat.name,
+      icon: cat.icon,
+      score: 0,
+      answered: 0,
+      total: 0
+    }));
+  }
+
   return scorecardData.categories.map(cat => {
     let score = 0;
     let totalWeight = 0;
-    
-    cat.questions.forEach(q => {
+
+    cat.questions.forEach((q: any) => {
       const answer = answers[q.id];
       if (answer) {
         if (q.type === 'checkbox') {
           const selected = answer as string[];
-          const totalItems = q.options.reduce((acc, opt) => acc + opt.items.length, 0);
-          score += selected.length;
+          const totalItems = q.options.reduce((acc: number, opt: any) => {
+            return acc + (opt.items ? opt.items.length : 0);
+          }, 0);
+          score += selected ? selected.length : 0;
           totalWeight += totalItems;
         } else if (q.type === 'yes-no') {
           totalWeight += 1;
           if (answer === 'Yes') score += 1;
         } else if (q.type === 'radio-group') {
           const subAnswers = answer as Record<string, string>;
-          q.subOptions.forEach((sub: any) => {
-            totalWeight += 1;
-            if (subAnswers[sub.id] === 'Yes') score += 1;
-            else if (subAnswers[sub.id] === 'Partial') score += 0.5;
-          });
-        } else if (q.type === 'conditional') {
-          if (answer.main === 'No') {
-            // Skip sub-options
-          } else {
-            const subAnswers = answer.sub as Record<string, string>;
+          if (q.subOptions) {
             q.subOptions.forEach((sub: any) => {
               totalWeight += 1;
               if (subAnswers[sub.id] === 'Yes') score += 1;
               else if (subAnswers[sub.id] === 'Partial') score += 0.5;
             });
           }
+        } else if (q.type === 'conditional') {
+          if (answer.main === 'No') {
+            // Skip sub-options
+          } else {
+            const subAnswers = answer.sub as Record<string, string>;
+            if (q.subOptions) {
+              q.subOptions.forEach((sub: any) => {
+                totalWeight += 1;
+                if (subAnswers[sub.id] === 'Yes') score += 1;
+                else if (subAnswers[sub.id] === 'Partial') score += 0.5;
+              });
+            }
+          }
         }
       }
     });
-    
+
     const percentage = totalWeight > 0 ? Math.round((score / totalWeight) * 100) : 0;
     return {
       name: cat.name,
@@ -330,43 +384,53 @@ export const getCategoryScores = (answers: Record<number, any>) => {
 };
 
 export const getOverallScore = (answers: Record<number, any>) => {
+  if (!answers || typeof answers !== 'object' || Object.keys(answers).length === 0) {
+    return 0;
+  }
+
   const allQuestions = getAllQuestions();
   let totalWeight = 0;
   let score = 0;
-  
-  allQuestions.forEach(q => {
+
+  allQuestions.forEach((q: any) => {
     const answer = answers[q.id];
     if (answer) {
       if (q.type === 'checkbox') {
         const selected = answer as string[];
-        const totalItems = q.options.reduce((acc, opt) => acc + opt.items.length, 0);
-        score += selected.length;
+        const totalItems = q.options.reduce((acc: number, opt: any) => {
+          return acc + (opt.items ? opt.items.length : 0);
+        }, 0);
+        score += selected ? selected.length : 0;
         totalWeight += totalItems;
       } else if (q.type === 'yes-no') {
         totalWeight += 1;
         if (answer === 'Yes') score += 1;
       } else if (q.type === 'radio-group') {
         const subAnswers = answer as Record<string, string>;
-        q.subOptions.forEach((sub: any) => {
-          totalWeight += 1;
-          if (subAnswers[sub.id] === 'Yes') score += 1;
-          else if (subAnswers[sub.id] === 'Partial') score += 0.5;
-        });
-      } else if (q.type === 'conditional') {
-        if (answer.main === 'No') {
-          // Skip
-        } else {
-          const subAnswers = answer.sub as Record<string, string>;
+        if (q.subOptions) {
           q.subOptions.forEach((sub: any) => {
             totalWeight += 1;
             if (subAnswers[sub.id] === 'Yes') score += 1;
             else if (subAnswers[sub.id] === 'Partial') score += 0.5;
           });
         }
+      } else if (q.type === 'conditional') {
+        if (answer.main === 'No') {
+          // Skip
+        } else {
+          const subAnswers = answer.sub as Record<string, string>;
+          if (q.subOptions) {
+            q.subOptions.forEach((sub: any) => {
+              totalWeight += 1;
+              if (subAnswers[sub.id] === 'Yes') score += 1;
+              else if (subAnswers[sub.id] === 'Partial') score += 0.5;
+            });
+          }
+        }
       }
     }
   });
-  
+
   return totalWeight > 0 ? Math.round((score / totalWeight) * 100) : 0;
 };
 
