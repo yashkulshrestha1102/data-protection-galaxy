@@ -332,7 +332,7 @@ export const Header = () => {
               href="tel:+919999999999" 
               className="text-xs text-white/80 hover:text-white transition-colors font-medium"
             >
-              +91 99999 99999
+              +91 8800138008
             </a>
           </div>
           <span className="text-white/10 hidden sm:inline">|</span>
@@ -342,13 +342,10 @@ export const Header = () => {
               href="mailto:contact@legalgalaxy.com" 
               className="text-xs text-white/70 hover:text-white transition-colors"
             >
-              contact@legalgalaxy.com
+              shilpi.kulshrestha@businezexcellence.com
             </a>
           </div>
-          <span className="text-white/10 hidden sm:inline">|</span>
-          <span className="text-[10px] text-white/40 hidden sm:inline">
-            Mon-Fri, 9AM - 6PM IST
-          </span>
+        
         </div>
       </div>
 
