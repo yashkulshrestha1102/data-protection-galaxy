@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, ChevronDown, Lock, Info } from "lucide-react";
+import { Menu, X, ChevronDown, Lock, Info, Phone, Mail } from "lucide-react";
 
 // ===== RESOURCES DROPDOWN ITEMS =====
 const resourcesDropdown = [
@@ -254,6 +254,33 @@ export const Header = () => {
   Book a Demo
 </Link>
           </nav>
+
+
+
+
+
+          {/* ===== CONTACT NUMBER - TOP RIGHT ===== */}
+            <div className="hidden md:flex items-center gap-2 border-l border-white/10 pl-4">
+              <a 
+                href="tel:+919999999999" 
+                className="flex items-center gap-1.5 text-xs text-white/80 hover:text-white transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-purple-400" />
+                <span className="font-medium">+91 8800138008</span>
+              </a>
+              <span className="text-white/20 text-xs">|</span>
+              <a 
+                href="mailto:contact@legalgalaxy.com" 
+                className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-purple-400" />
+                <span>shilpi.kulshrestha@businezexcellence.com</span>
+              </a>
+            </div>
+
+
+            
+
 
           {/* ===== MOBILE MENU BUTTON ===== */}
           <button

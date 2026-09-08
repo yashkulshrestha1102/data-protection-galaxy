@@ -382,7 +382,7 @@ export default function Home() {
   <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
     <div className="flex items-center gap-2 text-gray-400">
       <Phone className="w-4 h-4 text-purple-400" />
-      <span className="text-sm">📞 For immediate assistance, call us at:</span>
+      <span className="text-sm"> For immediate assistance, call us at:</span>
     </div>
     <a 
       href="tel:+919999999999" 
