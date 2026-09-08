@@ -206,7 +206,7 @@ const QuestionCard = ({ question, value, onChange }: any) => {
 };
 
 // ============================================================
-// ===== RESULT SECTION WITH BACKGROUND =====
+// ===== RESULT SECTION WITH HIGH QUALITY BACKGROUND =====
 // ============================================================
 const ResultSection = ({ answers, onReset }: any) => {
   const [showEmailForm, setShowEmailForm] = useState(true);
@@ -260,14 +260,15 @@ const ResultSection = ({ answers, onReset }: any) => {
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/images/home1.jpeg"
+            src="/images/galaxy4.jpg"
             alt="Background"
             fill
             className="object-cover"
             priority
+            quality={100}
             unoptimized
           />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-black/30" /> {/* ✅ No blur */}
         </div>
         <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center relative z-10">
           <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
@@ -301,14 +302,15 @@ const ResultSection = ({ answers, onReset }: any) => {
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/images/home1.jpeg"
+            src="/images/galaxy4.jpg"
             alt="Background"
             fill
             className="object-cover"
             priority
+            quality={100}
             unoptimized
           />
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-black/30" /> {/* ✅ No blur */}
         </div>
         <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8 relative z-10">
           <div className="text-center mb-6">
@@ -436,14 +438,15 @@ const ResultSection = ({ answers, onReset }: any) => {
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/home1.jpeg"
+          src="/images/galaxy4.jpg"
           alt="Background"
           fill
           className="object-cover"
           priority
+          quality={100}
           unoptimized
         />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/30" /> {/* ✅ No blur */}
       </div>
       <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8 relative z-10">
         <div className="text-center mb-8">
@@ -500,7 +503,7 @@ const ResultSection = ({ answers, onReset }: any) => {
 };
 
 // ============================================================
-// ===== MAIN PAGE =====
+// ===== MAIN PAGE - HIGH QUALITY BACKGROUND =====
 // ============================================================
 export default function ScorecardPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -579,17 +582,18 @@ export default function ScorecardPage() {
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
       
-      {/* Background */}
+      {/* ✅ HIGH QUALITY BACKGROUND - No blur, No compression */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/home1.jpeg"
+          src="/images/galaxy4.jpg"
           alt="Background"
           fill
           className="object-cover"
           priority
+          quality={100}
           unoptimized
         />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/30" /> {/* ✅ No blur */}
       </div>
 
       {/* Stars Effect */}
