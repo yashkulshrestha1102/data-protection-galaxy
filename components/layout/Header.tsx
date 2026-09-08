@@ -18,7 +18,7 @@ const toolsDropdown = [
   { href: "/scorecard", label: "Scoreboard" },
 ];
 
-// ===== LEARN DROPDOWN ITEMS (SIRF Certification Locked) =====
+// ===== LEARN DROPDOWN ITEMS =====
 const learnDropdown = [
   { href: "/certificate-course", label: "Certification", locked: true },
   { href: "/resources/guides", label: "Guides", locked: false },
@@ -33,26 +33,50 @@ export const Header = () => {
   const handleMouseEnter = (dropdown: string) => setOpenDropdown(dropdown);
   const handleMouseLeave = () => setOpenDropdown(null);
 
-  // Locked link par click hone par message dikhane ka function
   const handleLockedClick = (label: string) => {
     setShowLockMessage(`${label} section is Coming Soon. Under Maintenance!`);
-    // 3 second baad message gayab
     setTimeout(() => setShowLockMessage(null), 3000);
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* ============================================================ */}
-      {/* ===== NAVBAR ===== */}
+      {/* ===== CONTACT BAR - TOP PE (z-index 10) ===== */}
       {/* ============================================================ */}
-      <div className="bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+      <div className="relative z-10 bg-purple-900/20 backdrop-blur-md border-b border-white/5 py-1.5 px-4">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
+          <div className="flex items-center gap-2">
+            <Phone className="w-3.5 h-3.5 text-purple-400" />
+            <a 
+              href="tel:+919999999999" 
+              className="text-xs text-white/80 hover:text-white transition-colors font-medium"
+            >
+              +91 8800138008
+            </a>
+          </div>
+          <span className="text-white/10 hidden sm:inline">|</span>
+          <div className="flex items-center gap-2">
+            <Mail className="w-3.5 h-3.5 text-purple-400" />
+            <a 
+              href="mailto:contact@legalgalaxy.com" 
+              className="text-xs text-white/70 hover:text-white transition-colors"
+            >
+              shilpi.kulshrestha@businezexcellence.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/* ===== NAVBAR - CONTACT BAR KE NEECHE (z-index 20) ===== */}
+      {/* ============================================================ */}
+      <div className="relative z-20 bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3">
             
             {/* ===== LOGO ===== */}
             <Link href="/" className="flex flex-col group cursor-pointer" prefetch={true}>
               <div className="relative flex flex-col items-start">
-                {/* 3D ROTATING FAVICON LOGO START */}
                 <div className="absolute -left-8 top-1/2 -translate-y-1/2 flex items-center justify-center">
                   <div className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-logo-3d overflow-hidden">
                     <img 
@@ -63,8 +87,6 @@ export const Header = () => {
                     <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-white/30 to-transparent pointer-events-none" />
                   </div>
                 </div>
-                {/* 3D ROTATING FAVICON LOGO END */}
-
                 <span className="text-base md:text-lg font-black uppercase tracking-normal text-white leading-none pl-9">
                   Legal Galaxy
                 </span>
@@ -88,7 +110,6 @@ export const Header = () => {
                 Scoreboard
               </Link>
 
-              {/* Resources Dropdown */}
               <div 
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('resources')}
@@ -125,7 +146,6 @@ export const Header = () => {
                 )}
               </div>
 
-              {/* Tools Dropdown */}
               <div 
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('tools')}
@@ -162,7 +182,6 @@ export const Header = () => {
                 )}
               </div>
 
-              {/* Learn Dropdown */}
               <div 
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('learn')}
@@ -321,35 +340,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* ============================================================ */}
-      {/* ===== CONTACT BAR - NAVBAR KE NEEECHE (ALWAYS VISIBLE) ===== */}
-      {/* ============================================================ */}
-      <div className="bg-purple-900/20 backdrop-blur-md border-b border-white/5 py-1.5 px-4">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
-          <div className="flex items-center gap-2">
-            <Phone className="w-3.5 h-3.5 text-purple-400" />
-            <a 
-              href="tel:+919999999999" 
-              className="text-xs text-white/80 hover:text-white transition-colors font-medium"
-            >
-              +91 8800138008
-            </a>
-          </div>
-          <span className="text-white/10 hidden sm:inline">|</span>
-          <div className="flex items-center gap-2">
-            <Mail className="w-3.5 h-3.5 text-purple-400" />
-            <a 
-              href="mailto:contact@legalgalaxy.com" 
-              className="text-xs text-white/70 hover:text-white transition-colors"
-            >
-              shilpi.kulshrestha@businezexcellence.com
-            </a>
-          </div>
-        
-        </div>
-      </div>
-
-      {/* ===== LOCKED MESSAGE TOAST (Popup) ===== */}
+      {/* ===== LOCKED MESSAGE TOAST ===== */}
       {showLockMessage && (
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-black/90 border border-yellow-500/30 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-xl">
           <Info className="w-5 h-5 text-yellow-400" />
