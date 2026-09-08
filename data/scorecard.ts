@@ -1,244 +1,261 @@
 // data/scorecard.ts
-import { Shield, Users, Database, Globe, Building, AlertCircle, Scale } from 'lucide-react';
+
+import { Shield, Users, Database, Globe, Building, AlertCircle, Scale, Lock, FileText, UserCheck, Clipboard } from 'lucide-react';
 
 export const scorecardData = {
   title: 'DPDPA Compliance Scorecard',
-  subtitle: 'Answer 25 questions to assess your readiness for India\'s data protection law.',
+  subtitle: 'Answer 13 questions to assess your readiness for India\'s data protection law.',
   categories: [
-    // ===== 1. CONSENT & NOTICE (4 Questions) =====
+    // ===== 1. DATA COLLECTION =====
     {
-      id: 'consent',
-      name: 'Consent & Notice',
-      icon: Shield,
+      id: 'data-collection',
+      name: 'Data Collection',
+      icon: Database,
       questions: [
         {
           id: 1,
-          text: 'Do you collect personal data of individuals who are your employees, vendors, customers or other individuals?',
-          description: 'This includes employee data, vendor and customer data, website visitor data, or any digital personal data of identifiable individuals.',
-          options: ['Yes', 'No'],
-          weight: 4
-        },
-        {
-          id: 2,
-          text: 'Do you have a clear privacy notice/consent mechanism for data collection?',
-          description: 'Individuals should be informed about what data is collected, why, and how it will be used. This is a fundamental requirement under Section 5 of the DPDP Act.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 4
-        },
-        {
-          id: 3,
-          text: 'Do you obtain explicit consent for processing sensitive personal data?',
-          description: 'Sensitive data includes health, biometric, financial, and other special categories. Explicit consent means a clear, affirmative action by the individual.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 4
-        },
-        {
-          id: 4,
-          text: 'Do you provide individuals with the right to withdraw consent?',
-          description: 'Consent withdrawal should be as easy as giving consent. This is a key right under Section 6 of the DPDP Act.',
-          options: ['Yes', 'No'],
-          weight: 3
+          text: 'What types of personal data does your organisation collect or process?',
+          description: 'Select all that apply. Only mention headers.',
+          type: 'checkbox',
+          options: [
+            { id: 'basic', label: 'Basic / Identity Data', items: ['Name', 'Date of birth / Age', 'Gender', 'Photograph', 'Government-issued ID details'] },
+            { id: 'contact', label: 'Contact Data', items: ['Email address', 'Phone / Mobile number', 'Residential / Postal address', 'Emergency contact details'] },
+            { id: 'employment', label: 'Employment / Professional Data', items: ['Employment details', 'Education & qualifications', 'Salary / compensation / payroll information'] },
+            { id: 'financial', label: 'Financial Data', items: ['Bank account details', 'Payment / transaction information', 'Tax-related information', 'Credit / debit card information'] },
+            { id: 'digital', label: 'Digital / Online Data', items: ['IP address', 'Device information', 'Cookies / online identifiers', 'Login / account credentials', 'Website / app usage data', 'Browsing / interaction data'] },
+            { id: 'location', label: 'Location Data', items: ['GPS data / location / city / region'] },
+            { id: 'health', label: 'Health & Other Sensitive-Context Data', items: ['Health / medical information', 'Biometric information', 'Disability-related information', 'Children\'s data'] },
+            { id: 'behavioural', label: 'Behavioural / Preference Data', items: ['Purchase / transaction history', 'Customer preferences', 'Marketing / communication preferences', 'Behavioural / profiling information'] },
+          ]
         }
       ]
     },
-
-    // ===== 2. SECURITY SAFEGUARDS (3 Questions) =====
+    // ===== 2. CONSENT =====
     {
-      id: 'security',
-      name: 'Security Safeguards',
+      id: 'consent',
+      name: 'Consent',
       icon: Shield,
       questions: [
         {
-          id: 5,
-          text: 'Do you have reasonable security safeguards to protect personal data?',
-          description: 'Encryption, access controls, firewalls, and other security measures. This is a core obligation under Section 8 of the DPDP Act.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 5
-        },
-        {
-          id: 6,
-          text: 'Do you have access controls in place for personal data?',
-          description: 'Role-based access, least privilege principle, and regular access reviews. Only authorized personnel should have access to personal data.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 4
-        },
-        {
-          id: 7,
-          text: 'Do you conduct regular security audits?',
-          description: 'Internal or external audits to identify and fix vulnerabilities. Regular audits help maintain robust security posture.',
-          options: ['Yes', 'No'],
-          weight: 3
+          id: 2,
+          text: 'Do you obtain consent for the following?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'privacy-consent', label: 'Privacy consent (via privacy policy or notice)' },
+            { id: 'processing-consent', label: 'Obtain consent before processing personal data' }
+          ]
         }
       ]
     },
-
-    // ===== 3. BREACH RESPONSE (3 Questions) =====
+    // ===== 3. SECURITY MEASURES =====
+    {
+      id: 'security',
+      name: 'Security Measures',
+      icon: Lock,
+      questions: [
+        {
+          id: 3,
+          text: 'What security measures are taken to protect the data?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'encryption', label: 'Encryption and firewalls' },
+            { id: 'access-control', label: 'Strict access control measures / Role Based Access Controls (RBAC)' },
+            { id: 'audits', label: 'Conducting regular security audits' },
+            { id: 'mfa', label: 'Multi-factor authentication' }
+          ]
+        }
+      ]
+    },
+    // ===== 4. BREACH RESPONSE =====
     {
       id: 'breach',
       name: 'Breach Response',
       icon: AlertCircle,
       questions: [
         {
-          id: 8,
-          text: 'Do you have a data breach response plan in place?',
-          description: 'A documented plan for detecting, containing, and reporting breaches. This includes roles, responsibilities, and communication protocols.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 5
-        },
-        {
-          id: 9,
-          text: 'Can you notify the Data Protection Board within 72 hours of a breach?',
-          description: 'Under Rule 7 of the DPDP Rules, data fiduciaries must notify the Board within 72 hours of becoming aware of a data breach.',
-          options: ['Yes', 'No'],
-          weight: 4
-        },
-        {
-          id: 10,
-          text: 'Do you have a process to notify affected individuals of a breach?',
-          description: 'Affected individuals must be informed of the breach and its impact. This includes the nature of the breach, data compromised, and remedial actions.',
-          options: ['Yes', 'No'],
-          weight: 3
+          id: 4,
+          text: 'What security measures are taken at the time of breach?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'breach-plan', label: 'Data breach response plan' },
+            { id: 'notify-board', label: 'Notify the Data Protection Board of India' },
+            { id: 'notify-individuals', label: 'Notify affected individuals of the breach' }
+          ]
         }
       ]
     },
-
-    // ===== 4. DATA PRINCIPAL RIGHTS (4 Questions) =====
+    // ===== 5. INDIVIDUAL RIGHTS =====
     {
       id: 'rights',
-      name: 'Data Principal Rights',
+      name: 'Individual Rights',
       icon: Users,
       questions: [
         {
-          id: 11,
-          text: 'Do you have a process for handling data access requests?',
-          description: 'Individuals have the right to access their personal data. This includes confirmation of processing, access to data, and information about processing.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 4
-        },
-        {
-          id: 12,
-          text: 'Do you have a process for data correction requests?',
-          description: 'Individuals can request correction of inaccurate or incomplete personal data under Section 4 of the DPDP Act.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 3
-        },
-        {
-          id: 13,
-          text: 'Do you have a process for data erasure requests?',
-          description: 'Individuals can request deletion of their personal data when it is no longer necessary, or when consent has been withdrawn.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 4
-        },
-        {
-          id: 14,
-          text: 'Do you have a grievance redressal mechanism?',
-          description: 'A process for individuals to lodge complaints or grievances. This is a key requirement under Section 4 of the DPDP Act.',
-          options: ['Yes', 'No'],
-          weight: 3
+          id: 5,
+          text: 'What are the rights provided to individuals?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'right-access', label: 'Right to Access Information about Personal Data' },
+            { id: 'right-correction', label: 'Right to Correction of Personal Data' },
+            { id: 'right-grievance', label: 'Right of Grievance Redressal' },
+            { id: 'right-nominate', label: 'Right to Nominate' },
+            { id: 'right-erasure', label: 'Right to Erasure of Personal Data' },
+            { id: 'right-withdraw', label: 'Right to Withdraw Consent' }
+          ]
         }
       ]
     },
-
-    // ===== 5. DATA RETENTION & DELETION (3 Questions) =====
+    // ===== 6. RETENTION & DELETION =====
     {
       id: 'retention',
-      name: 'Data Retention & Deletion',
+      name: 'Retention & Deletion',
       icon: Database,
       questions: [
         {
-          id: 15,
-          text: 'Do you have a data retention policy?',
-          description: 'A policy that defines how long personal data is kept and when it is securely deleted. This aligns with the principle of storage limitation.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 4
-        },
-        {
-          id: 16,
-          text: 'Do you have a process for secure data deletion?',
-          description: 'Data should be securely deleted when no longer needed for the purpose. Secure deletion includes technical measures to ensure data cannot be recovered.',
-          options: ['Yes', 'No'],
-          weight: 4
-        },
-        {
-          id: 17,
-          text: 'Do you maintain records of data processing activities?',
-          description: 'Records of what data is processed, why, and how. This is essential for accountability and transparency under the DPDP Act.',
-          options: ['Yes', 'No'],
-          weight: 3
+          id: 6,
+          text: 'What measures do you have for retaining and deleting personal data?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'retention-periods', label: 'Defined data retention periods' },
+            { id: 'delete-required', label: 'Process to delete data when no longer required' },
+            { id: 'delete-consent', label: 'Process to delete data after withdrawal of consent, where applicable' }
+          ]
         }
       ]
     },
-
-    // ===== 6. CROSS-BORDER TRANSFERS (3 Questions) =====
+    // ===== 7. CHILDREN'S DATA =====
     {
-      id: 'cross-border',
-      name: 'Cross-Border Transfers',
-      icon: Globe,
+      id: 'children',
+      name: 'Children\'s Data',
+      icon: UserCheck,
       questions: [
         {
-          id: 18,
-          text: 'Does your organisation transfer personal data outside India?',
-          description: 'Cross-border data transfers to servers, processors, or group companies outside India. This is regulated under Section 16 of the DPDP Act.',
-          options: ['Yes', 'No'],
-          weight: 4
-        },
-        {
-          id: 19,
-          text: 'Do you have appropriate safeguards for cross-border data transfers?',
-          description: 'Standard contractual clauses, adequacy decisions, or other safeguards. The DPDP Act requires appropriate safeguards for cross-border transfers.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 5
-        },
-        {
-          id: 20,
-          text: 'Do you have contracts with processors outside India?',
-          description: 'Contracts that ensure data protection compliance. These contracts should include obligations for data protection and security.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 3
+          id: 7,
+          text: 'What safeguards do you have for children\'s data?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'parental-consent', label: 'Verify parental consent where required' },
+            { id: 'additional-safeguards', label: 'Have additional safeguards for children\'s data' }
+          ]
         }
       ]
     },
-
-    // ===== 7. GOVERNANCE & ACCOUNTABILITY (5 Questions) =====
+    // ===== 8. GRIEVANCE REDRESSAL =====
     {
-      id: 'governance',
-      name: 'Governance & Accountability',
+      id: 'grievance',
+      name: 'Grievance Redressal',
+      icon: Scale,
+      questions: [
+        {
+          id: 8,
+          text: 'What grievance redressal measures do you have?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'grievance-mechanism', label: 'Grievance submission mechanism' },
+            { id: 'grievance-process', label: 'Documented grievance process' },
+            { id: 'grievance-contact', label: 'Published grievance contact details' }
+          ]
+        }
+      ]
+    },
+    // ===== 9. PRIVACY POLICIES =====
+    {
+      id: 'policies',
+      name: 'Privacy Policies',
+      icon: FileText,
+      questions: [
+        {
+          id: 9,
+          text: 'What privacy policies do you have in place?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'privacy-policy', label: 'Privacy policy / privacy notice' },
+            { id: 'retention-policy', label: 'Data retention policy' },
+            { id: 'deletion-policy', label: 'Data deletion process or policy' },
+            { id: 'internal-policy', label: 'Internal data protection policy' }
+          ]
+        }
+      ]
+    },
+    // ===== 10. THIRD-PARTY SHARING =====
+    {
+      id: 'third-party',
+      name: 'Third-Party Sharing',
       icon: Building,
       questions: [
         {
-          id: 21,
-          text: 'Do you have a Data Protection Officer (DPO) appointed?',
-          description: 'A DPO is required for Significant Data Fiduciaries under Section 10 of the DPDP Act. The DPO should be based in India and have expertise in data protection.',
-          options: ['Yes', 'No'],
-          weight: 4
-        },
+          id: 10,
+          text: 'Do you share personal data with third parties or Data Processors? If yes, do you have the following in place?',
+          description: 'Select Yes or Partial for each.',
+          type: 'radio-group',
+          subOptions: [
+            { id: 'processor-agreements', label: 'Agreements with Data Processors' },
+            { id: 'assess-practices', label: 'Assess third-party data protection practices' },
+            { id: 'sharing-controls', label: 'Controls on sharing personal data' }
+          ]
+        }
+      ]
+    },
+    // ===== 11. CROSS-BORDER TRANSFER =====
+    {
+      id: 'cross-border',
+      name: 'Cross-Border Transfer',
+      icon: Globe,
+      questions: [
         {
-          id: 22,
-          text: 'Do you have a published contact for data protection queries?',
-          description: 'Individuals should have a point of contact for privacy concerns. This contact should be easily accessible and responsive.',
-          options: ['Yes', 'No'],
-          weight: 3
-        },
+          id: 11,
+          text: 'Do you transfer or store personal data outside India?',
+          description: 'Select Yes or No. If Yes, select the measures you have in place.',
+          type: 'conditional',
+          mainOption: 'yes-no',
+          subOptions: [
+            { id: 'transfer-requirements', label: 'Assessed applicable transfer requirements' },
+            { id: 'transfer-safeguards', label: 'Safeguards for overseas data transfers' },
+            { id: 'transfer-contracts', label: 'Contracts with overseas processors' }
+          ]
+        }
+      ]
+    },
+    // ===== 12. SDF REQUIREMENTS =====
+    {
+      id: 'sdf',
+      name: 'SDF Requirements',
+      icon: 'Star',
+      questions: [
         {
-          id: 23,
-          text: 'Do you conduct Data Protection Impact Assessments (DPIAs)?',
-          description: 'DPIAs are required for high-risk data processing activities. This includes processing of sensitive data, large-scale processing, and profiling.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 5
-        },
+          id: 12,
+          text: 'Applicable only for Significant Data Fiduciaries Only. What requirements have you met?',
+          description: 'A significant data fiduciary is a company that is notified by the Central Government based on factors such as the volume and sensitivity of personal data processed.',
+          type: 'checkbox',
+          options: [
+            { id: 'dpo', label: 'Appointed a Data Protection officer' },
+            { id: 'dpo-contact', label: 'Published contact details for DPO' },
+            { id: 'dpia', label: 'Conducting Data Protection Impact Assessment' },
+            { id: 'auditor', label: 'Appointed an independent Data Auditor' },
+            { id: 'audit', label: 'Conducted a periodic data protection audit' }
+          ]
+        }
+      ]
+    },
+    // ===== 13. STAFF TRAINING =====
+    {
+      id: 'training',
+      name: 'Staff Training',
+      icon: Users,
+      questions: [
         {
-          id: 24,
-          text: 'Do you have data protection policies and procedures in place?',
-          description: 'Documented policies that guide data handling practices. These policies should cover all aspects of data protection compliance.',
-          options: ['Yes', 'Partial', 'No'],
-          weight: 4
-        },
-        {
-          id: 25,
+          id: 13,
           text: 'Do you provide staff training on data protection?',
-          description: 'Regular training to ensure staff understand their obligations. Training should cover data protection principles, security practices, and breach response.',
-          options: ['Yes', 'No'],
-          weight: 3
+          description: 'Select Yes or No.',
+          type: 'yes-no'
         }
       ]
     }
@@ -263,20 +280,40 @@ export const getTotalQuestions = () => {
   return getAllQuestions().length;
 };
 
-export const getCategoryScores = (answers: Record<number, string>) => {
+export const getCategoryScores = (answers: Record<number, any>) => {
   return scorecardData.categories.map(cat => {
-    const questions = cat.questions;
     let score = 0;
     let totalWeight = 0;
     
-    questions.forEach(q => {
-      totalWeight += q.weight;
-      if (answers[q.id]) {
-        const answer = answers[q.id];
-        if (answer === 'Yes') {
-          score += q.weight;
-        } else if (answer === 'Partial') {
-          score += q.weight / 2;
+    cat.questions.forEach(q => {
+      const answer = answers[q.id];
+      if (answer) {
+        if (q.type === 'checkbox') {
+          const selected = answer as string[];
+          const totalItems = q.options.reduce((acc, opt) => acc + opt.items.length, 0);
+          score += selected.length;
+          totalWeight += totalItems;
+        } else if (q.type === 'yes-no') {
+          totalWeight += 1;
+          if (answer === 'Yes') score += 1;
+        } else if (q.type === 'radio-group') {
+          const subAnswers = answer as Record<string, string>;
+          q.subOptions.forEach((sub: any) => {
+            totalWeight += 1;
+            if (subAnswers[sub.id] === 'Yes') score += 1;
+            else if (subAnswers[sub.id] === 'Partial') score += 0.5;
+          });
+        } else if (q.type === 'conditional') {
+          if (answer.main === 'No') {
+            // Skip sub-options
+          } else {
+            const subAnswers = answer.sub as Record<string, string>;
+            q.subOptions.forEach((sub: any) => {
+              totalWeight += 1;
+              if (subAnswers[sub.id] === 'Yes') score += 1;
+              else if (subAnswers[sub.id] === 'Partial') score += 0.5;
+            });
+          }
         }
       }
     });
@@ -286,25 +323,46 @@ export const getCategoryScores = (answers: Record<number, string>) => {
       name: cat.name,
       icon: cat.icon,
       score: percentage,
-      answered: questions.filter(q => answers[q.id] !== undefined).length,
-      total: questions.length
+      answered: 0,
+      total: 0
     };
   });
 };
 
-export const getOverallScore = (answers: Record<number, string>) => {
+export const getOverallScore = (answers: Record<number, any>) => {
   const allQuestions = getAllQuestions();
   let totalWeight = 0;
   let score = 0;
   
   allQuestions.forEach(q => {
-    totalWeight += q.weight;
-    if (answers[q.id]) {
-      const answer = answers[q.id];
-      if (answer === 'Yes') {
-        score += q.weight;
-      } else if (answer === 'Partial') {
-        score += q.weight / 2;
+    const answer = answers[q.id];
+    if (answer) {
+      if (q.type === 'checkbox') {
+        const selected = answer as string[];
+        const totalItems = q.options.reduce((acc, opt) => acc + opt.items.length, 0);
+        score += selected.length;
+        totalWeight += totalItems;
+      } else if (q.type === 'yes-no') {
+        totalWeight += 1;
+        if (answer === 'Yes') score += 1;
+      } else if (q.type === 'radio-group') {
+        const subAnswers = answer as Record<string, string>;
+        q.subOptions.forEach((sub: any) => {
+          totalWeight += 1;
+          if (subAnswers[sub.id] === 'Yes') score += 1;
+          else if (subAnswers[sub.id] === 'Partial') score += 0.5;
+        });
+      } else if (q.type === 'conditional') {
+        if (answer.main === 'No') {
+          // Skip
+        } else {
+          const subAnswers = answer.sub as Record<string, string>;
+          q.subOptions.forEach((sub: any) => {
+            totalWeight += 1;
+            if (subAnswers[sub.id] === 'Yes') score += 1;
+            else if (subAnswers[sub.id] === 'Partial') score += 0.5;
+          });
+        }
       }
     }
   });

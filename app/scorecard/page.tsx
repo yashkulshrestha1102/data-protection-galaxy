@@ -1,50 +1,77 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, ChevronRight, ChevronLeft, CheckCircle, 
-  XCircle, AlertCircle, Download, FileText, Clock,
+  AlertCircle, FileText, Clock,
   Shield, Users, Database, Globe, Building, Scale,
-  Sparkles, Loader2, ExternalLink, Mail, Send
+  Sparkles, Loader2, Mail, Send, Lock, UserCheck
 } from 'lucide-react';
-// ===== IMPORT FROM DATA FILE =====
-import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions, getCategoryForQuestion } from '@/data/scorecard';
+import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 
-// ===== QUESTION COMPONENT =====
-const QuestionCard = ({ question, index, selected, onSelect }) => {
-  const optionColors = {
-    'Yes': 'text-green-400 border-green-400/30 hover:bg-green-500/10',
-    'No': 'text-red-400 border-red-400/30 hover:bg-red-500/10',
-    'Partial': 'text-yellow-400 border-yellow-400/30 hover:bg-yellow-500/10'
+// ===== QUESTION TYPES =====
+
+// Checkbox Question (Select all that apply)
+const CheckboxQuestion = ({ question, value, onChange }: any) => {
+  const handleToggle = (optionId: string) => {
+    const current = value || [];
+    const newValue = current.includes(optionId) 
+      ? current.filter((id: string) => id !== optionId)
+      : [...current, optionId];
+    onChange(newValue);
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 mb-4"
-    >
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center text-sm font-semibold text-blue-400 mt-1">
-          {index + 1}
+    <div className="space-y-3">
+      {question.options.map((option: any) => (
+        <div key={option.id} className="space-y-1">
+          <label className="flex items-start gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={(value || []).includes(option.id)}
+              onChange={() => handleToggle(option.id)}
+              className="w-4 h-4 mt-0.5 text-purple-500 focus:ring-purple-500 rounded"
+            />
+            <span className="text-white text-sm font-medium">{option.label}</span>
+          </label>
+          {option.items && (
+            <div className="ml-6 space-y-0.5">
+              {option.items.map((item: string, idx: number) => (
+                <p key={idx} className="text-xs text-gray-400">• {item}</p>
+              ))}
+            </div>
+          )}
         </div>
-        <div className="flex-1">
-          <h4 className="text-lg font-semibold text-white mb-2">{question.text}</h4>
-          <p className="text-sm text-gray-400 mb-4">{question.description}</p>
-          
-          <div className="flex flex-wrap gap-3">
-            {question.options.map((option) => (
+      ))}
+    </div>
+  );
+};
+
+// Radio Group Question (Yes/Partial for each sub-option)
+const RadioGroupQuestion = ({ question, value, onChange }: any) => {
+  const handleChange = (subId: string, val: string) => {
+    const current = value || {};
+    onChange({ ...current, [subId]: val });
+  };
+
+  return (
+    <div className="space-y-3">
+      {question.subOptions.map((sub: any) => (
+        <div key={sub.id} className="flex items-center gap-4 p-2 rounded-lg bg-white/5 border border-white/10">
+          <span className="text-sm text-white flex-1">{sub.label}</span>
+          <div className="flex gap-2">
+            {['Yes', 'Partial'].map((option) => (
               <button
                 key={option}
-                onClick={() => onSelect(option)}
-                className={`px-5 py-2.5 rounded-xl border-2 transition-all ${
-                  selected === option
-                    ? `bg-${option === 'Yes' ? 'green' : option === 'No' ? 'red' : 'yellow'}-500/20 border-${option === 'Yes' ? 'green' : option === 'No' ? 'red' : 'yellow'}-400 text-white`
-                    : `${optionColors[option]} bg-white/5`
+                onClick={() => handleChange(sub.id, option)}
+                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                  (value || {})[sub.id] === option
+                    ? option === 'Yes' 
+                      ? 'bg-green-500/30 text-green-400 border border-green-500/50'
+                      : 'bg-yellow-500/30 text-yellow-400 border border-yellow-500/50'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
                 }`}
               >
                 {option}
@@ -52,13 +79,135 @@ const QuestionCard = ({ question, index, selected, onSelect }) => {
             ))}
           </div>
         </div>
-      </div>
-    </motion.div>
+      ))}
+    </div>
   );
 };
 
-// ===== RESULT SECTION WITH EMAIL CAPTURE =====
-const ResultSection = ({ answers, onReset }) => {
+// Yes/No Question
+const YesNoQuestion = ({ question, value, onChange }: any) => (
+  <div className="flex gap-4">
+    {['Yes', 'No'].map((option) => (
+      <button
+        key={option}
+        onClick={() => onChange(option)}
+        className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
+          value === option
+            ? option === 'Yes'
+              ? 'bg-green-500/30 text-green-400 border border-green-500/50'
+              : 'bg-red-500/30 text-red-400 border border-red-500/50'
+            : 'bg-white/5 text-gray-400 hover:bg-white/10'
+        }`}
+      >
+        {option}
+      </button>
+    ))}
+  </div>
+);
+
+// Conditional Question (Yes/No + sub-options)
+const ConditionalQuestion = ({ question, value, onChange }: any) => {
+  const mainValue = value?.main || '';
+  const subValue = value?.sub || {};
+
+  const handleMainChange = (val: string) => {
+    onChange({ main: val, sub: {} });
+  };
+
+  const handleSubChange = (subId: string, val: string) => {
+    onChange({ main: mainValue, sub: { ...subValue, [subId]: val } });
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-4">
+        {['Yes', 'No'].map((option) => (
+          <button
+            key={option}
+            onClick={() => handleMainChange(option)}
+            className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
+              mainValue === option
+                ? option === 'Yes'
+                  ? 'bg-green-500/30 text-green-400 border border-green-500/50'
+                  : 'bg-red-500/30 text-red-400 border border-red-500/50'
+                : 'bg-white/5 text-gray-400 hover:bg-white/10'
+            }`}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+      {mainValue === 'Yes' && (
+        <div className="space-y-3 ml-4 border-l-2 border-white/10 pl-4">
+          {question.subOptions.map((sub: any) => (
+            <div key={sub.id} className="flex items-center gap-4 p-2 rounded-lg bg-white/5 border border-white/10">
+              <span className="text-sm text-white flex-1">{sub.label}</span>
+              <div className="flex gap-2">
+                {['Yes', 'Partial'].map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => handleSubChange(sub.id, option)}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                      (subValue || {})[sub.id] === option
+                        ? option === 'Yes'
+                          ? 'bg-green-500/30 text-green-400 border border-green-500/50'
+                          : 'bg-yellow-500/30 text-yellow-400 border border-yellow-500/50'
+                        : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ===== QUESTION CARD =====
+const QuestionCard = ({ question, value, onChange }: any) => {
+  let content;
+  
+  switch (question.type) {
+    case 'checkbox':
+      content = <CheckboxQuestion question={question} value={value} onChange={onChange} />;
+      break;
+    case 'radio-group':
+      content = <RadioGroupQuestion question={question} value={value} onChange={onChange} />;
+      break;
+    case 'yes-no':
+      content = <YesNoQuestion question={question} value={value} onChange={onChange} />;
+      break;
+    case 'conditional':
+      content = <ConditionalQuestion question={question} value={value} onChange={onChange} />;
+      break;
+    default:
+      content = null;
+  }
+
+  return (
+    <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-5 h-full">
+      <div className="flex items-start gap-3">
+        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center text-xs font-semibold text-blue-400">
+          {question.id}
+        </div>
+        <div className="flex-1">
+          <h4 className="text-sm font-semibold text-white mb-1">{question.text}</h4>
+          {question.description && (
+            <p className="text-xs text-gray-400 mb-3">{question.description}</p>
+          )}
+          {content}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ===== RESULT SECTION =====
+const ResultSection = ({ answers, onReset }: any) => {
   const [showEmailForm, setShowEmailForm] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -69,8 +218,6 @@ const ResultSection = ({ answers, onReset }) => {
     designation: '',
   });
 
-  const totalQuestions = getAllQuestions().length;
-  const answeredCount = Object.keys(answers).length;
   const score = getOverallScore(answers);
   const risk = getRiskLevel(score);
   const categoryScores = getCategoryScores(answers);
@@ -93,8 +240,6 @@ const ResultSection = ({ answers, onReset }) => {
           riskLevel: risk.label,
           categoryScores,
           answers,
-          totalQuestions,
-          answeredCount,
         }),
       });
 
@@ -108,7 +253,6 @@ const ResultSection = ({ answers, onReset }) => {
     setIsSubmitting(false);
   };
 
-  // ===== SUBMITTED STATE =====
   if (isSubmitted) {
     return (
       <motion.div
@@ -140,7 +284,6 @@ const ResultSection = ({ answers, onReset }) => {
     );
   }
 
-  // ===== SHOW EMAIL FORM =====
   if (showEmailForm) {
     return (
       <motion.div
@@ -149,7 +292,6 @@ const ResultSection = ({ answers, onReset }) => {
         transition={{ duration: 0.6 }}
         className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8"
       >
-        {/* Score Display */}
         <div className="text-center mb-6">
           <div className="text-6xl font-bold text-white mb-2">{score}%</div>
           <div className="flex items-center justify-center gap-3">
@@ -159,9 +301,8 @@ const ResultSection = ({ answers, onReset }) => {
           </div>
         </div>
 
-        {/* Category Scores Summary */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-          {categoryScores.slice(0, 4).map((cat, idx) => (
+          {categoryScores.slice(0, 4).map((cat: any, idx: number) => (
             <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
               <p className="text-xs text-gray-400">{cat.name}</p>
               <p className="text-lg font-bold text-white">{cat.score}%</p>
@@ -169,25 +310,23 @@ const ResultSection = ({ answers, onReset }) => {
           ))}
         </div>
 
-        {/* Priority Areas */}
         <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-6">
           <h4 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center gap-2">
             <AlertCircle className="w-4 h-4" />
             Priority Areas
           </h4>
           <div className="flex flex-wrap gap-2">
-            {categoryScores.filter(cat => cat.score < 60).map((cat, idx) => (
+            {categoryScores.filter((cat: any) => cat.score < 60).map((cat: any, idx: number) => (
               <span key={idx} className="text-xs px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
                 {cat.name}
               </span>
             ))}
-            {categoryScores.filter(cat => cat.score < 60).length === 0 && (
+            {categoryScores.filter((cat: any) => cat.score < 60).length === 0 && (
               <span className="text-xs text-green-400">✨ All areas are well-covered!</span>
             )}
           </div>
         </div>
 
-        {/* Email Form */}
         <div className="bg-white/5 border border-white/20 rounded-xl p-6">
           <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
             <Mail className="w-5 h-5 text-purple-400" />
@@ -272,7 +411,6 @@ const ResultSection = ({ answers, onReset }) => {
     );
   }
 
-  // ===== DEFAULT: Show score + options =====
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -290,7 +428,7 @@ const ResultSection = ({ answers, onReset }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        {categoryScores.map((cat, idx) => {
+        {categoryScores.map((cat: any, idx: number) => {
           const Icon = cat.icon;
           return (
             <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4">
@@ -334,8 +472,8 @@ const ResultSection = ({ answers, onReset }) => {
 
 // ===== MAIN PAGE =====
 export default function ScorecardPage() {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [currentPage, setCurrentPage] = useState(0);
+  const [answers, setAnswers] = useState<Record<number, any>>({});
   const [isComplete, setIsComplete] = useState(false);
   const [stars, setStars] = useState<React.ReactNode[]>([]);
 
@@ -358,60 +496,65 @@ export default function ScorecardPage() {
     setStars(starElements);
   }, []);
 
-  // Flatten questions
   const allQuestions = getAllQuestions();
   const totalQuestions = allQuestions.length;
 
-  const currentQuestion = allQuestions[currentQuestionIndex];
-  const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
+  // Group questions into pages (4 per page)
+  const questionsPerPage = 4;
+  const pages = [];
+  for (let i = 0; i < allQuestions.length; i += questionsPerPage) {
+    pages.push(allQuestions.slice(i, i + questionsPerPage));
+  }
+  const totalPages = pages.length;
+  const currentQuestions = pages[currentPage] || [];
 
-  const handleAnswer = (value: string) => {
-    setAnswers(prev => ({
-      ...prev,
-      [currentQuestion.id]: value
-    }));
+  const handleAnswer = (questionId: number, value: any) => {
+    setAnswers(prev => ({ ...prev, [questionId]: value }));
+  };
 
-    if (isLastQuestion) {
-      setIsComplete(true);
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage(prev => prev + 1);
     } else {
-      setCurrentQuestionIndex(prev => prev + 1);
+      setIsComplete(true);
     }
   };
 
   const handlePrevious = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev - 1);
+    if (currentPage > 0) {
+      setCurrentPage(prev => prev - 1);
     }
   };
 
   const handleReset = () => {
     setAnswers({});
-    setCurrentQuestionIndex(0);
+    setCurrentPage(0);
     setIsComplete(false);
   };
 
-  const progress = Math.round((Object.keys(answers).length / totalQuestions) * 100);
+  const getAnsweredCount = () => {
+    let count = 0;
+    allQuestions.forEach(q => {
+      if (answers[q.id] !== undefined) count++;
+    });
+    return count;
+  };
 
-  // Get category for current question
-  const currentCategory = getCategoryForQuestion(currentQuestion?.id);
+  const progress = Math.round((getAnsweredCount() / totalQuestions) * 100);
+
+  if (isComplete) {
+    return <ResultSection answers={answers} onReset={handleReset} />;
+  }
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ===== BACKGROUND ===== */}
-      <div className="absolute inset-0 -z-10">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
-        >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-        </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
-        {stars}
+      {/* Background */}
+      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       </div>
+      <div className="absolute inset-0 -z-10">{stars}</div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Back Button */}
         <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -439,9 +582,9 @@ export default function ScorecardPage() {
         <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-300">
-              Overall Progress
+              Page {currentPage + 1} of {totalPages} ({getAnsweredCount()}/{totalQuestions} answered)
             </span>
-            <span className="text-sm font-semibold text-white">{Object.keys(answers).length}/{totalQuestions} questions answered</span>
+            <span className="text-sm font-semibold text-white">{progress}%</span>
           </div>
           <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
             <div 
@@ -451,55 +594,43 @@ export default function ScorecardPage() {
           </div>
         </div>
 
-        {/* Question or Result */}
-        {isComplete ? (
-          <ResultSection answers={answers} onReset={handleReset} />
-        ) : (
-          <div>
-            {/* Category indicator */}
-            {currentCategory && (
-              <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/10">
-                  {currentCategory.name}
-                </span>
-                <span className="text-xs">Question {currentQuestionIndex + 1} of {totalQuestions}</span>
-              </div>
-            )}
-
-            {/* Question */}
+        {/* Questions Grid (4 per page) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          {currentQuestions.map((question) => (
             <QuestionCard
-              question={currentQuestion}
-              index={currentQuestionIndex}
-              selected={answers[currentQuestion.id]}
-              onSelect={handleAnswer}
+              key={question.id}
+              question={question}
+              value={answers[question.id]}
+              onChange={(val: any) => handleAnswer(question.id, val)}
             />
+          ))}
+        </div>
 
-            {/* Navigation */}
-            <div className="flex justify-between mt-4">
-              <button
-                onClick={handlePrevious}
-                disabled={currentQuestionIndex === 0}
-                className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${
-                  currentQuestionIndex === 0
-                    ? 'text-gray-600 cursor-not-allowed'
-                    : 'text-gray-400 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                <ChevronLeft className="w-4 h-4" />
-                Previous
-              </button>
-              {answers[currentQuestion.id] && (
-                <button
-                  onClick={() => isLastQuestion ? setIsComplete(true) : setCurrentQuestionIndex(prev => prev + 1)}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all flex items-center gap-2"
-                >
-                  {isLastQuestion ? 'See Results' : 'Next'}
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              )}
-            </div>
-          </div>
-        )}
+        {/* Navigation */}
+        <div className="flex justify-between mt-4">
+          <button
+            onClick={handlePrevious}
+            disabled={currentPage === 0}
+            className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${
+              currentPage === 0
+                ? 'text-gray-600 cursor-not-allowed'
+                : 'text-gray-400 hover:text-white hover:bg-white/10'
+            }`}
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Previous
+          </button>
+          <span className="text-sm text-gray-500">
+            {currentPage + 1} / {totalPages}
+          </span>
+          <button
+            onClick={handleNext}
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all flex items-center gap-2"
+          >
+            {currentPage === totalPages - 1 ? 'See Results' : 'Next'}
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </main>
   );
