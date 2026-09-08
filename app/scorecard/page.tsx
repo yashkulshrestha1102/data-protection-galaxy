@@ -261,7 +261,7 @@ const ResultSection = ({ answers, onReset }: any) => {
         <div 
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: "url('/images/galaxy4.jpg')",
+            backgroundImage: "url('/images/galaxy5.jpg')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -302,7 +302,7 @@ const ResultSection = ({ answers, onReset }: any) => {
         <div 
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
           style={{ 
-            backgroundImage: "url('/images/galaxy4.jpg')",
+            backgroundImage: "url('/images/galaxy5.jpg')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -437,7 +437,7 @@ const ResultSection = ({ answers, onReset }: any) => {
       <div 
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/images/galaxy4.jpg')",
+          backgroundImage: "url('/images/galaxy5.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -582,7 +582,7 @@ export default function ScorecardPage() {
       <div 
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: "url('/images/galaxy4.jpg')",
+          backgroundImage: "url('/images/galaxy5.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
