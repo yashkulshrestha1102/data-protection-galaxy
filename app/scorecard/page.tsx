@@ -11,9 +11,7 @@ import {
 } from 'lucide-react';
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 
-// ===== QUESTION TYPES =====
-
-// Checkbox Question (Select all that apply)
+// ===== CHECKBOX QUESTION =====
 const CheckboxQuestion = ({ question, value, onChange }: any) => {
   const handleToggle = (optionId: string) => {
     const current = value || [];
@@ -49,7 +47,7 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
   );
 };
 
-// Radio Group Question (Yes/Partial for each sub-option)
+// ===== RADIO GROUP QUESTION =====
 const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   const handleChange = (subId: string, val: string) => {
     const current = value || {};
@@ -84,7 +82,7 @@ const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   );
 };
 
-// Yes/No Question
+// ===== YES/NO QUESTION =====
 const YesNoQuestion = ({ question, value, onChange }: any) => (
   <div className="flex gap-4">
     {['Yes', 'No'].map((option) => (
@@ -105,7 +103,7 @@ const YesNoQuestion = ({ question, value, onChange }: any) => (
   </div>
 );
 
-// Conditional Question (Yes/No + sub-options)
+// ===== CONDITIONAL QUESTION =====
 const ConditionalQuestion = ({ question, value, onChange }: any) => {
   const mainValue = value?.main || '';
   const subValue = value?.sub || {};
@@ -206,7 +204,9 @@ const QuestionCard = ({ question, value, onChange }: any) => {
   );
 };
 
-// ===== RESULT SECTION =====
+// ============================================================
+// ===== RESULT SECTION WITH PROPER PADDING =====
+// ============================================================
 const ResultSection = ({ answers, onReset }: any) => {
   const [showEmailForm, setShowEmailForm] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -255,44 +255,161 @@ const ResultSection = ({ answers, onReset }: any) => {
 
   if (isSubmitted) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center"
-      >
-        <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-white mb-2">Report Sent! ✅</h2>
-        <p className="text-gray-300 mb-4">
-          Your detailed Privacy & AI Governance Readiness Report has been sent to <strong>{formData.email}</strong>
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={onReset}
-            className="px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Retake Assessment
-          </button>
-          <Link
-            href="/"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2"
-          >
-            Back to Home
-          </Link>
+      <div className="pt-28 md:pt-32 pb-16">
+        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center">
+          <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-white mb-2">Report Sent! ✅</h2>
+          <p className="text-gray-300 mb-4">
+            Your detailed Privacy & AI Governance Readiness Report has been sent to <strong>{formData.email}</strong>
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={onReset}
+              className="px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              Retake Assessment
+            </button>
+            <Link
+              href="/"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2"
+            >
+              Back to Home
+            </Link>
+          </div>
         </div>
-      </motion.div>
+      </div>
     );
   }
 
   if (showEmailForm) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8"
-      >
-        <div className="text-center mb-6">
+      <div className="pt-28 md:pt-32 pb-16">
+        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
+          <div className="text-center mb-6">
+            <div className="text-6xl font-bold text-white mb-2">{score}%</div>
+            <div className="flex items-center justify-center gap-3">
+              <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
+                {risk.emoji} {risk.label}
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+            {categoryScores.slice(0, 4).map((cat: any, idx: number) => (
+              <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <p className="text-xs text-gray-400">{cat.name}</p>
+                <p className="text-lg font-bold text-white">{cat.score}%</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-6">
+            <h4 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center gap-2">
+              <AlertCircle className="w-4 h-4" />
+              Priority Areas
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {categoryScores.filter((cat: any) => cat.score < 60).map((cat: any, idx: number) => (
+                <span key={idx} className="text-xs px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
+                  {cat.name}
+                </span>
+              ))}
+              {categoryScores.filter((cat: any) => cat.score < 60).length === 0 && (
+                <span className="text-xs text-green-400">✨ All areas are well-covered!</span>
+              )}
+            </div>
+          </div>
+
+          <div className="bg-white/5 border border-white/20 rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
+              <Mail className="w-5 h-5 text-purple-400" />
+              Get Your Detailed Report
+            </h3>
+            <p className="text-sm text-gray-400 mb-4">
+              Enter your details to receive a comprehensive readiness report with personalised recommendations.
+            </p>
+            <form onSubmit={handleSubmitReport} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-gray-300 mb-1">Full Name *</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="John Doe"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-300 mb-1">Email Address *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="john@company.com"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-gray-300 mb-1">Company Name</label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    placeholder="Your Company"
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-300 mb-1">Designation</label>
+                  <input
+                    type="text"
+                    name="designation"
+                    value={formData.designation}
+                    onChange={handleInputChange}
+                    placeholder="e.g., Privacy Officer"
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 ${
+                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Generating Report...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Get My Detailed Report
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="pt-28 md:pt-32 pb-16">
+      <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
+        <div className="text-center mb-8">
           <div className="text-6xl font-bold text-white mb-2">{score}%</div>
           <div className="flex items-center justify-center gap-3">
             <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
@@ -301,172 +418,47 @@ const ResultSection = ({ answers, onReset }: any) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-          {categoryScores.slice(0, 4).map((cat: any, idx: number) => (
-            <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
-              <p className="text-xs text-gray-400">{cat.name}</p>
-              <p className="text-lg font-bold text-white">{cat.score}%</p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          {categoryScores.map((cat: any, idx: number) => {
+            const Icon = cat.icon;
+            return (
+              <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Icon className="w-4 h-4 text-purple-400" />
+                  <span className="text-sm font-medium text-white">{cat.name}</span>
+                  <span className="ml-auto text-sm text-gray-400">{cat.score}%</span>
+                </div>
+                <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      cat.score >= 80 ? 'bg-green-400' : cat.score >= 50 ? 'bg-yellow-400' : 'bg-red-400'
+                    }`}
+                    style={{ width: `${cat.score}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-6">
-          <h4 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center gap-2">
-            <AlertCircle className="w-4 h-4" />
-            Priority Areas
-          </h4>
-          <div className="flex flex-wrap gap-2">
-            {categoryScores.filter((cat: any) => cat.score < 60).map((cat: any, idx: number) => (
-              <span key={idx} className="text-xs px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
-                {cat.name}
-              </span>
-            ))}
-            {categoryScores.filter((cat: any) => cat.score < 60).length === 0 && (
-              <span className="text-xs text-green-400">✨ All areas are well-covered!</span>
-            )}
-          </div>
-        </div>
-
-        <div className="bg-white/5 border border-white/20 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-            <Mail className="w-5 h-5 text-purple-400" />
-            Get Your Detailed Report
-          </h3>
-          <p className="text-sm text-gray-400 mb-4">
-            Enter your details to receive a comprehensive readiness report with personalised recommendations.
-          </p>
-          <form onSubmit={handleSubmitReport} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm text-gray-300 mb-1">Full Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="John Doe"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-300 mb-1">Email Address *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="john@company.com"
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm text-gray-300 mb-1">Company Name</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  placeholder="Your Company"
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                />
-              </div>
-              <div>
-                <label className="block text-sm text-gray-300 mb-1">Designation</label>
-                <input
-                  type="text"
-                  name="designation"
-                  value={formData.designation}
-                  onChange={handleInputChange}
-                  placeholder="e.g., Privacy Officer"
-                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
-                />
-              </div>
-            </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 ${
-                isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-              }`}
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  Generating Report...
-                </>
-              ) : (
-                <>
-                  <Send className="w-5 h-5" />
-                  Get My Detailed Report
-                </>
-              )}
-            </button>
-          </form>
-        </div>
-      </motion.div>
-    );
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8"
-    >
-      <div className="text-center mb-8">
-        <div className="text-6xl font-bold text-white mb-2">{score}%</div>
-        <div className="flex items-center justify-center gap-3">
-          <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
-            {risk.emoji} {risk.label}
-          </span>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <button
+            onClick={() => setShowEmailForm(true)}
+            className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+          >
+            <Mail className="w-5 h-5" />
+            Get Detailed Report
+          </button>
+          <button
+            onClick={onReset}
+            className="flex-1 px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Retake Assessment
+          </button>
         </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        {categoryScores.map((cat: any, idx: number) => {
-          const Icon = cat.icon;
-          return (
-            <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Icon className="w-4 h-4 text-purple-400" />
-                <span className="text-sm font-medium text-white">{cat.name}</span>
-                <span className="ml-auto text-sm text-gray-400">{cat.score}%</span>
-              </div>
-              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                <div 
-                  className={`h-full rounded-full transition-all duration-500 ${
-                    cat.score >= 80 ? 'bg-green-400' : cat.score >= 50 ? 'bg-yellow-400' : 'bg-red-400'
-                  }`}
-                  style={{ width: `${cat.score}%` }}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-4">
-        <button
-          onClick={() => setShowEmailForm(true)}
-          className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
-        >
-          <Mail className="w-5 h-5" />
-          Get Detailed Report
-        </button>
-        <button
-          onClick={onReset}
-          className="flex-1 px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-        >
-          <ArrowLeft className="w-5 h-5" />
-          Retake Assessment
-        </button>
-      </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -499,7 +491,6 @@ export default function ScorecardPage() {
   const allQuestions = getAllQuestions();
   const totalQuestions = allQuestions.length;
 
-  // Group questions into pages (4 per page)
   const questionsPerPage = 4;
   const pages = [];
   for (let i = 0; i < allQuestions.length; i += questionsPerPage) {
@@ -548,20 +539,17 @@ export default function ScorecardPage() {
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* Background */}
       <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       </div>
       <div className="absolute inset-0 -z-10">{stars}</div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Back Button */}
         <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Home
         </Link>
 
-        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -578,7 +566,6 @@ export default function ScorecardPage() {
           <p className="text-gray-200 drop-shadow-lg">{scorecardData.subtitle}</p>
         </motion.div>
 
-        {/* Progress */}
         <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-gray-300">
@@ -594,7 +581,6 @@ export default function ScorecardPage() {
           </div>
         </div>
 
-        {/* Questions Grid (4 per page) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {currentQuestions.map((question) => (
             <QuestionCard
@@ -606,7 +592,6 @@ export default function ScorecardPage() {
           ))}
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-between mt-4">
           <button
             onClick={handlePrevious}
