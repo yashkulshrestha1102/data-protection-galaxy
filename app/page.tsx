@@ -154,17 +154,47 @@ export default function Home() {
         </motion.div>
 
 
-{/* Generator */}
+{/* ============================================================ */}
+        {/* ===== GENERATOR SECTION (UPDATED - BADIYA CONTENT) ===== */}
+        {/* ============================================================ */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-10"
+        >
           <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6">
-            <div className="flex items-center gap-2 mb-2">
-              <Zap className="w-5 h-5 text-purple-400" />
-              <h3 className="text-lg font-semibold text-white">Generator</h3>
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-6 h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">AI Document Generator</h3>
+                  <p className="text-gray-300 text-sm max-w-md">
+                    Generate privacy policies, consent forms, and AI governance documents instantly with our intelligent document builder.
+                  </p>
+                </div>
+              </div>
+              <Link 
+                href="/generator" 
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-500/30 hover:bg-purple-500/40 border border-purple-400/30 text-purple-300 hover:text-white transition-all text-sm font-medium whitespace-nowrap"
+              >
+                Explore Generator
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <p className="text-gray-300 text-sm mb-4">Generate privacy and AI governance documents instantly.</p>
-            <Link href="/generator" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
-              Explore Generator →
-            </Link>
+            
+            {/* Quick Tags */}
+            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+              {['Privacy Policy', 'Consent Form', 'DPDPA Compliance', 'AI Governance'].map((tag) => (
+                <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
+        </motion.div>
 
 
 
