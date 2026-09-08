@@ -19,7 +19,6 @@ const getStatus = (score: number) => {
   return { label: 'Critical', color: '#8b0000' };
 };
 
-// ===== SCORECARD CATEGORIES (10 Domains) =====
 const getCategoryScores = (baseScore: number) => [
   { name: 'AI Governance & Leadership', score: Math.min(100, baseScore + 10), status: getStatus(baseScore + 10) },
   { name: 'AI Risk Management', score: Math.min(100, baseScore - 4), status: getStatus(baseScore - 4) },
@@ -134,16 +133,25 @@ export async function POST(request: Request) {
       maturity: maturity,
     };
 
-    // ===== DYNAMIC IMPORT - @react-pdf/renderer (Server-side) =====
-    const { renderToBuffer } = await import('@react-pdf/renderer');
-    const { PDFReport } = await import('@/components/generator/PDFReport');
+    // ===== 1. PDF GENERATE KARO (Using dynamic import with eval approach) =====
+    let pdfBuffer: Buffer;
+    
+    try {
+      // Dynamic import for server-side PDF generation
+      const { renderToBuffer } = await import('@react-pdf/renderer');
+      const { PDFReport } = await import('@/components/generator/PDFReport');
+      
+      // Create React element manually to avoid JSX parsing issues
+      const pdfElement = PDFReport({ data: pdfData });
+      pdfBuffer = await renderToBuffer(pdfElement);
+    } catch (pdfError) {
+      console.error('PDF Generation Error:', pdfError);
+      return NextResponse.json({ 
+        success: false, 
+        message: 'Failed to generate PDF' 
+      }, { status: 500 });
+    }
 
-    // ===== PDF GENERATE KARO =====
-    const pdfBuffer = await renderToBuffer(
-      <PDFReport data={pdfData} />
-    );
-
-    // ===== PDF KO BASE64 MEIN CONVERT KARO =====
     const pdfBase64 = pdfBuffer.toString('base64');
 
     // ===== SIMPLE EMAIL BODY =====
