@@ -206,7 +206,7 @@ const QuestionCard = ({ question, value, onChange }: any) => {
 };
 
 // ============================================================
-// ===== RESULT SECTION WITH PROPER PADDING =====
+// ===== RESULT SECTION =====
 // ============================================================
 const ResultSection = ({ answers, onReset }: any) => {
   const [showEmailForm, setShowEmailForm] = useState(true);
@@ -464,14 +464,13 @@ const ResultSection = ({ answers, onReset }: any) => {
 };
 
 // ============================================================
-// ===== MAIN PAGE - WITH 3 BACKGROUND OPTIONS =====
+// ===== MAIN PAGE - FIXED BACKGROUND =====
 // ============================================================
 export default function ScorecardPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [answers, setAnswers] = useState<Record<number, any>>({});
   const [isComplete, setIsComplete] = useState(false);
   const [stars, setStars] = useState<React.ReactNode[]>([]);
-  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const starElements = [];
@@ -544,24 +543,7 @@ export default function ScorecardPage() {
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
       
-      {/* ============================================ */}
-      {/* OPTION 1: CSS Background (SABSE SIMPLE) */}
-      {/* ============================================ */}
-      <div 
-        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('/images/home1.jpeg')",
-          backgroundColor: '#1a1a2e' // Fallback color
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-      </div>
-
-      {/* ============================================ */}
-      {/* OPTION 2: Next.js Image Component (RECOMMENDED) */}
-      {/* ============================================ */}
-      {/* Comment out Option 1 and uncomment this if Option 1 doesn't work */}
-      
+      {/* ✅ BACKGROUND - Sirf Next.js Image (Recommended) */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/home1.jpeg"
@@ -569,27 +551,10 @@ export default function ScorecardPage() {
           fill
           className="object-cover"
           priority
-          quality={100}
-          onError={() => setImageError(true)}
+          unoptimized
         />
-        {!imageError && (
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-        )}
-        {imageError && (
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" />
-        )}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       </div>
-      
-
-      {/* ============================================ */}
-      {/* OPTION 3: Gradient Fallback (AGAR IMAGE NAHI HAI TOH) */}
-      {/* ============================================ */}
-      {/* Agar image nahi hai toh yeh gradient show karega */}
-      {/* 
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-      */}
 
       {/* Stars Effect */}
       <div className="absolute inset-0 -z-10">{stars}</div>
