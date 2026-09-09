@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -12,62 +12,22 @@ import {
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 
 // ============================================================
-// ===== VIDEO BACKGROUND COMPONENT (Original Quality) =====
+// ===== BACKGROUND - ONLY IMAGE =====
 // ============================================================
-const VideoBackground = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoError, setVideoError] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.log('Video autoplay failed:', err);
-        setVideoError(true);
-      });
-    }
-  }, []);
-
+const Background = () => {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
-      {!videoError ? (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            // ✅ Video quality settings
-            imageRendering: 'auto',
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-          }}
-          onError={() => setVideoError(true)}
-        >
-          <source src="/videos/vido5.mp4" type="video/mp4" />
-        </video>
-      ) : (
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: "url('/images/galaxy5.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-      )}
-      
-      {/* ✅ Light Overlay - Quality impact kam karo */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40" />
+    <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" 
+         style={{ 
+           backgroundImage: "url('/images/home1.jpeg')",  // ✅ galaxy5.jpg use karo
+           backgroundSize: 'cover',
+           backgroundPosition: 'center',
+         }}
+    >
+      <div className="absolute inset-0 bg-black/60" />
     </div>
   );
 };
+
 // ============================================================
 // ===== 3D PIE CHART COMPONENT (SECTOR STYLE) =====
 // ============================================================
@@ -203,7 +163,7 @@ const PieChart3D = ({ answered, total }: { answered: number; total: number }) =>
   );
 };
 
-// ===== CHECKBOX QUESTION WITH DROPDOWN + AUTO-SELECT =====
+// ===== CHECKBOX QUESTION WITH DROPDOWN + AUTO-SELECT (Items Read-Only) =====
 const CheckboxQuestion = ({ question, value, onChange }: any) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -219,11 +179,9 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
     const allSelected = allItemIds.every((item: string) => current.includes(item));
     
     if (allSelected) {
-      // Deselect all items
       const newValue = current.filter((id: string) => !allItemIds.includes(id));
       onChange(newValue);
     } else {
-      // Select all items
       const newValue = [...current];
       allItemIds.forEach((item: string) => {
         if (!newValue.includes(item)) {
@@ -281,29 +239,16 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
               </div>
             </button>
 
-            {/* ===== DROPDOWN CONTENT (Items) ===== */}
+            {/* ===== DROPDOWN CONTENT (Items - Read Only) ===== */}
             {isOpen && option.items && (
               <div className="px-4 pb-3 space-y-0.5 border-t border-white/5 pt-2">
-                {option.items.map((item: string, idx: number) => {
-                  const isItemSelected = (value || []).includes(item);
-                  return (
-                    <label key={idx} className="flex items-center gap-2 cursor-pointer py-0.5 hover:bg-white/5 rounded px-2 transition-colors">
-                      <input
-                        type="checkbox"
-                        checked={isItemSelected}
-                        onChange={() => {
-                          const current = value || [];
-                          const newValue = isItemSelected
-                            ? current.filter((id: string) => id !== item)
-                            : [...current, item];
-                          onChange(newValue);
-                        }}
-                        className="w-3.5 h-3.5 text-purple-500 focus:ring-purple-500 rounded"
-                      />
-                      <span className="text-xs text-gray-300">• {item}</span>
-                    </label>
-                  );
-                })}
+                {option.items.map((item: string, idx: number) => (
+                  <div key={idx} className="flex items-center gap-2 py-0.5 px-2">
+                    {/* ✅ NO CHECKBOX - Sirf bullet point */}
+                    <span className="text-xs text-gray-400">•</span>
+                    <span className="text-xs text-gray-300">{item}</span>
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -494,7 +439,6 @@ const QuestionCard = ({ question, value, onChange }: any) => {
         <div className="flex-1">
           <h4 className="text-sm font-semibold text-white mb-1">{question.text}</h4>
           
-
           {/* ✅ STYLED DESCRIPTION - Colorful & Bold */}
           {question.description && (
             <div className="mb-3 p-2 rounded-lg bg-white/5 border border-white/10">
@@ -595,8 +539,7 @@ const ResultSection = ({ answers, onReset }: any) => {
   if (isSubmitted) {
     return (
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        {/* ✅ VIDEO BACKGROUND */}
-        <VideoBackground />
+        <Background />
         <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center relative z-10">
           <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-2">Report Sent! ✅</h2>
@@ -627,8 +570,7 @@ const ResultSection = ({ answers, onReset }: any) => {
   if (showEmailForm) {
     return (
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        {/* ✅ VIDEO BACKGROUND */}
-        <VideoBackground />
+        <Background />
         
         <div className="max-w-4xl mx-auto relative z-10">
           {/* ===== 3D PIE CHART ===== */}
@@ -767,8 +709,7 @@ const ResultSection = ({ answers, onReset }: any) => {
   // ===== INITIAL RESULT STATE =====
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ✅ VIDEO BACKGROUND */}
-      <VideoBackground />
+      <Background />
       
       <div className="max-w-4xl mx-auto relative z-10">
         {/* ===== 3D PIE CHART ===== */}
@@ -916,8 +857,8 @@ export default function ScorecardPage() {
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ✅ VIDEO BACKGROUND - Endless Loop */}
-      <VideoBackground />
+      {/* ✅ IMAGE BACKGROUND */}
+      <Background />
 
       {/* Stars Effect */}
       <div className="absolute inset-0 -z-10">{stars}</div>
