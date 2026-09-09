@@ -1,16 +1,73 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, ChevronRight, ChevronLeft, CheckCircle, 
   AlertCircle, FileText, Clock,
   Shield, Users, Database, Globe, Building, Scale,
-  Sparkles, Loader2, Mail, Send, Lock, UserCheck
+  Sparkles, Loader2, Mail, Send, Lock, UserCheck, ChevronDown
 } from 'lucide-react';
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 
+// ============================================================
+// ===== VIDEO BACKGROUND COMPONENT (High Quality) =====
+// ============================================================
+const VideoBackground = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoError, setVideoError] = useState(false);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.log('Video autoplay failed:', err);
+        setVideoError(true);
+      });
+    }
+  }, []);
+
+  return (
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      {!videoError ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            filter: 'brightness(0.5) saturate(1.1)',
+            width: '100%',
+            height: '100%',
+          }}
+          onError={() => setVideoError(true)}
+        >
+          {/* ✅ High Quality Video - Multiple sources for best quality */}
+          <source src="/videos/vido2.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: "url('/images/galaxy5.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+      )}
+      
+      {/* Dark Overlay - Kam karo for better visibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/40" />
+      
+      {/* Vignette Effect - Light */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/10 pointer-events-none" />
+    </div>
+  );
+};
 // ============================================================
 // ===== 3D PIE CHART COMPONENT (SECTOR STYLE) =====
 // ============================================================
@@ -146,27 +203,27 @@ const PieChart3D = ({ answered, total }: { answered: number; total: number }) =>
   );
 };
 
-// ============================================================
-// ===== CHECKBOX QUESTION WITH SELECT ALL =====
-// ============================================================
+// ===== CHECKBOX QUESTION WITH DROPDOWN + AUTO-SELECT =====
 const CheckboxQuestion = ({ question, value, onChange }: any) => {
-  const handleToggle = (optionId: string) => {
-    const current = value || [];
-    const newValue = current.includes(optionId) 
-      ? current.filter((id: string) => id !== optionId)
-      : [...current, optionId];
-    onChange(newValue);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  // Toggle dropdown
+  const toggleDropdown = (optionId: string) => {
+    setOpenDropdown(openDropdown === optionId ? null : optionId);
   };
 
-  const handleSelectAll = (option: any) => {
+  // Toggle category selection (auto-select all items)
+  const toggleCategory = (option: any) => {
     const current = value || [];
     const allItemIds = option.items || [];
-    const allSelected = allItemIds.length > 0 && allItemIds.every((item: string) => current.includes(item));
+    const allSelected = allItemIds.every((item: string) => current.includes(item));
     
     if (allSelected) {
+      // Deselect all items
       const newValue = current.filter((id: string) => !allItemIds.includes(id));
       onChange(newValue);
     } else {
+      // Select all items
       const newValue = [...current];
       allItemIds.forEach((item: string) => {
         if (!newValue.includes(item)) {
@@ -177,69 +234,86 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
     }
   };
 
-  const isAllSelected = (option: any) => {
+  // Check if category is selected
+  const isCategorySelected = (option: any) => {
     const current = value || [];
     const allItemIds = option.items || [];
     return allItemIds.length > 0 && allItemIds.every((item: string) => current.includes(item));
   };
 
   return (
-    <div className="space-y-3">
-      {question.options.map((option: any) => (
-        <div key={option.id} className="space-y-1">
-          <div className="flex items-center gap-2">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={(value || []).includes(option.id)}
-                onChange={() => handleToggle(option.id)}
-                className="w-4 h-4 mt-0.5 text-purple-500 focus:ring-purple-500 rounded"
-              />
-              <span className="text-white text-sm font-medium">{option.label}</span>
-            </label>
-            {option.items && option.items.length > 0 && (
-              <button
-                onClick={() => handleSelectAll(option)}
-                className={`ml-2 px-2 py-0.5 rounded text-xs font-medium transition-all ${
-                  isAllSelected(option)
-                    ? 'bg-purple-600 text-white border border-purple-400 shadow-lg shadow-purple-500/30'
-                    : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
-                }`}
-              >
-                {isAllSelected(option) ? 'Deselect All' : 'Select All'}
-              </button>
+    <div className="space-y-2">
+      {question.options.map((option: any) => {
+        const isOpen = openDropdown === option.id;
+        const isSelected = isCategorySelected(option);
+        const selectedCount = (value || []).filter((item: string) => 
+          option.items?.includes(item)
+        ).length;
+        const totalItems = option.items?.length || 0;
+
+        return (
+          <div key={option.id} className="border border-white/10 rounded-xl overflow-hidden bg-white/5">
+            {/* ===== DROPDOWN HEADER ===== */}
+            <button
+              onClick={() => toggleDropdown(option.id)}
+              className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/5 transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                {/* ✅ Category Checkbox */}
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={() => toggleCategory(option)}
+                  className="w-4 h-4 text-purple-500 focus:ring-purple-500 rounded"
+                />
+                <span className="text-white text-sm font-medium">{option.label}</span>
+                {option.items && (
+                  <span className="text-[10px] text-gray-400">
+                    ({selectedCount}/{totalItems})
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-2">
+                {isSelected && (
+                  <span className="text-[10px] text-green-400">✓ Selected</span>
+                )}
+                <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+              </div>
+            </button>
+
+            {/* ===== DROPDOWN CONTENT (Items) ===== */}
+            {isOpen && option.items && (
+              <div className="px-4 pb-3 space-y-0.5 border-t border-white/5 pt-2">
+                {option.items.map((item: string, idx: number) => {
+                  const isItemSelected = (value || []).includes(item);
+                  return (
+                    <label key={idx} className="flex items-center gap-2 cursor-pointer py-0.5 hover:bg-white/5 rounded px-2 transition-colors">
+                      <input
+                        type="checkbox"
+                        checked={isItemSelected}
+                        onChange={() => {
+                          const current = value || [];
+                          const newValue = isItemSelected
+                            ? current.filter((id: string) => id !== item)
+                            : [...current, item];
+                          onChange(newValue);
+                        }}
+                        className="w-3.5 h-3.5 text-purple-500 focus:ring-purple-500 rounded"
+                      />
+                      <span className="text-xs text-gray-300">• {item}</span>
+                    </label>
+                  );
+                })}
+              </div>
             )}
           </div>
-          {option.items && (
-            <div className="ml-6 space-y-0.5">
-              {option.items.map((item: string, idx: number) => (
-                <label key={idx} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={(value || []).includes(item)}
-                    onChange={() => {
-                      const current = value || [];
-                      const newValue = current.includes(item)
-                        ? current.filter((id: string) => id !== item)
-                        : [...current, item];
-                      onChange(newValue);
-                    }}
-                    className="w-3.5 h-3.5 text-purple-500 focus:ring-purple-500 rounded"
-                  />
-                  <span className="text-xs text-gray-300">• {item}</span>
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
 
-// ============================================================
-// ===== RADIO GROUP QUESTION =====
-// ============================================================
+// ===== RADIO GROUP QUESTION WITH SQUARE + CIRCLE SHAPES (Buttons Aage) =====
 const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   const handleChange = (subId: string, val: string) => {
     const current = value || {};
@@ -249,25 +323,52 @@ const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   return (
     <div className="space-y-3">
       {question.subOptions.map((sub: any) => (
-        <div key={sub.id} className="flex items-center gap-4 p-2 rounded-lg bg-white/5 border border-white/10">
-          <span className="text-sm text-white flex-1">{sub.label}</span>
-          <div className="flex gap-2">
-            {['Yes', 'Partial'].map((option) => (
-              <button
-                key={option}
-                onClick={() => handleChange(sub.id, option)}
-                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                  (value || {})[sub.id] === option
-                    ? option === 'Yes' 
-                      ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
-                      : 'bg-yellow-700 text-white border border-yellow-500 shadow-lg shadow-yellow-500/30'
-                    : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
-                }`}
-              >
-                {option}
-              </button>
-            ))}
+        <div key={sub.id} className="flex items-center gap-4 p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+          {/* ✅ BUTTONS PEHLE - Square + Circle */}
+          <div className="flex items-center gap-4 flex-shrink-0">
+            {/* YES - SQUARE */}
+            <button
+              onClick={() => handleChange(sub.id, 'Yes')}
+              className="flex flex-col items-center gap-1 group"
+              title="Select Yes (Square)"
+            >
+              <div className={`w-8 h-8 rounded-md border-2 flex items-center justify-center transition-all ${
+                (value || {})[sub.id] === 'Yes'
+                  ? 'bg-green-600 border-green-400 shadow-lg shadow-green-500/30'
+                  : 'border-gray-500 hover:border-green-400 bg-white/5'
+              }`}>
+                {(value || {})[sub.id] === 'Yes' && (
+                  <span className="text-white text-lg">✓</span>
+                )}
+              </div>
+              <span className={`text-[10px] ${(value || {})[sub.id] === 'Yes' ? 'text-green-400' : 'text-gray-500'}`}>
+                Yes
+              </span>
+            </button>
+
+            {/* PARTIAL - CIRCLE */}
+            <button
+              onClick={() => handleChange(sub.id, 'Partial')}
+              className="flex flex-col items-center gap-1 group"
+              title="Select Partial (Circle)"
+            >
+              <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${
+                (value || {})[sub.id] === 'Partial'
+                  ? 'bg-yellow-600 border-yellow-400 shadow-lg shadow-yellow-500/30'
+                  : 'border-gray-500 hover:border-yellow-400 bg-white/5'
+              }`}>
+                {(value || {})[sub.id] === 'Partial' && (
+                  <span className="w-2 h-2 bg-white rounded-full" />
+                )}
+              </div>
+              <span className={`text-[10px] ${(value || {})[sub.id] === 'Partial' ? 'text-yellow-400' : 'text-gray-500'}`}>
+                Partial
+              </span>
+            </button>
           </div>
+
+          {/* ✅ LABEL BAAD MEIN */}
+          <span className="text-sm text-white flex-1">{sub.label}</span>
         </div>
       ))}
     </div>
@@ -392,9 +493,34 @@ const QuestionCard = ({ question, value, onChange }: any) => {
         </div>
         <div className="flex-1">
           <h4 className="text-sm font-semibold text-white mb-1">{question.text}</h4>
+          
+
+          {/* ✅ STYLED DESCRIPTION - Colorful & Bold */}
           {question.description && (
-            <p className="text-xs text-gray-400 mb-3">{question.description}</p>
+            <div className="mb-3 p-2 rounded-lg bg-white/5 border border-white/10">
+              {question.description === 'Select Square for Yes, Circle for Partial' ? (
+                <div className="flex items-center gap-3 flex-wrap text-xs">
+                  <span className="text-gray-400">Select:</span>
+                  <span className="flex items-center gap-1.5 bg-green-500/20 px-2 py-0.5 rounded-full border border-green-500/30">
+                    <span className="w-3 h-3 rounded-sm bg-green-500 inline-block" />
+                    <span className="text-green-400 font-bold">Square</span>
+                    <span className="text-white">=</span>
+                    <span className="text-white font-bold">Yes</span>
+                  </span>
+                  <span className="text-gray-600">|</span>
+                  <span className="flex items-center gap-1.5 bg-yellow-500/20 px-2 py-0.5 rounded-full border border-yellow-500/30">
+                    <span className="w-3 h-3 rounded-full bg-yellow-500 inline-block" />
+                    <span className="text-yellow-400 font-bold">Circle</span>
+                    <span className="text-white">=</span>
+                    <span className="text-white font-bold">Partial</span>
+                  </span>
+                </div>
+              ) : (
+                <span className="text-gray-400 text-xs">{question.description}</span>
+              )}
+            </div>
           )}
+          
           {content}
         </div>
       </div>
@@ -469,16 +595,8 @@ const ResultSection = ({ answers, onReset }: any) => {
   if (isSubmitted) {
     return (
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        <div 
-          className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: "url('/images/galaxy5.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
+        {/* ✅ VIDEO BACKGROUND */}
+        <VideoBackground />
         <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center relative z-10">
           <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-2">Report Sent! ✅</h2>
@@ -509,16 +627,8 @@ const ResultSection = ({ answers, onReset }: any) => {
   if (showEmailForm) {
     return (
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        <div 
-          className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: "url('/images/galaxy5.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
+        {/* ✅ VIDEO BACKGROUND */}
+        <VideoBackground />
         
         <div className="max-w-4xl mx-auto relative z-10">
           {/* ===== 3D PIE CHART ===== */}
@@ -657,16 +767,8 @@ const ResultSection = ({ answers, onReset }: any) => {
   // ===== INITIAL RESULT STATE =====
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      <div 
-        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('/images/galaxy5.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
-      </div>
+      {/* ✅ VIDEO BACKGROUND */}
+      <VideoBackground />
       
       <div className="max-w-4xl mx-auto relative z-10">
         {/* ===== 3D PIE CHART ===== */}
@@ -814,17 +916,10 @@ export default function ScorecardPage() {
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      <div 
-        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('/images/galaxy5.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/30" />
-      </div>
+      {/* ✅ VIDEO BACKGROUND - Endless Loop */}
+      <VideoBackground />
 
+      {/* Stars Effect */}
       <div className="absolute inset-0 -z-10">{stars}</div>
 
       <div className="max-w-6xl mx-auto relative z-10">

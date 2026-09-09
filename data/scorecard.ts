@@ -53,7 +53,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 1,
           text: 'What types of personal data does your organisation collect or process?',
-          description: 'Select all that apply. Only mention headers.',
+          description: '',
           type: 'checkbox',
           options: [
             { id: 'basic', label: 'Basic / Identity Data', items: ['Name', 'Date of birth / Age', 'Gender', 'Photograph', 'Government-issued ID details'] },
@@ -77,7 +77,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 2,
           text: 'Do you obtain consent for the following?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'privacy-consent', label: 'Privacy consent (via privacy policy or notice)' },
@@ -95,7 +95,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 3,
           text: 'What security measures are taken to protect the data?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'encryption', label: 'Encryption and firewalls' },
@@ -115,7 +115,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 4,
           text: 'What security measures are taken at the time of breach?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'breach-plan', label: 'Data breach response plan' },
@@ -134,7 +134,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 5,
           text: 'What are the rights provided to individuals?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'right-access', label: 'Right to Access Information about Personal Data' },
@@ -156,7 +156,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 6,
           text: 'What measures do you have for retaining and deleting personal data?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'retention-periods', label: 'Defined data retention periods' },
@@ -175,7 +175,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 7,
           text: 'What safeguards do you have for children\'s data?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'parental-consent', label: 'Verify parental consent where required' },
@@ -193,7 +193,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 8,
           text: 'What grievance redressal measures do you have?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'grievance-mechanism', label: 'Grievance submission mechanism' },
@@ -212,7 +212,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 9,
           text: 'What privacy policies do you have in place?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'privacy-policy', label: 'Privacy policy / privacy notice' },
@@ -232,7 +232,7 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
         {
           id: 10,
           text: 'Do you share personal data with third parties or Data Processors? If yes, do you have the following in place?',
-          description: 'Select Yes or Partial for each.',
+          description: 'Select Square for Yes, Circle for Partial',
           type: 'radio-group',
           subOptions: [
             { id: 'processor-agreements', label: 'Agreements with Data Processors' },
@@ -243,25 +243,24 @@ export const scorecardData: { title: string; subtitle: string; categories: Categ
       ] as Question[]
     },
     // ===== 11. CROSS-BORDER TRANSFER =====
+{
+  id: 'cross-border',
+  name: 'Cross-Border Transfer',
+  icon: Globe,
+  questions: [
     {
-      id: 'cross-border',
-      name: 'Cross-Border Transfer',
-      icon: Globe,
-      questions: [
-        {
-          id: 11,
-          text: 'Do you transfer or store personal data outside India?',
-          description: 'Select Yes or No. If Yes, select the measures you have in place.',
-          type: 'conditional',
-          mainOption: 'yes-no',
-          subOptions: [
-            { id: 'transfer-requirements', label: 'Assessed applicable transfer requirements' },
-            { id: 'transfer-safeguards', label: 'Safeguards for overseas data transfers' },
-            { id: 'transfer-contracts', label: 'Contracts with overseas processors' }
-          ]
-        }
-      ] as Question[]
-    },
+      id: 11,
+      text: 'Do you transfer or store personal data outside India?',
+      description: 'Select Square for Yes, Circle for Partial',  // ✅ Fixed
+      type: 'radio-group',  // ✅ Fixed - Radio Group
+      subOptions: [
+        { id: 'transfer-requirements', label: 'Assessed applicable transfer requirements' },
+        { id: 'transfer-safeguards', label: 'Safeguards for overseas data transfers' },
+        { id: 'transfer-contracts', label: 'Contracts with overseas processors' }
+      ]
+    }
+  ] as Question[]
+},
     // ===== 12. SDF REQUIREMENTS =====
     {
       id: 'sdf',

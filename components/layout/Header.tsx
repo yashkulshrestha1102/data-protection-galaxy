@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, Lock, Info, Phone, Mail } from "lucide-react";
 
 // ===== RESOURCES DROPDOWN ITEMS =====
@@ -12,26 +12,58 @@ const resourcesDropdown = [
   { href: "/map", label: "Map" },
 ];
 
-// ===== TOOLS DROPDOWN ITEMS =====
-const toolsDropdown = [
-  { href: "/generator", label: "Generator" },
-  { href: "/scorecard", label: "Scoreboard" },
-];
+// ===== TOOLS DROPDOWN - REMOVED, Ab Generator Direct Link Hai =====
+// const toolsDropdown = [
+//   { href: "/generator", label: "Generator" },
+//   { href: "/scorecard", label: "Scoreboard" },
+// ];
 
-// ===== LEARN DROPDOWN ITEMS =====
-const learnDropdown = [
-  { href: "/certificate-course", label: "Certification", locked: true },
-  { href: "/resources/guides", label: "Guides", locked: false },
-];
+// ===== LEARN DROPDOWN - COMPLETELY REMOVED =====
+// const learnDropdown = [
+//   { href: "/certificate-course", label: "Certification", locked: true },
+//   { href: "/resources/guides", label: "Guides", locked: false },
+// ];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [showLockMessage, setShowLockMessage] = useState<string | null>(null);
   const pathname = usePathname();
+  
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleMouseEnter = (dropdown: string) => setOpenDropdown(dropdown);
-  const handleMouseLeave = () => setOpenDropdown(null);
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const handleMouseEnter = (dropdown: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setOpenDropdown(dropdown);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 150);
+  };
+
+  const handleDropdownMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
+  const handleDropdownMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 150);
+  };
 
   const handleLockedClick = (label: string) => {
     setShowLockMessage(`${label} section is Coming Soon. Under Maintenance!`);
@@ -40,9 +72,7 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* ============================================================ */}
-      {/* ===== CONTACT BAR - TOP PE (z-index 10) ===== */}
-      {/* ============================================================ */}
+      {/* ===== CONTACT BAR - TOP PE ===== */}
       <div className="relative z-10 bg-purple-900/20 backdrop-blur-md border-b border-white/5 py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6">
           <div className="flex items-center gap-2">
@@ -67,9 +97,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* ============================================================ */}
-      {/* ===== NAVBAR - CONTACT BAR KE NEECHE (z-index 20) ===== */}
-      {/* ============================================================ */}
+      {/* ===== NAVBAR ===== */}
       <div className="relative z-20 bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3">
@@ -98,6 +126,7 @@ export const Header = () => {
 
             {/* ===== DESKTOP NAVIGATION ===== */}
             <nav className="hidden md:flex items-center gap-6">
+              {/* Scoreboard */}
               <Link
                 href="/scorecard"
                 prefetch={true}
@@ -110,6 +139,7 @@ export const Header = () => {
                 Scoreboard
               </Link>
 
+              {/* Resources Dropdown */}
               <div 
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('resources')}
@@ -127,7 +157,11 @@ export const Header = () => {
                 </button>
                 
                 {openDropdown === 'resources' && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl py-2">
+                  <div 
+                    className="absolute top-full left-0 mt-0 w-48 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl py-2"
+                    onMouseEnter={handleDropdownMouseEnter}
+                    onMouseLeave={handleDropdownMouseLeave}
+                  >
                     {resourcesDropdown.map((item) => (
                       <Link
                         key={item.href}
@@ -146,89 +180,22 @@ export const Header = () => {
                 )}
               </div>
 
-              <div 
-                className="relative"
-                onMouseEnter={() => handleMouseEnter('tools')}
-                onMouseLeave={handleMouseLeave}
+              {/* ✅ Generator - Direct Link (Tools ki jagah) */}
+              <Link
+                href="/generator"
+                prefetch={true}
+                className={`text-base font-medium transition-all duration-200 ${ 
+                  pathname === "/generator" 
+                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
+                }`}
               >
-                <button
-                  className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ 
-                    openDropdown === 'tools' || toolsDropdown.some(item => pathname === item.href)
-                      ? 'text-white font-bold border-b-2 border-purple-400 pb-1'
-                      : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
-                  }`}
-                >
-                  Tools
-                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'tools' ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {openDropdown === 'tools' && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl py-2">
-                    {toolsDropdown.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        prefetch={true}
-                        className={`block px-4 py-2.5 text-base transition-colors ${ 
-                          pathname === item.href
-                            ? 'text-white bg-purple-500/20'
-                            : 'text-gray-300/80 hover:text-white hover:bg-white/10'
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+                Generator
+              </Link>
 
-              <div 
-                className="relative"
-                onMouseEnter={() => handleMouseEnter('learn')}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button
-                  className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ 
-                    openDropdown === 'learn' || learnDropdown.some(item => pathname === item.href)
-                      ? 'text-white font-bold border-b-2 border-purple-400 pb-1'
-                      : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
-                  }`}
-                >
-                  Learn
-                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'learn' ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {openDropdown === 'learn' && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl py-2">
-                    {learnDropdown.map((item) => (
-                      item.locked ? (
-                        <div
-                          key={item.href}
-                          onClick={() => handleLockedClick(item.label)}
-                          className="flex items-center justify-between px-4 py-2.5 text-base text-gray-400 cursor-not-allowed hover:bg-white/5"
-                        >
-                          <span>{item.label}</span>
-                          <Lock className="w-4 h-4 text-yellow-500" />
-                        </div>
-                      ) : (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          prefetch={true}
-                          className={`block px-4 py-2.5 text-base transition-colors ${ 
-                            pathname === item.href
-                              ? 'text-white bg-purple-500/20'
-                              : 'text-gray-300/80 hover:text-white hover:bg-white/10'
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      )
-                    ))}
-                  </div>
-                )}
-              </div>
+              {/* ❌ Learn - COMPLETELY REMOVED */}
 
+              {/* About */}
               <Link
                 href="/about"
                 prefetch={true}
@@ -241,6 +208,7 @@ export const Header = () => {
                 About
               </Link>
 
+              {/* Contact */}
               <Link
                 href="/contact"
                 prefetch={true}
@@ -275,10 +243,12 @@ export const Header = () => {
           {isOpen && (
             <div className="md:hidden py-4 border-t border-white/10 bg-white/5 backdrop-blur-xl">
               <nav className="flex flex-col gap-1">
+                {/* Scoreboard */}
                 <Link href="/scorecard" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/scorecard" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                   Scoreboard
                 </Link>
 
+                {/* Resources - Mobile */}
                 <div className="px-4 py-1">
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Resources</p>
                   {resourcesDropdown.map((item) => (
@@ -288,45 +258,19 @@ export const Header = () => {
                   ))}
                 </div>
 
-                <div className="px-4 py-1">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Tools</p>
-                  {toolsDropdown.map((item) => (
-                    <Link key={item.href} href={item.href} prefetch={true} onClick={() => setIsOpen(false)} className={`block px-4 py-2 rounded-lg transition-all text-sm ${pathname === item.href ? 'text-white bg-purple-500/20 font-semibold' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
+                {/* ✅ Generator - Mobile (Tools ki jagah) */}
+                <Link href="/generator" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/generator" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
+                  Generator
+                </Link>
 
-                <div className="px-4 py-1">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Learn</p>
-                  {learnDropdown.map((item) => (
-                    item.locked ? (
-                      <div
-                        key={item.href}
-                        onClick={() => handleLockedClick(item.label)}
-                        className="flex items-center justify-between px-4 py-2 rounded-lg text-sm text-gray-400 cursor-not-allowed"
-                      >
-                        <span>{item.label}</span>
-                        <Lock className="w-3 h-3 text-yellow-500" />
-                      </div>
-                    ) : (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        prefetch={true}
-                        onClick={() => setIsOpen(false)}
-                        className={`block px-4 py-2 rounded-lg transition-all text-sm ${pathname === item.href ? 'text-white bg-purple-500/20 font-semibold' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}
-                      >
-                        {item.label}
-                      </Link>
-                    )
-                  ))}
-                </div>
+                {/* ❌ Learn - Mobile COMPLETELY REMOVED */}
 
+                {/* About */}
                 <Link href="/about" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/about" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                   About
                 </Link>
 
+                {/* Contact */}
                 <Link href="/contact" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/contact" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                   Contact
                 </Link>
