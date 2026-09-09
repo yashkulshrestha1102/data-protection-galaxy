@@ -212,10 +212,10 @@ export default function Home() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white/70">
                 <Calendar className="w-4 h-4" />
-                Book a Demo
+                Book a Free Demo
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Talk to Our <span className="text-white/80">DPDP Act Experts</span>
+                Free Talk to Our <span className="text-white/80">DPDP Act Experts</span>
               </h2>
               <p className="text-white/60 text-sm">
                 Fill in your details and a compliance expert will be in touch within one business day.
