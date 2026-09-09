@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import { 
   Shield, Sparkles, Target, BookOpen, FileText, 
   Map, Globe, Award, Users, Rocket, Brain, 
-  Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info,Phone
+  Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info, Phone
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [stars, setStars] = useState<React.ReactNode[]>([]);
   const [showLockMessage, setShowLockMessage] = useState<string | null>(null);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
   // ===== DEMO FORM STATE =====
   const [demoForm, setDemoForm] = useState({
@@ -57,9 +58,44 @@ export default function Home() {
     setTimeout(() => setShowLockMessage(null), 3000);
   };
 
+  // ===== VALIDATION FUNCTION =====
+  const validateForm = () => {
+    const errors: Record<string, string> = {};
+    
+    if (!demoForm.firstName.trim()) errors.firstName = 'First name is required';
+    if (!demoForm.lastName.trim()) errors.lastName = 'Last name is required';
+    if (!demoForm.email.trim()) {
+      errors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(demoForm.email)) {
+      errors.email = 'Please enter a valid email';
+    }
+    if (!demoForm.company.trim()) errors.company = 'Company name is required';
+    if (!demoForm.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else if (!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(demoForm.phone.replace(/\s/g, ''))) {
+      errors.phone = 'Please enter a valid phone number';
+    }
+    if (!demoForm.industry) errors.industry = 'Please select your industry';
+    if (!demoForm.consent) errors.consent = 'You must agree to the Privacy Policy';
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   // ===== DEMO FORM SUBMIT HANDLER =====
   const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // ✅ Validation check
+    if (!validateForm()) {
+      // Scroll to first error
+      const firstError = document.querySelector('.border-red-500');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -84,6 +120,7 @@ export default function Home() {
           challenges: '',
           consent: false
         });
+        setFormErrors({});
         setTimeout(() => setDemoSubmitted(false), 5000);
       } else {
         alert('Something went wrong. Please try again.');
@@ -101,10 +138,26 @@ export default function Home() {
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setDemoForm({ ...demoForm, [name]: checked });
+      // Clear error on change
+      if (formErrors[name]) {
+        setFormErrors({ ...formErrors, [name]: '' });
+      }
     } else {
       setDemoForm({ ...demoForm, [name]: value });
+      // Clear error on change
+      if (formErrors[name]) {
+        setFormErrors({ ...formErrors, [name]: '' });
+      }
     }
   };
+
+  // ===== FIELD LABEL WITH RED ASTERISK =====
+  const LabelWithAsterisk = ({ label, required }: { label: string; required?: boolean }) => (
+    <label className="block text-xs text-white/60 mb-1">
+      {label}
+      {required && <span className="text-red-500 ml-0.5">*</span>}
+    </label>
+  );
 
   return (
     <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
@@ -141,7 +194,7 @@ export default function Home() {
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-purple-500/30"
             >
               <Target className="w-5 h-5" />
-              TAKE THE Free TEST →
+              TAKE THE FREE TEST →
             </Link>
             <Link
               href="/galaxy"
@@ -153,10 +206,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-
-{/* ============================================================ */}
-        {/* ===== GENERATOR SECTION (UPDATED - BADIYA CONTENT) ===== */}
-        {/* ============================================================ */}
+        {/* ===== GENERATOR SECTION ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -196,9 +246,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-
-
-{/* ===== BOOK A DEMO SECTION ===== */}
+        {/* ===== BOOK A DEMO SECTION ===== */}
         <motion.div 
           id="book-demo"
           initial={{ opacity: 0, y: 20 }}
@@ -210,10 +258,6 @@ export default function Home() {
             
             {/* Left - Text */}
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white/70">
-                <Calendar className="w-4 h-4" />
-                Book a Free Demo
-              </div>
               <h2 className="text-2xl md:text-3xl font-bold text-white">
                 Free Talk to Our <span className="text-white/80">DPDP Act Experts</span>
               </h2>
@@ -232,7 +276,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right - Form with White Text */}
+            {/* Right - Form with Validation */}
             <div className="bg-black/50 border border-white/10 rounded-xl p-6">
               {demoSubmitted ? (
                 <div className="text-center py-8">
@@ -242,108 +286,137 @@ export default function Home() {
                 </div>
               ) : (
                 <form onSubmit={handleDemoSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs text-white/60 mb-1">First Name *</label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={demoForm.firstName}
-                        onChange={handleDemoChange}
-                        placeholder="Your first name"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-white/60 mb-1">Last Name *</label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={demoForm.lastName}
-                        onChange={handleDemoChange}
-                        placeholder="Your last name"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-                        required
-                      />
-                    </div>
-                  </div>
+                  {/* First Name */}
                   <div>
-                    <label className="block text-xs text-white/60 mb-1">Work Email *</label>
+                    <LabelWithAsterisk label="First Name" required />
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={demoForm.firstName}
+                      onChange={handleDemoChange}
+                      placeholder="Your first name"
+                      className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                        formErrors.firstName ? 'border-red-500' : 'border-white/10'
+                      }`}
+                    />
+                    {formErrors.firstName && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.firstName}</p>
+                    )}
+                  </div>
+
+                  {/* Last Name */}
+                  <div>
+                    <LabelWithAsterisk label="Last Name" required />
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={demoForm.lastName}
+                      onChange={handleDemoChange}
+                      placeholder="Your last name"
+                      className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                        formErrors.lastName ? 'border-red-500' : 'border-white/10'
+                      }`}
+                    />
+                    {formErrors.lastName && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.lastName}</p>
+                    )}
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <LabelWithAsterisk label="Work Email" required />
                     <input
                       type="email"
                       name="email"
                       value={demoForm.email}
                       onChange={handleDemoChange}
                       placeholder="you@company.com"
+                      className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                        formErrors.email ? 'border-red-500' : 'border-white/10'
+                      }`}
+                    />
+                    {formErrors.email && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>
+                    )}
+                  </div>
+
+                  {/* Company */}
+                  <div>
+                    <LabelWithAsterisk label="Company" required />
+                    <input
+                      type="text"
+                      name="company"
+                      value={demoForm.company}
+                      onChange={handleDemoChange}
+                      placeholder="Your company name"
+                      className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                        formErrors.company ? 'border-red-500' : 'border-white/10'
+                      }`}
+                    />
+                    {formErrors.company && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.company}</p>
+                    )}
+                  </div>
+
+                  {/* Job Title (Optional - No *) */}
+                  <div>
+                    <LabelWithAsterisk label="Job Title" />
+                    <input
+                      type="text"
+                      name="jobTitle"
+                      value={demoForm.jobTitle}
+                      onChange={handleDemoChange}
+                      placeholder="e.g. Privacy Officer"
                       className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-                      required
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs text-white/60 mb-1">Company *</label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={demoForm.company}
-                        onChange={handleDemoChange}
-                        placeholder="Your company name"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-white/60 mb-1">Job Title</label>
-                      <input
-                        type="text"
-                        name="jobTitle"
-                        value={demoForm.jobTitle}
-                        onChange={handleDemoChange}
-                        placeholder="e.g. Privacy Officer"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs text-white/60 mb-1">Phone (India) *</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={demoForm.phone}
-                        onChange={handleDemoChange}
-                        placeholder="+91 98765 43210"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-white/60 mb-1">Company Size *</label>
-                      <select
-                        name="companySize"
-                        value={demoForm.companySize}
-                        onChange={handleDemoChange}
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
-                        required
-                      >
-                        <option className="bg-black text-white" value="">Select company size</option>
-                        <option className="bg-black text-white" value="1-50">1–50 employees</option>
-                        <option className="bg-black text-white" value="51-200">51–200 employees</option>
-                        <option className="bg-black text-white" value="201-1000">201–1,000 employees</option>
-                        <option className="bg-black text-white" value="1001-5000">1,001–5,000 employees</option>
-                        <option className="bg-black text-white" value="5000+">5,000+ employees</option>
-                      </select>
-                    </div>
-                  </div>
+
+                  {/* Phone */}
                   <div>
-                    <label className="block text-xs text-white/60 mb-1">Industry *</label>
+                    <LabelWithAsterisk label="Phone" required />
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={demoForm.phone}
+                      onChange={handleDemoChange}
+                      placeholder="+91 98765 43210"
+                      className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                        formErrors.phone ? 'border-red-500' : 'border-white/10'
+                      }`}
+                    />
+                    {formErrors.phone && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.phone}</p>
+                    )}
+                  </div>
+
+                  {/* Company Size (Optional - No *) */}
+                  <div>
+                    <LabelWithAsterisk label="Company Size" />
+                    <select
+                      name="companySize"
+                      value={demoForm.companySize}
+                      onChange={handleDemoChange}
+                      className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+                    >
+                      <option className="bg-black text-white" value="">Select company size</option>
+                      <option className="bg-black text-white" value="1-50">1–50 employees</option>
+                      <option className="bg-black text-white" value="51-200">51–200 employees</option>
+                      <option className="bg-black text-white" value="201-1000">201–1,000 employees</option>
+                      <option className="bg-black text-white" value="1001-5000">1,001–5,000 employees</option>
+                      <option className="bg-black text-white" value="5000+">5,000+ employees</option>
+                    </select>
+                  </div>
+
+                  {/* Industry */}
+                  <div>
+                    <LabelWithAsterisk label="Industry" required />
                     <select
                       name="industry"
                       value={demoForm.industry}
                       onChange={handleDemoChange}
-                      className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
-                      required
+                      className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white text-sm focus:outline-none focus:border-white/30 transition-all ${
+                        formErrors.industry ? 'border-red-500' : 'border-white/10'
+                      }`}
                     >
                       <option className="bg-black text-white" value="">Select your industry</option>
                       <option className="bg-black text-white" value="Financial Services">Financial Services</option>
@@ -357,9 +430,14 @@ export default function Home() {
                       <option className="bg-black text-white" value="Professional Services">Professional Services</option>
                       <option className="bg-black text-white" value="Other">Other</option>
                     </select>
+                    {formErrors.industry && (
+                      <p className="text-red-400 text-xs mt-1">{formErrors.industry}</p>
+                    )}
                   </div>
+
+                  {/* Challenges */}
                   <div>
-                    <label className="block text-xs text-white/60 mb-1">What are your biggest DPDP compliance challenges?</label>
+                    <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" />
                     <textarea
                       name="challenges"
                       value={demoForm.challenges}
@@ -369,19 +447,27 @@ export default function Home() {
                       className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 resize-none"
                     />
                   </div>
+
+                  {/* Consent */}
                   <div className="flex items-start gap-2">
                     <input
                       type="checkbox"
                       name="consent"
                       checked={demoForm.consent}
                       onChange={handleDemoChange}
-                      className="w-4 h-4 mt-0.5 accent-white/20 rounded"
-                      required
+                      className={`w-4 h-4 mt-0.5 rounded transition-all ${
+                        formErrors.consent ? 'border-red-500' : 'accent-white/20'
+                      }`}
                     />
                     <label className="text-xs text-white/40">
                       I agree to Legal Galaxy's Privacy Policy and consent to being contacted about my enquiry.
                     </label>
                   </div>
+                  {formErrors.consent && (
+                    <p className="text-red-400 text-xs">{formErrors.consent}</p>
+                  )}
+
+                  {/* Submit */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -398,37 +484,33 @@ export default function Home() {
           </div>
         </motion.div>
 
-
-
-
-
-{/* ===== CONTACT NUMBER - ALWAYS VISIBLE ===== */}
-<motion.div 
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 0.6 }}
-  className="text-center pb-8"
->
-  <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
-    <div className="flex items-center gap-2 text-gray-400">
-      <Phone className="w-4 h-4 text-purple-400" />
-      <span className="text-sm"> For immediate assistance, call us at:</span>
-    </div>
-    <a 
-      href="tel:+919999999999" 
-      className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
-    >
-      +91 8800138008
-    </a>
-    <span className="text-xs text-gray-500">|</span>
-    <a 
-      href="mailto:contact@legalgalaxy.com" 
-      className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
-    >
-      shilpi.kulshrestha@businezexcellence.com
-    </a>
-  </div>
-</motion.div>
+        {/* ===== CONTACT NUMBER - ALWAYS VISIBLE ===== */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="text-center pb-8"
+        >
+          <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
+            <div className="flex items-center gap-2 text-gray-400">
+              <Phone className="w-4 h-4 text-purple-400" />
+              <span className="text-sm"> For immediate assistance, call us at:</span>
+            </div>
+            <a 
+              href="tel:+919999999999" 
+              className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+            >
+              +91 8800138008
+            </a>
+            <span className="text-xs text-gray-500">|</span>
+            <a 
+              href="mailto:contact@legalgalaxy.com" 
+              className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+            >
+              shilpi.kulshrestha@businezexcellence.com
+            </a>
+          </div>
+        </motion.div>
 
         {/* ===== SECTION 3: GALAXY EXPLORER ===== */}
         <motion.div 
@@ -493,8 +575,6 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
         >
-          
-
           {/* Certification (LOCKED) */}
           <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-2">
@@ -514,8 +594,6 @@ export default function Home() {
             </button>
           </div>
         </motion.div>
-
-        
 
         {/* ===== SECTION 6: ABOUT ===== */}
         <motion.div 
