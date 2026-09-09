@@ -45,7 +45,7 @@ const VideoBackground = () => {
           }}
           onError={() => setVideoError(true)}
         >
-          <source src="/videos/vido2.mp4" type="video/mp4" />
+          <source src="/videos/vido7.mp4" type="video/mp4" />
         </video>
       ) : (
         <div 
