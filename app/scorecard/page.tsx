@@ -12,7 +12,7 @@ import {
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 
 // ============================================================
-// ===== VIDEO BACKGROUND COMPONENT (High Quality) =====
+// ===== VIDEO BACKGROUND COMPONENT (Original Quality) =====
 // ============================================================
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -36,16 +36,19 @@ const VideoBackground = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full"
           style={{
-            filter: 'brightness(0.5) saturate(1.1)',
             width: '100%',
             height: '100%',
+            objectFit: 'cover',
+            // ✅ Video quality settings
+            imageRendering: 'auto',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
           }}
           onError={() => setVideoError(true)}
         >
-          {/* ✅ High Quality Video - Multiple sources for best quality */}
-          <source src="/videos/vido2.mp4" type="video/mp4" />
+          <source src="/videos/vido5.mp4" type="video/mp4" />
         </video>
       ) : (
         <div 
@@ -60,11 +63,8 @@ const VideoBackground = () => {
         </div>
       )}
       
-      {/* Dark Overlay - Kam karo for better visibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/40" />
-      
-      {/* Vignette Effect - Light */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/10 pointer-events-none" />
+      {/* ✅ Light Overlay - Quality impact kam karo */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40" />
     </div>
   );
 };
