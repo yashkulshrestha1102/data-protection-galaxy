@@ -121,7 +121,6 @@ export const Header = () => {
             >
               <InstagramIcon />
             </a>
-           
 
             {/* Separator */}
             <span className="text-white/20 text-xs">|</span>
@@ -271,11 +270,12 @@ export const Header = () => {
                 Contact
               </Link>
 
+              {/* ✅ Book a Consultant - SAME TEXT */}
               <Link
                 href="#book-demo"
                 className="px-4 py-2 rounded-lg bg-white text-black font-medium text-sm hover:bg-white/80 transition-all"
               >
-                Book a Demo
+                Book a Consultant
               </Link>
             </nav>
 
@@ -318,8 +318,9 @@ export const Header = () => {
                   Contact
                 </Link>
 
+                {/* ✅ Book a Consultant - SAME TEXT */}
                 <Link href="#book-demo" onClick={() => setIsOpen(false)} className="mx-4 mt-2 px-4 py-2.5 rounded-lg bg-white text-black font-medium text-center hover:bg-white/80 transition-all">
-                  Book a Demo
+                  Book a Consultant
                 </Link>
               </nav>
             </div>
