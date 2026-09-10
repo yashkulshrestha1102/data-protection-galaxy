@@ -13,7 +13,7 @@ import {
 import { useRouter } from 'next/navigation';
 
 // ============================================================
-// ===== VIDEO BACKGROUND COMPONENT =====
+// ===== VIDEO BACKGROUND COMPONENT (High Quality) =====
 // ============================================================
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -42,6 +42,10 @@ const VideoBackground = () => {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            // ✅ Video quality settings
+            imageRendering: 'auto',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
           }}
           onError={() => setVideoError(true)}
         >
@@ -55,13 +59,11 @@ const VideoBackground = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
-        >
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+        />
       )}
       
-      {/* Dark Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+      {/* ✅ LIGHT Overlay - Video Quality Preserve */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
     </div>
   );
 };
@@ -597,7 +599,7 @@ const FormField = ({ field, value, onChange }: any) => {
           value={value || ''}
           onChange={handleChange}
           placeholder={field.placeholder}
-          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400/50 transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50 transition-all"
         />
       );
     case 'textarea':
@@ -607,7 +609,7 @@ const FormField = ({ field, value, onChange }: any) => {
           onChange={handleChange}
           placeholder={field.placeholder}
           rows={3}
-          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400/50 transition-all resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50 transition-all resize-none"
         />
       );
     case 'select':
@@ -615,7 +617,7 @@ const FormField = ({ field, value, onChange }: any) => {
         <select
           value={value || ''}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-purple-400/50 transition-all appearance-none"
+          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white focus:outline-none focus:border-purple-400 focus:bg-black/50 transition-all appearance-none"
         >
           {field.options.map((opt: string) => (
             <option key={opt} value={opt} className="bg-black">{opt}</option>
@@ -635,7 +637,7 @@ const FormField = ({ field, value, onChange }: any) => {
                 onChange={handleChange}
                 className="w-4 h-4 text-purple-500 focus:ring-purple-500"
               />
-              <span className="text-gray-300">{opt}</span>
+              <span className="text-gray-200">{opt}</span>
             </label>
           ))}
         </div>
@@ -644,14 +646,14 @@ const FormField = ({ field, value, onChange }: any) => {
       return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {field.options.map((opt: string) => (
-            <label key={opt} className="flex items-center gap-2 cursor-pointer p-2 rounded-lg hover:bg-white/5 transition-all">
+            <label key={opt} className="flex items-center gap-2 cursor-pointer p-2 rounded-lg bg-black/30 hover:bg-black/50 transition-all">
               <input
                 type="checkbox"
                 checked={(value || []).includes(opt)}
                 onChange={() => handleCheckboxGroup(opt)}
                 className="w-4 h-4 text-purple-500 focus:ring-purple-500 rounded"
               />
-              <span className="text-sm text-gray-300">{opt}</span>
+              <span className="text-sm text-gray-200">{opt}</span>
             </label>
           ))}
         </div>
@@ -834,18 +836,19 @@ export default function GeneratorPage() {
         <div className="absolute inset-0 -z-10">{stars}</div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 group">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors mb-6 group bg-black/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Home
           </Link>
 
+          {/* Header with Dark Background */}
           <motion.div 
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8"
+            className="mb-8 bg-black/50 backdrop-blur-md rounded-2xl p-6 border border-white/20"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-sm font-medium text-purple-400 mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/30 border border-purple-400/50 text-sm font-medium text-purple-300 mb-4">
               <Sparkles className="w-4 h-4" />
               Document Generator
             </div>
@@ -858,13 +861,14 @@ export default function GeneratorPage() {
             </p>
           </motion.div>
 
+          {/* Tabs with Better Visibility */}
           <div className="flex flex-wrap gap-4 mb-8">
             <button
               onClick={() => setActiveTab('privacy')}
-              className={`px-6 py-3 rounded-xl flex items-center gap-2 font-semibold transition-all ${
+              className={`px-6 py-3 rounded-xl flex items-center gap-2 font-semibold transition-all border-2 ${
                 activeTab === 'privacy'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
-                  : 'bg-white/10 border border-white/20 text-gray-400 hover:text-white hover:bg-white/20'
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-blue-400 shadow-lg shadow-purple-500/50'
+                  : 'bg-black/50 backdrop-blur-md border-white/20 text-gray-200 hover:bg-black/70 hover:border-white/40 hover:text-white'
               }`}
             >
               <Shield className="w-5 h-5" />
@@ -872,10 +876,10 @@ export default function GeneratorPage() {
             </button>
             <button
               onClick={() => setActiveTab('ai')}
-              className={`px-6 py-3 rounded-xl flex items-center gap-2 font-semibold transition-all ${
+              className={`px-6 py-3 rounded-xl flex items-center gap-2 font-semibold transition-all border-2 ${
                 activeTab === 'ai'
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-lg shadow-purple-500/30'
-                  : 'bg-white/10 border border-white/20 text-gray-400 hover:text-white hover:bg-white/20'
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white border-purple-400 shadow-lg shadow-purple-500/50'
+                  : 'bg-black/50 backdrop-blur-md border-white/20 text-gray-200 hover:bg-black/70 hover:border-white/40 hover:text-white'
               }`}
             >
               <Brain className="w-5 h-5" />
@@ -883,6 +887,7 @@ export default function GeneratorPage() {
             </button>
           </div>
 
+          {/* Tool Cards with Better Visibility */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {activeTools.map((tool, idx) => {
               const Icon = tool.icon;
@@ -892,19 +897,19 @@ export default function GeneratorPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  className="bg-white/10 border border-white/20 rounded-xl p-5 hover:bg-white/15 transition-all group cursor-pointer"
+                  className="bg-black/60 backdrop-blur-md border border-white/20 rounded-xl p-5 hover:bg-black/80 hover:border-purple-400/50 transition-all group cursor-pointer shadow-xl"
                   onClick={() => setSelectedTool(tool.id)}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                      <Icon className="w-5 h-5 text-purple-400" />
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500/40 to-pink-500/40 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform border border-purple-400/30">
+                      <Icon className="w-5 h-5 text-purple-300" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors">
+                      <h3 className="text-sm font-semibold text-white group-hover:text-purple-300 transition-colors">
                         {tool.label}
                       </h3>
-                      <p className="text-xs text-gray-400 mt-1">{tool.desc}</p>
-                      <button className="mt-3 text-xs text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1">
+                      <p className="text-xs text-gray-200 mt-1">{tool.desc}</p>
+                      <button className="mt-3 text-xs text-purple-300 hover:text-purple-200 transition-colors flex items-center gap-1 font-medium">
                         Generate <ArrowRight className="w-3 h-3" />
                       </button>
                     </div>
@@ -925,44 +930,45 @@ export default function GeneratorPage() {
       <div className="absolute inset-0 -z-10">{stars}</div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex items-center justify-between mb-6">
+        {/* Top Bar with Background */}
+        <div className="flex items-center justify-between mb-6 bg-black/50 backdrop-blur-md px-4 py-3 rounded-xl border border-white/20">
           <button
             onClick={handleBackToTemplates}
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+            className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Templates
           </button>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-gray-200">
               {selectedToolData?.label}
             </span>
-            <span className="text-xs px-2 py-1 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span className="text-xs px-2 py-1 rounded-full bg-purple-500/30 text-purple-300 border border-purple-400/50">
               {activeTab === 'privacy' ? 'Privacy' : 'AI Governance'}
             </span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Form Section */}
-          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6">
+          {/* Form Section - Dark Background */}
+          <div className="bg-black/60 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-white">
                   {currentStepData.title}
                 </h3>
-                <p className="text-sm text-gray-400">{currentStepData.description}</p>
+                <p className="text-sm text-gray-300">{currentStepData.description}</p>
               </div>
               <div className="flex gap-2">
                 <button
                   onClick={handleBackToTemplates}
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
+                  className="text-sm text-gray-300 hover:text-white transition-colors"
                 >
                   Change Template
                 </button>
                 <button
                   onClick={handleSaveDraft}
-                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1"
+                  className="text-sm text-gray-300 hover:text-white transition-colors flex items-center gap-1"
                 >
                   <Save className="w-4 h-4" />
                   Save Draft
@@ -975,15 +981,15 @@ export default function GeneratorPage() {
                 <div
                   key={idx}
                   className={`flex-1 h-1 rounded-full transition-all ${
-                    idx <= currentStep ? 'bg-gradient-to-r from-blue-400 to-purple-400' : 'bg-white/10'
+                    idx <= currentStep ? 'bg-gradient-to-r from-blue-400 to-purple-400' : 'bg-white/20'
                   }`}
                 />
               ))}
-              <span className="text-xs text-gray-400 ml-2">{currentStep + 1}/{totalSteps}</span>
+              <span className="text-xs text-gray-300 ml-2">{currentStep + 1}/{totalSteps}</span>
             </div>
 
             {error && (
-              <div className="mb-4 p-3 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
+              <div className="mb-4 p-3 rounded-xl bg-red-500/30 border border-red-500/50 text-red-300 text-sm">
                 {error}
               </div>
             )}
@@ -996,7 +1002,7 @@ export default function GeneratorPage() {
                 }
                 return (
                   <div key={field.id}>
-                    <label className="block text-sm font-medium text-gray-300 mb-1.5">
+                    <label className="block text-sm font-medium text-gray-200 mb-1.5">
                       {field.label}
                     </label>
                     <FormField
@@ -1016,7 +1022,7 @@ export default function GeneratorPage() {
                 className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${
                   currentStep === 0
                     ? 'text-gray-600 cursor-not-allowed'
-                    : 'text-gray-400 hover:text-white hover:bg-white/10'
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -1055,8 +1061,8 @@ export default function GeneratorPage() {
             </div>
           </div>
 
-          {/* Preview Section */}
-          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6">
+          {/* Preview Section - Dark Background */}
+          <div className="bg-black/60 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-white flex items-center gap-2">
                 <Eye className="w-5 h-5 text-purple-400" />
@@ -1069,26 +1075,26 @@ export default function GeneratorPage() {
                       navigator.clipboard.writeText(generatedContent);
                       alert('✅ Copied to clipboard!');
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
+                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/30 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
                   >
                     <Edit className="w-4 h-4" />
                     Copy
                   </button>
                   <button 
                     onClick={handleExportPDF}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
+                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/30 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
                   >
                     <FileDown className="w-4 h-4" />
                     PDF
                   </button>
                   <button 
                     onClick={handleExportWord}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
+                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/30 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1"
                   >
                     <FileJson className="w-4 h-4" />
                     Word
                   </button>
-                  <button className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1">
+                  <button className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/30 text-white hover:bg-white/20 transition-all text-sm flex items-center gap-1">
                     <Printer className="w-4 h-4" />
                     Print
                   </button>
@@ -1097,13 +1103,13 @@ export default function GeneratorPage() {
             </div>
 
             {generatedContent ? (
-              <div className="bg-white/5 border border-white/10 rounded-xl p-4 max-h-[500px] overflow-y-auto">
-                <pre className="whitespace-pre-wrap text-gray-300 text-sm leading-relaxed font-sans">
+              <div className="bg-black/40 border border-white/20 rounded-xl p-4 max-h-[500px] overflow-y-auto">
+                <pre className="whitespace-pre-wrap text-gray-100 text-sm leading-relaxed font-sans">
                   {generatedContent}
                 </pre>
               </div>
             ) : (
-              <div className="bg-white/5 border border-white/10 rounded-xl p-8 text-center text-gray-400">
+              <div className="bg-black/40 border border-white/20 rounded-xl p-8 text-center text-gray-300">
                 <FileText className="w-12 h-12 mx-auto mb-3 opacity-50" />
                 <p>Fill in the form and click "Generate Document"</p>
                 <p className="text-xs mt-2">Your document will appear here</p>
@@ -1118,25 +1124,25 @@ export default function GeneratorPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-8 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6 text-center max-w-2xl mx-auto"
+            className="mt-8 bg-black/60 backdrop-blur-md border border-purple-500/50 rounded-2xl p-6 text-center max-w-2xl mx-auto shadow-xl"
           >
             <Lock className="w-8 h-8 text-purple-400 mx-auto mb-2" />
             <h3 className="text-lg font-semibold text-white mb-1">Get Your Document</h3>
-            <p className="text-gray-300 text-sm mb-4">
+            <p className="text-gray-200 text-sm mb-4">
               Enter your email to receive the generated document instantly.
             </p>
             
             {error && (
-              <div className="mb-4 p-3 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
+              <div className="mb-4 p-3 rounded-xl bg-red-500/30 border border-red-500/50 text-red-300 text-sm">
                 {error}
               </div>
             )}
             
             {isSubmitted ? (
-              <div className="p-4 rounded-xl bg-green-500/20 border border-green-500/30">
+              <div className="p-4 rounded-xl bg-green-500/30 border border-green-500/50">
                 <CheckCircle className="w-8 h-8 text-green-400 mx-auto mb-2" />
                 <p className="text-white font-medium">Document Sent! ✅</p>
-                <p className="text-gray-300 text-sm">Check your email for the document.</p>
+                <p className="text-gray-200 text-sm">Check your email for the document.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmitEmail} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
@@ -1145,7 +1151,7 @@ export default function GeneratorPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                  className="flex-1 px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50"
                   required
                 />
                 <button
@@ -1167,7 +1173,7 @@ export default function GeneratorPage() {
                 </button>
               </form>
             )}
-            <p className="text-xs text-gray-500 mt-3">We'll send the document to your email. No spam.</p>
+            <p className="text-xs text-gray-400 mt-3">We'll send the document to your email. No spam.</p>
           </motion.div>
         )}
       </div>

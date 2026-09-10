@@ -16,6 +16,7 @@ export default function ContactPage() {
     email: '',
     phone: '',
     company: '',
+    orgName: '',
     designation: '',
     requirement: '',
     interests: [] as string[],
@@ -23,6 +24,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [stars, setStars] = useState<React.ReactNode[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const starElements = [];
@@ -67,23 +69,56 @@ export default function ContactPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error on change
+    if (error) setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
     try {
-      await fetch('/api/lead-capture', {
+      // ✅ Proper payload with all fields
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company || formData.orgName || 'Not Provided',
+        orgName: formData.company || formData.orgName || 'Not Provided',
+        designation: formData.designation || 'Not Provided',
+        requirement: formData.requirement,
+        interests: formData.interests,
+        source: 'contact'
+      };
+
+      const response = await fetch('/api/lead-capture', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit');
+      }
+
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', company: '', designation: '', requirement: '', interests: [] });
+      setFormData({ 
+        name: '', 
+        email: '', 
+        phone: '', 
+        company: '', 
+        orgName: '',
+        designation: '', 
+        requirement: '', 
+        interests: [] 
+      });
       setTimeout(() => setIsSubmitted(false), 5000);
-    } catch (error) {
-      console.error('Error:', error);
+    } catch (err) {
+      console.error('Error:', err);
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     }
     setIsSubmitting(false);
   };
@@ -143,6 +178,13 @@ export default function ContactPage() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Error */}
+                {error && (
+                  <div className="p-3 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
+                    {error}
+                  </div>
+                )}
+
                 {/* Interests - Checkboxes */}
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
