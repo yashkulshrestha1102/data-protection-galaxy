@@ -138,13 +138,11 @@ export default function Home() {
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setDemoForm({ ...demoForm, [name]: checked });
-      // Clear error on change
       if (formErrors[name]) {
         setFormErrors({ ...formErrors, [name]: '' });
       }
     } else {
       setDemoForm({ ...demoForm, [name]: value });
-      // Clear error on change
       if (formErrors[name]) {
         setFormErrors({ ...formErrors, [name]: '' });
       }
@@ -158,6 +156,14 @@ export default function Home() {
       {required && <span className="text-red-500 ml-0.5">*</span>}
     </label>
   );
+
+  // ✅ Book a Consultant Scroll Handler (Agar Header se click karein toh)
+  const scrollToBookDemo = () => {
+    const el = document.getElementById('book-demo');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
@@ -358,7 +364,7 @@ export default function Home() {
                     )}
                   </div>
 
-                  {/* Job Title (Optional - No *) */}
+                  {/* Job Title (Optional) */}
                   <div>
                     <LabelWithAsterisk label="Job Title" />
                     <input
@@ -389,7 +395,7 @@ export default function Home() {
                     )}
                   </div>
 
-                  {/* Company Size (Optional - No *) */}
+                  {/* Company Size (Optional) */}
                   <div>
                     <LabelWithAsterisk label="Company Size" />
                     <select
@@ -497,14 +503,14 @@ export default function Home() {
               <span className="text-sm"> For immediate assistance, call us at:</span>
             </div>
             <a 
-              href="tel:+919999999999" 
+              href="tel:+918800138008" 
               className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
             >
               +91 8800138008
             </a>
             <span className="text-xs text-gray-500">|</span>
             <a 
-              href="mailto:contact@legalgalaxy.com" 
+              href="mailto:shilpi.kulshrestha@businezexcellence.com" 
               className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
             >
               shilpi.kulshrestha@businezexcellence.com

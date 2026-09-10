@@ -85,6 +85,14 @@ export const Header = () => {
     setTimeout(() => setShowLockMessage(null), 3000);
   };
 
+  // ✅ Book a Consultant Scroll Handler
+  const handleBookConsultant = () => {
+    const el = document.getElementById('book-demo');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* ===== CONTACT BAR - TOP PE ===== */}
@@ -129,7 +137,7 @@ export const Header = () => {
             <div className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5 text-purple-400" />
               <a 
-                href="tel:+919999999999" 
+                href="tel:+918800138008" 
                 className="text-xs text-white/80 hover:text-white transition-colors font-medium"
               >
                 +91 8800138008
@@ -143,7 +151,7 @@ export const Header = () => {
             <div className="flex items-center gap-2 hidden sm:flex">
               <Mail className="w-3.5 h-3.5 text-purple-400" />
               <a 
-                href="mailto:contact@legalgalaxy.com" 
+                href="mailto:shilpi.kulshrestha@businezexcellence.com" 
                 className="text-xs text-white/70 hover:text-white transition-colors"
               >
                 shilpi.kulshrestha@businezexcellence.com
@@ -270,13 +278,13 @@ export const Header = () => {
                 Contact
               </Link>
 
-              {/* ✅ Book a Consultant - SAME TEXT */}
-              <Link
-                href="#book-demo"
-                className="px-4 py-2 rounded-lg bg-white text-black font-medium text-sm hover:bg-white/80 transition-all"
+              {/* ✅ Book a Consultant - Scroll to Form */}
+              <button
+                onClick={handleBookConsultant}
+                className="px-4 py-2 rounded-lg bg-white text-black font-medium text-sm hover:bg-white/80 transition-all cursor-pointer"
               >
                 Book a Consultant
-              </Link>
+              </button>
             </nav>
 
             {/* ===== MOBILE MENU BUTTON ===== */}
@@ -318,10 +326,21 @@ export const Header = () => {
                   Contact
                 </Link>
 
-                {/* ✅ Book a Consultant - SAME TEXT */}
-                <Link href="#book-demo" onClick={() => setIsOpen(false)} className="mx-4 mt-2 px-4 py-2.5 rounded-lg bg-white text-black font-medium text-center hover:bg-white/80 transition-all">
+                {/* ✅ Book a Consultant - Scroll to Form */}
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    setTimeout(() => {
+                      const el = document.getElementById('book-demo');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }, 100);
+                  }}
+                  className="mx-4 mt-2 px-4 py-2.5 rounded-lg bg-white text-black font-medium text-center hover:bg-white/80 transition-all cursor-pointer"
+                >
                   Book a Consultant
-                </Link>
+                </button>
               </nav>
             </div>
           )}
