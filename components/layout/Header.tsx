@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, Lock, Info, Phone, Mail } from "lucide-react";
+import { ConsultantModal } from "./ConsultantModal";
 
 // ===== SOCIAL ICONS (SVG) =====
 const LinkedInIcon = () => (
@@ -43,6 +44,8 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [showLockMessage, setShowLockMessage] = useState<string | null>(null);
+  const [isConsultantModalOpen, setIsConsultantModalOpen] = useState(false);  // ✅ NAYA
+
   const pathname = usePathname();
   
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -85,13 +88,12 @@ export const Header = () => {
     setTimeout(() => setShowLockMessage(null), 3000);
   };
 
-  // ✅ Book a Consultant Scroll Handler
+
+
+
   const handleBookConsultant = () => {
-    const el = document.getElementById('book-demo');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  setIsConsultantModalOpen(true);
+};
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -278,13 +280,15 @@ export const Header = () => {
                 Contact
               </Link>
 
-              {/* ✅ Book a Consultant - Scroll to Form */}
               <button
-                onClick={handleBookConsultant}
-                className="px-4 py-2 rounded-lg bg-white text-black font-medium text-sm hover:bg-white/80 transition-all cursor-pointer"
-              >
-                Book a Consultant
-              </button>
+  onClick={() => {
+    setIsOpen(false);
+    setIsConsultantModalOpen(true);
+  }}
+  className="mx-4 mt-2 px-4 py-2.5 rounded-lg bg-white text-black font-medium text-center hover:bg-white/80 transition-all cursor-pointer"
+>
+  Book a Consultant
+</button>
             </nav>
 
             {/* ===== MOBILE MENU BUTTON ===== */}
@@ -347,13 +351,19 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* ===== LOCKED MESSAGE TOAST ===== */}
+            {/* ===== LOCKED MESSAGE TOAST ===== */}
       {showLockMessage && (
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-black/90 border border-yellow-500/30 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-xl">
           <Info className="w-5 h-5 text-yellow-400" />
           <span className="text-sm font-medium">{showLockMessage}</span>
         </div>
       )}
+
+      {/* ✅ CONSULTANT MODAL — NAYA */}
+      <ConsultantModal
+        isOpen={isConsultantModalOpen}
+        onClose={() => setIsConsultantModalOpen(false)}
+      />
     </header>
   );
 };
