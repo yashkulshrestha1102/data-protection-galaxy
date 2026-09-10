@@ -414,7 +414,7 @@ export async function POST(request: Request) {
       try {
         await resend.emails.send({
           from: 'Legal Galaxy <office@businezexcellence.com>',
-          to: ['yash.kulshrestha@businezexcellence.com'],
+          to: ['shilpi.kulshrestha@businezexcellence.com'],
           subject: '📋 New Request for book a consultants',
           html: `
             <h1>New Demo Request</h1>
