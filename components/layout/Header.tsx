@@ -95,7 +95,7 @@ export const Header = () => {
           <div className="flex items-center gap-3">
             {/* Social Icons */}
             <a 
-              href="https://wa.me/919999999999" 
+              href="https://wa.me/918800138008" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/60 hover:text-white transition-colors hover:scale-110 transform"
@@ -104,7 +104,7 @@ export const Header = () => {
               <WhatsAppIcon />
             </a>
             <a 
-              href="https://www.linkedin.com" 
+              href="https://www.linkedin.com/company/businezexcellence-com/?viewAsMember=true" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/60 hover:text-white transition-colors hover:scale-110 transform"
@@ -113,7 +113,7 @@ export const Header = () => {
               <LinkedInIcon />
             </a>
             <a 
-              href="https://www.instagram.com" 
+              href="https://www.instagram.com/businezexcellence/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/60 hover:text-white transition-colors hover:scale-110 transform"
