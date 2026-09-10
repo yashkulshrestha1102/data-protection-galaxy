@@ -439,6 +439,125 @@ export async function POST(request: Request) {
       });
     }
 
+
+
+// **************************************
+
+
+    // ============================================================
+    // ===== CASE 1.5: CONTACT FORM =====
+    // ============================================================
+    if (source === 'contact') {
+      const { name, email, phone, company, designation, requirement, interests } = body;
+
+      if (!name || !email || !phone || !requirement) {
+        return NextResponse.json(
+          { success: false, message: 'Required fields missing' },
+          { status: 400 }
+        );
+      }
+
+      // ===== SAVE TO GOOGLE SHEETS =====
+      try {
+        await sheets.spreadsheets.values.append({
+          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          range: 'Sheet1!A:L',
+          valueInputOption: 'USER_ENTERED',
+          requestBody: {
+            values: [[
+              new Date().toISOString(),
+              'Contact Form',
+              name,
+              email,
+              phone,
+              company || 'Not Provided',
+              designation || 'Not Provided',
+              Array.isArray(interests) ? interests.join(', ') : '',
+              requirement,
+              '',
+              '',
+              'New'
+            ]],
+          },
+        });
+        console.log('✅ Contact data saved to Google Sheets');
+      } catch (sheetError) {
+        console.error('❌ Sheet error:', sheetError);
+      }
+
+      // ===== ADMIN NOTIFICATION =====
+      try {
+        await resend.emails.send({
+          from: 'Legal Galaxy <office@businezexcellence.com>',
+          to: [process.env.ADMIN_EMAIL || 'office@businezexcellence.com'],
+          replyTo: email,
+          subject: `📬 New Contact Request from ${name}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+              <h2 style="color: #004d40;">New Contact Request</h2>
+              <table style="border-collapse: collapse; width: 100%; font-size: 14px;">
+                <tr><td style="padding: 8px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Name</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${name}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Email</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${email}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Phone</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${phone}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Company</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${company || 'Not Provided'}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Designation</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${designation || 'Not Provided'}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Interests</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${Array.isArray(interests) ? interests.join(', ') : 'Not specified'}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Requirement</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${requirement}</td></tr>
+              </table>
+            </div>
+          `,
+        });
+        console.log('✅ Admin notification sent');
+      } catch (emailError) {
+        console.error('❌ Admin email error:', emailError);
+      }
+
+      // ===== USER CONFIRMATION =====
+      try {
+        await resend.emails.send({
+          from: 'Legal Galaxy <office@businezexcellence.com>',
+          to: [email],
+          subject: '✅ We received your request — Legal Galaxy',
+          html: `
+            <!DOCTYPE html>
+            <html>
+            <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f5f7f6;">
+              <div style="background: #ffffff; border-radius: 12px; padding: 30px;">
+                <h1 style="color: #004d40; font-size: 22px;">Thank You, ${name}!</h1>
+                <p style="color: #3a5a5a; font-size: 14px; line-height: 1.7;">
+                  We've received your request and one of our privacy &amp; AI governance experts will contact you within <strong>1 business day</strong>.
+                </p>
+                <div style="background: #f0f7f4; border-left: 4px solid #004d40; padding: 16px; margin: 20px 0; border-radius: 6px;">
+                  <p style="margin: 0; font-size: 13px; color: #2a4a3a;">
+                    <strong>Your Query:</strong> ${requirement.substring(0, 150)}${requirement.length > 150 ? '...' : ''}
+                  </p>
+                </div>
+                <p style="color: #3a5a5a; font-size: 14px;">
+                  In the meantime, feel free to explore our resources at 
+                  <a href="${process.env.NEXT_PUBLIC_APP_URL}" style="color: #004d40;">Legal Galaxy</a>.
+                </p>
+                <hr style="border: none; border-top: 1px solid #e0e8e4; margin: 24px 0;" />
+                <p style="font-size: 12px; color: #8aaa9a;">
+                  Warm regards,<br />
+                  <strong style="color: #004d40;">Team Legal Galaxy</strong><br />
+                  BusinezExcellence StartX LLP
+                </p>
+              </div>
+            </body>
+            </html>
+          `,
+        });
+        console.log('✅ User confirmation sent');
+      } catch (emailError) {
+        console.error('❌ User email error:', emailError);
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: 'Your request has been submitted successfully!'
+      });
+    }
+
     // ============================================================
     // ===== CASE 2: GENERATOR FORM (Original) =====
     // ============================================================
