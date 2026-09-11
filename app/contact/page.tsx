@@ -1083,10 +1083,10 @@ export default function ContactPage() {
               <Mail size={18} className="text-[#D90000]" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
+              <p className="text-[14px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 Email
               </p>
-              <p className="mt-1 truncate text-xs font-semibold text-[#FFEA93]">
+              <p className="mt-1 truncate text font-semibold text-[#FFEA93]">
                 shilpi.kulshrestha@businezexcellence.com
               </p>
             </div>
@@ -1100,10 +1100,10 @@ export default function ContactPage() {
               <Phone size={18} className="text-[#B0CDE6]" />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
+              <p className="text-[14px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 Call
               </p>
-              <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
+              <p className="mt-1 text font-semibold text-[#FFEA93]">
                 +91 8800138008
               </p>
             </div>
@@ -1119,10 +1119,10 @@ export default function ContactPage() {
               <MessageCircle size={18} className="text-[#B0CDE6]" />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
+              <p className="text-[14px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 WhatsApp
               </p>
-              <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
+              <p className="mt-1 text font-semibold text-[#FFEA93]">
                 Start a conversation
               </p>
             </div>
@@ -1133,11 +1133,11 @@ export default function ContactPage() {
               <MapPin size={18} className="text-[#FFEA93]" />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
+              <p className="text-[14px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 Location
               </p>
-              <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
-                India
+              <p className="mt-1 text-xs  font-semibold text-[#FFEA93]">
+                Anthurium Office Space, near Anthurium Office Space, Sector 73, Noida, Basi Bahuddin Nagar, Uttar Pradesh 201307 India
               </p>
             </div>
           </div>
@@ -1335,7 +1335,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={loading}
-              className="group mt-7 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D90000] px-6 py-4 text-sm font-black text-[#000000] transition duration-300 hover:bg-[#FFEA93] disabled:cursor-not-allowed disabled:opacity-60"
+              className="group mt-7 flex w-full items-center justify-center gap-3 rounded-3xl bg-[#D90000] px-6 py-4 text-white font-bold text-[#000000] transition duration-300 hover:bg-[#FFEA93] hover:text-[#000000] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? "Sending..." : "Start the conversation"}
 
@@ -1450,7 +1450,7 @@ export default function ContactPage() {
                   behavior: "smooth",
                 });
               }}
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#D90000] px-7 py-3.5 text-sm font-black text-[#000000] transition hover:bg-[#FFEA93]"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#D90000] px-7 py-3.5 text-white font-bold text-[#000000] transition hover:bg-[#FFEA93] hover:bg-[#FFEA93] hover:text-[#000000] "
             >
               Talk to our team
               <ArrowRight
