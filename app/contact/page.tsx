@@ -1,711 +1,1471 @@
 ﻿"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, Mail, Phone, MapPin, Send, MessageSquare,
-  CheckCircle, Loader2, ExternalLink, Sparkles, Globe,
-  Shield, Brain, Scale, FileText, Users, Award, AlertCircle,
-  Clock, Building2, Briefcase, ChevronDown, ChevronUp,
-  Lock, Star, Zap, Headphones, Calendar
-} from 'lucide-react';
-import { FaLinkedin, FaWhatsapp, FaTwitter } from 'react-icons/fa';
+import { FormEvent, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Check,
+  ChevronDown,
+  Clock3,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  Zap,
+} from "lucide-react";
 
-// ============================================================
-// ===== FAQ DATA =====
-// ============================================================
+const COLORS = {
+  pink: "#D90000",
+  yellow: "#FFEA93",
+  mint: "#8DB355",
+  blue: "#000000",
+};
+
+const INTERESTS = [
+  "DPDP Compliance",
+  "GDPR Compliance",
+  "AI Governance",
+  "Privacy Policy",
+  "DPIA & Audits",
+  "Training & Awareness",
+  "Certification Support",
+  "Something Else",
+];
+
+const PARTICLES = [
+  [42, 74, 2],
+  [78, 128, 1.5],
+  [116, 66, 1.8],
+  [151, 112, 1.4],
+  [184, 55, 2],
+  [221, 92, 1.4],
+  [275, 56, 1.7],
+  [314, 88, 2],
+  [352, 52, 1.5],
+  [391, 108, 1.8],
+  [426, 72, 1.4],
+  [458, 135, 2],
+  [55, 192, 1.5],
+  [94, 224, 2],
+  [136, 177, 1.4],
+  [372, 188, 1.6],
+  [417, 226, 2],
+  [455, 192, 1.5],
+  [61, 344, 1.8],
+  [108, 397, 1.4],
+  [405, 371, 1.8],
+  [449, 330, 1.5],
+  [75, 465, 2],
+  [132, 512, 1.5],
+  [378, 505, 1.7],
+  [431, 461, 2],
+];
+
+const SPARKS = [
+  [62, 155, 84, 146],
+  [112, 274, 132, 282],
+  [386, 154, 411, 146],
+  [430, 273, 450, 263],
+  [78, 381, 99, 370],
+  [405, 404, 428, 416],
+  [153, 488, 170, 477],
+  [329, 491, 350, 502],
+];
+
 const faqs = [
   {
-    q: 'How quickly will I hear back after submitting the form?',
-    a: 'Our team responds within 1 business day. For urgent requests, use the WhatsApp button for a faster response.'
+    q: "What can Legal Galaxy help us with?",
+    a: "We help organizations operationalize privacy and AI governance through DPDP and GDPR compliance, privacy policies, DPIAs, audits, training, governance frameworks, and certification support.",
   },
   {
-    q: 'Is the first consultation really free?',
-    a: 'Yes. We offer a complimentary 15-minute consultation to understand your requirements and suggest the right approach. No strings attached.'
+    q: "Is this suitable for startups as well as enterprises?",
+    a: "Yes. The engagement can be structured around your organization's current maturity, data footprint, team size, regulatory exposure, and immediate compliance priorities.",
   },
   {
-    q: 'What information should I include in the requirement field?',
-    a: 'Share your industry, the compliance framework you need help with (DPDP, GDPR, AI governance), and any specific challenges. The more context, the better we can prepare.'
+    q: "Can you help with AI governance?",
+    a: "Yes. AI governance can cover AI inventories, risk assessment, governance controls, responsible AI practices, documentation, accountability structures, and operational workflows.",
   },
   {
-    q: 'Do you work with startups or only enterprises?',
-    a: 'We work with organisations of all sizes — from early-stage startups to large enterprises. Our solutions scale to your needs and budget.'
+    q: "How quickly can we start?",
+    a: "Once we understand your requirement, we can recommend the appropriate next step and scope. For urgent requirements, mention the timeline in the message field.",
   },
-  {
-    q: 'Will my information be kept confidential?',
-    a: 'Absolutely. All information shared with us is protected under strict confidentiality. We never share your data with third parties without your explicit consent.'
-  }
 ];
 
-// ============================================================
-// ===== INTEREST OPTIONS =====
-// ============================================================
-const interestOptions = [
-  { id: 'dpdp', label: 'DPDP Compliance', icon: Scale },
-  { id: 'gdpr', label: 'GDPR Compliance', icon: Globe },
-  { id: 'ai-governance', label: 'AI Governance', icon: Brain },
-  { id: 'privacy-policy', label: 'Privacy Policy', icon: FileText },
-  { id: 'dpia', label: 'DPIA & Audits', icon: Shield },
-  { id: 'training', label: 'Training & Awareness', icon: Users },
-  { id: 'certification', label: 'Certification Support', icon: Award },
-  { id: 'other', label: 'Something Else', icon: MessageSquare },
-];
+function PrivacyGuardian() {
+  return (
+    <div className="relative mx-auto aspect-[5/6] w-full max-w-[560px] overflow-hidden rounded-[2.5rem] border border-[#8DB355]/30 bg-[#000000] shadow-[0_30px_100px_rgba(77,103,135,0.45)]">
+      <style>{`
+        .guardian-scene {
+          background:
+            radial-gradient(circle at 50% 35%, rgba(125,204,173,.22), transparent 27%),
+            radial-gradient(circle at 50% 75%, rgba(245,153,198,.16), transparent 30%),
+            linear-gradient(145deg, #000000 0%, #000000 58%, #8DB355 180%);
+        }
 
-// ============================================================
-// ===== MAIN COMPONENT =====
-// ============================================================
+        .guardian-grid {
+          background-image:
+            linear-gradient(rgba(255,234,136,.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,234,136,.06) 1px, transparent 1px);
+          background-size: 34px 34px;
+          mask-image: linear-gradient(to bottom, transparent, black 18%, black 80%, transparent);
+        }
+
+        .guardian-ring {
+          transform-box: fill-box;
+          transform-origin: center;
+        }
+
+        .guardian-ring-a {
+          animation: ringSpin 16s linear infinite;
+        }
+
+        .guardian-ring-b {
+          animation: ringSpinReverse 11s linear infinite;
+        }
+
+        .guardian-ring-c {
+          animation: ringPulse 4s ease-in-out infinite;
+        }
+
+        .guardian-core {
+          animation: corePulse 2.4s ease-in-out infinite;
+        }
+
+        .guardian-core-inner {
+          animation: coreInner 1.8s ease-in-out infinite;
+        }
+
+        .guardian-eye {
+          animation: eyePulse 2s ease-in-out infinite;
+        }
+
+        .guardian-eye:nth-child(2) {
+          animation-delay: .15s;
+        }
+
+        .guardian-circuit {
+          stroke-dasharray: 8 7;
+          animation: circuitFlow 2.8s linear infinite;
+        }
+
+        .guardian-scan {
+          animation: scanMove 3.8s ease-in-out infinite;
+        }
+
+        .guardian-data {
+          animation: dataFall 2.8s linear infinite;
+        }
+
+        .guardian-data:nth-child(2) {
+          animation-delay: .8s;
+        }
+
+        .guardian-data:nth-child(3) {
+          animation-delay: 1.5s;
+        }
+
+        .guardian-data:nth-child(4) {
+          animation-delay: 2.1s;
+        }
+
+        .guardian-particles circle {
+          animation: particleFloat 3.2s ease-in-out infinite;
+        }
+
+        .guardian-particles circle:nth-child(2n) {
+          animation-delay: .5s;
+        }
+
+        .guardian-particles circle:nth-child(3n) {
+          animation-delay: 1.1s;
+        }
+
+        .guardian-particles circle:nth-child(4n) {
+          animation-delay: 1.7s;
+        }
+
+        .guardian-sparks line {
+          stroke-dasharray: 20;
+          animation: sparkFlash 2.7s ease-in-out infinite;
+        }
+
+        .guardian-sparks line:nth-child(2n) {
+          animation-delay: .8s;
+        }
+
+        .guardian-sparks line:nth-child(3n) {
+          animation-delay: 1.5s;
+        }
+
+        .guardian-breath {
+          animation: bodyBreath 4s ease-in-out infinite;
+          transform-origin: center;
+        }
+
+        @keyframes ringSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes ringSpinReverse {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+
+        @keyframes ringPulse {
+          0%, 100% { opacity: .25; transform: scale(.96); }
+          50% { opacity: .65; transform: scale(1.02); }
+        }
+
+        @keyframes corePulse {
+          0%, 100% { opacity: .55; transform: scale(.92); }
+          50% { opacity: 1; transform: scale(1.06); }
+        }
+
+        @keyframes coreInner {
+          0%, 100% { opacity: .7; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes eyePulse {
+          0%, 100% { opacity: .5; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes circuitFlow {
+          to { stroke-dashoffset: -30; }
+        }
+
+        @keyframes scanMove {
+          0%, 100% { transform: translateY(-180px); opacity: 0; }
+          15% { opacity: .9; }
+          50% { opacity: .75; }
+          85% { opacity: .9; }
+        }
+
+        @keyframes dataFall {
+          0% { transform: translateY(-35px); opacity: 0; }
+          15% { opacity: .7; }
+          75% { opacity: .5; }
+          100% { transform: translateY(330px); opacity: 0; }
+        }
+
+        @keyframes particleFloat {
+          0%, 100% { opacity: .15; transform: translateY(0) scale(.8); }
+          50% { opacity: .9; transform: translateY(-7px) scale(1.2); }
+        }
+
+        @keyframes sparkFlash {
+          0%, 100% { opacity: .08; }
+          45% { opacity: .9; }
+          55% { opacity: .2; }
+        }
+
+        @keyframes bodyBreath {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-3px); }
+        }
+      `}</style>
+
+      <div className="guardian-scene absolute inset-0" />
+      <div className="guardian-grid absolute inset-0 opacity-80" />
+
+      <div className="absolute left-6 top-6 z-20 flex items-center gap-2 rounded-full border border-[#8DB355]/40 bg-[#000000]/70 px-3 py-1.5 backdrop-blur-md">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-[#8DB355]" />
+        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFEA93]">
+          Guardian online
+        </span>
+      </div>
+
+      <div className="absolute right-6 top-6 z-20 rounded-full border border-[#D90000]/40 bg-[#000000]/70 px-3 py-1.5 backdrop-blur-md">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#D90000]">
+          Privacy / AI
+        </span>
+      </div>
+
+      <svg
+        viewBox="0 0 500 620"
+        className="absolute inset-0 h-full w-full"
+        aria-hidden="true"
+      >
+        <defs>
+          <radialGradient id="guardianCoreGradient">
+            <stop offset="0%" stopColor="#FFEA93" stopOpacity="1" />
+            <stop offset="35%" stopColor="#8DB355" stopOpacity=".9" />
+            <stop offset="100%" stopColor="#D90000" stopOpacity="0" />
+          </radialGradient>
+
+          <linearGradient id="bodyGradient" x1="0" x2="1">
+            <stop offset="0%" stopColor="#000000" />
+            <stop offset="45%" stopColor="#8DB355" stopOpacity=".38" />
+            <stop offset="100%" stopColor="#000000" />
+          </linearGradient>
+
+          <linearGradient id="circuitGradient" x1="0" x2="1">
+            <stop offset="0%" stopColor="#D90000" />
+            <stop offset="50%" stopColor="#FFEA93" />
+            <stop offset="100%" stopColor="#8DB355" />
+          </linearGradient>
+
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <filter id="strongGlow">
+            <feGaussianBlur stdDeviation="9" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <clipPath id="guardianBodyClip">
+            <path d="M184 260 Q250 230 316 260 L349 330 L333 475 Q300 510 250 515 Q200 510 167 475 L151 330Z" />
+          </clipPath>
+        </defs>
+
+        {/* Outer protection rings */}
+        <g fill="none" strokeLinecap="round">
+          <circle
+            className="guardian-ring guardian-ring-a"
+            cx="250"
+            cy="306"
+            r="226"
+            stroke="#8DB355"
+            strokeOpacity=".22"
+            strokeWidth="1"
+            strokeDasharray="5 15"
+          />
+
+          <circle
+            className="guardian-ring guardian-ring-b"
+            cx="250"
+            cy="306"
+            r="205"
+            stroke="#D90000"
+            strokeOpacity=".28"
+            strokeWidth="1.2"
+            strokeDasharray="2 20"
+          />
+
+          <circle
+            className="guardian-ring guardian-ring-c"
+            cx="250"
+            cy="306"
+            r="184"
+            stroke="#FFEA93"
+            strokeOpacity=".18"
+            strokeWidth="1"
+          />
+
+          <path
+            d="M84 306 A166 166 0 0 1 416 306"
+            stroke="#FFEA93"
+            strokeOpacity=".4"
+            strokeWidth="2"
+            strokeDasharray="45 16"
+          />
+
+          <path
+            d="M106 372 A154 154 0 0 0 394 372"
+            stroke="#D90000"
+            strokeOpacity=".32"
+            strokeWidth="1.5"
+            strokeDasharray="30 18"
+          />
+        </g>
+
+        {/* Targeting brackets */}
+        <g
+          fill="none"
+          stroke="#FFEA93"
+          strokeWidth="2"
+          strokeLinecap="round"
+          opacity=".55"
+        >
+          <path d="M83 231 V202 H112" />
+          <path d="M417 231 V202 H388" />
+          <path d="M83 382 V411 H112" />
+          <path d="M417 382 V411 H388" />
+        </g>
+
+        {/* Data streams */}
+        <g
+          className="guardian-data"
+          stroke="#8DB355"
+          strokeWidth="1"
+          opacity=".45"
+        >
+          <path d="M112 150 V470" strokeDasharray="3 10" />
+          <path d="M145 130 V495" strokeDasharray="2 13" />
+          <path d="M355 128 V500" strokeDasharray="3 11" />
+          <path d="M389 150 V468" strokeDasharray="2 12" />
+        </g>
+
+        {/* Data glyphs */}
+        <g
+          fill="#FFEA93"
+          opacity=".4"
+          fontFamily="monospace"
+          fontSize="8"
+          letterSpacing="2"
+        >
+          <text x="91" y="184">01</text>
+          <text x="91" y="214">10</text>
+          <text x="91" y="244">01</text>
+          <text x="392" y="180">10</text>
+          <text x="392" y="210">01</text>
+          <text x="392" y="240">11</text>
+          <text x="125" y="470">AI</text>
+          <text x="365" y="470">DPIA</text>
+        </g>
+
+        {/* Guardian body */}
+        <g className="guardian-breath">
+          {/* shoulders */}
+          <path
+            d="M157 320 Q128 324 103 351 L117 384 Q141 375 166 363"
+            fill="url(#bodyGradient)"
+            stroke="#8DB355"
+            strokeOpacity=".65"
+            strokeWidth="2"
+          />
+
+          <path
+            d="M343 320 Q372 324 397 351 L383 384 Q359 375 334 363"
+            fill="url(#bodyGradient)"
+            stroke="#8DB355"
+            strokeOpacity=".65"
+            strokeWidth="2"
+          />
+
+          {/* left arm */}
+          <path
+            d="M125 351 Q96 382 93 431 L113 446 Q130 408 151 384"
+            fill="#000000"
+            stroke="#D90000"
+            strokeOpacity=".6"
+            strokeWidth="2"
+          />
+
+          {/* right arm */}
+          <path
+            d="M375 351 Q404 382 407 431 L387 446 Q370 408 349 384"
+            fill="#000000"
+            stroke="#D90000"
+            strokeOpacity=".6"
+            strokeWidth="2"
+          />
+
+          {/* forearm tech lines */}
+          <g
+            fill="none"
+            stroke="#FFEA93"
+            strokeWidth="1.5"
+            strokeOpacity=".6"
+          >
+            <path d="M103 391 L126 400" />
+            <path d="M99 405 L121 414" />
+            <path d="M397 391 L374 400" />
+            <path d="M401 405 L379 414" />
+          </g>
+
+          {/* torso */}
+          <path
+            d="M184 260 Q250 230 316 260 L349 330 L333 475 Q300 510 250 515 Q200 510 167 475 L151 330Z"
+            fill="url(#bodyGradient)"
+            stroke="#8DB355"
+            strokeWidth="2"
+            strokeOpacity=".72"
+          />
+
+          {/* torso inner armor */}
+          <path
+            d="M207 284 Q250 267 293 284 L312 338 L298 450 Q275 473 250 479 Q225 473 202 450 L188 338Z"
+            fill="#000000"
+            fillOpacity=".9"
+            stroke="#8DB355"
+            strokeOpacity=".35"
+          />
+
+          {/* chest circuit network */}
+          <g
+            className="guardian-circuit"
+            fill="none"
+            stroke="url(#circuitGradient)"
+            strokeWidth="1.7"
+          >
+            <path d="M188 319 H218 L231 335 H250" />
+            <path d="M312 319 H282 L269 335 H250" />
+            <path d="M202 363 H229 L241 351 H250" />
+            <path d="M298 363 H271 L259 351 H250" />
+            <path d="M202 407 H227 L240 393 H250" />
+            <path d="M298 407 H273 L260 393 H250" />
+            <path d="M213 444 H237 L250 430 L263 444 H287" />
+          </g>
+
+          {/* circuit nodes */}
+          <g fill="#FFEA93" filter="url(#softGlow)">
+            <circle cx="218" cy="319" r="3" />
+            <circle cx="282" cy="319" r="3" />
+            <circle cx="229" cy="363" r="2.5" />
+            <circle cx="271" cy="363" r="2.5" />
+            <circle cx="227" cy="407" r="2.5" />
+            <circle cx="273" cy="407" r="2.5" />
+            <circle cx="250" cy="430" r="3" />
+          </g>
+
+          {/* neck */}
+          <path
+            d="M219 259 V239 H281 V259"
+            fill="#000000"
+            stroke="#8DB355"
+            strokeWidth="2"
+          />
+
+          {/* neck vents */}
+          <g stroke="#D90000" strokeWidth="2" opacity=".65">
+            <path d="M225 247 H237" />
+            <path d="M242 247 H258" />
+            <path d="M263 247 H275" />
+          </g>
+
+          {/* head */}
+          <path
+            d="M195 126 Q250 94 305 126 L316 207 Q303 246 250 261 Q197 246 184 207Z"
+            fill="#000000"
+            stroke="#8DB355"
+            strokeWidth="2.5"
+          />
+
+          {/* face plate */}
+          <path
+            d="M205 142 Q250 119 295 142 L301 201 Q284 230 250 239 Q216 230 199 201Z"
+            fill="#000000"
+            fillOpacity=".96"
+            stroke="#8DB355"
+            strokeOpacity=".35"
+          />
+
+          {/* forehead core */}
+          <circle
+            cx="250"
+            cy="145"
+            r="10"
+            fill="url(#guardianCoreGradient)"
+            className="guardian-core"
+            filter="url(#strongGlow)"
+          />
+
+          <circle
+            cx="250"
+            cy="145"
+            r="4"
+            fill="#FFEA93"
+            className="guardian-core-inner"
+          />
+
+          {/* eyes */}
+          <g filter="url(#softGlow)">
+            <path
+              className="guardian-eye"
+              d="M215 177 Q231 167 244 177 Q232 187 216 183Z"
+              fill="#D90000"
+            />
+            <path
+              className="guardian-eye"
+              d="M285 177 Q269 167 256 177 Q268 187 284 183Z"
+              fill="#D90000"
+            />
+          </g>
+
+          {/* face sensor lines */}
+          <g
+            fill="none"
+            stroke="#FFEA93"
+            strokeWidth="1"
+            opacity=".55"
+          >
+            <path d="M213 196 H238" />
+            <path d="M262 196 H287" />
+            <path d="M221 211 H240" />
+            <path d="M260 211 H279" />
+          </g>
+
+          {/* jaw */}
+          <path
+            d="M220 225 Q250 240 280 225"
+            fill="none"
+            stroke="#D90000"
+            strokeOpacity=".5"
+            strokeWidth="1.5"
+          />
+
+          {/* antenna */}
+          <path
+            d="M250 134 V82"
+            stroke="#8DB355"
+            strokeWidth="2"
+          />
+
+          <circle
+            cx="250"
+            cy="72"
+            r="8"
+            fill="#D90000"
+            fillOpacity=".22"
+            stroke="#D90000"
+            strokeWidth="1.5"
+            filter="url(#softGlow)"
+          />
+
+          <circle
+            cx="250"
+            cy="72"
+            r="3"
+            fill="#FFEA93"
+          />
+
+          {/* side antennae */}
+          <path
+            d="M190 154 L167 137"
+            stroke="#8DB355"
+            strokeWidth="2"
+          />
+          <path
+            d="M310 154 L333 137"
+            stroke="#8DB355"
+            strokeWidth="2"
+          />
+
+          <circle
+            cx="163"
+            cy="134"
+            r="4"
+            fill="#FFEA93"
+          />
+
+          <circle
+            cx="337"
+            cy="134"
+            r="4"
+            fill="#FFEA93"
+          />
+
+          {/* ear modules */}
+          <rect
+            x="177"
+            y="169"
+            width="18"
+            height="42"
+            rx="6"
+            fill="#000000"
+            stroke="#D90000"
+            strokeOpacity=".7"
+          />
+
+          <rect
+            x="305"
+            y="169"
+            width="18"
+            height="42"
+            rx="6"
+            fill="#000000"
+            stroke="#D90000"
+            strokeOpacity=".7"
+          />
+
+          <g stroke="#FFEA93" strokeWidth="2" opacity=".6">
+            <path d="M182 180 H190" />
+            <path d="M182 189 H190" />
+            <path d="M310 180 H318" />
+            <path d="M310 189 H318" />
+          </g>
+
+          {/* privacy core housing */}
+          <circle
+            cx="250"
+            cy="365"
+            r="42"
+            fill="#000000"
+            stroke="#D90000"
+            strokeWidth="2"
+            strokeOpacity=".7"
+          />
+
+          <circle
+            cx="250"
+            cy="365"
+            r="31"
+            fill="url(#guardianCoreGradient)"
+            className="guardian-core"
+            filter="url(#strongGlow)"
+          />
+
+          <circle
+            cx="250"
+            cy="365"
+            r="17"
+            fill="#FFEA93"
+            fillOpacity=".9"
+            className="guardian-core-inner"
+          />
+
+          {/* shield inside core */}
+          <path
+            d="M250 344 L266 351 V363 Q266 378 250 388 Q234 378 234 363 V351Z"
+            fill="#000000"
+            stroke="#000000"
+            strokeWidth="2"
+          />
+
+          <path
+            d="M243 365 L248 370 L258 359"
+            fill="none"
+            stroke="#FFEA93"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* scan line */}
+          <rect
+            className="guardian-scan"
+            x="145"
+            y="300"
+            width="210"
+            height="2"
+            rx="1"
+            fill="#FFEA93"
+            opacity=".7"
+            filter="url(#softGlow)"
+          />
+        </g>
+
+        {/* Guardian particles */}
+        <g className="guardian-particles">
+          {PARTICLES.map(([cx, cy, r], index) => (
+            <circle
+              key={`particle-${index}`}
+              cx={cx}
+              cy={cy}
+              r={r}
+              fill={index % 3 === 0 ? COLORS.pink : COLORS.yellow}
+              opacity=".5"
+            />
+          ))}
+        </g>
+
+        {/* Energy sparks */}
+        <g
+          className="guardian-sparks"
+          stroke="#D90000"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
+          {SPARKS.map(([x1, y1, x2, y2], index) => (
+            <line
+              key={`spark-${index}`}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+            />
+          ))}
+        </g>
+
+        {/* Bottom HUD */}
+        <g transform="translate(128 545)">
+          <rect
+            x="0"
+            y="0"
+            width="244"
+            height="38"
+            rx="19"
+            fill="#000000"
+            fillOpacity=".8"
+            stroke="#8DB355"
+            strokeOpacity=".4"
+          />
+          <circle cx="23" cy="19" r="5" fill="#8DB355" />
+          <text
+            x="38"
+            y="23"
+            fill="#FFEA93"
+            fontSize="10"
+            fontFamily="monospace"
+            letterSpacing="1.5"
+          >
+            DATA PROTECTION ACTIVE
+          </text>
+        </g>
+      </svg>
+
+      <div className="absolute bottom-6 left-6 right-6 z-20 flex items-end justify-between">
+        <div>
+          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8DB355]">
+            Autonomous layer
+          </p>
+          <p className="mt-1 text-xs font-semibold text-[#FFEA93]">
+            Detect · Govern · Protect
+          </p>
+        </div>
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D90000]/40 bg-[#000000]/80 backdrop-blur-md">
+          <ShieldCheck size={18} className="text-[#D90000]" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Field({
+  label,
+  value,
+  onChange,
+  placeholder,
+  type = "text",
+  required = false,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-[#FFEA93]">
+        {label}
+        {required && <span className="ml-1 text-[#D90000]">*</span>}
+      </span>
+
+      <input
+        type={type}
+        value={value}
+        required={required}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className="w-full rounded-2xl border border-[#8DB355]/30 bg-[#000000]/50 px-4 py-3.5 text-sm text-[#FFEA93] outline-none placeholder:text-[#8DB355]/55 transition duration-300 focus:border-[#D90000] focus:bg-[#000000]/75 focus:ring-2 focus:ring-[#D90000]/20"
+      />
+    </label>
+  );
+}
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    designation: '',
-    requirement: '',
-    interests: [] as string[],
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    designation: "",
+    requirement: "",
   });
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [stars, setStars] = useState<React.ReactNode[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // ===== STAR FIELD =====
-  useEffect(() => {
-    const starElements = [];
-    for (let i = 0; i < 60; i++) {
-      starElements.push(
-        <div
-          key={i}
-          className="absolute bg-white rounded-full animate-twinkle"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            animationDuration: `${Math.random() * 4 + 2}s`,
-            animationDelay: `${Math.random() * 5}s`,
-            opacity: Math.random() * 0.5 + 0.1,
-            width: `${Math.random() * 2 + 0.5}px`,
-            height: `${Math.random() * 2 + 0.5}px`,
-          }}
-        />
-      );
-    }
-    setStars(starElements);
-  }, []);
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
-  // ===== VALIDATION =====
-  const validateForm = () => {
-    const errors: Record<string, string> = {};
-
-    if (!formData.name.trim()) errors.name = 'Full name is required';
-    if (!formData.email.trim()) {
-      errors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = 'Please enter a valid email address';
-    }
-    if (!formData.phone.trim()) {
-      errors.phone = 'Phone number is required';
-    } else if (!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(formData.phone.replace(/\s/g, ''))) {
-      errors.phone = 'Please enter a valid phone number';
-    }
-    if (!formData.requirement.trim()) {
-      errors.requirement = 'Please tell us about your requirement';
-    } else if (formData.requirement.trim().length < 20) {
-      errors.requirement = 'Please provide at least 20 characters';
-    }
-    if (formData.interests.length === 0) {
-      errors.interests = 'Please select at least one area of interest';
-    }
-
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  // ===== INTEREST TOGGLE =====
-  const handleInterestToggle = (id: string) => {
-    setFormData(prev => ({
+  const updateField = (key: keyof typeof form, value: string) => {
+    setForm((prev) => ({
       ...prev,
-      interests: prev.interests.includes(id)
-        ? prev.interests.filter(i => i !== id)
-        : [...prev.interests, id]
+      [key]: value,
     }));
-    if (formErrors.interests) {
-      setFormErrors({ ...formErrors, interests: '' });
-    }
   };
 
-  // ===== HANDLE CHANGE =====
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    if (formErrors[name]) {
-      setFormErrors({ ...formErrors, [name]: '' });
-    }
-    if (error) setError(null);
+  const toggleInterest = (interest: string) => {
+    setSelectedInterests((prev) =>
+      prev.includes(interest)
+        ? prev.filter((item) => item !== interest)
+        : [...prev, interest]
+    );
   };
 
-  // ===== SUBMIT =====
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!validateForm()) {
-      // Scroll to first error
-      const firstError = document.querySelector('.border-red-500');
-      if (firstError) {
-        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+
+    setSuccess("");
+    setError("");
+
+    if (!form.name.trim()) {
+      setError("Please enter your name.");
       return;
     }
 
-    setIsSubmitting(true);
-    setError(null);
+    if (!form.email.trim()) {
+      setError("Please enter your email.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!form.phone.trim()) {
+      setError("Please enter your phone number.");
+      return;
+    }
+
+    if (!/^\+?[0-9]{10,15}$/.test(form.phone.replace(/[\s-]/g, ""))) {
+      setError("Please enter a valid phone number.");
+      return;
+    }
+
+    if (!form.requirement.trim()) {
+      setError("Please tell us briefly about your requirement.");
+      return;
+    }
+
+    if (selectedInterests.length === 0) {
+      setError("Please select at least one area you need help with.");
+      return;
+    }
 
     try {
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        company: formData.company || 'Not Provided',
-        orgName: formData.company || 'Not Provided',
-        designation: formData.designation || 'Not Provided',
-        requirement: formData.requirement,
-        interests: formData.interests,
-        source: 'contact'
-      };
+      setLoading(true);
 
-      const response = await fetch('/api/lead-capture', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+      const response = await fetch("/api/lead-capture", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.company,
+          orgName: form.company,
+          designation: form.designation,
+          requirement: form.requirement,
+          interests: selectedInterests,
+          source: "contact",
+        }),
       });
-
-      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Failed to submit');
+        throw new Error("Unable to submit the form.");
       }
 
-      setIsSubmitted(true);
-      setFormData({
-        name: '', email: '', phone: '', company: '',
-        designation: '', requirement: '', interests: []
+      setSuccess(
+        "Thank you. Your requirement has been received. Our team will get in touch with you shortly."
+      );
+
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        designation: "",
+        requirement: "",
       });
-      setFormErrors({});
-      setTimeout(() => setIsSubmitted(false), 6000);
-    } catch (err) {
-      console.error('Error:', err);
-      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+
+      setSelectedInterests([]);
+    } catch {
+      setError(
+        "Something went wrong while submitting your request. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
-    setIsSubmitting(false);
   };
 
   return (
-    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ===== BACKGROUND ===== */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-        </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        {stars}
+    <main className="min-h-screen overflow-hidden bg-[#000000] pt-[108px] text-[#FFEA93]">
+      {/* Ambient background */}
+      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
+        <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-[#D90000]/15 blur-[120px]" />
+        <div className="absolute right-0 top-[28%] h-[30rem] w-[30rem] rounded-full bg-[#8DB355]/15 blur-[140px]" />
+        <div className="absolute bottom-0 left-[40%] h-80 w-80 rounded-full bg-[#FFEA93]/10 blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* ===== BACK BUTTON ===== */}
-        <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
-
-        {/* ===== HERO HEADER ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-sm font-medium text-purple-300 mb-4">
-            <Headphones className="w-4 h-4" />
-            Expert Consultation
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
-            Talk to a <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Privacy & AI</span> Expert
-          </h1>
-          <p className="text-gray-200 text-lg max-w-3xl mx-auto drop-shadow-lg leading-relaxed">
-            Get expert guidance on DPDP, GDPR, AI governance, and data protection. 
-            Fill in the form below and our team will reach out within <strong className="text-white">1 business day</strong>.
-          </p>
-        </motion.div>
-
-        {/* ===== MAIN GRID ===== */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-16">
-          
-          {/* ===== LEFT: FORM (3 cols) ===== */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-3 bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6 md:p-8 shadow-2xl"
+      {/* HERO */}
+      <section className="relative mx-auto max-w-7xl px-5 pb-20 pt-12 sm:px-8 lg:px-10 lg:pb-28 lg:pt-16">
+        <div className="grid items-center gap-14 lg:grid-cols-[1fr_.95fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="relative z-10"
           >
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="p-8 rounded-xl bg-green-500/10 border border-green-500/30 text-center"
-              >
-                <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-10 h-10 text-green-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Request Received! 🎉</h3>
-                <p className="text-gray-300 mb-4">
-                  Thank you for reaching out. Our team will connect with you within <strong>1 business day</strong>.
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#D90000]/35 bg-[#000000]/70 px-4 py-2 backdrop-blur-md">
+              <Sparkles size={14} className="text-[#D90000]" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFEA93]">
+                Privacy & AI Governance
+              </span>
+            </div>
+
+            <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.045em] sm:text-6xl lg:text-[5.6rem]">
+              Let&apos;s make
+              <span className="block text-[#D90000]">privacy</span>
+              operational.
+            </h1>
+
+            <p className="mt-7 max-w-2xl text-base leading-7 text-[#8DB355] sm:text-lg">
+              Tell us where your organization is today. We&apos;ll help you
+              identify the right compliance, privacy, and AI governance path
+              without turning it into another complicated project.
+            </p>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              {[
+                "DPDP 2023",
+                "GDPR",
+                "AI Governance",
+                "Privacy Engineering",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-[#8DB355]/30 bg-[#000000]/60 px-4 py-2 text-xs font-semibold text-[#FFEA93]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-12 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl border border-[#8DB355]/25 bg-[#000000]/55 p-4">
+                <Target size={18} className="text-[#D90000]" />
+                <p className="mt-3 text-sm font-bold text-[#FFEA93]">
+                  Identify
                 </p>
-                <p className="text-sm text-gray-400">
-                  A confirmation email has been sent to your inbox.
+                <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                  Understand your compliance gaps.
                 </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Error */}
-                {error && (
-                  <div className="p-3 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 text-sm flex items-start gap-2">
-                    <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                    {error}
-                  </div>
-                )}
+              </div>
 
-                {/* ===== STEP 1: INTERESTS ===== */}
-                <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-6 rounded-full bg-purple-500/30 flex items-center justify-center text-xs font-bold text-purple-300">
-                      1
-                    </div>
-                    <label className="text-sm font-semibold text-white">
-                      What do you need help with? <span className="text-red-500">*</span>
-                    </label>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    {interestOptions.map((option) => {
-                      const Icon = option.icon;
-                      const isSelected = formData.interests.includes(option.id);
-                      return (
-                        <button
-                          key={option.id}
-                          type="button"
-                          onClick={() => handleInterestToggle(option.id)}
-                          className={`flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl text-xs font-medium transition-all border ${
-                            isSelected
-                              ? 'bg-purple-500/30 border-purple-400/60 text-white shadow-lg shadow-purple-500/20 scale-105'
-                              : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:border-white/20'
-                          }`}
-                        >
-                          <Icon className="w-4 h-4" />
-                          <span className="text-center leading-tight">{option.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                  {formErrors.interests && (
-                    <p className="text-red-400 text-xs mt-2">{formErrors.interests}</p>
-                  )}
+              <div className="rounded-2xl border border-[#8DB355]/25 bg-[#000000]/55 p-4">
+                <Zap size={18} className="text-[#FFEA93]" />
+                <p className="mt-3 text-sm font-bold text-[#FFEA93]">
+                  Prioritize
+                </p>
+                <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                  Focus on what matters first.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#8DB355]/25 bg-[#000000]/55 p-4">
+                <ShieldCheck size={18} className="text-[#8DB355]" />
+                <p className="mt-3 text-sm font-bold text-[#FFEA93]">
+                  Govern
+                </p>
+                <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                  Build controls that actually work.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="relative z-10"
+          >
+            <PrivacyGuardian />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CONTACT STRIP */}
+      <section className="relative border-y border-[#8DB355]/20 bg-[#000000]/55">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-[#8DB355]/20 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+          <a
+            href="mailto:shilpi.kulshrestha@businezexcellence.com"
+            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#8DB355]/10 sm:px-8"
+          >
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#D90000]/30 bg-[#D90000]/10">
+              <Mail size={18} className="text-[#D90000]" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+                Email
+              </p>
+              <p className="mt-1 truncate text-xs font-semibold text-[#FFEA93]">
+                shilpi.kulshrestha@businezexcellence.com
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="tel:+918800138008"
+            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#8DB355]/10 sm:px-8"
+          >
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#8DB355]/30 bg-[#8DB355]/10">
+              <Phone size={18} className="text-[#8DB355]" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+                Call
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
+                +91 8800138008
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="https://wa.me/918800138008"
+            target="_blank"
+            rel="noreferrer"
+            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#8DB355]/10 sm:px-8"
+          >
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#8DB355]/30 bg-[#8DB355]/10">
+              <MessageCircle size={18} className="text-[#8DB355]" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+                WhatsApp
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
+                Start a conversation
+              </p>
+            </div>
+          </a>
+
+          <div className="flex items-center gap-4 px-5 py-6 sm:px-8">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#FFEA93]/30 bg-[#FFEA93]/10">
+              <MapPin size={18} className="text-[#FFEA93]" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+                Location
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
+                India
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FORM SECTION */}
+      <section className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
+          <div className="lg:sticky lg:top-10 lg:self-start">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-10 bg-[#D90000]" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#D90000]">
+                Start here
+              </span>
+            </div>
+
+            <h2 className="text-4xl font-black tracking-[-0.035em] sm:text-5xl">
+              Tell us what
+              <span className="block text-[#8DB355]">needs solving.</span>
+            </h2>
+
+            <p className="mt-5 max-w-md text-sm leading-7 text-[#8DB355]">
+              Whether you&apos;re preparing for DPDP, strengthening your
+              privacy program, or building an AI governance framework, give us
+              enough context to understand the problem.
+            </p>
+
+            <div className="mt-9 space-y-4">
+              <div className="flex gap-4 rounded-2xl border border-[#8DB355]/20 bg-[#000000]/45 p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D90000]/10">
+                  <Clock3 size={18} className="text-[#D90000]" />
                 </div>
-
-                {/* Divider */}
-                <div className="border-t border-white/10" />
-
-                {/* ===== STEP 2: PERSONAL INFO ===== */}
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-6 rounded-full bg-purple-500/30 flex items-center justify-center text-xs font-bold text-purple-300">
-                      2
-                    </div>
-                    <label className="text-sm font-semibold text-white">
-                      Your Details
-                    </label>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Full Name */}
-                    <div>
-                      <label className="block text-xs text-gray-400 mb-1.5">
-                        Full Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Doe"
-                        className={`w-full px-4 py-3 rounded-xl bg-white/5 border text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/60 transition-all ${
-                          formErrors.name ? 'border-red-500/60' : 'border-white/15'
-                        }`}
-                      />
-                      {formErrors.name && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.name}</p>
-                      )}
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                      <label className="block text-xs text-gray-400 mb-1.5">
-                        Work Email <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@company.com"
-                        className={`w-full px-4 py-3 rounded-xl bg-white/5 border text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/60 transition-all ${
-                          formErrors.email ? 'border-red-500/60' : 'border-white/15'
-                        }`}
-                      />
-                      {formErrors.email && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>
-                      )}
-                    </div>
-
-                    {/* Phone */}
-                    <div>
-                      <label className="block text-xs text-gray-400 mb-1.5">
-                        Phone <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        className={`w-full px-4 py-3 rounded-xl bg-white/5 border text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/60 transition-all ${
-                          formErrors.phone ? 'border-red-500/60' : 'border-white/15'
-                        }`}
-                      />
-                      {formErrors.phone && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.phone}</p>
-                      )}
-                    </div>
-
-                    {/* Company */}
-                    <div>
-                      <label className="block text-xs text-gray-400 mb-1.5">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        placeholder="Your Company"
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/60 transition-all"
-                      />
-                    </div>
-
-                    {/* Designation */}
-                    <div className="md:col-span-2">
-                      <label className="block text-xs text-gray-400 mb-1.5">
-                        Designation
-                      </label>
-                      <input
-                        type="text"
-                        name="designation"
-                        value={formData.designation}
-                        onChange={handleChange}
-                        placeholder="e.g., Privacy Officer, CTO, Legal Head"
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/60 transition-all"
-                      />
-                    </div>
-                  </div>
+                  <p className="text-sm font-bold text-[#FFEA93]">
+                    Focused first conversation
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                    We&apos;ll understand your situation before suggesting a
+                    solution.
+                  </p>
                 </div>
+              </div>
 
-                {/* Divider */}
-                <div className="border-t border-white/10" />
-
-                {/* ===== STEP 3: REQUIREMENT ===== */}
+              <div className="flex gap-4 rounded-2xl border border-[#8DB355]/20 bg-[#000000]/45 p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#8DB355]/10">
+                  <ShieldCheck size={18} className="text-[#8DB355]" />
+                </div>
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-6 rounded-full bg-purple-500/30 flex items-center justify-center text-xs font-bold text-purple-300">
-                      3
-                    </div>
-                    <label className="text-sm font-semibold text-white">
-                      Tell us about your requirement <span className="text-red-500">*</span>
-                    </label>
-                  </div>
-                  <textarea
-                    name="requirement"
-                    value={formData.requirement}
-                    onChange={handleChange}
-                    rows={5}
-                    placeholder="Share your industry, compliance framework (DPDP, GDPR, AI governance), specific challenges, and timeline. The more context, the better we can prepare for you."
-                    className={`w-full px-4 py-3 rounded-xl bg-white/5 border text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/60 transition-all resize-none ${
-                      formErrors.requirement ? 'border-red-500/60' : 'border-white/15'
-                    }`}
-                  />
-                  {formErrors.requirement && (
-                    <p className="text-red-400 text-xs mt-1">{formErrors.requirement}</p>
-                  )}
-                  <p className="text-xs text-gray-500 mt-1.5 text-right">
-                    {formData.requirement.length} characters
+                  <p className="text-sm font-bold text-[#FFEA93]">
+                    Privacy-conscious approach
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                    Share only what is necessary to explain your requirement.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6 }}
+            className="rounded-[2rem] border border-[#8DB355]/25 bg-[#000000]/55 p-5 shadow-[0_25px_80px_rgba(77,103,135,0.25)] backdrop-blur-xl sm:p-8 lg:p-10"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field
+                label="Full name"
+                value={form.name}
+                onChange={(value) => updateField("name", value)}
+                placeholder="Your name"
+                required
+              />
+
+              <Field
+                label="Work email"
+                value={form.email}
+                onChange={(value) => updateField("email", value)}
+                placeholder="you@company.com"
+                type="email"
+                required
+              />
+
+              <Field
+                label="Phone"
+                value={form.phone}
+                onChange={(value) => updateField("phone", value)}
+                placeholder="+91 98765 43210"
+                type="tel"
+                required
+              />
+
+              <Field
+                label="Company"
+                value={form.company}
+                onChange={(value) => updateField("company", value)}
+                placeholder="Organization name"
+              />
+
+              <Field
+                label="Designation"
+                value={form.designation}
+                onChange={(value) => updateField("designation", value)}
+                placeholder="Your role"
+              />
+            </div>
+
+            <div className="mt-7">
+              <label className="block">
+                <span className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-[#FFEA93]">
+                  What do you need help with?
+                  <span className="ml-1 text-[#D90000]">*</span>
+                </span>
+
+                <textarea
+                  value={form.requirement}
+                  required
+                  onChange={(e) =>
+                    updateField("requirement", e.target.value)
+                  }
+                  rows={5}
+                  placeholder="Tell us about your current requirement, challenge, timeline, or goal..."
+                  className="w-full resize-none rounded-2xl border border-[#8DB355]/30 bg-[#000000]/50 px-4 py-3.5 text-sm leading-6 text-[#FFEA93] outline-none placeholder:text-[#8DB355]/55 transition duration-300 focus:border-[#D90000] focus:bg-[#000000]/75 focus:ring-2 focus:ring-[#D90000]/20"
+                />
+              </label>
+            </div>
+
+            <div className="mt-8">
+              <div className="mb-3 flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#FFEA93]">
+                    Areas of interest
+                    <span className="ml-1 text-[#D90000]">*</span>
+                  </p>
+                  <p className="mt-1 text-xs text-[#8DB355]">
+                    Select everything relevant.
                   </p>
                 </div>
 
-                {/* ===== SUBMIT BUTTON ===== */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-base hover:scale-[1.02] transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 ${
-                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Sending your request...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Submit Request
-                    </>
-                  )}
-                </button>
-
-                {/* Trust signal below button */}
-                <div className="flex items-center justify-center gap-4 text-xs text-gray-500 pt-1">
-                  <span className="flex items-center gap-1.5">
-                    <Lock className="w-3 h-3" />
-                    Secure & Confidential
+                {selectedInterests.length > 0 && (
+                  <span className="rounded-full bg-[#D90000]/10 px-3 py-1 text-[10px] font-bold text-[#D90000]">
+                    {selectedInterests.length} selected
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="w-3 h-3" />
-                    1 Business Day Response
-                  </span>
-                </div>
-              </form>
-            )}
-          </motion.div>
-
-          {/* ===== RIGHT: SIDEBAR (2 cols) ===== */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-2 space-y-6"
-          >
-            
-            {/* ===== WHY CHOOSE US ===== */}
-            <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-2xl backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-purple-400" />
-                Why Work With Us
-              </h3>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle className="w-3 h-3 text-green-400" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Expert Guidance</p>
-                    <p className="text-gray-400 text-xs mt-0.5">DPDP, GDPR, and AI governance specialists</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle className="w-3 h-3 text-green-400" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Custom Roadmap</p>
-                    <p className="text-gray-400 text-xs mt-0.5">Tailored compliance plan for your organisation</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle className="w-3 h-3 text-green-400" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Free Consultation</p>
-                    <p className="text-gray-400 text-xs mt-0.5">15-minute complimentary expert session</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle className="w-3 h-3 text-green-400" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Document Review</p>
-                    <p className="text-gray-400 text-xs mt-0.5">Get your policies reviewed by experts</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {/* ===== DIRECT CONTACT ===== */}
-            <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                <Phone className="w-5 h-5 text-purple-400" />
-                Direct Contact
-              </h3>
-              <div className="space-y-4">
-                <a 
-                  href="mailto:shilpi.kulshrestha@businezexcellence.com"
-                  className="flex items-start gap-3 group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/30 transition-all">
-                    <Mail className="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-xs text-gray-400">Email</p>
-                    <p className="text-sm text-white group-hover:text-purple-400 transition-colors truncate">
-                      shilpi.kulshrestha@businezexcellence.com
-                    </p>
-                  </div>
-                </a>
-
-                <a 
-                  href="tel:+918800138008"
-                  className="flex items-start gap-3 group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/30 transition-all">
-                    <Phone className="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400">Phone</p>
-                    <p className="text-sm text-white group-hover:text-purple-400 transition-colors">
-                      +91 8800138008
-                    </p>
-                  </div>
-                </a>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400">Location</p>
-                    <p className="text-sm text-white">India</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ===== WHATSAPP CTA ===== */}
-            <a
-              href="https://wa.me/918800138008"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 p-5 rounded-2xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 backdrop-blur-sm hover:scale-[1.02] transition-all duration-300 group"
-            >
-              <div className="w-10 h-10 rounded-full bg-green-500/30 flex items-center justify-center">
-                <FaWhatsapp className="w-6 h-6 text-green-400" />
-              </div>
-              <div className="text-left">
-                <p className="text-sm font-semibold text-white">Chat on WhatsApp</p>
-                <p className="text-xs text-gray-300">Quick response within minutes</p>
-              </div>
-              <ExternalLink className="w-4 h-4 text-gray-400 ml-auto group-hover:text-white transition-colors" />
-            </a>
-
-            {/* ===== SOCIAL PROOF ===== */}
-            <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6">
-              <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-400" />
-                Trusted By
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {['Startups', 'SaaS', 'FinTech', 'HealthTech', 'E-Commerce', 'Enterprises'].map((tag) => (
-                  <span 
-                    key={tag}
-                    className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:border-purple-500/30 transition-all"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-          </motion.div>
-        </div>
-
-        {/* ===== FAQ SECTION ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-4xl mx-auto mb-16"
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-gray-300">
-              Quick answers to common questions before you reach out
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index}
-                className="bg-white/10 border border-white/20 rounded-xl backdrop-blur-md overflow-hidden transition-all hover:bg-white/15"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                >
-                  <span className="text-base font-medium text-white pr-4">{faq.q}</span>
-                  <div className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all ${
-                    openFaq === index ? 'bg-purple-500/30 rotate-180' : 'bg-white/10'
-                  }`}>
-                    {openFaq === index ? (
-                      <ChevronUp className="w-4 h-4 text-purple-300" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 text-gray-400" />
-                    )}
-                  </div>
-                </button>
-                {openFaq === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="px-6 pb-4 border-t border-white/10"
-                  >
-                    <p className="text-gray-300 text-sm leading-relaxed pt-4">{faq.a}</p>
-                  </motion.div>
                 )}
               </div>
-            ))}
-          </div>
-        </motion.div>
 
-        {/* ===== BOTTOM CTA ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center"
-        >
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
-                <Zap className="w-5 h-5 text-purple-400" />
-              </div>
-              <div className="text-left">
-                <p className="text-sm font-medium text-white">Prefer a live conversation?</p>
-                <p className="text-xs text-gray-400">Call us directly for immediate assistance</p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {INTERESTS.map((interest) => {
+                  const active = selectedInterests.includes(interest);
+
+                  return (
+                    <button
+                      type="button"
+                      key={interest}
+                      onClick={() => toggleInterest(interest)}
+                      className={`group flex items-center justify-between rounded-xl border px-4 py-3 text-left text-xs font-semibold transition duration-200 ${
+                        active
+                          ? "border-[#D90000]/70 bg-[#D90000]/15 text-[#FFEA93]"
+                          : "border-[#8DB355]/20 bg-[#000000]/35 text-[#8DB355] hover:border-[#8DB355]/50 hover:bg-[#8DB355]/10"
+                      }`}
+                    >
+                      <span>{interest}</span>
+
+                      <span
+                        className={`flex h-5 w-5 items-center justify-center rounded-full border transition ${
+                          active
+                            ? "border-[#D90000] bg-[#D90000] text-[#000000]"
+                            : "border-[#8DB355]/40 text-transparent"
+                        }`}
+                      >
+                        <Check size={12} strokeWidth={3} />
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
-            <a 
-              href="tel:+918800138008"
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium hover:scale-105 transition-all shadow-lg shadow-purple-500/30"
+
+            {error && (
+              <div className="mt-6 rounded-2xl border border-[#D90000]/40 bg-[#D90000]/10 px-4 py-3 text-sm text-[#FFEA93]">
+                {error}
+              </div>
+            )}
+
+            {success && (
+              <div className="mt-6 flex gap-3 rounded-2xl border border-[#8DB355]/40 bg-[#8DB355]/10 px-4 py-4 text-sm text-[#FFEA93]">
+                <Check className="mt-0.5 shrink-0 text-[#8DB355]" size={18} />
+                <span>{success}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="group mt-7 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D90000] px-6 py-4 text-sm font-black text-[#000000] transition duration-300 hover:bg-[#FFEA93] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Call +91 8800138008
+              {loading ? "Sending..." : "Start the conversation"}
+
+              {!loading && (
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              )}
+            </button>
+
+            <p className="mt-4 text-center text-[11px] leading-5 text-[#8DB355]/80">
+              By submitting this form, you&apos;re sharing your details for
+              the purpose of responding to your enquiry.
+            </p>
+          </motion.form>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="relative border-t border-[#8DB355]/20">
+        <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 lg:py-28">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mb-5 flex items-center justify-center gap-3">
+              <span className="h-px w-8 bg-[#D90000]" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#D90000]">
+                Before we talk
+              </span>
+              <span className="h-px w-8 bg-[#D90000]" />
+            </div>
+
+            <h2 className="text-4xl font-black tracking-[-0.035em] sm:text-5xl">
+              A few things
+              <span className="text-[#8DB355]"> you may wonder.</span>
+            </h2>
+          </div>
+
+          <div className="mt-12 space-y-3">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+
+              return (
+                <div
+                  key={faq.q}
+                  className="overflow-hidden rounded-2xl border border-[#8DB355]/20 bg-[#000000]/45"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left sm:px-6"
+                  >
+                    <span className="text-sm font-bold text-[#FFEA93] sm:text-base">
+                      {faq.q}
+                    </span>
+
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#8DB355]/30 transition-transform duration-300 ${
+                        isOpen ? "rotate-180 bg-[#D90000]/10" : ""
+                      }`}
+                    >
+                      <ChevronDown size={16} className="text-[#D90000]" />
+                    </span>
+                  </button>
+
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: isOpen ? "auto" : 0,
+                      opacity: isOpen ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="px-5 pb-5 text-sm leading-7 text-[#8DB355] sm:px-6">
+                      {faq.a}
+                    </p>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="relative mx-auto max-w-7xl px-5 pb-12 pt-4 sm:px-8 lg:px-10 lg:pb-20">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-[#D90000]/30 bg-[#000000]/70 px-6 py-12 text-center shadow-[0_30px_100px_rgba(77,103,135,0.35)] sm:px-10 sm:py-16">
+          <div className="absolute -left-20 -top-20 h-60 w-60 rounded-full bg-[#D90000]/15 blur-[80px]" />
+          <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-[#8DB355]/15 blur-[80px]" />
+
+          <div className="relative">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-[#FFEA93]/30 bg-[#FFEA93]/10">
+              <ShieldCheck size={26} className="text-[#FFEA93]" />
+            </div>
+
+            <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-black tracking-[-0.035em] sm:text-5xl">
+              Privacy shouldn&apos;t live in a
+              <span className="text-[#D90000]"> policy document.</span>
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#8DB355] sm:text-base">
+              Let&apos;s turn your privacy and AI governance requirements into
+              something your organization can actually operate.
+            </p>
+
+            <a
+              href="#contact-form"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({
+                  top: document.body.scrollHeight * 0.42,
+                  behavior: "smooth",
+                });
+              }}
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#D90000] px-7 py-3.5 text-sm font-black text-[#000000] transition hover:bg-[#FFEA93]"
+            >
+              Talk to our team
+              <ArrowRight
+                size={17}
+                className="transition-transform group-hover:translate-x-1"
+              />
             </a>
           </div>
-        </motion.div>
-
-      </div>
+        </div>
+      </section>
     </main>
   );
 }
