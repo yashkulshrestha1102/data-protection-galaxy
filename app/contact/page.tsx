@@ -20,7 +20,7 @@ import {
 const COLORS = {
   pink: "#D90000",
   yellow: "#FFEA93",
-  mint: "#8DB355",
+  mint: "#B0CDE6",
   blue: "#000000",
 };
 
@@ -96,13 +96,13 @@ const faqs = [
 
 function PrivacyGuardian() {
   return (
-    <div className="relative mx-auto aspect-[5/6] w-full max-w-[560px] overflow-hidden rounded-[2.5rem] border border-[#8DB355]/30 bg-[#000000] shadow-[0_30px_100px_rgba(77,103,135,0.45)]">
+    <div className="relative mx-auto aspect-[5/6] w-full max-w-[560px] overflow-hidden rounded-[2.5rem] border border-[#B0CDE6]/30 bg-[#000000] shadow-[0_30px_100px_rgba(77,103,135,0.45)]">
       <style>{`
         .guardian-scene {
           background:
             radial-gradient(circle at 50% 35%, rgba(125,204,173,.22), transparent 27%),
             radial-gradient(circle at 50% 75%, rgba(245,153,198,.16), transparent 30%),
-            linear-gradient(145deg, #000000 0%, #000000 58%, #8DB355 180%);
+            linear-gradient(145deg, #000000 0%, #000000 58%, #B0CDE6 180%);
         }
 
         .guardian-grid {
@@ -273,8 +273,8 @@ function PrivacyGuardian() {
       <div className="guardian-scene absolute inset-0" />
       <div className="guardian-grid absolute inset-0 opacity-80" />
 
-      <div className="absolute left-6 top-6 z-20 flex items-center gap-2 rounded-full border border-[#8DB355]/40 bg-[#000000]/70 px-3 py-1.5 backdrop-blur-md">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-[#8DB355]" />
+      <div className="absolute left-6 top-6 z-20 flex items-center gap-2 rounded-full border border-[#B0CDE6]/40 bg-[#000000]/70 px-3 py-1.5 backdrop-blur-md">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-[#B0CDE6]" />
         <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFEA93]">
           Guardian online
         </span>
@@ -294,20 +294,20 @@ function PrivacyGuardian() {
         <defs>
           <radialGradient id="guardianCoreGradient">
             <stop offset="0%" stopColor="#FFEA93" stopOpacity="1" />
-            <stop offset="35%" stopColor="#8DB355" stopOpacity=".9" />
+            <stop offset="35%" stopColor="#B0CDE6" stopOpacity=".9" />
             <stop offset="100%" stopColor="#D90000" stopOpacity="0" />
           </radialGradient>
 
           <linearGradient id="bodyGradient" x1="0" x2="1">
             <stop offset="0%" stopColor="#000000" />
-            <stop offset="45%" stopColor="#8DB355" stopOpacity=".38" />
+            <stop offset="45%" stopColor="#B0CDE6" stopOpacity=".38" />
             <stop offset="100%" stopColor="#000000" />
           </linearGradient>
 
           <linearGradient id="circuitGradient" x1="0" x2="1">
             <stop offset="0%" stopColor="#D90000" />
             <stop offset="50%" stopColor="#FFEA93" />
-            <stop offset="100%" stopColor="#8DB355" />
+            <stop offset="100%" stopColor="#B0CDE6" />
           </linearGradient>
 
           <filter id="softGlow">
@@ -338,7 +338,7 @@ function PrivacyGuardian() {
             cx="250"
             cy="306"
             r="226"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeOpacity=".22"
             strokeWidth="1"
             strokeDasharray="5 15"
@@ -399,7 +399,7 @@ function PrivacyGuardian() {
         {/* Data streams */}
         <g
           className="guardian-data"
-          stroke="#8DB355"
+          stroke="#B0CDE6"
           strokeWidth="1"
           opacity=".45"
         >
@@ -433,7 +433,7 @@ function PrivacyGuardian() {
           <path
             d="M157 320 Q128 324 103 351 L117 384 Q141 375 166 363"
             fill="url(#bodyGradient)"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeOpacity=".65"
             strokeWidth="2"
           />
@@ -441,7 +441,7 @@ function PrivacyGuardian() {
           <path
             d="M343 320 Q372 324 397 351 L383 384 Q359 375 334 363"
             fill="url(#bodyGradient)"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeOpacity=".65"
             strokeWidth="2"
           />
@@ -481,7 +481,7 @@ function PrivacyGuardian() {
           <path
             d="M184 260 Q250 230 316 260 L349 330 L333 475 Q300 510 250 515 Q200 510 167 475 L151 330Z"
             fill="url(#bodyGradient)"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeWidth="2"
             strokeOpacity=".72"
           />
@@ -491,7 +491,7 @@ function PrivacyGuardian() {
             d="M207 284 Q250 267 293 284 L312 338 L298 450 Q275 473 250 479 Q225 473 202 450 L188 338Z"
             fill="#000000"
             fillOpacity=".9"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeOpacity=".35"
           />
 
@@ -526,7 +526,7 @@ function PrivacyGuardian() {
           <path
             d="M219 259 V239 H281 V259"
             fill="#000000"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeWidth="2"
           />
 
@@ -541,7 +541,7 @@ function PrivacyGuardian() {
           <path
             d="M195 126 Q250 94 305 126 L316 207 Q303 246 250 261 Q197 246 184 207Z"
             fill="#000000"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeWidth="2.5"
           />
 
@@ -550,7 +550,7 @@ function PrivacyGuardian() {
             d="M205 142 Q250 119 295 142 L301 201 Q284 230 250 239 Q216 230 199 201Z"
             fill="#000000"
             fillOpacity=".96"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeOpacity=".35"
           />
 
@@ -611,7 +611,7 @@ function PrivacyGuardian() {
           {/* antenna */}
           <path
             d="M250 134 V82"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeWidth="2"
           />
 
@@ -636,12 +636,12 @@ function PrivacyGuardian() {
           {/* side antennae */}
           <path
             d="M190 154 L167 137"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeWidth="2"
           />
           <path
             d="M310 154 L333 137"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeWidth="2"
           />
 
@@ -791,10 +791,10 @@ function PrivacyGuardian() {
             rx="19"
             fill="#000000"
             fillOpacity=".8"
-            stroke="#8DB355"
+            stroke="#B0CDE6"
             strokeOpacity=".4"
           />
-          <circle cx="23" cy="19" r="5" fill="#8DB355" />
+          <circle cx="23" cy="19" r="5" fill="#B0CDE6" />
           <text
             x="38"
             y="23"
@@ -810,7 +810,7 @@ function PrivacyGuardian() {
 
       <div className="absolute bottom-6 left-6 right-6 z-20 flex items-end justify-between">
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8DB355]">
+          <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#B0CDE6]">
             Autonomous layer
           </p>
           <p className="mt-1 text-xs font-semibold text-[#FFEA93]">
@@ -854,7 +854,7 @@ function Field({
         required={required}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-2xl border border-[#8DB355]/30 bg-[#000000]/50 px-4 py-3.5 text-sm text-[#FFEA93] outline-none placeholder:text-[#8DB355]/55 transition duration-300 focus:border-[#D90000] focus:bg-[#000000]/75 focus:ring-2 focus:ring-[#D90000]/20"
+        className="w-full rounded-2xl border border-[#B0CDE6]/30 bg-[#000000]/50 px-4 py-3.5 text-sm text-[#FFEA93] outline-none placeholder:text-[#B0CDE6]/55 transition duration-300 focus:border-[#D90000] focus:bg-[#000000]/75 focus:ring-2 focus:ring-[#D90000]/20"
       />
     </label>
   );
@@ -985,7 +985,7 @@ export default function ContactPage() {
       {/* Ambient background */}
       <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
         <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-[#D90000]/15 blur-[120px]" />
-        <div className="absolute right-0 top-[28%] h-[30rem] w-[30rem] rounded-full bg-[#8DB355]/15 blur-[140px]" />
+        <div className="absolute right-0 top-[28%] h-[30rem] w-[30rem] rounded-full bg-[#B0CDE6]/15 blur-[140px]" />
         <div className="absolute bottom-0 left-[40%] h-80 w-80 rounded-full bg-[#FFEA93]/10 blur-[120px]" />
       </div>
 
@@ -998,12 +998,7 @@ export default function ContactPage() {
             transition={{ duration: 0.7 }}
             className="relative z-10"
           >
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#D90000]/35 bg-[#000000]/70 px-4 py-2 backdrop-blur-md">
-              <Sparkles size={14} className="text-[#D90000]" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FFEA93]">
-                Privacy & AI Governance
-              </span>
-            </div>
+          
 
             <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.045em] sm:text-6xl lg:text-[5.6rem]">
               Let&apos;s make
@@ -1011,7 +1006,7 @@ export default function ContactPage() {
               operational.
             </h1>
 
-            <p className="mt-7 max-w-2xl text-base leading-7 text-[#8DB355] sm:text-lg">
+            <p className="mt-7 max-w-2xl text-base leading-7 text-[#B0CDE6] sm:text-lg">
               Tell us where your organization is today. We&apos;ll help you
               identify the right compliance, privacy, and AI governance path
               without turning it into another complicated project.
@@ -1026,7 +1021,7 @@ export default function ContactPage() {
               ].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-[#8DB355]/30 bg-[#000000]/60 px-4 py-2 text-xs font-semibold text-[#FFEA93]"
+                  className="rounded-full border border-[#B0CDE6]/30 bg-[#000000]/60 px-4 py-2 text-xs font-semibold text-[#FFEA93]"
                 >
                   {item}
                 </span>
@@ -1034,32 +1029,32 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-12 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#8DB355]/25 bg-[#000000]/55 p-4">
+              <div className="rounded-2xl border border-[#B0CDE6]/25 bg-[#000000]/55 p-4">
                 <Target size={18} className="text-[#D90000]" />
-                <p className="mt-3 text-sm font-bold text-[#FFEA93]">
+                <p className="mt-3 text font-bold text-[#FFEA93]">
                   Identify
                 </p>
-                <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                <p className="mt-1 text-xs leading-5 text-[#B0CDE6]">
                   Understand your compliance gaps.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-[#8DB355]/25 bg-[#000000]/55 p-4">
+              <div className="rounded-2xl border border-[#B0CDE6]/25 bg-[#000000]/55 p-4">
                 <Zap size={18} className="text-[#FFEA93]" />
-                <p className="mt-3 text-sm font-bold text-[#FFEA93]">
+                <p className="mt-3 textv font-bold text-[#FFEA93]">
                   Prioritize
                 </p>
-                <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                <p className="mt-1 text-xs leading-5 text-[#B0CDE6]">
                   Focus on what matters first.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-[#8DB355]/25 bg-[#000000]/55 p-4">
-                <ShieldCheck size={18} className="text-[#8DB355]" />
-                <p className="mt-3 text-sm font-bold text-[#FFEA93]">
+              <div className="rounded-2xl border border-[#B0CDE6]/25 bg-[#000000]/55 p-4">
+                <ShieldCheck size={18} className="text-[#B0CDE6]" />
+                <p className="mt-3 text font-bold text-[#FFEA93]">
                   Govern
                 </p>
-                <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                <p className="mt-1 text-xs leading-5 text-[#B0CDE6]">
                   Build controls that actually work.
                 </p>
               </div>
@@ -1078,17 +1073,17 @@ export default function ContactPage() {
       </section>
 
       {/* CONTACT STRIP */}
-      <section className="relative border-y border-[#8DB355]/20 bg-[#000000]/55">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-[#8DB355]/20 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+      <section className="relative border-y border-[#B0CDE6]/20 bg-[#000000]/55">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-[#B0CDE6]/20 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
           <a
             href="mailto:shilpi.kulshrestha@businezexcellence.com"
-            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#8DB355]/10 sm:px-8"
+            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#B0CDE6]/10 sm:px-8"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#D90000]/30 bg-[#D90000]/10">
               <Mail size={18} className="text-[#D90000]" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 Email
               </p>
               <p className="mt-1 truncate text-xs font-semibold text-[#FFEA93]">
@@ -1099,13 +1094,13 @@ export default function ContactPage() {
 
           <a
             href="tel:+918800138008"
-            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#8DB355]/10 sm:px-8"
+            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#B0CDE6]/10 sm:px-8"
           >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#8DB355]/30 bg-[#8DB355]/10">
-              <Phone size={18} className="text-[#8DB355]" />
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#B0CDE6]/30 bg-[#B0CDE6]/10">
+              <Phone size={18} className="text-[#B0CDE6]" />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 Call
               </p>
               <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
@@ -1118,13 +1113,13 @@ export default function ContactPage() {
             href="https://wa.me/918800138008"
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#8DB355]/10 sm:px-8"
+            className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#B0CDE6]/10 sm:px-8"
           >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#8DB355]/30 bg-[#8DB355]/10">
-              <MessageCircle size={18} className="text-[#8DB355]" />
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#B0CDE6]/30 bg-[#B0CDE6]/10">
+              <MessageCircle size={18} className="text-[#B0CDE6]" />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 WhatsApp
               </p>
               <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
@@ -1138,7 +1133,7 @@ export default function ContactPage() {
               <MapPin size={18} className="text-[#FFEA93]" />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8DB355]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#B0CDE6]">
                 Location
               </p>
               <p className="mt-1 text-sm font-semibold text-[#FFEA93]">
@@ -1162,17 +1157,17 @@ export default function ContactPage() {
 
             <h2 className="text-4xl font-black tracking-[-0.035em] sm:text-5xl">
               Tell us what
-              <span className="block text-[#8DB355]">needs solving.</span>
+              <span className="block text-[#B0CDE6]">needs solving.</span>
             </h2>
 
-            <p className="mt-5 max-w-md text-sm leading-7 text-[#8DB355]">
+            <p className="mt-5 max-w-md text-sm leading-7 text-[#B0CDE6]">
               Whether you&apos;re preparing for DPDP, strengthening your
               privacy program, or building an AI governance framework, give us
               enough context to understand the problem.
             </p>
 
             <div className="mt-9 space-y-4">
-              <div className="flex gap-4 rounded-2xl border border-[#8DB355]/20 bg-[#000000]/45 p-4">
+              <div className="flex gap-4 rounded-2xl border border-[#B0CDE6]/20 bg-[#000000]/45 p-4">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D90000]/10">
                   <Clock3 size={18} className="text-[#D90000]" />
                 </div>
@@ -1180,22 +1175,22 @@ export default function ContactPage() {
                   <p className="text-sm font-bold text-[#FFEA93]">
                     Focused first conversation
                   </p>
-                  <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                  <p className="mt-1 text-xs leading-5 text-[#B0CDE6]">
                     We&apos;ll understand your situation before suggesting a
                     solution.
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-[#8DB355]/20 bg-[#000000]/45 p-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#8DB355]/10">
-                  <ShieldCheck size={18} className="text-[#8DB355]" />
+              <div className="flex gap-4 rounded-2xl border border-[#B0CDE6]/20 bg-[#000000]/45 p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#B0CDE6]/10">
+                  <ShieldCheck size={18} className="text-[#B0CDE6]" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-[#FFEA93]">
                     Privacy-conscious approach
                   </p>
-                  <p className="mt-1 text-xs leading-5 text-[#8DB355]">
+                  <p className="mt-1 text-xs leading-5 text-[#B0CDE6]">
                     Share only what is necessary to explain your requirement.
                   </p>
                 </div>
@@ -1209,7 +1204,7 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6 }}
-            className="rounded-[2rem] border border-[#8DB355]/25 bg-[#000000]/55 p-5 shadow-[0_25px_80px_rgba(77,103,135,0.25)] backdrop-blur-xl sm:p-8 lg:p-10"
+            className="rounded-[2rem] border border-[#B0CDE6]/25 bg-[#000000]/55 p-5 shadow-[0_25px_80px_rgba(77,103,135,0.25)] backdrop-blur-xl sm:p-8 lg:p-10"
           >
             <div className="grid gap-5 sm:grid-cols-2">
               <Field
@@ -1268,7 +1263,7 @@ export default function ContactPage() {
                   }
                   rows={5}
                   placeholder="Tell us about your current requirement, challenge, timeline, or goal..."
-                  className="w-full resize-none rounded-2xl border border-[#8DB355]/30 bg-[#000000]/50 px-4 py-3.5 text-sm leading-6 text-[#FFEA93] outline-none placeholder:text-[#8DB355]/55 transition duration-300 focus:border-[#D90000] focus:bg-[#000000]/75 focus:ring-2 focus:ring-[#D90000]/20"
+                  className="w-full resize-none rounded-2xl border border-[#B0CDE6]/30 bg-[#000000]/50 px-4 py-3.5 text-sm leading-6 text-[#FFEA93] outline-none placeholder:text-[#B0CDE6]/55 transition duration-300 focus:border-[#D90000] focus:bg-[#000000]/75 focus:ring-2 focus:ring-[#D90000]/20"
                 />
               </label>
             </div>
@@ -1280,7 +1275,7 @@ export default function ContactPage() {
                     Areas of interest
                     <span className="ml-1 text-[#D90000]">*</span>
                   </p>
-                  <p className="mt-1 text-xs text-[#8DB355]">
+                  <p className="mt-1 text-xs text-[#B0CDE6]">
                     Select everything relevant.
                   </p>
                 </div>
@@ -1304,7 +1299,7 @@ export default function ContactPage() {
                       className={`group flex items-center justify-between rounded-xl border px-4 py-3 text-left text-xs font-semibold transition duration-200 ${
                         active
                           ? "border-[#D90000]/70 bg-[#D90000]/15 text-[#FFEA93]"
-                          : "border-[#8DB355]/20 bg-[#000000]/35 text-[#8DB355] hover:border-[#8DB355]/50 hover:bg-[#8DB355]/10"
+                          : "border-[#B0CDE6]/20 bg-[#000000]/35 text-[#B0CDE6] hover:border-[#B0CDE6]/50 hover:bg-[#B0CDE6]/10"
                       }`}
                     >
                       <span>{interest}</span>
@@ -1313,7 +1308,7 @@ export default function ContactPage() {
                         className={`flex h-5 w-5 items-center justify-center rounded-full border transition ${
                           active
                             ? "border-[#D90000] bg-[#D90000] text-[#000000]"
-                            : "border-[#8DB355]/40 text-transparent"
+                            : "border-[#B0CDE6]/40 text-transparent"
                         }`}
                       >
                         <Check size={12} strokeWidth={3} />
@@ -1331,8 +1326,8 @@ export default function ContactPage() {
             )}
 
             {success && (
-              <div className="mt-6 flex gap-3 rounded-2xl border border-[#8DB355]/40 bg-[#8DB355]/10 px-4 py-4 text-sm text-[#FFEA93]">
-                <Check className="mt-0.5 shrink-0 text-[#8DB355]" size={18} />
+              <div className="mt-6 flex gap-3 rounded-2xl border border-[#B0CDE6]/40 bg-[#B0CDE6]/10 px-4 py-4 text-sm text-[#FFEA93]">
+                <Check className="mt-0.5 shrink-0 text-[#B0CDE6]" size={18} />
                 <span>{success}</span>
               </div>
             )}
@@ -1352,7 +1347,7 @@ export default function ContactPage() {
               )}
             </button>
 
-            <p className="mt-4 text-center text-[11px] leading-5 text-[#8DB355]/80">
+            <p className="mt-4 text-center text-[11px] leading-5 text-[#B0CDE6]/80">
               By submitting this form, you&apos;re sharing your details for
               the purpose of responding to your enquiry.
             </p>
@@ -1361,7 +1356,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative border-t border-[#8DB355]/20">
+      <section className="relative border-t border-[#B0CDE6]/20">
         <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 lg:py-28">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mb-5 flex items-center justify-center gap-3">
@@ -1374,7 +1369,7 @@ export default function ContactPage() {
 
             <h2 className="text-4xl font-black tracking-[-0.035em] sm:text-5xl">
               A few things
-              <span className="text-[#8DB355]"> you may wonder.</span>
+              <span className="text-[#B0CDE6]"> you may wonder.</span>
             </h2>
           </div>
 
@@ -1385,7 +1380,7 @@ export default function ContactPage() {
               return (
                 <div
                   key={faq.q}
-                  className="overflow-hidden rounded-2xl border border-[#8DB355]/20 bg-[#000000]/45"
+                  className="overflow-hidden rounded-2xl border border-[#B0CDE6]/20 bg-[#000000]/45"
                 >
                   <button
                     type="button"
@@ -1397,7 +1392,7 @@ export default function ContactPage() {
                     </span>
 
                     <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#8DB355]/30 transition-transform duration-300 ${
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#B0CDE6]/30 transition-transform duration-300 ${
                         isOpen ? "rotate-180 bg-[#D90000]/10" : ""
                       }`}
                     >
@@ -1414,7 +1409,7 @@ export default function ContactPage() {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 pb-5 text-sm leading-7 text-[#8DB355] sm:px-6">
+                    <p className="px-5 pb-5 text-sm leading-7 text-[#B0CDE6] sm:px-6">
                       {faq.a}
                     </p>
                   </motion.div>
@@ -1429,7 +1424,7 @@ export default function ContactPage() {
       <section className="relative mx-auto max-w-7xl px-5 pb-12 pt-4 sm:px-8 lg:px-10 lg:pb-20">
         <div className="relative overflow-hidden rounded-[2.5rem] border border-[#D90000]/30 bg-[#000000]/70 px-6 py-12 text-center shadow-[0_30px_100px_rgba(77,103,135,0.35)] sm:px-10 sm:py-16">
           <div className="absolute -left-20 -top-20 h-60 w-60 rounded-full bg-[#D90000]/15 blur-[80px]" />
-          <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-[#8DB355]/15 blur-[80px]" />
+          <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-[#B0CDE6]/15 blur-[80px]" />
 
           <div className="relative">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-[#FFEA93]/30 bg-[#FFEA93]/10">
@@ -1441,7 +1436,7 @@ export default function ContactPage() {
               <span className="text-[#D90000]"> policy document.</span>
             </h2>
 
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#8DB355] sm:text-base">
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#B0CDE6] sm:text-base">
               Let&apos;s turn your privacy and AI governance requirements into
               something your organization can actually operate.
             </p>
