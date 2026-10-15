@@ -60,7 +60,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Directors and boards must take proactive steps to ensure compliance with the DPDP Act. Personal liability is a real risk that can be mitigated through proper governance, training, and implementation of robust data protection frameworks.</p>
     `,
-    author: 'Dr. Ananya Sharma',
+    author: 'Team Businezexcellence StartX LLP',
     date: '22 Jul 2026',
     readTime: '8 min read',
     slug: 'dpdp-act-director-liability'
@@ -101,7 +101,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Preparation is key to effective breach response. Organisations must invest in robust security infrastructure and have a well-documented incident response plan.</p>
     `,
-    author: 'Adv. Rajesh Kumar',
+    author: 'Team Businezexcellence StartX LLP',
     date: '20 Jul 2026',
     readTime: '6 min read',
     slug: 'data-breach-response-dpdp'
@@ -138,7 +138,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>GDPR compliance is a journey, not a destination. Indian companies must adopt a proactive approach to data protection to build trust with EU customers and avoid significant penalties.</p>
     `,
-    author: 'Prof. Meera Patel',
+    author: 'Team Businezexcellence StartX LLP',
     date: '18 Jul 2026',
     readTime: '10 min read',
     slug: 'gdpr-compliance-guide'
@@ -162,7 +162,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Cross-border data transfers are a complex area of the DPDP Act. Organisations must carefully assess their transfer mechanisms and ensure compliance with the applicable requirements.</p>
     `,
-    author: 'Dr. Arun Nair',
+    author: 'Team Businezexcellence StartX LLP',
     date: '16 Jul 2026',
     readTime: '7 min read',
     slug: 'cross-border-data-transfer'
@@ -183,7 +183,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Data fiduciaries must implement robust processes to facilitate the exercise of these rights. This includes establishing dedicated teams, providing clear communication channels, and maintaining records of requests.</p>
     `,
-    author: 'Dr. Ananya Sharma',
+    author: 'Team Businezexcellence StartX LLP',
     date: '14 Jul 2026',
     readTime: '9 min read',
     slug: 'data-subject-rights-guide'
@@ -208,7 +208,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Compliance is an ongoing process. Businesses must stay informed about regulatory developments and continuously improve their data protection practices.</p>
     `,
-    author: 'Adv. Priya Mehta',
+    author: 'Team Businezexcellence StartX LLP',
     date: '12 Jul 2026',
     readTime: '12 min read',
     slug: 'dpdp-compliance-guide'
@@ -234,7 +234,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Sector-specific requirements add layers of complexity to data protection compliance. Companies must adopt a sector-agnostic approach while addressing sector-specific nuances.</p>
     `,
-    author: 'Team Legal Galaxy',
+    author: 'Team Businezexcellence StartX LLP',
     date: '10 Jul 2026',
     readTime: '6 min read',
     slug: 'sector-specific-data-protection'
@@ -260,7 +260,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>AI and data protection are increasingly intertwined. Organisations must adopt a governance-first approach to AI development and deployment.</p>
     `,
-    author: 'Dr. Vikram Singh',
+    author: 'Team Businezexcellence StartX LLP',
     date: '8 Jul 2026',
     readTime: '8 min read',
     slug: 'ai-and-data-protection'
@@ -287,7 +287,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>SDFs must invest in robust compliance frameworks to meet enhanced obligations. This includes dedicated resources, expert guidance, and ongoing monitoring.</p>
     `,
-    author: 'Adv. Rajesh Kumar',
+    author: 'Team Businezexcellence StartX LLP',
     date: '6 Jul 2026',
     readTime: '11 min read',
     slug: 'significant-data-fiduciary-readiness'
@@ -313,7 +313,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>The DPO plays a critical role in ensuring DPDP Act compliance. Organisations must invest in DPO appointment and support to build a robust data protection framework.</p>
     `,
-    author: 'Prof. Meera Patel',
+    author: 'Team Businezexcellence StartX LLP',
     date: '4 Jul 2026',
     readTime: '5 min read',
     slug: 'dpo-services-india'
@@ -334,7 +334,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>As India's digital economy expands, the convergence of contract law and data protection will continue to shape how agreements are formed, interpreted, and enforced. Click-wrap agreements, once a symbol of convenience, must now evolve into <strong>instruments of informed choice</strong>.</p>
     `,
-    author: 'Aniket Ghosh',
+    author: 'Team Businezexcellence StartX LLP',
     date: '2 Jul 2026',
     readTime: '7 min read',
     slug: 'click-wrap-agreements-consent'
@@ -360,10 +360,50 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>While each framework has its unique features, there is convergence around key principles: individual rights, accountability, and transparency. Multinational organisations must navigate this complex landscape with care.</p>
     `,
-    author: 'Dr. Arun Nair',
+    author: 'Team Businezexcellence StartX LLP',
     date: '30 Jun 2026',
     readTime: '15 min read',
     slug: 'global-data-protection-laws'
+  },
+
+
+    {
+    id: 13,
+    category: 'DPDP Act',
+    categoryIcon: Shield,
+    title: 'DPDP (Removal of Difficulties) Order, 2026: Key Amendments to Sections 9(1) and 10(2)(c)(ii)',
+    excerpt: 'MeitY has issued the Digital Personal Data Protection (Removal of Difficulties) Order, 2026, clarifying textual ambiguities in Sections 9(1) and 10(2)(c)(ii) of the DPDP Act, 2023. Here\'s what businesses need to know.',
+    content: `
+      <h2>Introduction</h2>
+      <p>The Ministry of Electronics and Information Technology (MeitY), Government of India, has issued the <strong>Digital Personal Data Protection (Removal of Difficulties) Order, 2026</strong>, dated 5 October 2026 and published in the Official Gazette on 7 October 2026. The Order addresses textual ambiguities in the Digital Personal Data Protection Act, 2023.</p>
+
+      <h2>Key Amendments</h2>
+
+      <h3>1. Section 9(1): Processing of Personal Data of Children and Persons with Disabilities</h3>
+      <p>The Order clarifies the wording concerning the personal data of children and persons with disabilities who have lawful guardians, reinforcing the intended application of <strong>verifiable parental or lawful-guardian consent</strong> requirements.</p>
+      <p><strong>Business Impact:</strong> Businesses processing such personal data should review their consent collection mechanisms, guardian verification procedures and supporting documentation.</p>
+
+      <h3>2. Section 10(2)(c)(ii): Periodic Data Audits</h3>
+      <p>The Order replaces the word <strong>"audit" with "data audit"</strong> in the provision concerning periodic audits by Significant Data Fiduciaries (SDFs), clarifying the intended scope of the audit requirement.</p>
+      <p><strong>Business Impact:</strong> SDFs should review their data-audit processes and compliance frameworks to ensure alignment with the clarified provision.</p>
+
+      <h2>What Should Businesses Do?</h2>
+      <ul>
+        <li>Assess the applicability of these amendments to their operations</li>
+        <li>Review relevant privacy and consent procedures</li>
+        <li>Ensure that data-governance and audit frameworks remain aligned with the DPDP Act and applicable rules</li>
+      </ul>
+      <p>The Order primarily addresses <strong>textual and interpretative ambiguities</strong>, rather than introducing an entirely new set of compliance obligations.</p>
+
+      <h2>Read the Official Order</h2>
+      <p>For the complete text, refer to the <strong>Digital Personal Data Protection (Removal of Difficulties) Order, 2026</strong> — Official Gazette notification.</p>
+
+      <p><em>This update is for general informational purposes and should not be construed as legal advice.</em></p>
+    `,
+    author: 'Team Businezexcellence StartX LLP',
+    date: '7 Oct 2026',
+    readTime: '4 min read',
+    slug: 'dpdp-removal-of-difficulties-order-2026'
   },
 ];
 

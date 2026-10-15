@@ -1,5 +1,5 @@
 "use client";
-
+import { insightsData, categories as insightCategories } from '@/data/insights';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -10,141 +10,141 @@ import {
   Scale, Users, Building
 } from 'lucide-react';
 
-// ===== INSIGHTS DATA (HARDCODED) =====
-const insightsData = [
-  {
-    id: 1,
-    category: 'DPDP Act',
-    categoryIcon: 'Shield',
-    title: 'DPDP Act 2023: Director Liability, Board Responsibilities and Data Privacy Compliance for Indian Companies',
-    excerpt: 'Can directors be personally liable under India\'s DPDP Act 2023? Explore board responsibilities, CEO accountability, compliance requirements and data breach management for Indian companies.',
-    author: 'Dr. Ananya Sharma',
-    date: '22 Jul 2026',
-    readTime: '8 min read',
-    slug: 'dpdp-act-director-liability'
-  },
-  {
-    id: 2,
-    category: 'DPDP Act',
-    categoryIcon: 'Shield',
-    title: 'Data Breach Response & Notification Counsel under India\'s DPDP Act',
-    excerpt: 'The DPDP Rule 7 breach-notification timeline, what to tell affected individuals and the Data Protection Board, the 72-hour detailed report and how organisations should prepare.',
-    author: 'Adv. Rajesh Kumar',
-    date: '20 Jul 2026',
-    readTime: '6 min read',
-    slug: 'data-breach-response-dpdp'
-  },
-  {
-    id: 3,
-    category: 'GDPR',
-    categoryIcon: 'Globe',
-    title: 'GDPR Compliance: A Practical Guide for Indian Businesses Operating in the EU',
-    excerpt: 'Understanding GDPR requirements for Indian companies with EU operations. Key obligations, data transfer mechanisms, and compliance strategies for cross-border data flows.',
-    author: 'Prof. Meera Patel',
-    date: '18 Jul 2026',
-    readTime: '10 min read',
-    slug: 'gdpr-compliance-guide'
-  },
-  {
-    id: 4,
-    category: 'Cross-Border',
-    categoryIcon: 'Globe',
-    title: 'Cross-Border Data Transfer: Mechanisms and Compliance under DPDP Act',
-    excerpt: 'Exploring cross-border data transfer mechanisms under India\'s DPDP Act. Understanding adequacy decisions, standard contractual clauses, and binding corporate rules.',
-    author: 'Dr. Arun Nair',
-    date: '16 Jul 2026',
-    readTime: '7 min read',
-    slug: 'cross-border-data-transfer'
-  },
-  {
-    id: 5,
-    category: 'Data Rights',
-    categoryIcon: 'Users',
-    title: 'Data Subject Rights: A Comprehensive Guide for Data Fiduciaries',
-    excerpt: 'Understanding the rights of data principals under the DPDP Act. Right to access, correction, erasure, data portability, and grievance redressal mechanisms.',
-    author: 'Dr. Ananya Sharma',
-    date: '14 Jul 2026',
-    readTime: '9 min read',
-    slug: 'data-subject-rights-guide'
-  },
-  {
-    id: 6,
-    category: 'Compliance',
-    categoryIcon: 'Building',
-    title: 'DPDP Act Compliance: A Practical Guide for Businesses in India',
-    excerpt: 'How businesses can build DPDP Act 2023 compliance — notice, consent, security, breach response and governance — ahead of the DPDP Rules implementation.',
-    author: 'Adv. Priya Mehta',
-    date: '12 Jul 2026',
-    readTime: '12 min read',
-    slug: 'dpdp-compliance-guide'
-  },
-  {
-    id: 7,
-    category: 'Sector-Specific',
-    categoryIcon: 'Database',
-    title: 'Sector-Specific Data Protection Rules: Fintech, Healthtech, and E-Commerce',
-    excerpt: 'Understanding sector-specific data protection requirements for fintech, healthtech, and e-commerce companies under India\'s data protection regime.',
-    author: 'Team Legal Galaxy',
-    date: '10 Jul 2026',
-    readTime: '6 min read',
-    slug: 'sector-specific-data-protection'
-  },
-  {
-    id: 8,
-    category: 'AI & Automation',
-    categoryIcon: 'Scale',
-    title: 'AI and Data Protection: Navigating the Legal Landscape',
-    excerpt: 'Exploring the intersection of artificial intelligence and data protection. Understanding algorithmic accountability, automated decision-making, and AI governance.',
-    author: 'Dr. Vikram Singh',
-    date: '8 Jul 2026',
-    readTime: '8 min read',
-    slug: 'ai-and-data-protection'
-  },
-  {
-    id: 9,
-    category: 'DPDP Act',
-    categoryIcon: 'Shield',
-    title: 'Significant Data Fiduciary (SDF) Readiness: DPIA and Audit under DPDP Act',
-    excerpt: 'What makes an organisation a Significant Data Fiduciary? Enhanced obligations under Section 10 and Rule 13, India-based DPO, independent auditor, and annual compliance requirements.',
-    author: 'Adv. Rajesh Kumar',
-    date: '6 Jul 2026',
-    readTime: '11 min read',
-    slug: 'significant-data-fiduciary-readiness'
-  },
-  {
-    id: 10,
-    category: 'DPDP Act',
-    categoryIcon: 'Shield',
-    title: 'Data Protection Officer (DPO) Services in India under the DPDP Act',
-    excerpt: 'When the DPDP Act requires a Data Protection Officer, what the role involves, and how organisations can prepare for DPO appointment and responsibilities.',
-    author: 'Prof. Meera Patel',
-    date: '4 Jul 2026',
-    readTime: '5 min read',
-    slug: 'dpo-services-india'
-  },
-  {
-    id: 11,
-    category: 'Data Rights',
-    categoryIcon: 'Users',
-    title: 'Click-Wrap Agreements and India\'s Data Privacy Law: Aligning Digital Consent',
-    excerpt: 'The architecture of modern digital commerce rests on an unassuming yet powerful legal device: the click-wrap agreement. Understanding digital consent under the DPDP framework.',
-    author: 'Aniket Ghosh',
-    date: '2 Jul 2026',
-    readTime: '7 min read',
-    slug: 'click-wrap-agreements-consent'
-  },
-  {
-    id: 12,
-    category: 'International',
-    categoryIcon: 'Globe',
-    title: 'Global Data Protection Laws: A Comparative Analysis',
-    excerpt: 'Comparing data protection frameworks across jurisdictions — GDPR, DPDP Act, CCPA/CPRA, LGPD, PIPL, and POPIA. Understanding the global regulatory landscape.',
-    author: 'Dr. Arun Nair',
-    date: '30 Jun 2026',
-    readTime: '15 min read',
-    slug: 'global-data-protection-laws'
-  },
-];
+// // ===== INSIGHTS DATA (HARDCODED) =====
+// const insightsData = [
+//   {
+//     id: 1,
+//     category: 'DPDP Act',
+//     categoryIcon: 'Shield',
+//     title: 'DPDP Act 2023: Director Liability, Board Responsibilities and Data Privacy Compliance for Indian Companies',
+//     excerpt: 'Can directors be personally liable under India\'s DPDP Act 2023? Explore board responsibilities, CEO accountability, compliance requirements and data breach management for Indian companies.',
+//     author: 'Dr. Ananya Sharma',
+//     date: '22 Jul 2026',
+//     readTime: '8 min read',
+//     slug: 'dpdp-act-director-liability'
+//   },
+//   {
+//     id: 2,
+//     category: 'DPDP Act',
+//     categoryIcon: 'Shield',
+//     title: 'Data Breach Response & Notification Counsel under India\'s DPDP Act',
+//     excerpt: 'The DPDP Rule 7 breach-notification timeline, what to tell affected individuals and the Data Protection Board, the 72-hour detailed report and how organisations should prepare.',
+//     author: 'Adv. Rajesh Kumar',
+//     date: '20 Jul 2026',
+//     readTime: '6 min read',
+//     slug: 'data-breach-response-dpdp'
+//   },
+//   {
+//     id: 3,
+//     category: 'GDPR',
+//     categoryIcon: 'Globe',
+//     title: 'GDPR Compliance: A Practical Guide for Indian Businesses Operating in the EU',
+//     excerpt: 'Understanding GDPR requirements for Indian companies with EU operations. Key obligations, data transfer mechanisms, and compliance strategies for cross-border data flows.',
+//     author: 'Prof. Meera Patel',
+//     date: '18 Jul 2026',
+//     readTime: '10 min read',
+//     slug: 'gdpr-compliance-guide'
+//   },
+//   {
+//     id: 4,
+//     category: 'Cross-Border',
+//     categoryIcon: 'Globe',
+//     title: 'Cross-Border Data Transfer: Mechanisms and Compliance under DPDP Act',
+//     excerpt: 'Exploring cross-border data transfer mechanisms under India\'s DPDP Act. Understanding adequacy decisions, standard contractual clauses, and binding corporate rules.',
+//     author: 'Dr. Arun Nair',
+//     date: '16 Jul 2026',
+//     readTime: '7 min read',
+//     slug: 'cross-border-data-transfer'
+//   },
+//   {
+//     id: 5,
+//     category: 'Data Rights',
+//     categoryIcon: 'Users',
+//     title: 'Data Subject Rights: A Comprehensive Guide for Data Fiduciaries',
+//     excerpt: 'Understanding the rights of data principals under the DPDP Act. Right to access, correction, erasure, data portability, and grievance redressal mechanisms.',
+//     author: 'Dr. Ananya Sharma',
+//     date: '14 Jul 2026',
+//     readTime: '9 min read',
+//     slug: 'data-subject-rights-guide'
+//   },
+//   {
+//     id: 6,
+//     category: 'Compliance',
+//     categoryIcon: 'Building',
+//     title: 'DPDP Act Compliance: A Practical Guide for Businesses in India',
+//     excerpt: 'How businesses can build DPDP Act 2023 compliance — notice, consent, security, breach response and governance — ahead of the DPDP Rules implementation.',
+//     author: 'Adv. Priya Mehta',
+//     date: '12 Jul 2026',
+//     readTime: '12 min read',
+//     slug: 'dpdp-compliance-guide'
+//   },
+//   {
+//     id: 7,
+//     category: 'Sector-Specific',
+//     categoryIcon: 'Database',
+//     title: 'Sector-Specific Data Protection Rules: Fintech, Healthtech, and E-Commerce',
+//     excerpt: 'Understanding sector-specific data protection requirements for fintech, healthtech, and e-commerce companies under India\'s data protection regime.',
+//     author: 'Team Legal Galaxy',
+//     date: '10 Jul 2026',
+//     readTime: '6 min read',
+//     slug: 'sector-specific-data-protection'
+//   },
+//   {
+//     id: 8,
+//     category: 'AI & Automation',
+//     categoryIcon: 'Scale',
+//     title: 'AI and Data Protection: Navigating the Legal Landscape',
+//     excerpt: 'Exploring the intersection of artificial intelligence and data protection. Understanding algorithmic accountability, automated decision-making, and AI governance.',
+//     author: 'Dr. Vikram Singh',
+//     date: '8 Jul 2026',
+//     readTime: '8 min read',
+//     slug: 'ai-and-data-protection'
+//   },
+//   {
+//     id: 9,
+//     category: 'DPDP Act',
+//     categoryIcon: 'Shield',
+//     title: 'Significant Data Fiduciary (SDF) Readiness: DPIA and Audit under DPDP Act',
+//     excerpt: 'What makes an organisation a Significant Data Fiduciary? Enhanced obligations under Section 10 and Rule 13, India-based DPO, independent auditor, and annual compliance requirements.',
+//     author: 'Adv. Rajesh Kumar',
+//     date: '6 Jul 2026',
+//     readTime: '11 min read',
+//     slug: 'significant-data-fiduciary-readiness'
+//   },
+//   {
+//     id: 10,
+//     category: 'DPDP Act',
+//     categoryIcon: 'Shield',
+//     title: 'Data Protection Officer (DPO) Services in India under the DPDP Act',
+//     excerpt: 'When the DPDP Act requires a Data Protection Officer, what the role involves, and how organisations can prepare for DPO appointment and responsibilities.',
+//     author: 'Prof. Meera Patel',
+//     date: '4 Jul 2026',
+//     readTime: '5 min read',
+//     slug: 'dpo-services-india'
+//   },
+//   {
+//     id: 11,
+//     category: 'Data Rights',
+//     categoryIcon: 'Users',
+//     title: 'Click-Wrap Agreements and India\'s Data Privacy Law: Aligning Digital Consent',
+//     excerpt: 'The architecture of modern digital commerce rests on an unassuming yet powerful legal device: the click-wrap agreement. Understanding digital consent under the DPDP framework.',
+//     author: 'Aniket Ghosh',
+//     date: '2 Jul 2026',
+//     readTime: '7 min read',
+//     slug: 'click-wrap-agreements-consent'
+//   },
+//   {
+//     id: 12,
+//     category: 'International',
+//     categoryIcon: 'Globe',
+//     title: 'Global Data Protection Laws: A Comparative Analysis',
+//     excerpt: 'Comparing data protection frameworks across jurisdictions — GDPR, DPDP Act, CCPA/CPRA, LGPD, PIPL, and POPIA. Understanding the global regulatory landscape.',
+//     author: 'Dr. Arun Nair',
+//     date: '30 Jun 2026',
+//     readTime: '15 min read',
+//     slug: 'global-data-protection-laws'
+//   },
+// ];
 
 // ===== CATEGORIES =====
 const categories = [
