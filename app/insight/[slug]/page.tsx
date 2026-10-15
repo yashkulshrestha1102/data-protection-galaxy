@@ -48,15 +48,12 @@ export default function InsightDetailPage() {
 
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ===== BACKGROUND IMAGE (HOME PAGE Jaisi) ===== */}
+      {/* ===== BACKGROUND IMAGE ===== */}
       <div className="absolute inset-0 -z-10">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/home1.jpeg')",
-          }}
+          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
         >
-          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
         
@@ -102,11 +99,51 @@ export default function InsightDetailPage() {
           <span className="flex items-center gap-2"><Clock className="w-4 h-4" />{insight.readTime}</span>
         </motion.div>
         
-        <motion.div
+        {/* ===== ARTICLE CONTENT WITH PROPER FORMATTING ===== */}
+        <motion.article
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="prose prose-invert prose-lg max-w-none"
+          className="
+            text-gray-300
+            [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:font-bold [&_h2]:text-white
+            [&_h2]:mt-12 [&_h2]:mb-5 [&_h2]:pb-3
+            [&_h2]:border-b [&_h2]:border-white/15
+            [&_h2]:tracking-tight
+
+            [&_h3]:text-xl [&_h3]:md:text-2xl [&_h3]:font-semibold [&_h3]:text-blue-300
+            [&_h3]:mt-8 [&_h3]:mb-4 [&_h3]:tracking-tight
+
+            [&_p]:text-[15px] [&_p]:md:text-base [&_p]:leading-8 [&_p]:text-gray-300
+            [&_p]:my-5
+
+            [&_strong]:text-white [&_strong]:font-semibold
+
+            [&_em]:text-gray-400 [&_em]:italic
+
+            [&_ul]:my-5 [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:list-disc
+            [&_ul]:marker:text-purple-400
+
+            [&_ol]:my-5 [&_ol]:pl-6 [&_ol]:space-y-2 [&_ol]:list-decimal
+            [&_ol]:marker:text-purple-400 [&_ol]:marker:font-semibold
+
+            [&_li]:text-[15px] [&_li]:md:text-base [&_li]:leading-7 [&_li]:text-gray-300
+            [&_li]:pl-1
+
+            [&_blockquote]:border-l-4 [&_blockquote]:border-purple-500/60
+            [&_blockquote]:bg-white/5 [&_blockquote]:px-5 [&_blockquote]:py-3
+            [&_blockquote]:my-6 [&_blockquote]:rounded-r-lg
+            [&_blockquote]:italic [&_blockquote]:text-gray-300
+
+            [&_a]:text-blue-400 [&_a]:underline [&_a]:underline-offset-4
+            [&_a]:hover:text-blue-300 [&_a]:transition-colors
+
+            [&_hr]:my-10 [&_hr]:border-white/10
+
+            [&_code]:bg-white/10 [&_code]:px-1.5 [&_code]:py-0.5
+            [&_code]:rounded [&_code]:text-sm [&_code]:text-purple-300
+            [&_code]:font-mono
+          "
           dangerouslySetInnerHTML={{ __html: insight.content }}
         />
         
@@ -164,3 +201,7 @@ export default function InsightDetailPage() {
     </main>
   );
 }
+
+
+
+
