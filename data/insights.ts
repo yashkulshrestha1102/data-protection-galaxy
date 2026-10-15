@@ -4,7 +4,7 @@ import { Shield, Globe, Users, Building, Database, Scale, BookOpen } from 'lucid
 export interface Insight {
   id: number;
   category: string;
-  categoryIcon: any;
+  categoryIcon: string;
   title: string;
   excerpt: string;
   content: string;
@@ -19,7 +19,7 @@ export const insightsData: Insight[] = [
   {
     id: 1,
     category: 'DPDP Act',
-    categoryIcon: Shield,
+    categoryIcon: 'Shield',
     title: 'DPDP Act 2023: Director Liability, Board Responsibilities and Data Privacy Compliance for Indian Companies',
     excerpt: 'Can directors be personally liable under India\'s DPDP Act 2023? Explore board responsibilities, CEO accountability, compliance requirements and data breach management for Indian companies.',
     content: `
@@ -68,7 +68,7 @@ export const insightsData: Insight[] = [
   {
     id: 2,
     category: 'DPDP Act',
-    categoryIcon: Shield,
+    categoryIcon: 'Shield',
     title: 'Data Breach Response & Notification Counsel under India\'s DPDP Act',
     excerpt: 'The DPDP Rule 7 breach-notification timeline, what to tell affected individuals and the Data Protection Board, the 72-hour detailed report and how organisations should prepare.',
     content: `
@@ -109,7 +109,7 @@ export const insightsData: Insight[] = [
   {
     id: 3,
     category: 'GDPR',
-    categoryIcon: Globe,
+    categoryIcon: 'Globe',
     title: 'GDPR Compliance: A Practical Guide for Indian Businesses Operating in the EU',
     excerpt: 'Understanding GDPR requirements for Indian companies with EU operations. Key obligations, data transfer mechanisms, and compliance strategies for cross-border data flows.',
     content: `
@@ -146,7 +146,7 @@ export const insightsData: Insight[] = [
   {
     id: 4,
     category: 'Cross-Border',
-    categoryIcon: Globe,
+    categoryIcon: 'Globe',
     title: 'Cross-Border Data Transfer: Mechanisms and Compliance under DPDP Act',
     excerpt: 'Exploring cross-border data transfer mechanisms under India\'s DPDP Act. Understanding adequacy decisions, standard contractual clauses, and binding corporate rules.',
     content: `
@@ -170,7 +170,7 @@ export const insightsData: Insight[] = [
   {
     id: 5,
     category: 'Data Rights',
-    categoryIcon: Users,
+    categoryIcon: 'Users',
     title: 'Data Subject Rights: A Comprehensive Guide for Data Fiduciaries',
     excerpt: 'Understanding the rights of data principals under the DPDP Act. Right to access, correction, erasure, data portability, and grievance redressal mechanisms.',
     content: `
@@ -191,7 +191,7 @@ export const insightsData: Insight[] = [
   {
     id: 6,
     category: 'Compliance',
-    categoryIcon: Building,
+    categoryIcon: 'Building',
     title: 'DPDP Act Compliance: A Practical Guide for Businesses in India',
     excerpt: 'How businesses can build DPDP Act 2023 compliance — notice, consent, security, breach response and governance — ahead of the DPDP Rules implementation.',
     content: `
@@ -216,7 +216,7 @@ export const insightsData: Insight[] = [
   {
     id: 7,
     category: 'Sector-Specific',
-    categoryIcon: Database,
+    categoryIcon: 'Database',
     title: 'Sector-Specific Data Protection Rules: Fintech, Healthtech, and E-Commerce',
     excerpt: 'Understanding sector-specific data protection requirements for fintech, healthtech, and e-commerce companies under India\'s data protection regime.',
     content: `
@@ -242,7 +242,7 @@ export const insightsData: Insight[] = [
   {
     id: 8,
     category: 'AI & Automation',
-    categoryIcon: Scale,
+    categoryIcon: 'Scale',
     title: 'AI and Data Protection: Navigating the Legal Landscape',
     excerpt: 'Exploring the intersection of artificial intelligence and data protection. Understanding algorithmic accountability, automated decision-making, and AI governance.',
     content: `
@@ -268,7 +268,7 @@ export const insightsData: Insight[] = [
   {
     id: 9,
     category: 'DPDP Act',
-    categoryIcon: Shield,
+    categoryIcon: 'Shield',
     title: 'Significant Data Fiduciary (SDF) Readiness: DPIA and Audit under DPDP Act',
     excerpt: 'What makes an organisation a Significant Data Fiduciary? Enhanced obligations under Section 10 and Rule 13, India-based DPO, independent auditor, and annual compliance requirements.',
     content: `
@@ -295,7 +295,7 @@ export const insightsData: Insight[] = [
   {
     id: 10,
     category: 'DPDP Act',
-    categoryIcon: Shield,
+    categoryIcon: 'Shield',
     title: 'Data Protection Officer (DPO) Services in India under the DPDP Act',
     excerpt: 'When the DPDP Act requires a Data Protection Officer, what the role involves, and how organisations can prepare for DPO appointment and responsibilities.',
     content: `
@@ -321,7 +321,7 @@ export const insightsData: Insight[] = [
   {
     id: 11,
     category: 'Data Rights',
-    categoryIcon: Users,
+    categoryIcon: 'Users',
     title: 'Click-Wrap Agreements and India\'s Data Privacy Law: Aligning Digital Consent',
     excerpt: 'The architecture of modern digital commerce rests on an unassuming yet powerful legal device: the click-wrap agreement. Understanding digital consent under the DPDP framework.',
     content: `
@@ -342,7 +342,7 @@ export const insightsData: Insight[] = [
   {
     id: 12,
     category: 'International',
-    categoryIcon: Globe,
+    categoryIcon: 'Globe',
     title: 'Global Data Protection Laws: A Comparative Analysis',
     excerpt: 'Comparing data protection frameworks across jurisdictions — GDPR, DPDP Act, CCPA/CPRA, LGPD, PIPL, and POPIA. Understanding the global regulatory landscape.',
     content: `
@@ -370,7 +370,7 @@ export const insightsData: Insight[] = [
     {
     id: 13,
     category: 'DPDP Act',
-    categoryIcon: Shield,
+    categoryIcon: 'Shield',
     title: 'DPDP (Removal of Difficulties) Order, 2026: Key Amendments to Sections 9(1) and 10(2)(c)(ii)',
     excerpt: 'MeitY has issued the Digital Personal Data Protection (Removal of Difficulties) Order, 2026, clarifying textual ambiguities in Sections 9(1) and 10(2)(c)(ii) of the DPDP Act, 2023. Here\'s what businesses need to know.',
     content: `
