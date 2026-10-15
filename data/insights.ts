@@ -396,7 +396,7 @@ export const insightsData: Insight[] = [
       <p>The Order primarily addresses <strong>textual and interpretative ambiguities</strong>, rather than introducing an entirely new set of compliance obligations.</p>
 
       <h2>Read the Official Order</h2>
-<p>For the complete text, refer to the <strong>Digital Personal Data Protection (Removal of Difficulties) Order, 2026</strong> — <a href="https://gazettetracker.com/g/CG-DL-E-07102026-276885" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-blue-300">Official Gazette notification (S.O. 5458(E))</a>.</p>
+<p>For the complete text, refer to the <strong>Digital Personal Data Protection (Removal of Difficulties) Order, 2026</strong> — <a href="https://egazette.gov.in/WriteReadData/2026/276885.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-blue-300">Official Gazette notification (S.O. 5458(E))</a>.</p>
       <p><em>This update is for general informational purposes and should not be construed as legal advice.</em></p>
     `,
     author: 'Team Businezexcellence StartX LLP',
