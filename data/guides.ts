@@ -1273,3 +1273,17 @@ export const guidesData: Guide[] = [
     ],
   },
 ];
+
+// ===== Helper Functions =====
+
+export const getGuideBySlug = (slug: string) => {
+  return guidesData.find((guide) => guide.slug === slug);
+};
+
+export const getRelatedGuides = (slug: string, limit: number = 3) => {
+  const current = getGuideBySlug(slug);
+  if (!current) return [];
+  return guidesData
+    .filter((g) => g.slug !== slug)
+    .slice(0, limit);
+};
