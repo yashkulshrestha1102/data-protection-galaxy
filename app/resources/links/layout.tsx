@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "External Links — Data Protection Laws | Legal Galaxy",
     description:
-      "Curated links to official data protection authorities and laws worldwide.",
+  "Curated links to official data protection authorities and laws worldwide — MeitY, Data Protection Board, GDPR, CCPA, ICO, EDPB and UNCTAD resources.",
     url: "/resources/links",
     siteName: "Legal Galaxy",
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "External Links — Data Protection Laws | Legal Galaxy",
     description:
-      "Curated links to official data protection authorities and laws worldwide.",
+  "Curated links to official data protection authorities and laws worldwide — MeitY, Data Protection Board, GDPR, CCPA, ICO, EDPB and UNCTAD resources.",
   },
 };
 
@@ -37,7 +37,7 @@ const collectionSchema = {
   "@type": "CollectionPage",
   name: "External Links — Data Protection Laws & Resources",
   description:
-    "Curated links to official data protection authorities and laws worldwide.",
+  "Curated links to official data protection authorities and laws worldwide — MeitY, Data Protection Board, GDPR, CCPA, ICO, EDPB and UNCTAD resources.",
   url: "https://dpdpa.businezexcellence.com/resources/links",
   isPartOf: {
     "@type": "WebSite",

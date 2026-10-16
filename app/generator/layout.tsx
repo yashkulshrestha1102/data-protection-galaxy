@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Document Generator — Privacy Policies & AI Governance Docs",
-  description:
-    "Generate privacy policies, consent notices, DPAs and AI governance documents instantly. 15+ templates for DPDP Act and AI compliance.",
-  alternates: { canonical: "/generator" },
+  title: "Free AI Document Generator | Privacy Policy & AI Governance",
+description:
+  "Generate privacy policies, consent notices, DPAs and AI governance documents instantly. 15+ free templates for DPDP Act 2023 and AI compliance.",
+    alternates: { canonical: "/generator" },
 };
 
 export default function GeneratorLayout({

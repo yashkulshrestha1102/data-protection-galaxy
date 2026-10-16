@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "DPDPA Master Course — Professional Certification",
   description:
-    "Complete 20-module professional certification on India's Digital Personal Data Protection Act, 2023. 250+ lessons, 120+ hours, certificate on completion.",
+  "Free 20-module DPDPA 2023 Master Course with 250+ lessons, 120+ hours of content and a professional certificate. Learn India's data protection law end-to-end.",
   keywords: [
     "DPDPA course",
     "DPDP Act certification",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "DPDPA Master Course — Professional Certification",
     description:
-      "Complete 20-module professional certification on India's DPDP Act 2023.",
+  "Free 20-module DPDPA 2023 Master Course with 250+ lessons, 120+ hours of content and a professional certificate. Learn India's data protection law end-to-end.",
     url: "/certificate-course",
     images: ["/images/home1.jpeg"],
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DPDPA Master Course — Professional Certification",
     description:
-      "Complete 20-module professional certification on India's DPDP Act 2023.",
+  "Free 20-module DPDPA 2023 Master Course with 250+ lessons, 120+ hours of content and a professional certificate. Learn India's data protection law end-to-end.",
     images: ["/images/home1.jpeg"],
   },
 };
@@ -34,7 +34,7 @@ const courseSchema = {
   "@type": "Course",
   name: "DPDPA 2023 Master Course",
   description:
-    "Complete professional certification on India's Digital Personal Data Protection Act, 2023. 20 modules, 250+ lessons, 120+ hours of content.",
+  "Free 20-module DPDPA 2023 Master Course with 250+ lessons, 120+ hours of content and a professional certificate. Learn India's data protection law end-to-end.",
   provider: {
     "@type": "Organization",
     name: "Legal Galaxy",

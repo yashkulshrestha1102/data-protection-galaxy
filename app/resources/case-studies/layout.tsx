@@ -14,7 +14,7 @@ const collectionSchema = {
   "@type": "CollectionPage",
   name: "Data Protection Case Studies",
   description:
-    "Real-world case studies on data protection and compliance under the DPDP Act 2023.",
+  "Real-world case studies on data breaches, consent management, DPIAs and cross-border transfers under India's DPDP Act 2023. Learn from practical examples.",
   url: "https://dpdpa.businezexcellence.com/resources/case-studies",
   isPartOf: {
     "@type": "WebSite",

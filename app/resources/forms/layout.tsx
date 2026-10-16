@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Forms & Templates — DPDP Act Compliance Documents",
-  description:
-    "Download standard forms and templates for DPDP Act 2023 compliance — privacy notice, consent forms, DSR forms, DPIA templates, breach notification forms and more.",
-  keywords: [
+description:
+  "Download free DPDP Act 2023 forms and templates — privacy notices, consent forms, DSAR forms, DPIA templates, breach notification and DPO appointment letters.",  keywords: [
     "DPDP Act forms",
     "Privacy notice template India",
     "Consent form DPDPA",
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Forms & Templates — DPDP Act Compliance | Legal Galaxy",
     description:
-      "Download standard forms and templates for DPDP Act 2023 compliance.",
+  "Download free DPDP Act 2023 forms and templates — privacy notices, consent forms, DSAR forms, DPIA templates, breach notification and DPO appointment letters.",
     url: "/resources/forms",
     siteName: "Legal Galaxy",
   },
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Forms & Templates — DPDP Act Compliance | Legal Galaxy",
     description:
-      "Download standard forms and templates for DPDP Act 2023 compliance.",
+  "Download free DPDP Act 2023 forms and templates — privacy notices, consent forms, DSAR forms, DPIA templates, breach notification and DPO appointment letters.",
   },
 };
 
@@ -36,7 +35,7 @@ const collectionSchema = {
   "@type": "CollectionPage",
   name: "Forms & Templates — DPDP Act Compliance",
   description:
-    "Standard forms and templates for data protection compliance under the DPDP Act 2023.",
+  "Download free DPDP Act 2023 forms and templates — privacy notices, consent forms, DSAR forms, DPIA templates, breach notification and DPO appointment letters.",
   url: "https://dpdpa.businezexcellence.com/resources/forms",
   isPartOf: {
     "@type": "WebSite",

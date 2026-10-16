@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us — Legal Galaxy by Businezexcellence StartX LLP",
-  description:
-    "Legal Galaxy is a Privacy & AI Governance platform built by Businezexcellence StartX LLP — trusted legal solutions for startups and growth-stage ventures.",
-  alternates: {
+  title: "About Legal Galaxy | DPDP Act Experts in India",
+description:
+  "Learn how Legal Galaxy helps Indian businesses achieve DPDP Act 2023 compliance. Built by Businezexcellence StartX LLP — trusted by startups and enterprises.",
+    alternates: {
     canonical: "/about",
   },
 };

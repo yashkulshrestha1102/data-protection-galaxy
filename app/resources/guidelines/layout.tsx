@@ -15,7 +15,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "Guidelines & Circulars — DPDP Act 2023",
-    description: "Official guidelines and circulars under the DPDP Act 2023.",
+    description:
+  "Official DPDP Act 2023 guidelines and circulars — implementation guidance, breach notification rules, DPIA guidelines and Consent Manager framework.",
     url: "/resources/guidelines",
   },
 };
@@ -25,7 +26,7 @@ const collectionSchema = {
   "@type": "CollectionPage",
   name: "Guidelines & Circulars — DPDP Act 2023",
   description:
-    "Official guidelines and circulars issued by the Data Protection Board under the DPDP Act 2023.",
+  "Official DPDP Act 2023 guidelines and circulars — implementation guidance, breach notification rules, DPIA guidelines and Consent Manager framework.",
   url: "https://dpdpa.businezexcellence.com/resources/guidelines",
   isPartOf: {
     "@type": "WebSite",

@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions — DPDP Act 2023",
   description:
-    "Frequently asked questions about India's Digital Personal Data Protection Act, 2023. Data principals, data fiduciaries, penalties, DPIAs and more — answered.",
+  "Answers to the most common questions about DPDP Act 2023 — data principals, data fiduciaries, penalties, DPIAs, consent managers and more.",
   alternates: {
     canonical: "/resources/faqs",
   },
   openGraph: {
     title: "Frequently Asked Questions — DPDP Act 2023 | Legal Galaxy",
     description:
-      "Frequently asked questions about India's Digital Personal Data Protection Act, 2023.",
+  "Answers to the most common questions about DPDP Act 2023 — data principals, data fiduciaries, penalties, DPIAs, consent managers and more.",
     url: "/resources/faqs",
     type: "website",
   },

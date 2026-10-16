@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Training Material — DPDP Act Awareness | Legal Galaxy",
     description:
-      "Training materials and resources for data protection awareness under the DPDP Act 2023.",
+  "Free DPDP Act 2023 training materials — videos, presentations, guides and workshops for employees, managers and compliance teams. Build privacy awareness.",
     url: "/resources/training",
     siteName: "Legal Galaxy",
   },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Training Material — DPDP Act Awareness | Legal Galaxy",
     description:
-      "Training materials and resources for data protection awareness under the DPDP Act 2023.",
+  "Free DPDP Act 2023 training materials — videos, presentations, guides and workshops for employees, managers and compliance teams. Build privacy awareness.",
   },
 };
 
@@ -35,7 +35,7 @@ const collectionSchema = {
   "@type": "CollectionPage",
   name: "Training Material — DPDP Act Awareness",
   description:
-    "Training materials and resources for data protection awareness under the DPDP Act 2023.",
+  "Free DPDP Act 2023 training materials — videos, presentations, guides and workshops for employees, managers and compliance teams. Build privacy awareness.",
   url: "https://dpdpa.businezexcellence.com/resources/training",
   isPartOf: {
     "@type": "WebSite",

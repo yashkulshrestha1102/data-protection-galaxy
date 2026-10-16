@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     canonical: "/insight",
   },
   openGraph: {
-    title: "Data Protection Insights — Legal Galaxy",
+    title: "DPDP Act 2023 Insights | GDPR & Privacy Law",
     description:
       "In-depth analysis on India's DPDP Act, GDPR and global privacy law.",
     url: "/insight",
