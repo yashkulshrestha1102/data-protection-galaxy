@@ -10,6 +10,7 @@ import {
   CheckCircle,
   Tag,
   ChevronRight,
+  ChevronUp,
 } from "lucide-react";
 import { CaseStudy } from "@/data/case-studies";
 
@@ -46,7 +47,7 @@ export default function CaseStudyClient({
           Back to Case Studies
         </Link>
 
-        {/* Meta */}
+        {/* Meta Tags */}
         <div className="flex items-center gap-3 mb-4 flex-wrap">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30">
             <Briefcase className="w-3 h-3" />
@@ -86,6 +87,7 @@ export default function CaseStudyClient({
             text-gray-300
             [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:font-bold [&_h2]:text-white
             [&_h2]:mt-12 [&_h2]:mb-5 [&_h2]:pb-3 [&_h2]:border-b [&_h2]:border-white/15
+            [&_h2]:tracking-tight
             [&_h3]:text-xl [&_h3]:md:text-2xl [&_h3]:font-semibold [&_h3]:text-blue-300
             [&_h3]:mt-8 [&_h3]:mb-4
             [&_p]:text-[15px] [&_p]:md:text-base [&_p]:leading-8 [&_p]:my-5
@@ -113,7 +115,7 @@ export default function CaseStudyClient({
           </ul>
         </div>
 
-        {/* Related */}
+        {/* Related Case Studies */}
         {relatedCaseStudies.length > 0 && (
           <div className="mt-12">
             <h3 className="text-xl font-semibold text-white mb-4">
@@ -140,13 +142,14 @@ export default function CaseStudyClient({
           </div>
         )}
 
+        {/* Back to Top */}
         <div className="text-center mt-12">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
           >
             Back to Top
-            <ChevronRight className="w-4 h-4 rotate-[-90deg] group-hover:-translate-y-1 transition-transform" />
+            <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
       </div>

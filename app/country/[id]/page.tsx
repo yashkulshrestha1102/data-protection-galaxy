@@ -17,16 +17,26 @@ export async function generateMetadata({
   const { id } = await params;
   const country = getCountryById(id);
 
-  if (!country) return { title: "Country Not Found" };
+  if (!country) {
+    return { title: "Country Not Found" };
+  }
 
   return {
-    title: `${country.name} — ${country.lawName} | Data Protection`,
+    title: `${country.name} — ${country.lawName}`,
     description: country.overview.slice(0, 155),
     alternates: { canonical: `/country/${id}` },
     openGraph: {
+      type: "website",
       title: `${country.name} — Data Protection Law`,
       description: country.overview.slice(0, 155),
       url: `/country/${id}`,
+      images: ["/images/home1.jpeg"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${country.name} — Data Protection Law`,
+      description: country.overview.slice(0, 155),
+      images: ["/images/home1.jpeg"],
     },
   };
 }
@@ -48,16 +58,25 @@ export default async function CountryPage({
     name: country.name,
     description: country.overview,
     url: `${SITE_URL}/country/${id}`,
-    // additionalProperty use karo topics ke liye
+    additionalProperty: country.topics.slice(0, 5).map((topic) => ({
+      "@type": "PropertyValue",
+      name: topic.title,
+      value: topic.status,
+    })),
   };
 
-  // Breadcrumb
+  // Breadcrumb Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Map", item: `${SITE_URL}/map` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Map",
+        item: `${SITE_URL}/map`,
+      },
       {
         "@type": "ListItem",
         position: 3,
