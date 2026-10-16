@@ -104,8 +104,78 @@ export default function RootLayout({
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
+  // ===== JSON-LD: Organization Schema =====
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Legal Galaxy",
+    legalName: "Businezexcellence StartX LLP",
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/favicon.ico`,
+    },
+    description:
+      "Privacy & AI Governance platform helping businesses understand and implement DPDP Act 2023 compliance.",
+    foundingDate: "2026",
+    sameAs: [
+      "https://www.linkedin.com/company/businezexcellence-com/",
+      "https://www.instagram.com/businezexcellence/",
+      "https://www.youtube.com/@businezexcellence",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91-8800138008",
+      email: "shilpi.kulshrestha@businezexcellence.com",
+      contactType: "Customer Service",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IN",
+    },
+  };
+
+  // ===== JSON-LD: WebSite Schema (Sitelinks Search Box) =====
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Legal Galaxy",
+    alternateName: "Legal Galaxy — Privacy & AI Governance",
+    url: SITE_URL,
+    publisher: {
+      "@type": "Organization",
+      name: "Legal Galaxy",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/insight?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang="en" data-scroll-behavior="smooth">
+      <head>
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        {/* WebSite Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen flex flex-col`}
       >
