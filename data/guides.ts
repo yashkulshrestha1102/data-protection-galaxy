@@ -1,11 +1,10 @@
-// data/guides.ts
-import { Shield, Globe, Scale, FileText, Users, Building, Database } from 'lucide-react';
+
 
 export interface Guide {
   id: number;
   title: string;
   category: string;
-  categoryIcon: any;
+  categoryIcon: string;
   categoryColor: string;
   excerpt: string;
   content: string;
@@ -22,7 +21,7 @@ export const guidesData: Guide[] = [
   id: 1,
   title: 'DPDPA 2023 — Complete Guide',
   category: 'Indian Law',
-  categoryIcon: Shield,
+  categoryIcon: 'Shield',
   categoryColor: 'from-blue-500 to-blue-600',
   excerpt:
     'A practical, end-to-end guide to India’s Digital Personal Data Protection Act, 2023 and the Digital Personal Data Protection Rules, 2025. Covers applicability, Data Principals, Data Fiduciaries, consent and notice, legitimate uses, rights and duties, children’s data, Significant Data Fiduciaries, security safeguards, personal data breaches, retention and erasure, cross-border transfers, Consent Managers, the Data Protection Board, penalties, commencement timelines, and a practical compliance roadmap for organisations.',
@@ -1053,7 +1052,7 @@ export const guidesData: Guide[] = [
     id: 2,
     title: 'GDPR Essentials for Indian Companies',
     category: 'EU Law',
-    categoryIcon: Globe,
+    categoryIcon: 'Globe',
     categoryColor: 'from-purple-500 to-purple-600',
     excerpt: 'How EU data protection rules affect Indian businesses. Comprehensive guide to GDPR applicability, key principles, lawful bases, data subject rights, and compliance strategies for Indian IT and BPO companies.',
     content: `
@@ -1109,7 +1108,7 @@ export const guidesData: Guide[] = [
     id: 3,
     title: 'CCPA / CPRA Overview',
     category: 'US Law',
-    categoryIcon: Scale,
+    categoryIcon: 'Scale',
     categoryColor: 'from-green-500 to-green-600',
     excerpt: 'Comprehensive guide to the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA). Covers scope, consumer rights, business obligations, enforcement, and compliance strategies for Indian companies serving US consumers.',
     content: `
@@ -1151,7 +1150,7 @@ export const guidesData: Guide[] = [
     id: 4,
     title: 'GDPR vs DPDPA: A Comparative Analysis',
     category: 'Comparative',
-    categoryIcon: Scale,
+    categoryIcon: 'Scale',
     categoryColor: 'from-orange-500 to-orange-600',
     excerpt: 'Compare the EU General Data Protection Regulation (GDPR) and India\'s Digital Personal Data Protection Act (DPDPA). Understand key differences in scope, consent, rights, obligations, and enforcement.',
     content: `
@@ -1184,7 +1183,7 @@ export const guidesData: Guide[] = [
     id: 5,
     title: 'Cross-Border Data Transfer Compliance',
     category: 'Compliance',
-    categoryIcon: Globe,
+    categoryIcon: 'Globe',
     categoryColor: 'from-cyan-500 to-cyan-600',
     excerpt: 'Complete guide to cross-border data transfer compliance under GDPR, DPDPA, and other global privacy frameworks. Covers adequacy decisions, Standard Contractual Clauses, and Transfer Impact Assessments.',
     content: `
@@ -1215,7 +1214,7 @@ export const guidesData: Guide[] = [
     id: 6,
     title: 'Data Protection Impact Assessment (DPIA) Guide',
     category: 'Best Practice',
-    categoryIcon: FileText,
+    categoryIcon: 'FileText',
     categoryColor: 'from-pink-500 to-pink-600',
     excerpt: 'Complete guide to Data Protection Impact Assessments (DPIAs). Learn when DPIAs are required, how to conduct them, and best practices for documenting and managing risks.',
     content: `
@@ -1243,7 +1242,7 @@ export const guidesData: Guide[] = [
     id: 7,
     title: 'Data Protection Officer (DPO) Handbook',
     category: 'Best Practice',
-    categoryIcon: Users,
+    categoryIcon: 'Users',
     categoryColor: 'from-indigo-500 to-indigo-600',
     excerpt: 'Comprehensive handbook for Data Protection Officers. Covers DPO appointment, responsibilities, compliance obligations, and best practices for privacy governance.',
     content: `

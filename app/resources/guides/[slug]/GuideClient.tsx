@@ -19,9 +19,29 @@ import {
   Share2,
   ShieldCheck,
   Sparkles,
+  Shield,
+  Globe,
+  Users,
+  Building,
+  Database,
+  Scale,
 } from "lucide-react";
 
 import { Guide } from "@/data/guides";
+
+// =========================================================
+// ICON MAP (String → Component lookup)
+// =========================================================
+
+const iconMap: Record<string, any> = {
+  Shield,
+  Globe,
+  Users,
+  Building,
+  Database,
+  Scale,
+  BookOpen,
+};
 
 // =========================================================
 // TYPES
@@ -106,7 +126,8 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
     };
   }, [guide]);
 
-  const Icon = guide.categoryIcon;
+  // ✅ String → Component lookup
+  const Icon = iconMap[guide.categoryIcon] || Shield;
 
   // =========================================================
   // DOWNLOAD PDF
@@ -464,7 +485,9 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
                   </div>
                   <div className="space-y-3">
                     {relatedGuides.map((relatedGuide) => {
-                      const RelatedIcon = relatedGuide.categoryIcon;
+                      // ✅ FIX: string → component lookup
+                      const RelatedIcon =
+                        iconMap[relatedGuide.categoryIcon] || Shield;
                       return (
                         <Link
                           key={relatedGuide.id}
