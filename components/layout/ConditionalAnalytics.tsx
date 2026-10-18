@@ -7,20 +7,20 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
   const [hasConsent, setHasConsent] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkConsent = () => {
-      if (localStorage.getItem("cookie-consent") === "accepted") {
-        setHasConsent(true);
-      }
+      const consent = localStorage.getItem("cookie-consent");
+      setHasConsent(consent === "accepted");
+      setIsLoading(false);
     };
 
     // Initial check
     checkConsent();
 
-    // Listen for changes (jab user banner se accept kare)
+    // Listen for changes
     window.addEventListener("storage", checkConsent);
-    // Custom event listener (kyunki same tab mein storage event fire nahi hota)
     window.addEventListener("consent-updated", checkConsent);
 
     return () => {
@@ -29,6 +29,10 @@ export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
     };
   }, []);
 
+  // ✅ Jab tak check nahi hota, kuch mat dikhao (No flash of trackers)
+  if (isLoading) return null;
+
+  // ✅ Agar consent nahi hai, toh kuch load mat karo
   if (!hasConsent) return null;
 
   return (

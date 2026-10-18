@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ConsentBanner } from "@/components/layout/ConsentBanner"; // Naya import
+import { ConsentBanner } from "@/components/layout/ConsentBanner"; 
 import { ConditionalAnalytics } from "@/components/layout/ConditionalAnalytics"; 
 
 const geistSans = Geist({
@@ -24,15 +24,12 @@ const SITE_URL = "https://dpdpa.businezexcellence.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-
   title: {
     default: "Legal Galaxy | Privacy & AI Governance",
     template: "%s | Legal Galaxy",
   },
-
   description:
     "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
-
   keywords: [
     "DPDP Act 2023",
     "Digital Personal Data Protection",
@@ -42,17 +39,14 @@ export const metadata: Metadata = {
     "GDPR India",
     "Data Privacy",
   ],
-
   authors: [{ name: "Businezexcellence StartX LLP" }],
   creator: "Legal Galaxy",
   publisher: "Businezexcellence StartX LLP",
-
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
-
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -70,7 +64,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Legal Galaxy | Privacy & AI Governance",
@@ -78,7 +71,6 @@ export const metadata: Metadata = {
       "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
     images: ["/images/home1.jpeg"],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -90,7 +82,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-
   alternates: {
     canonical: SITE_URL,
   },
@@ -103,7 +94,6 @@ export default function RootLayout({
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
-  // ===== JSON-LD: Organization Schema =====
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -125,7 +115,7 @@ export default function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-8800138008",
-      email: "shilpi.kulshrestha@businezexcellence.com",
+      email: "privacy@businezexcellence.com", // ✅ FIX: Dedicated privacy email
       contactType: "Customer Service",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
@@ -136,7 +126,6 @@ export default function RootLayout({
     },
   };
 
-  // ===== JSON-LD: WebSite Schema (Sitelinks Search Box) =====
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -160,14 +149,12 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
-        {/* Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
         />
-        {/* WebSite Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -182,10 +169,10 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
 
-        {/* 1. Consent Banner (Sabse Upar) */}
+        {/* 1. Consent Banner */}
         <ConsentBanner />
 
-        {/* 2. Conditional Analytics (Sirf Accept karne par load hoga) */}
+        {/* 2. Conditional Analytics */}
         <ConditionalAnalytics gaId={gaId} />
       </body>
     </html>
