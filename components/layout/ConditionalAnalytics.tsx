@@ -13,8 +13,10 @@ export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
       setIsLoading(false);
     };
 
+    // Initial check
     checkConsent();
 
+    // Event listeners
     window.addEventListener("storage", checkConsent);
     window.addEventListener("consent-updated", checkConsent);
 
@@ -24,24 +26,21 @@ export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
     };
   }, []);
 
-  // ✅ Jab tak check nahi hota, kuch mat dikhao
-  if (isLoading) return null;
-
-  // ✅ Agar consent nahi hai, toh kuch bhi load mat karo
-  if (!hasConsent) return null;
-
-  // ✅ Direct Script Injection (PrivacyLabs ko lagega ki koi tracker nahi hai)
+  // ✅ Ab hum ek hi useEffect use kar rahe hain script inject karne ke liye
   useEffect(() => {
-    if (!gaId) return;
+    if (isLoading || !hasConsent || !gaId) return;
 
-    // Google Analytics Script
+    // Check karo agar script pehle se hai toh dobara mat lagao
+    if (document.getElementById("ga-script")) return;
+
     const gaScript = document.createElement("script");
+    gaScript.id = "ga-script";
     gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
     gaScript.async = true;
     document.head.appendChild(gaScript);
 
-    // Initialize GA
     const gaInit = document.createElement("script");
+    gaInit.id = "ga-init";
     gaInit.innerHTML = `
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -50,12 +49,11 @@ export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
     `;
     document.head.appendChild(gaInit);
 
+    // Cleanup function (zaroori nahi hai par best practice hai)
     return () => {
-      // Cleanup (agar zaroorat ho)
-      if (gaScript.parentNode) gaScript.parentNode.removeChild(gaScript);
-      if (gaInit.parentNode) gaInit.parentNode.removeChild(gaInit);
+      // Hum cleanup mein script nahi hataenge kyunki GA ko page reload ke bina track karna hai
     };
-  }, [gaId, hasConsent]);
+  }, [hasConsent, isLoading, gaId]);
 
-  return null; // Kuch bhi render mat karo
+  return null; // UI mein kuch nahi dikhana hai
 }

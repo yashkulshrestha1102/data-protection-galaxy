@@ -8,7 +8,6 @@ export function ConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check karo agar user ne pehle consent diya hai ya nahi
     const consent = localStorage.getItem("cookie-consent");
     if (!consent) {
       setIsVisible(true);
@@ -18,7 +17,6 @@ export function ConsentBanner() {
   const handleAccept = () => {
     localStorage.setItem("cookie-consent", "accepted");
     setIsVisible(false);
-    // Custom event fire karo taaki same tab mein bhi analytics load ho jaye
     window.dispatchEvent(new Event("consent-updated"));
   };
 
