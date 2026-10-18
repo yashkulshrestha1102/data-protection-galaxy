@@ -28,8 +28,7 @@ export const metadata: Metadata = {
     default: "Legal Galaxy | Privacy & AI Governance",
     template: "%s | Legal Galaxy",
   },
-  description:
-    "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+  description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
   keywords: [
     "DPDP Act 2023",
     "Digital Personal Data Protection",
@@ -53,8 +52,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Legal Galaxy",
     title: "Legal Galaxy | Privacy & AI Governance",
-    description:
-      "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+    description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
     images: [
       {
         url: "/images/home1.jpeg",
@@ -67,8 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Legal Galaxy | Privacy & AI Governance",
-    description:
-      "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+    description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
     images: ["/images/home1.jpeg"],
   },
   robots: {
@@ -104,8 +101,7 @@ export default function RootLayout({
       "@type": "ImageObject",
       url: `${SITE_URL}/favicon.ico`,
     },
-    description:
-      "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+    description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
     foundingDate: "2026",
     sameAs: [
       "https://www.linkedin.com/company/businezexcellence-com/",
@@ -115,7 +111,7 @@ export default function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-8800138008",
-      email: "privacy@businezexcellence.com", // ✅ FIX: Dedicated privacy email
+      email: "privacy@businezexcellence.com", // ✅ Dedicated privacy email
       contactType: "Customer Service",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
@@ -169,10 +165,10 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
 
-        {/* 1. Consent Banner */}
+        {/* 1. Consent Banner (Sabse Upar) */}
         <ConsentBanner />
 
-        {/* 2. Conditional Analytics */}
+        {/* 2. Conditional Analytics (Sirf Accept karne par load hoga) */}
         <ConditionalAnalytics gaId={gaId} />
       </body>
     </html>

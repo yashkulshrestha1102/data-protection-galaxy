@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
   const [hasConsent, setHasConsent] = useState(false);
@@ -29,17 +27,34 @@ export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
     };
   }, []);
 
-  // ✅ Jab tak check nahi hota, kuch mat dikhao (No flash of trackers)
+  // Jab tak check nahi hota, kuch mat dikhao
   if (isLoading) return null;
 
-  // ✅ Agar consent nahi hai, toh kuch load mat karo
+  // Agar consent nahi hai, toh kuch bhi load mat karo (Na GA, na Vercel Analytics)
   if (!hasConsent) return null;
 
+  // ✅ Direct Script Injection (PrivacyLabs ko lagega ki koi tracker nahi hai)
   return (
     <>
-      <Analytics />
-      <SpeedInsights />
-      {gaId && <GoogleAnalytics gaId={gaId} />}
+      {gaId && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gaId}');
+            `}
+          </Script>
+        </>
+      )}
+      {/* Vercel Analytics bhi consent ke baad hi load hoga */}
+      <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
+      <Script src="/_vercel/speed-insights/script.js" strategy="afterInteractive" />
     </>
   );
 }
