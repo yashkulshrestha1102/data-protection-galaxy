@@ -68,19 +68,36 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     const radius = 2.5;
     const geometry = new THREE.SphereGeometry(radius, 64, 64);
     
+    // ✅ FIX: Error handling for texture load
     const textureLoader = new THREE.TextureLoader();
-    const earthTexture = textureLoader.load('/images/earth-texture.jpg', () => {
-      if (mountedRef.current) setIsLoading(false);
-    });
     
+    // Fallback color agar image load na ho
     const material = new THREE.MeshPhongMaterial({
-      map: earthTexture,
+      color: 0x1e3a8a, // Dark space blue fallback
       transparent: true,
       opacity: 0.95,
       shininess: 25,
       emissive: new THREE.Color(0x0a0a2e),
       emissiveIntensity: 0.15,
     });
+
+    // Try to load texture
+    textureLoader.load(
+      '/images/earth-texture.jpg', 
+      (texture) => {
+        // Agar image mil gayi, toh apply karo
+        material.map = texture;
+        material.color.setHex(0xffffff); // White color taaki texture dikhe
+        material.needsUpdate = true;
+        if (mountedRef.current) setIsLoading(false);
+      },
+      undefined,
+      (error) => {
+        // Agar image nahi mili (404), toh error log karo aur fallback color use karo
+        console.warn('Earth texture not found, using fallback color.', error);
+        if (mountedRef.current) setIsLoading(false);
+      }
+    );
     
     const globe = new THREE.Mesh(geometry, material);
     globeRef.current = globe;
@@ -287,7 +304,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       window.removeEventListener('resize', handleResize);
       cleanupGlobe();
     };
-  }, [onCountryClick, selectedCountryId]);
+  }, [onCountryClick]); // ✅ FIX: selectedCountryId ko dependency se hata diya
 
   const hoveredCountryData = countries.find(c => c.id === hoveredCountry);
 
