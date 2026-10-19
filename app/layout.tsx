@@ -111,7 +111,7 @@ export default function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-8800138008",
-      email: "privacy@businezexcellence.com", // ✅ Dedicated privacy email
+      email: "privacy@businezexcellence.com", 
       contactType: "Customer Service",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],

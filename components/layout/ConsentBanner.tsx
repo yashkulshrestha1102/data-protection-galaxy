@@ -8,21 +8,33 @@ export function ConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent");
+    // Check if user has already given consent using cookies
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+    };
+
+    const consent = getCookie("cookie-consent");
+    
+    // Agar consent nahi hai, toh banner dikhao
     if (!consent) {
       setIsVisible(true);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("cookie-consent", "accepted");
+    // Set cookie for 1 year
+    document.cookie = "cookie-consent=accepted; path=/; max-age=31536000; SameSite=Lax";
     setIsVisible(false);
     window.dispatchEvent(new Event("consent-updated"));
   };
 
   const handleReject = () => {
-    localStorage.setItem("cookie-consent", "rejected");
+    // Set cookie for 1 year
+    document.cookie = "cookie-consent=rejected; path=/; max-age=31536000; SameSite=Lax";
     setIsVisible(false);
+    window.dispatchEvent(new Event("consent-updated"));
   };
 
   if (!isVisible) return null;

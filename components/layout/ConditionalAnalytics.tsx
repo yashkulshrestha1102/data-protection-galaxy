@@ -1,36 +1,45 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
   const [hasConsent, setHasConsent] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+    };
+
     const checkConsent = () => {
-      const consent = localStorage.getItem("cookie-consent");
+      const consent = getCookie("cookie-consent");
       setHasConsent(consent === "accepted");
-      setIsLoading(false);
     };
 
     // Initial check
     checkConsent();
 
-    // Event listeners
-    window.addEventListener("storage", checkConsent);
+    // Listen for consent updates
     window.addEventListener("consent-updated", checkConsent);
 
     return () => {
-      window.removeEventListener("storage", checkConsent);
       window.removeEventListener("consent-updated", checkConsent);
     };
   }, []);
 
-  // ✅ Ab hum ek hi useEffect use kar rahe hain script inject karne ke liye
+  // GA script inject karne ka effect
   useEffect(() => {
-    if (isLoading || !hasConsent || !gaId) return;
+    if (!hasConsent || !gaId) {
+      // Agar consent nahi hai, toh GA script ko remove kar do (agar pehle se hai toh)
+      const existingScript = document.getElementById("ga-script");
+      if (existingScript) {
+        existingScript.remove();
+      }
+      return;
+    }
 
-    // Check karo agar script pehle se hai toh dobara mat lagao
+    // Agar script pehle se hai toh dobara mat lagao
     if (document.getElementById("ga-script")) return;
 
     const gaScript = document.createElement("script");
@@ -45,15 +54,12 @@ export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', '${gaId}');
+      gtag('config', '${gaId}', {
+        'anonymize_ip': true
+      });
     `;
     document.head.appendChild(gaInit);
+  }, [hasConsent, gaId]);
 
-    // Cleanup function (zaroori nahi hai par best practice hai)
-    return () => {
-      // Hum cleanup mein script nahi hataenge kyunki GA ko page reload ke bina track karna hai
-    };
-  }, [hasConsent, isLoading, gaId]);
-
-  return null; // UI mein kuch nahi dikhana hai
+  return null;
 }
