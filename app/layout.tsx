@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { cookies } from "next/headers"; // ✅ Server-side cookie check
+import { cookies } from "next/headers";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ConsentBanner } from "@/components/layout/ConsentBanner"; 
-import { ConditionalAnalytics } from "@/components/layout/ConditionalAnalytics"; 
+import { ConsentBanner } from "@/components/layout/ConsentBanner";
+import { ConditionalAnalytics } from "@/components/layout/ConditionalAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,6 +22,8 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://dpdpa.businezexcellence.com";
+const SITE_DESCRIPTION =
+  "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
     default: "Legal Galaxy | Privacy & AI Governance",
     template: "%s | Legal Galaxy",
   },
-  description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "DPDP Act 2023",
     "Digital Personal Data Protection",
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Legal Galaxy",
     title: "Legal Galaxy | Privacy & AI Governance",
-    description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: "/images/home1.jpeg",
@@ -66,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Legal Galaxy | Privacy & AI Governance",
-    description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+    description: SITE_DESCRIPTION,
     images: ["/images/home1.jpeg"],
   },
   robots: {
@@ -91,11 +93,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-
-  // ✅ SERVER PAR COOKIE CHECK KARO
   const cookieStore = await cookies();
-  const consentCookie = cookieStore.get("cookie-consent")?.value;
-  const hasConsent = consentCookie === "accepted";
+  const rawConsent = cookieStore.get("cookie-consent")?.value;
+  const consentStatus =
+    rawConsent === "accepted" || rawConsent === "rejected" ? rawConsent : null;
+  const hasAnalyticsConsent = consentStatus === "accepted";
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -107,7 +109,7 @@ export default async function RootLayout({
       "@type": "ImageObject",
       url: `${SITE_URL}/favicon.ico`,
     },
-    description: "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.",
+    description: SITE_DESCRIPTION,
     foundingDate: "2026",
     sameAs: [
       "https://www.linkedin.com/company/businezexcellence-com/",
@@ -117,7 +119,7 @@ export default async function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-8800138008",
-      email: "privacy@businezexcellence.com", 
+      email: "privacy@businezexcellence.com",
       contactType: "Customer Service",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
@@ -153,15 +155,11 @@ export default async function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body
@@ -171,11 +169,8 @@ export default async function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
 
-        {/* ✅ Banner ko server se batao ki consent hai ya nahi */}
-        <ConsentBanner initialHasConsent={!!consentCookie} />
-
-        {/* ✅ GA SIRF TAB LOAD HOGA JAB SERVER KO PATA HO KI CONSENT MILI HAI */}
-        {hasConsent && <ConditionalAnalytics gaId={gaId} />}
+        <ConsentBanner initialConsentStatus={consentStatus} />
+        {hasAnalyticsConsent && <ConditionalAnalytics gaId={gaId} />}
       </body>
     </html>
   );

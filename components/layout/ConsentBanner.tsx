@@ -1,61 +1,115 @@
 "use client";
 
 import { useState } from "react";
-import { Shield } from "lucide-react";
+import { Cookie, Shield, Settings2, X } from "lucide-react";
 import Link from "next/link";
 
-export function ConsentBanner({ initialHasConsent }: { initialHasConsent: boolean }) {
-  // Agar server se consent mila hai, toh shuru se hi hide
-  const [isVisible, setIsVisible] = useState(!initialHasConsent);
+type ConsentStatus = "accepted" | "rejected" | null;
 
-  const handleAccept = () => {
-    // Cookie set karo (1 saal ke liye)
-    document.cookie = "cookie-consent=accepted; path=/; max-age=31536000; SameSite=Lax";
-    setIsVisible(false);
-    // Page reload karo taaki server ko nayi cookie mil jaye aur GA load ho jaye
+export function ConsentBanner({
+  initialConsentStatus,
+}: {
+  initialConsentStatus: ConsentStatus;
+}) {
+  const [isVisible, setIsVisible] = useState(initialConsentStatus === null);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const writeConsent = (status: Exclude<ConsentStatus, null>) => {
+    setIsSaving(true);
+    const secure = window.location.protocol === "https:" ? "; Secure" : "";
+    document.cookie = `cookie-consent=${status}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+
+    if (status === "rejected") {
+      // Remove Google Analytics cookies left by an earlier accepted session.
+      // Try host-only and parent-domain variants; these are analytics-only cookies.
+      const names = document.cookie
+        .split(";")
+        .map((part) => part.trim().split("=")[0])
+        .filter((name) => /^_ga(?:_|$)|^_gid$|^_gat(?:_|$)|^_gac_/i.test(name));
+      const domains = [
+        "",
+        `; Domain=${window.location.hostname}`,
+        "; Domain=.businezexcellence.com",
+      ];
+      for (const name of new Set([...names, "_ga", "_gid", "_gat", "_gac_"])) {
+        for (const domain of domains) {
+          document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax${domain}${secure}`;
+        }
+      }
+    }
+
+    // A reload lets the server read the updated consent cookie before deciding
+    // whether ConditionalAnalytics should be included in the HTML.
     window.location.reload();
   };
 
-  const handleReject = () => {
-    // Cookie set karo
-    document.cookie = "cookie-consent=rejected; path=/; max-age=31536000; SameSite=Lax";
-    setIsVisible(false);
-    window.location.reload();
-  };
-
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return (
+      <button
+        type="button"
+        onClick={() => setIsVisible(true)}
+        aria-label="Open cookie settings"
+        title="Cookie settings"
+        data-cookie-settings-trigger="true"
+        className="fixed bottom-4 right-4 z-[9998] inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/95 px-4 py-3 text-sm font-medium text-white shadow-xl backdrop-blur-md transition hover:border-purple-400 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-400"
+      >
+        <Cookie className="h-5 w-5 text-purple-300" aria-hidden="true" />
+        Cookie settings
+      </button>
+    );
+  }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6 bg-black/95 backdrop-blur-md border-t border-white/20 text-white shadow-2xl">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <section
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="cookie-consent-title"
+      aria-describedby="cookie-consent-description"
+      data-cookie-consent-banner="true"
+      data-testid="cookie-consent-banner"
+      className="fixed inset-x-0 bottom-0 z-[9999] border-t border-white/20 bg-black/95 p-4 text-white shadow-2xl backdrop-blur-md md:p-6"
+    >
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
         <div className="flex items-start gap-3">
-          <Shield className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+          <Shield className="mt-1 h-6 w-6 shrink-0 text-purple-400" aria-hidden="true" />
           <div>
-            <h3 className="text-sm font-semibold text-white mb-1">We value your privacy</h3>
-            <p className="text-xs text-gray-300 leading-relaxed max-w-3xl">
-              We use cookies to enhance your browsing experience, analyze site traffic, and personalize content.
-              By clicking "Accept All", you consent to our use of cookies in accordance with our{" "}
-              <Link href="/privacy-policy" className="text-purple-400 hover:text-purple-300 underline">
+            <h2 id="cookie-consent-title" className="mb-1 text-sm font-semibold">
+              We value your privacy
+            </h2>
+            <p id="cookie-consent-description" className="max-w-3xl text-xs leading-relaxed text-gray-300">
+              We use essential cookies to make this website work. With your permission, we also use Google Analytics
+              to understand website traffic. Analytics cookies are not enabled unless you choose “Accept All”. You can
+              reject non-essential cookies or change your choice later in Cookie settings. Read our{" "}
+              <Link href="/privacy-policy" className="text-purple-400 underline hover:text-purple-300">
                 Privacy Policy
               </Link>.
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 w-full md:w-auto flex-shrink-0">
+
+        <div className="flex w-full shrink-0 flex-col gap-2 sm:flex-row md:w-auto">
           <button
-            onClick={handleReject}
-            className="flex-1 md:flex-none px-5 py-2.5 rounded-xl border border-white/20 text-gray-300 text-sm font-medium hover:bg-white/10 transition-all"
+            type="button"
+            disabled={isSaving}
+            onClick={() => writeConsent("rejected")}
+            data-cookie-consent-reject="true"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/25 px-5 py-3 text-sm font-medium text-gray-200 transition hover:bg-white/10 disabled:opacity-60 md:flex-none"
           >
+            <X className="h-4 w-4" aria-hidden="true" />
             Reject Non-Essential
           </button>
           <button
-            onClick={handleAccept}
-            className="flex-1 md:flex-none px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold hover:scale-105 transition-all shadow-lg shadow-purple-500/30"
+            type="button"
+            disabled={isSaving}
+            onClick={() => writeConsent("accepted")}
+            data-cookie-consent-accept="true"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/20 transition hover:brightness-110 disabled:opacity-60 md:flex-none"
           >
+            <Settings2 className="h-4 w-4" aria-hidden="true" />
             Accept All
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
