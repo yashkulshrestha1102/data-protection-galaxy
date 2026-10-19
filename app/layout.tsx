@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { cookies } from "next/headers"; // ✅ Import cookies
+import { cookies } from "next/headers"; // ✅ Server-side cookie check
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ConsentBanner } from "@/components/layout/ConsentBanner"; 
@@ -85,14 +85,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ // ✅ async function banaya
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
-  // ✅ Server par cookie check karo
+  // ✅ SERVER PAR COOKIE CHECK KARO
   const cookieStore = await cookies();
   const consentCookie = cookieStore.get("cookie-consent")?.value;
   const hasConsent = consentCookie === "accepted";
@@ -171,10 +171,10 @@ export default async function RootLayout({ // ✅ async function banaya
         <main className="flex-1">{children}</main>
         <Footer />
 
-        {/* ✅ Server se hi check hoke banner render hoga */}
+        {/* ✅ Banner ko server se batao ki consent hai ya nahi */}
         <ConsentBanner initialHasConsent={!!consentCookie} />
 
-        {/* ✅ GA sirf tab load hoga jab consent accepted ho */}
+        {/* ✅ GA SIRF TAB LOAD HOGA JAB SERVER KO PATA HO KI CONSENT MILI HAI */}
         {hasConsent && <ConditionalAnalytics gaId={gaId} />}
       </body>
     </html>

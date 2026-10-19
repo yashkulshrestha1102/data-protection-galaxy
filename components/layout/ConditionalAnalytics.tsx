@@ -2,7 +2,6 @@
 
 import Script from "next/script";
 
-// ✅ Ab isme local state ki zaroorat nahi, yeh direct parent se controlled hai
 export function ConditionalAnalytics({ gaId }: { gaId?: string }) {
   if (!gaId) return null;
 

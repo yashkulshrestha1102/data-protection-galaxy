@@ -1,25 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Shield } from "lucide-react";
 import Link from "next/link";
 
-// ✅ Prop receive karo server se
 export function ConsentBanner({ initialHasConsent }: { initialHasConsent: boolean }) {
-  // Agar server se pata chala ki consent hai, toh shuru se hi hide rakho
+  // Agar server se consent mila hai, toh shuru se hi hide
   const [isVisible, setIsVisible] = useState(!initialHasConsent);
 
   const handleAccept = () => {
+    // Cookie set karo (1 saal ke liye)
     document.cookie = "cookie-consent=accepted; path=/; max-age=31536000; SameSite=Lax";
     setIsVisible(false);
-    window.dispatchEvent(new Event("consent-updated"));
-    window.location.reload(); // ✅ Refresh karo taaki GA load ho jaye
+    // Page reload karo taaki server ko nayi cookie mil jaye aur GA load ho jaye
+    window.location.reload();
   };
 
   const handleReject = () => {
+    // Cookie set karo
     document.cookie = "cookie-consent=rejected; path=/; max-age=31536000; SameSite=Lax";
     setIsVisible(false);
-    window.dispatchEvent(new Event("consent-updated"));
+    window.location.reload();
   };
 
   if (!isVisible) return null;
