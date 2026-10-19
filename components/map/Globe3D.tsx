@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+// ✅ Import fix (jo tune kiya tha)
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { countries } from '@/data/countries';
 
@@ -68,36 +69,18 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     const radius = 2.5;
     const geometry = new THREE.SphereGeometry(radius, 64, 64);
     
-    // ✅ FIX: Error handling for texture load
-    const textureLoader = new THREE.TextureLoader();
-    
-    // Fallback color agar image load na ho
+    // ✅ FIX: Texture load hata diya, direct fallback color use kiya
     const material = new THREE.MeshPhongMaterial({
-      color: 0x1e3a8a, // Dark space blue fallback
+      color: 0x1e3a8a, // Dark blue space color
       transparent: true,
       opacity: 0.95,
       shininess: 25,
       emissive: new THREE.Color(0x0a0a2e),
       emissiveIntensity: 0.15,
     });
-
-    // Try to load texture
-    textureLoader.load(
-      '/images/earth-texture.jpg', 
-      (texture) => {
-        // Agar image mil gayi, toh apply karo
-        material.map = texture;
-        material.color.setHex(0xffffff); // White color taaki texture dikhe
-        material.needsUpdate = true;
-        if (mountedRef.current) setIsLoading(false);
-      },
-      undefined,
-      (error) => {
-        // Agar image nahi mili (404), toh error log karo aur fallback color use karo
-        console.warn('Earth texture not found, using fallback color.', error);
-        if (mountedRef.current) setIsLoading(false);
-      }
-    );
+    
+    // Direct loading false kar do (spinner hatane ke liye)
+    if (mountedRef.current) setIsLoading(false);
     
     const globe = new THREE.Mesh(geometry, material);
     globeRef.current = globe;
@@ -304,7 +287,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       window.removeEventListener('resize', handleResize);
       cleanupGlobe();
     };
-  }, [onCountryClick]); // ✅ FIX: selectedCountryId ko dependency se hata diya
+  }, [onCountryClick]);
 
   const hoveredCountryData = countries.find(c => c.id === hoveredCountry);
 
