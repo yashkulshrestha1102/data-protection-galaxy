@@ -6,9 +6,9 @@ import {
   X, Send, Loader2, CheckCircle, Users, Clock
 } from 'lucide-react';
 
-// ===== FIELD LABEL COMPONENT =====
-const LabelWithAsterisk = ({ label, required }: { label: string; required?: boolean }) => (
-  <label className="block text-xs text-white/60 mb-1">
+// ===== FIELD LABEL COMPONENT (UPDATED FOR A11Y) =====
+const LabelWithAsterisk = ({ label, required, htmlFor }: { label: string; required?: boolean; htmlFor?: string }) => (
+  <label htmlFor={htmlFor} className="block text-xs text-white/60 mb-1">
     {label}
     {required && <span className="text-red-500 ml-0.5">*</span>}
   </label>
@@ -174,7 +174,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                 <p className="text-white/60 text-sm">
                   Fill in your details and a compliance expert will be in touch within one business day.
                 </p>
-                <div className="flex flex-col gap-3 text-xs text-white/40 pt-2">
+                <div className="flex flex-col gap-3 text-xs text-white/50 pt-2">
                   <span className="flex items-center gap-2">
                     <Clock className="w-4 h-4" />
                     Responding within 1 business day
@@ -200,8 +200,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                     {/* ROW 1: First + Last Name */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <LabelWithAsterisk label="First Name" required />
+                        <LabelWithAsterisk label="First Name" required htmlFor="modal-firstName" />
                         <input
+                          id="modal-firstName"
                           type="text"
                           name="firstName"
                           value={demoForm.firstName}
@@ -216,8 +217,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                         )}
                       </div>
                       <div>
-                        <LabelWithAsterisk label="Last Name" required />
+                        <LabelWithAsterisk label="Last Name" required htmlFor="modal-lastName" />
                         <input
+                          id="modal-lastName"
                           type="text"
                           name="lastName"
                           value={demoForm.lastName}
@@ -236,8 +238,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                     {/* ROW 2: Email + Phone */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <LabelWithAsterisk label="Work Email" required />
+                        <LabelWithAsterisk label="Work Email" required htmlFor="modal-email" />
                         <input
+                          id="modal-email"
                           type="email"
                           name="email"
                           value={demoForm.email}
@@ -252,8 +255,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                         )}
                       </div>
                       <div>
-                        <LabelWithAsterisk label="Phone" required />
+                        <LabelWithAsterisk label="Phone" required htmlFor="modal-phone" />
                         <input
+                          id="modal-phone"
                           type="tel"
                           name="phone"
                           value={demoForm.phone}
@@ -272,8 +276,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                     {/* ROW 3: Company + Job Title */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <LabelWithAsterisk label="Company" required />
+                        <LabelWithAsterisk label="Company" required htmlFor="modal-company" />
                         <input
+                          id="modal-company"
                           type="text"
                           name="company"
                           value={demoForm.company}
@@ -288,8 +293,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                         )}
                       </div>
                       <div>
-                        <LabelWithAsterisk label="Job Title" />
+                        <LabelWithAsterisk label="Job Title" htmlFor="modal-jobTitle" />
                         <input
+                          id="modal-jobTitle"
                           type="text"
                           name="jobTitle"
                           value={demoForm.jobTitle}
@@ -303,8 +309,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                     {/* ROW 4: Company Size + Industry */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <LabelWithAsterisk label="Company Size" />
+                        <LabelWithAsterisk label="Company Size" htmlFor="modal-companySize" />
                         <select
+                          id="modal-companySize"
                           name="companySize"
                           value={demoForm.companySize}
                           onChange={handleChange}
@@ -319,8 +326,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                         </select>
                       </div>
                       <div>
-                        <LabelWithAsterisk label="Industry" required />
+                        <LabelWithAsterisk label="Industry" required htmlFor="modal-industry" />
                         <select
+                          id="modal-industry"
                           name="industry"
                           value={demoForm.industry}
                           onChange={handleChange}
@@ -348,8 +356,9 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
 
                     {/* ROW 5: Challenges */}
                     <div>
-                      <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" />
+                      <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" htmlFor="modal-challenges" />
                       <textarea
+                        id="modal-challenges"
                         name="challenges"
                         value={demoForm.challenges}
                         onChange={handleChange}
@@ -362,6 +371,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                     {/* ROW 6: Consent */}
                     <div className="flex items-start gap-2">
                       <input
+                        id="modal-consent"
                         type="checkbox"
                         name="consent"
                         checked={demoForm.consent}
@@ -370,7 +380,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                           formErrors.consent ? 'border-red-500' : 'accent-white/20'
                         }`}
                       />
-                      <label className="text-xs text-white/40">
+                      <label htmlFor="modal-consent" className="text-xs text-white/50 cursor-pointer">
                         I agree to Legal Galaxy's Privacy Policy and consent to being contacted.
                       </label>
                     </div>
@@ -396,7 +406,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                         </>
                       )}
                     </button>
-                    <p className="text-center text-[10px] text-white/20">
+                    <p className="text-center text-[10px] text-white/50">
                       Responding within 1 business day · Indian compliance experts
                     </p>
                   </form>

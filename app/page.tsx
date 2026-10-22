@@ -9,6 +9,14 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
+// ===== FIELD LABEL COMPONENT (UPDATED FOR A11Y) =====
+const LabelWithAsterisk = ({ label, required, htmlFor }: { label: string; required?: boolean; htmlFor?: string }) => (
+  <label htmlFor={htmlFor} className="block text-xs text-white/60 mb-1">
+    {label}
+    {required && <span className="text-red-500 ml-0.5">*</span>}
+  </label>
+);
+
 export default function Home() {
   const [stars, setStars] = useState<React.ReactNode[]>([]);
   const [showLockMessage, setShowLockMessage] = useState<string | null>(null);
@@ -149,14 +157,6 @@ export default function Home() {
     }
   };
 
-  // ===== FIELD LABEL WITH RED ASTERISK =====
-  const LabelWithAsterisk = ({ label, required }: { label: string; required?: boolean }) => (
-    <label className="block text-xs text-white/60 mb-1">
-      {label}
-      {required && <span className="text-red-500 ml-0.5">*</span>}
-    </label>
-  );
-
   // ✅ Book a Consultant Scroll Handler (Agar Header se click karein toh)
   const scrollToBookDemo = () => {
     const el = document.getElementById('book-demo');
@@ -270,7 +270,7 @@ export default function Home() {
       <p className="text-white/60 text-sm">
         Fill in your details and a compliance expert will be in touch within one business day.
       </p>
-      <div className="flex flex-col gap-2 text-xs text-white/40">
+      <div className="flex flex-col gap-2 text-xs text-white/50">
         <span className="flex items-center gap-2">
           <Clock className="w-4 h-4" />
           Responding within 1 business day
@@ -296,8 +296,9 @@ export default function Home() {
           {/* ✅ ROW 1: First Name + Last Name */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <LabelWithAsterisk label="First Name" required />
+              <LabelWithAsterisk label="First Name" required htmlFor="home-firstName" />
               <input
+                id="home-firstName"
                 type="text"
                 name="firstName"
                 value={demoForm.firstName}
@@ -312,8 +313,9 @@ export default function Home() {
               )}
             </div>
             <div>
-              <LabelWithAsterisk label="Last Name" required />
+              <LabelWithAsterisk label="Last Name" required htmlFor="home-lastName" />
               <input
+                id="home-lastName"
                 type="text"
                 name="lastName"
                 value={demoForm.lastName}
@@ -332,8 +334,9 @@ export default function Home() {
           {/* ✅ ROW 2: Work Email + Phone */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <LabelWithAsterisk label="Work Email" required />
+              <LabelWithAsterisk label="Work Email" required htmlFor="home-email" />
               <input
+                id="home-email"
                 type="email"
                 name="email"
                 value={demoForm.email}
@@ -348,8 +351,9 @@ export default function Home() {
               )}
             </div>
             <div>
-              <LabelWithAsterisk label="Phone" required />
+              <LabelWithAsterisk label="Phone" required htmlFor="home-phone" />
               <input
+                id="home-phone"
                 type="tel"
                 name="phone"
                 value={demoForm.phone}
@@ -368,8 +372,9 @@ export default function Home() {
           {/* ✅ ROW 3: Company + Job Title */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <LabelWithAsterisk label="Company" required />
+              <LabelWithAsterisk label="Company" required htmlFor="home-company" />
               <input
+                id="home-company"
                 type="text"
                 name="company"
                 value={demoForm.company}
@@ -384,8 +389,9 @@ export default function Home() {
               )}
             </div>
             <div>
-              <LabelWithAsterisk label="Job Title" />
+              <LabelWithAsterisk label="Job Title" htmlFor="home-jobTitle" />
               <input
+                id="home-jobTitle"
                 type="text"
                 name="jobTitle"
                 value={demoForm.jobTitle}
@@ -399,8 +405,9 @@ export default function Home() {
           {/* ✅ ROW 4: Company Size + Industry */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <LabelWithAsterisk label="Company Size" />
+              <LabelWithAsterisk label="Company Size" htmlFor="home-companySize" />
               <select
+                id="home-companySize"
                 name="companySize"
                 value={demoForm.companySize}
                 onChange={handleDemoChange}
@@ -415,8 +422,9 @@ export default function Home() {
               </select>
             </div>
             <div>
-              <LabelWithAsterisk label="Industry" required />
+              <LabelWithAsterisk label="Industry" required htmlFor="home-industry" />
               <select
+                id="home-industry"
                 name="industry"
                 value={demoForm.industry}
                 onChange={handleDemoChange}
@@ -444,8 +452,9 @@ export default function Home() {
 
           {/* ✅ ROW 5: Challenges (Full Width) */}
           <div>
-            <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" />
+            <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" htmlFor="home-challenges" />
             <textarea
+              id="home-challenges"
               name="challenges"
               value={demoForm.challenges}
               onChange={handleDemoChange}
@@ -458,6 +467,7 @@ export default function Home() {
           {/* ✅ ROW 6: Consent */}
           <div className="flex items-start gap-2">
             <input
+              id="home-consent"
               type="checkbox"
               name="consent"
               checked={demoForm.consent}
@@ -466,7 +476,7 @@ export default function Home() {
                 formErrors.consent ? 'border-red-500' : 'accent-white/20'
               }`}
             />
-            <label className="text-xs text-white/40">
+            <label htmlFor="home-consent" className="text-xs text-white/50 cursor-pointer">
               I agree to Legal Galaxy's Privacy Policy and consent to being contacted.
             </label>
           </div>
@@ -482,7 +492,7 @@ export default function Home() {
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
-          <p className="text-center text-[10px] text-white/20">
+          <p className="text-center text-[10px] text-white/50">
             Responding within 1 business day · Indian compliance experts
           </p>
         </form>
