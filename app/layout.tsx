@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Legal Galaxy | Privacy & AI Governance",
     description: SITE_DESCRIPTION,
-    images: ["/images/home1.jpeg"],
+    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,
