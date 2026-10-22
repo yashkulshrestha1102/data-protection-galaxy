@@ -6,8 +6,8 @@ import { Module, ExamData } from '@/app/types/course';
 import { module01 } from './module01';
 
 // TODO: Import remaining modules as they are completed
-// import { module02 } from './module-02';
-// import { module03 } from './module-03';
+import { module02 } from './module02';
+import { module03 } from './module03';
 // import { module04 } from './module-04';
 // import { module05 } from './module-05';
 // import { module06 } from './module-06';
@@ -37,8 +37,8 @@ export const examData: ExamData = {
 // ===== ALL MODULES =====
 export const fullModulesData: Module[] = [
   module01,
-  // module02,
-  // module03,
+  module02,
+  module03,
   // module04,
   // module05,
   // module06,
