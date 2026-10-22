@@ -1,5 +1,5 @@
 ﻿import Link from 'next/link';
-import { ArrowLeft, CheckCircle, Shield, Users, Globe, Database, FileText, Scale, ArrowRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Shield, Users, Globe, Database, FileText, Scale, Building, BookOpen, ArrowRight } from 'lucide-react';
 
 export const metadata = {
   title: 'Rights of Data Principals under DPDP Act 2023 | Legal Galaxy',
