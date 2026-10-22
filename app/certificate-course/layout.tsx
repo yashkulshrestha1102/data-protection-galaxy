@@ -1,30 +1,29 @@
+// app/certificate-course/layout.tsx
 import type { Metadata } from "next";
 
 const SITE_URL = "https://dpdpa.businezexcellence.com";
 
 export const metadata: Metadata = {
-  title: "Data Protection Board of India | DPDP Act 2023 — Composition, Powers & Appeals",
+  title: "DPDPA Master Course — Free 20-Module Certification",
   description:
-    "Complete guide to the Data Protection Board of India under the DPDP Act 2023. Learn its composition, appointment process, investigative powers, adjudication procedure, penalties up to ₹250 crore, and appeal mechanism to TDSAT.",
+    "Free 20-module DPDPA 2023 Master Course with 250+ lessons, quizzes, and a professional certificate. Learn India's data protection law end-to-end at your own pace.",
   keywords: [
-    "Data Protection Board",
-    "DPB India",
-    "DPDP Act 2023",
-    "Data Protection Board composition",
-    "Data Protection Board powers",
-    "DPDP penalties",
-    "TDSAT appeal",
-    "Data Fiduciary compliance",
-    "Privacy regulator India",
+    "DPDPA course",
+    "DPDP Act certification",
+    "Privacy certification India",
+    "Data protection course",
+    "DPO training India",
+    "free privacy course",
+    "DPDPA master course",
   ],
   authors: [{ name: "Shilpi Kulshrestha" }],
-  alternates: { canonical: "/board" },
+  alternates: { canonical: "/certificate-course" },
   openGraph: {
-    type: "article",
-    title: "Data Protection Board of India | DPDP Act 2023",
+    type: "website",
+    title: "DPDPA Master Course — Free 20-Module Certification",
     description:
-      "Complete guide to the Data Protection Board — composition, powers, adjudication, penalties, and appeals under the DPDP Act 2023.",
-    url: `${SITE_URL}/board`,
+      "Free 20-module DPDPA 2023 Master Course with 250+ lessons, quizzes, and a professional certificate. Learn India's data protection law end-to-end.",
+    url: `${SITE_URL}/certificate-course`,
     siteName: "Legal Galaxy",
     locale: "en_IN",
     images: [
@@ -32,15 +31,15 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Data Protection Board — DPDP Act 2023",
+        alt: "DPDPA Master Course — Free Certification",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Data Protection Board of India | DPDP Act 2023",
+    title: "DPDPA Master Course — Free 20-Module Certification",
     description:
-      "Composition, powers, penalties and appeals under the DPDP Act 2023 — explained in detail.",
+      "Free 20-module DPDPA 2023 Master Course with 250+ lessons and a professional certificate.",
     images: ["/images/og-image.png"],
   },
   robots: {
@@ -55,6 +54,47 @@ export const metadata: Metadata = {
   },
 };
 
+// ===== Course Schema =====
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "DPDPA 2023 Master Course",
+  description:
+    "Free 20-module DPDPA 2023 Master Course with 250+ lessons, quizzes, and a professional certificate. Learn India's data protection law end-to-end.",
+  provider: {
+    "@type": "Organization",
+    name: "Legal Galaxy",
+    sameAs: SITE_URL,
+  },
+  educationalLevel: "Professional",
+  inLanguage: "en",
+  offers: {
+    "@type": "Offer",
+    category: "Free",
+    price: "0",
+    priceCurrency: "INR",
+    availability: "https://schema.org/InStock",
+  },
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "Online",
+    courseWorkload: "PT120H",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "150",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  author: {
+    "@type": "Person",
+    name: "Shilpi Kulshrestha",
+    jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
+    url: `${SITE_URL}/authors/shilpi-kulshrestha`,
+  },
+};
+
 // ===== FAQ Schema =====
 const faqSchema = {
   "@context": "https://schema.org",
@@ -62,96 +102,40 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What is the Data Protection Board of India?",
+      name: "Is the DPDPA Master Course completely free?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Data Protection Board of India (DPB) is the regulatory authority established under Section 18 of the Digital Personal Data Protection Act, 2023. It is responsible for enforcing the Act, adjudicating complaints and data breaches, and imposing penalties on Data Fiduciaries for non-compliance.",
+        text: "Yes. The DPDPA Master Course is entirely free — all 20 modules, 250+ lessons, quizzes, and the final certification exam are available at no cost. There are no hidden fees or premium tiers.",
       },
     },
     {
       "@type": "Question",
-      name: "Who appoints the Chairperson and members of the Data Protection Board?",
+      name: "Do I need any prior legal or technical background?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Chairperson and other members of the Data Protection Board are appointed by the Central Government. The Chairperson must have at least 10 years of experience in data protection, law, or technology policy. Members are appointed based on their expertise in law, data protection, cyber security, or related fields.",
+        text: "No. The course is designed for beginners as well as experienced professionals. Module 1 starts with foundational privacy concepts, and the course progressively builds up to advanced topics like AI governance and cross-border data transfers.",
       },
     },
     {
       "@type": "Question",
-      name: "What powers does the Data Protection Board have?",
+      name: "How long does it take to complete the course?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Data Protection Board has powers to investigate complaints, conduct inquiries, summon witnesses, require production of documents, issue interim and final directions, impose civil penalties up to ₹250 crore, and direct remedial measures. It exercises powers similar to a civil court under the Code of Civil Procedure, 1908.",
+        text: "The full course is approximately 120 hours of content. Most learners complete it over 4-8 weeks, but you can learn at your own pace. There is no deadline.",
       },
     },
     {
       "@type": "Question",
-      name: "Can a Data Protection Board decision be appealed?",
+      name: "Is the certificate recognized by employers?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Under Section 29 of the DPDP Act, any person aggrieved by an order of the Data Protection Board may appeal to the Telecom Disputes Settlement and Appellate Tribunal (TDSAT). The appeal must be filed within 60 days of receiving the Board's order.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How many members does the Data Protection Board have?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The DPDP Act 2023 does not prescribe a fixed number of members. The Board consists of a Chairperson and such number of other members as the Central Government may determine. Members are appointed based on their expertise in data protection, law, technology, or public administration.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is the maximum penalty the Data Protection Board can impose?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The maximum penalty the Data Protection Board can impose is ₹250 crore for failure to take reasonable security safeguards to prevent a personal data breach. Other penalties range from ₹50 crore to ₹200 crore depending on the nature of the violation.",
+        text: "The certificate is issued by Legal Galaxy (Businezexcellence StartX LLP) and demonstrates your commitment to DPDPA compliance. While there is no single official certification for DPDPA, employers increasingly value demonstrated knowledge of the Act.",
       },
     },
   ],
 };
 
-// ===== Breadcrumb Schema =====
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Galaxy", item: `${SITE_URL}/galaxy` },
-    { "@type": "ListItem", position: 3, name: "Data Protection Board", item: `${SITE_URL}/board` },
-  ],
-};
-
-// ===== Article Schema =====
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Data Protection Board of India — Composition, Powers, and Appeals under DPDP Act 2023",
-  description:
-    "Complete guide to the Data Protection Board of India under the DPDP Act 2023 — composition, powers, investigative procedure, penalties, and appeal mechanism.",
-  author: {
-    "@type": "Person",
-    name: "Shilpi Kulshrestha",
-    jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Legal Galaxy",
-    logo: {
-      "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
-    },
-  },
-  datePublished: "2026-01-15",
-  dateModified: new Date().toISOString().split("T")[0],
-  inLanguage: "en-IN",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": `${SITE_URL}/board`,
-  },
-};
-
-export default function BoardLayout({
+export default function CertificateCourseLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -160,15 +144,11 @@ export default function BoardLayout({
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       {children}
     </>

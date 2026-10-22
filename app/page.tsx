@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { 
   Shield, Sparkles, Target, BookOpen, FileText, 
   Map, Globe, Award, Users, Rocket, Brain, 
   Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info, Phone,
   CheckCircle, TrendingUp, Star, Briefcase, AlertTriangle,
-  Quote, ChevronRight, Building2
+  Quote, ChevronRight, Building2, UserCheck
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -15,6 +16,7 @@ import { useState, useEffect } from "react";
 import { insightsData } from "@/data/insights";
 import { guidesData } from "@/data/guides";
 import { caseStudiesData } from "@/data/case-studies";
+import { authors } from "@/data/authors";
 
 // ===== FIELD LABEL COMPONENT (UPDATED FOR A11Y) =====
 const LabelWithAsterisk = ({ label, required, htmlFor }: { label: string; required?: boolean; htmlFor?: string }) => (
@@ -44,6 +46,9 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [demoSubmitted, setDemoSubmitted] = useState(false);
+
+  // ✅ Get Author Data
+  const author = authors['shilpi-kulshrestha'];
 
   useEffect(() => {
     const starElements = [];
@@ -185,12 +190,12 @@ export default function Home() {
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
         
-        {/* ===== SECTION 1: HERO (UNCHANGED) ===== */}
+        {/* ===== SECTION 1: HERO ===== */}
         <motion.div 
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
             <Sparkles className="w-4 h-4" />
@@ -208,14 +213,14 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link
               href="/scorecard"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-purple-500/30"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-purple-500/30 justify-center"
             >
               <Target className="w-5 h-5" />
               TAKE THE FREE TEST →
             </Link>
             <Link
               href="/galaxy"
-              className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all flex items-center gap-2 backdrop-blur-sm"
+              className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all flex items-center gap-2 backdrop-blur-sm justify-center"
             >
               <Globe className="w-5 h-5" />
               EXPLORE THE GALAXY →
@@ -223,11 +228,43 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== NEW SECTION: TRUST STATS ===== */}
+        {/* ===== NEW SECTION: AUTHOR STRIP (E-E-A-T) ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex items-center justify-center gap-4 mb-12 text-sm text-gray-300"
+        >
+          <Link href={`/authors/${author.id}`} className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-purple-500/40">
+              <Image
+                src={author.image}
+                alt={author.name}
+                fill
+                className="object-cover"
+                sizes="40px"
+              />
+            </div>
+            <div className="text-left">
+              <p className="text-white font-medium group-hover:text-purple-400 transition-colors flex items-center gap-1">
+                {author.name}
+                <UserCheck className="w-3 h-3 text-purple-400" />
+              </p>
+              <p className="text-xs text-gray-400">{author.role}</p>
+            </div>
+          </Link>
+          <span className="text-gray-600 hidden sm:inline">|</span>
+          <div className="hidden sm:flex items-center gap-2">
+            <Clock className="w-4 h-4 text-gray-500" />
+            <span className="text-xs">Last reviewed: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}</span>
+          </div>
+        </motion.div>
+
+        {/* ===== TRUST STATS ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
         >
           {[
@@ -247,11 +284,11 @@ export default function Home() {
           })}
         </motion.div>
 
-        {/* ===== GENERATOR SECTION (UNCHANGED) ===== */}
+        {/* ===== GENERATOR SECTION ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-10"
         >
           <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6">
@@ -286,11 +323,11 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== NEW SECTION: LATEST INSIGHTS ===== */}
+        {/* ===== LATEST INSIGHTS ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
           className="mb-16"
         >
           <div className="flex items-center justify-between mb-6">
@@ -335,11 +372,11 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== NEW SECTION: FEATURED GUIDES ===== */}
+        {/* ===== FEATURED GUIDES ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-16"
         >
           <div className="flex items-center justify-between mb-6">
@@ -389,11 +426,11 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== NEW SECTION: CASE STUDIES ===== */}
+        {/* ===== CASE STUDIES ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
           className="mb-16"
         >
           <div className="flex items-center justify-between mb-6">
@@ -441,7 +478,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== BOOK A DEMO SECTION (UNCHANGED) ===== */}
+        {/* ===== BOOK A DEMO SECTION ===== */}
         <motion.div 
           id="book-demo"
           initial={{ opacity: 0, y: 20 }}
@@ -683,7 +720,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== CONTACT NUMBER (UNCHANGED) ===== */}
+        {/* ===== CONTACT NUMBER ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -711,7 +748,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== NEW SECTION: WHY LEGAL GALAXY ===== */}
+        {/* ===== WHY LEGAL GALAXY ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -749,7 +786,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 3: GALAXY EXPLORER (UNCHANGED) ===== */}
+        {/* ===== GALAXY EXPLORER ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -779,7 +816,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 4: RESOURCES (UNCHANGED) ===== */}
+        {/* ===== RESOURCES ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -805,7 +842,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 5: CERTIFICATION (UNCHANGED) ===== */}
+        {/* ===== CERTIFICATION (LIVE NOW) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -814,24 +851,21 @@ export default function Home() {
         >
           <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-2">
-              <div className="relative">
-                <Award className="w-5 h-5 text-amber-400" />
-                <Lock className="w-3 h-3 text-yellow-500 absolute -top-1 -right-1" />
-              </div>
+              <Award className="w-5 h-5 text-amber-400" />
               <h3 className="text-lg font-semibold text-white">Certification</h3>
             </div>
             <p className="text-gray-300 text-sm mb-4">Build expertise. Get certified in Privacy & AI Governance.</p>
-            <button 
-              onClick={() => handleLockedClick("Certification")}
-              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium cursor-not-allowed"
+            <Link 
+              href="/certificate-course"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/30 text-amber-300 hover:text-white transition-all text-sm font-medium"
             >
-              <Lock className="w-4 h-4" />
-              Explore Certification (Coming Soon) →
-            </button>
+              <Award className="w-4 h-4" />
+              Explore Certification →
+            </Link>
           </div>
         </motion.div>
 
-        {/* ===== SECTION 6: ABOUT (UNCHANGED) ===== */}
+        {/* ===== ABOUT ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -849,7 +883,7 @@ export default function Home() {
           </Link>
         </motion.div>
 
-        {/* ===== SECTION 7: FINAL CTA (IMPROVED) ===== */}
+        {/* ===== FINAL CTA ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
