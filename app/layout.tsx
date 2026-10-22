@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: "/images/home1.jpeg",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Legal Galaxy — Privacy & AI Governance",
