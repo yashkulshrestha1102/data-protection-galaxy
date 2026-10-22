@@ -1,23 +1,16 @@
 "use client";
 
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   ArrowLeft, Search, X, Globe as GlobeIcon,
-  MapPin, Loader2
+  MapPin
 } from 'lucide-react';
 import { countries, getRegions, getLevels, getCountryById } from '@/data/countries';
 
-// ✅ 100% TypeScript-safe dynamic import
-const Globe3D = lazy(async () => {
-  const module = await import('@/components/map/Globe3D');
-  return { default: module.Globe3D };
-});
-
-const CountryDetail = lazy(async () => {
-  const module = await import('@/components/map/CountryDetail');
-  return { default: module.CountryDetail };
-});
+// ✅ FIX: Removed lazy loading. Direct import is 100% stable.
+import { Globe3D } from '@/components/map/Globe3D';
+import { CountryDetail } from '@/components/map/CountryDetail';
 
 export default function MapPage() {
   const [selectedCountryId, setSelectedCountryId] = useState('india');
@@ -140,28 +133,14 @@ export default function MapPage() {
         {/* Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
           <div className="relative h-[600px] w-full">
-            <Suspense fallback={
-              <div className="flex flex-col items-center justify-center h-full bg-black/20 rounded-2xl border border-white/5">
-                <Loader2 className="w-12 h-12 text-purple-400 animate-spin mb-4" />
-                <span className="text-gray-400 font-medium">Loading 3D Galaxy Map...</span>
-              </div>
-            }>
-              <Globe3D 
-                onCountryClick={(id) => setSelectedCountryId(id)}
-                selectedCountryId={selectedCountryId}
-              />
-            </Suspense>
+            <Globe3D 
+              onCountryClick={(id) => setSelectedCountryId(id)}
+              selectedCountryId={selectedCountryId}
+            />
           </div>
 
-          {/* ESLint warning fix: height properly handled */}
           <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md p-6 h-[600px] shadow-2xl relative overflow-hidden">
-            <Suspense fallback={
-              <div className="flex items-center justify-center h-full">
-                <Loader2 className="w-8 h-8 text-purple-400 animate-spin" />
-              </div>
-            }>
-              <CountryDetail country={selectedCountry || null} />
-            </Suspense>
+            <CountryDetail country={selectedCountry || null} />
           </div>
         </div>
 

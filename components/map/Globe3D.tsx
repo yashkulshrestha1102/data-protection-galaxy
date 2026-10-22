@@ -1,180 +1,291 @@
 "use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { 
-  Building, CheckCircle, AlertCircle, Shield, Users, 
-  Globe, Database, AlertTriangle, FileText, Scale,
-  XCircle, ExternalLink, ChevronRight
-} from 'lucide-react';
-import { Country } from '@/data/countries';
+import { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { countries } from '@/data/countries';
 
-const iconMap: Record<string, any> = {
-  Building, CheckCircle, AlertCircle, Shield, Users,
-  Globe, Database, AlertTriangle, FileText, Scale, XCircle
-};
-
-interface CountryDetailProps {
-  country: Country | null;
+interface Globe3DProps {
+  onCountryClick: (countryId: string) => void;
+  selectedCountryId: string;
 }
 
-export const CountryDetail = ({ country }: CountryDetailProps) => {
-  if (!country) {
-    return (
-      <div className="h-full flex items-center justify-center text-center p-8 bg-white/5 border border-white/10 rounded-2xl">
-        <div className="space-y-4">
-          <div className="text-6xl animate-bounce">🌍</div>
-          <h3 className="text-2xl font-semibold text-white">Select a Country</h3>
-          <p className="text-gray-400 max-w-sm">Click on any country on the 3D globe to explore its data protection laws and privacy framework.</p>
-        </div>
-      </div>
-    );
-  }
+export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
+  const controlsRef = useRef<OrbitControls | null>(null);
+  
+  const mountedRef = useRef(false);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const animationIdRef = useRef<number | null>(null);
+  const globeRef = useRef<THREE.Mesh | null>(null);
 
-  const totalTopics = country.topics.length;
-  const addressedTopics = country.topics.filter(t => t.status === 'Addressed').length;
-  const partialTopics = country.topics.filter(t => t.status === 'Partial').length;
-  const compliancePercentage = Math.round((addressedTopics / totalTopics) * 100);
-
-  const levelColors = {
-    Comprehensive: 'text-green-400 bg-green-500/10 border-green-500/30',
-    Substantial: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
-    Moderate: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30',
-    Limited: 'text-orange-400 bg-orange-500/10 border-orange-500/30',
-    None: 'text-red-400 bg-red-500/10 border-red-500/30',
+  const cleanupGlobe = () => {
+    if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
+    if (rendererRef.current) rendererRef.current.dispose();
+    if (containerRef.current) {
+      const canvas = containerRef.current.querySelector('canvas');
+      if (canvas) containerRef.current.removeChild(canvas);
+    }
+    controlsRef.current = null;
+    globeRef.current = null;
+    mountedRef.current = false;
   };
 
-  const levelEmojis = {
-    Comprehensive: '🟢',
-    Substantial: '🔵',
-    Moderate: '🟡',
-    Limited: '🟠',
-    None: '🔴',
-  };
+  useEffect(() => {
+    if (mountedRef.current) return cleanupGlobe;
+    mountedRef.current = true;
+
+    if (!containerRef.current) return;
+
+    // ===== SCENE SETUP =====
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, containerRef.current.clientWidth / containerRef.current.clientHeight, 0.1, 1000);
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    containerRef.current.appendChild(renderer.domElement);
+    rendererRef.current = renderer;
+
+    // ===== 1. MAIN GLOBE (Dark Base) =====
+    const radius = 2.5;
+    const geometry = new THREE.SphereGeometry(radius, 64, 64);
+    const material = new THREE.MeshPhongMaterial({
+      color: 0x0a0a2e, 
+      emissive: 0x1e3a8a,
+      emissiveIntensity: 0.3,
+      transparent: true,
+      opacity: 0.95,
+      shininess: 50,
+    });
+    
+    const globe = new THREE.Mesh(geometry, material);
+    globeRef.current = globe;
+    scene.add(globe);
+
+    // ===== 2. WIREFRAME OVERLAY (Galaxy Tech Effect) =====
+    const wireframeGeo = new THREE.SphereGeometry(radius * 1.001, 32, 32);
+    const wireframeMat = new THREE.MeshBasicMaterial({
+      color: 0x8B5CF6,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.15,
+    });
+    const wireframe = new THREE.Mesh(wireframeGeo, wireframeMat);
+    scene.add(wireframe);
+
+    // ===== 3. ATMOSPHERE GLOW =====
+    const glowGeometry = new THREE.SphereGeometry(radius * 1.05, 64, 64);
+    const glowMaterial = new THREE.MeshBasicMaterial({
+      color: 0x8B5CF6,
+      transparent: true,
+      opacity: 0.08,
+      side: THREE.BackSide,
+    });
+    const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+    scene.add(glow);
+
+    // ===== 4. STARS BACKGROUND =====
+    const starsGeometry = new THREE.BufferGeometry();
+    const starsCount = 4000;
+    const starsPositions = new Float32Array(starsCount * 3);
+    
+    for (let i = 0; i < starsCount; i++) {
+      const r = 50 + Math.random() * 150;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      starsPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      starsPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      starsPositions[i * 3 + 2] = r * Math.cos(phi);
+    }
+    
+    starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
+    const starsMaterial = new THREE.PointsMaterial({
+      size: 0.15,
+      transparent: true,
+      opacity: 0.8,
+      color: 0xffffff,
+      sizeAttenuation: true,
+    });
+    const stars = new THREE.Points(starsGeometry, starsMaterial);
+    scene.add(stars);
+
+    // ===== 5. LIGHTS =====
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const light = new THREE.DirectionalLight(0xffffff, 1.5);
+    light.position.set(5, 3, 5);
+    scene.add(light);
+    const backLight = new THREE.DirectionalLight(0x8B5CF6, 1);
+    backLight.position.set(-5, -3, -5);
+    scene.add(backLight);
+
+    camera.position.set(0, 0, 8);
+
+    // ===== 6. CONTROLS (Drag to rotate) =====
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controlsRef.current = controls;
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.5;
+    controls.enableZoom = true;
+    controls.minDistance = 4;
+    controls.maxDistance = 12;
+    controls.enablePan = false;
+
+    // ===== 7. RAYCASTER (Click / Hover) =====
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let isDragging = false;
+    let mouseDownX = 0;
+    let mouseDownY = 0;
+
+    const onPointerMove = (event: PointerEvent) => {
+      const dx = event.clientX - mouseDownX;
+      const dy = event.clientY - mouseDownY;
+      if (Math.sqrt(dx*dx + dy*dy) > 5) isDragging = true;
+      
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(globe);
+      
+      if (intersects.length > 0) {
+        const point = intersects[0].point;
+        const lat = Math.asin(point.y / radius) * 180 / Math.PI;
+        const lng = Math.atan2(point.z, point.x) * 180 / Math.PI;
+        
+        let nearestCountry = null;
+        let minDistance = Infinity;
+        
+        countries.forEach(country => {
+          const d = Math.sqrt(Math.pow(lat - country.coordinates.lat, 2) + Math.pow(lng - country.coordinates.lng, 2));
+          if (d < minDistance) { minDistance = d; nearestCountry = country; }
+        });
+        
+        if (nearestCountry && minDistance < 20) {
+          setHoveredCountry(nearestCountry.id);
+          renderer.domElement.style.cursor = 'pointer';
+        } else {
+          setHoveredCountry(null);
+          renderer.domElement.style.cursor = 'grab';
+        }
+      } else {
+        setHoveredCountry(null);
+        renderer.domElement.style.cursor = 'grab';
+      }
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      if (isDragging) return;
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(globe);
+      
+      if (intersects.length > 0) {
+        const point = intersects[0].point;
+        const lat = Math.asin(point.y / radius) * 180 / Math.PI;
+        const lng = Math.atan2(point.z, point.x) * 180 / Math.PI;
+        
+        let nearestCountry = null;
+        let minDistance = Infinity;
+        
+        countries.forEach(country => {
+          const d = Math.sqrt(Math.pow(lat - country.coordinates.lat, 2) + Math.pow(lng - country.coordinates.lng, 2));
+          if (d < minDistance) { minDistance = d; nearestCountry = country; }
+        });
+        
+        if (nearestCountry && minDistance < 20) {
+          onCountryClick(nearestCountry.id);
+          controls.autoRotate = false;
+          setTimeout(() => { controls.autoRotate = true; }, 3000);
+        }
+      }
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      mouseDownX = event.clientX;
+      mouseDownY = event.clientY;
+      isDragging = false;
+      renderer.domElement.style.cursor = 'grabbing';
+    };
+
+    renderer.domElement.addEventListener('pointerdown', onPointerDown);
+    renderer.domElement.addEventListener('pointermove', onPointerMove);
+    renderer.domElement.addEventListener('pointerup', onPointerUp);
+
+    // ===== 8. RESIZE =====
+    const handleResize = () => {
+      if (!containerRef.current) return;
+      const width = containerRef.current.clientWidth;
+      const height = containerRef.current.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+    window.addEventListener('resize', handleResize);
+
+    // ===== 9. ANIMATION LOOP =====
+    const animate = () => {
+      animationIdRef.current = requestAnimationFrame(animate);
+      if (globeRef.current) globeRef.current.rotation.y += 0.0005;
+      wireframe.rotation.y += 0.0005;
+      glow.rotation.y += 0.0005;
+      stars.rotation.y -= 0.0001;
+      controls.update();
+      renderer.render(scene, camera);
+    };
+    
+    setTimeout(() => setIsLoading(false), 500);
+    animate();
+
+    return () => {
+      renderer.domElement.removeEventListener('pointerdown', onPointerDown);
+      renderer.domElement.removeEventListener('pointermove', onPointerMove);
+      renderer.domElement.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('resize', handleResize);
+      cleanupGlobe();
+    };
+  }, [onCountryClick]);
+
+  const hoveredCountryData = countries.find(c => c.id === hoveredCountry);
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.4 }}
-      className="h-full flex flex-col"
-    >
-      <div className="flex-1 overflow-y-auto pr-2 pb-4 scrollbar-thin scrollbar-thumb-purple-500/20 scrollbar-track-transparent">
-        {/* Header */}
-        <div className="flex items-start gap-4 mb-6">
-          <div className="text-6xl drop-shadow-lg">{country.flag}</div>
-          <div className="flex-1 min-w-0">
-            <h2 className="text-3xl font-bold text-white leading-tight">{country.name}</h2>
-            <p className="text-sm font-medium text-purple-300 mt-1">{country.lawName}</p>
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-b from-[#050510] to-[#0a0a2e] border border-white/10 shadow-2xl shadow-purple-500/10">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10 backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+            <span className="text-purple-300 text-sm font-medium tracking-widest uppercase">Initializing Galaxy Map...</span>
           </div>
         </div>
-
-        {/* Authority */}
-        <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10 mb-6">
-          <Building className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
-          <div>
-            <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Regulatory Authority</p>
-            <p className="text-white font-medium text-sm mt-0.5">{country.authority}</p>
-          </div>
+      )}
+      
+      <div ref={containerRef} className="w-full h-full cursor-grab" />
+      
+      {hoveredCountryData && !isLoading && (
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 px-5 py-2.5 rounded-full bg-black/80 backdrop-blur-md border border-purple-500/30 pointer-events-none z-20 shadow-xl shadow-purple-500/20 animate-in fade-in slide-in-from-top-2">
+          <span className="text-sm text-white font-semibold flex items-center gap-2">
+            <span className="text-xl">{hoveredCountryData.flag}</span>
+            {hoveredCountryData.name}
+          </span>
         </div>
-
-        {/* Region & Level */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          <div className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-gray-300">
-            📍 {country.region}
-          </div>
-          <div className={`px-3 py-1.5 rounded-lg border text-xs font-bold ${levelColors[country.level]}`}>
-            {levelEmojis[country.level]} {country.level}
-          </div>
-          <div className="px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/30 text-xs font-bold text-purple-300">
-            {addressedTopics}/{totalTopics} Topics Addressed
-          </div>
-        </div>
-
-        {/* ✅ SEO FIX: Overview without line-clamp */}
-        <div className="mb-8">
-          <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-2">Law Overview</h4>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            {country.overview}
-          </p>
-        </div>
-
-        {/* Topics Coverage */}
-        <div className="mb-4">
-          <div className="flex items-center justify-between mb-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">14-Point Coverage</h4>
-            <span className="text-xs font-bold text-green-400">{compliancePercentage}% Match</span>
-          </div>
-
-          <div className="w-full h-2 bg-black/50 rounded-full mb-4 overflow-hidden border border-white/5">
-            <motion.div 
-              className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${compliancePercentage}%` }}
-              transition={{ duration: 1, delay: 0.2 }}
-            />
-          </div>
-
-          <div className="grid grid-cols-1 gap-2">
-            {country.topics.slice(0, 8).map((topic, i) => {
-              const Icon = iconMap[topic.icon] || CheckCircle;
-              const isAddressed = topic.status === 'Addressed';
-              const isPartial = topic.status === 'Partial';
-              
-              return (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.03 }}
-                  className={`flex items-center justify-between p-2.5 rounded-lg border ${
-                    isAddressed ? 'bg-green-500/5 border-green-500/20' 
-                    : isPartial ? 'bg-yellow-500/5 border-yellow-500/20'
-                    : 'bg-red-500/5 border-red-500/20'
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <Icon className={`w-4 h-4 flex-shrink-0 ${
-                      isAddressed ? 'text-green-400' : isPartial ? 'text-yellow-400' : 'text-red-400'
-                    }`} />
-                    <span className="text-xs text-gray-200 truncate">{topic.title}</span>
-                  </div>
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wide flex-shrink-0 ml-2 ${
-                    isAddressed ? 'bg-green-500/20 text-green-400' 
-                    : isPartial ? 'bg-yellow-500/20 text-yellow-400'
-                    : 'bg-red-500/20 text-red-400'
-                  }`}>
-                    {topic.status}
-                  </span>
-                </motion.div>
-              );
-            })}
-          </div>
-          {country.topics.length > 8 && (
-            <div className="text-xs text-gray-500 text-center pt-2 font-medium">
-              +{country.topics.length - 8} more compliance topics covered
-            </div>
-          )}
-        </div>
+      )}
+      
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 pointer-events-none">
+        <span className="text-xs text-gray-300 flex items-center gap-2">
+          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.8)]" />
+          Drag to rotate • Click any country to explore
+        </span>
       </div>
-
-      {/* Sticky Buttons */}
-      <div className="pt-4 border-t border-white/10 mt-2 flex flex-col sm:flex-row gap-3">
-        <Link 
-          href={`/country/${country.id}`}
-          className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold text-sm hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
-        >
-          View Full Report
-          <ExternalLink className="w-4 h-4" />
-        </Link>
-        <Link 
-          href="/scorecard"
-          className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-all flex items-center justify-center gap-2 hover:scale-105"
-        >
-          Compliance Score
-          <ChevronRight className="w-4 h-4" />
-        </Link>
-      </div>
-    </motion.div>
+    </div>
   );
 };
