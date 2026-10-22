@@ -3,7 +3,8 @@
 import { Module, ExamData } from '@/app/types/course';
 
 // ===== IMPORT ALL MODULES =====
-import { module01 } from './module-01';
+import { module01 } from './module01';
+
 // TODO: Import remaining modules as they are completed
 // import { module02 } from './module-02';
 // import { module03 } from './module-03';
