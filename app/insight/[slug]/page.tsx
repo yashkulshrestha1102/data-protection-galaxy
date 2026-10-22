@@ -30,19 +30,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       'AI Governance',
     ],
     authors: [{ name: insight.author }],
-    openGraph: {
+       openGraph: {
+      type: 'article',
       title: insight.title,
       description: insight.excerpt,
-      type: 'article',
       publishedTime: insight.date,
       authors: [insight.author],
       siteName: 'Legal Galaxy',
       locale: 'en_IN',
+      images: [{                        // 👈 YAHAN ADD/CHANGE KIYA
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: insight.title,
+      }],
     },
     twitter: {
       card: 'summary_large_image',
       title: insight.title,
       description: insight.excerpt,
+      images: ["/images/og-image.jpg"], // 👈 YAHAN CHANGE KIYA
     },
     alternates: {
       canonical: `/insight/${insight.slug}`,

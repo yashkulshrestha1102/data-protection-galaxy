@@ -30,13 +30,13 @@ export async function generateMetadata({
       title: `${country.name} — Data Protection Law`,
       description: country.overview.slice(0, 155),
       url: `/country/${id}`,
-      images: ["/images/home1.jpeg"],
+      images: ["/images/og-image.jpg"],
     },
     twitter: {
       card: "summary_large_image",
       title: `${country.name} — Data Protection Law`,
       description: country.overview.slice(0, 155),
-      images: ["/images/home1.jpeg"],
+      images: ["/images/og-image.jpg"],
     },
   };
 }

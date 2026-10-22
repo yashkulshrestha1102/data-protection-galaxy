@@ -29,7 +29,7 @@ export async function generateMetadata({
     title: caseStudy.title,
     description: caseStudy.description,
     alternates: { canonical: `/resources/case-studies/${slug}` },
-    openGraph: {
+        openGraph: {
       type: "article",
       title: caseStudy.title,
       description: caseStudy.description,
@@ -38,7 +38,7 @@ export async function generateMetadata({
       authors: ["Businezexcellence StartX LLP"],
       images: [
         {
-          url: "/images/home1.jpeg",
+          url: "/images/og-image.jpg", // 👈 YAHAN CHANGE KIYA
           width: 1200,
           height: 630,
           alt: caseStudy.title,
@@ -49,7 +49,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: caseStudy.title,
       description: caseStudy.description,
-      images: ["/images/home1.jpeg"],
+      images: ["/images/og-image.jpg"], // 👈 YAHAN CHANGE KIYA
     },
   };
 }

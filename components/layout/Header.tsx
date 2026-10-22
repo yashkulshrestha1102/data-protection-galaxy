@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, Lock, Info, Phone, Mail } from "lucide-react";
 import { ConsultantModal } from "./ConsultantModal";
-
+import Image from "next/image";
 // ===== SOCIAL ICONS (SVG) =====
 const LinkedInIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0A66C2" className="w-4 h-4">
@@ -173,11 +173,14 @@ export const Header = () => {
               <div className="relative flex flex-col items-start">
                 <div className="absolute -left-8 top-1/2 -translate-y-1/2 flex items-center justify-center">
                   <div className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-logo-3d overflow-hidden">
-                    <img 
-                      src="/favicon.ico"
-                      alt="Legal Galaxy Logo"
-                      className="w-full h-full object-cover rounded-full"
-                    />
+                    <Image 
+  src="/favicon.ico"
+  alt="Legal Galaxy Logo — Privacy & AI Governance Platform"
+  width={44}
+  height={44}
+  className="w-full h-full object-cover rounded-full"
+  priority
+/>
                     <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-white/30 to-transparent pointer-events-none" />
                   </div>
                 </div>
