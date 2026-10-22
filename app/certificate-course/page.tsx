@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { fullModulesData, examData } from '@/data/modules';
+import { authors } from '@/data/authors';
 import { 
   Shield, Clock, Building, FileText, CheckCircle, Users, 
   Star, Scale, AlertTriangle, Globe, Wrench, Database,
   BarChart, Brain, Award, Sparkles, ArrowRight, Target,
-  BookOpen, GraduationCap, X, Play, Loader2, Lock
+  BookOpen, GraduationCap, X, Play, Loader2, Lock,
+  ArrowLeft, UserCheck, Calendar
 } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
@@ -15,6 +17,42 @@ const iconMap: Record<string, any> = {
   Star, Scale, AlertTriangle, Globe, Wrench, Database,
   BarChart, Brain, Award
 };
+
+// ===== FAQ DATA =====
+const courseFaqs = [
+  {
+    q: 'Is the DPDPA Master Course completely free?',
+    a: 'Yes. The DPDPA Master Course is entirely free — all 20 modules, 250+ lessons, quizzes, and the final certification exam are available at no cost. There are no hidden fees or premium tiers.',
+  },
+  {
+    q: 'Do I need any prior legal or technical background?',
+    a: 'No. The course is designed for beginners as well as experienced professionals. Module 1 starts with foundational privacy concepts, and the course progressively builds up to advanced topics like AI governance and cross-border data transfers.',
+  },
+  {
+    q: 'How long does it take to complete the course?',
+    a: 'The full course is approximately 120 hours of content. Most learners complete it over 4-8 weeks, but you can learn at your own pace. There is no deadline.',
+  },
+  {
+    q: 'Is the certificate recognized by employers?',
+    a: 'The certificate is issued by Legal Galaxy (Businezexcellence StartX LLP) and demonstrates your commitment to DPDPA compliance. While there is no single "official" certification for DPDPA, employers increasingly value demonstrated knowledge of the Act.',
+  },
+  {
+    q: 'What happens after I complete all modules?',
+    a: 'Once you complete all 20 modules, the final certification exam unlocks. The exam has 100 multiple-choice questions, and you need 80% to pass. Upon passing, you receive a downloadable certificate with a unique certificate ID.',
+  },
+  {
+    q: 'Can I access the course on mobile?',
+    a: 'Yes. The course is fully responsive and works on all devices — desktop, tablet, and mobile. Your progress is saved in your browser, so you can switch devices without losing progress.',
+  },
+  {
+    q: 'Do I need to create an account?',
+    a: 'No account is required. Your progress is saved locally in your browser. However, if you clear your browser data, your progress will be lost. We recommend completing the course on a single device for the best experience.',
+  },
+  {
+    q: 'What if I fail the certification exam?',
+    a: 'You can retake the exam as many times as needed. There is no limit. We recommend reviewing the modules and retaking the exam when you feel ready.',
+  },
+];
 
 export default function CertificateCoursePage() {
   // ===== EXAM STATE =====
@@ -34,6 +72,9 @@ export default function CertificateCoursePage() {
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
   const [allModulesComplete, setAllModulesComplete] = useState(false);
   const [moduleProgress, setModuleProgress] = useState<Record<number, number>>({});
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const author = authors['shilpi-kulshrestha'];
 
   // ===== LOAD COMPLETED LESSONS FROM LOCALSTORAGE =====
   useEffect(() => {
@@ -87,7 +128,7 @@ export default function CertificateCoursePage() {
   // ===== EXAM HANDLERS =====
   const handleStartExam = () => {
     if (!allModulesComplete) {
-      alert('⚠️ Please complete all 20 modules before starting the final exam!');
+      alert('⚠️ Please complete all modules before starting the final exam!');
       return;
     }
     setShowInstructions(true);
@@ -193,6 +234,35 @@ export default function CertificateCoursePage() {
           </Link>
         </div>
 
+        {/* ===== AUTHOR BIO ===== */}
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-start gap-5">
+          <div className="flex-shrink-0">
+            <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-purple-500/40">
+              <img
+                src={author.image}
+                alt={author.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="flex-1">
+            <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-2">
+              <UserCheck className="w-3 h-3" />
+              Course Author
+            </div>
+            <h3 className="text-lg font-semibold text-white">{author.name}</h3>
+            <p className="text-sm text-gray-400 mb-2">{author.role}</p>
+            <p className="text-sm text-gray-300 leading-relaxed">{author.bio}</p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              {author.credentials.map((cred, i) => (
+                <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-300">
+                  {cred}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* ===== STATS ===== */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           <div className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-colors">
@@ -218,7 +288,7 @@ export default function CertificateCoursePage() {
         </div>
 
         {/* ===== MODULES ===== */}
-        <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 flex-wrap">
           <span>All Modules</span>
           <span className="text-sm text-gray-400 font-normal">({fullModulesData.length} modules)</span>
           <span className="text-sm text-emerald-400 font-normal ml-4">
@@ -263,7 +333,6 @@ export default function CertificateCoursePage() {
                       <span>•</span>
                       <span>{module.chapters.length} chapters</span>
                     </div>
-                    {/* Progress bar */}
                     <div className="mt-2 w-full h-1 bg-white/10 rounded-full overflow-hidden">
                       <div 
                         className={`h-full rounded-full transition-all duration-500 ${
@@ -285,7 +354,6 @@ export default function CertificateCoursePage() {
           <GraduationCap className="w-12 h-12 text-purple-400 mx-auto mb-3" />
           <h2 className="text-2xl font-bold text-white mb-2">Ready for Certification?</h2>
           
-          {/* Progress display */}
           <div className="max-w-md mx-auto mb-4">
             <div className="flex justify-between text-sm text-gray-400 mb-1">
               <span>Progress</span>
@@ -320,7 +388,6 @@ export default function CertificateCoursePage() {
             </div>
           </div>
 
-          {/* ===== START EXAM BUTTON - LOCKED UNTIL ALL MODULES COMPLETE ===== */}
           <button 
             onClick={handleStartExam} 
             disabled={!allModulesComplete}
@@ -346,6 +413,62 @@ export default function CertificateCoursePage() {
               ⚠️ Complete all {totalModules} modules to unlock the exam
             </p>
           )}
+        </div>
+
+        {/* ===== FAQ SECTION ===== */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <FileText className="w-6 h-6 text-purple-400" />
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3">
+            {courseFaqs.map((faq, i) => (
+              <details
+                key={i}
+                open={openFaq === i}
+                onToggle={(e) => setOpenFaq((e.target as HTMLDetailsElement).open ? i : null)}
+                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all"
+              >
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <span className="text-white font-medium pr-4">{faq.q}</span>
+                  <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">+</span>
+                </summary>
+                <p className="text-gray-300 text-sm leading-relaxed mt-3 pt-3 border-t border-white/10">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        {/* ===== RELATED LINKS ===== */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+            <BookOpen className="w-6 h-6 text-purple-400" />
+            Continue Your DPDPA Journey
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { title: 'DPDPA Complete Guide', href: '/resources/guides/dpdpa-2023-complete-guide', desc: 'End-to-end guide to the Act.' },
+              { title: 'Core DPDPA Topics', href: '/galaxy', desc: 'Rights, obligations, penalties and more.' },
+              { title: 'Free Assessment', href: '/scorecard', desc: 'Test your organisation\'s DPDPA readiness.' },
+              { title: 'Latest Insights', href: '/insight', desc: 'Expert analysis on DPDPA and privacy.' },
+              { title: 'Case Studies', href: '/resources/case-studies', desc: 'Real-world compliance scenarios.' },
+              { title: 'Document Generator', href: '/generator', desc: 'Generate DPDPA documents instantly.' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all"
+              >
+                <h3 className="text-sm font-medium text-white group-hover:text-purple-400 transition-colors flex items-center justify-between gap-2">
+                  {link.title}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                </h3>
+                <p className="text-xs text-gray-400 mt-1">{link.desc}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 

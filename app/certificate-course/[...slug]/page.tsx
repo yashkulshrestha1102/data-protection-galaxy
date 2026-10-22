@@ -4,21 +4,21 @@ import { use, useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { fullModulesData } from '@/data/modules';
-import { Clock, BookOpen, CheckCircle, ArrowLeft, Lock } from 'lucide-react';
+import { authors } from '@/data/authors';
+import { Clock, BookOpen, CheckCircle, ArrowLeft, Lock, UserCheck, ArrowRight } from 'lucide-react';
 import CompleteLessonButton from '@/components/certificate-course/CompleteLessonButton';
 
 export default function CoursePage({ params }: { params: Promise<{ slug: string[] }> }) {
-  // ===== USE() TO UNWRAP PARAMS =====
   const { slug } = use(params);
   const slugArray = slug || [];
   const [moduleId, , lessonId] = slugArray;
 
-  // ===== STATE FOR PROGRESS =====
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
   const [isModuleComplete, setIsModuleComplete] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // ===== LOAD COMPLETED LESSONS =====
+  const author = authors['shilpi-kulshrestha'];
+
   useEffect(() => {
     setMounted(true);
     const stored = localStorage.getItem('dpdpa_completed_lessons');
@@ -40,7 +40,6 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
     const totalLessons = module.chapters.reduce((acc, ch) => acc + ch.lessons.length, 0);
     const allLessonIds = module.chapters.flatMap(ch => ch.lessons.map(l => `${module.id}-${l.id}`));
 
-    // Check if all lessons completed
     useEffect(() => {
       if (mounted) {
         const allCompleted = allLessonIds.every(id => completedLessons.includes(id));
@@ -134,7 +133,6 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
             ))}
           </div>
 
-          {/* ===== MODULE QUIZ - DYNAMIC LOCK/UNLOCK ===== */}
           <div className="mt-8 rounded-xl p-4 border">
             {!isModuleComplete ? (
               <div className="flex items-center justify-between">
@@ -262,11 +260,28 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
                     case 'heading': return <h3 key={idx} className="text-xl font-bold text-white mt-6 mb-3">{item.content}</h3>;
                     case 'list': return <ul key={idx} className="space-y-2 mb-4">{item.items?.map((li, i) => <li key={i} className="flex items-start gap-2 text-gray-300"><span className="text-purple-400 mt-1">•</span> {li}</li>)}</ul>;
                     case 'callout': {
-                      const styles: any = { info: 'bg-blue-500/10 border-blue-500/30 text-blue-200', warning: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-200', tip: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200', important: 'bg-purple-500/10 border-purple-500/30 text-purple-200', danger: 'bg-red-500/10 border-red-500/30 text-red-200' };
+                      const styles: any = { info: 'bg-blue-500/10 border-blue-500/30 text-blue-200', warning: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-200', tip: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200', important: 'bg-purple-500/10 border-purple-500/30 text-purple-200', danger: 'bg-red-500/10 border-red-500/30 text-red-200', note: 'bg-gray-500/10 border-gray-500/30 text-gray-200' };
                       return <div key={idx} className={`p-4 rounded-lg border ${styles[item.calloutType || 'info']} mb-4`}><p className="text-sm">{item.content}</p></div>;
                     }
                     case 'example': return <div key={idx} className="bg-white/5 rounded-lg p-4 border border-white/10 mb-4"><h4 className="text-sm font-semibold text-gray-400 mb-2">💡 Example</h4><p className="text-gray-300 text-sm">{item.content}</p></div>;
                     case 'warning': return <div key={idx} className="bg-red-500/10 rounded-lg p-4 border border-red-500/30 mb-4"><h4 className="text-sm font-semibold text-red-400 mb-2">⚠️ Warning</h4><p className="text-gray-300 text-sm">{item.content}</p></div>;
+                    case 'quote': return <blockquote key={idx} className="border-l-4 border-purple-500/60 bg-white/5 px-5 py-3 my-4 rounded-r-lg italic text-gray-300">{item.content}</blockquote>;
+                    case 'table': return (
+                      <div key={idx} className="overflow-x-auto my-4">
+                        <table className="w-full border border-white/10 rounded-lg overflow-hidden">
+                          <thead className="bg-white/10">
+                            <tr>{item.headers?.map((h, i) => <th key={i} className="px-4 py-2 text-left text-white text-sm font-semibold">{h}</th>)}</tr>
+                          </thead>
+                          <tbody>
+                            {item.rows?.map((row, i) => (
+                              <tr key={i} className="border-t border-white/10">
+                                {row.map((cell, j) => <td key={j} className="px-4 py-2 text-gray-300 text-sm">{cell}</td>)}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    );
                     default: return null;
                   }
                 })}
@@ -278,11 +293,70 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
             </div>
           )}
 
-          {/* ===== COMPLETE LESSON BUTTON - CLIENT COMPONENT ===== */}
+          {/* ===== GLOSSARY ===== */}
+          {lesson.glossary && lesson.glossary.length > 0 && (
+            <div className="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+              <h3 className="text-lg font-semibold text-white mb-4">📖 Glossary</h3>
+              <dl className="space-y-3">
+                {lesson.glossary.map((term, i) => (
+                  <div key={i}>
+                    <dt className="text-sm font-semibold text-purple-300">{term.term}</dt>
+                    <dd className="text-sm text-gray-300 mt-1">{term.definition}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+
+          {/* ===== KEY TAKEAWAYS ===== */}
+          {lesson.keyTakeaways && lesson.keyTakeaways.length > 0 && (
+            <div className="bg-emerald-500/5 rounded-xl p-6 border border-emerald-500/20 mb-8">
+              <h3 className="text-lg font-semibold text-emerald-300 mb-4">🔑 Key Takeaways</h3>
+              <ul className="space-y-2">
+                {lesson.keyTakeaways.map((takeaway, i) => (
+                  <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
+                    <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span>{takeaway}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* ===== REFERENCES ===== */}
+          {lesson.references && lesson.references.length > 0 && (
+            <div className="bg-white/5 rounded-xl p-6 border border-white/10 mb-8">
+              <h3 className="text-lg font-semibold text-white mb-4">📚 Further Reading</h3>
+              <ul className="space-y-2">
+                {lesson.references.map((ref, i) => (
+                  <li key={i} className="text-sm text-gray-300">
+                    <span className="font-medium text-white">{ref.title}</span> — {ref.source} ({ref.year})
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* ===== AUTHOR BIO ===== */}
+          <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-8 flex items-start gap-4">
+            <div className="flex-shrink-0">
+              <img src={author.image} alt={author.name} className="w-14 h-14 rounded-full object-cover border-2 border-purple-500/40" />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 mb-1">
+                <UserCheck className="w-3 h-3" /> Course Author
+              </div>
+              <h4 className="text-sm font-semibold text-white">{author.name}</h4>
+              <p className="text-xs text-gray-400 mt-1">{author.bio.slice(0, 200)}...</p>
+            </div>
+          </div>
+
+          {/* ===== COMPLETE LESSON BUTTON ===== */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10">
             {prevLesson ? <Link href={`/certificate-course/${moduleId}/lesson/${prevLesson.id}`} className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 w-full sm:w-auto justify-center">← Previous</Link> : <div />}
             
-            <CompleteLessonButton lessonKey={lessonKey} moduleId={moduleId} />
+            <CompleteLessonButton lessonKey={lessonKey} moduleId={Number(moduleId)} />
+
 
             {nextLesson ? <Link href={`/certificate-course/${moduleId}/lesson/${nextLesson.id}`} className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 w-full sm:w-auto justify-center">Next →</Link> : <Link href={`/certificate-course/${moduleId}`} className="text-purple-400 hover:text-purple-300 transition-colors text-sm flex items-center gap-1 bg-purple-500/10 px-4 py-2 rounded-lg border border-purple-500/20 hover:bg-purple-500/20 w-full sm:w-auto justify-center"><CheckCircle className="w-4 h-4" /> Complete Module</Link>}
           </div>

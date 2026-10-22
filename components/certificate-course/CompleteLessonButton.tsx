@@ -5,7 +5,7 @@ import { CheckCircle } from 'lucide-react';
 
 interface CompleteLessonButtonProps {
   lessonKey: string;
-  moduleId: number;
+  moduleId: string |number;
 }
 
 export default function CompleteLessonButton({ lessonKey, moduleId }: CompleteLessonButtonProps) {
