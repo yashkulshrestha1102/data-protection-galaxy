@@ -38,6 +38,7 @@ export const insightsData: Insight[] = [
       
       <h2>Board Responsibilities</h2>
       <p>Boards must ensure that their organisations have robust data protection frameworks in place. This includes:</p>
+      <p>For a complete understanding of the legal framework, read our <a href="/resources/guides/dpdpa-2023-complete-guide" class="text-blue-400 hover:text-blue-300 underline">DPDPA 2023 Complete Guide</a>.</p>
       <ul>
         <li>Appointing a Data Protection Officer (DPO)</li>
         <li>Implementing consent management mechanisms</li>
@@ -80,6 +81,7 @@ export const insightsData: Insight[] = [
       
       <h2>What to Tell Affected Individuals</h2>
       <p>Affected individuals must be informed of the breach, including:</p>
+      <p>To see a real-world example of how a failure to respond leads to severe consequences, check out our <a href="/resources/case-studies/data-breach-healthcare" class="text-blue-400 hover:text-blue-300 underline">Healthcare Data Breach Case Study</a>.</p>
       <ul>
         <li>The nature of the breach</li>
         <li>Type of data compromised</li>
@@ -128,6 +130,7 @@ export const insightsData: Insight[] = [
       
       <h2>Data Transfer Mechanisms</h2>
       <p>Indian companies must use one of the following mechanisms to transfer data from the EU:</p>
+      <p>To understand how India's local law handles this, read our <a href="/resources/guides/gdpr-vs-dpdpa" class="text-blue-400 hover:text-blue-300 underline">GDPR vs DPDPA Comparative Analysis</a>.</p>
       <ul>
         <li><strong>Adequacy Decision:</strong> EU has not yet issued an adequacy decision for India</li>
         <li><strong>Standard Contractual Clauses (SCCs):</strong> Most common mechanism</li>
@@ -152,6 +155,8 @@ export const insightsData: Insight[] = [
     content: `
       <h2>Introduction</h2>
       <p>The DPDP Act regulates cross-border data transfers to ensure that personal data of Indian individuals is adequately protected when processed outside India.</p>
+      // Ye paragraph add karo:
+<p>For a detailed breakdown of transfer mechanisms under the new Indian law, read our <a href="/resources/guides/cross-border-data-transfer" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Data Transfer Guide</a>.</p>
       
       <h2>Adequacy Decisions</h2>
       <p>The Indian government may issue adequacy decisions for countries that provide an adequate level of data protection. Transfers to such countries do not require additional safeguards.</p>
@@ -248,7 +253,8 @@ export const insightsData: Insight[] = [
     content: `
       <h2>Introduction</h2>
       <p>AI is transforming industries, but it also raises significant data protection challenges. This article explores the legal landscape for AI and data protection.</p>
-      
+      // Ye paragraph add karo:
+      <p>To ensure your AI systems comply with the DPDPA, read our <a href="/resources/guides/dpdpa-2023-complete-guide" class="text-blue-400 hover:text-blue-300 underline">DPDPA 2023 Complete Guide</a>.</p>
       <h2>Algorithmic Accountability</h2>
       <ul>
         <li>Transparency in AI decision-making</li>

@@ -317,6 +317,8 @@ export const guidesData: Guide[] = [
       data. Organisations should build operational processes so that these rights can be
       received, verified, routed, tracked and resolved.
     </p>
+    // Ye paragraph add karo:
+<p>For a deeper dive into director liabilities regarding these rights, read our <a href="/insight/dpdp-act-director-liability" class="text-blue-400 hover:text-blue-300 underline">DPDP Act Director Liability Insight</a>.</p>
 
     <h3>Right to information about personal data and processing</h3>
 
@@ -435,6 +437,8 @@ export const guidesData: Guide[] = [
       A personal data breach should be treated as a governance and incident-response
       event, not merely as an IT ticket.
     </p>
+    // Ye paragraph add karo:
+<p>To see how real organisations handle these incidents, read our <a href="/resources/case-studies/data-breach-healthcare" class="text-blue-400 hover:text-blue-300 underline">Healthcare Data Breach Case Study</a>.</p>
 
     <p>
       Organisations should maintain a documented process for identifying, containing,
@@ -1189,7 +1193,8 @@ export const guidesData: Guide[] = [
     content: `
       <h2>Introduction</h2>
       <p>Cross-border data transfers are regulated under multiple frameworks including GDPR, DPDPA, CCPA, and LGPD.</p>
-      
+      // Ye paragraph add karo:
+<p>Understand the latest cross-border transfer insights here: <a href="/insight/cross-border-data-transfer" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Data Transfer Insights</a>.</p>
       <h2>GDPR Requirements</h2>
       <p>Transfers to third countries require adequacy decisions, Standard Contractual Clauses, or Binding Corporate Rules.</p>
       
