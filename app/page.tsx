@@ -5,9 +5,16 @@ import { motion } from "framer-motion";
 import { 
   Shield, Sparkles, Target, BookOpen, FileText, 
   Map, Globe, Award, Users, Rocket, Brain, 
-  Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info, Phone
+  Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info, Phone,
+  CheckCircle, TrendingUp, Star, Briefcase, AlertTriangle,
+  Quote, ChevronRight, Building2
 } from "lucide-react";
 import { useState, useEffect } from "react";
+
+// ✅ DATA IMPORTS
+import { insightsData } from "@/data/insights";
+import { guidesData } from "@/data/guides";
+import { caseStudiesData } from "@/data/case-studies";
 
 // ===== FIELD LABEL COMPONENT (UPDATED FOR A11Y) =====
 const LabelWithAsterisk = ({ label, required, htmlFor }: { label: string; required?: boolean; htmlFor?: string }) => (
@@ -94,9 +101,7 @@ export default function Home() {
   const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // ✅ Validation check
     if (!validateForm()) {
-      // Scroll to first error
       const firstError = document.querySelector('.border-red-500');
       if (firstError) {
         firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -157,13 +162,18 @@ export default function Home() {
     }
   };
 
-  // ✅ Book a Consultant Scroll Handler (Agar Header se click karein toh)
+  // ✅ Book a Consultant Scroll Handler
   const scrollToBookDemo = () => {
     const el = document.getElementById('book-demo');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  // ===== LATEST CONTENT (First 3 for homepage) =====
+  const latestInsights = insightsData.slice(0, 3);
+  const featuredGuides = guidesData.slice(0, 2);
+  const featuredCaseStudies = caseStudiesData.slice(0, 2);
 
   return (
     <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
@@ -174,14 +184,15 @@ export default function Home() {
       <div className="absolute inset-0 -z-10">{stars}</div>
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        {/* ===== SECTION 1: HERO ===== */}
+        
+        {/* ===== SECTION 1: HERO (UNCHANGED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-white-400 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
             <Sparkles className="w-4 h-4" />
             Privacy & AI Governance
           </div>
@@ -192,7 +203,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-gray-200 text-lg max-w-2xl mx-auto drop-shadow-lg">
-            Take our quick assessment and discover your organisation's DPDPA readiness.
+            Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools — built for businesses, DPOs and legal teams.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link
@@ -212,11 +223,35 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== GENERATOR SECTION ===== */}
+        {/* ===== NEW SECTION: TRUST STATS ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+        >
+          {[
+            { number: "20+", label: "Free Modules", icon: BookOpen },
+            { number: "250+", label: "Lessons", icon: FileText },
+            { number: "70+", label: "Country Guides", icon: Globe },
+            { number: "₹250 Cr", label: "Max Penalty", icon: AlertTriangle },
+          ].map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-all">
+                <Icon className="w-5 h-5 text-purple-400 mx-auto mb-2" />
+                <div className="text-xl md:text-2xl font-bold text-white">{stat.number}</div>
+                <div className="text-xs text-gray-400 mt-1">{stat.label}</div>
+              </div>
+            );
+          })}
+        </motion.div>
+
+        {/* ===== GENERATOR SECTION (UNCHANGED) ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="mb-10"
         >
           <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6">
@@ -241,7 +276,6 @@ export default function Home() {
               </Link>
             </div>
             
-            {/* Quick Tags */}
             <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
               {['Privacy Policy', 'Consent Form', 'DPDPA Compliance', 'AI Governance'].map((tag) => (
                 <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400">
@@ -252,263 +286,411 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== BOOK A DEMO SECTION ===== */}
-<motion.div 
-  id="book-demo"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 0.55 }}
-  className="mt-16 mb-16 bg-black border border-white/10 rounded-2xl p-8 md:p-10"
->
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-    
-    {/* Left - Text */}
-    <div className="space-y-4">
-      <h2 className="text-2xl md:text-3xl font-bold text-white">
-        Free Talk to Our <span className="text-white/80">DPDP Act Experts</span>
-      </h2>
-      <p className="text-white/60 text-sm">
-        Fill in your details and a compliance expert will be in touch within one business day.
-      </p>
-      <div className="flex flex-col gap-2 text-xs text-white/50">
-        <span className="flex items-center gap-2">
-          <Clock className="w-4 h-4" />
-          Responding within 1 business day
-        </span>
-        <span className="flex items-center gap-2">
-          <Users className="w-4 h-4" />
-          Indian compliance experts
-        </span>
-      </div>
-    </div>
-
-    {/* Right - Form with 2-Column Grid */}
-    <div className="bg-black/50 border border-white/10 rounded-xl p-6">
-      {demoSubmitted ? (
-        <div className="text-center py-8">
-          <div className="text-4xl mb-4">✅</div>
-          <h3 className="text-xl font-semibold text-white mb-2">Demo Request Submitted!</h3>
-          <p className="text-white/60 text-sm">Our team will contact you within 24 hours.</p>
-        </div>
-      ) : (
-        <form onSubmit={handleDemoSubmit} className="space-y-3">
-          
-          {/* ✅ ROW 1: First Name + Last Name */}
-          <div className="grid grid-cols-2 gap-3">
+        {/* ===== NEW SECTION: LATEST INSIGHTS ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-16"
+        >
+          <div className="flex items-center justify-between mb-6">
             <div>
-              <LabelWithAsterisk label="First Name" required htmlFor="home-firstName" />
-              <input
-                id="home-firstName"
-                type="text"
-                name="firstName"
-                value={demoForm.firstName}
-                onChange={handleDemoChange}
-                placeholder="First name"
-                className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                  formErrors.firstName ? 'border-red-500' : 'border-white/10'
-                }`}
-              />
-              {formErrors.firstName && (
-                <p className="text-red-400 text-xs mt-1">{formErrors.firstName}</p>
-              )}
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                <BookOpen className="w-6 h-6 text-purple-400" />
+                Latest Insights
+              </h2>
+              <p className="text-sm text-gray-400 mt-1">
+                In-depth analysis on India's data protection law and global privacy
+              </p>
             </div>
-            <div>
-              <LabelWithAsterisk label="Last Name" required htmlFor="home-lastName" />
-              <input
-                id="home-lastName"
-                type="text"
-                name="lastName"
-                value={demoForm.lastName}
-                onChange={handleDemoChange}
-                placeholder="Last name"
-                className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                  formErrors.lastName ? 'border-red-500' : 'border-white/10'
-                }`}
-              />
-              {formErrors.lastName && (
-                <p className="text-red-400 text-xs mt-1">{formErrors.lastName}</p>
-              )}
-            </div>
+            <Link 
+              href="/insight" 
+              className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+            >
+              View All <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
-
-          {/* ✅ ROW 2: Work Email + Phone */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <LabelWithAsterisk label="Work Email" required htmlFor="home-email" />
-              <input
-                id="home-email"
-                type="email"
-                name="email"
-                value={demoForm.email}
-                onChange={handleDemoChange}
-                placeholder="you@company.com"
-                className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                  formErrors.email ? 'border-red-500' : 'border-white/10'
-                }`}
-              />
-              {formErrors.email && (
-                <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>
-              )}
-            </div>
-            <div>
-              <LabelWithAsterisk label="Phone" required htmlFor="home-phone" />
-              <input
-                id="home-phone"
-                type="tel"
-                name="phone"
-                value={demoForm.phone}
-                onChange={handleDemoChange}
-                placeholder="+91 98765 43210"
-                className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                  formErrors.phone ? 'border-red-500' : 'border-white/10'
-                }`}
-              />
-              {formErrors.phone && (
-                <p className="text-red-400 text-xs mt-1">{formErrors.phone}</p>
-              )}
-            </div>
-          </div>
-
-          {/* ✅ ROW 3: Company + Job Title */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <LabelWithAsterisk label="Company" required htmlFor="home-company" />
-              <input
-                id="home-company"
-                type="text"
-                name="company"
-                value={demoForm.company}
-                onChange={handleDemoChange}
-                placeholder="Your company"
-                className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                  formErrors.company ? 'border-red-500' : 'border-white/10'
-                }`}
-              />
-              {formErrors.company && (
-                <p className="text-red-400 text-xs mt-1">{formErrors.company}</p>
-              )}
-            </div>
-            <div>
-              <LabelWithAsterisk label="Job Title" htmlFor="home-jobTitle" />
-              <input
-                id="home-jobTitle"
-                type="text"
-                name="jobTitle"
-                value={demoForm.jobTitle}
-                onChange={handleDemoChange}
-                placeholder="e.g. Privacy Officer"
-                className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-              />
-            </div>
-          </div>
-
-          {/* ✅ ROW 4: Company Size + Industry */}
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <LabelWithAsterisk label="Company Size" htmlFor="home-companySize" />
-              <select
-                id="home-companySize"
-                name="companySize"
-                value={demoForm.companySize}
-                onChange={handleDemoChange}
-                className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {latestInsights.map((insight) => (
+              <Link 
+                key={insight.slug} 
+                href={`/insight/${insight.slug}`}
+                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
               >
-                <option className="bg-black text-white" value="">Select size</option>
-                <option className="bg-black text-white" value="1-50">1–50 employees</option>
-                <option className="bg-black text-white" value="51-200">51–200 employees</option>
-                <option className="bg-black text-white" value="201-1000">201–1,000 employees</option>
-                <option className="bg-black text-white" value="1001-5000">1,001–5,000 employees</option>
-                <option className="bg-black text-white" value="5000+">5,000+ employees</option>
-              </select>
-            </div>
+                <div className="inline-block px-2 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400 mb-3">
+                  {insight.category}
+                </div>
+                <h3 className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
+                  {insight.title}
+                </h3>
+                <p className="text-xs text-gray-400 line-clamp-2 mb-3">
+                  {insight.excerpt}
+                </p>
+                <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-white/5">
+                  <span>{insight.date}</span>
+                  <span>{insight.readTime}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ===== NEW SECTION: FEATURED GUIDES ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="mb-16"
+        >
+          <div className="flex items-center justify-between mb-6">
             <div>
-              <LabelWithAsterisk label="Industry" required htmlFor="home-industry" />
-              <select
-                id="home-industry"
-                name="industry"
-                value={demoForm.industry}
-                onChange={handleDemoChange}
-                className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white text-sm focus:outline-none focus:border-white/30 transition-all ${
-                  formErrors.industry ? 'border-red-500' : 'border-white/10'
-                }`}
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                <FileText className="w-6 h-6 text-purple-400" />
+                Featured Guides
+              </h2>
+              <p className="text-sm text-gray-400 mt-1">
+                Comprehensive compliance guides — updated regularly
+              </p>
+            </div>
+            <Link 
+              href="/resources/guides" 
+              className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+            >
+              All Guides <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {featuredGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/resources/guides/${guide.slug}`}
+                className="group bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/15 hover:border-purple-500/30 transition-all"
               >
-                <option className="bg-black text-white" value="">Select industry</option>
-                <option className="bg-black text-white" value="Financial Services">Financial Services</option>
-                <option className="bg-black text-white" value="Healthcare">Healthcare</option>
-                <option className="bg-black text-white" value="Technology">Technology</option>
-                <option className="bg-black text-white" value="Retail">Retail & E-commerce</option>
-                <option className="bg-black text-white" value="Manufacturing">Manufacturing</option>
-                <option className="bg-black text-white" value="Education">Education</option>
-                <option className="bg-black text-white" value="Government">Government</option>
-                <option className="bg-black text-white" value="Media">Media & Entertainment</option>
-                <option className="bg-black text-white" value="Professional Services">Professional Services</option>
-                <option className="bg-black text-white" value="Other">Other</option>
-              </select>
-              {formErrors.industry && (
-                <p className="text-red-400 text-xs mt-1">{formErrors.industry}</p>
+                <div className="flex items-start justify-between mb-3">
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${guide.categoryColor}`}>
+                    {guide.category}
+                  </span>
+                  <span className="text-xs text-gray-400">{guide.readTime}</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
+                  {guide.title}
+                </h3>
+                <p className="text-sm text-gray-400 line-clamp-3 mb-4">
+                  {guide.excerpt}
+                </p>
+                <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-white/5">
+                  <span>Updated: {guide.lastUpdated}</span>
+                  <span className="flex items-center gap-1 text-purple-400 group-hover:translate-x-1 transition-transform">
+                    Read Guide <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ===== NEW SECTION: CASE STUDIES ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mb-16"
+        >
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                <Briefcase className="w-6 h-6 text-purple-400" />
+                Real-World Case Studies
+              </h2>
+              <p className="text-sm text-gray-400 mt-1">
+                Learn from actual compliance challenges and solutions
+              </p>
+            </div>
+            <Link 
+              href="/resources/case-studies" 
+              className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+            >
+              View All <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {featuredCaseStudies.map((cs) => (
+              <Link
+                key={cs.slug}
+                href={`/resources/case-studies/${cs.slug}`}
+                className="group bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400">
+                    {cs.industry}
+                  </span>
+                  <span className="text-xs text-gray-500">{cs.date}</span>
+                </div>
+                <h3 className="text-base font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
+                  {cs.title}
+                </h3>
+                <p className="text-sm text-gray-400 line-clamp-2 mb-3">
+                  {cs.description}
+                </p>
+                <div className="flex items-center gap-2 text-xs text-gray-500 pt-3 border-t border-white/5">
+                  <TrendingUp className="w-3 h-3 text-green-400" />
+                  <span>{cs.impact}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ===== BOOK A DEMO SECTION (UNCHANGED) ===== */}
+        <motion.div 
+          id="book-demo"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
+          className="mt-16 mb-16 bg-black border border-white/10 rounded-2xl p-8 md:p-10"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            
+            {/* Left - Text */}
+            <div className="space-y-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-white">
+                Free Talk to Our <span className="text-white/80">DPDP Act Experts</span>
+              </h2>
+              <p className="text-white/60 text-sm">
+                Fill in your details and a compliance expert will be in touch within one business day.
+              </p>
+              <div className="flex flex-col gap-2 text-xs text-white/50">
+                <span className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  Responding within 1 business day
+                </span>
+                <span className="flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  Indian compliance experts
+                </span>
+              </div>
+            </div>
+
+            {/* Right - Form */}
+            <div className="bg-black/50 border border-white/10 rounded-xl p-6">
+              {demoSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="text-4xl mb-4">✅</div>
+                  <h3 className="text-xl font-semibold text-white mb-2">Demo Request Submitted!</h3>
+                  <p className="text-white/60 text-sm">Our team will contact you within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleDemoSubmit} className="space-y-3">
+                  
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <LabelWithAsterisk label="First Name" required htmlFor="home-firstName" />
+                      <input
+                        id="home-firstName"
+                        type="text"
+                        name="firstName"
+                        value={demoForm.firstName}
+                        onChange={handleDemoChange}
+                        placeholder="First name"
+                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                          formErrors.firstName ? 'border-red-500' : 'border-white/10'
+                        }`}
+                      />
+                      {formErrors.firstName && (
+                        <p className="text-red-400 text-xs mt-1">{formErrors.firstName}</p>
+                      )}
+                    </div>
+                    <div>
+                      <LabelWithAsterisk label="Last Name" required htmlFor="home-lastName" />
+                      <input
+                        id="home-lastName"
+                        type="text"
+                        name="lastName"
+                        value={demoForm.lastName}
+                        onChange={handleDemoChange}
+                        placeholder="Last name"
+                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                          formErrors.lastName ? 'border-red-500' : 'border-white/10'
+                        }`}
+                      />
+                      {formErrors.lastName && (
+                        <p className="text-red-400 text-xs mt-1">{formErrors.lastName}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <LabelWithAsterisk label="Work Email" required htmlFor="home-email" />
+                      <input
+                        id="home-email"
+                        type="email"
+                        name="email"
+                        value={demoForm.email}
+                        onChange={handleDemoChange}
+                        placeholder="you@company.com"
+                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                          formErrors.email ? 'border-red-500' : 'border-white/10'
+                        }`}
+                      />
+                      {formErrors.email && (
+                        <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>
+                      )}
+                    </div>
+                    <div>
+                      <LabelWithAsterisk label="Phone" required htmlFor="home-phone" />
+                      <input
+                        id="home-phone"
+                        type="tel"
+                        name="phone"
+                        value={demoForm.phone}
+                        onChange={handleDemoChange}
+                        placeholder="+91 98765 43210"
+                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                          formErrors.phone ? 'border-red-500' : 'border-white/10'
+                        }`}
+                      />
+                      {formErrors.phone && (
+                        <p className="text-red-400 text-xs mt-1">{formErrors.phone}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <LabelWithAsterisk label="Company" required htmlFor="home-company" />
+                      <input
+                        id="home-company"
+                        type="text"
+                        name="company"
+                        value={demoForm.company}
+                        onChange={handleDemoChange}
+                        placeholder="Your company"
+                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                          formErrors.company ? 'border-red-500' : 'border-white/10'
+                        }`}
+                      />
+                      {formErrors.company && (
+                        <p className="text-red-400 text-xs mt-1">{formErrors.company}</p>
+                      )}
+                    </div>
+                    <div>
+                      <LabelWithAsterisk label="Job Title" htmlFor="home-jobTitle" />
+                      <input
+                        id="home-jobTitle"
+                        type="text"
+                        name="jobTitle"
+                        value={demoForm.jobTitle}
+                        onChange={handleDemoChange}
+                        placeholder="e.g. Privacy Officer"
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <LabelWithAsterisk label="Company Size" htmlFor="home-companySize" />
+                      <select
+                        id="home-companySize"
+                        name="companySize"
+                        value={demoForm.companySize}
+                        onChange={handleDemoChange}
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+                      >
+                        <option className="bg-black text-white" value="">Select size</option>
+                        <option className="bg-black text-white" value="1-50">1–50 employees</option>
+                        <option className="bg-black text-white" value="51-200">51–200 employees</option>
+                        <option className="bg-black text-white" value="201-1000">201–1,000 employees</option>
+                        <option className="bg-black text-white" value="1001-5000">1,001–5,000 employees</option>
+                        <option className="bg-black text-white" value="5000+">5,000+ employees</option>
+                      </select>
+                    </div>
+                    <div>
+                      <LabelWithAsterisk label="Industry" required htmlFor="home-industry" />
+                      <select
+                        id="home-industry"
+                        name="industry"
+                        value={demoForm.industry}
+                        onChange={handleDemoChange}
+                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white text-sm focus:outline-none focus:border-white/30 transition-all ${
+                          formErrors.industry ? 'border-red-500' : 'border-white/10'
+                        }`}
+                      >
+                        <option className="bg-black text-white" value="">Select industry</option>
+                        <option className="bg-black text-white" value="Financial Services">Financial Services</option>
+                        <option className="bg-black text-white" value="Healthcare">Healthcare</option>
+                        <option className="bg-black text-white" value="Technology">Technology</option>
+                        <option className="bg-black text-white" value="Retail">Retail & E-commerce</option>
+                        <option className="bg-black text-white" value="Manufacturing">Manufacturing</option>
+                        <option className="bg-black text-white" value="Education">Education</option>
+                        <option className="bg-black text-white" value="Government">Government</option>
+                        <option className="bg-black text-white" value="Media">Media & Entertainment</option>
+                        <option className="bg-black text-white" value="Professional Services">Professional Services</option>
+                        <option className="bg-black text-white" value="Other">Other</option>
+                      </select>
+                      {formErrors.industry && (
+                        <p className="text-red-400 text-xs mt-1">{formErrors.industry}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" htmlFor="home-challenges" />
+                    <textarea
+                      id="home-challenges"
+                      name="challenges"
+                      value={demoForm.challenges}
+                      onChange={handleDemoChange}
+                      placeholder="e.g. Need to implement consent management..."
+                      rows={2}
+                      className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 resize-none"
+                    />
+                  </div>
+
+                  <div className="flex items-start gap-2">
+                    <input
+                      id="home-consent"
+                      type="checkbox"
+                      name="consent"
+                      checked={demoForm.consent}
+                      onChange={handleDemoChange}
+                      className={`w-4 h-4 mt-0.5 rounded transition-all ${
+                        formErrors.consent ? 'border-red-500' : 'accent-white/20'
+                      }`}
+                    />
+                    <label htmlFor="home-consent" className="text-xs text-white/50 cursor-pointer">
+                      I agree to Legal Galaxy's Privacy Policy and consent to being contacted.
+                    </label>
+                  </div>
+                  {formErrors.consent && (
+                    <p className="text-red-400 text-xs">{formErrors.consent}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/80 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                  </button>
+                  <p className="text-center text-[10px] text-white/50">
+                    Responding within 1 business day · Indian compliance experts
+                  </p>
+                </form>
               )}
             </div>
           </div>
+        </motion.div>
 
-          {/* ✅ ROW 5: Challenges (Full Width) */}
-          <div>
-            <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" htmlFor="home-challenges" />
-            <textarea
-              id="home-challenges"
-              name="challenges"
-              value={demoForm.challenges}
-              onChange={handleDemoChange}
-              placeholder="e.g. Need to implement consent management..."
-              rows={2}
-              className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 resize-none"
-            />
-          </div>
-
-          {/* ✅ ROW 6: Consent */}
-          <div className="flex items-start gap-2">
-            <input
-              id="home-consent"
-              type="checkbox"
-              name="consent"
-              checked={demoForm.consent}
-              onChange={handleDemoChange}
-              className={`w-4 h-4 mt-0.5 rounded transition-all ${
-                formErrors.consent ? 'border-red-500' : 'accent-white/20'
-              }`}
-            />
-            <label htmlFor="home-consent" className="text-xs text-white/50 cursor-pointer">
-              I agree to Legal Galaxy's Privacy Policy and consent to being contacted.
-            </label>
-          </div>
-          {formErrors.consent && (
-            <p className="text-red-400 text-xs">{formErrors.consent}</p>
-          )}
-
-          {/* ✅ ROW 7: Submit */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/80 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? 'Submitting...' : 'Submit'}
-          </button>
-          <p className="text-center text-[10px] text-white/50">
-            Responding within 1 business day · Indian compliance experts
-          </p>
-        </form>
-      )}
-    </div>
-  </div>
-</motion.div>
-
-        {/* ===== CONTACT NUMBER - ALWAYS VISIBLE ===== */}
+        {/* ===== CONTACT NUMBER (UNCHANGED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-center pb-8"
         >
-          <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
+          <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all flex-wrap justify-center">
             <div className="flex items-center gap-2 text-gray-400">
               <Phone className="w-4 h-4 text-purple-400" />
               <span className="text-sm"> For immediate assistance, call us at:</span>
@@ -519,7 +701,7 @@ export default function Home() {
             >
               +91 8800138008
             </a>
-            <span className="text-xs text-gray-500">|</span>
+            <span className="text-xs text-gray-500 hidden sm:inline">|</span>
             <a 
               href="mailto:shilpi.kulshrestha@businezexcellence.com" 
               className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
@@ -529,11 +711,49 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 3: GALAXY EXPLORER ===== */}
+        {/* ===== NEW SECTION: WHY LEGAL GALAXY ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.65 }}
+          className="mb-16"
+        >
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+              Why Choose Legal Galaxy?
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Built by legal professionals for businesses that need practical, actionable compliance tools
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { icon: Shield, title: "Expert-Built Content", desc: "Created by corporate lawyers and privacy specialists with 10+ years of experience" },
+              { icon: Zap, title: "Free Tools", desc: "Document generator, compliance scorecard, and 20+ learning modules — all free" },
+              { icon: TrendingUp, title: "Updated Regularly", desc: "Content updated to reflect latest DPDPA rules, circulars, and enforcement actions" },
+              { icon: Globe, title: "Global Coverage", desc: "Compare privacy laws across 70+ countries including GDPR, CCPA, and PIPL" },
+              { icon: Users, title: "Practical Focus", desc: "Real-world case studies and templates you can actually use — not just theory" },
+              { icon: CheckCircle, title: "No Signup Required", desc: "Start using every tool and reading every guide — no email required to begin" },
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-3 border border-purple-500/30">
+                    <Icon className="w-5 h-5 text-purple-400" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* ===== SECTION 3: GALAXY EXPLORER (UNCHANGED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
           className="mb-16"
         >
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 justify-center">
@@ -559,11 +779,11 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 4: RESOURCES ===== */}
+        {/* ===== SECTION 4: RESOURCES (UNCHANGED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.75 }}
           className="mb-16"
         >
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
@@ -585,14 +805,13 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 5: TOOLS + CERTIFICATION ===== */}
+        {/* ===== SECTION 5: CERTIFICATION (UNCHANGED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
         >
-          {/* Certification (LOCKED) */}
           <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-2">
               <div className="relative">
@@ -612,11 +831,11 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* ===== SECTION 6: ABOUT ===== */}
+        {/* ===== SECTION 6: ABOUT (UNCHANGED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.85 }}
           className="bg-white/10 border border-white/20 rounded-2xl p-8 text-center mb-16"
         >
           <Users className="w-12 h-12 text-purple-400 mx-auto mb-4" />
@@ -630,11 +849,11 @@ export default function Home() {
           </Link>
         </motion.div>
 
-        {/* ===== SECTION 7: FINAL CTA ===== */}
+        {/* ===== SECTION 7: FINAL CTA (IMPROVED) ===== */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
           className="text-center"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-400 mb-4">
@@ -644,13 +863,26 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Don't just use AI. <span className="text-purple-400">Govern it.</span>
           </h2>
-          <Link
-            href="/scorecard"
-            className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all inline-flex items-center gap-2 shadow-lg shadow-purple-500/30"
-          >
-            <Target className="w-5 h-5" />
-            Take the Privacy & AI Governance Test →
-          </Link>
+          <p className="text-gray-400 max-w-xl mx-auto mb-6">
+            Join businesses across India building defensible DPDPA compliance programs. 
+            Start with a free assessment, then explore our guides, tools, and expert services.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/scorecard"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all inline-flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+            >
+              <Target className="w-5 h-5" />
+              Take the Free Test →
+            </Link>
+            <Link
+              href="/resources/guides/dpdpa-2023-complete-guide"
+              className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all inline-flex items-center justify-center gap-2 backdrop-blur-sm"
+            >
+              <BookOpen className="w-5 h-5" />
+              Read the Complete Guide
+            </Link>
+          </div>
         </motion.div>
       </div>
 
