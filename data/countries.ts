@@ -1564,10 +1564,6 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
-,
-,
-,
-,
 
 
   // ===== ADDITIONAL COUNTRIES (reviewed October 2026) =====
