@@ -130,22 +130,25 @@ export default function MapPage() {
           </div>
         </div>
 
-        {/* Main Layout */}
+        {/* Main Layout - FIX: Use min-height & custom height instead of fixed to prevent cut-off */}
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 mb-12 items-start">
-          {/* Map Container */}
-          <div className="xl:col-span-7 relative h-[400px] sm:h-[500px] xl:h-[650px] w-full bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+          
+          {/* Map Container - Fixed height so globe renders properly, but responsive */}
+          <div className="xl:col-span-7 relative h-[500px] lg:h-[600px] xl:h-[75vh] w-full bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
             <Globe3D 
               onCountryClick={(id) => setSelectedCountryId(id)}
               selectedCountryId={selectedCountryId}
             />
           </div>
 
-          {/* Country Detail Container */}
-          <div className="xl:col-span-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl h-[650px] shadow-2xl relative overflow-hidden flex flex-col">
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
+          {/* Country Detail Container - Matches map height, scrolls internally */}
+          <div className="xl:col-span-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl h-[600px] lg:h-[700px] xl:h-[75vh] shadow-2xl relative flex flex-col">
+            {/* Custom Scrollable Area */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-6 pb-20 relative">
               <CountryDetail country={selectedCountry || null} />
             </div>
           </div>
+          
         </div>
 
         {/* Country Grid */}
@@ -158,11 +161,6 @@ export default function MapPage() {
                 {filteredCountries.length} Results
               </span>
             </h2>
-            {filteredCountries.length !== countries.length && (
-              <button onClick={resetFilters} className="text-sm text-purple-400 hover:text-purple-300 font-medium transition-colors md:hidden">
-                Clear Filters
-              </button>
-            )}
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
