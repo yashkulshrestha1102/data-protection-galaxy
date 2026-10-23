@@ -185,6 +185,36 @@ export default function MapPage() {
         </div>
 
       </div>
+
+
+            {/* ✅ HIDDEN SEO CONTENT - For Search Engine Bots */}
+        <section className="sr-only" aria-hidden="true">
+          <h2>Global Data Protection and Privacy Laws Directory</h2>
+          <p>
+            The Global Data Protection Laws Map by Legal Galaxy is a comprehensive directory of privacy regulations across {countries.length}+ countries. 
+            This interactive map allows compliance professionals, Data Protection Officers (DPOs), and businesses to explore jurisdiction-specific laws, compare 
+            data protection authorities, and understand cross-border data transfer requirements.
+          </p>
+          <p>
+            We cover major frameworks including the General Data Protection Regulation (GDPR) in the European Union, the Digital Personal Data Protection Act (DPDP Act 2023) in India, 
+            the California Consumer Privacy Act (CCPA) in the United States, the Lei Geral de Proteção de Dados (LGPD) in Brazil, and the Personal Information Protection Law (PIPL) in China.
+          </p>
+          
+          <h3>Complete List of Jurisdictions and Data Protection Authorities</h3>
+          <ul>
+            {countries.map((c) => (
+              <li key={c.id}>
+                <Link href={`/country/${c.id}`} title={`${c.name} Data Protection Law`}>
+                  {c.name}
+                </Link> 
+                {' '}- {c.lawName} - Enforced by {c.authority} - Region: {c.region} - Protection Level: {c.level}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+
+
     </main>
   );
 }
