@@ -86,8 +86,8 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: 140, // Zoom level adjusted for perfect fit
-            center: [0, 30]
+            scale: 110, // Zoom level adjusted for perfect fit
+            center: [0, 20]
           }}
           className="w-full h-full outline-none"
         >
