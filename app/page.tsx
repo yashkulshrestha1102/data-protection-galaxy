@@ -8,7 +8,7 @@ import {
   Map, Globe, Award, Users, Rocket, Brain, 
   Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info, Phone,
   CheckCircle, TrendingUp, Star, Briefcase, AlertTriangle,
-  Quote, ChevronRight, Building2, UserCheck
+  Quote, ChevronRight, Building2, UserCheck,HelpCircle 
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -17,6 +17,7 @@ import { insightsData } from "@/data/insights";
 import { guidesData } from "@/data/guides";
 import { caseStudiesData } from "@/data/case-studies";
 import { authors } from "@/data/authors";
+import { countries } from "@/data/countries";
 
 // ===== FIELD LABEL COMPONENT (UPDATED FOR A11Y) =====
 const LabelWithAsterisk = ({ label, required, htmlFor }: { label: string; required?: boolean; htmlFor?: string }) => (
@@ -283,6 +284,79 @@ export default function Home() {
             );
           })}
         </motion.div>
+
+
+
+
+
+
+        {/* ===== QUICK ANSWERS (GEO Optimized) ===== */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 0.18 }}
+  className="mb-16"
+>
+  <div className="text-center mb-8">
+    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-3">
+      <HelpCircle className="w-4 h-4" />
+      DPDP Act 2023 — Quick Answers
+    </div>
+    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+      Common DPDPA Questions Answered
+    </h2>
+    <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+      Direct answers to the most frequently asked questions about India's Digital Personal Data Protection Act 2023.
+    </p>
+  </div>
+  <div className="grid gap-3 max-w-4xl mx-auto">
+    {[
+      {
+        q: "What is the maximum penalty under India's DPDP Act 2023?",
+        a: "The maximum penalty under the DPDP Act 2023 is ₹250 crore for failure to take reasonable security safeguards to prevent a personal data breach. Other penalties range from ₹50 crore to ₹200 crore depending on the nature of the violation, as set out in the Schedule to the Act.",
+      },
+      {
+        q: "When did the DPDP Act 2023 come into force?",
+        a: "The DPDP Act 2023 received presidential assent on 11 August 2023. The DPDP Rules 2025 were notified in November 2025. Implementation is phased — main operational provisions, including consent and data principal rights, are scheduled to commence on 13 May 2027.",
+      },
+      {
+        q: "Is a Data Protection Officer (DPO) mandatory under DPDPA?",
+        a: "A DPO is mandatory only for Significant Data Fiduciaries (SDFs) notified by the Central Government under Section 10. Non-SDFs are not required to appoint a DPO under the Act, though they still must comply with other obligations.",
+      },
+      {
+        q: "Does India's DPDP Act require data localisation?",
+        a: "No. The DPDP Act does not mandate general data localisation. Cross-border transfers are allowed by default unless the Central Government restricts them under Section 16. However, sectoral laws — such as RBI's payment data rules, IRDAI insurance regulations, and SEBI securities rules — may require localisation for specific data types.",
+      },
+      {
+        q: "Who is a Data Fiduciary under the DPDP Act?",
+        a: "A Data Fiduciary is any person or entity that alone or jointly with others determines the purpose and means of processing personal data. This includes most businesses, websites, mobile apps, SaaS platforms, and service providers operating in India.",
+      },
+      {
+        q: "What are the 6 rights of Data Principals under DPDPA?",
+        a: "The DPDP Act grants six core rights: (1) Right to access information about personal data, (2) Right to correction and erasure, (3) Right to grievance redressal, (4) Right to data portability, (5) Right to nominate, and (6) Right to withdraw consent.",
+      },
+      {
+        q: "How many countries does Legal Galaxy cover for data protection laws?",
+        a: `Legal Galaxy compares data protection laws across ${countries.length}+ jurisdictions, including India's DPDP Act 2023, GDPR, CCPA/CPRA, China's PIPL, Brazil's LGPD, and others. Each country profile covers the law name, enforcement authority, compliance level, and 14-topic coverage analysis.`,
+      },
+    ].map((item, i) => (
+      <details
+        key={i}
+        className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+      >
+        <summary className="flex items-center justify-between cursor-pointer list-none">
+          <span className="text-white font-medium pr-4 text-left">{item.q}</span>
+          <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+            +
+          </span>
+        </summary>
+        <p className="text-gray-300 text-sm leading-relaxed mt-3 pt-3 border-t border-white/10">
+          {item.a}
+        </p>
+      </details>
+    ))}
+  </div>
+</motion.div>
 
         {/* ===== GENERATOR SECTION ===== */}
         <motion.div
