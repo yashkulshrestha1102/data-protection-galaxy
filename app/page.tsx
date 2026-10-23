@@ -228,8 +228,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
-      {/* ===== FAQ SCHEMA (GEO) ===== */}
+    <>
+      {/* ===== FAQ SCHEMA (GEO) - Moved outside main for better crawler detection ===== */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -237,790 +237,792 @@ export default function Home() {
         }}
       />
 
-      {/* ===== BACKGROUND ===== */}
-      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-      </div>
-      <div className="absolute inset-0 -z-10">{stars}</div>
+      <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
+        {/* ===== BACKGROUND ===== */}
+        <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
+        <div className="absolute inset-0 -z-10">{stars}</div>
 
-      <div className="max-w-6xl mx-auto w-full relative z-10">
+        <div className="max-w-6xl mx-auto w-full relative z-10">
 
-        {/* ===== SECTION 1: HERO ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
-            <Sparkles className="w-4 h-4" />
-            Privacy & AI Governance
-          </div>
-          <h1 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl">
-            How ready is your organisation for the new world of<br />
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Privacy & AI Governance?
-            </span>
-          </h1>
-          <p className="text-gray-200 text-lg max-w-2xl mx-auto drop-shadow-lg">
-            Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools — built for businesses, DPOs and legal teams.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link
-              href="/scorecard"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-purple-500/30 justify-center"
-            >
-              <Target className="w-5 h-5" />
-              TAKE THE FREE TEST →
-            </Link>
-            <Link
-              href="/galaxy"
-              className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all flex items-center gap-2 backdrop-blur-sm justify-center"
-            >
-              <Globe className="w-5 h-5" />
-              EXPLORE THE GALAXY →
-            </Link>
-          </div>
-        </motion.div>
-
-        {/* ===== NEW SECTION: AUTHOR STRIP (E-E-A-T) ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center justify-center gap-4 mb-12 text-sm text-gray-300"
-        >
-          <Link href={`/authors/${author.id}`} className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-purple-500/40">
-              <Image
-                src={author.image}
-                alt={author.name}
-                fill
-                className="object-cover"
-                sizes="40px"
-              />
+          {/* ===== SECTION 1: HERO ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
+              <Sparkles className="w-4 h-4" />
+              Privacy & AI Governance
             </div>
-            <div className="text-left">
-              <p className="text-white font-medium group-hover:text-purple-400 transition-colors flex items-center gap-1">
-                {author.name}
-                <UserCheck className="w-3 h-3 text-purple-400" />
-              </p>
-              <p className="text-xs text-gray-400">{author.role}</p>
-            </div>
-          </Link>
-          <span className="text-gray-600 hidden sm:inline">|</span>
-          <div className="hidden sm:flex items-center gap-2">
-            <Clock className="w-4 h-4 text-gray-500" />
-            <span className="text-xs">Last reviewed: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}</span>
-          </div>
-        </motion.div>
-
-        {/* ===== TRUST STATS ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
-        >
-          {[
-            { number: "20+", label: "Free Modules", icon: BookOpen },
-            { number: "250+", label: "Lessons", icon: FileText },
-            { number: `${countries.length}+`, label: "Country Guides", icon: Globe },
-            { number: "₹250 Cr", label: "Max Penalty", icon: AlertTriangle },
-          ].map((stat, idx) => {
-            const Icon = stat.icon;
-            return (
-              <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-all">
-                <Icon className="w-5 h-5 text-purple-400 mx-auto mb-2" />
-                <div className="text-xl md:text-2xl font-bold text-white">{stat.number}</div>
-                <div className="text-xs text-gray-400 mt-1">{stat.label}</div>
-              </div>
-            );
-          })}
-        </motion.div>
-
-        {/* ===== QUICK ANSWERS (GEO Optimized) ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.18 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-3">
-              <HelpCircle className="w-4 h-4" />
-              DPDP Act 2023 — Quick Answers
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              Common DPDPA Questions Answered
-            </h2>
-            <p className="text-gray-400 text-sm max-w-2xl mx-auto">
-              Direct answers to the most frequently asked questions about India's Digital Personal Data Protection Act 2023.
+            <h1 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl">
+              How ready is your organisation for the new world of<br />
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Privacy & AI Governance?
+              </span>
+            </h1>
+            <p className="text-gray-200 text-lg max-w-2xl mx-auto drop-shadow-lg">
+              Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools — built for businesses, DPOs and legal teams.
             </p>
-          </div>
-          <div className="grid gap-3 max-w-4xl mx-auto">
-            {HOME_FAQS.map((item, i) => (
-              <details
-                key={i}
-                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <Link
+                href="/scorecard"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-purple-500/30 justify-center"
               >
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <span className="text-white font-medium pr-4 text-left">{item.q}</span>
-                  <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
-                    +
-                  </span>
-                </summary>
-                <p className="text-gray-300 text-sm leading-relaxed mt-3 pt-3 border-t border-white/10">
-                  {item.a}
-                </p>
-              </details>
-            ))}
-          </div>
-        </motion.div>
+                <Target className="w-5 h-5" />
+                TAKE THE FREE TEST →
+              </Link>
+              <Link
+                href="/galaxy"
+                className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all flex items-center gap-2 backdrop-blur-sm justify-center"
+              >
+                <Globe className="w-5 h-5" />
+                EXPLORE THE GALAXY →
+              </Link>
+            </div>
+          </motion.div>
 
-        {/* ===== GENERATOR SECTION ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-10"
-        >
-          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-6 h-6 text-purple-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">AI Document Generator</h3>
-                  <p className="text-gray-300 text-sm max-w-md">
-                    Generate privacy policies, consent forms, and AI governance documents instantly with our intelligent document builder.
-                  </p>
-                </div>
+          {/* ===== NEW SECTION: AUTHOR STRIP (E-E-A-T) ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex items-center justify-center gap-4 mb-12 text-sm text-gray-300"
+          >
+            <Link href={`/authors/${author.id}`} className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-purple-500/40">
+                <Image
+                  src={author.image}
+                  alt={author.name}
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                />
               </div>
-              <Link
-                href="/generator"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-500/30 hover:bg-purple-500/40 border border-purple-400/30 text-purple-300 hover:text-white transition-all text-sm font-medium whitespace-nowrap"
-              >
-                Explore Generator
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
-              {['Privacy Policy', 'Consent Form', 'DPDPA Compliance', 'AI Governance'].map((tag) => (
-                <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ===== LATEST INSIGHTS ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mb-16"
-        >
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <BookOpen className="w-6 h-6 text-purple-400" />
-                Latest Insights
-              </h2>
-              <p className="text-sm text-gray-400 mt-1">
-                In-depth analysis on India's data protection law and global privacy
-              </p>
-            </div>
-            <Link
-              href="/insight"
-              className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
-            >
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {latestInsights.map((insight) => (
-              <Link
-                key={insight.slug}
-                href={`/insight/${insight.slug}`}
-                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
-              >
-                <div className="inline-block px-2 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400 mb-3">
-                  {insight.category}
-                </div>
-                <h3 className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
-                  {insight.title}
-                </h3>
-                <p className="text-xs text-gray-400 line-clamp-2 mb-3">
-                  {insight.excerpt}
+              <div className="text-left">
+                <p className="text-white font-medium group-hover:text-purple-400 transition-colors flex items-center gap-1">
+                  {author.name}
+                  <UserCheck className="w-3 h-3 text-purple-400" />
                 </p>
-                <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-white/5">
-                  <span>{insight.date}</span>
-                  <span>{insight.readTime}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== FEATURED GUIDES ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-16"
-        >
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <FileText className="w-6 h-6 text-purple-400" />
-                Featured Guides
-              </h2>
-              <p className="text-sm text-gray-400 mt-1">
-                Comprehensive compliance guides — updated regularly
-              </p>
-            </div>
-            <Link
-              href="/resources/guides"
-              className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
-            >
-              All Guides <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {featuredGuides.map((guide) => (
-              <Link
-                key={guide.slug}
-                href={`/resources/guides/${guide.slug}`}
-                className="group bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/15 hover:border-purple-500/30 transition-all"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${guide.categoryColor}`}>
-                    {guide.category}
-                  </span>
-                  <span className="text-xs text-gray-400">{guide.readTime}</span>
-                </div>
-                <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
-                  {guide.title}
-                </h3>
-                <p className="text-sm text-gray-400 line-clamp-3 mb-4">
-                  {guide.excerpt}
-                </p>
-                <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-white/5">
-                  <span>Updated: {guide.lastUpdated}</span>
-                  <span className="flex items-center gap-1 text-purple-400 group-hover:translate-x-1 transition-transform">
-                    Read Guide <ArrowRight className="w-3 h-3" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== CASE STUDIES ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="mb-16"
-        >
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <Briefcase className="w-6 h-6 text-purple-400" />
-                Real-World Case Studies
-              </h2>
-              <p className="text-sm text-gray-400 mt-1">
-                Learn from actual compliance challenges and solutions
-              </p>
-            </div>
-            <Link
-              href="/resources/case-studies"
-              className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
-            >
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {featuredCaseStudies.map((cs) => (
-              <Link
-                key={cs.slug}
-                href={`/resources/case-studies/${cs.slug}`}
-                className="group bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-purple-500/30 transition-all"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400">
-                    {cs.industry}
-                  </span>
-                  <span className="text-xs text-gray-500">{cs.date}</span>
-                </div>
-                <h3 className="text-base font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
-                  {cs.title}
-                </h3>
-                <p className="text-sm text-gray-400 line-clamp-2 mb-3">
-                  {cs.description}
-                </p>
-                <div className="flex items-center gap-2 text-xs text-gray-500 pt-3 border-t border-white/5">
-                  <TrendingUp className="w-3 h-3 text-green-400" />
-                  <span>{cs.impact}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== BOOK A DEMO SECTION ===== */}
-        <motion.div
-          id="book-demo"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.55 }}
-          className="mt-16 mb-16 bg-black border border-white/10 rounded-2xl p-8 md:p-10"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-
-            {/* Left - Text */}
-            <div className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Free Talk to Our <span className="text-white/80">DPDP Act Experts</span>
-              </h2>
-              <p className="text-white/60 text-sm">
-                Fill in your details and a compliance expert will be in touch within one business day.
-              </p>
-              <div className="flex flex-col gap-2 text-xs text-white/50">
-                <span className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  Responding within 1 business day
-                </span>
-                <span className="flex items-center gap-2">
-                  <Users className="w-4 h-4" />
-                  Indian compliance experts
-                </span>
+                <p className="text-xs text-gray-400">{author.role}</p>
               </div>
+            </Link>
+            <span className="text-gray-600 hidden sm:inline">|</span>
+            <div className="hidden sm:flex items-center gap-2">
+              <Clock className="w-4 h-4 text-gray-500" />
+              <span className="text-xs">Last reviewed: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}</span>
             </div>
+          </motion.div>
 
-            {/* Right - Form */}
-            <div className="bg-black/50 border border-white/10 rounded-xl p-6">
-              {demoSubmitted ? (
-                <div className="text-center py-8">
-                  <div className="text-4xl mb-4">✅</div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Demo Request Submitted!</h3>
-                  <p className="text-white/60 text-sm">Our team will contact you within 24 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleDemoSubmit} className="space-y-3">
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <LabelWithAsterisk label="First Name" required htmlFor="home-firstName" />
-                      <input
-                        id="home-firstName"
-                        type="text"
-                        name="firstName"
-                        value={demoForm.firstName}
-                        onChange={handleDemoChange}
-                        placeholder="First name"
-                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                          formErrors.firstName ? 'border-red-500' : 'border-white/10'
-                        }`}
-                      />
-                      {formErrors.firstName && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.firstName}</p>
-                      )}
-                    </div>
-                    <div>
-                      <LabelWithAsterisk label="Last Name" required htmlFor="home-lastName" />
-                      <input
-                        id="home-lastName"
-                        type="text"
-                        name="lastName"
-                        value={demoForm.lastName}
-                        onChange={handleDemoChange}
-                        placeholder="Last name"
-                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                          formErrors.lastName ? 'border-red-500' : 'border-white/10'
-                        }`}
-                      />
-                      {formErrors.lastName && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.lastName}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <LabelWithAsterisk label="Work Email" required htmlFor="home-email" />
-                      <input
-                        id="home-email"
-                        type="email"
-                        name="email"
-                        value={demoForm.email}
-                        onChange={handleDemoChange}
-                        placeholder="you@company.com"
-                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                          formErrors.email ? 'border-red-500' : 'border-white/10'
-                        }`}
-                      />
-                      {formErrors.email && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>
-                      )}
-                    </div>
-                    <div>
-                      <LabelWithAsterisk label="Phone" required htmlFor="home-phone" />
-                      <input
-                        id="home-phone"
-                        type="tel"
-                        name="phone"
-                        value={demoForm.phone}
-                        onChange={handleDemoChange}
-                        placeholder="+91 98765 43210"
-                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                          formErrors.phone ? 'border-red-500' : 'border-white/10'
-                        }`}
-                      />
-                      {formErrors.phone && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.phone}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <LabelWithAsterisk label="Company" required htmlFor="home-company" />
-                      <input
-                        id="home-company"
-                        type="text"
-                        name="company"
-                        value={demoForm.company}
-                        onChange={handleDemoChange}
-                        placeholder="Your company"
-                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
-                          formErrors.company ? 'border-red-500' : 'border-white/10'
-                        }`}
-                      />
-                      {formErrors.company && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.company}</p>
-                      )}
-                    </div>
-                    <div>
-                      <LabelWithAsterisk label="Job Title" htmlFor="home-jobTitle" />
-                      <input
-                        id="home-jobTitle"
-                        type="text"
-                        name="jobTitle"
-                        value={demoForm.jobTitle}
-                        onChange={handleDemoChange}
-                        placeholder="e.g. Privacy Officer"
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <LabelWithAsterisk label="Company Size" htmlFor="home-companySize" />
-                      <select
-                        id="home-companySize"
-                        name="companySize"
-                        value={demoForm.companySize}
-                        onChange={handleDemoChange}
-                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
-                      >
-                        <option className="bg-black text-white" value="">Select size</option>
-                        <option className="bg-black text-white" value="1-50">1–50 employees</option>
-                        <option className="bg-black text-white" value="51-200">51–200 employees</option>
-                        <option className="bg-black text-white" value="201-1000">201–1,000 employees</option>
-                        <option className="bg-black text-white" value="1001-5000">1,001–5,000 employees</option>
-                        <option className="bg-black text-white" value="5000+">5,000+ employees</option>
-                      </select>
-                    </div>
-                    <div>
-                      <LabelWithAsterisk label="Industry" required htmlFor="home-industry" />
-                      <select
-                        id="home-industry"
-                        name="industry"
-                        value={demoForm.industry}
-                        onChange={handleDemoChange}
-                        className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white text-sm focus:outline-none focus:border-white/30 transition-all ${
-                          formErrors.industry ? 'border-red-500' : 'border-white/10'
-                        }`}
-                      >
-                        <option className="bg-black text-white" value="">Select industry</option>
-                        <option className="bg-black text-white" value="Financial Services">Financial Services</option>
-                        <option className="bg-black text-white" value="Healthcare">Healthcare</option>
-                        <option className="bg-black text-white" value="Technology">Technology</option>
-                        <option className="bg-black text-white" value="Retail">Retail & E-commerce</option>
-                        <option className="bg-black text-white" value="Manufacturing">Manufacturing</option>
-                        <option className="bg-black text-white" value="Education">Education</option>
-                        <option className="bg-black text-white" value="Government">Government</option>
-                        <option className="bg-black text-white" value="Media">Media & Entertainment</option>
-                        <option className="bg-black text-white" value="Professional Services">Professional Services</option>
-                        <option className="bg-black text-white" value="Other">Other</option>
-                      </select>
-                      {formErrors.industry && (
-                        <p className="text-red-400 text-xs mt-1">{formErrors.industry}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div>
-                    <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" htmlFor="home-challenges" />
-                    <textarea
-                      id="home-challenges"
-                      name="challenges"
-                      value={demoForm.challenges}
-                      onChange={handleDemoChange}
-                      placeholder="e.g. Need to implement consent management..."
-                      rows={2}
-                      className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 resize-none"
-                    />
-                  </div>
-
-                  <div className="flex items-start gap-2">
-                    <input
-                      id="home-consent"
-                      type="checkbox"
-                      name="consent"
-                      checked={demoForm.consent}
-                      onChange={handleDemoChange}
-                      className={`w-4 h-4 mt-0.5 rounded transition-all ${
-                        formErrors.consent ? 'border-red-500' : 'accent-white/20'
-                      }`}
-                    />
-                    <label htmlFor="home-consent" className="text-xs text-white/50 cursor-pointer">
-                      I agree to Legal Galaxy's Privacy Policy and consent to being contacted.
-                    </label>
-                  </div>
-                  {formErrors.consent && (
-                    <p className="text-red-400 text-xs">{formErrors.consent}</p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/80 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
-                  </button>
-                  <p className="text-center text-[10px] text-white/50">
-                    Responding within 1 business day · Indian compliance experts
-                  </p>
-                </form>
-              )}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ===== CONTACT NUMBER ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center pb-8"
-        >
-          <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all flex-wrap justify-center">
-            <div className="flex items-center gap-2 text-gray-400">
-              <Phone className="w-4 h-4 text-purple-400" />
-              <span className="text-sm"> For immediate assistance, call us at:</span>
-            </div>
-            <a
-              href="tel:+918800138008"
-              className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
-            >
-              +91 8800138008
-            </a>
-            <span className="text-xs text-gray-500 hidden sm:inline">|</span>
-            <a
-              href="mailto:shilpi.kulshrestha@businezexcellence.com"
-              className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
-            >
-              shilpi.kulshrestha@businezexcellence.com
-            </a>
-          </div>
-        </motion.div>
-
-        {/* ===== WHY LEGAL GALAXY ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.65 }}
-          className="mb-16"
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              Why Choose Legal Galaxy?
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Built by legal professionals for businesses that need practical, actionable compliance tools
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* ===== TRUST STATS ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+          >
             {[
-              { icon: Shield, title: "Expert-Built Content", desc: "Created by corporate lawyers and privacy specialists with 10+ years of experience" },
-              { icon: Zap, title: "Free Tools", desc: "Document generator, compliance scorecard, and 20+ learning modules — all free" },
-              { icon: TrendingUp, title: "Updated Regularly", desc: "Content updated to reflect latest DPDPA rules, circulars, and enforcement actions" },
-              { icon: Globe, title: "Global Coverage", desc: `Compare privacy laws across ${countries.length}+ countries including GDPR, CCPA, and PIPL` },
-              { icon: Users, title: "Practical Focus", desc: "Real-world case studies and templates you can actually use — not just theory" },
-              { icon: CheckCircle, title: "No Signup Required", desc: "Start using every tool and reading every guide — no email required to begin" },
-            ].map((item, idx) => {
-              const Icon = item.icon;
+              { number: "20+", label: "Free Modules", icon: BookOpen },
+              { number: "250+", label: "Lessons", icon: FileText },
+              { number: `${countries.length}+`, label: "Country Guides", icon: Globe },
+              { number: "₹250 Cr", label: "Max Penalty", icon: AlertTriangle },
+            ].map((stat, idx) => {
+              const Icon = stat.icon;
               return (
-                <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-3 border border-purple-500/30">
-                    <Icon className="w-5 h-5 text-purple-400" />
-                  </div>
-                  <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
+                <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-all">
+                  <Icon className="w-5 h-5 text-purple-400 mx-auto mb-2" />
+                  <div className="text-xl md:text-2xl font-bold text-white">{stat.number}</div>
+                  <div className="text-xs text-gray-400 mt-1">{stat.label}</div>
                 </div>
               );
             })}
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* ===== GALAXY EXPLORER ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="mb-16"
-        >
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 justify-center">
-            <Globe className="w-6 h-6 text-purple-400" />
-            Explore the Galaxy
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center max-w-4xl mx-auto">
-            {[
-              { icon: Shield, label: "Privacy", href: "/galaxy?category=privacy", color: "from-blue-500 to-blue-600" },
-              { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-purple-500 to-purple-600" },
-              { icon: Lock, label: "Digital Trust", href: "/galaxy?category=trust", color: "from-emerald-500 to-emerald-600" },
-            ].map((item, idx) => (
-              <Link key={idx} href={item.href} className="group w-full max-w-xs">
-                <div className="bg-white/10 border border-white/20 rounded-xl p-6 text-center hover:bg-white/15 transition-all hover:scale-105">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
-                    <item.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-white font-medium">{item.label}</h3>
-                  <p className="text-xs text-gray-400 mt-1">Explore →</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== RESOURCES ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.75 }}
-          className="mb-16"
-        >
-          <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
-            Resources
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: Globe, label: "Galaxy", href: "/galaxy" },
-              { icon: FileText, label: "Insights", href: "/insight" },
-              { icon: BookOpen, label: "Guides", href: "/resources/guides" },
-              { icon: Map, label: "Map", href: "/map" },
-            ].map((item, idx) => (
-              <Link key={idx} href={item.href} className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-all hover:scale-105">
-                <item.icon className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                <span className="text-sm text-white">{item.label}</span>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ===== CERTIFICATION (LIVE NOW) ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
-        >
-          <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
-            <div className="flex items-center gap-2 mb-2">
-              <Award className="w-5 h-5 text-amber-400" />
-              <h3 className="text-lg font-semibold text-white">Certification</h3>
+          {/* ===== QUICK ANSWERS (GEO Optimized) ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.18 }}
+            className="mb-16"
+          >
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-3">
+                <HelpCircle className="w-4 h-4" />
+                DPDP Act 2023 — Quick Answers
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                Common DPDPA Questions Answered
+              </h2>
+              <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+                Direct answers to the most frequently asked questions about India's Digital Personal Data Protection Act 2023.
+              </p>
             </div>
-            <p className="text-gray-300 text-sm mb-4">Build expertise. Get certified in Privacy & AI Governance.</p>
-            <Link
-              href="/certificate-course"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/30 text-amber-300 hover:text-white transition-all text-sm font-medium"
-            >
-              <Award className="w-4 h-4" />
-              Explore Certification →
-            </Link>
-          </div>
-        </motion.div>
+            <div className="grid gap-3 max-w-4xl mx-auto">
+              {HOME_FAQS.map((item, i) => (
+                <details
+                  key={i}
+                  className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer list-none">
+                    <span className="text-white font-medium pr-4 text-left">{item.q}</span>
+                    <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+                      +
+                    </span>
+                  </summary>
+                  <p className="text-gray-300 text-sm leading-relaxed mt-3 pt-3 border-t border-white/10">
+                    {item.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* ===== ABOUT ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.85 }}
-          className="bg-white/10 border border-white/20 rounded-2xl p-8 text-center mb-16"
-        >
-          <Users className="w-12 h-12 text-purple-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-3">Built by Legal & Governance Professionals</h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            Legal Galaxy is a Privacy & AI Governance platform designed to help businesses
-            understand, assess, and implement responsible data and AI practices.
-          </p>
-          <Link href="/about" className="inline-block mt-4 text-purple-400 hover:text-purple-300 transition-colors text-sm">
-            Learn More →
-          </Link>
-        </motion.div>
+          {/* ===== GENERATOR SECTION ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-10"
+          >
+            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">AI Document Generator</h3>
+                    <p className="text-gray-300 text-sm max-w-md">
+                      Generate privacy policies, consent forms, and AI governance documents instantly with our intelligent document builder.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/generator"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-500/30 hover:bg-purple-500/40 border border-purple-400/30 text-purple-300 hover:text-white transition-all text-sm font-medium whitespace-nowrap"
+                >
+                  Explore Generator
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
 
-        {/* ===== FINAL CTA ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-400 mb-4">
-            <Rocket className="w-4 h-4" />
-            Get Started
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Don't just use AI. <span className="text-purple-400">Govern it.</span>
-          </h2>
-          <p className="text-gray-400 max-w-xl mx-auto mb-6">
-            Join businesses across India building defensible DPDPA compliance programs.
-            Start with a free assessment, then explore our guides, tools, and expert services.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/scorecard"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all inline-flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
-            >
-              <Target className="w-5 h-5" />
-              Take the Free Test →
-            </Link>
-            <Link
-              href="/resources/guides/dpdpa-2023-complete-guide"
-              className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all inline-flex items-center justify-center gap-2 backdrop-blur-sm"
-            >
-              <BookOpen className="w-5 h-5" />
-              Read the Complete Guide
-            </Link>
-          </div>
-        </motion.div>
-      </div>
+              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+                {['Privacy Policy', 'Consent Form', 'DPDPA Compliance', 'AI Governance'].map((tag) => (
+                  <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
 
-      {/* ===== LOCKED MESSAGE TOAST ===== */}
-      {showLockMessage && (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-black/90 border border-yellow-500/30 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-xl">
-          <Info className="w-5 h-5 text-yellow-400" />
-          <span className="text-sm font-medium">{showLockMessage}</span>
+          {/* ===== LATEST INSIGHTS ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="mb-16"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <BookOpen className="w-6 h-6 text-purple-400" />
+                  Latest Insights
+                </h2>
+                <p className="text-sm text-gray-400 mt-1">
+                  In-depth analysis on India's data protection law and global privacy
+                </p>
+              </div>
+              <Link
+                href="/insight"
+                className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+              >
+                View All <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {latestInsights.map((insight) => (
+                <Link
+                  key={insight.slug}
+                  href={`/insight/${insight.slug}`}
+                  className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                >
+                  <div className="inline-block px-2 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400 mb-3">
+                    {insight.category}
+                  </div>
+                  <h3 className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
+                    {insight.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 line-clamp-2 mb-3">
+                    {insight.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-white/5">
+                    <span>{insight.date}</span>
+                    <span>{insight.readTime}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== FEATURED GUIDES ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-16"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <FileText className="w-6 h-6 text-purple-400" />
+                  Featured Guides
+                </h2>
+                <p className="text-sm text-gray-400 mt-1">
+                  Comprehensive compliance guides — updated regularly
+                </p>
+              </div>
+              <Link
+                href="/resources/guides"
+                className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+              >
+                All Guides <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {featuredGuides.map((guide) => (
+                <Link
+                  key={guide.slug}
+                  href={`/resources/guides/${guide.slug}`}
+                  className="group bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/15 hover:border-purple-500/30 transition-all"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${guide.categoryColor}`}>
+                      {guide.category}
+                    </span>
+                    <span className="text-xs text-gray-400">{guide.readTime}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
+                    {guide.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 line-clamp-3 mb-4">
+                    {guide.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-white/5">
+                    <span>Updated: {guide.lastUpdated}</span>
+                    <span className="flex items-center gap-1 text-purple-400 group-hover:translate-x-1 transition-transform">
+                      Read Guide <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== CASE STUDIES ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mb-16"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                  <Briefcase className="w-6 h-6 text-purple-400" />
+                  Real-World Case Studies
+                </h2>
+                <p className="text-sm text-gray-400 mt-1">
+                  Learn from actual compliance challenges and solutions
+                </p>
+              </div>
+              <Link
+                href="/resources/case-studies"
+                className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+              >
+                View All <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {featuredCaseStudies.map((cs) => (
+                <Link
+                  key={cs.slug}
+                  href={`/resources/case-studies/${cs.slug}`}
+                  className="group bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400">
+                      {cs.industry}
+                    </span>
+                    <span className="text-xs text-gray-500">{cs.date}</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
+                    {cs.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 line-clamp-2 mb-3">
+                    {cs.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-xs text-gray-500 pt-3 border-t border-white/5">
+                    <TrendingUp className="w-3 h-3 text-green-400" />
+                    <span>{cs.impact}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== BOOK A DEMO SECTION ===== */}
+          <motion.div
+            id="book-demo"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
+            className="mt-16 mb-16 bg-black border border-white/10 rounded-2xl p-8 md:p-10"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+              {/* Left - Text */}
+              <div className="space-y-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-white">
+                  Free Talk to Our <span className="text-white/80">DPDP Act Experts</span>
+                </h2>
+                <p className="text-white/60 text-sm">
+                  Fill in your details and a compliance expert will be in touch within one business day.
+                </p>
+                <div className="flex flex-col gap-2 text-xs text-white/50">
+                  <span className="flex items-center gap-2">
+                    <Clock className="w-4 h-4" />
+                    Responding within 1 business day
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Users className="w-4 h-4" />
+                    Indian compliance experts
+                  </span>
+                </div>
+              </div>
+
+              {/* Right - Form */}
+              <div className="bg-black/50 border border-white/10 rounded-xl p-6">
+                {demoSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="text-4xl mb-4">✅</div>
+                    <h3 className="text-xl font-semibold text-white mb-2">Demo Request Submitted!</h3>
+                    <p className="text-white/60 text-sm">Our team will contact you within 24 hours.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleDemoSubmit} className="space-y-3">
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <LabelWithAsterisk label="First Name" required htmlFor="home-firstName" />
+                        <input
+                          id="home-firstName"
+                          type="text"
+                          name="firstName"
+                          value={demoForm.firstName}
+                          onChange={handleDemoChange}
+                          placeholder="First name"
+                          className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                            formErrors.firstName ? 'border-red-500' : 'border-white/10'
+                          }`}
+                        />
+                        {formErrors.firstName && (
+                          <p className="text-red-400 text-xs mt-1">{formErrors.firstName}</p>
+                        )}
+                      </div>
+                      <div>
+                        <LabelWithAsterisk label="Last Name" required htmlFor="home-lastName" />
+                        <input
+                          id="home-lastName"
+                          type="text"
+                          name="lastName"
+                          value={demoForm.lastName}
+                          onChange={handleDemoChange}
+                          placeholder="Last name"
+                          className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                            formErrors.lastName ? 'border-red-500' : 'border-white/10'
+                          }`}
+                        />
+                        {formErrors.lastName && (
+                          <p className="text-red-400 text-xs mt-1">{formErrors.lastName}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <LabelWithAsterisk label="Work Email" required htmlFor="home-email" />
+                        <input
+                          id="home-email"
+                          type="email"
+                          name="email"
+                          value={demoForm.email}
+                          onChange={handleDemoChange}
+                          placeholder="you@company.com"
+                          className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                            formErrors.email ? 'border-red-500' : 'border-white/10'
+                          }`}
+                        />
+                        {formErrors.email && (
+                          <p className="text-red-400 text-xs mt-1">{formErrors.email}</p>
+                        )}
+                      </div>
+                      <div>
+                        <LabelWithAsterisk label="Phone" required htmlFor="home-phone" />
+                        <input
+                          id="home-phone"
+                          type="tel"
+                          name="phone"
+                          value={demoForm.phone}
+                          onChange={handleDemoChange}
+                          placeholder="+91 98765 43210"
+                          className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                            formErrors.phone ? 'border-red-500' : 'border-white/10'
+                          }`}
+                        />
+                        {formErrors.phone && (
+                          <p className="text-red-400 text-xs mt-1">{formErrors.phone}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <LabelWithAsterisk label="Company" required htmlFor="home-company" />
+                        <input
+                          id="home-company"
+                          type="text"
+                          name="company"
+                          value={demoForm.company}
+                          onChange={handleDemoChange}
+                          placeholder="Your company"
+                          className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 transition-all ${
+                            formErrors.company ? 'border-red-500' : 'border-white/10'
+                          }`}
+                        />
+                        {formErrors.company && (
+                          <p className="text-red-400 text-xs mt-1">{formErrors.company}</p>
+                        )}
+                      </div>
+                      <div>
+                        <LabelWithAsterisk label="Job Title" htmlFor="home-jobTitle" />
+                        <input
+                          id="home-jobTitle"
+                          type="text"
+                          name="jobTitle"
+                          value={demoForm.jobTitle}
+                          onChange={handleDemoChange}
+                          placeholder="e.g. Privacy Officer"
+                          className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <LabelWithAsterisk label="Company Size" htmlFor="home-companySize" />
+                        <select
+                          id="home-companySize"
+                          name="companySize"
+                          value={demoForm.companySize}
+                          onChange={handleDemoChange}
+                          className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30"
+                        >
+                          <option className="bg-black text-white" value="">Select size</option>
+                          <option className="bg-black text-white" value="1-50">1–50 employees</option>
+                          <option className="bg-black text-white" value="51-200">51–200 employees</option>
+                          <option className="bg-black text-white" value="201-1000">201–1,000 employees</option>
+                          <option className="bg-black text-white" value="1001-5000">1,001–5,000 employees</option>
+                          <option className="bg-black text-white" value="5000+">5,000+ employees</option>
+                        </select>
+                      </div>
+                      <div>
+                        <LabelWithAsterisk label="Industry" required htmlFor="home-industry" />
+                        <select
+                          id="home-industry"
+                          name="industry"
+                          value={demoForm.industry}
+                          onChange={handleDemoChange}
+                          className={`w-full px-3 py-2 rounded-lg bg-white/5 border text-white text-sm focus:outline-none focus:border-white/30 transition-all ${
+                            formErrors.industry ? 'border-red-500' : 'border-white/10'
+                          }`}
+                        >
+                          <option className="bg-black text-white" value="">Select industry</option>
+                          <option className="bg-black text-white" value="Financial Services">Financial Services</option>
+                          <option className="bg-black text-white" value="Healthcare">Healthcare</option>
+                          <option className="bg-black text-white" value="Technology">Technology</option>
+                          <option className="bg-black text-white" value="Retail">Retail & E-commerce</option>
+                          <option className="bg-black text-white" value="Manufacturing">Manufacturing</option>
+                          <option className="bg-black text-white" value="Education">Education</option>
+                          <option className="bg-black text-white" value="Government">Government</option>
+                          <option className="bg-black text-white" value="Media">Media & Entertainment</option>
+                          <option className="bg-black text-white" value="Professional Services">Professional Services</option>
+                          <option className="bg-black text-white" value="Other">Other</option>
+                        </select>
+                        {formErrors.industry && (
+                          <p className="text-red-400 text-xs mt-1">{formErrors.industry}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div>
+                      <LabelWithAsterisk label="What are your biggest DPDP compliance challenges?" htmlFor="home-challenges" />
+                      <textarea
+                        id="home-challenges"
+                        name="challenges"
+                        value={demoForm.challenges}
+                        onChange={handleDemoChange}
+                        placeholder="e.g. Need to implement consent management..."
+                        rows={2}
+                        className="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/30 resize-none"
+                      />
+                    </div>
+
+                    <div className="flex items-start gap-2">
+                      <input
+                        id="home-consent"
+                        type="checkbox"
+                        name="consent"
+                        checked={demoForm.consent}
+                        onChange={handleDemoChange}
+                        className={`w-4 h-4 mt-0.5 rounded transition-all ${
+                          formErrors.consent ? 'border-red-500' : 'accent-white/20'
+                        }`}
+                      />
+                      <label htmlFor="home-consent" className="text-xs text-white/50 cursor-pointer">
+                        I agree to Legal Galaxy's Privacy Policy and consent to being contacted.
+                      </label>
+                    </div>
+                    {formErrors.consent && (
+                      <p className="text-red-400 text-xs">{formErrors.consent}</p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/80 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit'}
+                    </button>
+                    <p className="text-center text-[10px] text-white/50">
+                      Responding within 1 business day · Indian compliance experts
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ===== CONTACT NUMBER ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="text-center pb-8"
+          >
+            <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all flex-wrap justify-center">
+              <div className="flex items-center gap-2 text-gray-400">
+                <Phone className="w-4 h-4 text-purple-400" />
+                <span className="text-sm"> For immediate assistance, call us at:</span>
+              </div>
+              <a
+                href="tel:+918800138008"
+                className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+              >
+                +91 8800138008
+              </a>
+              <span className="text-xs text-gray-500 hidden sm:inline">|</span>
+              <a
+                href="mailto:shilpi.kulshrestha@businezexcellence.com"
+                className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+              >
+                shilpi.kulshrestha@businezexcellence.com
+              </a>
+            </div>
+          </motion.div>
+
+          {/* ===== WHY LEGAL GALAXY ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.65 }}
+            className="mb-16"
+          >
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                Why Choose Legal Galaxy?
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Built by legal professionals for businesses that need practical, actionable compliance tools
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { icon: Shield, title: "Expert-Built Content", desc: "Created by corporate lawyers and privacy specialists with 10+ years of experience" },
+                { icon: Zap, title: "Free Tools", desc: "Document generator, compliance scorecard, and 20+ learning modules — all free" },
+                { icon: TrendingUp, title: "Updated Regularly", desc: "Content updated to reflect latest DPDPA rules, circulars, and enforcement actions" },
+                { icon: Globe, title: "Global Coverage", desc: `Compare privacy laws across ${countries.length}+ countries including GDPR, CCPA, and PIPL` },
+                { icon: Users, title: "Practical Focus", desc: "Real-world case studies and templates you can actually use — not just theory" },
+                { icon: CheckCircle, title: "No Signup Required", desc: "Start using every tool and reading every guide — no email required to begin" },
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-3 border border-purple-500/30">
+                      <Icon className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
+                    <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* ===== GALAXY EXPLORER ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="mb-16"
+          >
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 justify-center">
+              <Globe className="w-6 h-6 text-purple-400" />
+              Explore the Galaxy
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center max-w-4xl mx-auto">
+              {[
+                { icon: Shield, label: "Privacy", href: "/galaxy?category=privacy", color: "from-blue-500 to-blue-600" },
+                { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-purple-500 to-purple-600" },
+                { icon: Lock, label: "Digital Trust", href: "/galaxy?category=trust", color: "from-emerald-500 to-emerald-600" },
+              ].map((item, idx) => (
+                <Link key={idx} href={item.href} className="group w-full max-w-xs">
+                  <div className="bg-white/10 border border-white/20 rounded-xl p-6 text-center hover:bg-white/15 transition-all hover:scale-105">
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform`}>
+                      <item.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-white font-medium">{item.label}</h3>
+                    <p className="text-xs text-gray-400 mt-1">Explore →</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== RESOURCES ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.75 }}
+            className="mb-16"
+          >
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-purple-400" />
+              Resources
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { icon: Globe, label: "Galaxy", href: "/galaxy" },
+                { icon: FileText, label: "Insights", href: "/insight" },
+                { icon: BookOpen, label: "Guides", href: "/resources/guides" },
+                { icon: Map, label: "Map", href: "/map" },
+              ].map((item, idx) => (
+                <Link key={idx} href={item.href} className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-all hover:scale-105">
+                  <item.icon className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+                  <span className="text-sm text-white">{item.label}</span>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== CERTIFICATION (LIVE NOW) ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
+          >
+            <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6">
+              <div className="flex items-center gap-2 mb-2">
+                <Award className="w-5 h-5 text-amber-400" />
+                <h3 className="text-lg font-semibold text-white">Certification</h3>
+              </div>
+              <p className="text-gray-300 text-sm mb-4">Build expertise. Get certified in Privacy & AI Governance.</p>
+              <Link
+                href="/certificate-course"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/30 text-amber-300 hover:text-white transition-all text-sm font-medium"
+              >
+                <Award className="w-4 h-4" />
+                Explore Certification →
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* ===== ABOUT ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.85 }}
+            className="bg-white/10 border border-white/20 rounded-2xl p-8 text-center mb-16"
+          >
+            <Users className="w-12 h-12 text-purple-400 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-white mb-3">Built by Legal & Governance Professionals</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Legal Galaxy is a Privacy & AI Governance platform designed to help businesses
+              understand, assess, and implement responsible data and AI practices.
+            </p>
+            <Link href="/about" className="inline-block mt-4 text-purple-400 hover:text-purple-300 transition-colors text-sm">
+              Learn More →
+            </Link>
+          </motion.div>
+
+          {/* ===== FINAL CTA ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-400 mb-4">
+              <Rocket className="w-4 h-4" />
+              Get Started
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Don't just use AI. <span className="text-purple-400">Govern it.</span>
+            </h2>
+            <p className="text-gray-400 max-w-xl mx-auto mb-6">
+              Join businesses across India building defensible DPDPA compliance programs.
+              Start with a free assessment, then explore our guides, tools, and expert services.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/scorecard"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all inline-flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+              >
+                <Target className="w-5 h-5" />
+                Take the Free Test →
+              </Link>
+              <Link
+                href="/resources/guides/dpdpa-2023-complete-guide"
+                className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all inline-flex items-center justify-center gap-2 backdrop-blur-sm"
+              >
+                <BookOpen className="w-5 h-5" />
+                Read the Complete Guide
+              </Link>
+            </div>
+          </motion.div>
         </div>
-      )}
-    </main>
+
+        {/* ===== LOCKED MESSAGE TOAST ===== */}
+        {showLockMessage && (
+          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-black/90 border border-yellow-500/30 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-xl">
+            <Info className="w-5 h-5 text-yellow-400" />
+            <span className="text-sm font-medium">{showLockMessage}</span>
+          </div>
+        )}
+      </main>
+    </>
   );
 }
