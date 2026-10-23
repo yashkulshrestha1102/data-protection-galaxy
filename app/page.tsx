@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { 
-  Shield, Sparkles, Target, BookOpen, FileText, 
-  Map, Globe, Award, Users, Rocket, Brain, 
+import {
+  Shield, Sparkles, Target, BookOpen, FileText,
+  Map, Globe, Award, Users, Rocket, Brain,
   Scale, Lock, Zap, ArrowRight, Calendar, Clock, Info, Phone,
   CheckCircle, TrendingUp, Star, Briefcase, AlertTriangle,
-  Quote, ChevronRight, Building2, UserCheck,HelpCircle 
+  Quote, ChevronRight, Building2, UserCheck, HelpCircle
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -18,6 +18,38 @@ import { guidesData } from "@/data/guides";
 import { caseStudiesData } from "@/data/case-studies";
 import { authors } from "@/data/authors";
 import { countries } from "@/data/countries";
+
+// ===== HOMEPAGE FAQ DATA (used in both UI and schema) =====
+const HOME_FAQS = [
+  {
+    q: "What is the maximum penalty under India's DPDP Act 2023?",
+    a: "The maximum penalty under the DPDP Act 2023 is ₹250 crore for failure to take reasonable security safeguards to prevent a personal data breach. Other penalties range from ₹50 crore to ₹200 crore depending on the nature of the violation, as set out in the Schedule to the Act.",
+  },
+  {
+    q: "When did the DPDP Act 2023 come into force?",
+    a: "The DPDP Act 2023 received presidential assent on 11 August 2023. The DPDP Rules 2025 were notified in November 2025. Implementation is phased — main operational provisions, including consent and data principal rights, are scheduled to commence on 13 May 2027.",
+  },
+  {
+    q: "Is a Data Protection Officer (DPO) mandatory under DPDPA?",
+    a: "A DPO is mandatory only for Significant Data Fiduciaries (SDFs) notified by the Central Government under Section 10. Non-SDFs are not required to appoint a DPO under the Act, though they still must comply with other obligations.",
+  },
+  {
+    q: "Does India's DPDP Act require data localisation?",
+    a: "No. The DPDP Act does not mandate general data localisation. Cross-border transfers are allowed by default unless the Central Government restricts them under Section 16. However, sectoral laws — such as RBI's payment data rules, IRDAI insurance regulations, and SEBI securities rules — may require localisation for specific data types.",
+  },
+  {
+    q: "Who is a Data Fiduciary under the DPDP Act?",
+    a: "A Data Fiduciary is any person or entity that alone or jointly with others determines the purpose and means of processing personal data. This includes most businesses, websites, mobile apps, SaaS platforms, and service providers operating in India.",
+  },
+  {
+    q: "What are the 6 rights of Data Principals under DPDPA?",
+    a: "The DPDP Act grants six core rights: (1) Right to access information about personal data, (2) Right to correction and erasure, (3) Right to grievance redressal, (4) Right to data portability, (5) Right to nominate, and (6) Right to withdraw consent.",
+  },
+  {
+    q: `How many countries does Legal Galaxy cover for data protection laws?`,
+    a: `Legal Galaxy compares data protection laws across ${countries.length}+ jurisdictions, including India's DPDP Act 2023, GDPR, CCPA/CPRA, China's PIPL, Brazil's LGPD, and others. Each country profile covers the law name, enforcement authority, compliance level, and 14-topic coverage analysis.`,
+  },
+];
 
 // ===== FIELD LABEL COMPONENT (UPDATED FOR A11Y) =====
 const LabelWithAsterisk = ({ label, required, htmlFor }: { label: string; required?: boolean; htmlFor?: string }) => (
@@ -82,7 +114,7 @@ export default function Home() {
   // ===== VALIDATION FUNCTION =====
   const validateForm = () => {
     const errors: Record<string, string> = {};
-    
+
     if (!demoForm.firstName.trim()) errors.firstName = 'First name is required';
     if (!demoForm.lastName.trim()) errors.lastName = 'Last name is required';
     if (!demoForm.email.trim()) {
@@ -106,7 +138,7 @@ export default function Home() {
   // ===== DEMO FORM SUBMIT HANDLER =====
   const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       const firstError = document.querySelector('.border-red-500');
       if (firstError) {
@@ -181,8 +213,30 @@ export default function Home() {
   const featuredGuides = guidesData.slice(0, 2);
   const featuredCaseStudies = caseStudiesData.slice(0, 2);
 
+  // ===== FAQ SCHEMA (GEO) =====
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: HOME_FAQS.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
+      {/* ===== FAQ SCHEMA (GEO) ===== */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* ===== BACKGROUND ===== */}
       <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
@@ -190,9 +244,9 @@ export default function Home() {
       <div className="absolute inset-0 -z-10">{stars}</div>
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        
+
         {/* ===== SECTION 1: HERO ===== */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -271,7 +325,7 @@ export default function Home() {
           {[
             { number: "20+", label: "Free Modules", icon: BookOpen },
             { number: "250+", label: "Lessons", icon: FileText },
-            { number: "70+", label: "Country Guides", icon: Globe },
+            { number: `${countries.length}+`, label: "Country Guides", icon: Globe },
             { number: "₹250 Cr", label: "Max Penalty", icon: AlertTriangle },
           ].map((stat, idx) => {
             const Icon = stat.icon;
@@ -285,78 +339,44 @@ export default function Home() {
           })}
         </motion.div>
 
-
-
-
-
-
         {/* ===== QUICK ANSWERS (GEO Optimized) ===== */}
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 0.18 }}
-  className="mb-16"
->
-  <div className="text-center mb-8">
-    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-3">
-      <HelpCircle className="w-4 h-4" />
-      DPDP Act 2023 — Quick Answers
-    </div>
-    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-      Common DPDPA Questions Answered
-    </h2>
-    <p className="text-gray-400 text-sm max-w-2xl mx-auto">
-      Direct answers to the most frequently asked questions about India's Digital Personal Data Protection Act 2023.
-    </p>
-  </div>
-  <div className="grid gap-3 max-w-4xl mx-auto">
-    {[
-      {
-        q: "What is the maximum penalty under India's DPDP Act 2023?",
-        a: "The maximum penalty under the DPDP Act 2023 is ₹250 crore for failure to take reasonable security safeguards to prevent a personal data breach. Other penalties range from ₹50 crore to ₹200 crore depending on the nature of the violation, as set out in the Schedule to the Act.",
-      },
-      {
-        q: "When did the DPDP Act 2023 come into force?",
-        a: "The DPDP Act 2023 received presidential assent on 11 August 2023. The DPDP Rules 2025 were notified in November 2025. Implementation is phased — main operational provisions, including consent and data principal rights, are scheduled to commence on 13 May 2027.",
-      },
-      {
-        q: "Is a Data Protection Officer (DPO) mandatory under DPDPA?",
-        a: "A DPO is mandatory only for Significant Data Fiduciaries (SDFs) notified by the Central Government under Section 10. Non-SDFs are not required to appoint a DPO under the Act, though they still must comply with other obligations.",
-      },
-      {
-        q: "Does India's DPDP Act require data localisation?",
-        a: "No. The DPDP Act does not mandate general data localisation. Cross-border transfers are allowed by default unless the Central Government restricts them under Section 16. However, sectoral laws — such as RBI's payment data rules, IRDAI insurance regulations, and SEBI securities rules — may require localisation for specific data types.",
-      },
-      {
-        q: "Who is a Data Fiduciary under the DPDP Act?",
-        a: "A Data Fiduciary is any person or entity that alone or jointly with others determines the purpose and means of processing personal data. This includes most businesses, websites, mobile apps, SaaS platforms, and service providers operating in India.",
-      },
-      {
-        q: "What are the 6 rights of Data Principals under DPDPA?",
-        a: "The DPDP Act grants six core rights: (1) Right to access information about personal data, (2) Right to correction and erasure, (3) Right to grievance redressal, (4) Right to data portability, (5) Right to nominate, and (6) Right to withdraw consent.",
-      },
-      {
-        q: "How many countries does Legal Galaxy cover for data protection laws?",
-        a: `Legal Galaxy compares data protection laws across ${countries.length}+ jurisdictions, including India's DPDP Act 2023, GDPR, CCPA/CPRA, China's PIPL, Brazil's LGPD, and others. Each country profile covers the law name, enforcement authority, compliance level, and 14-topic coverage analysis.`,
-      },
-    ].map((item, i) => (
-      <details
-        key={i}
-        className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
-      >
-        <summary className="flex items-center justify-between cursor-pointer list-none">
-          <span className="text-white font-medium pr-4 text-left">{item.q}</span>
-          <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
-            +
-          </span>
-        </summary>
-        <p className="text-gray-300 text-sm leading-relaxed mt-3 pt-3 border-t border-white/10">
-          {item.a}
-        </p>
-      </details>
-    ))}
-  </div>
-</motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.18 }}
+          className="mb-16"
+        >
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-3">
+              <HelpCircle className="w-4 h-4" />
+              DPDP Act 2023 — Quick Answers
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              Common DPDPA Questions Answered
+            </h2>
+            <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+              Direct answers to the most frequently asked questions about India's Digital Personal Data Protection Act 2023.
+            </p>
+          </div>
+          <div className="grid gap-3 max-w-4xl mx-auto">
+            {HOME_FAQS.map((item, i) => (
+              <details
+                key={i}
+                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+              >
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <span className="text-white font-medium pr-4 text-left">{item.q}</span>
+                  <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+                    +
+                  </span>
+                </summary>
+                <p className="text-gray-300 text-sm leading-relaxed mt-3 pt-3 border-t border-white/10">
+                  {item.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </motion.div>
 
         {/* ===== GENERATOR SECTION ===== */}
         <motion.div
@@ -378,15 +398,15 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <Link 
-                href="/generator" 
+              <Link
+                href="/generator"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-500/30 hover:bg-purple-500/40 border border-purple-400/30 text-purple-300 hover:text-white transition-all text-sm font-medium whitespace-nowrap"
               >
                 Explore Generator
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            
+
             <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
               {['Privacy Policy', 'Consent Form', 'DPDPA Compliance', 'AI Governance'].map((tag) => (
                 <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-400">
@@ -414,8 +434,8 @@ export default function Home() {
                 In-depth analysis on India's data protection law and global privacy
               </p>
             </div>
-            <Link 
-              href="/insight" 
+            <Link
+              href="/insight"
               className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
             >
               View All <ArrowRight className="w-4 h-4" />
@@ -423,8 +443,8 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {latestInsights.map((insight) => (
-              <Link 
-                key={insight.slug} 
+              <Link
+                key={insight.slug}
                 href={`/insight/${insight.slug}`}
                 className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
               >
@@ -463,8 +483,8 @@ export default function Home() {
                 Comprehensive compliance guides — updated regularly
               </p>
             </div>
-            <Link 
-              href="/resources/guides" 
+            <Link
+              href="/resources/guides"
               className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
             >
               All Guides <ArrowRight className="w-4 h-4" />
@@ -517,8 +537,8 @@ export default function Home() {
                 Learn from actual compliance challenges and solutions
               </p>
             </div>
-            <Link 
-              href="/resources/case-studies" 
+            <Link
+              href="/resources/case-studies"
               className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
             >
               View All <ArrowRight className="w-4 h-4" />
@@ -553,7 +573,7 @@ export default function Home() {
         </motion.div>
 
         {/* ===== BOOK A DEMO SECTION ===== */}
-        <motion.div 
+        <motion.div
           id="book-demo"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -561,7 +581,7 @@ export default function Home() {
           className="mt-16 mb-16 bg-black border border-white/10 rounded-2xl p-8 md:p-10"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-            
+
             {/* Left - Text */}
             <div className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold text-white">
@@ -592,7 +612,7 @@ export default function Home() {
                 </div>
               ) : (
                 <form onSubmit={handleDemoSubmit} className="space-y-3">
-                  
+
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <LabelWithAsterisk label="First Name" required htmlFor="home-firstName" />
@@ -795,7 +815,7 @@ export default function Home() {
         </motion.div>
 
         {/* ===== CONTACT NUMBER ===== */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
@@ -806,15 +826,15 @@ export default function Home() {
               <Phone className="w-4 h-4 text-purple-400" />
               <span className="text-sm"> For immediate assistance, call us at:</span>
             </div>
-            <a 
-              href="tel:+918800138008" 
+            <a
+              href="tel:+918800138008"
               className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
             >
               +91 8800138008
             </a>
             <span className="text-xs text-gray-500 hidden sm:inline">|</span>
-            <a 
-              href="mailto:shilpi.kulshrestha@businezexcellence.com" 
+            <a
+              href="mailto:shilpi.kulshrestha@businezexcellence.com"
               className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
             >
               shilpi.kulshrestha@businezexcellence.com
@@ -842,7 +862,7 @@ export default function Home() {
               { icon: Shield, title: "Expert-Built Content", desc: "Created by corporate lawyers and privacy specialists with 10+ years of experience" },
               { icon: Zap, title: "Free Tools", desc: "Document generator, compliance scorecard, and 20+ learning modules — all free" },
               { icon: TrendingUp, title: "Updated Regularly", desc: "Content updated to reflect latest DPDPA rules, circulars, and enforcement actions" },
-              { icon: Globe, title: "Global Coverage", desc: "Compare privacy laws across 70+ countries including GDPR, CCPA, and PIPL" },
+              { icon: Globe, title: "Global Coverage", desc: `Compare privacy laws across ${countries.length}+ countries including GDPR, CCPA, and PIPL` },
               { icon: Users, title: "Practical Focus", desc: "Real-world case studies and templates you can actually use — not just theory" },
               { icon: CheckCircle, title: "No Signup Required", desc: "Start using every tool and reading every guide — no email required to begin" },
             ].map((item, idx) => {
@@ -861,7 +881,7 @@ export default function Home() {
         </motion.div>
 
         {/* ===== GALAXY EXPLORER ===== */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
@@ -891,7 +911,7 @@ export default function Home() {
         </motion.div>
 
         {/* ===== RESOURCES ===== */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.75 }}
@@ -917,7 +937,7 @@ export default function Home() {
         </motion.div>
 
         {/* ===== CERTIFICATION (LIVE NOW) ===== */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
@@ -929,7 +949,7 @@ export default function Home() {
               <h3 className="text-lg font-semibold text-white">Certification</h3>
             </div>
             <p className="text-gray-300 text-sm mb-4">Build expertise. Get certified in Privacy & AI Governance.</p>
-            <Link 
+            <Link
               href="/certificate-course"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/30 text-amber-300 hover:text-white transition-all text-sm font-medium"
             >
@@ -940,7 +960,7 @@ export default function Home() {
         </motion.div>
 
         {/* ===== ABOUT ===== */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.85 }}
@@ -949,7 +969,7 @@ export default function Home() {
           <Users className="w-12 h-12 text-purple-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-3">Built by Legal & Governance Professionals</h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Legal Galaxy is a Privacy & AI Governance platform designed to help businesses 
+            Legal Galaxy is a Privacy & AI Governance platform designed to help businesses
             understand, assess, and implement responsible data and AI practices.
           </p>
           <Link href="/about" className="inline-block mt-4 text-purple-400 hover:text-purple-300 transition-colors text-sm">
@@ -958,7 +978,7 @@ export default function Home() {
         </motion.div>
 
         {/* ===== FINAL CTA ===== */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 }}
@@ -972,7 +992,7 @@ export default function Home() {
             Don't just use AI. <span className="text-purple-400">Govern it.</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto mb-6">
-            Join businesses across India building defensible DPDPA compliance programs. 
+            Join businesses across India building defensible DPDPA compliance programs.
             Start with a free assessment, then explore our guides, tools, and expert services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
