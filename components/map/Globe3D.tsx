@@ -57,7 +57,6 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
 
     // ===== 1. EARTH TEXTURE =====
     const textureLoader = new THREE.TextureLoader();
-    // Using a reliable NASA earth texture
     const earthMapUrl = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
     
     textureLoader.load(earthMapUrl, (texture) => {
@@ -83,7 +82,8 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     // ===== 3. ATMOSPHERE =====
     const glowGeo = new THREE.SphereGeometry(radius * 1.15, 64, 64);
     const glowMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.15, side: THREE.BackSide });
-    globeGroup.add(new THREE.Mesh(glowGeo, glowMat));
+    const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+    globeGroup.add(glowMesh);
 
     // ===== 4. STARS =====
     const starsGeo = new THREE.BufferGeometry();
@@ -126,8 +126,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     controls.minDistance = 3.5;
     controls.maxDistance = 10;
 
-    // ===== 8. ✅ LAT/LNG TO VECTOR3 (THE FIX) =====
-    // This function converts standard lat/lng into Three.js sphere coordinates
+    // ===== 8. LAT/LNG TO VECTOR3 =====
     const latLngToVector3 = (lat: number, lng: number, r: number) => {
       const phi = (90 - lat) * (Math.PI / 180);
       const theta = (lng + 180) * (Math.PI / 180);
@@ -155,11 +154,14 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       
       raycaster.setFromCamera(mouse, camera);
       
-      const meshes = globeGroup.children.filter(c => c.geometry?.type === 'SphereGeometry' && c !== marker && c !== glowGeo);
-      const intersects = raycaster.intersectObjects(meshes);
+      // ✅ FIX: Direct intersect without problematic filter
+      const intersects = raycaster.intersectObjects(globeGroup.children, true);
       
-      if (intersects.length > 0) {
-        const point = intersects[0].point;
+      // Find the first hit that is a valid Mesh (not the marker or glow)
+      const hit = intersects.find(i => i.object instanceof THREE.Mesh && i.object !== marker && i.object !== glowMesh);
+      
+      if (hit) {
+        const point = hit.point;
         const lat = Math.asin(point.y / radius) * 180 / Math.PI;
         const lng = Math.atan2(point.z, -point.x) * 180 / Math.PI - 180;
 
@@ -175,7 +177,6 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
           setHoveredCountry(nearestCountry.id);
           renderer.domElement.style.cursor = 'pointer';
 
-          // Move marker to hovered country to show exact position
           const pos = latLngToVector3(nearestCountry.coordinates.lat, nearestCountry.coordinates.lng, radius * 1.005);
           marker.position.copy(pos);
           marker.lookAt(0, 0, 0);
@@ -199,11 +200,12 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
       
       raycaster.setFromCamera(mouse, camera);
-      const meshes = globeGroup.children.filter(c => c.geometry?.type === 'SphereGeometry' && c !== marker && c !== glowGeo);
-      const intersects = raycaster.intersectObjects(meshes);
       
-      if (intersects.length > 0) {
-        const point = intersects[0].point;
+      const intersects = raycaster.intersectObjects(globeGroup.children, true);
+      const hit = intersects.find(i => i.object instanceof THREE.Mesh && i.object !== marker && i.object !== glowMesh);
+      
+      if (hit) {
+        const point = hit.point;
         const lat = Math.asin(point.y / radius) * 180 / Math.PI;
         const lng = Math.atan2(point.z, -point.x) * 180 / Math.PI - 180;
         
@@ -264,7 +266,6 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     };
   }, [onCountryClick, selectedCountryId]);
 
-  // Update marker when selected from right side panel
   useEffect(() => {
     if (!markerRef.current || !globeGroupRef.current) return;
     const country = countries.find(c => c.id === selectedCountryId);
