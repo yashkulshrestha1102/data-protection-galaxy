@@ -62,7 +62,6 @@ export default function MapPage() {
 
   return (
     <main className="min-h-screen text-white px-4 pb-12 relative overflow-hidden pt-28 md:pt-32">
-      {/* Background */}
       <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
         <div className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-sm" />
       </div>
@@ -130,21 +129,20 @@ export default function MapPage() {
           </div>
         </div>
 
-        {/* Main Layout - FIX: Use min-height & custom height instead of fixed to prevent cut-off */}
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 mb-12 items-start">
+        {/* Main Layout */}
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 mb-12 items-stretch">
           
-          {/* Map Container - Fixed height so globe renders properly, but responsive */}
-          <div className="xl:col-span-7 relative h-[500px] lg:h-[600px] xl:h-[75vh] w-full bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+          {/* ✅ Map Container - Height auto adjusts */}
+          <div className="xl:col-span-7 relative w-full h-[500px] xl:h-[650px] bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
             <Globe3D 
               onCountryClick={(id) => setSelectedCountryId(id)}
               selectedCountryId={selectedCountryId}
             />
           </div>
 
-          {/* Country Detail Container - Matches map height, scrolls internally */}
-          <div className="xl:col-span-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl h-[600px] lg:h-[700px] xl:h-[75vh] shadow-2xl relative flex flex-col">
-            {/* Custom Scrollable Area */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-6 pb-20 relative">
+          {/* ✅ Country Detail Container - Flex scroll for buttons fix */}
+          <div className="xl:col-span-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl h-[500px] xl:h-[650px] shadow-2xl relative flex flex-col">
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-6 relative">
               <CountryDetail country={selectedCountry || null} />
             </div>
           </div>
@@ -185,23 +183,6 @@ export default function MapPage() {
           </div>
         </div>
 
-        {/* SEO Content */}
-        <div className="sr-only">
-          <h2>Global Data Protection and Privacy Laws</h2>
-          <p>
-            The Global Data Protection Laws Map by Legal Galaxy is a comprehensive directory of privacy regulations across {countries.length}+ countries. 
-            This map allows compliance professionals, Data Protection Officers (DPOs), and businesses to explore jurisdiction-specific laws, compare 
-            data protection authorities, and understand cross-border data transfer requirements.
-          </p>
-          <h3>List of Countries and Laws Covered:</h3>
-          <ul>
-            {countries.map((c) => (
-              <li key={c.id}>
-                {c.name} - {c.lawName} - Enforced by {c.authority} - Region: {c.region} - Protection Level: {c.level}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </main>
   );
