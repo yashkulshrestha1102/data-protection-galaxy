@@ -131,18 +131,20 @@ export default function MapPage() {
         </div>
 
         {/* Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-          <div className="relative h-[600px] w-full">
-            <Globe3D 
-              onCountryClick={(id) => setSelectedCountryId(id)}
-              selectedCountryId={selectedCountryId}
-            />
-          </div>
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 items-start">
+  {/* Map container - Fixed height */}
+  <div className="relative h-[600px] w-full bg-black/40 rounded-2xl border border-white/10 overflow-hidden">
+    <Globe3D 
+      onCountryClick={(id) => setSelectedCountryId(id)}
+      selectedCountryId={selectedCountryId}
+    />
+  </div>
 
-          <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md p-6 h-[600px] shadow-2xl relative overflow-hidden">
-            <CountryDetail country={selectedCountry || null} />
-          </div>
-        </div>
+  {/* Country Detail container - Same height with internal scroll */}
+  <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md p-6 h-[600px] shadow-2xl relative overflow-hidden">
+    <CountryDetail country={selectedCountry || null} />
+  </div>
+</div>
 
         {/* Country Grid */}
         <div className="mt-8">
