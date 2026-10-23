@@ -14,17 +14,16 @@ interface Globe3DProps {
   selectedCountryId: string;
 }
 
-// Reliable TopoJSON URL for the world map
-const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
+// ✅ Reliable TopoJSON URL (High performance & stable)
+const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => {
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseEnter = (geoId: string, event: React.MouseEvent) => {
-    // Map the TopoJSON name to our countries data name to get exact info
-    const countryData = countries.find(c => c.name === geoId || geoId.includes(c.name) || c.name.includes(geoId));
+  const handleMouseEnter = (geoName: string, event: React.MouseEvent) => {
+    const countryData = countries.find(c => c.name === geoName || geoName.includes(c.name) || c.name.includes(geoName));
     if (countryData) {
       setHoveredCountry(countryData.id);
       if (containerRef.current) {
@@ -51,17 +50,16 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     setHoveredCountry(null);
   };
 
-  const handleClick = (geoId: string) => {
-    const countryData = countries.find(c => c.name === geoId || geoId.includes(c.name) || c.name.includes(geoId));
+  const handleClick = (geoName: string) => {
+    const countryData = countries.find(c => c.name === geoName || geoName.includes(c.name) || c.name.includes(geoName));
     if (countryData) {
       onCountryClick(countryData.id);
     }
   };
 
-  // Color mapping based on the level
   const getFillColor = (countryId: string) => {
     const country = countries.find(c => c.id === countryId);
-    if (!country) return "#1e1e2f"; // Default dark
+    if (!country) return "#1e1e2f"; // Default dark for non-listed countries
     
     switch (country.level) {
       case 'Comprehensive': return "#4c1d95"; // Deep Purple
@@ -78,63 +76,43 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
   return (
     <div 
       ref={containerRef} 
-      className="relative w-full h-full min-h-[500px] rounded-2xl overflow-hidden bg-[#050510] border border-white/10 shadow-2xl flex flex-col items-center justify-center"
+      // ✅ Fixed Height to fit perfectly in the 600px parent box
+      className="relative w-full h-[600px] rounded-2xl overflow-hidden bg-[#050510] border border-white/10 shadow-2xl flex flex-col"
       onMouseMove={handleMouseMove}
     >
       
-      {/* ===== MAP ===== */}
-      <div className="w-full flex-1 flex items-center justify-center p-4">
+      {/* ===== MAP AREA ===== */}
+      <div className="flex-1 w-full flex items-center justify-center p-2">
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: 120,
+            scale: 140, // Zoom level adjusted for perfect fit
             center: [0, 30]
           }}
-          className="w-full max-w-[800px] outline-none"
+          className="w-full h-full outline-none"
         >
           <ZoomableGroup center={[0, 20]} zoom={1}>
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => {
-                  // Match the geographic name to our country data
-                  const geoName = geo.properties.name;
+                  // The jsdelivr topojson uses "name" property for country names
+                  const geoName = geo.properties.name || "";
                   const countryData = countries.find(c => c.name === geoName || geoName.includes(c.name) || c.name.includes(geoName));
                   
                   const countryId = countryData?.id;
-                  const isSelected = selectedCountryId === countryId;
-                  const isHovered = hoveredCountry === countryId;
 
                   return (
                     <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      onMouseEnter={(e) => handleMouseEnter(geoName, e)}
-                      onMouseLeave={handleMouseLeave}
-                      onClick={() => handleClick(geoName)}
-                      style={{
-                        default: {
-                          fill: countryId ? getFillColor(countryId) : "#1a1a2e",
-                          stroke: "#ffffff",
-                          strokeWidth: 0.3,
-                          outline: "none",
-                          transition: "all 250ms"
-                        },
-                        hover: {
-                          fill: "#EC4899", // Pink highlight on hover
-                          stroke: "#ffffff",
-                          strokeWidth: 1,
-                          outline: "none",
-                          cursor: "pointer",
-                          filter: "drop-shadow(0 0 8px rgba(236, 72, 153, 0.8))",
-                          transition: "all 250ms"
-                        },
-                        pressed: {
-                          fill: "#8B5CF6",
-                          outline: "none"
-                        }
-                      }}
-                      className={`${isSelected ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
-                    />
+  key={geo.rsmKey}
+  geography={geo}
+  onMouseEnter={(e) => handleMouseEnter(geoName, e)}
+  onMouseLeave={handleMouseLeave}
+  onClick={() => handleClick(geoName)}
+  fill={countryId ? getFillColor(countryId) : "#1a1a2e"}
+  stroke="#050510"
+  strokeWidth={0.5}
+  className={`${selectedCountryId === countryId ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
+/>
                   );
                 })
               }
@@ -144,7 +122,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       </div>
 
       {/* ===== LEGEND (Color Coding) ===== */}
-      <div className="w-full px-6 py-4 border-t border-white/10 bg-black/40 flex flex-wrap items-center justify-center gap-6">
+      <div className="w-full px-6 py-4 border-t border-white/10 bg-black/40 flex flex-wrap items-center justify-center gap-4 md:gap-6 shrink-0">
         {[
           { label: 'Comprehensive', color: '#4c1d95' },
           { label: 'Substantial', color: '#7c3aed' },
@@ -154,7 +132,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
         ].map((level) => (
           <div key={level.label} className="flex items-center gap-2">
             <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: level.color }} />
-            <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">{level.label}</span>
+            <span className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-wider">{level.label}</span>
           </div>
         ))}
       </div>

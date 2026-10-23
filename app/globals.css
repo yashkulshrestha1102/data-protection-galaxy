@@ -115,3 +115,16 @@ body {
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
 
+/* Map Geography Hover Effect */
+.rsm-geography {
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.rsm-geography:hover {
+  fill: #EC4899 !important; /* Neon Pink */
+  stroke: #ffffff !important;
+  stroke-width: 1px !important;
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8));
+}
