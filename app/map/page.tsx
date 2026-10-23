@@ -132,17 +132,18 @@ export default function MapPage() {
         {/* Main Layout */}
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 mb-12 items-stretch">
           
-          {/* ✅ Map Container - Height auto adjusts */}
-          <div className="xl:col-span-7 relative w-full h-[500px] xl:h-[650px] bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+          {/* ✅ Map Container */}
+          <div className="xl:col-span-7 relative w-full h-[500px] xl:h-[75vh] min-h-[500px] bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl flex flex-col">
             <Globe3D 
               onCountryClick={(id) => setSelectedCountryId(id)}
               selectedCountryId={selectedCountryId}
             />
           </div>
 
-          {/* ✅ Country Detail Container - Flex scroll for buttons fix */}
-          <div className="xl:col-span-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl h-[500px] xl:h-[650px] shadow-2xl relative flex flex-col">
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-6 relative">
+          {/* ✅ Country Detail Container */}
+          <div className="xl:col-span-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl h-[600px] xl:h-[75vh] shadow-2xl relative flex flex-col overflow-hidden">
+            {/* Padding bottom (pb-24) ensures buttons don't hide behind scroll end */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-6 pb-24">
               <CountryDetail country={selectedCountry || null} />
             </div>
           </div>
