@@ -5,8 +5,11 @@ import CountryClient from "./CountryClient";
 
 const SITE_URL = "https://dpdpa.businezexcellence.com";
 
+// ✅ SAFE: Prevents build crash if data has undefined entries in future
 export function generateStaticParams() {
-  return countries.map((c) => ({ id: c.id }));
+  return (countries ?? [])
+    .filter((c): c is NonNullable<typeof c> => Boolean(c?.id))
+    .map((c) => ({ id: c.id }));
 }
 
 export async function generateMetadata({
@@ -21,22 +24,26 @@ export async function generateMetadata({
     return { title: "Country Not Found" };
   }
 
+  const title = `${country.name} — ${country.lawName}`;
+  const description = country.overview.slice(0, 155) + "...";
+
   return {
-    title: `${country.name} — ${country.lawName}`,
-    description: country.overview.slice(0, 155),
+    title,
+    description,
     alternates: { canonical: `/country/${id}` },
     openGraph: {
       type: "website",
-      title: `${country.name} — Data Protection Law`,
-      description: country.overview.slice(0, 155),
-      url: `/country/${id}`,
-      images: ["/images/og-image.jpg"],
+      title,
+      description,
+      url: `${SITE_URL}/country/${id}`,
+      siteName: "Legal Galaxy",
+      images: [{ url: `${SITE_URL}/images/og-image.jpg`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${country.name} — Data Protection Law`,
-      description: country.overview.slice(0, 155),
-      images: ["/images/og-image.jpg"],
+      title,
+      description,
+      images: [`${SITE_URL}/images/og-image.jpg`],
     },
   };
 }
@@ -51,14 +58,14 @@ export default async function CountryPage({
 
   if (!country) notFound();
 
-  // Country Schema
+  // Enhanced Country Schema
   const countrySchema = {
     "@context": "https://schema.org",
     "@type": "Country",
     name: country.name,
     description: country.overview,
     url: `${SITE_URL}/country/${id}`,
-    additionalProperty: country.topics.slice(0, 5).map((topic) => ({
+    additionalProperty: country.topics.map((topic) => ({
       "@type": "PropertyValue",
       name: topic.title,
       value: topic.status,
@@ -71,18 +78,8 @@ export default async function CountryPage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Map",
-        item: `${SITE_URL}/map`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: country.name,
-        item: `${SITE_URL}/country/${id}`,
-      },
+      { "@type": "ListItem", position: 2, name: "Map", item: `${SITE_URL}/map` },
+      { "@type": "ListItem", position: 3, name: country.name, item: `${SITE_URL}/country/${id}` },
     ],
   };
 

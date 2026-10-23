@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import { countries, getRegions, getLevels, getCountryById } from '@/data/countries';
 
-// ✅ FIX: Removed lazy loading. Direct import is 100% stable.
 import { Globe3D } from '@/components/map/Globe3D';
 import { CountryDetail } from '@/components/map/CountryDetail';
 
@@ -62,42 +61,43 @@ export default function MapPage() {
   const hasActiveFilters = searchQuery || selectedRegion !== 'All' || selectedLevel !== 'All';
 
   return (
-    <main className="min-h-screen text-white px-4 pb-8 relative overflow-hidden pt-28 md:pt-32">
+    <main className="min-h-screen text-white px-4 pb-12 relative overflow-hidden pt-28 md:pt-32">
+      {/* Background */}
       <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-sm" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1400px] mx-auto relative z-10">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-2 group text-sm font-medium">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Home
             </Link>
-            <h1 className="text-3xl md:text-5xl font-bold text-white flex items-center gap-3 drop-shadow-2xl">
-              <GlobeIcon className="w-8 h-8 text-purple-400" />
-              Global Data Protection Laws Map
+            <h1 className="text-3xl md:text-5xl font-bold text-white flex items-center gap-3 drop-shadow-2xl tracking-tight">
+              <GlobeIcon className="w-8 h-8 md:w-10 md:h-10 text-purple-500" />
+              Global Privacy Map
             </h1>
-            <p className="text-gray-300 mt-2 max-w-2xl">
-              Explore data protection and privacy laws across {countries.length}+ countries. Compare GDPR, DPDP Act 2023, CCPA, and other global privacy frameworks.
+            <p className="text-gray-400 mt-2 max-w-2xl text-sm md:text-base">
+              Explore data protection laws across <strong className="text-white">{countries.length} jurisdictions</strong>. Compare GDPR, DPDP Act 2023, CCPA, and other global frameworks.
             </p>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/10 w-fit">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+          <div className="flex items-center gap-2 text-xs md:text-sm text-gray-300 bg-white/5 px-4 py-2.5 rounded-full border border-white/10 w-fit backdrop-blur-md">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             {countries.length} Jurisdictions Indexed
           </div>
         </div>
 
-        {/* Search */}
-        <div className="flex flex-col md:flex-row gap-3 mb-6">
+        {/* Search & Filters */}
+        <div className="flex flex-col md:flex-row gap-3 mb-8 bg-white/5 p-2 rounded-2xl border border-white/10 backdrop-blur-md">
           <div className="flex-1 relative">
             <input
               type="text"
               placeholder="Search countries, laws, or authorities..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-3 pl-11 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md text-white placeholder-gray-400 focus:outline-none focus:border-purple-400/50 transition-all"
+              className="w-full px-4 py-3 pl-11 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all text-sm"
             />
             <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-gray-400" />
             {searchQuery && (
@@ -107,68 +107,72 @@ export default function MapPage() {
             )}
           </div>
 
-          <div className="hidden md:flex gap-2">
+          <div className="flex gap-2">
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md text-white text-sm focus:outline-none focus:border-purple-400/50 cursor-pointer"
+              className="px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-purple-500/50 cursor-pointer w-1/2 md:w-auto"
             >
               {regions.map(r => <option key={r} value={r} className="bg-black">{r === 'All' ? 'All Regions' : r}</option>)}
             </select>
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
-              className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md text-white text-sm focus:outline-none focus:border-purple-400/50 cursor-pointer"
+              className="px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-purple-500/50 cursor-pointer w-1/2 md:w-auto"
             >
               {levels.map(l => <option key={l} value={l} className="bg-black">{l === 'All' ? 'All Levels' : l}</option>)}
             </select>
             {hasActiveFilters && (
-              <button onClick={resetFilters} className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-gray-400 hover:text-white hover:bg-white/20 transition-all text-sm font-medium">
+              <button onClick={resetFilters} className="px-4 py-3 rounded-xl bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30 transition-all text-sm font-medium whitespace-nowrap hidden md:block">
                 Reset
               </button>
             )}
           </div>
         </div>
 
-        {/* Layout */}
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 items-start">
-  {/* Map container - Fixed height */}
-  <div className="relative h-[600px] w-full bg-black/40 rounded-2xl border border-white/10 overflow-hidden">
-    <Globe3D 
-      onCountryClick={(id) => setSelectedCountryId(id)}
-      selectedCountryId={selectedCountryId}
-    />
-  </div>
+        {/* Main Layout */}
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 mb-12 items-start">
+          {/* Map Container */}
+          <div className="xl:col-span-7 relative h-[400px] sm:h-[500px] xl:h-[650px] w-full bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+            <Globe3D 
+              onCountryClick={(id) => setSelectedCountryId(id)}
+              selectedCountryId={selectedCountryId}
+            />
+          </div>
 
-  {/* Country Detail container - Same height with internal scroll */}
-  <div className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md p-6 h-[600px] shadow-2xl relative overflow-hidden">
-    <CountryDetail country={selectedCountry || null} />
-  </div>
-</div>
+          {/* Country Detail Container */}
+          <div className="xl:col-span-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl h-[650px] shadow-2xl relative overflow-hidden flex flex-col">
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
+              <CountryDetail country={selectedCountry || null} />
+            </div>
+          </div>
+        </div>
 
         {/* Country Grid */}
-        <div className="mt-8">
+        <div className="mt-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <MapPin className="w-6 h-6 text-purple-400" />
-              Browse All Jurisdictions
-              <span className="text-sm font-normal text-gray-400 bg-white/10 px-2 py-0.5 rounded-full ml-2">({filteredCountries.length})</span>
+              <MapPin className="w-5 h-5 text-purple-400" />
+              Browse Jurisdictions
+              <span className="text-xs font-normal text-purple-300 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20 ml-2">
+                {filteredCountries.length} Results
+              </span>
             </h2>
             {filteredCountries.length !== countries.length && (
-              <button onClick={resetFilters} className="text-sm text-purple-400 hover:text-purple-300 font-medium transition-colors">
+              <button onClick={resetFilters} className="text-sm text-purple-400 hover:text-purple-300 font-medium transition-colors md:hidden">
                 Clear Filters
               </button>
             )}
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
             {filteredCountries.map((country) => (
               <button
                 key={country.id}
                 onClick={() => setSelectedCountryId(country.id)}
                 className={`p-3 rounded-xl text-center transition-all border ${
                   selectedCountryId === country.id
-                    ? 'bg-purple-500/20 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)] scale-105'
+                    ? 'bg-purple-500/20 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)] scale-[1.02]'
                     : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
                 }`}
               >
@@ -189,11 +193,7 @@ export default function MapPage() {
           <p>
             The Global Data Protection Laws Map by Legal Galaxy is a comprehensive directory of privacy regulations across {countries.length}+ countries. 
             This map allows compliance professionals, Data Protection Officers (DPOs), and businesses to explore jurisdiction-specific laws, compare 
-            data protection authorities, and understand cross-border data transfer requirements. 
-          </p>
-          <p>
-            We cover major frameworks including the General Data Protection Regulation (GDPR) in the European Union, the Digital Personal Data Protection Act (DPDP Act 2023) in India, 
-            the California Consumer Privacy Act (CCPA) in the United States, the Lei Geral de Proteção de Dados (LGPD) in Brazil, and the Personal Information Protection Law (PIPL) in China.
+            data protection authorities, and understand cross-border data transfer requirements.
           </p>
           <h3>List of Countries and Laws Covered:</h3>
           <ul>
