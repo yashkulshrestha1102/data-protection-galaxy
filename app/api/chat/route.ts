@@ -47,26 +47,8 @@ CRITICAL RULES:
 Navigation:
 - You can navigate users to relevant pages using the 'navigate' tool.`;
 
-    // 👇 RETRY LOGIC ADD KI HAI (503 Error se bachne ke liye)
-    const generateWithRetry = async (params: any, maxRetries = 3) => {
-      for (let i = 0; i < maxRetries; i++) {
-        try {
-          return await ai.models.generateContent(params);
-        } catch (error: any) {
-          if (error?.status === 503 || error?.status === 429) {
-            const waitTime = Math.pow(2, i) * 1000; // 1s, 2s, 4s
-            console.log(`Gemini busy, retrying in ${waitTime}ms...`);
-            await new Promise(res => setTimeout(res, waitTime));
-          } else {
-            throw error; 
-          }
-        }
-      }
-      throw new Error('Max retries reached');
-    };
-
-    // 1. First attempt
-    const response = await generateWithRetry({
+    // 🔥 STEP 1: Pehli call (Tool decide karne ke liye)
+    const response = await ai.models.generateContent({
       model: 'gemini-3.6-flash',
       contents: message,
       config: {
@@ -75,13 +57,12 @@ Navigation:
       },
     });
 
-    // Check if Gemini wants to call a function
     const functionCalls = response.functionCalls;
     
     if (functionCalls && functionCalls.length > 0) {
       const call = functionCalls[0];
       
-      // Tool 1: Navigate
+      // Navigation Tool
       if (call.name === 'navigate') {
         return NextResponse.json({ 
           type: 'navigate', 
@@ -90,7 +71,7 @@ Navigation:
         });
       }
       
-      // Tool 2: Search Knowledge
+      // Search Tool
       if (call.name === 'search_knowledge') {
         const searchRes = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/search`, {
           method: 'POST',
@@ -99,26 +80,31 @@ Navigation:
         });
         const searchData = await searchRes.json();
         
-        // 👇 YAHAN MODEL UPDATE KIYA HAI (2.5 se 3.8)
-        const finalResponse = await generateWithRetry({
+        // 🔥 STEP 2: Sabse Important - History ko waise hi bhejna hai jaisa Gemini ne diya
+        // Hum 'response.candidates[0].content' use karenge jisme signature chhupa hota hai
+        const finalResponse = await ai.models.generateContent({
           model: 'gemini-3.6-flash',
           contents: [
             { role: 'user', parts: [{ text: message }] },
-            { role: 'model', parts: [{ functionCall: call }] },
+            // 👇 Ye line signature ko carry karti hai
+            response.candidates[0].content, 
             { role: 'user', parts: [{ functionResponse: { name: call.name, response: searchData } }] }
           ],
-          config: { systemInstruction: systemPrompt }
+          config: { 
+            systemInstruction: systemPrompt,
+            // Tools yahan mat bhej, warna wo phir se tool call karne ki koshish karega
+          }
         });
 
         return NextResponse.json({ 
           type: 'reply', 
-          reply: finalResponse.text 
+          reply: finalResponse.text || "I found some information but couldn't generate a summary." 
         });
       }
     }
 
-    // Normal text reply
-    return NextResponse.json({ type: 'reply', reply: response.text });
+    // Normal reply
+    return NextResponse.json({ type: 'reply', reply: response.text || "I'm here to help with DPDPA." });
 
   } catch (error) {
     console.error('Chat API error:', error);
