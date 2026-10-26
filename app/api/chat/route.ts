@@ -47,7 +47,26 @@ CRITICAL RULES:
 Navigation:
 - You can navigate users to relevant pages using the 'navigate' tool.`;
 
-    const response = await ai.models.generateContent({
+    // 👇 RETRY LOGIC ADD KI HAI (503 Error se bachne ke liye)
+    const generateWithRetry = async (params: any, maxRetries = 3) => {
+      for (let i = 0; i < maxRetries; i++) {
+        try {
+          return await ai.models.generateContent(params);
+        } catch (error: any) {
+          if (error?.status === 503 || error?.status === 429) {
+            const waitTime = Math.pow(2, i) * 1000; // 1s, 2s, 4s
+            console.log(`Gemini busy, retrying in ${waitTime}ms...`);
+            await new Promise(res => setTimeout(res, waitTime));
+          } else {
+            throw error; 
+          }
+        }
+      }
+      throw new Error('Max retries reached');
+    };
+
+    // 1. First attempt
+    const response = await generateWithRetry({
       model: 'gemini-3.8-flash',
       contents: message,
       config: {
@@ -73,7 +92,6 @@ Navigation:
       
       // Tool 2: Search Knowledge
       if (call.name === 'search_knowledge') {
-        // Call your existing search API
         const searchRes = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/search`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -81,9 +99,9 @@ Navigation:
         });
         const searchData = await searchRes.json();
         
-        // Send the context back to Gemini for final answer
-        const finalResponse = await ai.models.generateContent({
-          model: 'gemini-2.5-flash',
+        // 👇 YAHAN MODEL UPDATE KIYA HAI (2.5 se 3.8)
+        const finalResponse = await generateWithRetry({
+          model: 'gemini-3.8-flash',
           contents: [
             { role: 'user', parts: [{ text: message }] },
             { role: 'model', parts: [{ functionCall: call }] },
