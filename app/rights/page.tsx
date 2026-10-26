@@ -163,7 +163,7 @@ export default function RightsPage() {
   const limitations = [
     {
       title: 'Legal Retention Obligations',
-      desc: 'The right to erasure does not apply where retention is required by other laws — e.g., Income Tax records, RBI KYC data, or court orders.',
+      desc: 'The right to erasure does not apply where retention is required by other laws ï¿½ e.g., Income Tax records, RBI KYC data, or court orders.',
     },
     {
       title: 'State Functions',
@@ -211,7 +211,7 @@ export default function RightsPage() {
     },
     {
       q: 'Are these rights available to everyone in India?',
-      a: 'Yes. The DPDP Act 2023 applies to all Data Principals — any individual whose personal data is processed digitally or in non-digital form subsequently digitised. However, some rights may be limited by other laws.',
+      a: 'Yes. The DPDP Act 2023 applies to all Data Principals ï¿½ any individual whose personal data is processed digitally or in non-digital form subsequently digitised. However, some rights may be limited by other laws.',
     },
     {
       q: 'What if a company ignores my data rights request?',
@@ -282,7 +282,7 @@ export default function RightsPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs font-medium text-blue-300 mb-4">
             <Users className="w-3 h-3" />
-            Data Principal Rights · DPDP Act 2023
+            Data Principal Rights ï¿½ DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Rights of Data Principals under the{' '}
@@ -367,7 +367,7 @@ export default function RightsPage() {
             Detailed Breakdown of Each Right
           </h2>
           <p className="text-gray-300 leading-relaxed mb-8">
-            The six rights are not just abstract principles — they are enforceable
+            The six rights are not just abstract principles ï¿½ they are enforceable
             legal rights backed by the Data Protection Board. Here is what each
             right means in practice, including the specific actions you can take.
           </p>

@@ -188,7 +188,7 @@ export default function ObligationsPage() {
     'Publish a clear, plain-language privacy notice on your website and app',
     'Implement a consent management system with easy withdrawal',
     'Conduct a data inventory to map what data you collect and why',
-    'Implement data minimisation — stop collecting unnecessary data',
+    'Implement data minimisation ï¿½ stop collecting unnecessary data',
     'Establish a data retention schedule and purge obsolete data',
     'Implement reasonable security safeguards (encryption, access controls)',
     'Conduct regular security audits and penetration testing',
@@ -336,7 +336,7 @@ export default function ObligationsPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
             <Shield className="w-3 h-3" />
-            Business Compliance · DPDP Act 2023
+            Business Compliance ï¿½ DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Obligations of{' '}
@@ -350,7 +350,7 @@ export default function ObligationsPage() {
             that determines the purpose and means of processing personal data.
             With the power to process data comes{' '}
             <strong className="text-white">strict legal accountability</strong>.
-            The Act shifts the burden of data protection onto businesses — and
+            The Act shifts the burden of data protection onto businesses ï¿½ and
             failure to comply can result in penalties of up to{' '}
             <strong className="text-white">?250 crore</strong>. This guide covers
             all 8 core obligations, SDF obligations, a compliance checklist, and
@@ -490,7 +490,7 @@ export default function ObligationsPage() {
               Not all Data Fiduciaries are equal. The Act creates a special
               category called{' '}
               <strong className="text-white">Significant Data Fiduciary (SDF)</strong>{' '}
-              — organisations that process large volumes of sensitive data or
+              ï¿½ organisations that process large volumes of sensitive data or
               pose a higher risk to Data Principals. The Central Government
               notifies SDFs based on the following factors:
             </p>
@@ -647,7 +647,7 @@ export default function ObligationsPage() {
               },
               {
                 title: 'Document everything',
-                desc: 'The Board will ask: "Did you take reasonable safeguards?" The answer must be documented — policies, audits, training records, incident logs.',
+                desc: 'The Board will ask: "Did you take reasonable safeguards?" The answer must be documented ï¿½ policies, audits, training records, incident logs.',
               },
               {
                 title: 'Appoint a DPO early',

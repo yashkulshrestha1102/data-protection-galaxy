@@ -182,7 +182,7 @@ export default function CrossBorderPage() {
     {
       icon: AlertTriangle,
       title: 'Scenario B: Fintech Using Payment Data',
-      desc: 'A fintech company processes payment data and wants to store it in Singapore. Under RBI regulations, payment data must be stored in India. DPDP does not override this — the fintech must comply with RBI rules.',
+      desc: 'A fintech company processes payment data and wants to store it in Singapore. Under RBI regulations, payment data must be stored in India. DPDP does not override this ï¿½ the fintech must comply with RBI rules.',
       verdict: 'Not allowed (RBI)',
       color: 'red',
     },
@@ -242,7 +242,7 @@ export default function CrossBorderPage() {
     },
     {
       q: 'How is DPDP different from GDPR on cross-border transfers?',
-      a: 'GDPR uses an "adequacy" approach — transfers are allowed only to countries deemed adequate by the EU Commission, or with safeguards like SCCs. DPDP uses a "blacklist" approach — transfers are allowed by default unless the government restricts them. DPDP is simpler but gives the government broad discretion.',
+      a: 'GDPR uses an "adequacy" approach ï¿½ transfers are allowed only to countries deemed adequate by the EU Commission, or with safeguards like SCCs. DPDP uses a "blacklist" approach ï¿½ transfers are allowed by default unless the government restricts them. DPDP is simpler but gives the government broad discretion.',
     },
     {
       q: 'Can the government ban transfers to specific countries?',
@@ -250,7 +250,7 @@ export default function CrossBorderPage() {
     },
     {
       q: 'What happens if I transfer data to a restricted country?',
-      a: 'Transferring data to a restricted country is a violation of the DPDP Act. It can attract penalties under the Schedule — up to ?50 crore for general non-compliance. The Data Protection Board can also issue directions and order remedial measures.',
+      a: 'Transferring data to a restricted country is a violation of the DPDP Act. It can attract penalties under the Schedule ï¿½ up to ?50 crore for general non-compliance. The Data Protection Board can also issue directions and order remedial measures.',
     },
     {
       q: 'Do I need consent for cross-border transfers?',
@@ -329,7 +329,7 @@ export default function CrossBorderPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-4">
             <Globe className="w-3 h-3" />
-            International Data Flows · DPDP Act 2023
+            International Data Flows ï¿½ DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Cross-Border Transfer of{' '}
@@ -339,11 +339,11 @@ export default function CrossBorderPage() {
           </h1>
           <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
             Cross-border data transfers under the DPDP Act 2023 are governed by{' '}
-            <strong className="text-white">Section 16</strong> — a single,
+            <strong className="text-white">Section 16</strong> ï¿½ a single,
             powerful provision that gives the Central Government the right to{' '}
             <strong className="text-white">restrict transfers</strong> to specific
             countries by notification. Unlike GDPR's adequacy approach, DPDP uses
-            a <strong className="text-white">blacklist approach</strong> — transfers
+            a <strong className="text-white">blacklist approach</strong> ï¿½ transfers
             are allowed by default unless restricted. This guide explains Section
             16, the government's power, comparison with GDPR, sectoral
             localisation, and real-world scenarios.
@@ -424,11 +424,11 @@ export default function CrossBorderPage() {
         {/* ===== SECTION 1: SECTION 16 DEEP DIVE ===== */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">
-            1. Section 16 — The Core Provision
+            1. Section 16 ï¿½ The Core Provision
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed mb-8">
             <p>
-              Section 16 of the DPDP Act is deceptively short — a single
+              Section 16 of the DPDP Act is deceptively short ï¿½ a single
               sub-section. But it is one of the most consequential provisions in
               the Act. It gives the Central Government the power to{' '}
               <strong className="text-white">restrict transfers</strong> of
@@ -438,7 +438,7 @@ export default function CrossBorderPage() {
               Crucially, the provision is{' '}
               <strong className="text-white">enabling, not prohibitive</strong>.
               By default, transfers are allowed. The government can restrict them
-              if it considers it necessary — for national security, public
+              if it considers it necessary ï¿½ for national security, public
               interest, or protection of Data Principals. This is a significant
               departure from GDPR's restrictive approach.
             </p>
@@ -665,7 +665,7 @@ export default function CrossBorderPage() {
             </p>
             <p>
               The government has indicated that it will adopt a{' '}
-              <strong className="text-white">calibrated approach</strong> —
+              <strong className="text-white">calibrated approach</strong> ï¿½
               restricting transfers only where necessary for national security,
               public interest, or protection of Data Principals. This suggests
               that most transfers will continue to be allowed, but the government
@@ -684,7 +684,7 @@ export default function CrossBorderPage() {
                 layer DPDP compliance on top of GDPR compliance
               </strong>
               . If you are already GDPR-compliant, you have most of the
-              safeguards in place. DPDP adds a layer of government discretion —
+              safeguards in place. DPDP adds a layer of government discretion ï¿½
               monitor it closely.
             </p>
           </div>

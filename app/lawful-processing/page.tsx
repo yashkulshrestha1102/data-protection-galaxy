@@ -43,7 +43,7 @@ export default function LawfulProcessingPage() {
       title: 'Certain Legitimate Uses',
       section: 'Section 7',
       description:
-        'The Act lists specific situations where personal data can be processed without consent. Unlike GDPR, there is no general "legitimate interests" basis — the legitimate uses are a closed list. These include state functions, legal obligations, medical emergencies, employment, and public interest.',
+        'The Act lists specific situations where personal data can be processed without consent. Unlike GDPR, there is no general "legitimate interests" basis ï¿½ the legitimate uses are a closed list. These include state functions, legal obligations, medical emergencies, employment, and public interest.',
       color: 'from-blue-500 to-cyan-600',
     },
   ];
@@ -163,8 +163,8 @@ export default function LawfulProcessingPage() {
     },
     {
       aspect: 'Flexibility',
-      consent: 'Broad — can cover most processing',
-      legitimate: 'Narrow — only the listed uses',
+      consent: 'Broad ï¿½ can cover most processing',
+      legitimate: 'Narrow ï¿½ only the listed uses',
     },
     {
       aspect: 'Examples',
@@ -184,19 +184,19 @@ export default function LawfulProcessingPage() {
     {
       icon: Landmark,
       title: 'Legitimate Use: State Subsidies',
-      desc: 'A government department processes personal data to verify eligibility for a subsidy scheme. This is a legitimate use under Section 7(b) — state functions — and does not require consent.',
+      desc: 'A government department processes personal data to verify eligibility for a subsidy scheme. This is a legitimate use under Section 7(b) ï¿½ state functions ï¿½ and does not require consent.',
       color: 'blue',
     },
     {
       icon: Heart,
       title: 'Legitimate Use: Medical Emergency',
-      desc: 'A hospital processes a patient\'s data in an emergency without consent. This is a legitimate use under Section 7(d) — medical emergency — and is permitted.',
+      desc: 'A hospital processes a patient\'s data in an emergency without consent. This is a legitimate use under Section 7(d) ï¿½ medical emergency ï¿½ and is permitted.',
       color: 'red',
     },
     {
       icon: Briefcase,
       title: 'Legitimate Use: Employment Records',
-      desc: 'An employer processes employee data for payroll, benefits, and verification. This is a legitimate use under Section 7(f) — employment purposes — and does not require fresh consent.',
+      desc: 'An employer processes employee data for payroll, benefits, and verification. This is a legitimate use under Section 7(f) ï¿½ employment purposes ï¿½ and does not require fresh consent.',
       color: 'purple',
     },
     {
@@ -237,7 +237,7 @@ export default function LawfulProcessingPage() {
     },
     {
       q: 'What is the difference between consent and legitimate use?',
-      a: 'Consent is an active, affirmative choice by the Data Principal. Legitimate use is a specific situation listed in Section 7 where processing can occur without consent. Legitimate uses are narrower than GDPR\'s legitimate interests — they are a closed list, not an open balancing test.',
+      a: 'Consent is an active, affirmative choice by the Data Principal. Legitimate use is a specific situation listed in Section 7 where processing can occur without consent. Legitimate uses are narrower than GDPR\'s legitimate interests ï¿½ they are a closed list, not an open balancing test.',
     },
     {
       q: 'What notice must a Data Fiduciary provide before seeking consent?',
@@ -245,7 +245,7 @@ export default function LawfulProcessingPage() {
     },
     {
       q: 'Does the DPDP Act apply to processing for employment purposes?',
-      a: 'Yes. Section 7(f) allows processing for employment purposes, including recruitment, verification, and providing benefits to employees. However, the employer must still comply with the Act\'s other obligations — such as security safeguards and grievance redressal.',
+      a: 'Yes. Section 7(f) allows processing for employment purposes, including recruitment, verification, and providing benefits to employees. However, the employer must still comply with the Act\'s other obligations ï¿½ such as security safeguards and grievance redressal.',
     },
   ];
 
@@ -312,7 +312,7 @@ export default function LawfulProcessingPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 text-xs font-medium text-green-300 mb-4">
             <CheckCircle className="w-3 h-3" />
-            Lawful Processing · DPDP Act 2023
+            Lawful Processing ï¿½ DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Lawful Processing of{' '}
@@ -327,7 +327,7 @@ export default function LawfulProcessingPage() {
             (Section 6), or (2) certain{' '}
             <strong className="text-white">legitimate uses</strong> listed in
             Section 7. Unlike GDPR, there is no general "legitimate interests"
-            basis — the legitimate uses are a closed list. This guide explains
+            basis ï¿½ the legitimate uses are a closed list. This guide explains
             both bases, the requirements for valid consent, the Consent Manager
             framework, and real-world examples.
           </p>
@@ -364,7 +364,7 @@ export default function LawfulProcessingPage() {
               <p className="text-sm text-gray-300 leading-relaxed">
                 The DPDP Act 2023 has only{' '}
                 <strong className="text-white">two</strong> lawful bases for
-                processing — consent and legitimate uses. Unlike GDPR, there is no
+                processing ï¿½ consent and legitimate uses. Unlike GDPR, there is no
                 "contract performance", "vital interests", "public function", or
                 "legitimate interests" basis. Those concepts are folded into
                 specific legitimate uses under Section 7.
@@ -421,13 +421,13 @@ export default function LawfulProcessingPage() {
               Data Principal's{' '}
               <strong className="text-white">active, affirmative choice</strong>{' '}
               to allow processing of their personal data for a specific purpose.
-              Consent is not a one-time event — it is an ongoing relationship
+              Consent is not a one-time event ï¿½ it is an ongoing relationship
               that the Data Principal can withdraw at any time.
             </p>
             <p>
               The Act sets out{' '}
               <strong className="text-white">six requirements</strong> for valid
-              consent. If any of these is missing, the consent is invalid — and
+              consent. If any of these is missing, the consent is invalid ï¿½ and
               any processing based on it is unlawful.
             </p>
           </div>
@@ -494,7 +494,7 @@ export default function LawfulProcessingPage() {
               where personal data can be processed{' '}
               <strong className="text-white">without consent</strong>. These are
               called "legitimate uses." They are a{' '}
-              <strong className="text-white">closed list</strong> — if a situation
+              <strong className="text-white">closed list</strong> ï¿½ if a situation
               is not listed, consent is required.
             </p>
             <p>
@@ -600,7 +600,7 @@ export default function LawfulProcessingPage() {
               Fiduciaries.
             </p>
             <p>
-              Think of it as a "consent dashboard" — instead of managing consent
+              Think of it as a "consent dashboard" ï¿½ instead of managing consent
               separately with every website and app, a Data Principal can use a
               Consent Manager to manage all their consents in one place. This is
               especially useful for consumers who deal with dozens of online

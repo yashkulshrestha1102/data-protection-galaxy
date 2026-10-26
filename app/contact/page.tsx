@@ -1100,7 +1100,7 @@ function PrivacyGuardian() {
           </p>
 
           <p className="mt-1 text-xs font-semibold text-[#FFEA93]">
-            Detect · Govern · Protect
+            Detect ï¿½ Govern ï¿½ Protect
           </p>
         </div>
 

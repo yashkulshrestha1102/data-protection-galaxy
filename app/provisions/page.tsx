@@ -36,7 +36,7 @@ export default function ProvisionsPage() {
       title: 'Chapter I: Preliminary',
       sections: 'Sections 1-3',
       description:
-        'Short title, extent, commencement, and definitions. This chapter sets the foundation — defining who a Data Principal is, who a Data Fiduciary is, what "personal data" means, and other critical terms.',
+        'Short title, extent, commencement, and definitions. This chapter sets the foundation ï¿½ defining who a Data Principal is, who a Data Fiduciary is, what "personal data" means, and other critical terms.',
       color: 'from-purple-500 to-pink-500',
     },
     {
@@ -60,7 +60,7 @@ export default function ProvisionsPage() {
       title: 'Chapter IV: Data Protection Board',
       sections: 'Sections 16-27',
       description:
-        'Establishes the Data Protection Board of India — the regulatory authority. Covers composition, appointment, powers, functions, procedure, and the appeal mechanism to TDSAT.',
+        'Establishes the Data Protection Board of India ï¿½ the regulatory authority. Covers composition, appointment, powers, functions, procedure, and the appeal mechanism to TDSAT.',
       color: 'from-yellow-500 to-orange-500',
     },
     {
@@ -76,7 +76,7 @@ export default function ProvisionsPage() {
       title: 'Chapter VI: Miscellaneous',
       sections: 'Sections 35-44',
       description:
-        'Covers miscellaneous provisions — protections for state functions, exemptions, power to make rules, removal of difficulties, and transitional provisions.',
+        'Covers miscellaneous provisions ï¿½ protections for state functions, exemptions, power to make rules, removal of difficulties, and transitional provisions.',
       color: 'from-pink-500 to-rose-500',
     },
   ];
@@ -114,7 +114,7 @@ export default function ProvisionsPage() {
     {
       term: 'Processing',
       definition:
-        'Any operation or set of operations performed on personal data — including collection, recording, storage, retrieval, use, sharing, and deletion.',
+        'Any operation or set of operations performed on personal data ï¿½ including collection, recording, storage, retrieval, use, sharing, and deletion.',
       section: 'Section 2(x)',
       icon: Layers,
     },
@@ -194,7 +194,7 @@ export default function ProvisionsPage() {
     },
     {
       q: 'What is Chapter I of the DPDP Act?',
-      a: 'Chapter I (Sections 1-3) is the Preliminary chapter. It covers the short title, extent, commencement, and definitions — defining key terms like Data Principal, Data Fiduciary, and personal data.',
+      a: 'Chapter I (Sections 1-3) is the Preliminary chapter. It covers the short title, extent, commencement, and definitions ï¿½ defining key terms like Data Principal, Data Fiduciary, and personal data.',
     },
     {
       q: 'What does Chapter II of the DPDP Act cover?',
@@ -237,7 +237,7 @@ export default function ProvisionsPage() {
     {
       title: 'Data Protection Board',
       href: '/board',
-      desc: 'Chapter IV — the enforcement authority.',
+      desc: 'Chapter IV ï¿½ the enforcement authority.',
     },
     {
       title: 'Penalties & Offences',
@@ -285,7 +285,7 @@ export default function ProvisionsPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/20 border border-pink-500/30 text-xs font-medium text-pink-300 mb-4">
             <BookMarked className="w-3 h-3" />
-            Act Overview · DPDP Act 2023
+            Act Overview ï¿½ DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Key Provisions of the{' '}
@@ -374,7 +374,7 @@ export default function ProvisionsPage() {
               The DPDP Act 2023 is a{' '}
               <strong className="text-white">compact but powerful</strong>{' '}
               legislation. At 44 sections, it is shorter than the GDPR (99
-              articles) but covers similar ground — rights, obligations,
+              articles) but covers similar ground ï¿½ rights, obligations,
               enforcement, and penalties. The Act is supplemented by a{' '}
               <strong className="text-white">Schedule</strong> (penalties) and
               will be further operationalised by{' '}
@@ -387,11 +387,11 @@ export default function ProvisionsPage() {
               cross-border transfers, Chapter IV creates the enforcement
               authority, Chapter V sets penalties, and Chapter VI covers
               miscellaneous matters. This structure reflects the Act's
-              philosophy — rights and obligations are at the centre, with
+              philosophy ï¿½ rights and obligations are at the centre, with
               enforcement and penalties as the backstop.
             </p>
             <p>
-              For businesses, Chapter II is the most operationally important —
+              For businesses, Chapter II is the most operationally important ï¿½
               it defines the day-to-day obligations around notice, consent,
               security, breach notification, and grievance redressal. For Data
               Principals, Chapter II's rights provisions (Sections 11-14) are the
@@ -450,7 +450,7 @@ export default function ProvisionsPage() {
             3. Section-Wise Map of the Act
           </h2>
           <p className="text-gray-300 leading-relaxed mb-6">
-            Here is a section-wise map of the Act — a quick reference to what
+            Here is a section-wise map of the Act ï¿½ a quick reference to what
             each part of the statute covers:
           </p>
 
@@ -509,7 +509,7 @@ export default function ProvisionsPage() {
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
                 <Users className="w-5 h-5 text-blue-400" />
-                Chapter II — The Heart of the Act
+                Chapter II ï¿½ The Heart of the Act
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
                 Chapter II (Sections 4-14) is where the Act's substantive
@@ -519,10 +519,10 @@ export default function ProvisionsPage() {
                 {[
                   'Section 4: Grounds for processing (consent or legitimate use)',
                   'Section 5: Notice requirements before obtaining consent',
-                  'Section 6: Consent — free, specific, informed, unconditional, unambiguous',
+                  'Section 6: Consent ï¿½ free, specific, informed, unconditional, unambiguous',
                   'Section 7: Legitimate uses (state functions, legal obligations, medical emergencies)',
                   'Section 8: General obligations of Data Fiduciaries (security, breach notification, grievance redressal)',
-                  'Section 9: Children\'s data — verifiable parental consent, no behavioral tracking',
+                  'Section 9: Children\'s data ï¿½ verifiable parental consent, no behavioral tracking',
                   'Section 10: Significant Data Fiduciary obligations (DPO, audits, DPIA)',
                   'Sections 11-14: Rights of Data Principals (access, correction, erasure, grievance redressal, portability, nomination)',
                 ].map((item, i) => (
@@ -541,7 +541,7 @@ export default function ProvisionsPage() {
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
                 <Building className="w-5 h-5 text-yellow-400" />
-                Chapter IV — The Enforcement Authority
+                Chapter IV ï¿½ The Enforcement Authority
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
                 Chapter IV (Sections 16-27) establishes the Data Protection Board
@@ -569,7 +569,7 @@ export default function ProvisionsPage() {
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
                 <Gavel className="w-5 h-5 text-red-400" />
-                Chapter V — The Penalty Framework
+                Chapter V ï¿½ The Penalty Framework
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
                 Chapter V (Sections 28-34) sets out the penalty framework. It
@@ -643,7 +643,7 @@ export default function ProvisionsPage() {
             <p>
               For <strong className="text-white">businesses</strong>, knowing the
               provisions is essential because the obligations in Chapter II are
-              not vague principles — they are specific, enforceable requirements.
+              not vague principles ï¿½ they are specific, enforceable requirements.
               A failure to provide proper notice, obtain valid consent, or
               implement reasonable security safeguards can attract penalties of
               up to ?250 crore. Compliance requires a thorough understanding of

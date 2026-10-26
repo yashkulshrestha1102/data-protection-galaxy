@@ -164,7 +164,7 @@ export default function PenaltiesPage() {
     {
       step: '05',
       title: 'Reasoned Order',
-      desc: 'The Board passes a reasoned order — dismissing the complaint, issuing directions, or imposing a penalty.',
+      desc: 'The Board passes a reasoned order ï¿½ dismissing the complaint, issuing directions, or imposing a penalty.',
     },
     {
       step: '06',
@@ -181,7 +181,7 @@ export default function PenaltiesPage() {
     },
     {
       q: 'Who imposes penalties under the DPDP Act?',
-      a: 'Penalties are imposed by the Data Protection Board of India (DPB), the regulatory authority established under Section 18 of the DPDP Act 2023. The Board follows a quasi-judicial process — issuing notice, hearing the parties, and passing a reasoned order.',
+      a: 'Penalties are imposed by the Data Protection Board of India (DPB), the regulatory authority established under Section 18 of the DPDP Act 2023. The Board follows a quasi-judicial process ï¿½ issuing notice, hearing the parties, and passing a reasoned order.',
     },
     {
       q: 'Can penalties under the DPDP Act be appealed?',
@@ -201,11 +201,11 @@ export default function PenaltiesPage() {
     },
     {
       q: 'Does the DPDP Act have criminal penalties?',
-      a: 'No. The DPDP Act 2023 is a civil law — it imposes civil penalties, not criminal penalties. However, non-compliance with Board directions can attract additional civil penalties, and individuals (directors, officers) can be held personally liable.',
+      a: 'No. The DPDP Act 2023 is a civil law ï¿½ it imposes civil penalties, not criminal penalties. However, non-compliance with Board directions can attract additional civil penalties, and individuals (directors, officers) can be held personally liable.',
     },
     {
       q: 'How does the DPDP Act penalty compare with GDPR?',
-      a: 'GDPR fines go up to €20 million or 4% of global annual turnover, whichever is higher. DPDP Act fines go up to ?250 crore (approximately €28 million). For large enterprises, GDPR fines can be much higher; for smaller Indian businesses, DPDP fines can be equally severe relative to their size.',
+      a: 'GDPR fines go up to ï¿½20 million or 4% of global annual turnover, whichever is higher. DPDP Act fines go up to ?250 crore (approximately ï¿½28 million). For large enterprises, GDPR fines can be much higher; for smaller Indian businesses, DPDP fines can be equally severe relative to their size.',
     },
   ];
 
@@ -304,7 +304,7 @@ export default function PenaltiesPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/30 text-xs font-medium text-red-300 mb-4">
             <Gavel className="w-3 h-3" />
-            Enforcement · DPDP Act 2023
+            Enforcement ï¿½ DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Penalties & Offences under the{' '}
@@ -315,7 +315,7 @@ export default function PenaltiesPage() {
           <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
             The DPDP Act 2023 introduces some of the{' '}
             <strong className="text-white">highest data protection penalties in the world</strong>{' '}
-            — up to <strong className="text-white">?250 crore</strong> for a single
+            ï¿½ up to <strong className="text-white">?250 crore</strong> for a single
             violation. Unlike previous Indian privacy laws, the penalties are
             severe and designed to make organisations take data privacy seriously.
             This page breaks down every penalty, the enforcement process, the
@@ -386,8 +386,8 @@ export default function PenaltiesPage() {
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p>
-              India's previous data protection framework — the Information
-              Technology Act, 2000 and its rules — imposed penalties that were,
+              India's previous data protection framework ï¿½ the Information
+              Technology Act, 2000 and its rules ï¿½ imposed penalties that were,
               in practice, too small to deter large organisations. Fines of a
               few lakh rupees were often seen as the cost of doing business, and
               enforcement was fragmented across multiple regulators.
@@ -397,7 +397,7 @@ export default function PenaltiesPage() {
               <strong className="text-white">single, centralised enforcement authority</strong>{' '}
               (the Data Protection Board) and a{' '}
               <strong className="text-white">penalty schedule with teeth</strong>{' '}
-              — up to ?250 crore for the most serious violations. The message is
+              ï¿½ up to ?250 crore for the most serious violations. The message is
               clear: data protection is no longer a compliance checkbox; it is a
               boardroom-level priority.
             </p>
@@ -518,7 +518,7 @@ export default function PenaltiesPage() {
             </h2>
             <p className="text-gray-300 leading-relaxed mb-8">
               Penalties are not imposed automatically. The Data Protection Board
-              follows a due process — giving the organisation a fair opportunity
+              follows a due process ï¿½ giving the organisation a fair opportunity
               to be heard before any penalty is imposed. The process typically
               works as follows:
             </p>
@@ -550,7 +550,7 @@ export default function PenaltiesPage() {
               <p className="text-sm text-gray-300">
                 <strong className="text-white">Key point:</strong> The Board is
                 not bound by the Code of Civil Procedure, but it is expected to
-                follow the principles of natural justice — notice, hearing, and a
+                follow the principles of natural justice ï¿½ notice, hearing, and a
                 reasoned order. Appeals against the Board's orders lie to the
                 TDSAT.
               </p>
@@ -618,7 +618,7 @@ export default function PenaltiesPage() {
               DPDP Act 2023, if a company commits an offence, the Board can
               proceed against the directors, managers, and other officers who
               were in charge of the company's affairs at the time of the
-              contravention. This is a significant shift — it means that data
+              contravention. This is a significant shift ï¿½ it means that data
               protection is not just a corporate liability but a personal one for
               senior management.
             </p>
@@ -626,12 +626,12 @@ export default function PenaltiesPage() {
               The Act provides a defence: an officer can escape liability if they
               can prove that the contravention took place without their
               knowledge, or that they exercised due diligence to prevent it. But
-              this defence is not easy to establish — it requires documented
+              this defence is not easy to establish ï¿½ it requires documented
               evidence of active oversight, not just a claim of ignorance.
             </p>
             <p>
               This is why we recommend that boards and senior management take a
-              hands-on approach to DPDPA compliance — not just delegate it to the
+              hands-on approach to DPDPA compliance ï¿½ not just delegate it to the
               IT team. For a deeper dive, see our{' '}
               <Link
                 href="/insight/dpdp-act-director-liability"
@@ -651,11 +651,11 @@ export default function PenaltiesPage() {
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p>
-              GDPR fines go up to <strong className="text-white">€20 million</strong>{' '}
+              GDPR fines go up to <strong className="text-white">ï¿½20 million</strong>{' '}
               or <strong className="text-white">4% of global annual turnover</strong>,
-              whichever is higher. For a global enterprise with €10 billion in
-              revenue, the GDPR cap is €400 million — much higher than DPDP's
-              ?250 crore (approximately €28 million).
+              whichever is higher. For a global enterprise with ï¿½10 billion in
+              revenue, the GDPR cap is ï¿½400 million ï¿½ much higher than DPDP's
+              ?250 crore (approximately ï¿½28 million).
             </p>
             <p>
               However, for Indian SMEs and mid-market companies, the DPDP
@@ -663,7 +663,7 @@ export default function PenaltiesPage() {
               penalty for an Indian company with ?200 crore revenue is a
               business-ending event. The DPDP Act also has a{' '}
               <strong className="text-white">broader scope</strong> in some
-              respects — for example, its rules on children's data are stricter
+              respects ï¿½ for example, its rules on children's data are stricter
               than GDPR's.
             </p>
             <p>
@@ -787,7 +787,7 @@ export default function PenaltiesPage() {
         <p className="text-xs text-gray-500 text-center mt-12 max-w-2xl mx-auto leading-relaxed">
           <strong>Disclaimer:</strong> This page is for educational and
           informational purposes only. It is not legal advice. The penalty
-          amounts shown are maximums under the Act — actual penalties depend on
+          amounts shown are maximums under the Act ï¿½ actual penalties depend on
           the facts of each case. For advice on your specific situation, consult
           a qualified legal professional.
         </p>
