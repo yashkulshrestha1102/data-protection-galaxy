@@ -1,0 +1,14 @@
+# Next.js
+.next/
+.turbo/
+.tsbuildinfo
+.turbo/cache/
+
+# Environment
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+.vercel
+

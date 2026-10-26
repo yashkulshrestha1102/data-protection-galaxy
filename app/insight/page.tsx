@@ -1,0 +1,334 @@
+"use client";
+import { insightsData, categories as insightCategories } from '@/data/insights';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { 
+  ArrowLeft, Calendar, User, ChevronLeft, 
+  ChevronRight, BookOpen, Globe, Shield, Database,
+  Scale, Users, Building
+} from 'lucide-react';
+
+
+// ===== CATEGORIES =====
+const categories = [
+  { id: 'all', label: 'All Insights', icon: BookOpen },
+  { id: 'DPDP Act', label: 'DPDP Act', icon: Shield },
+  { id: 'GDPR', label: 'GDPR', icon: Globe },
+  { id: 'Cross-Border', label: 'Cross-Border', icon: Globe },
+  { id: 'Data Rights', label: 'Data Rights', icon: Users },
+  { id: 'Compliance', label: 'Compliance', icon: Building },
+  { id: 'Sector-Specific', label: 'Sector-Specific', icon: Database },
+  { id: 'AI & Automation', label: 'AI & Automation', icon: Scale },
+  { id: 'International', label: 'International', icon: Globe },
+];
+
+// ===== INSIGHT CARD =====
+const InsightCard = ({ insight }) => {
+  const router = useRouter();
+  const Icon = iconMap[insight.categoryIcon] || Shield;
+  
+  return (
+    <motion.div
+      onClick={() => router.push(`/insight/${insight.slug}`)}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ 
+        scale: 1.02,
+        boxShadow: "0 20px 60px rgba(139, 92, 246, 0.15)",
+      }}
+      transition={{ duration: 0.3 }}
+      className="group relative bg-white/10 border border-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer"
+    >
+      {/* Category Tag */}
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-4">
+        <Icon className="w-3.5 h-3.5" />
+        {insight.category}
+      </div>
+      
+      {/* Title */}
+      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+        {insight.title}
+      </h3>
+      
+      {/* Excerpt */}
+      <p className="text-sm text-gray-300 leading-relaxed mb-4 line-clamp-3">
+        {insight.excerpt}
+      </p>
+      
+      {/* Author & Date */}
+      <div className="flex items-center justify-between text-xs text-gray-300 pt-4 border-t border-white/10">
+        <span className="flex items-center gap-1.5">
+          <User className="w-3.5 h-3.5" />
+          {insight.author}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <Calendar className="w-3.5 h-3.5" />
+          {insight.date}
+        </span>
+      </div>
+    </motion.div>
+  );
+};
+
+// ===== ICON MAP =====
+const iconMap: Record<string, any> = {
+  Shield: Shield,
+  Globe: Globe,
+  Users: Users,
+  Building: Building,
+  Database: Database,
+  Scale: Scale,
+  BookOpen: BookOpen,
+};
+
+// ===== PAGINATION =====
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const pages = [];
+  const maxVisible = 5;
+  
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+  
+  if (endPage - startPage + 1 < maxVisible) {
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+  
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+  
+  return (
+    <div className="flex items-center justify-center gap-2 mt-12">
+      <button
+        onClick={() => onPageChange(Math.max(1, currentPage - 1))}
+        disabled={currentPage === 1}
+        className={`p-2 rounded-lg transition-all ${
+          currentPage === 1 
+            ? 'text-gray-600 cursor-not-allowed' 
+            : 'text-gray-400 hover:text-white hover:bg-white/10'
+        }`}
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      
+      {pages.map(page => (
+        <button
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            currentPage === page
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
+              : 'text-gray-400 hover:text-white hover:bg-white/10'
+          }`}
+        >
+          {page}
+        </button>
+      ))}
+      
+      {endPage < totalPages && (
+        <>
+          <span className="text-gray-600">...</span>
+          <button
+            onClick={() => onPageChange(totalPages)}
+            className="px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+          >
+            {totalPages}
+          </button>
+        </>
+      )}
+      
+      <button
+        onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
+        disabled={currentPage === totalPages}
+        className={`p-2 rounded-lg transition-all ${
+          currentPage === totalPages 
+            ? 'text-gray-600 cursor-not-allowed' 
+            : 'text-gray-400 hover:text-white hover:bg-white/10'
+        }`}
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+    </div>
+  );
+};
+
+// ===== MAIN PAGE =====
+export default function InsightPage() {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [stars, setStars] = useState<React.ReactNode[]>([]);
+  const itemsPerPage = 6;
+
+  // ===== GENERATE STARS ON CLIENT SIDE ONLY =====
+  useEffect(() => {
+    const starElements = [];
+    for (let i = 0; i < 50; i++) {
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const opacity = Math.random() * 0.5 + 0.1;
+      starElements.push(
+        <div
+          key={i}
+          className="absolute w-0.5 h-0.5 bg-white rounded-full animate-twinkle"
+          style={{
+            top: `${top}%`,
+            left: `${left}%`,
+            animationDelay: `${delay}s`,
+            opacity: opacity,
+          }}
+        />
+      );
+    }
+    setStars(starElements);
+  }, []);
+  
+  const filteredInsights = selectedCategory === 'all'
+    ? insightsData
+    : insightsData.filter(item => item.category === selectedCategory);
+  
+  const totalPages = Math.ceil(filteredInsights.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentInsights = filteredInsights.slice(startIndex, startIndex + itemsPerPage);
+  
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+  
+  return (
+    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+      {/* ===== BACKGROUND IMAGE (HOME PAGE Jaisi) ===== */}
+      <div className="absolute inset-0 -z-10">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/home1.jpeg')",
+          }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        </div>
+        
+        {/* Nebula Glows */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        
+        {/* Stars */}
+        {stars}
+      </div>
+      
+      {/* ===== CONTENT ===== */}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="flex items-start gap-4 mb-2">
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+        </div>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-semibold text-blue-400 mb-4">
+            <BookOpen className="w-4 h-4" />
+            Latest Insights
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-2xl mb-4">
+            Insights
+          </h1>
+          <p className="text-gray-200 text-lg max-w-3xl mx-auto drop-shadow-lg">
+            In-depth analysis and practical guidance on India's Digital Personal Data Protection Act, 
+            GDPR, cross-border transfers and global privacy law — from the data-privacy team at Legal Galaxy.
+          </p>
+        </motion.div>
+        
+        {/* ===== CATEGORY FILTERS ===== */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap gap-2 justify-center mb-12"
+        >
+          {categories.map((category) => {
+            const Icon = category.icon;
+            const isActive = selectedCategory === category.id;
+            
+            return (
+              <button
+                key={category.id}
+                onClick={() => handleCategoryChange(category.id)}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  isActive
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
+                    : 'bg-white/10 border border-white/20 backdrop-blur-sm text-gray-300 hover:text-white hover:bg-white/20'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {category.label}
+              </button>
+            );
+          })}
+        </motion.div>
+        
+        {/* ===== RESULTS COUNT ===== */}
+        <div className="text-sm text-gray-300 mb-6">
+          Showing {currentInsights.length} of {filteredInsights.length} insights
+        </div>
+        
+        {/* ===== INSIGHTS GRID ===== */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {currentInsights.map((insight) => (
+            <InsightCard key={insight.id} insight={insight} />
+          ))}
+        </div>
+        
+        {/* ===== NO RESULTS ===== */}
+        {currentInsights.length === 0 && (
+          <div className="text-center py-20">
+            <div className="text-6xl mb-4">📚</div>
+            <h3 className="text-2xl font-semibold text-gray-300">No insights found</h3>
+            <p className="text-gray-500 mt-2">Try selecting a different category</p>
+          </div>
+        )}
+        
+        {/* ===== PAGINATION ===== */}
+        {totalPages > 1 && (
+          <Pagination 
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        )}
+        
+        {/* ===== CTA / MESSAGE US ===== */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-16 text-center"
+        >
+          <div className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm">
+            <span className="text-gray-200">Have questions about data protection?</span>
+            <Link 
+              href="/contact"
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all shadow-lg shadow-purple-500/30"
+            >
+              Message Us
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </main>
+  );
+}

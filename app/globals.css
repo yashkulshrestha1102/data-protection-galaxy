@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* ===== ANIMATIONS ===== */
+@layer utilities {
+  .animate-pulse {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-twinkle {
+    animation: twinkle var(--duration, 3s) ease-in-out infinite;
+  }
+  
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .delay-2000 {
+    animation-delay: 2s;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+
+
+
+/* ===== 3D LOGO ROTATE (360) ===== */
+@layer utilities {
+  .animate-logo-3d {
+    animation: logo3d 5s linear infinite;
+    transform-style: preserve-3d;
+    perspective: 500px;
+  }
+}
+
+@keyframes logo3d {
+  0% {
+    transform: perspective(500px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(500px) rotateY(360deg);
+  }
+}
+
+
+
+
+/* ===== GLOBAL SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.3) rgba(255, 255, 255, 0.05);
+}
+
+/* ===== SMOOTH SCROLLING ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: white;
+}
+
+/* ===== FOCUS ===== */
+*:focus-visible {
+  outline: 2px solid rgba(168, 85, 247, 0.5);
+  outline-offset: 2px;
+}
+
+/* ===== BODY ===== */
+body {
+  background: #000;
+  color: #fff;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Map Geography Hover Effect */
+.rsm-geography {
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.rsm-geography:hover {
+  fill: #EC4899 !important; /* Neon Pink */
+  stroke: #ffffff !important;
+  stroke-width: 1px !important;
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8));
+}
