@@ -67,7 +67,7 @@ Navigation:
 
     // 1. First attempt
     const response = await generateWithRetry({
-      model: 'gemini-3.8-flash',
+      model: 'gemini-3.6-flash',
       contents: message,
       config: {
         systemInstruction: systemPrompt,
@@ -101,7 +101,7 @@ Navigation:
         
         // 👇 YAHAN MODEL UPDATE KIYA HAI (2.5 se 3.8)
         const finalResponse = await generateWithRetry({
-          model: 'gemini-3.8-flash',
+          model: 'gemini-3.6-flash',
           contents: [
             { role: 'user', parts: [{ text: message }] },
             { role: 'model', parts: [{ functionCall: call }] },
