@@ -80,25 +80,37 @@ Navigation:
         });
         const searchData = await searchRes.json();
         
-        // 🔥 STEP 2: Sabse Important - History ko waise hi bhejna hai jaisa Gemini ne diya
-        // Hum 'response.candidates[0].content' use karenge jisme signature chhupa hota hai
+        // 🔥 STEP 2: SABSE IMPORTANT FIX
+        // Hum response.candidates[0].content use karenge jo signature carry karta hai
         const finalResponse = await ai.models.generateContent({
           model: 'gemini-3.6-flash',
           contents: [
             { role: 'user', parts: [{ text: message }] },
-            // 👇 Ye line signature ko carry karti hai
-            response.candidates[0].content, 
+            response.candidates[0].content, // 👈 Signature isme chhupa hai
             { role: 'user', parts: [{ functionResponse: { name: call.name, response: searchData } }] }
           ],
           config: { 
             systemInstruction: systemPrompt,
-            // Tools yahan mat bhej, warna wo phir se tool call karne ki koshish karega
+            // Tools yahan mat bhej
           }
         });
 
+        // 🔥 STEP 3: Agar jawab phir bhi khali aaye, toh ek baar aur try kar
+        let replyText = finalResponse.text;
+        
+        if (!replyText || replyText.trim() === '') {
+            // Fallback: Agar Gemini ne text nahi diya, toh ek simple call aur karo
+            const fallbackResponse = await ai.models.generateContent({
+                model: 'gemini-3.6-flash',
+                contents: `Based on this information: ${JSON.stringify(searchData)}, please answer the user's question: "${message}"`,
+                config: { systemInstruction: systemPrompt }
+            });
+            replyText = fallbackResponse.text;
+        }
+
         return NextResponse.json({ 
           type: 'reply', 
-          reply: finalResponse.text || "I found some information but couldn't generate a summary." 
+          reply: replyText || "I found some information but couldn't generate a summary. Please try asking again." 
         });
       }
     }
