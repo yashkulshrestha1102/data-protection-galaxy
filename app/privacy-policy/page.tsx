@@ -217,44 +217,47 @@ const sections = [
       </>
     ),
   },
-    {
+      {
     title: "7. Data Sharing and Recipients",
     content: (
       <>
         <p>
-          We do not sell or rent personal data. Where necessary for the purposes
-          described in this policy, we may disclose data to the following
-          specific third-party service providers:
+          We do not sell, rent, or trade your personal data. We only share your
+          personal data with the following specific third-party service providers
+          who help us operate our platform:
         </p>
-        <ul className="list-disc pl-6 space-y-2 mt-3">
+        <ul className="list-disc pl-6 space-y-3 mt-3">
           <li>
-            <strong>Google (Google Analytics & Google Sheets):</strong> We use
-            Google Analytics to understand website traffic (only with your
-            consent) and Google Sheets as a secure database to store your
-            inquiries and generated documents.
+            <strong>Google LLC (Google Analytics & Google Sheets):</strong> We
+            share website usage data with Google Analytics (only if you accept
+            analytics cookies) to understand traffic. We also store your form
+            submissions and generated documents in Google Sheets, which acts as
+            our secure database.
           </li>
           <li>
-            <strong>Resend:</strong> We use Resend to deliver transactional
-            emails, such as responding to your contact requests, sending
-            generated documents, and transmitting assessment reports.
+            <strong>Resend (Resend, Inc.):</strong> We share your name and email
+            address with Resend to deliver transactional emails, such as
+            responding to your contact requests, sending generated documents,
+            and transmitting assessment reports.
           </li>
           <li>
-            <strong>Vercel:</strong> We use Vercel for website hosting,
-            infrastructure, and analytics to ensure the Website operates
-            securely and efficiently.
+            <strong>Vercel Inc.:</strong> We use Vercel for website hosting and
+            infrastructure. Vercel may process technical data (like IP
+            addresses) to ensure the Website operates securely and efficiently.
           </li>
           <li>
-            <strong>Upstash:</strong> We use Upstash (Redis and Vector Database)
-            for secure data storage, rate limiting, and enabling search
-            functionality on our platform.
+            <strong>Upstash Inc.:</strong> We use Upstash (Redis and Vector
+            Database) for secure data storage, rate limiting, and enabling
+            search functionality on our platform. Your data may be temporarily
+            stored here for these purposes.
           </li>
         </ul>
-        <p className="mt-3">
-          These providers act as data processors and are bound by their
-          respective data processing agreements (DPAs) to ensure your data is
-          handled securely and only for the purposes we specify. They may
-          process data in locations outside India, subject to appropriate
-          safeguards.
+        <p className="mt-4">
+          These specific providers act as <strong>Data Processors</strong> and are
+          bound by their respective Data Processing Agreements (DPAs) to ensure
+          your data is handled securely and only for the purposes we specify.
+          They may process data in locations outside India, subject to
+          appropriate safeguards.
         </p>
         <p className="mt-3">
           We may also disclose data to professional advisers or authorities
