@@ -1,15 +1,12 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { google } from 'googleapis';
 import { generatePDF } from '@/app/lib/pdf-generator';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// ===== GOOGLE SHEETS AUTH =====
-const auth = new google.auth.GoogleAuth({
-  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-});
-const sheets = google.sheets({ version: 'v4', auth });
+// ✅ Env variables for Apps Script and Email
+const SHEET_WEBHOOK_URL = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'Legal Galaxy <onboarding@resend.dev>';
 
 // ===== GENERATE TEMPLATE CONTENT =====
 function generateTemplateContent(tool: string, formData: any): string {
@@ -20,11 +17,11 @@ ${formData.orgName || '[Organisation Name]'} is committed to protecting your pri
 
 2. DATA WE COLLECT
 We collect the following categories of personal data:
-${(formData.dataTypes || ['Name', 'Email', 'Phone']).map(d => `• ${d}`).join('\n')}
+${(formData.dataTypes || ['Name', 'Email', 'Phone']).map((d: string) => `• ${d}`).join('\n')}
 
 3. PURPOSE OF PROCESSING
 We process your personal data for the following purposes:
-${(formData.purposes || ['Service Delivery', 'Communication']).map(p => `• ${p}`).join('\n')}
+${(formData.purposes || ['Service Delivery', 'Communication']).map((p: string) => `• ${p}`).join('\n')}
 
 4. YOUR RIGHTS
 Under DPDPA, you have the following rights:
@@ -52,11 +49,11 @@ ${formData.orgName || '[Organisation Name]'} collects and processes your persona
 
 2. DATA COLLECTED
 The following personal data is collected:
-${(formData.dataTypes || ['Name', 'Email']).map(d => `• ${d}`).join('\n')}
+${(formData.dataTypes || ['Name', 'Email']).map((d: string) => `• ${d}`).join('\n')}
 
 3. PURPOSE OF PROCESSING
 Your data is processed for:
-${(formData.purposes || ['Service Delivery']).map(p => `• ${p}`).join('\n')}
+${(formData.purposes || ['Service Delivery']).map((p: string) => `• ${p}`).join('\n')}
 
 4. CONSENT WITHDRAWAL
 You have the right to withdraw your consent at any time by contacting us. Withdrawal of consent will not affect the lawfulness of processing based on consent before its withdrawal.
@@ -96,7 +93,7 @@ The personal data processed under this DPA relates to:
 
 4. SECURITY MEASURES
 The Processor shall implement and maintain the following security measures:
-${(formData.securityMeasures || ['Encryption', 'Access Controls']).map(m => `• ${m}`).join('\n')}
+${(formData.securityMeasures || ['Encryption', 'Access Controls']).map((m: string) => `• ${m}`).join('\n')}
 
 5. BREACH NOTIFICATION
 The Processor shall notify the Controller within 48 hours of becoming aware of any personal data breach.
@@ -382,38 +379,36 @@ export async function POST(request: Request) {
         );
       }
 
-      // ===== SAVE TO GOOGLE SHEETS =====
-      try {
-        await sheets.spreadsheets.values.append({
-          spreadsheetId: process.env.GOOGLE_SHEET_ID,
-          range: 'Sheet1!A:K',
-          valueInputOption: 'USER_ENTERED',
-          requestBody: {
-            values: [[
-              new Date().toISOString(),
-              'Demo Request',
-              firstName,
-              lastName,
-              email,
-              company,
-              jobTitle,
-              phone,
-              companySize,
-              industry,
-              challenges || '',
-              consent ? 'Yes' : 'No'
-            ]],
-          },
-        });
-        console.log('✅ Demo data saved to Google Sheets');
-      } catch (sheetError) {
-        console.error('❌ Sheet error:', sheetError);
+           // ===== SAVE TO GOOGLE SHEETS VIA WEBHOOK =====
+      if (SHEET_WEBHOOK_URL) {
+        try {
+          await fetch(SHEET_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: `${firstName} ${lastName}`,
+              email: email,
+              phone: phone,
+              company: company,
+              tool: 'Demo Request',
+              type: 'Lead',
+              status: consent ? 'Consent Given' : 'No Consent',
+              jobTitle: jobTitle || '',           
+              companySize: companySize || '',     
+              industry: industry || '',           
+              details: challenges || ''           
+            }),
+          });
+          console.log('✅ Demo data sent to Google Sheets via Webhook');
+        } catch (sheetError) {
+          console.error('❌ Webhook error:', sheetError);
+        }
       }
 
       // ===== SEND NOTIFICATION EMAIL =====
       try {
         await resend.emails.send({
-          from: 'Legal Galaxy <office@businezexcellence.com>',
+          from: FROM_EMAIL,
           to: ['shilpi.kulshrestha@businezexcellence.com'],
           subject: '📋 New Request for book a consultants',
           html: `
@@ -426,6 +421,7 @@ export async function POST(request: Request) {
             <p><strong>Company Size:</strong> ${companySize || 'Not provided'}</p>
             <p><strong>Industry:</strong> ${industry || 'Not provided'}</p>
             <p><strong>Challenges:</strong> ${challenges || 'Not specified'}</p>
+            <p><strong>Consent:</strong> ${consent ? 'Yes' : 'No'}</p>
           `,
         });
         console.log('✅ Notification email sent');
@@ -438,11 +434,6 @@ export async function POST(request: Request) {
         message: 'Demo request submitted successfully!'
       });
     }
-
-
-
-// **************************************
-
 
     // ============================================================
     // ===== CASE 1.5: CONTACT FORM =====
@@ -457,38 +448,33 @@ export async function POST(request: Request) {
         );
       }
 
-      // ===== SAVE TO GOOGLE SHEETS =====
-      try {
-        await sheets.spreadsheets.values.append({
-          spreadsheetId: process.env.GOOGLE_SHEET_ID,
-          range: 'Sheet1!A:L',
-          valueInputOption: 'USER_ENTERED',
-          requestBody: {
-            values: [[
-              new Date().toISOString(),
-              'Contact Form',
-              name,
-              email,
-              phone,
-              company || 'Not Provided',
-              designation || 'Not Provided',
-              Array.isArray(interests) ? interests.join(', ') : '',
-              requirement,
-              '',
-              '',
-              'New'
-            ]],
-          },
-        });
-        console.log('✅ Contact data saved to Google Sheets');
-      } catch (sheetError) {
-        console.error('❌ Sheet error:', sheetError);
+      // ===== SAVE TO GOOGLE SHEETS VIA WEBHOOK =====
+      if (SHEET_WEBHOOK_URL) {
+        try {
+          await fetch(SHEET_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name,
+              email: email,
+              phone: phone,
+              company: company || 'Not Provided',
+              tool: 'Contact Form',
+              type: 'Lead',
+              status: 'New',
+              details: `Role: ${designation || ''}, Interests: ${Array.isArray(interests) ? interests.join(', ') : ''}, Requirement: ${requirement}`
+            }),
+          });
+          console.log('✅ Contact data sent to Google Sheets via Webhook');
+        } catch (sheetError) {
+          console.error('❌ Webhook error:', sheetError);
+        }
       }
 
       // ===== ADMIN NOTIFICATION =====
       try {
         await resend.emails.send({
-          from: 'Legal Galaxy <office@businezexcellence.com>',
+          from: FROM_EMAIL,
           to: [process.env.ADMIN_EMAIL || 'office@businezexcellence.com'],
           replyTo: email,
           subject: `📬 New Contact Request from ${name}`,
@@ -515,7 +501,7 @@ export async function POST(request: Request) {
       // ===== USER CONFIRMATION =====
       try {
         await resend.emails.send({
-          from: 'Legal Galaxy <office@businezexcellence.com>',
+          from: FROM_EMAIL,
           to: [email],
           subject: '✅ We received your request — Legal Galaxy',
           html: `
@@ -558,7 +544,7 @@ export async function POST(request: Request) {
       });
     }
 
-        // ============================================================
+    // ============================================================
     // ===== CASE 1.6: DATA RIGHTS REQUEST =====
     // ============================================================
     if (source === 'rights_request') {
@@ -571,33 +557,33 @@ export async function POST(request: Request) {
         );
       }
 
-      // ===== SAVE TO GOOGLE SHEETS (Optional) =====
-      try {
-        await sheets.spreadsheets.values.append({
-          spreadsheetId: process.env.GOOGLE_SHEET_ID,
-          range: 'Sheet1!A:H',
-          valueInputOption: 'USER_ENTERED',
-          requestBody: {
-            values: [[
-              new Date().toISOString(),
-              'Data Rights Request',
-              name,
-              email,
-              rightType,
-              details,
-              'Pending',
-              'High Priority'
-            ]],
-          },
-        });
-      } catch (sheetError) {
-        console.error('Sheet error:', sheetError);
+      // ===== SAVE TO GOOGLE SHEETS VIA WEBHOOK =====
+      if (SHEET_WEBHOOK_URL) {
+        try {
+          await fetch(SHEET_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name,
+              email: email,
+              phone: '',
+              company: '',
+              tool: 'Data Rights Request',
+              type: 'Legal',
+              status: 'High Priority',
+              details: `Type: ${rightType}, Details: ${details}`
+            }),
+          });
+          console.log('✅ Rights data sent to Google Sheets via Webhook');
+        } catch (sheetError) {
+          console.error('❌ Webhook error:', sheetError);
+        }
       }
 
       // ===== SEND EMAIL TO ADMIN =====
       try {
         await resend.emails.send({
-          from: 'Legal Galaxy <office@businezexcellence.com>',
+          from: FROM_EMAIL,
           to: ['grievance@businezexcellence.com', 'shilpi.kulshrestha@businezexcellence.com'],
           replyTo: email,
           subject: `🚨 Data Principal Rights Request: ${rightType}`,
@@ -610,6 +596,7 @@ export async function POST(request: Request) {
             <p><em>DPDP Act compliance requires response within 30 days.</em></p>
           `,
         });
+        console.log('✅ Rights request email sent');
       } catch (emailError) {
         console.error('Admin email error:', emailError);
       }
@@ -621,7 +608,7 @@ export async function POST(request: Request) {
     }
 
     // ============================================================
-    // ===== CASE 2: GENERATOR FORM (Original) =====
+    // ===== CASE 2: GENERATOR FORM =====
     // ============================================================
     if (!email) {
       return NextResponse.json(
@@ -640,7 +627,7 @@ export async function POST(request: Request) {
 
     // ===== SEND EMAIL =====
     const { data, error } = await resend.emails.send({
-      from: 'Legal Galaxy <office@businezexcellence.com>',
+      from: FROM_EMAIL,
       to: [email],
       subject: `Your ${tool.replace('-', ' ')} Document from Legal Galaxy`,
       html: `
@@ -655,7 +642,6 @@ export async function POST(request: Request) {
           
           <div style="background: #ffffff; border-radius: 16px; margin: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
             
-            <!-- Header - Deep Jungle Green -->
             <div style="background: #004d40; padding: 30px 20px; text-align: center; border-bottom: 4px solid #00332a;">
               <div style="font-size: 20px; font-weight: 600; color: #ffffff; letter-spacing: 1px;">
                 BusinezExcellence
@@ -665,85 +651,43 @@ export async function POST(request: Request) {
               </div>
             </div>
             
-            <!-- Content -->
             <div style="padding: 35px 30px;">
-              
-              <p style="color: #1a2a2a; font-size: 16px; font-weight: 500; margin: 0 0 8px 0;">
-                Hello,
-              </p>
-              
+              <p style="color: #1a2a2a; font-size: 16px; font-weight: 500; margin: 0 0 8px 0;">Hello,</p>
               <p style="color: #3a5a5a; font-size: 14px; line-height: 1.7; margin: 0 0 20px 0;">
-                We're pleased to inform you that your document has been successfully generated through 
-                <strong>Legal Galaxy Document Generator</strong>.
+                We're pleased to inform you that your document has been successfully generated through <strong>Legal Galaxy Document Generator</strong>.
               </p>
-              
               <p style="color: #3a5a5a; font-size: 14px; line-height: 1.7; margin: 0 0 20px 0;">
                 Please find the requested PDF attached to this email.
               </p>
-              
-              <!-- Document Details -->
               <div style="background: #f0f7f4; border-left: 4px solid #004d40; padding: 16px 20px; border-radius: 6px; margin: 20px 0;">
-                <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 600; color: #00332a;">
-                  📄 Document Information
-                </p>
-                <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;">
-                  <strong>Document:</strong> ${tool.replace('-', ' ').toUpperCase()}
-                </p>
-                <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;">
-                  <strong>Category:</strong> ${type === 'privacy' ? 'Privacy' : 'AI Governance'}
-                </p>
-                <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;">
-                  <strong>Generation Status:</strong> <span style="color: #004d40;">✅ Completed</span>
-                </p>
+                <p style="margin: 0 0 6px 0; font-size: 14px; font-weight: 600; color: #00332a;">📄 Document Information</p>
+                <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;"><strong>Document:</strong> ${tool.replace('-', ' ').toUpperCase()}</p>
+                <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;"><strong>Category:</strong> ${type === 'privacy' ? 'Privacy' : 'AI Governance'}</p>
+                <p style="margin: 4px 0; font-size: 13px; color: #2a4a3a;"><strong>Generation Status:</strong> <span style="color: #004d40;">✅ Completed</span></p>
               </div>
-              
               <p style="color: #3a5a5a; font-size: 14px; line-height: 1.7; margin: 20px 0 0 0;">
-                The attached document has been prepared based on the information and options selected during 
-                the document generation process.
+                The attached document has been prepared based on the information and options selected during the document generation process.
               </p>
-              
               <p style="color: #3a5a5a; font-size: 14px; line-height: 1.7; margin: 16px 0 0 0;">
-                Thank you for choosing Legal Galaxy. We're committed to making legal and data protection 
-                documentation simpler, faster, and more accessible.
+                Thank you for choosing Legal Galaxy. We're committed to making legal and data protection documentation simpler, faster, and more accessible.
               </p>
-              
-              <!-- CTA Button -->
               <div style="text-align: center; margin: 30px 0 10px 0;">
                 <a href="${process.env.NEXT_PUBLIC_APP_URL}/generator" 
-                   style="display: inline-block; background: #004d40; color: #ffffff; 
-                          padding: 12px 36px; border-radius: 8px; text-decoration: none; 
-                          font-weight: 600; font-size: 14px;">
+                   style="display: inline-block; background: #004d40; color: #ffffff; padding: 12px 36px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
                   Generate Another Document →
                 </a>
               </div>
-              
-              <p style="color: #3a5a5a; font-size: 14px; line-height: 1.7; margin: 20px 0 0 0;">
-                If you need any assistance or would like to generate another document, please feel free 
-                to reach out.
-              </p>
-              
               <p style="color: #1a2a2a; font-size: 14px; margin: 20px 0 0 0; font-weight: 500;">
-                Warm regards,
-                <br>
-                <span style="color: #004d40;">Team Legal Galaxy</span>
+                Warm regards,<br><span style="color: #004d40;">Team Legal Galaxy</span>
               </p>
             </div>
             
-            <!-- Footer -->
             <div style="background: #f5f7f6; padding: 16px 20px; text-align: center; border-top: 1px solid #e8eeea;">
-              <p style="margin: 0 0 4px 0; font-size: 11px; color: #6a8a7a;">
-                BusinezExcellence StartX LLP
-              </p>
-              <p style="margin: 0; font-size: 10px; color: #8aaa9a;">
-                © ${new Date().getFullYear()} Legal Galaxy. All rights reserved.
-              </p>
-              <p style="margin: 6px 0 0 0; font-size: 9px; color: #aac0b5; font-style: italic;">
-                This document is for informational purposes and does not constitute legal advice.
-              </p>
+              <p style="margin: 0 0 4px 0; font-size: 11px; color: #6a8a7a;">BusinezExcellence StartX LLP</p>
+              <p style="margin: 0; font-size: 10px; color: #8aaa9a;">© ${new Date().getFullYear()} Legal Galaxy. All rights reserved.</p>
+              <p style="margin: 6px 0 0 0; font-size: 9px; color: #aac0b5; font-style: italic;">This document is for informational purposes and does not constitute legal advice.</p>
             </div>
-            
           </div>
-          
         </body>
         </html>
       `,
@@ -789,27 +733,27 @@ This document is for informational purposes and does not constitute legal advice
       );
     }
 
-    // ===== STORE IN GOOGLE SHEETS =====
-    try {
-      await sheets.spreadsheets.values.append({
-        spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: 'Sheet1!A:H',
-        valueInputOption: 'USER_ENTERED',
-        requestBody: {
-          values: [[
-            new Date().toISOString(),
-            email,
-            name || '',
-            phone || '',
-            company || '',
-            tool || '',
-            type || '',
-            'PDF Sent'
-          ]],
-        },
-      });
-    } catch (sheetError) {
-      console.error('Sheet error:', sheetError);
+    // ===== STORE IN GOOGLE SHEETS VIA WEBHOOK =====
+    if (SHEET_WEBHOOK_URL) {
+      try {
+        await fetch(SHEET_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name || '',
+            email: email,
+            phone: phone || '',
+            company: company || '',
+            tool: tool || '',
+            type: type || '',
+            status: 'PDF Sent',
+            details: 'Generated Document'
+          }),
+        });
+        console.log('✅ Generator data sent to Google Sheets via Webhook');
+      } catch (sheetError) {
+        console.error('❌ Webhook error:', sheetError);
+      }
     }
 
     return NextResponse.json({
