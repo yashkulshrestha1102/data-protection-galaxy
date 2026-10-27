@@ -217,42 +217,49 @@ const sections = [
       </>
     ),
   },
-  {
+    {
     title: "7. Data Sharing and Recipients",
     content: (
       <>
         <p>
-          We do not sell personal data. Where necessary for the purposes
+          We do not sell or rent personal data. Where necessary for the purposes
           described in this policy, we may disclose data to the following
-          categories of recipients:
+          specific third-party service providers:
         </p>
         <ul className="list-disc pl-6 space-y-2 mt-3">
           <li>
-            <strong>Hosting and infrastructure providers:</strong> To host the
-            website, store information and maintain service availability.
+            <strong>Google (Google Analytics & Google Sheets):</strong> We use
+            Google Analytics to understand website traffic (only with your
+            consent) and Google Sheets as a secure database to store your
+            inquiries and generated documents.
           </li>
           <li>
-            <strong>Analytics providers:</strong> Google Analytics may be used
-            to understand website usage, subject to the site's consent controls
-            and applicable requirements.
+            <strong>Resend:</strong> We use Resend to deliver transactional
+            emails, such as responding to your contact requests, sending
+            generated documents, and transmitting assessment reports.
           </li>
           <li>
-            <strong>Email and communication providers:</strong> To respond to
-            inquiries and deliver requested service communications.
+            <strong>Vercel:</strong> We use Vercel for website hosting,
+            infrastructure, and analytics to ensure the Website operates
+            securely and efficiently.
           </li>
           <li>
-            <strong>Professional advisers or authorities:</strong> Where
-            disclosure is necessary for legal compliance, the establishment or
-            defence of legal claims, or a lawful request from a competent
-            authority.
+            <strong>Upstash:</strong> We use Upstash (Redis and Vector Database)
+            for secure data storage, rate limiting, and enabling search
+            functionality on our platform.
           </li>
         </ul>
         <p className="mt-3">
-          We aim to limit disclosures to what is necessary for the relevant
-          purpose. The actual providers used, the information shared with them
-          and their contractual arrangements must match our current operations.
-          Providers may process data under their own terms where they act as
-          independent controllers.
+          These providers act as data processors and are bound by their
+          respective data processing agreements (DPAs) to ensure your data is
+          handled securely and only for the purposes we specify. They may
+          process data in locations outside India, subject to appropriate
+          safeguards.
+        </p>
+        <p className="mt-3">
+          We may also disclose data to professional advisers or authorities
+          where necessary for legal compliance, the establishment or defence of
+          legal claims, or a lawful request from a competent authority.
         </p>
       </>
     ),
