@@ -393,7 +393,7 @@ export async function POST(request: Request) {
               tool: 'Demo Request',
               type: 'Lead',
               status: consent ? 'Consent Given' : 'No Consent',
-              jobTitle: jobTitle || '',           cls
+              jobTitle: jobTitle || '',           
               companySize: companySize || '',     
               industry: industry || '',           
               details: challenges || ''           
@@ -438,8 +438,8 @@ export async function POST(request: Request) {
     // ============================================================
     // ===== CASE 1.5: CONTACT FORM =====
     // ============================================================
-    if (source === 'contact') {
-      const { name, email, phone, company, designation, requirement, interests } = body;
+        if (source === 'contact') {
+      const { name, email, phone, company, designation, requirement, interests, consent } = body;
 
       if (!name || !email || !phone || !requirement) {
         return NextResponse.json(
