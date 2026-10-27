@@ -111,6 +111,7 @@ export function Footer() {
               <li><Link href="/consent-notice" className="hover:text-white transition-colors">Consent Notice</Link></li>
               <li><Link href="/grievance-redressal" className="hover:text-white transition-colors">Grievance Redressal</Link></li>
               <li><Link href="/data-principal-rights" className="hover:text-white transition-colors">Data Principal Rights</Link></li>
+              <li><Link href="/consent-dashboard" className="hover:text-white transition-colors">Consent Dashboard</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
               <li><Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link></li>
             </ul>
