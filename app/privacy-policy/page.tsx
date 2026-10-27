@@ -224,32 +224,34 @@ const sections = [
         <p>
           We do not sell, rent, or trade your personal data. We only share your
           personal data with the following specific third-party service providers
-          who help us operate our platform:
+          (Data Processors) to operate our platform:
         </p>
         <ul className="list-disc pl-6 space-y-3 mt-3">
           <li>
-            <strong>Google LLC (Google Analytics & Google Sheets):</strong> We
-            share website usage data with Google Analytics (only if you accept
-            analytics cookies) to understand traffic. We also store your form
-            submissions and generated documents in Google Sheets, which acts as
-            our secure database.
+            <strong>Google LLC:</strong> We use Google Analytics (only if you
+            accept analytics cookies) to understand website traffic. We also use
+            Google Sheets as a secure database to store your form submissions,
+            inquiries, and generated documents. Data shared: Name, Email, Phone,
+            Company details, and Website usage data.
           </li>
           <li>
-            <strong>Resend (Resend, Inc.):</strong> We share your name and email
-            address with Resend to deliver transactional emails, such as
-            responding to your contact requests, sending generated documents,
-            and transmitting assessment reports.
+            <strong>Resend (Resend, Inc.):</strong> We use Resend to deliver
+            transactional emails, such as responding to your contact requests,
+            sending generated documents, and transmitting assessment reports.
+            Data shared: Name, Email address, and the content of the email being
+            sent.
           </li>
           <li>
             <strong>Vercel Inc.:</strong> We use Vercel for website hosting and
-            infrastructure. Vercel may process technical data (like IP
-            addresses) to ensure the Website operates securely and efficiently.
+            infrastructure. Vercel processes technical data to ensure the Website
+            operates securely and efficiently. Data shared: Technical data (IP
+            addresses, browser information) and Website usage logs.
           </li>
           <li>
             <strong>Upstash Inc.:</strong> We use Upstash (Redis and Vector
-            Database) for secure data storage, rate limiting, and enabling
-            search functionality on our platform. Your data may be temporarily
-            stored here for these purposes.
+            Database) for secure data storage, rate limiting, and enabling search
+            functionality on our platform. Data shared: Email addresses and
+            search query data.
           </li>
         </ul>
         <p className="mt-4">
