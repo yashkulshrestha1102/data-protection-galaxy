@@ -146,26 +146,26 @@ const sections = [
       </>
     ),
   },
-  {
+    {
     title: "5. Children's Personal Data",
     content: (
       <>
         <p>
-          Our website and services are intended primarily for businesses and
-          professionals, not children. We do not knowingly seek to collect
-          personal data from children through features intended for adults.
+          Our website and services are strictly intended for businesses and
+          professionals who are <strong>18 years of age or older</strong>. We do not
+          knowingly seek to collect, use, or disclose personal data from children
+          (individuals under 18 years of age).
         </p>
         <p className="mt-3">
-          Where processing children's personal data is applicable and
-          permitted, we will follow the requirements of applicable law,
-          including obtaining verifiable parental or lawful guardian consent
-          where required and observing applicable restrictions on tracking,
-          behavioural monitoring and targeted advertising.
+          If you are under 18, please do not use this Website or submit any personal
+          data through our forms, tools, or assessments. 
         </p>
         <p className="mt-3">
-          If you believe a child has provided personal data to us
-          inappropriately, contact us using the details in the Grievance
-          Redressal section so we can assess and address the request.
+          If we become aware that we have inadvertently collected personal data from
+          a child without verifiable parental consent, we will take reasonable steps
+          to delete such information from our records promptly. If you believe a child
+          has provided personal data to us inappropriately, please contact our
+          Grievance Officer immediately.
         </p>
       </>
     ),
@@ -362,11 +362,12 @@ const sections = [
           <p>
             <strong>Phone:</strong> +91-8800138008
           </p>
-          <p className="text-xs text-gray-400 mt-2">
+                    <p className="text-xs text-gray-400 mt-2">
             <strong>Timelines:</strong> Acknowledgment of your grievance within{" "}
             <strong>48 hours</strong>; resolution within{" "}
-            <strong>90 days</strong> from the date of receipt, as required
-            under the DPDP Rules, 2025.
+            <strong>7 working days</strong> from the date of receipt, as required
+            under the DPDP Rules, 2025. If resolution requires more time, we will
+            communicate the reason for the delay.
           </p>
         </div>
         <p className="mt-4">

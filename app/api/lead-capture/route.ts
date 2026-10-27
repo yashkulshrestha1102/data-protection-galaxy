@@ -393,7 +393,7 @@ export async function POST(request: Request) {
               tool: 'Demo Request',
               type: 'Lead',
               status: consent ? 'Consent Given' : 'No Consent',
-              jobTitle: jobTitle || '',           
+              jobTitle: jobTitle || '',           cls
               companySize: companySize || '',     
               industry: industry || '',           
               details: challenges || ''           

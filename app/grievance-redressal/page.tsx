@@ -85,10 +85,10 @@ export default function GrievanceRedressalPage() {
             </section>
 
             {/* Timelines */}
-            <section>
+                        <section>
               <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
                 <Clock className="w-6 h-6 text-purple-400" />
-                Resolution Timelines
+                Resolution Timelines (DPDP Rules 2025)
               </h2>
               <div className="overflow-x-auto">
                 <table className="w-full border border-white/10 rounded-lg">
@@ -104,16 +104,19 @@ export default function GrievanceRedressalPage() {
                       <td className="px-4 py-3 text-white font-medium">Within 48 hours</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-3 text-gray-300">Initial investigation & response</td>
-                      <td className="px-4 py-3 text-white font-medium">Within 15 days</td>
+                      <td className="px-4 py-3 text-gray-300">Final resolution</td>
+                      <td className="px-4 py-3 text-white font-medium">Within 7 working days</td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-3 text-gray-300">Final resolution</td>
-                      <td className="px-4 py-3 text-white font-medium">Within 90 days</td>
+                      <td className="px-4 py-3 text-gray-300">Extension (if necessary)</td>
+                      <td className="px-4 py-3 text-white font-medium">Communicated with reasons</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              <p className="mt-4 text-xs text-gray-400">
+                * As per the DPDP Rules, 2025, we aim to resolve all grievances within 7 working days. If we are unable to do so due to complex circumstances, we will inform you of the delay and the revised timeline.
+              </p>
             </section>
 
             {/* Escalation */}
