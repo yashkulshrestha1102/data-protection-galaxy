@@ -8,11 +8,14 @@ export default function ConsentDashboardPage() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  
+  // ✅ FIX: State ko string | null kiya taaki error message save ho sake
+  const [error, setError] = useState<string | null>(null);
 
-    const handleWithdraw = async (e: React.FormEvent) => {
+  const handleWithdraw = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError("");
+    setError(null);
 
     try {
       const response = await fetch('/api/lead-capture', {
@@ -28,8 +31,9 @@ export default function ConsentDashboardPage() {
 
       if (data.success) {
         setIsSubmitted(true);
+        setEmail("");
       } else {
-        setError(data.message || 'Something went wrong.');
+        setError(data.message || 'Something went wrong. Please try again.');
       }
     } catch (err) {
       setError('Failed to process request. Please try again.');
@@ -80,6 +84,13 @@ export default function ConsentDashboardPage() {
                   </p>
                 </div>
               </div>
+
+              {/* ✅ FIX: Error Message Dikhane ke liye UI add kiya */}
+              {error && (
+                <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-sm text-red-400">
+                  {error}
+                </div>
+              )}
 
               <div>
                 <label className="block text-sm font-medium text-white mb-2">
