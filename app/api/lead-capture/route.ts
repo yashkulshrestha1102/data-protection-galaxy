@@ -607,6 +607,82 @@ export async function POST(request: Request) {
       });
     }
 
+
+
+
+
+
+
+
+
+
+
+        // ============================================================
+    // ===== CASE 1.7: WITHDRAW CONSENT (FROM DASHBOARD) =====
+    // ============================================================
+    if (source === 'withdraw_consent') {
+      const { email } = body;
+
+      if (!email) {
+        return NextResponse.json(
+          { success: false, message: 'Email is required' },
+          { status: 400 }
+        );
+      }
+
+      // 1. Google Sheet mein record bhejo (Taaki tujhe pata chale)
+      if (SHEET_WEBHOOK_URL) {
+        try {
+          await fetch(SHEET_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: 'Data Deletion Request',
+              email: email,
+              phone: '',
+              company: '',
+              tool: 'Consent Withdrawal',
+              type: 'Legal',
+              status: 'High Priority',
+              details: 'User withdrew consent from dashboard. Delete data within 30 days.'
+            }),
+          });
+          console.log('✅ Withdrawal request sent to Google Sheets');
+        } catch (sheetError) {
+          console.error('❌ Webhook error:', sheetError);
+        }
+      }
+
+      // 2. Admin (Shilpi Ji) ko email bhejo
+      try {
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: ['shilpi.kulshrestha@businezexcellence.com', 'grievance@businezexcellence.com'],
+          subject: `🚨 URGENT: Consent Withdrawal Request from ${email}`,
+          html: `
+            <h2>Consent Withdrawal Request</h2>
+            <p>A user has requested to withdraw consent and delete their data.</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Action Required:</strong> Find this email in Google Sheet and delete all their records within 30 days as per DPDP Act.</p>
+          `,
+        });
+        console.log('✅ Withdrawal email sent to Admin');
+      } catch (emailError) {
+        console.error('Admin email error:', emailError);
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: 'Consent withdrawal request received. Data will be deleted within 30 days.'
+      });
+    }
+
+
+
+
+
+
+    
     // ============================================================
     // ===== CASE 2: GENERATOR FORM =====
     // ============================================================

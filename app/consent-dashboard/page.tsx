@@ -9,16 +9,33 @@ export default function ConsentDashboardPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleWithdraw = async (e: React.FormEvent) => {
+    const handleWithdraw = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // In a real app, you would call an API here to delete/withdraw consent
-    // For now, we'll simulate a successful withdrawal
-    setTimeout(() => {
-      setIsSubmitted(true);
+    setError("");
+
+    try {
+      const response = await fetch('/api/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'withdraw_consent',
+          email: email,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+      } else {
+        setError(data.message || 'Something went wrong.');
+      }
+    } catch (err) {
+      setError('Failed to process request. Please try again.');
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
