@@ -108,6 +108,8 @@ export function Footer() {
               <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/consent-notice" className="hover:text-white transition-colors">Consent Notice</Link></li>
+              <li><Link href="/grievance-redressal" className="hover:text-white transition-colors">Grievance Redressal</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
               <li><Link href="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link></li>
             </ul>
@@ -120,6 +122,9 @@ export function Footer() {
             <p>© {currentYear} Legal Galaxy | Powered by BusinezExcellence StartX LLP</p>
             <p className="text-white/50 mt-1 text-[10px]">
               This content is for educational/informational purposes only and does not constitute legal advice.
+            </p>
+            <p className="text-white/50 mt-1 text-[10px]">
+              Data Privacy Contact: <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 hover:text-purple-300 underline">grievance@businezexcellence.com</a>
             </p>
           </div>
           

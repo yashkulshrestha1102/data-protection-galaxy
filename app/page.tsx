@@ -129,7 +129,7 @@ export default function Home() {
       errors.phone = 'Please enter a valid phone number';
     }
     if (!demoForm.industry) errors.industry = 'Please select your industry';
-    if (!demoForm.consent) errors.consent = 'You must agree to the Privacy Policy';
+    if (!demoForm.consent) errors.consent = 'You must agree to the Consent Notice to proceed';
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -792,8 +792,26 @@ export default function Home() {
                         }`}
                       />
                       <label htmlFor="home-consent" className="text-xs text-white/50 cursor-pointer">
-                        I agree to Legal Galaxy's Privacy Policy and consent to being contacted.
-                      </label>
+  I have read and agree to the{" "}
+  <a
+    href="/consent-notice"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-purple-400 underline hover:text-purple-300"
+  >
+    Consent Notice
+  </a>{" "}
+  and{" "}
+  <a
+    href="/privacy-policy"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-purple-400 underline hover:text-purple-300"
+  >
+    Privacy Policy
+  </a>
+  . I consent to being contacted.
+</label>
                     </div>
                     {formErrors.consent && (
                       <p className="text-red-400 text-xs">{formErrors.consent}</p>
