@@ -558,6 +558,68 @@ export async function POST(request: Request) {
       });
     }
 
+        // ============================================================
+    // ===== CASE 1.6: DATA RIGHTS REQUEST =====
+    // ============================================================
+    if (source === 'rights_request') {
+      const { name, email, rightType, details } = body;
+
+      if (!name || !email || !rightType) {
+        return NextResponse.json(
+          { success: false, message: 'Required fields missing' },
+          { status: 400 }
+        );
+      }
+
+      // ===== SAVE TO GOOGLE SHEETS (Optional) =====
+      try {
+        await sheets.spreadsheets.values.append({
+          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          range: 'Sheet1!A:H',
+          valueInputOption: 'USER_ENTERED',
+          requestBody: {
+            values: [[
+              new Date().toISOString(),
+              'Data Rights Request',
+              name,
+              email,
+              rightType,
+              details,
+              'Pending',
+              'High Priority'
+            ]],
+          },
+        });
+      } catch (sheetError) {
+        console.error('Sheet error:', sheetError);
+      }
+
+      // ===== SEND EMAIL TO ADMIN =====
+      try {
+        await resend.emails.send({
+          from: 'Legal Galaxy <office@businezexcellence.com>',
+          to: ['grievance@businezexcellence.com', 'shilpi.kulshrestha@businezexcellence.com'],
+          replyTo: email,
+          subject: `🚨 Data Principal Rights Request: ${rightType}`,
+          html: `
+            <h2>New Data Rights Request</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Request Type:</strong> ${rightType}</p>
+            <p><strong>Details:</strong> ${details}</p>
+            <p><em>DPDP Act compliance requires response within 30 days.</em></p>
+          `,
+        });
+      } catch (emailError) {
+        console.error('Admin email error:', emailError);
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: 'Request received. We will respond within 30 days.'
+      });
+    }
+
     // ============================================================
     // ===== CASE 2: GENERATOR FORM (Original) =====
     // ============================================================
