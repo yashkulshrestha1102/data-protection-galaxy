@@ -11,6 +11,7 @@ import {
   Languages, FileDown, FileJson
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { ConsentCheckbox } from '@/components/ui/ConsentCheckbox';
 
 // ============================================================
 // ===== VIDEO BACKGROUND COMPONENT (High Quality) =====
@@ -42,7 +43,6 @@ const VideoBackground = () => {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            // ✅ Video quality settings
             imageRendering: 'auto',
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
@@ -62,7 +62,6 @@ const VideoBackground = () => {
         />
       )}
       
-      {/* ✅ LIGHT Overlay - Video Quality Preserve */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
     </div>
   );
@@ -490,8 +489,24 @@ Maintain detailed records of assessments.
 };
 
 // ===== FORM STEPS =====
-const formSteps = [
-  {
+// ===== FORM STEP TYPES =====
+type FormField = {
+  id: string;
+  label: string;
+  type: string;
+  placeholder?: string;
+  options?: string[];
+  conditional?: string; // ✅ YEH ADD KAR
+};
+
+type FormStep = {
+  id: string;
+  title: string;
+  description: string;
+  fields: FormField[];
+};
+const formSteps: FormStep[] = [
+    {
     id: 'organisation',
     title: 'Organisation Details',
     description: 'Tell us about your organisation',
@@ -675,6 +690,7 @@ export default function GeneratorPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [email, setEmail] = useState('');
+  const [consent, setConsent] = useState(false); // ✅ NEW
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -743,10 +759,11 @@ export default function GeneratorPage() {
     if (!step.fields.length) return true;
     
     return step.fields.every(field => {
-      if (field.conditional) {
-        const condValue = formData[field.conditional];
-        if (condValue === 'No') return true;
-      }
+  // ✅ Check if conditional property exists
+  if (field.conditional) {
+    const condValue = formData[field.conditional];
+    if (condValue === 'No') return true;
+  }
       
       const isRequired = field.label.includes('*');
       if (!isRequired) return true;
@@ -771,8 +788,15 @@ export default function GeneratorPage() {
 
   const handleSubmitEmail = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!email) {
       setError('Please enter your email address.');
+      return;
+    }
+    
+    // ✅ Consent validation
+    if (!consent) {
+      setError('Please agree to the Consent Notice and Privacy Policy to proceed.');
       return;
     }
     
@@ -788,12 +812,15 @@ export default function GeneratorPage() {
           type: activeTab,
           source: 'generator',
           document: generatedContent,
-          formData
+          formData,
+          consent: consent,                                    // ✅ NEW
+          consentTimestamp: new Date().toISOString(),          // ✅ NEW
         }),
       });
       const data = await response.json();
       if (data.success) {
         setIsSubmitted(true);
+        setConsent(false);                                     // ✅ NEW
         setTimeout(() => {
           setIsSubmitted(false);
           setEmail('');
@@ -1118,7 +1145,7 @@ export default function GeneratorPage() {
           </div>
         </div>
 
-        {/* Email Capture */}
+        {/* Email Capture with Consent */}
         {generatedContent && (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -1145,19 +1172,32 @@ export default function GeneratorPage() {
                 <p className="text-gray-200 text-sm">Check your email for the document.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmitEmail} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+              <form onSubmit={handleSubmitEmail} className="space-y-4 max-w-lg mx-auto text-left">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50"
+                  className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50"
                   required
                 />
+                
+                {/* ✅ Consent Checkbox */}
+                <ConsentCheckbox
+                  id="generator-consent"
+                  checked={consent}
+                  onChange={setConsent}
+                  error={
+                    error && !consent
+                      ? "Please agree to the Consent Notice to proceed."
+                      : undefined
+                  }
+                />
+                
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 justify-center"
+                  className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (
                     <>

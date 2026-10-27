@@ -10,6 +10,7 @@ import {
   Sparkles, Loader2, Mail, Send, Lock, UserCheck, ChevronDown
 } from 'lucide-react';
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
+import { ConsentCheckbox } from '@/components/ui/ConsentCheckbox';
 
 // ============================================================
 // ===== BACKGROUND - ONLY IMAGE =====
@@ -18,7 +19,7 @@ const Background = () => {
   return (
     <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" 
          style={{ 
-           backgroundImage: "url('/images/home1.jpeg')",  // ✅ galaxy5.jpg use karo
+           backgroundImage: "url('/images/home1.jpeg')",
            backgroundSize: 'cover',
            backgroundPosition: 'center',
          }}
@@ -479,6 +480,8 @@ const ResultSection = ({ answers, onReset }: any) => {
   const [showEmailForm, setShowEmailForm] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [consent, setConsent] = useState(false); // ✅ NEW
+  const [formError, setFormError] = useState<string | null>(null); // ✅ NEW
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -506,10 +509,19 @@ const ResultSection = ({ answers, onReset }: any) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (formError) setFormError(null);
   };
 
   const handleSubmitReport = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // ✅ Consent validation
+    if (!consent) {
+      setFormError('Please agree to the Consent Notice and Privacy Policy to proceed.');
+      return;
+    }
+    
+    setFormError(null);
     setIsSubmitting(true);
 
     try {
@@ -522,15 +534,19 @@ const ResultSection = ({ answers, onReset }: any) => {
           riskLevel: risk.label,
           categoryScores,
           answers,
+          consent: consent,                                    // ✅ NEW
+          consentTimestamp: new Date().toISOString(),          // ✅ NEW
         }),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
         setShowEmailForm(false);
+        setConsent(false);                                     // ✅ NEW
       }
     } catch (error) {
       console.error('Error submitting report:', error);
+      setFormError('Something went wrong. Please try again.');
     }
     setIsSubmitting(false);
   };
@@ -679,6 +695,18 @@ const ResultSection = ({ answers, onReset }: any) => {
                     />
                   </div>
                 </div>
+
+                {/* ✅ CONSENT CHECKBOX */}
+                <ConsentCheckbox
+                  id="scorecard-consent"
+                  checked={consent}
+                  onChange={(val) => {
+                    setConsent(val);
+                    if (formError) setFormError(null);
+                  }}
+                  error={formError || undefined}
+                />
+
                 <button
                   type="submit"
                   disabled={isSubmitting}

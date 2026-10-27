@@ -15,6 +15,7 @@ import {
   Target,
   Zap,
 } from "lucide-react";
+import { ConsentCheckbox } from "@/components/ui/ConsentCheckbox";
 
 const COLORS = {
   purple: "#A855F7",
@@ -1100,7 +1101,7 @@ function PrivacyGuardian() {
           </p>
 
           <p className="mt-1 text-xs font-semibold text-[#FFEA93]">
-            Detect � Govern � Protect
+            Detect • Govern • Protect
           </p>
         </div>
 
@@ -1166,6 +1167,8 @@ export default function ContactPage() {
 
   const [selectedInterests, setSelectedInterests] =
     useState<string[]>([]);
+
+  const [consent, setConsent] = useState(false);
 
   const [openFaq, setOpenFaq] =
     useState<number | null>(0);
@@ -1251,6 +1254,13 @@ export default function ContactPage() {
       return;
     }
 
+    if (!consent) {
+      setError(
+        "Please agree to the Consent Notice and Privacy Policy to proceed."
+      );
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -1271,6 +1281,8 @@ export default function ContactPage() {
             requirement: form.requirement,
             interests: selectedInterests,
             source: "contact",
+            consent: consent,
+            consentTimestamp: new Date().toISOString(),
           }),
         }
       );
@@ -1295,6 +1307,7 @@ export default function ContactPage() {
       });
 
       setSelectedInterests([]);
+      setConsent(false);
     } catch {
       setError(
         "Something went wrong while submitting your request. Please try again."
@@ -1768,6 +1781,20 @@ export default function ContactPage() {
               </div>
             </div>
 
+            {/* CONSENT CHECKBOX */}
+            <div className="mt-6">
+              <ConsentCheckbox
+                id="contact-consent"
+                checked={consent}
+                onChange={setConsent}
+                error={
+                  error && !consent
+                    ? "Please agree to the Consent Notice to proceed."
+                    : undefined
+                }
+              />
+            </div>
+
             {error && (
               <div className="mt-6 rounded-2xl border border-purple-500/40 bg-gradient-to-r from-purple-500/10 to-pink-500/10 px-4 py-3 text-sm text-[#FFEA93]">
                 {error}
@@ -1805,7 +1832,8 @@ export default function ContactPage() {
             <p className="mt-4 text-center text-[11px] leading-5 text-[#B0CDE6]/80">
               By submitting this form, you&apos;re sharing
               your details for the purpose of responding to
-              your enquiry.
+              your enquiry in accordance with our Consent
+              Notice.
             </p>
           </motion.form>
         </div>
