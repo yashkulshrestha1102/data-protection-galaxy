@@ -1,0 +1,147 @@
+# Data Breach Response Plan
+
+**Last Updated:** 27 October 2026
+
+**Owner:** Shilpi Kulshrestha (Grievance Officer & Founder)
+
+**Applicable Law:** Digital Personal Data Protection Act, 2023 (Section 8(6) & DPDP Rules, 2025, Rule 7)
+
+---
+
+## 🚨 1. Purpose
+
+This document sets out the internal procedure that Businezexcellence StartX LLP ("the Company") will follow upon becoming aware of a **personal data breach** while operating the Legal Galaxy platform (https://dpdpa.businezexcellence.com).
+
+A "personal data breach" means any unauthorised access, disclosure, alteration, loss of access to, or destruction of personal data.
+
+This plan ensures compliance with:
+- **Section 8(6)** of the DPDP Act 2023 — obligation to notify the Data Protection Board of India (DPB) and affected Data Principals.
+- **Rule 7** of the DPDP Rules, 2025 — timelines and format of breach notification (notification to DPB within **72 hours** of becoming aware).
+
+---
+
+## 📞 2. Breach Response Team
+
+| Role | Name | Contact |
+|------|------|---------|
+| **Incident Lead (Grievance Officer)** | Shilpi Kulshrestha | shilpi.kulshrestha@businezexcellence.com / +91-8800138008 |
+| **Technical Lead** | [Name] | [Email / Phone] |
+| **Legal Advisor** | [Name] | [Email / Phone] |
+| **Communications Lead** | [Name] | [Email / Phone] |
+
+**On-Call Protocol:** If any team member suspects a breach, they MUST immediately contact the Incident Lead by phone (not just email).
+
+---
+
+## ⏱️ 3. Breach Response Timeline
+
+| Time | Action | Responsible |
+|------|--------|-------------|
+| **T + 0 hours** | Breach detected/suspected. **Stop the leak** (revoke access, patch vulnerability). Log initial facts. | Whoever detects |
+| **T + 1 hour** | Incident Lead informed. Response Team convened. Incident Register opened. | Detector → Incident Lead |
+| **T + 6 hours** | Containment completed. Preliminary impact assessment (what data, how many Data Principals, severity). | Technical Lead |
+| **T + 24 hours** | Detailed investigation. Determine if DPB notification is required (see Section 4). Draft DPB notification. | Incident Lead + Legal |
+| **T + 48 hours** | Legal review of DPB notification. Notify Data Principals if high risk. | Legal + Comms |
+| **T + 72 hours (MAX)** | **File notification with Data Protection Board of India** via dpb.gov.in (or as prescribed). | Incident Lead |
+| **T + 7 days** | Post-incident review. Update security measures. Document lessons learned. | Incident Lead |
+
+---
+
+## 🎯 4. When to Notify the DPB
+
+**Notification to the DPB is MANDATORY** for any breach that meets the threshold under Rule 7 of DPDP Rules 2025:
+
+- Any breach affecting personal data that could cause harm to Data Principals.
+- Even if the breach is contained, if personal data was accessed, altered, or lost, notify.
+- Examples: unauthorised access to Google Sheet (lead data), compromised email account, exposed API keys, hacked AWS/storage.
+
+**When in doubt — NOTIFY.** The cost of over-notification is far lower than non-notification (₹200 crore penalty).
+
+---
+
+## 📋 5. What Must Be Included in the DPB Notification
+
+As per Rule 7, the notification to the DPB must include:
+
+1. **Description of the breach** — nature, circumstances, date and time of detection.
+2. **Categories and approximate number of Data Principals affected.**
+3. **Categories and approximate volume of personal data records affected.**
+4. **Likely consequences** of the breach for Data Principals.
+5. **Measures taken or proposed** to address the breach and mitigate adverse effects.
+6. **Contact details** of the Data Protection Officer / Grievance Officer.
+7. **Any other information** the DPB may require.
+
+**Format:** As prescribed by the DPB (currently via online portal or email to the Board).
+
+---
+
+## 📢 6. Notifying Affected Data Principals
+
+If the breach poses a **high risk** to Data Principals, notify them **without delay** via:
+
+1. **Email** to the affected email address on record.
+2. **Website notice** on https://dpdpa.businezexcellence.com (if mass notification required).
+
+The notification must include:
+- Nature of the breach.
+- Data affected.
+- Consequences likely to occur.
+- Measures taken / proposed.
+- Steps the Data Principal should take to protect themselves.
+- Contact details for queries.
+
+---
+
+## 📝 7. Incident Register (Mandatory)
+
+A **Breach Incident Register** must be maintained by the Incident Lead. For each incident, record:
+
+| Field | Details |
+|-------|---------|
+| Incident ID | BR-YYYY-MM-DD-001 |
+| Date & time detected | |
+| Detected by | |
+| Nature of breach | |
+| Data affected | |
+| Number of Data Principals | |
+| Root cause | |
+| Containment actions | |
+| DPB notified? (Y/N + date) | |
+| Data Principals notified? (Y/N + date) | |
+| Remediation steps | |
+| Lessons learned | |
+| Closed by / date | |
+
+This register must be retained for **at least 7 years**.
+
+---
+
+## 🛠️ 8. Post-Incident Review
+
+Within **7 days** of closing the incident:
+
+1. Conduct a root cause analysis (RCA).
+2. Update security measures, access controls, or vendor agreements.
+3. Update this Breach Response Plan if gaps identified.
+4. Train team on lessons learned.
+
+---
+
+## 📌 9. Quick Reference — Key Contacts
+
+- **Data Protection Board of India:** https://dpb.gov.in (notification portal)
+- **Grievance Officer (Incident Lead):** grievance@businezexcellence.com / +91-8800138008
+- **Privacy email:** privacy@businezexcellence.com
+- **Legal counsel:** [Insert if applicable]
+
+---
+
+## ✅ 10. Annual Testing
+
+Once a year, the team should run a **tabletop exercise** — simulate a breach and walk through this plan. Document the outcome.
+
+---
+
+**Document Version:** 1.0
+**Approved by:** Shilpi Kulshrestha, Founder & Grievance Officer
+**Date:** 27 October 2026

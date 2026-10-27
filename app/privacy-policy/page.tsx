@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -14,7 +13,7 @@ const sections = [
         personal data when you visit our website, contact us or use our
         services. Our processing is subject to applicable data protection
         law, including the Digital Personal Data Protection Act, 2023 and
-        applicable rules, to the extent in force and applicable.
+        the DPDP Rules, 2025, to the extent in force and applicable.
       </p>
     ),
   },
@@ -71,33 +70,58 @@ const sections = [
     content: (
       <>
         <p>
-          Where consent is the basis for processing, we will seek it through
-          an appropriate notice or affirmative action before the relevant
-          processing begins. The notice should explain the data involved,
-          the purpose of processing and how you can exercise your choices.
+          Where consent is the basis for processing, we seek it through a
+          standalone{" "}
+          <Link href="/consent-notice" className="text-purple-400 underline">
+            Consent Notice
+          </Link>{" "}
+          before the relevant processing begins. The notice explains the
+          personal data involved, the specific purpose of processing, the
+          retention period, and how you can exercise your choices, including
+          withdrawal of consent.
+        </p>
+        <p className="mt-3">
           Submitting an inquiry form does not, by itself, mean that you have
-          consented to unrelated marketing or optional analytics.
+          consented to unrelated marketing or optional analytics. Each purpose
+          requires its own consent where applicable.
         </p>
         <p className="mt-3">
-          Where our website uses optional analytics cookies, you can accept
-          or reject them through the cookie banner. You can reopen Cookie
-          settings using the control displayed on the website and change
-          your choice. Optional analytics should not load before the required
-          consent has been obtained.
+          Where our website uses optional analytics cookies, you can accept or
+          reject them through the cookie banner. You can reopen Cookie Settings
+          using the control displayed on the website and change your choice.
+          Optional analytics do not load before the required consent has been
+          obtained.
         </p>
+        <p className="mt-3">You may withdraw consent at any time by:</p>
+        <ul className="list-disc pl-6 space-y-2 mt-3">
+          <li>
+            Emailing{" "}
+            <a
+              href="mailto:privacy@businezexcellence.com"
+              className="text-purple-400 underline"
+            >
+              privacy@businezexcellence.com
+            </a>{" "}
+            with the subject line "Consent Withdrawal";
+          </li>
+          <li>
+            Emailing our Grievance Officer at{" "}
+            <a
+              href="mailto:grievance@businezexcellence.com"
+              className="text-purple-400 underline"
+            >
+              grievance@businezexcellence.com
+            </a>;
+          </li>
+          <li>
+            Using the "Cookie Settings" button on our website to change cookie
+            preferences.
+          </li>
+        </ul>
         <p className="mt-3">
-          You may also request withdrawal of consent for processing based on
-          consent by emailing{" "}
-          <a
-            href="mailto:privacy@businezexcellence.com"
-            className="text-purple-400 underline"
-          >
-            privacy@businezexcellence.com
-          </a>{" "}
-          with the subject "Consent Withdrawal". We will take appropriate
-          steps to stop the relevant processing, subject to applicable law.
-          Withdrawal does not affect the lawfulness of processing carried out
-          before withdrawal.
+          Withdrawal of consent will not affect the lawfulness of processing
+          based on consent before its withdrawal. We will process your request
+          within <strong>30 days</strong>.
         </p>
       </>
     ),
@@ -151,30 +175,32 @@ const sections = [
     content: (
       <>
         <p>
-          We retain personal data only for as long as reasonably necessary
-          for its stated purpose, subject to applicable legal obligations,
-          dispute resolution and legitimate record-keeping requirements.
-          The applicable retention period depends on the type of data and
-          the reason it was collected.
+          We retain personal data only for as long as reasonably necessary for
+          its stated purpose, subject to applicable legal obligations, dispute
+          resolution and legitimate record-keeping requirements. The applicable
+          retention period depends on the type of data and the reason it was
+          collected.
         </p>
         <ul className="list-disc pl-6 space-y-2 mt-3">
           <li>
-            <strong>Marketing and inquiry records:</strong> Our stated
-            retention period is up to 2 years after the last interaction,
-            unless consent is withdrawn earlier or a different period is
-            required or permitted by applicable law.
+            <strong>Demo Request and Contact Form data:</strong> Up to{" "}
+            <strong>2 years</strong> from the date of submission, unless
+            consent is withdrawn earlier or a different period is required by
+            applicable law.
           </li>
           <li>
-            <strong>Customer and business records:</strong> Our stated
-            retention period is for the business relationship and up to
-            7 years thereafter where required for legal, accounting or tax
-            purposes. Records not subject to such requirements should not
-            automatically be kept for the full period.
+            <strong>Generated documents (Privacy Policy, DPA, etc.):</strong>{" "}
+            Up to <strong>1 year</strong> from the date of generation.
           </li>
           <li>
-            <strong>Website analytics:</strong> Our stated retention period
-            is up to 26 months, subject to the analytics configuration and
-            the provider's actual retention settings.
+            <strong>Customer and business records:</strong> For the duration
+            of the business relationship and up to <strong>7 years</strong>{" "}
+            thereafter where required for legal, accounting or tax purposes.
+          </li>
+          <li>
+            <strong>Website analytics:</strong> Up to <strong>26 months</strong>
+            , subject to the analytics configuration and the provider's actual
+            retention settings.
           </li>
           <li>
             <strong>Grievance and legal records:</strong> Retained as needed
@@ -184,9 +210,9 @@ const sections = [
         </ul>
         <p className="mt-3">
           When the applicable retention period ends, we will delete or
-          anonymise personal data, unless continued retention is required
-          or permitted by law. Backup copies may remain until removed through
-          the relevant backup lifecycle.
+          anonymise personal data, unless continued retention is required or
+          permitted by law. Backup copies may remain until removed through the
+          relevant backup lifecycle.
         </p>
       </>
     ),
@@ -202,31 +228,31 @@ const sections = [
         </p>
         <ul className="list-disc pl-6 space-y-2 mt-3">
           <li>
-            <strong>Hosting and infrastructure providers:</strong> To host
-            the website, store information and maintain service availability.
+            <strong>Hosting and infrastructure providers:</strong> To host the
+            website, store information and maintain service availability.
           </li>
           <li>
-            <strong>Analytics providers:</strong> Google Analytics may be
-            used to understand website usage, subject to the site's consent
-            controls and applicable requirements.
+            <strong>Analytics providers:</strong> Google Analytics may be used
+            to understand website usage, subject to the site's consent controls
+            and applicable requirements.
           </li>
           <li>
-            <strong>Email and communication providers:</strong> To respond
-            to inquiries and deliver requested service communications.
+            <strong>Email and communication providers:</strong> To respond to
+            inquiries and deliver requested service communications.
           </li>
           <li>
             <strong>Professional advisers or authorities:</strong> Where
-            disclosure is necessary for legal compliance, the establishment
-            or defence of legal claims, or a lawful request from a competent
+            disclosure is necessary for legal compliance, the establishment or
+            defence of legal claims, or a lawful request from a competent
             authority.
           </li>
         </ul>
         <p className="mt-3">
           We aim to limit disclosures to what is necessary for the relevant
-          purpose. The actual providers used, the information shared with
-          them and their contractual arrangements must match our current
-          operations. Providers may process data under their own terms where
-          they act as independent controllers.
+          purpose. The actual providers used, the information shared with them
+          and their contractual arrangements must match our current operations.
+          Providers may process data under their own terms where they act as
+          independent controllers.
         </p>
       </>
     ),
@@ -237,19 +263,19 @@ const sections = [
       <>
         <p>
           Some hosting, analytics or communication providers may process
-          personal data outside India. The location of processing depends
-          on the provider, service configuration and the data involved.
+          personal data outside India. The location of processing depends on
+          the provider, service configuration and the data involved.
         </p>
         <p className="mt-3">
-          Where personal data is transferred outside India, we will comply
-          with applicable Indian law and any restrictions or requirements
-          imposed by the competent authorities. We will assess the relevant
-          providers and transfers and implement safeguards where required.
+          Where personal data is transferred outside India, we will comply with
+          applicable Indian law and any restrictions or requirements imposed by
+          the competent authorities. We will assess the relevant providers and
+          transfers and implement safeguards where required.
         </p>
         <p className="mt-3">
-          This policy does not guarantee that all data remains in India.
-          Please contact us if you require further information about a
-          particular processing activity or recipient.
+          This policy does not guarantee that all data remains in India. Please
+          contact us if you require further information about a particular
+          processing activity or recipient.
         </p>
       </>
     ),
@@ -259,8 +285,8 @@ const sections = [
     content: (
       <>
         <p>
-          We use appropriate technical and organisational measures designed
-          to protect personal data against unauthorised access, disclosure,
+          We use appropriate technical and organisational measures designed to
+          protect personal data against unauthorised access, disclosure,
           alteration, loss or destruction. Measures may include access
           restrictions, secure connections, system monitoring and procedures
           for managing security incidents.
@@ -278,19 +304,19 @@ const sections = [
     content: (
       <>
         <p>
-          A personal data breach may include unauthorised access to,
-          disclosure of, alteration of, loss of access to or destruction
-          of personal data. If we become aware of a suspected incident,
-          we will assess it and take appropriate steps to contain,
-          investigate and remediate it.
+          A personal data breach may include unauthorised access to, disclosure
+          of, alteration of, loss of access to or destruction of personal data.
+          If we become aware of a suspected incident, we will assess it and take
+          appropriate steps to contain, investigate and remediate it.
         </p>
         <p className="mt-3">
           Where a personal data breach is established, we will provide
           notifications to affected individuals and the relevant authorities,
-          including the Data Protection Board of India where required, in
-          accordance with the applicable legal requirements and time limits.
-          We will maintain appropriate incident records and take steps to
-          reduce the risk of recurrence.
+          including the Data Protection Board of India where required, within{" "}
+          <strong>72 hours</strong> of becoming aware of the breach, in
+          accordance with the applicable legal requirements and time limits. We
+          will maintain appropriate incident records and take steps to reduce
+          the risk of recurrence.
         </p>
       </>
     ),
@@ -300,16 +326,29 @@ const sections = [
     content: (
       <>
         <p>
-          You may contact us to raise a concern about personal data
-          processing, request correction or erasure, seek information about
-          your data or exercise a right available under applicable law.
-          Please include enough information to help us identify and assess
-          your request, but do not send passwords or unnecessary sensitive
-          information.
+          If you have any concerns about how we process your personal data, you
+          can contact our Grievance Officer. We have also published a dedicated{" "}
+          <Link href="/grievance-redressal" className="text-purple-400 underline">
+            Grievance Redressal page
+          </Link>{" "}
+          that explains the complaint process in detail.
         </p>
         <div className="mt-4 p-5 bg-white/5 border border-white/10 rounded-xl space-y-2">
           <p>
             <strong>Grievance Officer:</strong> Shilpi Kulshrestha
+          </p>
+          <p>
+            <strong>Designation:</strong> Grievance Officer & Founder,
+            Businezexcellence StartX LLP
+          </p>
+          <p>
+            <strong>Email:</strong>{" "}
+            <a
+              href="mailto:grievance@businezexcellence.com"
+              className="text-purple-400 underline"
+            >
+              grievance@businezexcellence.com
+            </a>
           </p>
           <p>
             <strong>Privacy email:</strong>{" "}
@@ -321,61 +360,79 @@ const sections = [
             </a>
           </p>
           <p>
-            <strong>Additional contact:</strong>{" "}
-            <a
-              href="mailto:shilpi.kulshrestha@businezexcellence.com"
-              className="text-purple-400 underline"
-            >
-              shilpi.kulshrestha@businezexcellence.com
-            </a>
-          </p>
-          <p>
             <strong>Phone:</strong> +91-8800138008
           </p>
           <p className="text-xs text-gray-400 mt-2">
-            Our stated service target is to acknowledge grievances within
-            48 hours and aim to resolve them within 30 days. Applicable
-            statutory timelines and procedures take precedence where they
-            differ.
+            <strong>Timelines:</strong> Acknowledgment of your grievance within{" "}
+            <strong>48 hours</strong>; resolution within{" "}
+            <strong>90 days</strong> from the date of receipt, as required
+            under the DPDP Rules, 2025.
           </p>
         </div>
         <p className="mt-4">
-          If you are not satisfied with the handling of a grievance, you may
-          pursue the remedies available under applicable law, including
-          approaching the competent authority where the relevant legal
-          conditions are met.
+          If you are not satisfied with our response, or if we fail to resolve
+          your grievance within 90 days, you have the right to file a complaint
+          with the <strong>Data Protection Board of India (DPB)</strong>. You
+          may also approach the DPB directly if your grievance involves a
+          personal data breach.
         </p>
       </>
     ),
   },
   {
-    title: "12. Your Rights",
+    title: "12. Your Rights as a Data Principal",
     content: (
       <>
         <p>
-          Subject to applicable law and its conditions, you may have the
-          right to:
+          Under the Digital Personal Data Protection Act, 2023, subject to
+          applicable law and its conditions, you have the following rights:
         </p>
         <ul className="list-disc pl-6 space-y-2 mt-3">
-          <li>Obtain information about personal data being processed.</li>
-          <li>Request correction or completion of inaccurate or incomplete data.</li>
-          <li>Request erasure of personal data where applicable.</li>
-          <li>Withdraw consent for processing based on consent.</li>
-          <li>Nominate another individual where permitted by law.</li>
           <li>
-            Raise a grievance with us and pursue available statutory remedies.
+            <strong>Right to Access:</strong> Request a summary of the personal
+            data we process about you and the identity of entities with whom it
+            has been shared.
+          </li>
+          <li>
+            <strong>Right to Correction:</strong> Request correction of
+            inaccurate or incomplete personal data.
+          </li>
+          <li>
+            <strong>Right to Erasure:</strong> Request deletion of your
+            personal data where applicable, subject to legal retention
+            requirements.
+          </li>
+          <li>
+            <strong>Right to Withdraw Consent:</strong> Withdraw your consent
+            at any time (see Section 3).
+          </li>
+          <li>
+            <strong>Right to Grievance Redressal:</strong> File a complaint with
+            our Grievance Officer (see Section 11) and, if unsatisfied, with the
+            Data Protection Board of India.
+          </li>
+          <li>
+            <strong>Right to Nominate:</strong> Nominate another individual to
+            exercise your rights in case of death or incapacity.
           </li>
         </ul>
         <p className="mt-3">
-          To exercise a right, email{" "}
+          To exercise any of these rights, email{" "}
           <a
             href="mailto:privacy@businezexcellence.com"
             className="text-purple-400 underline"
           >
             privacy@businezexcellence.com
+          </a>{" "}
+          or{" "}
+          <a
+            href="mailto:grievance@businezexcellence.com"
+            className="text-purple-400 underline"
+          >
+            grievance@businezexcellence.com
           </a>
-          . We may need to verify your identity and clarify your request
-          before responding.
+          . We may need to verify your identity and clarify your request before
+          responding. We will respond within <strong>30 days</strong>.
         </p>
       </>
     ),
@@ -385,16 +442,32 @@ const sections = [
     content: (
       <>
         <p>
-          Our website may use essential technologies needed to operate the
-          site and optional analytics technologies to understand traffic
-          and usage. Optional analytics are intended to remain disabled
-          unless the required consent has been provided.
+          Our website uses the following categories of cookies and similar
+          technologies:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 mt-3">
+          <li>
+            <strong>Essential Cookies:</strong> Required for basic website
+            functionality, such as remembering your cookie preferences and
+            maintaining security. These cannot be disabled.
+          </li>
+          <li>
+            <strong>Analytics Cookies:</strong> Google Analytics cookies (e.g.,{" "}
+            <code>_ga</code>, <code>_gid</code>) that help us understand how
+            visitors use the website. These are only enabled if you click
+            "Accept All" in the cookie banner.
+          </li>
+        </ul>
+        <p className="mt-3">
+          You can change your analytics choice at any time through the Cookie
+          Settings control on our website (bottom-left corner). When you choose
+          "Reject Non-Essential", we remove any existing Google Analytics
+          cookies from your browser.
         </p>
         <p className="mt-3">
-          You can change your analytics choice through the Cookie settings
-          control on our website. Blocking or deleting cookies in your
-          browser may affect certain website features. Your browser controls
-          are separate from the website's consent settings.
+          Blocking or deleting cookies through your browser settings may affect
+          certain website features. Browser controls are separate from the
+          website's consent settings.
         </p>
       </>
     ),
@@ -403,9 +476,9 @@ const sections = [
     title: "14. Changes to This Policy",
     content: (
       <p>
-        We may update this policy when our services, processing practices
-        or legal requirements change. The revised version will be published
-        on this page with an updated revision date. Where required, we will
+        We may update this policy when our services, processing practices or
+        legal requirements change. The revised version will be published on
+        this page with an updated revision date. Where required, we will
         provide additional notice or seek consent for changes to processing.
       </p>
     ),
@@ -437,7 +510,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy
           </h1>
           <p className="mb-8 border-b border-white/10 pb-6 text-sm text-gray-400">
-            <strong>Last Updated:</strong> 19 October 2026
+            <strong>Last Updated:</strong> 27 October 2026
           </p>
 
           <div className="space-y-8 text-sm leading-relaxed text-gray-300">
@@ -455,4 +528,3 @@ export default function PrivacyPolicyPage() {
     </div>
   );
 }
-
