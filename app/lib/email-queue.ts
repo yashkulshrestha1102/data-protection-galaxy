@@ -19,19 +19,26 @@ export interface EmailJob {
 
 // Add email to queue (async)
 export async function queueEmail(emailData: EmailJob): Promise<string> {
-  const messageId = await qstash.publishJSON({
+  // ✅ FIX: publishJSON object return karta hai, usme se .messageId nikaal
+  const response = await qstash.publishJSON({
     url: `${process.env.NEXT_PUBLIC_APP_URL}/api/email-worker`,
     body: emailData,
     retries: 3,
     delay: 0,
   });
 
+  const messageId = response.messageId;
+
   // Store in Redis for status tracking
-  await redis.set(`email:${messageId}`, JSON.stringify({
-    ...emailData,
-    status: 'queued',
-    createdAt: new Date().toISOString(),
-  }));
+  await redis.set(
+    `email:${messageId}`,
+    JSON.stringify({
+      ...emailData,
+      status: 'queued',
+      createdAt: new Date().toISOString(),
+    }),
+    { ex: 60 * 60 * 24 * 30 } // 30-day TTL — auto-delete
+  );
 
   return messageId;
 }

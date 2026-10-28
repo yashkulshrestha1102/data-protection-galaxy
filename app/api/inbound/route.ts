@@ -31,8 +31,12 @@ export async function POST(request: Request) {
     console.log('📧 New Reply Received!');
     console.log('From:', from);
     console.log('Subject:', subject);
-    console.log('Body:', email?.text || email?.html);
-
+console.log('Inbound email received:', {
+  from,
+  subject,
+  bodyLength: (email?.text || email?.html || '').length,
+  hasAttachments: (event.data.attachments?.length || 0) > 0,
+});
     // ===== YAHAN TUJHE NOTIFICATION BHEJNA HAI =====
     // 1. Admin ko email bhejo
     // 2. Database mein save karo

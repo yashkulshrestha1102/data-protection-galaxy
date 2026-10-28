@@ -52,9 +52,34 @@ const sections = [
             service requests and grievances, and maintain relevant records.
           </li>
           <li>
+            <strong>Inbound email replies:</strong> If you reply to an email we
+            send you (for example, a contact response, a generated document, or
+            an assessment report), we process the content of your reply —
+            including sender address, subject line, message body, and any
+            attachments you include — to respond to your query. Inbound email
+            is processed through Resend Inbound and may be retained in our
+            email service provider's systems and our internal records for
+            support, audit and legal purposes.
+          </li>
+          <li>
             <strong>Assessment and tool inputs:</strong> Information you
             choose to enter into an assessment or other tool. We use it to
             deliver the requested result and operate that feature.
+          </li>
+          <li>
+            <strong>Examination and certification data:</strong> Where you
+            take our certification exam, we collect your name, email address,
+            exam score, and pass/fail status to issue your certificate and to
+            verify completion when needed. Certificate identifiers are
+            generated server-side.
+          </li>
+          <li>
+            <strong>Local browser storage (course progress and certificate
+            data):</strong> Our certificate course stores your lesson progress
+            and certificate details in your browser's <code>localStorage</code>.
+            This data remains on your device and is not transmitted to our
+            servers for the course feature. You can clear it at any time through
+            your browser settings.
           </li>
         </ul>
         <p className="mt-3">
@@ -146,7 +171,7 @@ const sections = [
       </>
     ),
   },
-    {
+  {
     title: "5. Children's Personal Data",
     content: (
       <>
@@ -193,6 +218,12 @@ const sections = [
             Up to <strong>1 year</strong> from the date of generation.
           </li>
           <li>
+            <strong>Examination and certification data:</strong> Retained for
+            as long as necessary to verify the certificate, and for up to{" "}
+            <strong>3 years</strong> after issue, unless a longer period is
+            required for legal or audit purposes.
+          </li>
+          <li>
             <strong>Customer and business records:</strong> For the duration
             of the business relationship and up to <strong>7 years</strong>{" "}
             thereafter where required for legal, accounting or tax purposes.
@@ -201,6 +232,25 @@ const sections = [
             <strong>Website analytics:</strong> Up to <strong>26 months</strong>
             , subject to the analytics configuration and the provider's actual
             retention settings.
+          </li>
+          <li>
+            <strong>Email queue and delivery state:</strong> Email job
+            metadata and content held in our queue infrastructure are retained
+            for up to <strong>30 days</strong> for delivery, troubleshooting
+            and audit purposes, then automatically deleted.
+          </li>
+          <li>
+            <strong>Server logs and diagnostics:</strong> Server and
+            application logs (which may include IP addresses, request paths and,
+            in limited cases, error context) are retained for up to{" "}
+            <strong>30 days</strong> for security, debugging and incident
+            response, subject to the hosting provider's log retention settings.
+          </li>
+          <li>
+            <strong>Breach incident register:</strong> Records of personal
+            data breach incidents are retained for{" "}
+            <strong>7 years</strong> from the date of logging, as required for
+            regulatory compliance and audit.
           </li>
           <li>
             <strong>Grievance and legal records:</strong> Retained as needed
@@ -217,47 +267,74 @@ const sections = [
       </>
     ),
   },
-      {
+  {
     title: "7. Data Sharing and Recipients",
     content: (
       <>
         <p>
-          We do not sell, rent, or trade your personal data. We only share your
-          personal data with the following specific third-party service providers
-          (Data Processors) to operate our platform:
+          We do not sell, rent, or trade your personal data. We share your
+          personal data only with the following specific third-party service
+          providers (Data Processors) to operate our platform. Each processor
+          is bound by its respective Data Processing Agreement (DPA) and
+          processes personal data only on our documented instructions.
         </p>
         <ul className="list-disc pl-6 space-y-3 mt-3">
           <li>
-            <strong>Google LLC:</strong> We use Google Analytics (only if you
-            accept analytics cookies) to understand website traffic. We also use
-            Google Sheets as a secure database to store your form submissions,
-            inquiries, and generated documents. Data shared: Name, Email, Phone,
-            Company details, and Website usage data.
+            <strong>
+              Google LLC (Google Analytics, Google Sheets, Google Apps Script,
+              and Google Gemini API):
+            </strong>{" "}
+            We use Google Analytics — only if you accept analytics cookies — to
+            understand website traffic. We use Google Sheets, populated via
+            Google Apps Script webhooks, as a database to store your form
+            submissions, inquiries and generated documents. Where you use
+            AI-powered search or retrieval features, your search query and
+            relevant knowledge-base context may be sent to the Google Gemini
+            API to generate a response; no user-account data is sent for this
+            purpose. Data shared: Name, Email address, Phone number, Company
+            details, Website usage data, search query data, and relevant
+            knowledge-base snippets. Processing may occur outside India.
           </li>
           <li>
-            <strong>Resend (Resend, Inc.):</strong> We use Resend to deliver
-            transactional emails, such as responding to your contact requests,
-            sending generated documents, and transmitting assessment reports.
-            Data shared: Name, Email address, and the content of the email being
-            sent.
+            <strong>Resend, Inc. (Resend outbound email and Resend Inbound):</strong>{" "}
+            We use Resend to deliver transactional emails — such as responses
+            to your contact requests, generated documents and assessment
+            reports — and to receive inbound replies to those emails. Inbound
+            email content, including sender address, subject line, message body
+            and any attachments you send, is processed through Resend Inbound
+            so we can respond to your query. Data shared: Name, Email address,
+            email subject, email body, attachments you send us, and delivery
+            metadata. Processing may occur outside India.
           </li>
           <li>
-            <strong>Vercel Inc.:</strong> We use Vercel for website hosting and
-            infrastructure. Vercel processes technical data to ensure the Website
+            <strong>
+              Vercel Inc. (Vercel hosting, Vercel Analytics and Vercel Speed
+              Insights):
+            </strong>{" "}
+            We use Vercel for website hosting and infrastructure, and Vercel
+            Analytics and Speed Insights for aggregate website performance
+            monitoring. Vercel processes technical data to ensure the Website
             operates securely and efficiently. Data shared: Technical data (IP
-            addresses, browser information) and Website usage logs.
+            addresses, browser and device information), Website usage logs, and
+            aggregate performance metrics. Processing may occur outside India.
           </li>
           <li>
-            <strong>Upstash Inc.:</strong> We use Upstash (Redis and Vector
-            Database) for secure data storage, rate limiting, and enabling search
-            functionality on our platform. Data shared: Email addresses and
-            search query data.
+            <strong>
+              Upstash Inc. (Upstash Redis, Upstash Vector and Upstash QStash):
+            </strong>{" "}
+            We use Upstash Redis for rate limiting, email queue state and
+            breach incident register storage; Upstash Vector for search
+            functionality; and Upstash QStash for asynchronous email job
+            scheduling. Data shared: Email addresses, search query data, email
+            job metadata, and breach incident metadata. Processing may occur
+            outside India.
           </li>
         </ul>
         <p className="mt-4">
-          These specific providers act as <strong>Data Processors</strong> and are
-          bound by their respective Data Processing Agreements (DPAs) to ensure
-          your data is handled securely and only for the purposes we specify.
+          These providers act as <strong>Data Processors</strong> and are
+          bound by their respective Data Processing Agreements (DPAs) to
+          ensure your data is handled securely and only for the purposes we
+          specify. A current list of sub-processors is available on request.
           They may process data in locations outside India, subject to
           appropriate safeguards.
         </p>
@@ -265,6 +342,11 @@ const sections = [
           We may also disclose data to professional advisers or authorities
           where necessary for legal compliance, the establishment or defence of
           legal claims, or a lawful request from a competent authority.
+        </p>
+        <p className="mt-3">
+          Where a Data Processor engages a sub-processor that handles personal
+          data, we require the processor to impose equivalent data protection
+          obligations on that sub-processor through contract.
         </p>
       </>
     ),
@@ -461,14 +543,25 @@ const sections = [
         <ul className="list-disc pl-6 space-y-2 mt-3">
           <li>
             <strong>Essential Cookies:</strong> Required for basic website
-            functionality, such as remembering your cookie preferences and
-            maintaining security. These cannot be disabled.
+            functionality and security. These cannot be disabled. Our
+            essential cookies include:
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>
+                <code>cookie-consent</code> — records your cookie consent
+                choice (accepted or rejected).
+              </li>
+              <li>
+                <code>consent-log</code> — stores a timestamped audit trail of
+                your consent decision, including whether analytics was enabled.
+              </li>
+            </ul>
           </li>
           <li>
             <strong>Analytics Cookies:</strong> Google Analytics cookies (e.g.,{" "}
-            <code>_ga</code>, <code>_gid</code>) that help us understand how
-            visitors use the website. These are only enabled if you click
-            "Accept All" in the cookie banner.
+            <code>_ga</code>, <code>_gid</code>, <code>_gat</code>,{" "}
+            <code>_gac_*</code>) that help us understand how visitors use the
+            website. These are only enabled if you click "Accept All" in the
+            cookie banner.
           </li>
         </ul>
         <p className="mt-3">
@@ -476,6 +569,13 @@ const sections = [
           Settings control on our website (bottom-left corner). When you choose
           "Reject Non-Essential", we remove any existing Google Analytics
           cookies from your browser.
+        </p>
+        <p className="mt-3">
+          <strong>Local browser storage:</strong> Separately from cookies, our
+          certificate course uses your browser's <code>localStorage</code> to
+          remember lesson progress and certificate details. This data stays on
+          your device and is not transmitted to our servers for the course
+          feature. You can clear it at any time through your browser settings.
         </p>
         <p className="mt-3">
           Blocking or deleting cookies through your browser settings may affect
