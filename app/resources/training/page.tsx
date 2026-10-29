@@ -177,7 +177,18 @@ export default function TrainingPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Training Material</h1>
           <p className="text-gray-300 text-lg max-w-3xl">Training materials and resources for data protection awareness under the DPDP Act 2023.</p>
         </div>
-
+<div className="text-gray-400 text-sm leading-relaxed max-w-4xl space-y-4">
+            <p>
+              Data protection is not just an IT responsibility; it is a business imperative. Under the Digital Personal Data Protection (DPDP) Act 2023, every employee who handles personal data must understand their obligations. Whether you are a DPO, a compliance manager, or an HR professional, equipping your team with the right knowledge is the first step towards building a defensible compliance program.
+            </p>
+            <p>
+              Our training modules cover the essential aspects of the DPDP Act, including the 6 core rights of Data Principals, the obligations of Data Fiduciaries, breach notification timelines, and consent management. These resources are designed to be practical, easy to understand, and directly applicable to your day-to-day operations.
+            </p>
+            <p>
+              Regular training helps prevent data breaches caused by human error, ensures your organisation is audit-ready, and demonstrates a strong commitment to privacy to your customers and partners.
+            </p>
+          </div>
+      
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {trainingMaterials.map((item, index) => {
             const Icon = item.icon;

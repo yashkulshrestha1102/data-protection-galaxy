@@ -60,6 +60,13 @@ export const insightsData: Insight[] = [
       
       <h2>Conclusion</h2>
       <p>Directors and boards must take proactive steps to ensure compliance with the DPDP Act. Personal liability is a real risk that can be mitigated through proper governance, training, and implementation of robust data protection frameworks.</p>
+
+      <h2>Related Reading</h2>
+      <ul>
+        <li><a href="/obligations" class="text-blue-400 hover:text-blue-300 underline">Obligations of Data Fiduciaries</a> — Board-level compliance responsibilities</li>
+        <li><a href="/penalties" class="text-blue-400 hover:text-blue-300 underline">DPDPA Penalties</a> — What happens when boards fail to comply</li>
+        <li><a href="/resources/guides/dpdpa-2023-complete-guide" class="text-blue-400 hover:text-blue-300 underline">DPDPA 2023 Complete Guide</a> — End-to-end guide to the Act</li>
+      </ul>
     `,
     author: 'Team Businezexcellence StartX LLP',
     date: '22 Jul 2026',
@@ -102,6 +109,13 @@ export const insightsData: Insight[] = [
       
       <h2>Conclusion</h2>
       <p>Preparation is key to effective breach response. Organisations must invest in robust security infrastructure and have a well-documented incident response plan.</p>
+
+      <h2>Related Reading</h2>
+      <ul>
+        <li><a href="/board" class="text-blue-400 hover:text-blue-300 underline">Data Protection Board of India</a> — Where you report breaches</li>
+        <li><a href="/penalties" class="text-blue-400 hover:text-blue-300 underline">Penalties for Breach</a> — Up to ₹250 crore</li>
+        <li><a href="/resources/case-studies/data-breach-healthcare" class="text-blue-400 hover:text-blue-300 underline">Healthcare Data Breach Case Study</a> — Real-world example</li>
+      </ul>
     `,
     author: 'Team Businezexcellence StartX LLP',
     date: '20 Jul 2026',
@@ -140,6 +154,13 @@ export const insightsData: Insight[] = [
       
       <h2>Conclusion</h2>
       <p>GDPR compliance is a journey, not a destination. Indian companies must adopt a proactive approach to data protection to build trust with EU customers and avoid significant penalties.</p>
+
+      <h2>Related Reading</h2>
+      <ul>
+        <li><a href="/compare/dpdpa-vs-gdpr" class="text-blue-400 hover:text-blue-300 underline">DPDPA vs GDPR</a> — Full comparison</li>
+        <li><a href="/resources/guides/gdpr-vs-dpdpa" class="text-blue-400 hover:text-blue-300 underline">GDPR vs DPDPA Guide</a> — Detailed guide</li>
+        <li><a href="/cross-border" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Transfers</a> — For Indian companies with EU operations</li>
+      </ul>
     `,
     author: 'Team Businezexcellence StartX LLP',
     date: '18 Jul 2026',
@@ -155,8 +176,7 @@ export const insightsData: Insight[] = [
     content: `
       <h2>Introduction</h2>
       <p>The DPDP Act regulates cross-border data transfers to ensure that personal data of Indian individuals is adequately protected when processed outside India.</p>
-      // Ye paragraph add karo:
-<p>For a detailed breakdown of transfer mechanisms under the new Indian law, read our <a href="/resources/guides/cross-border-data-transfer" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Data Transfer Guide</a>.</p>
+      <p>For a detailed breakdown of transfer mechanisms under the new Indian law, read our <a href="/resources/guides/cross-border-data-transfer" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Data Transfer Guide</a>.</p>
       
       <h2>Adequacy Decisions</h2>
       <p>The Indian government may issue adequacy decisions for countries that provide an adequate level of data protection. Transfers to such countries do not require additional safeguards.</p>
@@ -166,6 +186,13 @@ export const insightsData: Insight[] = [
       
       <h2>Conclusion</h2>
       <p>Cross-border data transfers are a complex area of the DPDP Act. Organisations must carefully assess their transfer mechanisms and ensure compliance with the applicable requirements.</p>
+
+      <h2>Related Reading</h2>
+      <ul>
+        <li><a href="/cross-border" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Transfer (Core Topic)</a> — Section 16 deep dive</li>
+        <li><a href="/resources/guides/cross-border-data-transfer" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Transfer Guide</a> — Step-by-step compliance</li>
+        <li><a href="/map" class="text-blue-400 hover:text-blue-300 underline">Global Privacy Map</a> — Compare 90+ countries</li>
+      </ul>
     `,
     author: 'Team Businezexcellence StartX LLP',
     date: '16 Jul 2026',
@@ -187,6 +214,13 @@ export const insightsData: Insight[] = [
       
       <h2>Conclusion</h2>
       <p>Data fiduciaries must implement robust processes to facilitate the exercise of these rights. This includes establishing dedicated teams, providing clear communication channels, and maintaining records of requests.</p>
+
+      <h2>Related Reading</h2>
+      <ul>
+        <li><a href="/rights" class="text-blue-400 hover:text-blue-300 underline">Rights of Data Principals</a> — All 6 core rights explained</li>
+        <li><a href="/data-principal-rights" class="text-blue-400 hover:text-blue-300 underline">Data Rights Request Form</a> — Exercise your rights</li>
+        <li><a href="/grievance-redressal" class="text-blue-400 hover:text-blue-300 underline">Grievance Redressal</a> — How to file a complaint</li>
+      </ul>
     `,
     author: 'Team Businezexcellence StartX LLP',
     date: '14 Jul 2026',
@@ -253,7 +287,6 @@ export const insightsData: Insight[] = [
     content: `
       <h2>Introduction</h2>
       <p>AI is transforming industries, but it also raises significant data protection challenges. This article explores the legal landscape for AI and data protection.</p>
-      // Ye paragraph add karo:
       <p>To ensure your AI systems comply with the DPDPA, read our <a href="/resources/guides/dpdpa-2023-complete-guide" class="text-blue-400 hover:text-blue-300 underline">DPDPA 2023 Complete Guide</a>.</p>
       <h2>Algorithmic Accountability</h2>
       <ul>

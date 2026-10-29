@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
 };
 
-// ===== Person Schema =====
+// ===== Person Schema (Updated for E-E-A-T) =====
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -66,8 +66,29 @@ const personSchema = {
     "AI Governance",
     "Company Secretary",
   ],
+  // ✅ NAYA ADD KIYA: E-E-A-T ke liye credentials
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "Company Secretary (CS)"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name: "LLB"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "certification",
+      name: "DPDPA Specialist"
+    },
+  ],
+  // ✅ NAYA ADD KIYA: Social profiles (Apne actual links se replace kar lena)
   sameAs: [
     "https://www.linkedin.com/company/businezexcellence-com/",
+    "https://twitter.com/legalgalaxy",  // Replace with actual Twitter if available
+    "https://www.youtube.com/@businezexcellence" // Replace with actual YouTube if available
   ],
 };
 
