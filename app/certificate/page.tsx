@@ -7,7 +7,7 @@ import Certificate from '@/components/certificate/Certificate';
 
 export default function CertificatePage() {
   const [userData, setUserData] = useState({
-    name: 'John Doe',
+    userName: 'John Doe',
     score: 92,
     date: '23 July, 2026',
     duration: '120 Hours',

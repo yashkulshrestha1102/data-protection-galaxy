@@ -242,7 +242,7 @@ export default function Home() {
   <div className="absolute inset-0 -z-10">
     <Image
       src="/images/home1.jpeg"
-      alt=""
+      alt="homepage"
       fill
       priority
       sizes="100vw"
