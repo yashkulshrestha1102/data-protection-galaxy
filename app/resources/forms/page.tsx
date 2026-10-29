@@ -318,7 +318,7 @@ export default function FormsPage() {
         html2canvas: { scale: 2, useCORS: true },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-      };
+      }as any;
 
       await html2pdf().set(opt).from(element).save();
       document.body.removeChild(element);

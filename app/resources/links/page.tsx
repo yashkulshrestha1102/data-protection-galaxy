@@ -37,21 +37,24 @@ export default function LinksPage() {
     {
       title: 'Data Protection Board of India',
       description: 'Official website of the Data Protection Board established under the DPDP Act.',
-      url: '#',
+      // DPB ka official portal abhi placeholder hai, isliye isko bhi '#' kar diya taaki user ko galat page na bheje
+      url: '#', 
       icon: Scale,
       category: 'Regulatory',
     },
     {
       title: 'Digital Personal Data Protection Act, 2023',
       description: 'Full text of the Digital Personal Data Protection Act, 2023.',
-      url: '#',
+      // ✅ MeitY ka official PDF link
+      url: 'https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf',
       icon: FileText,
       category: 'Legislation',
     },
     {
       title: 'DPDP Rules, 2025',
       description: 'Rules framed under the Digital Personal Data Protection Act, 2023.',
-      url: '#',
+      // ✅ eGazette ka official link
+      url: 'https://egazette.gov.in/WriteReadData/2025/267650.pdf',
       icon: FileText,
       category: 'Legislation',
     },

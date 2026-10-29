@@ -8,6 +8,8 @@ export interface Author {
   image: string;
   credentials: string[];
   linkedin?: string;
+  publications?: string[];
+  speakingEngagements?: string[];
 }
 
 export const authors: Record<string, Author> = {
@@ -19,6 +21,15 @@ export const authors: Record<string, Author> = {
     image: '/images/profileoffounder.jpeg',
     credentials: ['Company Secretary (CS)', 'LLB', 'DPDPA Specialist'],
     linkedin: 'https://www.linkedin.com/company/businezexcellence-com/',
+    publications: [
+      'DPDPA 2023 Director Liability — Analysis of Board Responsibilities',
+      'Data Breach Response under DPDP Rules 2025 — 72-Hour Playbook',
+      'GDPR vs DPDPA — Consent Frameworks Compared',
+    ],
+    speakingEngagements: [
+      'WSP-3.0 MOOC — Privacy Awareness Program',
+      'Corporate Law Workshops — DPDPA Readiness for Enterprises',
+    ],
   },
 };
 

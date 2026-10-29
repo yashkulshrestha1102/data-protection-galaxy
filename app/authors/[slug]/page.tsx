@@ -10,7 +10,7 @@ import {
   Briefcase,
   ExternalLink,
   Shield,
-  ArrowRight,
+  ArrowRight,Award,
 } from "lucide-react";
 import { authors, getAuthorById } from "@/data/authors";
 import { insightsData } from "@/data/insights";
@@ -124,6 +124,43 @@ export default async function AuthorPage({
             {author.bio}
           </p>
         </section>
+
+
+                {/* ===== PUBLICATIONS (E-E-A-T) ===== */}
+        {author.publications && author.publications.length > 0 && (
+          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <BookOpen className="w-6 h-6 text-purple-400" />
+              Selected Publications
+            </h2>
+            <ul className="space-y-3">
+              {author.publications.map((pub, i) => (
+                <li key={i} className="text-gray-300 flex items-start gap-3">
+                  <span className="text-purple-400 mt-1">•</span>
+                  <span>{pub}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* ===== SPEAKING ENGAGEMENTS (E-E-A-T) ===== */}
+        {author.speakingEngagements && author.speakingEngagements.length > 0 && (
+          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <Award className="w-6 h-6 text-purple-400" />
+              Speaking & Media
+            </h2>
+            <ul className="space-y-3">
+              {author.speakingEngagements.map((eng, i) => (
+                <li key={i} className="text-gray-300 flex items-start gap-3">
+                  <span className="text-purple-400 mt-1">•</span>
+                  <span>{eng}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* ===== STATS ===== */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
