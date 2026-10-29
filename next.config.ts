@@ -5,8 +5,12 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
-    qualities: [100, 75, 50], 
+    // ✅ unoptimized: true hata diya — ab Next.js images optimize karega
+    qualities: [100, 75, 50],
+    // Agar kabhi remote images use kare toh yahan domains add kar
+    // remotePatterns: [
+    //   { protocol: 'https', hostname: 'images.example.com' },
+    // ],
   },
   transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
   experimental: {

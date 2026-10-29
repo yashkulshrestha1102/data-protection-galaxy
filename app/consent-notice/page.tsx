@@ -1,5 +1,5 @@
 "use client";
-
+import ConsentCapture from "./ConsentCapture";
 import Link from "next/link";
 import { ArrowLeft, Shield, FileText, Clock, UserCheck, AlertCircle, Globe } from "lucide-react";
 import { useState } from "react";
@@ -3582,10 +3582,14 @@ export default function ConsentNoticePage() {
                     </ul>
                   </div>
                 </section>
+
+               
+
+               
               </>
             )}
 
-
+<ConsentCapture language={language} />
             {/* ==============================================
                 FALLBACK FOR OTHER LANGUAGES
             ============================================== */}

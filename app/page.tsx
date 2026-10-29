@@ -238,11 +238,19 @@ export default function Home() {
       />
 
       <main className="min-h-screen text-white flex flex-col items-center px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
-        {/* ===== BACKGROUND ===== */}
-        <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-        </div>
-        <div className="absolute inset-0 -z-10">{stars}</div>
+  {/* ===== BACKGROUND — next/image se LCP fix ===== */}
+  <div className="absolute inset-0 -z-10">
+    <Image
+      src="/images/home1.jpeg"
+      alt=""
+      fill
+      priority
+      sizes="100vw"
+      className="object-cover"
+    />
+    <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+  </div>
+  <div className="absolute inset-0 -z-10">{stars}</div>
 
         <div className="max-w-6xl mx-auto w-full relative z-10">
 

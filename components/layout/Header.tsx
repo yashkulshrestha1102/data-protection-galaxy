@@ -175,7 +175,7 @@ export const Header = () => {
                 <div className="absolute -left-8 top-1/2 -translate-y-1/2 flex items-center justify-center">
                   <div className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] animate-logo-3d overflow-hidden">
                     <Image 
-  src="/favicon.ico"
+  src="/favicon.png"
   alt="Legal Galaxy Logo — Privacy & AI Governance Platform"
   width={44}
   height={44}
