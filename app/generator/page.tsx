@@ -14,55 +14,24 @@ import { useRouter } from 'next/navigation';
 import { ConsentCheckbox } from '@/components/ui/ConsentCheckbox';
 
 // ============================================================
-// ===== VIDEO BACKGROUND COMPONENT (High Quality) =====
+// ===== IMAGE BACKGROUND COMPONENT =====
 // ============================================================
-const VideoBackground = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoError, setVideoError] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.log('Video autoplay failed:', err);
-        setVideoError(true);
-      });
-    }
-  }, []);
-
+const ImageBackground = () => {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
-      {!videoError ? (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            imageRendering: 'auto',
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-          }}
-          onError={() => setVideoError(true)}
-        >
-          <source src="/videos/vido7.mp4" type="video/mp4" />
-        </video>
-      ) : (
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: "url('/images/galaxy5.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-      )}
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/home1.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+
+      {/* Dark Gradient Overlay - text readable rakhne ke liye */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
     </div>
   );
 };
@@ -859,7 +828,7 @@ export default function GeneratorPage() {
   if (!selectedTool) {
     return (
       <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        <VideoBackground />
+        <ImageBackground />
         <div className="absolute inset-0 -z-10">{stars}</div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -953,7 +922,7 @@ export default function GeneratorPage() {
   // ===== FORM & PREVIEW =====
   return (
     <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      <VideoBackground />
+      <ImageBackground />
       <div className="absolute inset-0 -z-10">{stars}</div>
 
       <div className="max-w-7xl mx-auto relative z-10">
