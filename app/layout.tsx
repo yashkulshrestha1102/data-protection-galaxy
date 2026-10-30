@@ -7,7 +7,6 @@ import { Footer } from "@/components/layout/Footer";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { ConditionalAnalytics } from "@/components/layout/ConditionalAnalytics";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -167,12 +166,15 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen flex flex-col`}
       >
         <Header />
+        
         <main className="flex-1">{children}</main>
         <Footer />
 
 
         <ConsentBanner initialConsentStatus={consentStatus} />
         {hasAnalyticsConsent && <ConditionalAnalytics gaId={gaId} />}
+
+        
       </body>
     </html>
   );
