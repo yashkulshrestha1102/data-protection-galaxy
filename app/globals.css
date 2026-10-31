@@ -128,3 +128,82 @@ body {
   cursor: pointer;
   filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8));
 }
+
+
+
+
+
+
+
+
+/* Custom Styles for Wikipedia Content */
+.country-content h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.country-content h3 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600;
+  color: #e9d5ff; /* purple-200 */
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.country-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.country-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.country-content li {
+  margin-bottom: 0.5rem;
+}
+
+.country-content strong {
+  color: #d8b4fe; /* purple-300 */
+  font-weight: 600;
+}
+
+.country-content em {
+  color: #e5e7eb;
+  font-style: italic;
+}
+
+/* Table Styling */
+.country-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.country-content th {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.country-content td {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  vertical-align: top;
+}
+
+.country-content tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}

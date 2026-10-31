@@ -15,6 +15,7 @@ export interface Country {
   region: 'Asia' | 'Europe' | 'Americas' | 'Africa' | 'Oceania' | 'Middle East';
   level: 'Comprehensive' | 'Substantial' | 'Moderate' | 'Limited' | 'None';
   overview: string;
+  detailedContent?: string;
   topics: Topic[];
   coordinates: { lat: number; lng: number };
   color: string;
@@ -33,6 +34,126 @@ export const countries: Country[] = [
     region: 'Asia',
     level: 'Comprehensive',
     overview: "China's PIPL, effective November 2021, alongside the Data Security Law and Cybersecurity Law, creates one of the world's most comprehensive data governance frameworks. Notable for strong data localisation requirements, strict cross-border transfer rules, and significant penalties.",
+    detailedContent: `
+<h2>What is the PIPL?</h2>
+<p>The <strong>Personal Information Protection Law of the People's Republic of China</strong> (Chinese: 中华人民共和国个人信息保护法; pinyin: Zhōnghuá rénmín gònghéguó gèrén xìnxī bǎohù fǎ), referred to as the Personal Information Protection Law or ("PIPL"), aims to protect personal information rights and interests, standardize personal information handling activities, and promote the rational use of personal information. It also specifically addresses the transfer of personal data outside China.</p>
+<p>The PIPL was adopted on <strong>August 20, 2021</strong>, and is effective <strong>November 1, 2021</strong>. It is related to, and builds on top of both China's Cybersecurity Law ("CSL") and China's Data Security Law ("DSL"). A reference English version was published on December 29, 2021.</p>
+
+<h2>History and Background</h2>
+<p>On August 20, 2021, the Standing Committee of the 13th National People's Congress passed the Personal Information Protection Law. The law applies to the activities of handling the personal information of natural persons within the borders of China.</p>
+<p>In comparison to countries in the West, China has developed its privacy laws over time at a slower pace. In recent years, though, China has more actively developed regulations, as the nation is considered a "global cyberforce." China's policies differ from Western nations in that their perception of privacy is different due to historical and cultural reasons. During the drafting process, the European Union's General Data Protection Regulation ("GDPR") was used as a model, and in some areas, PIPL closely tracks the GDPR.</p>
+
+<h2>Scope and Jurisdiction</h2>
+<p>The PIPL generally covers all organizations operating in China processing personal information.</p>
+<h3>Long-arm Jurisdiction</h3>
+<p>Some provisions also include long-arm jurisdiction over data collection and processes of organizations outside China. These apply when:</p>
+<ul>
+<li>The purpose is to provide products or services to natural persons inside the borders;</li>
+<li>Analyzing or assessing activities of natural persons inside the borders;</li>
+<li>Other circumstances provided in laws or administrative regulations.</li>
+</ul>
+<p>This presumably applies to offshore or multi-national companies with Chinese customers in China, for example, Amazon who might be shipping goods to a Chinese buyer, or Apple who may have Chinese users in the American App Store. All such entities are required to establish a dedicated entity or appoint a representative within China.</p>
+
+<h3>Exemptions</h3>
+<p>There are few exemptions, but one that was added during late drafting provides a non-consent legal basis for handling employee data, though employee consent is still needed for overseas transfer, such as to a global corporate parent.</p>
+
+<h2>Key Themes and Definitions</h2>
+<p>Individual privacy, control, and consent are consistent themes throughout the law. The law defines several key terms:</p>
+<ul>
+<li><strong>Personal Information:</strong> Any type of information that identifies or can identify natural persons recorded electronically or by other means, but does not include anonymized information.</li>
+<li><strong>Sensitive Personal Information:</strong> Personal information that once leaked or illegally used can easily cause natural persons to suffer encroachments on their dignity or harms to their persons or property. This includes biometrics (including facial recognition), religious faith, particular identities, medical care and health, financial status, location tracking, and the personal information of minors under the age of 14.</li>
+<li><strong>Individuals:</strong> People whose data is being collected or processed (similar to the GDPR's Data Subject).</li>
+<li><strong>Personal Information Handlers:</strong> Organizations or individuals that independently make decisions about the purposes and methods of personal information handling.</li>
+<li><strong>Entrusted Persons:</strong> External entities who Information Handlers entrust to handle personal information (third parties).</li>
+<li><strong>Large Processors:</strong> Companies that process large amounts of data, as defined in Article 40, including Critical Information Infrastructure Operators ("CIIO").</li>
+<li><strong>Handling of Personal Information:</strong> Includes personal information collection, storage, use, processing, transmission, provision, disclosure, deletion, etc.</li>
+<li><strong>Automated Decision-Making:</strong> The use of computer programs to automatically analyze, evaluate, and make decisions on personal information on personal behavior habits, hobbies, or economic, health, credit status, and so forth.</li>
+<li><strong>De-Identification:</strong> The process of handling personal information to make it impossible to identify a specific natural person without the help of additional information.</li>
+<li><strong>Anonymization:</strong> The process in which personal information is handled so that it cannot be used to identify a specific natural person and cannot be restored after being so handled.</li>
+</ul>
+
+<h2>Legal Basis for Processing</h2>
+<p>All personal information collection and processing must have one of the following legal bases:</p>
+<ul>
+<li>Individuals' consent obtained;</li>
+<li>Where necessary to conclude or fulfill a contract in which the individual is an interested party, or where necessary to conduct human resources management according to lawfully formulated labor rules and structures and lawfully concluded collective contracts;</li>
+<li>Where necessary to fulfill statutory duties and responsibilities or statutory obligations;</li>
+<li>Where necessary to respond to sudden public health incidents or protect natural persons' lives and health, or the security of their property, under emergency conditions;</li>
+<li>Handling personal information within a reasonable scope to implement news reporting, public opinion supervision, and other such activities for the public interest;</li>
+<li>When handling personal information disclosed by persons themselves or otherwise already lawfully disclosed, within a reasonable scope in accordance with the provisions of this Law;</li>
+<li>Other circumstances provided in laws and administrative regulations.</li>
+</ul>
+<p>Unlike in the GDPR, there is <strong>no legitimate interests basis</strong>. Therefore, most consumers will likely be covered by giving their direct consent (such as for cookies, newsletters, etc.) or by contract fulfillment (such as shipping goods to them or providing services).</p>
+
+<h2>Consent Requirements</h2>
+<p>Consent is a major concern of the PIPL and a key legal basis on which handlers can process personal information. If there is no other legal basis for processing data, handlers must get consent for data collection and processing, and this consent can be revoked by any individual at any time. Handlers are not allowed to refuse to provide products or services if an individual withholds or withdraws their consent for non-essential processing.</p>
+<p><strong>Separate consent</strong> is specifically required in a number of situations:</p>
+<ul>
+<li>Transfer of personal data by data controllers to third parties (Article 23);</li>
+<li>Publication of personal data (Article 25);</li>
+<li>Publication or provision of personal data collected by equipment installed in public places for security purposes, such as personal images (Article 26);</li>
+<li>Processing of sensitive personal data (Article 29); and</li>
+<li>Cross-border transfers of personal data (Article 39).</li>
+</ul>
+<p>Consent for these situations cannot be "bundled" and must be obtained separately. Where a change occurs in the purpose of personal information handling, the handling method, or the categories of handled personal information, the individual's consent shall be obtained again.</p>
+
+<h2>Individual Rights</h2>
+<p>Individuals have several specific rights under the PIPL – they can:</p>
+<ul>
+<li><strong>Know & Decide:</strong> Refuse and limit how their data is handled.</li>
+<li><strong>Access & Copy:</strong> View and copy their data.</li>
+<li><strong>Correct or Complete:</strong> Request to correct inaccurate data.</li>
+<li><strong>Erasure:</strong> Request their information be deleted and/or revoke consent.</li>
+<li><strong>Explanation:</strong> Request handlers explain their handling of an individual's personal information.</li>
+<li><strong>Portability:</strong> Request moving their data to another handler.</li>
+</ul>
+
+<h2>Automated Decision Making and Facial Recognition</h2>
+<p>There are specific rules for automated decision making in the PIPL, including the right of individuals to opt-out, such as disabling product recommendations. The law specifically requires "transparency of the decision-making and the fairness and justice of the handling result shall be guaranteed, and they may not engage in unreasonable differential treatment of individuals in trading conditions."</p>
+<p>Companies pushing delivery or commercial sales to individuals through automated decision-making methods shall simultaneously provide the option to not target an individual's characteristics, or provide the individual with a convenient method to refuse.</p>
+<p><strong>Facial recognition:</strong> The PIPL specifically covers the use of facial recognition in public spaces, including that it can only be used for public security reasons unless each individual separately consents. The installation of image collection or personal identity recognition equipment in public venues shall occur as required to safeguard public security and observe relevant State regulations, with clear indicating signs installed.</p>
+
+<h2>Handler Obligations & Impact Assessments</h2>
+<p>Personal information handlers have several specific obligations, including formulating internal management structures, implementing categorized management of personal information, adopting technical security measures (encryption, de-identification), determining operational limits, conducting security training, and formulating incident response plans. All handlers must "regularly engage in audits of their personal information handling and compliance."</p>
+<p>Under certain circumstances (handling sensitive data, automated decision-making, providing data abroad, etc.), handlers must perform a <strong>personal information protection impact assessment</strong>. These assessments must include whether the handling purpose is lawful and necessary, the influence on individuals' rights and risks, and whether protective measures are effective.</p>
+
+<h2>Data Localisation and Security</h2>
+<p>The PIPL has specific requirements on data localization, the storage and processing of personal information in China. Information handlers must take measures to ensure personal information handling conforms to provisions and prevents unauthorized access, leaks, distortion, or loss. Agreements are required when a handler entrusts personal data handling to another handler.</p>
+
+<h2>Breach Notification</h2>
+<p>All data leaks must be reported internally, and if "harm may have been created," they may be required to notify the individuals affected. Notification details must include:</p>
+<ul>
+<li>The information categories, causes, and possible harm caused by the leak, distortion, or loss that occurred or might have occurred;</li>
+<li>The remedial measures taken by the personal information handler and measures individuals can adopt to mitigate harm;</li>
+<li>Contact method of the personal information handler.</li>
+</ul>
+
+<h2>Large Handlers</h2>
+<p>Large-scale handlers, such as those "providing important Internet platform services, that have a large number of users, and whose business models are complex," also have specific obligations:</p>
+<ul>
+<li>Establish and complete personal information protection compliance systems and structures according to State regulations, and establish an independent body composed mainly of outside members to supervise personal information protection circumstances;</li>
+<li>Abide by the principles of openness, fairness, and justice; formulate platform rules; and clarify the standards for intra-platform product or service providers;</li>
+<li>Stop providing services to product or service providers on the platform that seriously violate laws or administrative regulations;</li>
+<li>Regularly release personal information protection social responsibility reports, and accept society's supervision.</li>
+</ul>
+
+<h2>Overseas Transfers</h2>
+<p>Moving personal information outside China is only allowed if one of these conditions is satisfied:</p>
+<ul>
+<li>Passing a security assessment organized by the State cybersecurity and information department according to Article 40 of this Law;</li>
+<li>Undergoing personal information protection certification conducted by a specialized body;</li>
+<li>Concluding a contract with the foreign receiving side in accordance with a standard contract formulated by the State cyberspace and information department;</li>
+<li>Other conditions provided in laws and administrative regulations.</li>
+</ul>
+<p>All such transfers require each individual's separate consent and notification about "the foreign receiving side's name, contact method, handling purpose, handling methods, and personal information categories."</p>
+<p>In March 2024, the <strong>Provisions on Promoting and Regulating Cross-Border Data Flows</strong> became effective. These provisions aim to integrate obligations across the Cybersecurity Law, Data Security Law, and PIPL, and require a CAC-led review of data exports across China's borders in certain circumstances.</p>
+
+<h3>Sharing Data with Foreign Governments</h3>
+<p>Information handlers are prohibited from sharing any personal information with foreign judicial or law enforcement agencies without approval. This has raised concerns among law firms about how multi-national corporations would respond to judicial inquiries in other countries.</p>
+
+<h2>Government Departments (State Organs)</h2>
+<p>The PIPL includes a legal basis for how government ("State Organs") can collect and process data. Generally, the government must follow the same rules as non-government entities, including notifications. There are some exceptions, such as when notification "shall impede State organs' fulfillment of their statutory duties and responsibilities."</p>
+`,
     coordinates: { lat: 35.0, lng: 105.0 },
     color: '#EF4444',
     topics: [
@@ -60,7 +181,135 @@ export const countries: Country[] = [
     authority: 'Data Protection Board of India (DPBI)',
     region: 'Asia',
     level: 'Comprehensive',
-    overview: "India's DPDP Act 2023 establishes a comprehensive framework for processing personal data. It balances individual rights with the need for lawful processing, introducing significant obligations for data fiduciaries and establishing the Data Protection Board as the regulatory authority.",
+    overview: "India's Digital Personal Data Protection Act, 2023 (DPDP Act) is the country's first comprehensive data protection law, enacted after the Supreme Court's landmark Puttaswamy judgment (2017) recognised privacy as a fundamental right under Article 21. The Act regulates only digital personal data and applies to processing within India as well as extraterritorially where goods or services are offered to Indian data principals. It introduces a consent-first model, obligations for Data Fiduciaries, rights for Data Principals, and establishes the Data Protection Board of India as an adjudicatory body. The DPDP Rules, 2025 were notified in November 2025 with a phased 18-month implementation timeline, making compliance a live operational requirement rather than a future concern. Notable features include a unique 'she/her' drafting convention, no distinction between personal and sensitive personal data, and penalties reaching ₹250 crore for security failures.",
+    detailedContent: `
+<h2>What is the DPDP Act 2023?</h2>
+<p>The <strong>Digital Personal Data Protection Act, 2023</strong> (also known as DPDP Act or DPDPA-2023) is an act of the Parliament of India to provide for the processing of digital personal data in a manner that recognises both the right of individuals to protect their personal data and the need to process such personal data for lawful purposes.</p>
+<p><strong>Unique fact:</strong> This is the first Act of the Parliament of India where "she/her" pronouns were used, unlike the usual "he/him" pronouns.</p>
+
+<h2>Timeline: From Bill to Act</h2>
+<ul>
+<li><strong>18 November 2022:</strong> The Ministry of Electronics and Information Technology released the Digital Personal Data Protection Bill, 2022 for public consultation.</li>
+<li><strong>5 July 2023:</strong> The cabinet approved the Digital Personal Data Protection Bill, 2023, which was the revised version of the 2022 bill.</li>
+<li><strong>3 August 2023:</strong> Digital Personal Data Protection Bill, 2023 was introduced in Lok Sabha, the lower house of the Parliament of India.</li>
+<li><strong>7 August 2023:</strong> Digital Personal Data Protection Bill, 2023 was passed by Lok Sabha.</li>
+<li><strong>9 August 2023:</strong> Digital Personal Data Protection Bill, 2023 was introduced and passed by Rajya Sabha, the upper house of the Parliament of India.</li>
+<li><strong>11 August 2023:</strong> President of India gave assent to the Digital Personal Data Protection Bill, 2023, which made it the Digital Personal Data Protection Act, 2023.</li>
+<li><strong>13 November 2025:</strong> Provisions in respect of establishment of the Data Protection Board of India brought into force.</li>
+</ul>
+
+<h2>Background: The Right to Privacy Verdict</h2>
+<p>On <strong>24 August 2017</strong>, the Supreme Court of India gave the Right to Privacy verdict. In the case of <em>Justice K. S. Puttaswamy (Retd.) and Anr. vs Union of India And Ors.</em>, the Supreme Court held that the Right to Privacy is a fundamental right protected under Article 21 and Part III of the Indian Constitution.</p>
+<p>After the verdict, the Government of India set up a data protection framework which started taking steps towards the creation of the data protection legislation after the Supreme Court of India's privacy verdict.</p>
+<p>On <strong>22 December 2017</strong>, the constitution of a committee of experts to deliberate on a data protection framework for India took place by the chairmanship of Justice B.N. Srikrishna.</p>
+<p>After the Government of India constituted an expert committee, the committee sought public consultation on various white papers on data protection framework for India.</p>
+<p>The Personal Data Protection Bill, 2018 draft was released. The committee of experts under chairmanship of Justice B.N. Srikrishna released their Data Protection Committee report.</p>
+<p>On <strong>14 August 2018</strong>, the Ministry of Electronics and Information Technology sought feedback on the Draft Personal Data Protection Bill.</p>
+
+<h2>Personal Data Protection Bill, 2019</h2>
+<p>The Ministry of Electronics and Information Technology set up a committee to study issues related to data protection. The committee was chaired by retired Supreme Court judge Justice B. N. Srikrishna. The committee submitted the draft version of Personal Data Protection in July 2018. The report was later modified several times by the Government of India and, after receiving the approval of central cabinet, the draft legislation was tabled in the Parliament of India on <strong>11 December 2019</strong>.</p>
+<p><strong>On 4 December 2019</strong>, after further deliberations, the Bill was approved by the cabinet ministry of India.</p>
+<p><strong>On 11 December 2019</strong>, the Personal Data Protection Bill, 2019 was tabled in Lok Sabha and referred to the Joint Parliamentary Committee.</p>
+<p><strong>On 16 December 2021</strong>, the standing committee submitted its report on the bill.</p>
+<p><strong>On 3 August 2022</strong>, the Personal Data Protection Bill, 2019 was withdrawn.</p>
+
+<h3>Aim of the 2019 Bill</h3>
+<p>The Bill aimed to provide for protection of the privacy of individuals relating to their personal data, specify the flow and usage of personal data, create a relationship of trust between persons and entities processing the personal data, protect the fundamental rights of individuals whose personal data are processed, create a framework for organisational and technical measures in processing of data, lay down norms for social media intermediary, cross-border transfer, accountability of entities processing personal data, remedies for unauthorised and harmful processing, and to establish a Data Protection Authority of India for the said purposes and for matters connected therewith or incidental thereto.</p>
+<p>It provided for extensive provisions around collection of consent, assessment of datasets, data flows and transfers of personal data, including to third countries and other aspects around anonymized and non-personal data.</p>
+
+<h3>Criticism and Withdrawal of the 2019 Bill</h3>
+<p>The revised 2019 Bill was criticized by <strong>Justice B. N. Srikrishna</strong>, the drafter of the original Bill, as having the ability to turn India into an <strong>"Orwellian State"</strong>. In an interview with Economic Times, Srikrishna said: <em>"The government can at any time access private data or government agency data on grounds of sovereignty or public order. This has dangerous implications."</em></p>
+<p>The role of social media intermediaries is being regulated more tightly on several fronts. The Wikimedia Foundation hoped that the PDP bill would prove the lesser evil compared with the Draft Information Technology [Intermediary Guidelines (Amendment) Rules] 2018.</p>
+<p>Forbes India reported that "there are concerns that the Bill gives the government blanket powers to access citizens' data."</p>
+<p>The bill, after being tabled, was referred to the JPC which was chaired by Meenakshi Lekhi. After it received criticism from stakeholders, opposition, and experts, the bill was withdrawn from the Parliament of India on <strong>3 August 2022</strong>.</p>
+
+<h2>Digital Personal Data Protection Bill, 2023</h2>
+<h3>Aim</h3>
+<p>The Bill provides for the processing of digital personal data in a manner that recognizes both the rights of the individuals to protect their personal data and the need to process such personal data for lawful purposes and for matters connected therewith or incidental thereto.</p>
+<p>The Digital Personal Data Protection Bill, 2023 is the draft version of the Digital Personal Data Protection Act, 2023. Initially the government released the Digital Personal Data Protection Bill, 2022 on <strong>18 November 2022</strong> for public consultation till 2 January 2023, and approved the revised version of the earlier draft, which was released for public consultation, making it the Digital Personal Data Protection Bill, 2023.</p>
+
+<h3>Timeline, Introduction and Passage</h3>
+<ul>
+<li><strong>18 November 2022:</strong> The Digital Personal Data Protection Bill, 2022 was released for public consultation; the deadline for receiving comments was 17 December 2022.</li>
+<li><strong>17 December 2022:</strong> The Ministry of Electronics and Information Technology extended the deadline for receiving public comments till 2 January 2023.</li>
+<li><strong>5 July 2023:</strong> The cabinet approved the Digital Personal Data Protection Bill, 2023, which is the revised version of the bill that was put up for public consultation earlier.</li>
+<li><strong>3 August 2023:</strong> The revised version of the Digital Personal Data Protection Bill, 2022 — which is the Digital Personal Data Protection Bill, 2023 — was introduced by <strong>Ashwini Vaishnaw</strong>, Minister of Electronics and Information Technology, in Lok Sabha.</li>
+<li><strong>7 August 2023:</strong> The bill was passed by Lok Sabha.</li>
+<li><strong>9 August 2023:</strong> The bill was introduced and passed in the upper house of the Indian Parliament, Rajya Sabha.</li>
+<li><strong>11 August 2023:</strong> <strong>Draupadi Murmu</strong>, President of India, gave assent to the Digital Personal Data Protection Bill, 2023, which made it the Digital Personal Data Protection Act, 2023.</li>
+</ul>
+
+<h2>Overview of the Act</h2>
+<p>The Act protects digital personal data (that is, the data by which a person may be identified) by providing for the following:</p>
+<ul>
+<li>The obligations of <strong>Data Fiduciaries</strong> (that is, persons, companies, and government entities who process data) for data processing (that is, collection, storage, or any other operation on personal data).</li>
+<li>The rights and duties of <strong>Data Principals</strong> (that is, the person to whom the data relates).</li>
+<li>Financial penalties for breach of rights, duties, and obligations.</li>
+<li>Establishment of the <strong>Data Protection Board of India</strong>.</li>
+</ul>
+
+<h2>DPDP Act vs GDPR: Key Differences</h2>
+<p>The DPDP Act, 2023 and the European Union's General Data Protection Regulation (GDPR) share similar principles but differ in key aspects. The DPDP Act applies only to digital personal data, while GDPR covers all forms of personal data. Unlike GDPR, the DPDP Act does not distinguish between personal and sensitive personal data. Both laws grant similar rights to individuals but differ in their approach to legal bases for data processing.</p>
+<table>
+<thead>
+<tr><th>Feature</th><th>DPDP Act 2023 (India)</th><th>GDPR (EU)</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Scope</strong></td><td>Regulates digital personal data processing; includes extraterritorial application for offering goods/services in India.</td><td>Covers all personal data, digital or otherwise; applies to any organization processing data of individuals within the EU, irrespective of location.</td></tr>
+<tr><td><strong>Type of Data</strong></td><td>Limited to digital personal data.</td><td>Covers all personal data, including non-digital.</td></tr>
+<tr><td><strong>Legal Basis for Processing</strong></td><td>Consent required with some legitimate use cases (e.g., employment, legal obligations, emergencies). Does not include contractual necessity or legitimate interests.</td><td>Consent if alternative bases do not apply, e.g., legitimate interests, contractual necessity, legal obligations, emergencies ("vital interests"), etc.</td></tr>
+<tr><td><strong>Data Principal Rights</strong></td><td>Right to access, correction, erasure, grievance redressal. Unique rights: appoint another to exercise rights on data principal's behalf in event of death/incapacity.</td><td>Rights to be informed, access, rectification, erasure, restriction of processing, data portability, objection, not to be subject to automated decisions.</td></tr>
+<tr><td><strong>Cross-Border Data Transfers</strong></td><td>Permitted unless to jurisdictions restricted by Indian Government.</td><td>Permitted based on adequacy decisions.</td></tr>
+</tbody>
+</table>
+
+<h2>Data Protection Board of India</h2>
+<p>Under <strong>Section 18</strong> of the Digital Personal Data Protection Act, 2023, the Data Protection Board of India is a body that adjudicates the dispute(s) between those whose personal data has been given to a platform and the platform which has in turn breached the obligations under the law.</p>
+
+<h2>Rights and Provisions</h2>
+<ul>
+<li>Right to access personal data.</li>
+<li>Right to correction and erasure of data.</li>
+<li>Right to revoke consent.</li>
+<li>Special provisions for the protection of data related to minors (under 18 children).</li>
+<li>Minimum penalty for breach is <strong>₹50 crore INR</strong>.</li>
+<li>The terms and conditions and information related to collection of data should be made available in all the <strong>22 languages</strong> in the 8th Schedule of the Indian Constitution.</li>
+<li>Right to grievance redressal.</li>
+<li>Right to nominate a consent manager to manage their data-related requests on behalf of a data principal (the right to nominate a person to exercise rights in case of death or incapacity).</li>
+<li>The Act does not permit processing which is detrimental to the well-being of children or involves their tracking, behavioral monitoring, or targeted advertising.</li>
+<li>The Act requires notification of data breaches to the Data Protection Board and affected individuals.</li>
+</ul>
+
+<h2>Exemptions Under the Act</h2>
+<p>The Act has made exemptions from the regulations related to the Act. They are:</p>
+<ul>
+<li>The processing of personal data is necessary for enforcing any legal right or claim.</li>
+<li>The processing of personal data by any court or tribunal or any other body in India which is entrusted by law with the performance of any judicial or quasi-judicial or regulatory or supervisory function, where such processing is necessary for the performance of such function.</li>
+<li>Personal data is processed in the interest of prevention, detection, investigation, or prosecution of any offence or contravention of any law for the time being in force in India.</li>
+<li>Personal data of Data Principals not within the territory of India is processed pursuant to any contract entered into with any person outside the territory of India by any person based in India.</li>
+<li>The processing is necessary for a scheme of compromise or arrangement or merger or amalgamation of two or more companies, or a reconstruction by way of demerger or otherwise of a company, or transfer of undertaking of one or more company to another company, or involving division of one or more companies, approved by a court or tribunal or other authority competent to do so by any law for the time being in force.</li>
+<li>The processing is for the purpose of ascertaining the financial information and assets and liabilities of any person who has defaulted in payment due on account of a loan or advance taken from a financial institution, subject to such processing being in accordance with the provisions regarding disclosure of information or data in any other law for the time being in force.</li>
+</ul>
+
+<h2>Criticism of the Act</h2>
+<p>Several points of criticism have been recorded by the Editors Guild of India, Press Club of India, RTI activists, and the INDIA Bloc.</p>
+<p><strong>Main criticism:</strong> The Act is only applicable to the data collected digitally and when offline data gets digitized. Not having applicability on offline personal data was criticized, as there is no framework on how such data is handled.</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Digital Personal Data Protection Act, 2023</td></tr>
+<tr><td><strong>Also Known As</strong></td><td>DPDP Act / DPDPA-2023</td></tr>
+<tr><td><strong>Passed</strong></td><td>11 August 2023</td></tr>
+<tr><td><strong>Board Established</strong></td><td>13 November 2025</td></tr>
+<tr><td><strong>Scope</strong></td><td>Digital personal data only</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Data Protection Board of India</td></tr>
+<tr><td><strong>Minimum Penalty</strong></td><td>₹50 crore</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>First Indian Act using "she/her" pronouns</td></tr>
+<tr><td><strong>Key Difference from GDPR</strong></td><td>No distinction between personal and sensitive personal data; consent-first model</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 20.0, lng: 77.0 },
     color: '#F59E0B',
     topics: [

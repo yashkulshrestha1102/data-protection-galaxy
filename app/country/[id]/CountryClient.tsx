@@ -148,6 +148,36 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
           </div>
         </motion.div>
 
+        {/* ===== NAYA SECTION: DETAILED CONTENT (Wikipedia) ===== */}
+{country.detailedContent && (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-6"
+  >
+    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-white/10 pb-4">
+      <FileText className="w-5 h-5 text-purple-400" />
+      Detailed Guide
+    </h3>
+    
+    {/* Yahan specific Tailwind classes lagayi hain */}
+    <div
+      className="
+        text-gray-300 text-sm md:text-base leading-relaxed space-y-4
+        [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mt-8 [&>h2]:mb-4 [&>h2]:border-b [&>h2]:border-white/10 [&>h2]:pb-2
+        [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-purple-300 [&>h3]:mt-6 [&>h3]:mb-3
+        [&>p]:mb-4
+        [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2 [&>ul]:mb-6
+        [&>strong]:text-purple-400 [&>strong]:font-bold
+        [&>table]:w-full [&>table]:border-collapse [&>table]:text-sm [&>table]:mb-6
+        [&>table>thead>tr>th]:bg-white/10 [&>table>thead>tr>th]:text-white [&>table>thead>tr>th]:p-3 [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:border [&>table>thead>tr>th]:border-white/10
+        [&>table>tbody>tr>td]:p-3 [&>table>tbody>tr>td]:border [&>table>tbody>tr>td]:border-white/10 [&>table>tbody>tr>td]:align-top
+      "
+      dangerouslySetInnerHTML={{ __html: country.detailedContent }}
+    />
+  </motion.div>
+)}
+
         {/* ===== NAYA SECTION: COUNTRY QUICK FAQs ===== */}
         {faqs.length > 0 && (
           <motion.div 
