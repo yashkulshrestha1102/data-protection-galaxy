@@ -122,20 +122,20 @@ const sections = [
           <li>
             Emailing{" "}
             <a
-              href="mailto:privacy@businezexcellence.com"
+              href="mailto:shilpi.kulshrestha@businezexcellence.com"
               className="text-purple-400 underline"
             >
-              privacy@businezexcellence.com
+              shilpi.kulshrestha@businezexcellence.com
             </a>{" "}
             with the subject line "Consent Withdrawal";
           </li>
           <li>
             Emailing our Grievance Officer at{" "}
             <a
-              href="mailto:grievance@businezexcellence.com"
+              href="mailto:shilpi.kulshrestha@businezexcellence.com"
               className="text-purple-400 underline"
             >
-              grievance@businezexcellence.com
+              shilpi.kulshrestha@businezexcellence.com
             </a>;
           </li>
           <li>
@@ -438,19 +438,19 @@ const sections = [
           <p>
             <strong>Email:</strong>{" "}
             <a
-              href="mailto:grievance@businezexcellence.com"
+              href="mailto:shilpi.kulshrestha@businezexcellence.com"
               className="text-purple-400 underline"
             >
-              grievance@businezexcellence.com
+              shilpi.kulshrestha@businezexcellence.com
             </a>
           </p>
           <p>
             <strong>Privacy email:</strong>{" "}
             <a
-              href="mailto:privacy@businezexcellence.com"
+              href="mailto:shilpi.kulshrestha@businezexcellence.com"
               className="text-purple-400 underline"
             >
-              privacy@businezexcellence.com
+              shilpi.kulshrestha@businezexcellence.com
             </a>
           </p>
           <p>
@@ -514,17 +514,17 @@ const sections = [
         <p className="mt-3">
           To exercise any of these rights, email{" "}
           <a
-            href="mailto:privacy@businezexcellence.com"
+            href="mailto:shilpi.kulshrestha@businezexcellence.com"
             className="text-purple-400 underline"
           >
-            privacy@businezexcellence.com
+            shilpi.kulshrestha@businezexcellence.com
           </a>{" "}
           or{" "}
           <a
-            href="mailto:grievance@businezexcellence.com"
+            href="mailto:shilpi.kulshrestha@businezexcellence.com"
             className="text-purple-400 underline"
           >
-            grievance@businezexcellence.com
+            shilpi.kulshrestha@businezexcellence.com
           </a>
           . We may need to verify your identity and clarify your request before
           responding. We will respond within <strong>30 days</strong>.

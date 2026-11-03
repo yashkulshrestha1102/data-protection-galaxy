@@ -68,8 +68,8 @@ export default function DataPrincipalRightsPage() {
             <p className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
               If you face any issues, email us directly at{" "}
-              <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">
-                grievance@businezexcellence.com
+              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">
+                shilpi.kulshrestha@businezexcellence.com
               </a>
             </p>
           </div>

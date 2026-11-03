@@ -363,10 +363,10 @@ export default function TermsPage() {
                 <p className="mt-1">
                   <strong className="text-white">Email:</strong>{' '}
                   <a
-                    href="mailto:grievance@businezexcellence.com"
+                    href="mailto:shilpi.kulshrestha@businezexcellence.com"
                     className="text-purple-400 underline"
                   >
-                    grievance@businezexcellence.com
+                    shilpi.kulshrestha@businezexcellence.com
                   </a>
                 </p>
                 <p className="mt-1">
@@ -445,19 +445,19 @@ export default function TermsPage() {
                 <p>
                   <strong className="text-white">Email:</strong>{' '}
                   <a
-                    href="mailto:office@businezexcellence.com"
+                    href="mailto:shilpi.kulshrestha@businezexcellence.com"
                     className="text-purple-400 underline"
                   >
-                    office@businezexcellence.com
+                    shilpi.kulshrestha@businezexcellence.com
                   </a>
                 </p>
                 <p>
                   <strong className="text-white">Grievance:</strong>{' '}
                   <a
-                    href="mailto:grievance@businezexcellence.com"
+                    href="mailto:shilpi.kulshrestha@businezexcellence.com"
                     className="text-purple-400 underline"
                   >
-                    grievance@businezexcellence.com
+                    shilpi.kulshrestha@businezexcellence.com
                   </a>
                 </p>
                 <p>

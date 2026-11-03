@@ -119,7 +119,7 @@ export default async function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-8800138008",
-      email: "privacy@businezexcellence.com",
+      email: "shilpi.kulshrestha@businezexcellence.com",
       contactType: "Customer Service",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],

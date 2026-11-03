@@ -51,8 +51,8 @@ export default function GrievanceRedressalPage() {
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-purple-400" />
                   <strong className="text-white">Email:</strong>
-                  <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">
-                    grievance@businezexcellence.com
+                  <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">
+                    shilpi.kulshrestha@businezexcellence.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
@@ -70,7 +70,7 @@ export default function GrievanceRedressalPage() {
             <section>
               <h2 className="text-2xl font-semibold text-white mb-4">How to File a Grievance</h2>
               <ol className="list-decimal pl-6 space-y-3">
-                <li>Send an email to <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> with the subject line "Data Privacy Grievance".</li>
+                <li>Send an email to <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">shilpi.kulshrestha@businezexcellence.com</a> with the subject line "Data Privacy Grievance".</li>
                 <li>Include the following details in your email:
                   <ul className="list-disc pl-6 mt-2 space-y-1">
                     <li>Your full name and contact details</li>
@@ -159,7 +159,7 @@ export default function GrievanceRedressalPage() {
               <p className="text-gray-300 mb-4">
                 For general inquiries (not grievances), you can contact us at:
               </p>
-              <p><strong className="text-white">Email:</strong> <a href="mailto:office@businezexcellence.com" className="text-purple-400 underline">office@businezexcellence.com</a></p>
+              <p><strong className="text-white">Email:</strong> <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">shilpi.kulshrestha@businezexcellence.com</a></p>
               <p className="mt-2"><strong className="text-white">Phone:</strong> +91 8800138008</p>
             </section>
           </div>

@@ -126,8 +126,8 @@ export default function ConsentDashboardPage() {
           <div className="mt-8 pt-6 border-t border-white/20 text-center">
             <p className="text-sm text-gray-400">
               Need help? Contact our Grievance Officer at{" "}
-              <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">
-                grievance@businezexcellence.com
+              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">
+                shilpi.kulshrestha@businezexcellence.com
               </a>
             </p>
           </div>

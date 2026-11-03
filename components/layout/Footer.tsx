@@ -126,7 +126,7 @@ export function Footer() {
               This content is for educational/informational purposes only and does not constitute legal advice.
             </p>
             <p className="text-white/50 mt-1 text-[10px]">
-              Data Privacy Contact: <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 hover:text-purple-300 underline">grievance@businezexcellence.com</a>
+              Data Privacy Contact: <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 hover:text-purple-300 underline">shilpi.kulshrestha@businezexcellence.com</a>
             </p>
           </div>
           

@@ -475,7 +475,7 @@ export async function POST(request: Request) {
       try {
         await resend.emails.send({
           from: FROM_EMAIL,
-          to: [process.env.ADMIN_EMAIL || 'office@businezexcellence.com'],
+          to: [process.env.ADMIN_EMAIL || 'shilpi.kulshrestha@businezexcellence.com'],
           replyTo: email,
           subject: `📬 New Contact Request from ${name}`,
           html: `
@@ -584,7 +584,7 @@ export async function POST(request: Request) {
       try {
         await resend.emails.send({
           from: FROM_EMAIL,
-          to: ['grievance@businezexcellence.com', 'shilpi.kulshrestha@businezexcellence.com'],
+          to: ['shilpi.kulshrestha@businezexcellence.com', 'shilpi.kulshrestha@businezexcellence.com'],
           replyTo: email,
           subject: `🚨 Data Principal Rights Request: ${rightType}`,
           html: `
@@ -657,7 +657,7 @@ export async function POST(request: Request) {
       try {
         await resend.emails.send({
           from: FROM_EMAIL,
-          to: ['shilpi.kulshrestha@businezexcellence.com', 'grievance@businezexcellence.com'],
+          to: ['shilpi.kulshrestha@businezexcellence.com', 'shilpi.kulshrestha@businezexcellence.com'],
           subject: `🚨 URGENT: Consent Withdrawal Request from ${email}`,
           html: `
             <h2>Consent Withdrawal Request</h2>
