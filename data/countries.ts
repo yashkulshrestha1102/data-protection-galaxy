@@ -2462,15 +2462,234 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'north-macedonia',
     name: 'North Macedonia',
     flag: '🇲🇰',
     lawName: 'Law on Personal Data Protection (2020)',
-    authority: 'Agency for Personal Data Protection (AZLP)',
+    authority: 'Personal Data Protection Agency (AZLP)',
     region: 'Europe',
     level: 'Comprehensive',
-    overview: "North Macedonia’s Law on Personal Data Protection, adopted in February 2020 and applicable since August 2021, is one of the most GDPR-aligned frameworks in the Western Balkans. The law transforms the former Directorate into the Agency for Personal Data Protection (AZLP), equipping it with enhanced supervisory powers including the authority to approve standard contractual clauses and binding corporate rules. Data controllers must notify the AZLP of personal data breaches without undue delay and no later than 72 hours after becoming aware of the breach, unless the incident is unlikely to result in a risk to data subjects’ rights and freedoms. Where a breach poses a high risk, affected individuals must also be informed directly. Administrative fines reach up to 4% of total annual turnover for the most serious violations, with additional penalties for video surveillance non-compliance ranging from EUR 1,000 to EUR 10,000. The AZLP has published bilingual breach notification forms and maintains an online reporting portal. However, publicly available enforcement decisions remain scarce, and the regulator’s practical track record is still developing. Organizations should treat the 72-hour notification deadline as a hard compliance requirement while recognising that enforcement intensity may increase as the AZLP matures.",
+    overview: "North Macedonia's data protection framework is governed by the Law on Personal Data Protection (Official Gazette no. 42/20, 294/21, and 101/2025), which entered into force on 24 February 2020. The law is heavily harmonized with the EU General Data Protection Regulation (GDPR), covering processing principles, data subject rights, controller and processor obligations, and DPO requirements. The supervisory authority is the Personal Data Protection Agency (AZLP), an independent state agency. Cross-border transfers to EU, EEA, or NATO member countries require notification to the DPA at least 15 days before the transfer. Transfers to third countries require an adequacy decision or appropriate safeguards. Administrative fines can reach up to 4% of global annual turnover for the most serious violations, mirroring the GDPR's penalty regime.",
+    detailedContent: `
+<h2>What is North Macedonia's Data Protection Law?</h2>
+<p>North Macedonia regulates personal data protection through the <strong>Law on Personal Data Protection</strong> (Official Gazette of the Republic of North Macedonia, no. 42/20, 294/21, and 101/2025), which entered into force on <strong>24 February 2020</strong>.</p>
+<p>The law is largely harmonized with the EU General Data Protection Regulation (GDPR), aligning North Macedonia's framework with European standards as part of its EU accession process. It covers processing principles, data subject rights, controller and processor obligations, cross-border transfers, and the establishment of an independent supervisory authority.</p>
+
+<h2>Scope and Application</h2>
+<p>The law applies to the processing of personal data wholly or partly by automated means, and to non-automated processing of data forming part of a filing system. It does not apply to processing by a natural person in the course of purely personal or household activities.</p>
+<p>The law has <strong>extraterritorial scope</strong>. It applies to:</p>
+<ul>
+<li>Controllers or processors established in North Macedonia, regardless of whether processing takes place there;</li>
+<li>Controllers or processors not established in North Macedonia, where processing relates to offering goods or services to data subjects in North Macedonia, or monitoring their behaviour within the country;</li>
+<li>Processing by a controller not established in North Macedonia but where Macedonian law applies under international agreements.</li>
+</ul>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Any information relating to an identified or identifiable natural person. An identifiable person is one who can be identified, directly or indirectly, by reference to an identifier such as a name, identification number, location data, online identifier, or factors specific to their physical, physiological, genetic, mental, economic, cultural, or social identity.</p>
+
+<h3>Sensitive Personal Data (Special Categories)</h3>
+<p>Personal data revealing:</p>
+<ul>
+<li>Racial or ethnic origin;</li>
+<li>Political opinions;</li>
+<li>Religious or philosophical beliefs;</li>
+<li>Trade union membership;</li>
+<li>Genetic data;</li>
+<li>Biometric data for unique identification;</li>
+<li>Data concerning health;</li>
+<li>Data concerning sex life or sexual orientation.</li>
+</ul>
+
+<h3>Other Key Terms</h3>
+<p>The law introduces GDPR-style definitions for <em>profiling</em>, <em>pseudonymisation</em>, <em>filing system</em>, <em>controller</em>, <em>processor</em>, <em>consent</em>, <em>personal data breach</em>, and <em>binding corporate rules</em>.</p>
+
+<h2>Supervisory Authority: Personal Data Protection Agency (AZLP)</h2>
+<p>The <strong>Personal Data Protection Agency (AZLP)</strong> is an independent state agency responsible for monitoring the lawfulness of personal data processing in North Macedonia and protecting the fundamental rights and freedoms of natural persons.</p>
+<p>It is accountable to the Parliament of North Macedonia and has legal personality with its seat in Skopje. The Agency is completely politically, financially, and functionally independent.</p>
+<p>The Agency is managed by a Director and a Deputy Director, both appointed by the Parliament for a five-year term (renewable twice). They must meet specific qualifications, including a law degree, at least 10 years of work experience, and proficiency in English.</p>
+
+<h3>Main Tasks and Powers of the Agency</h3>
+<ul>
+<li>Monitor and enforce the application of the law;</li>
+<li>Promote public awareness of data protection risks, rules, and rights;</li>
+<li>Advise the Parliament, Government, and other institutions on legislative and administrative measures;</li>
+<li>Handle complaints from data subjects and conduct investigations;</li>
+<li>Cooperate with other supervisory authorities and conduct joint operations;</li>
+<li>Adopt standard contractual clauses;</li>
+<li>Approve binding corporate rules;</li>
+<li>Accredit certification bodies and monitoring bodies for codes of conduct;</li>
+<li>Impose administrative fines and corrective measures.</li>
+</ul>
+
+<h2>Principles of Processing</h2>
+<p>The law establishes the following principles, mirroring the GDPR:</p>
+<ul>
+<li><strong>Lawfulness, fairness, and transparency;</strong></li>
+<li><strong>Purpose limitation;</strong></li>
+<li><strong>Data minimisation;</strong></li>
+<li><strong>Accuracy;</strong></li>
+<li><strong>Storage limitation;</strong></li>
+<li><strong>Integrity and confidentiality.</strong></li>
+</ul>
+<p>The controller is responsible for demonstrating compliance (<strong>accountability</strong>).</p>
+
+<h2>Lawful Grounds for Processing</h2>
+<p>Processing is lawful only if at least one of the following applies:</p>
+<ul>
+<li>The <strong>data subject has given consent</strong> for specific purposes;</li>
+<li>Processing is necessary for the <strong>performance of a contract</strong> with the data subject or pre-contractual steps;</li>
+<li>Processing is necessary for compliance with a <strong>legal obligation</strong>;</li>
+<li>Processing is necessary to protect <strong>vital interests</strong>;</li>
+<li>Processing is necessary for a <strong>task in the public interest</strong> or exercise of official authority;</li>
+<li>Processing is necessary for the <strong>legitimate interests</strong> of the controller or a third party, unless overridden by the data subject's rights and freedoms (this ground does not apply to processing by state administration bodies).</li>
+</ul>
+
+<h2>Consent Requirements</h2>
+<p>Consent must be freely given, specific, informed, and unambiguous. The controller must demonstrate that the data subject consented. When consent is given in a written declaration that also concerns other matters, the consent request must be presented clearly and distinguishably. The data subject may withdraw consent at any time without affecting the lawfulness of prior processing.</p>
+
+<h2>Children's Data</h2>
+<p>For information society services offered directly to a child, processing is lawful where the child is at least <strong>14 years old</strong>. For children below 14, consent must be given or authorised by the holder of parental responsibility. Controllers must make reasonable efforts to verify parental consent, considering available technology.</p>
+
+<h2>Special Categories of Personal Data</h2>
+<p>Processing of special categories of data is <strong>prohibited</strong> as a general rule, with exceptions including:</p>
+<ul>
+<li>Explicit consent of the data subject;</li>
+<li>Labour law, social security, and social protection obligations authorised by law;</li>
+<li>Protection of vital interests where the data subject is physically or legally incapable of consenting;</li>
+<li>Legitimate activities of non-profit organisations with appropriate safeguards;</li>
+<li>Data manifestly made public by the data subject;</li>
+<li>Establishment, exercise, or defence of legal claims;</li>
+<li>Substantial public interest, based on law, proportionate to the aim pursued;</li>
+<li>Preventive or occupational medicine, medical diagnosis, health care;</li>
+<li>Public health reasons;</li>
+<li>Archiving, scientific, historical, or statistical purposes, based on law.</li>
+</ul>
+
+<h2>Data Subject Rights</h2>
+<p>Data subjects have a comprehensive set of rights, including:</p>
+<ul>
+<li><strong>Right to information</strong> (Articles 17 and 18): Controllers must provide detailed information at the time of data collection, including identity, contact details, purposes, legal basis, recipients, retention periods, and rights;</li>
+<li><strong>Right of access</strong> (Article 19): To obtain confirmation of processing, a copy of data, and information about purposes, categories, recipients, and retention periods;</li>
+<li><strong>Right to rectification</strong> (Article 20): To correct inaccurate or incomplete data within 15 days of request;</li>
+<li><strong>Right to erasure</strong> (Article 21): The "right to be forgotten," subject to specific grounds and exceptions;</li>
+<li><strong>Right to restriction of processing</strong> (Article 22);</li>
+<li><strong>Notification obligation</strong> (Article 23): The controller must inform recipients of any rectification or erasure;</li>
+<li><strong>Right to data portability</strong> (Article 24): To receive data in a structured, machine-readable format;</li>
+<li><strong>Right to object</strong> (Article 25): Including the absolute right to object to direct marketing;</li>
+<li><strong>Right not to be subject to automated decision-making</strong> (Article 26), including profiling, with specific exceptions.</li>
+</ul>
+<p>Controllers must respond to requests within <strong>one month</strong>, extendable by two further months for complex requests.</p>
+
+<h2>Controller and Processor Obligations</h2>
+<p>Controllers must implement appropriate technical and organisational measures to ensure compliance and demonstrate accountability. Key obligations include:</p>
+<ul>
+<li><strong>Data protection by design and by default</strong> (Article 29);</li>
+<li><strong>Joint controller arrangements</strong> (Article 30);</li>
+<li><strong>Appointment of a representative</strong> in North Macedonia for controllers/processors not established there (Article 31), subject to limited exceptions;</li>
+<li><strong>Use of only processors providing sufficient guarantees</strong>, governed by a written contract (Article 32);</li>
+<li><strong>Records of processing activities</strong> (Article 34) for enterprises with 50+ employees or where processing is high-risk, not occasional, or involves special categories of data;</li>
+<li><strong>Security of processing</strong> (Article 36), including pseudonymisation, encryption, and regular testing of measures;</li>
+<li><strong>Data protection impact assessments (DPIAs)</strong> (Article 39) for high-risk processing;</li>
+<li><strong>Prior consultation with the Agency</strong> (Article 40) where a DPIA indicates high risk.</li>
+</ul>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>Controllers and processors must appoint a DPO where:</p>
+<ul>
+<li>Processing is carried out by a public authority or body, except courts acting in their judicial capacity;</li>
+<li>Core activities consist of processing operations requiring <strong>regular and systematic monitoring</strong> of data subjects on a <strong>large scale</strong>;</li>
+<li>Core activities consist of <strong>large-scale processing</strong> of special categories of data or data relating to criminal convictions.</li>
+</ul>
+<p>The DPO must have expert knowledge of data protection law and practices. They may be a staff member or fulfil tasks on a service contract. The DPO's contact details must be published and communicated to the Agency.</p>
+<p>The DPO's tasks include informing and advising, monitoring compliance, advising on DPIAs, cooperating with the Agency, and acting as a contact point.</p>
+
+<h2>Data Breach Notification</h2>
+<p>Controllers must notify the Agency of a personal data breach <strong>without undue delay and, where feasible, not later than 72 hours</strong> after becoming aware, unless the breach is unlikely to result in a risk to data subjects. If notification is made after 72 hours, it must be accompanied by reasons for the delay.</p>
+<p>Processors must notify controllers without undue delay after becoming aware of a breach.</p>
+<p>Where a breach is likely to result in a <strong>high risk</strong>, the controller must communicate it to affected data subjects without undue delay, describing the nature of the breach, contact details, likely consequences, and measures taken. Exceptions apply where protective measures (e.g., encryption) render data unintelligible, or where disproportionate effort applies (public communication may be used instead).</p>
+<p>Controllers must document all breaches, including facts, effects, and remedial actions.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>The law establishes a comprehensive framework for international transfers:</p>
+<ul>
+<li><strong>EU/EEA/NATO Transfers:</strong> Entities must notify the Agency at least <strong>15 days before</strong> the transfer;</li>
+<li><strong>Adequacy Decisions:</strong> Transfers to third countries or international organisations are permitted if the Agency has decided that the recipient ensures an adequate level of protection. The Agency assesses factors such as the rule of law, respect for human rights, the existence of independent supervisory authorities, and international commitments;</li>
+<li><strong>Appropriate Safeguards:</strong> Where no adequacy decision exists, transfers may occur with appropriate safeguards, including legally binding instruments, binding corporate rules (BCRs), standard data protection clauses, approved codes of conduct, or certification mechanisms;</li>
+<li><strong>Derogations:</strong> Specific situations (e.g., explicit consent, contract necessity, public interest, legal claims, vital interests) may permit transfers without adequacy or safeguards.</li>
+</ul>
+<p>The Agency has not yet adopted an adequacy decision but follows the EU's practice. Since 2022, it requires a <strong>Transfer Impact Assessment (TIA)</strong> with each Transfer Approval request.</p>
+
+<h2>Security Requirements</h2>
+<p>Controllers and processors must implement appropriate technical and organisational measures, including as appropriate:</p>
+<ul>
+<li>Pseudonymisation and encryption;</li>
+<li>Ability to ensure ongoing confidentiality, integrity, availability, and resilience;</li>
+<li>Ability to restore availability and access in the event of incidents;</li>
+<li>Regular testing and evaluation of security measures.</li>
+</ul>
+<p>The <strong>Rulebook on the Security of Personal Data Processing</strong> (Official Gazette no. 266/2024) applies from <strong>1 July 2025</strong>, replacing the previous rulebook. It requires controllers to establish a functional and sustainable information system, prepare detailed documentation on processing, evaluate risks, and implement proportionate measures—including secure transmission protocols (TLS), certificate validation, browser security configurations, and cookie restrictions.</p>
+
+<h2>Codes of Conduct and Certification</h2>
+<p>The law encourages the development of codes of conduct by associations representing categories of controllers or processors, and the establishment of data protection certification mechanisms, seals, and marks. These are voluntary and aim to demonstrate compliance.</p>
+
+<h2>Enforcement and Sanctions</h2>
+<p>The Agency has investigative, corrective, and authorisation/opinion powers, including:</p>
+<ul>
+<li>Ordering controllers and processors to provide information;</li>
+<li>Carrying out supervisions and audits;</li>
+<li>Issuing warnings and reprimands;</li>
+<li>Ordering compliance with data subject requests;</li>
+<li>Imposing temporary or definitive limitations or bans on processing;</li>
+<li>Initiating misdemeanour proceedings.</li>
+</ul>
+
+<h3>Administrative Fines</h3>
+<p>The law provides for two categories of misdemeanours:</p>
+<ul>
+<li><strong>Category I (Article 110):</strong> Up to <strong>2% of total annual turnover</strong> for violations such as failure to appoint a DPO, failure to maintain records, failure to notify a breach, failure to conduct a DPIA, or non-compliance with direct marketing rules;</li>
+<li><strong>Category II (Article 111):</strong> Up to <strong>4% of total annual turnover</strong> for violations of processing principles, lawful bases, consent conditions, special category processing rules, data subject rights, and cross-border transfer rules.</li>
+</ul>
+<p>Responsible persons at legal entities face fines of EUR 300–500, officials in state administration bodies face fines of EUR 100–500, and natural persons face fines of EUR 100–250.</p>
+<p>Video surveillance violations carry fines of <strong>EUR 1,000 to EUR 10,000</strong> for legal entities.</p>
+<p>Fines may be challenged before the Administrative Court of North Macedonia. The Criminal Code also includes a criminal offense for misuse of personal data punishable by a fine or imprisonment of up to one year.</p>
+
+<h2>Specific Processing Scenarios</h2>
+<ul>
+<li><strong>Journalism and artistic expression:</strong> Exemptions may apply to reconcile data protection with freedom of expression;</li>
+<li><strong>Public access to official documents:</strong> Personal data in official documents may be disclosed to fulfil a public interest task, reconciling public access with data protection;</li>
+<li><strong>National identification number:</strong> Processing requires prior consent, legal obligation, or Agency approval for systematic and extensive processing;</li>
+<li><strong>Health, genetic, and biometric data:</strong> Processing requires prior Agency approval (unless determined by law with safeguards);</li>
+<li><strong>Employment context:</strong> Specific rules may be provided by law or collective agreements with safeguards;</li>
+<li><strong>Archiving, research, and statistics:</strong> Processing must be subject to appropriate safeguards, including pseudonymisation;</li>
+<li><strong>Churches and religious communities:</strong> Must apply safeguarding measures;</li>
+<li><strong>Deceased persons:</strong> Data may be provided to authorised recipients or lawful successors, subject to the deceased's written prohibition;</li>
+<li><strong>Video surveillance:</strong> Detailed rules apply, including notice requirements, prohibitions in changing rooms/toilets, a 30-day storage limit, and 70% consent for residential buildings.</li>
+</ul>
+
+<h2>Electronic Marketing and Cookies</h2>
+<p>Processing personal data for electronic direct marketing, including profiling, is permitted only with the data subject's <strong>explicit consent</strong>. The data subject may withdraw consent at any time and has the right to object.</p>
+<p>The Law on Electronic Communications requires consent for storing or accessing information on terminal equipment (cookies), with exceptions for technical transmission or explicitly requested services. Location data may only be processed in anonymous form or with prior consent.</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Law on Personal Data Protection (Official Gazette no. 42/20, 294/21, 101/2025)</td></tr>
+<tr><td><strong>In Force From</strong></td><td>24 February 2020</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Personal Data Protection Agency (AZLP)</td></tr>
+<tr><td><strong>GDPR Alignment</strong></td><td>Largely harmonized with the GDPR</td></tr>
+<tr><td><strong>DPO</strong></td><td>Required in specific cases (public bodies, large-scale monitoring, large-scale special category processing)</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>72 hours to the Agency; data subjects if high risk</td></tr>
+<tr><td><strong>Children's Consent Age</strong></td><td>14 years (parental consent required below 14)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Adequacy decision or appropriate safeguards; 15-day notification for EU/EEA/NATO transfers</td></tr>
+<tr><td><strong>Max Administrative Fine</strong></td><td>Up to 2% of turnover (Category I) or 4% of turnover (Category II)</td></tr>
+<tr><td><strong>Video Surveillance Fine</strong></td><td>EUR 1,000 to EUR 10,000</td></tr>
+<tr><td><strong>Criminal Penalty</strong></td><td>Up to 1 year imprisonment for misuse of personal data</td></tr>
+<tr><td><strong>Cookie/Adtech Regime</strong></td><td>Consent required; Security Rulebook 2025 applies</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 41.6, lng: 21.7 },
     color: '#3B82F6',
     topics: [
@@ -2479,13 +2698,13 @@ export const countries: Country[] = [
       { title: 'Data Subject Rights', status: 'Addressed', icon: 'Users' },
       { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
       { title: 'Breach Notification', status: 'Addressed', icon: 'AlertCircle' },
-      { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Addressed', icon: 'Users' },
+      { title: 'DPO Requirements', status: 'Addressed', icon: 'Shield' },
+      { title: "Children's Data", status: 'Addressed', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
       { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
-      { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
-      { title: 'AI & Automated Decisions', status: 'Partial', icon: 'Scale' },
-      { title: 'Data Localisation', status: 'Partial', icon: 'Database' },
+      { title: 'Cookie/Tracking', status: 'Addressed', icon: 'FileText' },
+      { title: 'AI & Automated Decisions', status: 'Addressed', icon: 'Scale' },
+      { title: 'Data Localisation', status: 'None', icon: 'Database' },
       { title: 'Significant Data Fiduciary', status: 'None', icon: 'Shield' },
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
@@ -3061,15 +3280,197 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'kyrgyzstan',
     name: 'Kyrgyzstan',
     flag: '🇰🇬',
-    lawName: 'Law on Personal Information (2008, as amended)',
-    authority: 'State Agency for Personal Data Protection / designated competent authority',
+    lawName: 'Law on Personal Data (No. 58, 2008)',
+    authority: 'State Agency for Personal Data Protection under the Cabinet of Ministers',
     region: 'Asia',
     level: 'Moderate',
-    overview: "Kyrgyzstan’s personal data protection framework underwent a fundamental overhaul in 2026. The Digital Code, adopted on 31 July 2025 and in force since 5 February 2026, replaced the long-outdated 2008 Law on Personal Information . Enforcement is now vested in the State Agency for the Protection of Personal Data under the Cabinet of Ministers, established in 2021 but only recently equipped with real sanctioning power . Amendments to the Code of Offenses introduced in May 2025 and effective November 2025 created a graduated penalty regime: violations of data processing rules trigger fines of up to 650 calculation units for legal entities, rising to 1,200 units for repeat offenses; unlawful cross-border transfers carry fines of up to 1,000 units; and failure to comply with Agency requests attracts additional penalties . Registration in the Register of Personal Data Holders remains a formal obligation, though the Digital Code removed certain registration-related fines . The framework still lacks dedicated provisions for artificial intelligence and automated decision-making, and cookie-specific rules remain absent. Organisations processing Kyrgyz data should reassess compliance against the post-2026 regime rather than relying on the pre-Digital Code framework.",
+    overview: "Kyrgyzstan's data protection framework is governed by the Law on Personal Data No. 58, adopted on 14 April 2008. The law establishes a mandatory registration regime for holders of personal data arrays. However, practical enforcement remains limited. The State Agency for Personal Data Protection was established in 2021 but has faced operational challenges, including the lack of a fully functional electronic registration system. A significant legislative overhaul is underway: a new Digital Code (adopted in 2025) is expected to replace the 2008 law, introducing modern concepts and strengthening enforcement powers. Until the Digital Code is fully implemented, organizations should adhere to the 2008 law while preparing for the upcoming reforms.",
+    detailedContent: `
+<h2>What is Kyrgyzstan's Data Protection Law?</h2>
+<p>Kyrgyzstan's data protection framework is primarily governed by the <strong>Constitution of the Kyrgyz Republic</strong>, which prohibits the collection, storage, use, and dissemination of confidential information (including private life information) without the subject's consent.</p>
+<p>The core legislative instrument is the <strong>Law on Personal Data No. 58</strong>, adopted on 14 April 2008, and entered into force on 18 April 2008. The law has been amended several times, most recently on 29 November 2021.</p>
+<p>The Law aims to regulate work with personal data based on standard international norms and principles, ensuring the protection of human rights and freedoms related to the collection, processing, and use of personal data.</p>
+
+<h2>Scope and Exclusions</h2>
+<p>The law applies to relations arising from working with personal data, regardless of the means of processing, including information technology.</p>
+<p>However, it <strong>does not apply</strong> to the storage, processing, and use of personal data in connection with personal, family, or business affairs of an individual, unless the rights of personal data subjects are violated.</p>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Recorded information on a tangible medium about a specific person, identified or identifiable, directly or indirectly, by reference to one or more factors specific to their biological, economic, cultural, civil, or social identity. This includes biographical and identification data, personal characteristics, marital status, financial status, and health data.</p>
+
+<h3>Sensitive Personal Data</h3>
+<p>There is <strong>no clear statutory definition</strong> of sensitive personal data. However, under the Law, all personal data is classified as confidential. Processing of data revealing racial or ethnic origin, nationality, political opinions, religious or philosophical beliefs, health status, and sexual inclinations is prohibited solely for the purpose of revealing these factors (with limited exceptions).</p>
+
+<h3>Personal Data Subject</h3>
+<p>An individual to whom the relevant personal data relates.</p>
+
+<h3>Holder (Owner) of Personal Data Array</h3>
+<p>Public authorities, local authorities, and legal entities authorized to determine the purposes, categories of personal data, and control the collection, storage, processing, and use of personal data.</p>
+
+<h3>Processor</h3>
+<p>An individual or legal entity, determined by the holder (owner), who processes personal data on the basis of a contract.</p>
+
+<h2>Supervisory Authority</h2>
+<p>The <strong>State Agency for Personal Data Protection</strong> under the Cabinet of Ministers is the authorized state body. It was established by Presidential Decree No. 391 on 14 September 2021 and registered on 10 January 2022.</p>
+<p>The Agency consists of two departments:</p>
+<ul>
+<li>Department of legislative expertise of personal data;</li>
+<li>Department of ensuring protection and control of personal data processing.</li>
+</ul>
+<p>An <strong>Expert Council</strong> was also created, composed of independent experts and civil society representatives in cybersecurity and digital law, to recommend legislative amendments and propose new normative legal acts.</p>
+<p>The Agency is responsible for:</p>
+<ul>
+<li>Ensuring control over compliance with personal data processing requirements;</li>
+<li>Protecting the rights of personal data subjects;</li>
+<li>Registering holders (owners) of personal data arrays;</li>
+<li>Maintaining the Register of holders (owners) of personal data arrays;</li>
+<li>Cooperating with foreign data protection authorities.</li>
+</ul>
+
+<h2>Principles of Processing</h2>
+<p>The law establishes the following principles:</p>
+<ul>
+<li>Personal data must be received and processed in accordance with the law;</li>
+<li>Data must be collected for precisely pre-defined, declared, and legitimate purposes and not used in contradiction with those purposes;</li>
+<li>The initial data must be accurate and updated if necessary;</li>
+<li>Personal data should be stored no longer than the purposes for which they were accumulated require;</li>
+<li>Combining arrays collected for different purposes for automated processing is prohibited;</li>
+<li>Data must be stored and protected from illegal access, amendments, changes, and destruction.</li>
+</ul>
+
+<h2>Lawful Grounds for Processing</h2>
+<p>Processing is permitted in the following cases:</p>
+<ul>
+<li>The <strong>data subject has given consent</strong>;</li>
+<li>Necessary for the fulfillment of powers by public authorities or local authorities established by law;</li>
+<li>Necessary to achieve the <strong>legitimate interests</strong> of holders (owners), provided that it does not interfere with the rights and freedoms of data subjects;</li>
+<li>Necessary to <strong>protect the interests</strong> of the data subject;</li>
+<li>Processing is carried out exclusively for the purposes of journalism, artistic, or literary creativity (provided it is agreed with the subject and respects privacy and freedom of speech).</li>
+</ul>
+
+<h2>Consent Requirements</h2>
+<p>The data subject independently decides whether to provide their personal data and gives consent to processing freely, consciously, and in a form that allows confirming the fact of its receipt. Consent must be expressed in <strong>writing on paper</strong> or in the form of an <strong>electronic document signed with an electronic signature</strong>.</p>
+<p>Before providing personal data, the subject must be acquainted with the list of collected data, the grounds and purposes of collection and use, possible transfer to third parties, and other possible uses. The subject has the right not to indicate the reasons for refusing to provide their data.</p>
+
+<h2>Registration Requirement</h2>
+<p>This is a central feature of the Kyrgyz framework. Under Article 30, <strong>arrays of personal data and holders (owners) of these arrays are subject to mandatory registration</strong> with the authorized state body.</p>
+<p>Registration involves:</p>
+<ul>
+<li>Name and details of the holder (owner);</li>
+<li>Purposes and methods of collecting and using personal data;</li>
+<li>Retention regimes and terms;</li>
+<li>List of personal data to be collected;</li>
+<li>Categories of data subjects;</li>
+<li>Sources of collection;</li>
+<li>Procedures for informing subjects;</li>
+<li>Security and confidentiality measures;</li>
+<li>The person responsible for handling personal data;</li>
+<li>Recipients or categories of recipients;</li>
+<li>Expected cross-border transfers.</li>
+</ul>
+<p>The registration procedure was approved by Cabinet of Ministers Regulation No. 638 dated 18 November 2022. It involves three stages: obtaining a registration number, completing electronic forms, and agreeing on lists of personal data.</p>
+<p><strong>Practical Limitation:</strong> To date, the electronic registration system requires local registration data, meaning <strong>only local entities can realistically register</strong>. Foreign entities are practically excluded from this requirement.</p>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>The law <strong>does not explicitly require</strong> the appointment of a Data Protection Officer (DPO) in the GDPR sense. However, holders (owners) must indicate in their registration the name and contact details of the <strong>person responsible for working with personal data</strong>. This is a functional equivalent of a DPO, tailored to the local administrative context.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Data subjects have the following rights:</p>
+<ul>
+<li><strong>Right to know:</strong> About the existence of a holder (owner) with their personal data and to have access to them;</li>
+<li><strong>Right of access:</strong> To receive information about processing, including legal grounds, purposes, methods, recipients, retention periods, and cross-border transfers;</li>
+<li><strong>Right to rectify:</strong> To demand amendments to their personal data if there are grounds confirmed by documents;</li>
+<li><strong>Right to block:</strong> To demand blocking of data if its unreliability or illegality of actions is revealed;</li>
+<li><strong>Right to appeal:</strong> To appeal illegal actions in court;</li>
+<li><strong>Right to compensation:</strong> For damages and moral harm in court.</li>
+</ul>
+<p>Information about the availability and content of personal data must be provided within <strong>7 days</strong> from the date of application, free of charge (except for the cost of tangible media).</p>
+
+<h2>Restrictions on Subject Rights</h2>
+<p>Subject rights may be restricted in the following cases:</p>
+<ul>
+<li>For personal data subjects admitted to state secrets (regarding the right to provide data);</li>
+<li>For personal data obtained as a result of operational-investigative activities (except in cases of violation of the law);</li>
+<li>For data of subjects detained on suspicion of committing a crime, charged in a criminal case, or subject to preventive measures.</li>
+</ul>
+<p>No other restrictions are allowed.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>Cross-border transfer is the transfer of personal data by the holder (owner) to holders under the jurisdiction of other states. The law permits such transfers based on the following:</p>
+<ul>
+<li><strong>International agreement:</strong> The receiving party must ensure an adequate level of protection of the rights and freedoms of data subjects;</li>
+<li><strong>Consent of the data subject;</strong></li>
+<li>Transfer to countries that <strong>do not provide adequate protection</strong> is permitted only if:
+  <ul>
+    <li>The data subject consents;</li>
+    <li>The transfer is necessary to protect the data subject's interests;</li>
+    <li>The data is contained in a publicly accessible array.</li>
+  </ul>
+</li>
+</ul>
+<p>When transferring data via the Internet, the holder must ensure the necessary means of protection, respecting the confidentiality of the information.</p>
+
+<h2>Data Security Measures</h2>
+<p>The holder (owner) and processor must implement legal, organizational, and technical measures to protect personal data from unauthorized or accidental access, modification, blocking, copying, provision, distribution, and other unlawful actions. These include:</p>
+<ul>
+<li>Access control to equipment and data media;</li>
+<li>Prevention of unauthorized reading, copying, modification, or removal of data;</li>
+<li>Ensuring the ability to determine retroactively when, by whom, and what data was changed;</li>
+<li>Security of data transmission systems;</li>
+<li>Controlled access for each user to only authorized data;</li>
+<li>Input control (ability to determine when, by whom, and what data was entered);</li>
+<li>Transport control (prevention of unauthorized reading, copying, modification, or destruction during transmission);</li>
+<li>Confidentiality of information during processing;</li>
+<li>Compliance with Government requirements for data protection levels;</li>
+<li>Recording of machine-readable media;</li>
+<li>Recovery of data modified or destroyed due to unauthorized access.</li>
+</ul>
+
+<h2>Breach Notification</h2>
+<p>If the holder (owner) transfers personal data <strong>without the consent</strong> of the data subject to a third party, they must inform the data subject <strong>within a week</strong>. There is no broader statutory breach notification obligation (e.g., to the regulator within 72 hours) under the current law.</p>
+
+<h2>Enforcement and Practical Reality</h2>
+<p>Although the Law on Personal Data has been adopted, there is <strong>no established enforcement practice</strong> of its provisions. The responsible agency (State Agency for Personal Data Protection) has been appointed, and enforcement practice may change once the agency is fully operational and the new Digital Code is implemented.</p>
+<p>The current law provides for liability in accordance with the legislation of the Kyrgyz Republic, but specific sanctions are governed by the Code of Administrative Offences and the Criminal Code.</p>
+
+<h2>Electronic Marketing and Online Privacy</h2>
+<p>Sending electronic communications for advertising is generally subject to <strong>prior express consent</strong> of the recipient. The Law on Electrical and Postal Communication establishes that all databases of telecommunication operators must be confidential, and telecom operators are obliged to keep communication data confidential.</p>
+
+<h2>Upcoming Reforms: The Digital Code (2025-2026)</h2>
+<p>Kyrgyzstan is undergoing a fundamental legislative overhaul. A new <strong>Digital Code</strong>, adopted in 2025 and in force since 5 February 2026, is expected to replace the outdated 2008 Law on Personal Data.</p>
+<p>The Digital Code is expected to:</p>
+<ul>
+<li>Replace the 2008 framework with a modern, comprehensive regime;</li>
+<li>Strengthen the sanctioning power of the State Agency for Personal Data Protection;</li>
+<li>Introduce graduated penalty regimes for violations of data processing rules, unlawful cross-border transfers, and failure to comply with Agency requests;</li>
+<li>Maintain the Register of Personal Data Holders, though certain registration-related fines may be removed;</li>
+<li>Address emerging challenges (though AI and cookie-specific rules may still be absent).</li>
+</ul>
+<p>Organizations processing Kyrgyz data should reassess compliance against the post-2026 regime rather than relying on the pre-Digital Code framework.</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Law of the Kyrgyz Republic on Personal Data (No. 58)</td></tr>
+<tr><td><strong>Adopted</strong></td><td>14 April 2008</td></tr>
+<tr><td><strong>In Force From</strong></td><td>18 April 2008</td></tr>
+<tr><td><strong>Latest Amendment</strong></td><td>29 November 2021 (with major reforms expected under the new Digital Code)</td></tr>
+<tr><td><strong>Regulator</strong></td><td>State Agency for Personal Data Protection under the Cabinet of Ministers</td></tr>
+<tr><td><strong>Registration</strong></td><td>Mandatory for holders (owners) of personal data arrays (practical limitations exist)</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not explicitly required (a responsible person must be designated)</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>No general requirement</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Adequacy-based, with consent and public interest exceptions</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>Notification to data subject within 1 week for unauthorized transfers</td></tr>
+<tr><td><strong>Enforcement</strong></td><td>Limited practical enforcement; strengthening expected under the Digital Code</td></tr>
+<tr><td><strong>Upcoming Reform</strong></td><td>Digital Code (2025-2026) replacing the 2008 Law</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 41.2, lng: 74.8 },
     color: '#F59E0B',
     topics: [
@@ -3079,7 +3480,7 @@ export const countries: Country[] = [
       { title: 'Cross-Border Transfer', status: 'Partial', icon: 'Globe' },
       { title: 'Breach Notification', status: 'Partial', icon: 'AlertCircle' },
       { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Partial', icon: 'Users' },
+      { title: "Children's Data", status: 'Partial', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Partial', icon: 'AlertTriangle' },
       { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
       { title: 'Cookie/Tracking', status: 'None', icon: 'FileText' },
@@ -3891,15 +4292,125 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'costa-rica',
     name: 'Costa Rica',
     flag: '🇨🇷',
-    lawName: 'Law No. 8968 on the Protection of the Person with Regard to the Processing of Personal Data',
-    authority: 'Agency for the Protection of Individuals with Regard to the Processing of Personal Data (PRODHAB)',
+    lawName: 'Law No. 8968 on the Protection of the Person Against the Processing of their Personal Data',
+    authority: 'Agency for the Protection of the Personal Data of the Inhabitants (PRODHAB)',
     region: 'Americas',
-    level: 'Comprehensive',
-    overview: "Costa Rica’s data protection framework rests on Law No. 8968 of 2011, supervised by the Agency for the Protection of the Inhabitants’ Data (PRODHAB), an administrative body attached to the Ministry of Justice. The law grants data subjects robust access, rectification, cancellation, and opposition rights, enforceable within five business days. International transfers are governed by a consent-centric rule: transferring personal data of Costa Rican citizens or foreign residents to third-country databases without the data subject’s consent constitutes a “most serious offense,” punishable by fines of 15 to 30 base judicial salaries and suspension of the database for one to six months. The 2013 implementing regulation further requires unequivocal consent for any transfer, with narrow exceptions. However, PRODHAB’s enforcement capacity has been constrained by chronic underfunding and staffing shortages; its own 2022 institutional report acknowledged severely weakened credibility and backlogs dating to 2018. Organizations processing Costa Rican data should treat consent-based transfer authorization as a hard compliance requirement while recognizing that PRODHAB’s practical oversight may lag behind the statute’s formal demands.",
+    level: 'Substantial',
+    overview: "Costa Rica's data protection framework is currently governed by Law No. 8968 of 2011 (Ley de Protección de la Persona Frente al Tratamiento de sus Datos Personales). The law is enforced by PRODHAB (Agencia de Protección de los Datos de los Habitantes), which is attached to the Ministry of Justice. While the law established early rights to access, rectification, and deletion, it is now considered outdated for the digital age. Consequently, Costa Rica is in the process of modernizing its framework. Two GDPR-inspired bills are currently in the legislative pipeline: Bill No. 22.388 (reforming Law 8968) and Bill No. 23.097 (a completely new Personal Data Protection Law). The new draft introduces modern concepts such as privacy by design, data portability, profiling rules, and a new, independent Data Protection Agency.",
+    detailedContent: `
+<h2>What is Costa Rica's Data Protection Law?</h2>
+<p>Costa Rica's data protection regime is primarily governed by <strong>Law No. 8968 of 2011</strong> on the Protection of the Person Against the Processing of their Personal Data. The law has been enforceable since 7 July 2012 and applies to personal data contained in both automated and manual databases.</p>
+<p>The law implements the constitutional right to privacy (Article 24 of the Political Constitution) and informational self-determination. It is supplemented by <strong>Executive Decree No. 37554-JP of 30 October 2012</strong>, which provides implementing regulations.</p>
+<p>However, the current legal framework has not undergone substantive reforms to address the challenges of the modern digital economy. The OECD has recommended that Costa Rica modernize its data protection laws, leading to two draft bills currently in the legislative pipeline.</p>
+
+<h2>Supervisory Authority: PRODHAB</h2>
+<p>The supervisory authority is the <strong>Agency for the Protection of the Personal Data of the Inhabitants (PRODHAB)</strong>, which operates under the Ministry of Justice and Peace.</p>
+<p>PRODHAB is responsible for:</p>
+<ul>
+<li>Maintaining the National Data Protection Registry (Registro Nacional de Datos Personales);</li>
+<li>Enforcing compliance with Law No. 8968;</li>
+<li>Investigating complaints and imposing sanctions;</li>
+<li>Advising the government and the public on data protection matters.</li>
+</ul>
+<p>To date, PRODHAB has faced structural challenges, including chronic underfunding and staffing shortages, which have limited its practical enforcement capacity.</p>
+
+<h2>Key Principles under Law 8968</h2>
+<p>The law establishes several foundational principles for data processing:</p>
+<ul>
+<li><strong>Consent:</strong> Individuals must provide informed and voluntary consent for the collection and processing of their personal data.</li>
+<li><strong>Purpose Limitation:</strong> Personal data must be collected and processed only for specific, legitimate, and clearly stated purposes.</li>
+<li><strong>Data Quality:</strong> Personal data must be accurate, complete, and up-to-date.</li>
+<li><strong>Security:</strong> Entities must implement appropriate technical and organizational measures to protect personal data from unauthorized access, alteration, loss, or destruction.</li>
+<li><strong>Confidentiality:</strong> Entities must maintain the confidentiality of personal data and ensure that only authorized personnel have access to it.</li>
+</ul>
+
+<h2>Registration and Obligations</h2>
+<p>Entities that process personal data must register their databases with the National Data Protection Registry, which is managed by PRODHAB.</p>
+<p>Under Law 8968, controllers are also required to appoint a <strong>Data Protection Officer (DPO)</strong> responsible for overseeing compliance with the law and handling data subject requests.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Under the current law, data subjects have the right to:</p>
+<ul>
+<li><strong>Access:</strong> To know what personal data is held and how it is being processed;</li>
+<li><strong>Rectification:</strong> To correct inaccurate or incomplete data;</li>
+<li><strong>Cancellation/Deletion:</strong> To request the deletion of data when it is no longer necessary for the purpose it was collected, or when processing is unlawful;</li>
+<li><strong>Opposition:</strong> To object to the processing of their data for legitimate reasons.</li>
+</ul>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>Under Law 8968, international transfers of personal data are subject to a <strong>consent-centric rule</strong>. Transferring personal data of Costa Rican citizens or foreign residents to third-country databases without the data subject's consent constitutes a "most serious offense."</p>
+<p>The 2013 implementing regulation further requires unequivocal consent for any transfer, with narrow exceptions. Transfers are permitted only if:</p>
+<ul>
+<li>The data subject has provided explicit consent for the transfer;</li>
+<li>The recipient country provides an adequate level of protection; or</li>
+<li>The transfer is necessary for public interest, legal claims, or the performance of a contract.</li>
+</ul>
+
+<h2>Breach Notification</h2>
+<p>Under the current Law 8968, there is no explicit, general obligation to notify PRODHAB or affected data subjects of a data breach within a specific statutory timeframe. However, the general security and confidentiality obligations apply, and severe breaches may trigger sanctions under the Code of Administrative Offences.</p>
+
+<h2>Enforcement and Sanctions</h2>
+<p>The law establishes several sanctions for non-compliance:</p>
+<ul>
+<li><strong>Administrative fines:</strong> Ranging from 15 to 30 base judicial salaries (approximately USD 7,000 to USD 14,000) depending on the severity of the violation.</li>
+<li><strong>Temporary or permanent suspension of the database:</strong> For one to six months for serious violations, with permanent closure possible for repeat offenses.</li>
+<li><strong>Criminal penalties:</strong> In extreme cases, imprisonment may apply for specific violations of confidentiality.</li>
+</ul>
+<p>Data subjects may also file civil claims for compensation.</p>
+
+<h2>The Future: New Data Protection Bills (2024)</h2>
+<p>To address the shortcomings of Law 8968 in the digital age, Costa Rica's Legislative Assembly is considering two GDPR-inspired bills:</p>
+
+<h3>Bill No. 22.388 (Comprehensive Reform)</h3>
+<p>This bill aims to reform the existing Law 8968, providing an intermediate modernization. It seeks to update the regulatory framework while maintaining the existing institutional structure.</p>
+
+<h3>Bill No. 23.097 (New Personal Data Protection Law)</h3>
+<p>This bill proposes a completely new regulatory framework, heavily inspired by the EU GDPR. The latest draft (updated as of 27 February 2024) introduces significant modern provisions:</p>
+<ul>
+<li><strong>New Independent Authority:</strong> Replaces PRODHAB with a new, fully independent <strong>Data Protection Agency</strong> with expanded investigative and sanctioning powers;</li>
+<li><strong>Privacy by Design and by Default:</strong> Controllers must implement preventive measures from the design stage of processing;</li>
+<li><strong>Data Protection Impact Assessments (DPIAs):</strong> Mandatory for high-risk processing, such as large-scale sensitive data processing or systematic monitoring;</li>
+<li><strong>Data Portability:</strong> Data subjects can request their data in a structured, machine-readable format and transfer it to another controller;</li>
+<li><strong>Profiling and Automated Decisions:</strong> Stricter rules on automated decision-making, including the right not to be subject to a decision based solely on automated processing;</li>
+<li><strong>Breach Notification (72 hours):</strong> Controllers must notify the Data Protection Agency and affected data subjects within 72 hours of becoming aware of a breach;</li>
+<li><strong>Extraterritorial Scope:</strong> The law applies to organizations outside Costa Rica that offer goods/services to Costa Ricans or monitor their behavior;</li>
+<li><strong>Binding Corporate Rules (BCRs):</strong> Explicitly recognized as a valid safeguard for international transfers within multinational groups;</li>
+<li><strong>Video Surveillance & Workplace Monitoring:</strong> Specific rules for CCTV, geolocation, and employee monitoring.</li>
+</ul>
+
+<h2>Current Challenges and Enforcement Reality</h2>
+<p>While the current law (Law 8968) provides a solid foundational framework, its practical enforcement has been limited. PRODHAB's capacity to investigate and sanction violations has been constrained by insufficient resources. As a result, organizations operating in Costa Rica should recognize that while the legal requirements are clear, the regulatory oversight may lag behind the statute's formal demands.</p>
+<p>The upcoming bills (22.388 and 23.097) signal a clear legislative intent to align Costa Rica's data protection regime with international best practices, particularly the GDPR. Once enacted, these reforms will impose significantly stricter obligations and grant the new Data Protection Agency robust enforcement powers.</p>
+
+<h2>Practical Advice for Organizations</h2>
+<p>Organizations processing personal data in Costa Rica should:</p>
+<ul>
+<li>Ensure their databases are registered with PRODHAB;</li>
+<li>Appoint a Data Protection Officer (DPO);</li>
+<li>Maintain a clear, unambiguous consent mechanism for data processing and international transfers;</li>
+<li>Implement strong security and confidentiality safeguards;</li>
+<li>Monitor the progress of Bill 23.097, as it will introduce new obligations (e.g., 72-hour breach notification, DPIAs, privacy by design) that will require prompt compliance upon enactment.</li>
+</ul>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Current Full Name</strong></td><td>Law No. 8968 on the Protection of the Person Against the Processing of their Personal Data</td></tr>
+<tr><td><strong>Current Law Enacted</strong></td><td>2011 (effective July 7, 2012)</td></tr>
+<tr><td><strong>Supervisory Authority</strong></td><td>Agency for the Protection of the Personal Data of the Inhabitants (PRODHAB)</td></tr>
+<tr><td><strong>Registration</strong></td><td>Mandatory (National Data Protection Registry)</td></tr>
+<tr><td><strong>DPO</strong></td><td>Required</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>No explicit statutory deadline under current law</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Consent-centric; strict rule with narrow exceptions</td></tr>
+<tr><td><strong>Upcoming Reform</strong></td><td>Bill No. 23,097 (GDPR-inspired, introduces 72-hour breach notification, DPIAs, and a new independent Data Protection Agency)</td></tr>
+<tr><td><strong>Risk Scale</strong></td><td>Moderate (Current) / High (Upon enactment of Bill 23,097)</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 9.9, lng: -84.0 },
     color: '#EF4444',
     topics: [
@@ -3907,9 +4418,9 @@ export const countries: Country[] = [
       { title: 'Consent Requirements', status: 'Addressed', icon: 'CheckCircle' },
       { title: 'Data Subject Rights', status: 'Addressed', icon: 'Users' },
       { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
-      { title: 'Breach Notification', status: 'Addressed', icon: 'AlertCircle' },
-      { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Addressed', icon: 'Users' },
+      { title: 'Breach Notification', status: 'Partial', icon: 'AlertCircle' },
+      { title: 'DPO Requirements', status: 'Addressed', icon: 'Shield' },
+      { title: "Children's Data", status: 'Partial', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
       { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
       { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
