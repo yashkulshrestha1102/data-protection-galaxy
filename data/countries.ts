@@ -2275,15 +2275,223 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'armenia',
     name: 'Armenia',
     flag: '🇦🇲',
-    lawName: 'Law on Protection of Personal Data (2015)',
+    lawName: 'Law on Protection of Personal Data (HO-49-N, 2015)',
     authority: 'Personal Data Protection Agency, Ministry of Justice',
     region: 'Europe',
     level: 'Substantial',
-    overview: "Armenia’s Law on Protection of Personal Data (HO-49-N), adopted on 18 May 2015 and in force since 1 July 2015, establishes a comprehensive framework for personal data processing supervised by the Personal Data Protection Agency under the Ministry of Justice . The law does not impose a general data localisation requirement, but it regulates cross-border transfers through a tiered mechanism: transfers to countries that have ratified the Council of Europe Convention 108, or that appear on the Agency’s officially published adequacy list, proceed without prior authorisation . Transfers to countries lacking adequate protection—including Japan, which is not on Armenia’s adequacy list—require either the data subject’s explicit consent or the Agency’s prior approval based on contractual safeguards deemed sufficient by the regulator . The Agency reviews authorisation applications within 30 days and may request additional information or specify required contractual amendments . Processors of biometric and special-category data must notify the Agency before processing, with administrative penalties for non-compliance . Armenia is currently undergoing an EU-supported analysis of its data protection framework, signalling potential future reforms .",
+    overview: "Armenia's data protection framework is governed by the Law on Protection of Personal Data (HO-49-N), adopted on 18 May 2015 and in force since 1 July 2015. The law establishes comprehensive rules for data processing, supervised by the Personal Data Protection Agency under the Ministry of Justice. Armenia does not impose a general data localisation requirement, but it regulates cross-border transfers through a tiered mechanism: transfers to countries that have ratified Council of Europe Convention 108 or appear on the Agency's adequacy list proceed without prior authorisation. Transfers to countries lacking adequate protection require either the data subject's explicit consent or the Agency's prior approval based on contractual safeguards. Processing of biometric and special-category data requires mandatory notification to the Agency. Breach notification is strict, requiring violation elimination and notification within three working days. Armenia is currently undergoing an EU-supported analysis of its data protection framework, signalling potential future reforms.",
+    detailedContent: `
+<h2>What is the Armenian Data Protection Law?</h2>
+<p>Armenia's data protection regime is governed by the <strong>Law of the Republic of Armenia on Protection of Personal Data (HO-49-N)</strong>, adopted on 18 May 2015 and entered into force on 1 July 2015. The law replaced the older Law HO-422-N of 8 October 2002 "On Personal Data".</p>
+<p>The law regulates the procedure and conditions for processing personal data, and the exercise of state control over such processing by state administration bodies, local self-government bodies, state or community institutions, legal entities, and natural persons.</p>
+<p>The Law's scope excludes personal data processed exclusively for journalism, literary, and artistic purposes. It also defers to other laws for specific categories such as state secrets, banking secrecy, notarial secrecy, insurance secrecy, legal professional privilege, national security, defence, anti-money laundering, counter-terrorism, and operational-intelligence activities.</p>
+
+<h2>Definitions under the Law</h2>
+<h3>Personal Data</h3>
+<p>Personal data is defined as any information relating to a natural person that allows or may allow direct or indirect identification of that person's identity.</p>
+
+<h3>Special Category (Sensitive) Personal Data</h3>
+<p>Special category personal data means information relating to a person's:</p>
+<ul>
+<li>Race;</li>
+<li>National identity or ethnic origin;</li>
+<li>Political views;</li>
+<li>Religious or philosophical beliefs;</li>
+<li>Membership in a professional union (trade union);</li>
+<li>Health status; and</li>
+<li>Sexual life.</li>
+</ul>
+
+<h3>Biometric Personal Data</h3>
+<p>Biometric personal data means information characterising the physical, physiological, and biological characteristics of a person.</p>
+
+<h3>Data on Personal Life</h3>
+<p>Data on personal life is defined as any information on a person's:</p>
+<ul>
+<li>Personal life;</li>
+<li>Family life;</li>
+<li>Physical, physiological, mental, or social condition; or</li>
+<li>Other similar information.</li>
+</ul>
+
+<h3>Publicly Available Personal Data</h3>
+<p>Publicly available personal data means information that, by the data subject's consent or by conscious operations aimed at making personal data publicly available, becomes available to a certain scope of persons or the public at large, as well as information provided by law as publicly available.</p>
+
+<h2>National Data Protection Authority</h2>
+<p>The authorised body for personal data protection is the <strong>Personal Data Protection Agency</strong> of the Republic of Armenia, operating under the Ministry of Justice. It was designated by Decision N 573-A of the RA Prime Minister as of 3 July 2015.</p>
+<p>The Agency operates independently under the Law and other legal acts. Its head is appointed for a five-year term by the Prime Minister, upon nomination of the Minister of Justice, based on joint recommendations of at least five non-governmental organisations carrying out law enforcement activities. The same person may not serve more than two consecutive terms.</p>
+<p>In the second half of 2024, the Agency officially launched its website (pdpa.am) to assist citizens in safeguarding their personal data. The platform offers training courses, legislative acts, guidelines, templates, and other resources.</p>
+
+<h2>Powers of the Authorised Body</h2>
+<p>The Personal Data Protection Agency has the following powers:</p>
+<ul>
+<li>Check, on its initiative or on the basis of an application, the compliance of personal data processing with the Law;</li>
+<li>Apply administrative sanctions prescribed by law in case of violations;</li>
+<li>Require blocking, suspending, or terminating the processing of personal data violating the Law;</li>
+<li>Require rectification, modification, blocking, or destruction of personal data where grounds exist;</li>
+<li>Prohibit completely or partially the processing of personal data after examining the processor's notification;</li>
+<li>Keep a register of processors of personal data;</li>
+<li>Recognise electronic systems for processing personal data as having an adequate level of protection and include them in the register;</li>
+<li>Check devices and documents, including existing data and computer software used for processing data;</li>
+<li>Apply to court in cases provided for by law;</li>
+<li>Consider applications of natural persons regarding personal data processing and deliver decisions;</li>
+<li>Submit, once a year, a public report on the current situation in personal data protection and on the activities of the previous year;</li>
+<li>Conduct research and provide advice on data processing;</li>
+<li>Report to law enforcement bodies where doubts arise regarding violations of a criminal nature.</li>
+</ul>
+<p>Decisions of the Agency may be appealed through judicial procedure.</p>
+
+<h2>Registration and Notification Requirements</h2>
+<p><strong>Registration is voluntary</strong> unless otherwise specified by the authorised body. The processor has the right to notify the Agency of its intention to process data prior to processing. However, at the request of the Agency, the processor is obliged to send a notification.</p>
+<p><strong>Mandatory notification</strong> applies prior to the processing of <strong>biometric or special category personal data</strong>. The notification must include:</p>
+<ul>
+<li>Name (surname, name, patronymic) of the processor or authorised person, registered office or place of registration;</li>
+<li>Purpose and legal grounds for processing personal data;</li>
+<li>Scope of personal data;</li>
+<li>Scope of data subjects;</li>
+<li>List of operations performed upon personal data and a general description of processing methods;</li>
+<li>Description of measures undertaken for ensuring security of processing;</li>
+<li>Date of starting the processing;</li>
+<li>Time limits and conditions for completing the processing.</li>
+</ul>
+<p>The Agency enters the information into the register of processors within thirty days following receipt of the notification. If information is incomplete or inaccurate, the Agency may require the processor to specify it prior to entry into the register.</p>
+
+<h2>Lawful Basis for Processing</h2>
+<p>Processing of personal data is lawful where:</p>
+<ul>
+<li>The data have been processed in observance of the law, and the <strong>data subject has given consent</strong>, except for cases directly provided for by law; or</li>
+<li>The data being processed have been <strong>obtained from publicly available sources</strong> of personal data.</li>
+</ul>
+<p>The data subject may give consent in person or through a representative, where a power of attorney specifically provides for such a power.</p>
+
+<h2>Consent Requirements</h2>
+<p>Consent is considered given and the processor has the right to process where:</p>
+<ul>
+<li>Personal data are indicated in a document addressed to the processor and signed by the data subject (unless the document, by its content, is an objection against processing);</li>
+<li>The processor has obtained data on the basis of an agreement concluded with the data subject and uses it for the purposes prescribed by the agreement;</li>
+<li>The data subject voluntarily transfers information on his or her personal data to the processor for use purposes.</li>
+</ul>
+<p>The data subject must give consent in writing or electronically, validated by electronic digital signature. In case of oral consent, it must be given through reliable operations that clearly attest the data subject's consent to using personal data.</p>
+<p>The burden of proving the fact of obtaining consent lies with the processor. In case of incapacity, limited capacity, or being a minor <strong>under the age of 16</strong>, consent must be given by a legal representative or parent.</p>
+<p>For obtaining consent, the processor must notify the data subject of the intention to process the data, including:</p>
+<ul>
+<li>The data subject's surname, name, patronymic;</li>
+<li>Legal grounds and purpose of processing;</li>
+<li>List of personal data subject to processing;</li>
+<li>List of operations to be performed;</li>
+<li>Scope of persons to whom personal data may be transferred;</li>
+<li>Name and position of the processor or representative requesting consent, and registered office;</li>
+<li>Information on the data subject's rights to rectification, destruction, termination of processing, or other operations;</li>
+<li>Validity of the consent requested, as well as the procedure and consequences of withdrawing consent.</li>
+</ul>
+
+<h2>Data Processing Principles</h2>
+<p>The Law enforces the following principles:</p>
+<ul>
+<li><strong>Lawfulness:</strong> Processing must be lawful and in observance of the law.</li>
+<li><strong>Proportionality:</strong> Processing must pursue a legitimate purpose, and measures to achieve it must be suitable, necessary, and moderate. The processor must process the minimum volume of personal data necessary. Processing is prohibited where the purpose can be achieved in a depersonalised manner. Data must be stored so as to exclude identification for a period longer than necessary.</li>
+<li><strong>Reliability:</strong> Data must be complete, accurate, simple, and kept up to date.</li>
+<li><strong>Minimum engagement of subjects:</strong> Where state bodies can obtain personal data through a uniform electronic information system, the data subject shall not be required to submit personal data necessary for certain operations.</li>
+</ul>
+
+<h2>Processing Special Category and Biometric Data</h2>
+<p>The processing of <strong>special category personal data without the person's consent is prohibited</strong>, except where processing is directly provided for by law. Processing must immediately terminate when the grounds and purpose of processing are eliminated.</p>
+<p><strong>Biometric personal data</strong> shall be processed only with the data subject's consent, except for cases provided for by law and where the purpose pursued by law is possible to implement only through processing of these biometric data.</p>
+
+<h2>Processing of Minors' Data</h2>
+<p>In case of incapacity or limited capacity of the data subject, or of being a minor <strong>under the age of 16</strong>, consent for processing personal data shall be given by a legal representative or parent of the data subject.</p>
+<p>In case of death of the data subject, consent to process personal data shall be given by all legal heirs. If there are no heirs, the head of the community of the place of opening the succession; if declared missing, the trust manager of the property. Personal data of a deceased person (name, gender, year, month, and day of birth and death) may be processed without consent. For deceased public figures in culture, arts, science, education, sport, religion, and other public fields, data on personal life may be processed without consent where <strong>50 years have elapsed</strong> from the day of death.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Data subjects have the following rights under the Law:</p>
+<ul>
+<li><strong>Right to information:</strong> To be informed about personal data, processing, grounds and purposes, the processor, and the scope of persons to whom data may be transferred;</li>
+<li><strong>Right of access:</strong> To get familiarised with personal data;</li>
+<li><strong>Right to rectification, blocking, or destruction:</strong> Where data are incomplete, inaccurate, outdated, unlawfully obtained, or unnecessary for achieving processing purposes;</li>
+<li><strong>Right to complain to the Agency:</strong> In case of doubts regarding rectification, blocking, or destruction by the processor;</li>
+<li><strong>Right to information on processing:</strong> Including confirmation of processing, purposes, methods, recipients, list and source of data, time limits, and potential legal consequences;</li>
+<li><strong>Right regarding automated decisions:</strong> It is prohibited to deliver decisions not stemming from processing purposes that give rise to legal consequences for the data subject or affect rights and legitimate interests, except with consent or where provided by law;</li>
+<li><strong>Right to appeal:</strong> To appeal actions or inaction of the processor before the authorised body or through judicial procedure;</li>
+<li><strong>Right to compensation:</strong> For damages as prescribed by law.</li>
+</ul>
+<p>Information shall be provided to the data subject free of charge, unless otherwise provided by law. The processor must provide information within <strong>five working days</strong> upon receipt of a written request.</p>
+
+<h2>Processor Obligations</h2>
+<p>The processor of personal data has the following obligations:</p>
+<ul>
+<li>Provide information to the data subject at the data subject's request;</li>
+<li>Carry out necessary operations for completing, keeping up to date, rectifying, or destructing incomplete, inaccurate, outdated, unlawfully obtained, or unnecessary personal data;</li>
+<li>Explain to the data subject in writing the consequences of failure to provide personal data, including the rights of the data subject;</li>
+<li>Where data have been obtained not from the data subject, provide the data subject with the processor's name, purpose and legal ground, scope of potential users, and rights of the data subject;</li>
+<li>Destruct or block personal data not necessary for achieving the legitimate purpose;</li>
+<li>Use encryption keys to ensure the protection of information systems containing personal data against accidental loss, unauthorised access, unlawful use, recording, destruction, alteration, blocking, copying, dissemination, and other interference;</li>
+<li>Prevent access by unauthorised persons to processing technologies and ensure that only lawful users access data subject to processing;</li>
+<li>Maintain confidentiality during and after performing official or employment duties concerning personal data processing;</li>
+<li>Follow the requirements for ensuring security prescribed by the Decision of the Government of the Republic of Armenia.</li>
+</ul>
+<p>Legal persons processing personal data may apply to the Agency for recognition of their electronic systems as having an adequate level of protection and inclusion in the register.</p>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p><strong>There is no requirement to appoint a Data Protection Officer</strong> under the Armenian Law on Protection of Personal Data.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>Personal data may be transferred to another country with the data subject's consent or where the transfer stems from the purposes of processing and/or is necessary for implementing those purposes.</p>
+<p>Personal data may be transferred to another state <strong>without the permission of the authorised body</strong> where the given state ensures an adequate level of protection. An adequate level of protection is considered ensured where:</p>
+<ul>
+<li>Personal data are transferred in compliance with international agreements; or</li>
+<li>Personal data are transferred to any of the countries included in the list officially published by the authorised body (which incorporates Council of Europe Convention 108 parties and the Agency's adequacy list).</li>
+</ul>
+<p>Personal data may be transferred to the territory of a state <strong>not ensuring an adequate level of protection only by permission of the authorised body</strong>, where data are transferred on the basis of an agreement that provides safeguards approved by the Agency as ensuring adequate protection.</p>
+<p>The processor must apply to the Agency for permission prior to the transfer, specifying the country, recipient description, content of personal data, purpose of processing and transferring, and the agreement or draft. The Agency must permit or reject the application <strong>within 30 days</strong>. The Agency may request additional information and, where it finds contractual safeguards insufficient, specify the necessary changes.</p>
+<p>The Agency must regularly (at least once a year) revise the list of countries ensuring adequate protection and publish changes in the official journal and on its official website.</p>
+<p>Personal data under the disposition of state bodies may be transferred to foreign state bodies only within the scope of interstate agreements, whereas to non-state bodies in accordance with the norms above.</p>
+
+<h2>Data Breach Notification</h2>
+<p>In case unlawful operations performed upon personal data are revealed, the processor must <strong>immediately, but not later than within three working days</strong>, eliminate the committed violations. If it is impossible to eliminate the violations, the processor must immediately destruct personal data. The processor must inform the data subject (or representative) and the authorised body (where requested) on the elimination of violations or destruction of data within <strong>three working days</strong>.</p>
+<p>In case of an <strong>outflow of personal data from electronic systems</strong>, the processor must immediately publish an announcement, and report the outflow to the <strong>Police of the Republic of Armenia</strong> and the authorised body for personal data protection.</p>
+
+<h2>Security Requirements</h2>
+<p>The processor must use encryption keys and technical-organisational measures to protect information systems against accidental loss, unauthorised access, unlawful use, recording, destruction, alteration, blocking, copying, dissemination, and other interference. The requirements for security of processing in information systems, tangible media of biometric data, and technologies for storage outside information systems are prescribed by the Decision of the Government of the Republic of Armenia.</p>
+<p>Use and storage of biometric personal data outside information systems may be carried out only through tangible media, technologies, or forms that ensure protection against unauthorised access, unlawful use, destruction, alteration, blocking, copying, and dissemination.</p>
+
+<h2>Enforcement and Sanctions</h2>
+<p>The authorised body may apply administrative sanctions prescribed by law in case of violations. It may also:</p>
+<ul>
+<li>Require blocking, suspending, or terminating the processing of personal data violating the Law;</li>
+<li>Require rectification, modification, blocking, or destruction of personal data;</li>
+<li>Prohibit completely or partially the processing of personal data;</li>
+<li>Apply to court in cases provided for by law.</li>
+</ul>
+<p>Decisions of the authorised body may be appealed through judicial procedure. The Law does not prescribe specific maximum fine amounts in the main text; administrative liability is governed by the Code of Administrative Offences.</p>
+
+<h2>Electronic Marketing and Cookies</h2>
+<p>There is <strong>no specific regulation</strong> on electronic marketing under the Armenian data protection law. However, it is advised to obtain user consent, such as through appropriate disclaimers.</p>
+<p>There is also <strong>no regulation on cookies and location data</strong>. However, it is advisable to obtain user consent, such as through appropriate disclaimers.</p>
+
+<h2>Recent Developments</h2>
+<p>In the second half of 2024, the Personal Data Protection Agency officially launched its website (pdpa.am) to assist citizens in safeguarding their personal data. The platform offers e-courses on personal data protection, guidelines, the privacy notice form, and access to legislative acts. Armenia is currently undergoing an EU-supported analysis of its data protection framework, signalling potential future reforms.</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Law of the Republic of Armenia on Protection of Personal Data (HO-49-N)</td></tr>
+<tr><td><strong>Adopted</strong></td><td>18 May 2015</td></tr>
+<tr><td><strong>In Force From</strong></td><td>1 July 2015</td></tr>
+<tr><td><strong>Replaced</strong></td><td>Law HO-422-N of 8 October 2002 "On Personal Data"</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Personal Data Protection Agency, Ministry of Justice</td></tr>
+<tr><td><strong>Registration</strong></td><td>Voluntary (mandatory for biometric and special-category data)</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not required</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>Within 3 working days (Police + Agency for data outflow)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Adequacy list / Convention 108 / Agency permission (30 days)</td></tr>
+<tr><td><strong>Minors' Consent Age</strong></td><td>Under 16 (by legal representative/parent)</td></tr>
+<tr><td><strong>Cookies/Marketing</strong></td><td>No specific regulation (consent advised)</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 40.2, lng: 45.0 },
     color: '#EF4444',
     topics: [
@@ -2291,14 +2499,14 @@ export const countries: Country[] = [
       { title: 'Consent Requirements', status: 'Addressed', icon: 'CheckCircle' },
       { title: 'Data Subject Rights', status: 'Addressed', icon: 'Users' },
       { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
-      { title: 'Breach Notification', status: 'Partial', icon: 'AlertCircle' },
-      { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Partial', icon: 'Users' },
+      { title: 'Breach Notification', status: 'Addressed', icon: 'AlertCircle' },
+      { title: 'DPO Requirements', status: 'None', icon: 'Shield' },
+      { title: "Children's Data", status: 'Addressed', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
       { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
-      { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
-      { title: 'AI & Automated Decisions', status: 'None', icon: 'Scale' },
-      { title: 'Data Localisation', status: 'Partial', icon: 'Database' },
+      { title: 'Cookie/Tracking', status: 'None', icon: 'FileText' },
+      { title: 'AI & Automated Decisions', status: 'Partial', icon: 'Scale' },
+      { title: 'Data Localisation', status: 'None', icon: 'Database' },
       { title: 'Significant Data Fiduciary', status: 'None', icon: 'Shield' },
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
