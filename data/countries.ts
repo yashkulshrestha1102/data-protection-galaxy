@@ -3118,15 +3118,230 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'algeria',
     name: 'Algeria',
     flag: '🇩🇿',
-    lawName: 'Law No. 18-07 on the Protection of Natural Persons in the Processing of Personal Data (as amended)',
+    lawName: 'Law No. 18-07 on Personal Data Protection (as amended by Law No. 25-11)',
     authority: 'National Authority for the Protection of Personal Data (ANPDP)',
     region: 'Africa',
     level: 'Substantial',
-    overview: "Algeria's personal data protection regime is built on Law No. 18-07 of June 10, 2018, substantially modernized by Law No. 25-11 of July 24, 2025. The amendment introduced key GDPR-era concepts—biometric data, profiling, pseudonymization, and personal data breach—while strengthening controller obligations and expanding the powers of the National Authority for the Protection of Personal Data (ANPDP). The ANPDP, an independent administrative authority, has been fully operational since August 2023 and now actively enforces compliance through notifications, authorizations, and inspections. Prior express consent remains the default legal basis for processing, with limited exceptions. Cross-border transfers require prior ANPDP authorization, and controllers must maintain processing registers and appoint a Data Protection Officer. Penalties can reach up to five years' imprisonment and fines of 500,000 Algerian dinars, doubled for repeat offenses. A dedicated AI and automated decision-making law has not yet been enacted, though the 2025 amendments' introduction of profiling rules signals incremental movement toward algorithmic accountability. Algeria's framework now demands serious compliance attention from any organization processing data of individuals in the country.",  
+    overview: "Algeria's data protection regime is built on Law No. 18-07 of June 10, 2018, substantially modernized by Law No. 25-11 of July 24, 2025. The amendment introduced key GDPR-era concepts—biometric data, profiling, pseudonymization, and personal data breach—while strengthening controller obligations and expanding the powers of the National Authority for the Protection of Personal Data (ANPDP). The ANPDP, an independent administrative authority, has been fully operational since August 2023 and now actively enforces compliance through notifications, authorizations, and inspections. Prior express consent remains the default legal basis for processing, with limited exceptions. Cross-border transfers require prior ANPDP authorization, and controllers must maintain processing registers and appoint a Data Protection Officer. Penalties can reach up to five years' imprisonment and fines of 500,000 Algerian dinars, doubled for repeat offenses. A dedicated AI and automated decision-making law has not yet been enacted, though the 2025 amendments' introduction of profiling rules signals incremental movement toward algorithmic accountability. Algeria's framework now demands serious compliance attention from any organization processing data of individuals in the country.",
+    detailedContent: `
+<h2>What is Algeria's Data Protection Law?</h2>
+<p>Algeria's data protection framework is governed by <strong>Law No. 18-07 of 10 June 2018</strong> on the protection of natural persons with regard to the processing of personal data. This primary legislation was significantly amended and supplemented by <strong>Law No. 25-11 of 24 July 2025</strong>.</p>
+<p>The law sets out conditions for the collection, recording, organization, conservation, adaptation, extraction, consultation, use, communication, interconnection, and destruction of any information relating to an identified or identifiable person—whether directly or indirectly, by reference to an identification number or factors specific to their physical, physiological, genetic, biometric, psychic, economic, cultural, or social identity.</p>
+<p>The 2025 amendment marks a further step in Algeria's progressive alignment with international standards, particularly the GDPR, introducing stronger accountability, risk-based, and governance requirements.</p>
+
+<h2>Entry into Force and Transition</h2>
+<p>Although Law 18-07 was published in 2018, its entry into force was contingent upon the establishment of the supervisory authority. The President and members of the National Authority were appointed on 18 May 2022, and the authority was officially installed on 11 August 2022.</p>
+<p>According to Article 75 of the Law, it became enforceable within a maximum period of one year from the date of installation, i.e., <strong>14 February 2023</strong>. Consequently, the Law has been fully applicable since August 2023.</p>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Any information, regardless of its medium, relating to an identified or identifiable natural person, directly or indirectly, in particular by reference to an identification number or to one or more elements specific to their physical, physiological, genetic, biometric, mental, economic, cultural, or social identity.</p>
+
+<h3>Sensitive Personal Data</h3>
+<p>Personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, or relating to health, including genetic data.</p>
+
+<h3>Data Interconnection</h3>
+<p>Any mechanism of connection involving the linking of processed data for a specific purpose with other processed data, whether for identical or different purposes, by the same data controller or by one or more other data controllers.</p>
+
+<h2>National Data Protection Authority (ANPDP)</h2>
+<p>The <strong>National Authority for the Protection of Personal Data (ANPDP)</strong> is an independent and autonomous administrative authority, established under Article 23 of Law 18-07. It is composed of magistrates, representatives of parliament, the senate, the human rights council, relevant ministries, and other individuals designated by the President based on legal and technical expertise.</p>
+<p>The President and members are appointed by presidential decree for a renewable five-year term. The Authority ensures that personal data processing complies with the law and respects individual rights, public freedoms, and privacy.</p>
+
+<h3>Main Functions of ANPDP</h3>
+<ul>
+<li>Drawing up rules of good conduct and ethics applicable to personal data processing;</li>
+<li>Advising individuals and entities on the use of personal data;</li>
+<li>Informing data subjects of their rights and data controllers of their obligations;</li>
+<li>Receiving declarations and granting authorisations for data processing;</li>
+<li>Handling complaints and authorising cross-border transfers;</li>
+<li>Ordering modifications, closures, withdrawal, or destruction of non-compliant data;</li>
+<li>Proposing improvements to the legal framework and issuing standards;</li>
+<li>Publishing authorisations and opinions in the national register;</li>
+<li>Cooperating with foreign data protection authorities;</li>
+<li>Imposing administrative sanctions.</li>
+</ul>
+<p>Since February 2024, the Authority has begun field inspections of private-sector companies, extending later to individuals and public companies. It has also established regional branches dedicated to inspection and audit activities, strengthening its enforcement capabilities across the national territory.</p>
+
+<h2>Registration and Prior Authorisation Regime</h2>
+<p>Algeria operates a two-tier regime: <strong>prior declaration</strong> as the standard procedure, and <strong>prior authorisation</strong> for higher-risk processing.</p>
+
+<h3>Prior Declaration</h3>
+<p>Any processing of personal data by a public or private entity must be declared to the ANPDP before processing begins. The declaration must be renewed before any new data is processed. Entities must file a prior declaration whenever they are likely to receive, store, and process personal data.</p>
+
+<h3>Prior Authorisation</h3>
+<p>Authorisation is required for processing that presents significant risks, including:</p>
+<ul>
+<li>Transfer of personal data abroad;</li>
+<li>Communication of data to a third party;</li>
+<li>Interconnection of data belonging to one or more legal entities managing a public service for different public interest purposes;</li>
+<li>Processing of sensitive data (subject to specific exceptions);</li>
+<li>Processing of personal data for public interest research, study, or evaluation in the health field.</li>
+</ul>
+<p>Under Law 25-11, prior consultation with the Authority is also required before any processing forming part of a new filing system where a DPIA indicates a high risk that has not been mitigated, or where the processing presents a high risk due to the mechanisms or technologies used.</p>
+
+<h2>Lawful Bases for Processing</h2>
+<p>Personal data may be processed only with the <strong>express consent</strong> of the data subject (or the consent of the legal representatives of a child, failing which by authorisation of the competent judge). The data subject may withdraw consent at any time.</p>
+<p>Consent is not required if processing is necessary:</p>
+<ul>
+<li>To comply with a legal obligation to which the data subject or the data controller is subject;</li>
+<li>To protect the data subject's life;</li>
+<li>For the performance of a contract to which the data subject is a party, or pre-contractual measures at their request;</li>
+<li>To safeguard the vital interests of the person concerned, if they are physically or legally unable to give consent;</li>
+<li>For the performance of a task in the public interest or exercise of official authority;</li>
+<li>For the legitimate interests of the data controller or recipient, within the fundamental rights and freedoms of the data subject.</li>
+</ul>
+
+<h2>Data Processing Principles</h2>
+<p>Under Article 9 of Law 18-07, personal data must be:</p>
+<ul>
+<li>Processed lawfully and fairly;</li>
+<li>Collected for specified, explicit, and legitimate purposes and not further processed in an incompatible way;</li>
+<li>Adequate, relevant, and not excessive in relation to the purposes;</li>
+<li>Accurate, complete, and, where necessary, kept up to date;</li>
+<li>Kept in a form permitting identification for no longer than necessary.</li>
+</ul>
+
+<h2>Processing of Sensitive Data</h2>
+<p>Processing of sensitive personal data—revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, or health (including genetic data)—is forbidden except when:</p>
+<ul>
+<li>Processing is necessary to safeguard the vital interests of the data subject or another person, and the data subject is physically or legally unable to give consent;</li>
+<li>Processing is carried out with consent by a foundation, association, or non-profit organization of a political, philosophical, religious, or trade union nature, within its legitimate activities, provided data are not communicated to third parties without consent;</li>
+<li>Processing relates to data clearly made public by the data subject;</li>
+<li>Processing is necessary for the recognition, exercise, or defence of legal claims;</li>
+<li>Processing of genetic data by doctors or biologists is necessary for preventive medicine, medical diagnostics, and administration of care or treatment.</li>
+</ul>
+
+<h2>Children's Data</h2>
+<p>There is no specific age limit regarding the data subject under Law 18-07. However, processing of personal data relating to a child may only be carried out after obtaining the consent of the child's legal representative or, where applicable, the authorisation of the competent judge. The judge may authorise such processing even without the legal representative's consent where the best interests of the child so require, and may withdraw such authorisation at any time.</p>
+
+<h2>Law Enforcement Processing</h2>
+<p>Personal data relating to offences, penalties, and security measures may only be processed by the judicial authority, legally empowered public services, court officials, justice auxiliaries, and prison administration services, within their legal powers.</p>
+<p>Law 25-11 introduced a new Title V bis governing processing for the prevention and detection of offences, investigations, criminal inquiries, prosecutions, enforcement, and application of penalties. Such processing may only be carried out by judicial authorities, authorized investigative bodies, judicial auxiliaries, and prison administration services. Prior consent is not required, and processing must comply with legal requirements regarding purpose, data security, and scope. Certain data subject rights may be restricted for law enforcement purposes.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Data subjects enjoy the following rights:</p>
+<ul>
+<li><strong>Right to information:</strong> To be expressly and unequivocally informed in advance of the identity of the controller, purposes of processing, recipients, and the transfer of data abroad;</li>
+<li><strong>Right of access:</strong> To obtain confirmation of whether data is processed, the purposes, categories of data, recipients, and a copy of the data in an intelligible form, along with information on its origin;</li>
+<li><strong>Right to rectification:</strong> To obtain updating, rectification, erasure, or blocking of data that is incomplete, inaccurate, or unlawfully processed. The controller must make corrections at no cost within 10 days. If refused or unanswered, the data subject may request the Authority to investigate;</li>
+<li><strong>Right to object:</strong> For legitimate reasons, to object to processing, including an absolute right to object to the use of data for prospecting or commercial purposes;</li>
+<li><strong>Heirs' rights:</strong> The heirs of the person concerned may exercise the right to rectification.</li>
+</ul>
+<p>The data controller may request from the Authority an extension of the response time for legitimate access requests and may object to requests that are manifestly abusive (especially due to their number or repetitive nature). The burden of proof rests with the data controller.</p>
+
+<h2>Automated Decision-Making and Profiling</h2>
+<p>Court decisions requiring an assessment of a person's conduct may not be based solely on automated processing of personal data involving the evaluation of personality aspects. No other decision having legal effects on an individual may be taken solely on the basis of automated data processing designed to characterize an individual or evaluate aspects of their personality, including profiling.</p>
+<p>The 2025 amendment explicitly recognizes profiling and implicitly introduces stricter requirements regarding transparency, proportionality, and the limitation of decisions based solely on automated processing.</p>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>Under Law 25-11, controllers and any public authority responsible for the prevention and detection of offences, investigations, inquiries, prosecutions, enforcement and execution of sentences, or any body exercising public authority and law enforcement powers, <strong>must appoint a Data Protection Officer (DPO)</strong>.</p>
+<p>The DPO must be selected on the basis of professional qualities and expertise in data protection law and practices. The DPO's duties include:</p>
+<ul>
+<li>Informing and advising on compliance obligations;</li>
+<li>Monitoring compliance with applicable data protection rules and internal policies;</li>
+<li>Advising on data protection impact assessments (DPIAs);</li>
+<li>Acting as the contact point with the National Authority.</li>
+</ul>
+
+<h2>Controller and Processor Obligations</h2>
+<p>Controllers and processors must implement appropriate technical and organizational measures to protect personal data against accidental or unlawful destruction, loss, alteration, unauthorized dissemination or access. They must respect professional secrecy even after ceasing their functions (Article 40).</p>
+<p>Law 25-11 imposes additional obligations:</p>
+<ul>
+<li><strong>Records of processing:</strong> Controllers and processors must maintain detailed records of processing activities (identity and contact details of the controller, purposes and legal basis, categories of data subjects and data, recipients, retention periods, security measures, and international transfers). These records must be made available to the Authority upon request;</li>
+<li><strong>Automated logbook:</strong> Controllers must maintain an automated logbook of personal data processing operations;</li>
+<li><strong>DPIAs:</strong> A data protection impact assessment is required before processing likely to result in a high risk to the rights and freedoms of natural persons, taking into account the nature, scope, context, and purposes of processing;</li>
+<li><strong>Prior consultation:</strong> Where a DPIA indicates high risk not mitigated by the controller, prior consultation with the Authority is required.</li>
+</ul>
+
+<h2>Data Breach Notification</h2>
+<p>Article 45 bis 8 of Law 25-11 introduces a mandatory obligation for the data controller to notify the Authority <strong>no later than five (5) days</strong> after becoming aware of a personal data breach. Where the notification is made after this deadline, the reasons for the delay must be provided.</p>
+<p>Where the breach is likely to result in a high risk to individuals, the data subject must also be informed in clear and simple terms. Processors must inform the data controller of any breach as soon as they become aware of it.</p>
+<p>Failure by a service provider to notify the Authority or the data subject of a personal data breach is punishable by imprisonment and a fine.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>The data controller may transfer personal data to a foreign State only with the <strong>authorisation of the National Authority</strong>, and only if that State ensures a sufficient level of protection of privacy and fundamental rights and freedoms. It is prohibited, in any case, to communicate or transfer data to a foreign country when such transfer is likely to endanger public security or the vital interests of the State.</p>
+<p>Derogations from the general authorisation requirement (Article 45) allow transfers when:</p>
+<ul>
+<li>The data subject has expressly consented;</li>
+<li>The transfer is necessary to preserve the life of the data subject, public interest, comply with obligations for legal claims, execute a contract, execute an international judicial cooperation measure, or prevent/diagnose/treat medical conditions;</li>
+<li>The transfer is carried out pursuant to a bilateral or multilateral agreement to which Algeria is a party;</li>
+<li>The transfer is authorised by the Authority where processing complies with the Law.</li>
+</ul>
+<p>Law 25-11 introduces Articles 45 bis 13 and 45 bis 14, requiring an <strong>adequacy-type assessment</strong> by the Authority prior to transfers to a foreign State or international organisation, and restricting onward transfers without the sender's prior consent, subject to narrow exceptions.</p>
+
+<h2>Direct Marketing and Cookies</h2>
+<p>Direct prospecting is forbidden except by email under certain conditions. Law 18-05 of 10 May 2018 on electronic commerce provides that e-providers collecting personal data must collect only data necessary for commercial transactions, obtain the consent of e-consumers prior to collection, guarantee the security and confidentiality of data, and comply with applicable provisions.</p>
+<p>There is no specific provision related to cookies or adtech in Law 18-07 or Law 25-11.</p>
+
+<h2>Enforcement and Sanctions</h2>
+
+<h3>Administrative Sanctions</h3>
+<p>The ANPDP may impose the following administrative sanctions:</p>
+<ul>
+<li>A warning;</li>
+<li>A formal notice;</li>
+<li>Provisional withdrawal (up to one year) or definitive withdrawal of the declaration receipt or authorisation;</li>
+<li>A fine.</li>
+</ul>
+<p>The Authority may also impose fines on controllers that refuse data subject rights without legitimate reason, or that fail to make required notifications.</p>
+
+<h3>Criminal Sanctions</h3>
+<p>Various criminal offences are prescribed under Law 18-07 (Articles 47 to 74), including:</p>
+<ul>
+<li>Violation of the obligation to obtain explicit consent;</li>
+<li>Failure to comply with the declaration regime;</li>
+<li>Transfer of personal data without authorization;</li>
+<li>Collection of data by fraudulent, unfair, or unlawful means;</li>
+<li>Obstruction of the Authority's actions (opposing inspections, refusing to provide information, concealing or destroying documents, providing false information).</li>
+</ul>
+<p>Criminal sanctions range from <strong>two months to five years' imprisonment</strong> and fines ranging from <strong>20,000 DZD to 1,000,000 DZD</strong>. In the event of a repeat offence, sanctions are doubled. Additional penalties from the Criminal Code may apply.</p>
+
+<h3>Other Enforcement Powers</h3>
+<ul>
+<li>To issue and publish information notices;</li>
+<li>To confiscate the object of the offence for reassignment or destruction, with costs borne by the convicted party;</li>
+<li>To order the erasure of all or part of the personal data involved in the processing;</li>
+<li>To verify that erasure has been carried out.</li>
+</ul>
+<p>A data subject may also make a claim to the courts for compensation for material or non-material damage.</p>
+
+<h2>Cybersecurity Framework</h2>
+<p>Algeria does not have a single standalone cybersecurity law; instead, it relies on a combination of general provisions:</p>
+<ul>
+<li>The Criminal Code (Articles 394 bis and following) protects the integrity of automated data processing systems;</li>
+<li>Law No. 09-04 of 5 August 2009 on the Prevention and Combating of Offences Related to Information and Communication Technologies;</li>
+<li>Law No. 18-04 of 10 May 2018 on general rules relating to post and electronic communications;</li>
+<li>Presidential Decree No. 20-05 of 20 January 2020 establishing the national information systems security framework, amended by Presidential Decree No. 25-298 of 10 November 2025, creating the National Council for the Security of Information Systems (CNSSI) and the National Agency for the Security of Information Systems (ANSSI);</li>
+<li>Presidential Decree No. 25-320 of 30 December 2025 establishing a national data governance framework;</li>
+<li>Presidential Decree No. 25-321 of 30 December 2025 approving the national information systems security strategy for 2025–2029;</li>
+<li>Presidential Decree No. 26-07 of 7 January 2026 establishing dedicated cybersecurity units within public institutions.</li>
+</ul>
+<p>The national cybersecurity governance involves CNSSI (strategic coordination) and ANSSI (technical and operational execution), alongside the <strong>DZ-CERT</strong> (Algerian Computer Emergency Response Team) hosted by CERIST, which serves as the national operational center for cybersecurity incident response.</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Law No. 18-07 on the Protection of Natural Persons in Personal Data Processing</td></tr>
+<tr><td><strong>Enacted</strong></td><td>10 June 2018</td></tr>
+<tr><td><strong>Major Amendment</strong></td><td>Law No. 25-11 of 24 July 2025</td></tr>
+<tr><td><strong>Fully Applicable Since</strong></td><td>August 2023</td></tr>
+<tr><td><strong>Regulator</strong></td><td>National Authority for the Protection of Personal Data (ANPDP)</td></tr>
+<tr><td><strong>Registration</strong></td><td>Mandatory (prior declaration; authorisation for high-risk processing)</td></tr>
+<tr><td><strong>DPO</strong></td><td>Mandatory (controllers and public authorities)</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>Within 5 days to the Authority; data subjects if high risk</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Prior authorisation required; adequacy assessment</td></tr>
+<tr><td><strong>Children's Consent Age</strong></td><td>No specific age; legal representative consent required</td></tr>
+<tr><td><strong>Max Administrative Fine</strong></td><td>Up to 1,000,000 DZD (criminal fines); administrative fines also apply</td></tr>
+<tr><td><strong>Max Imprisonment</strong></td><td>Up to 5 years (doubled for repeat offences)</td></tr>
+<tr><td><strong>Cookie/Adtech Regime</strong></td><td>No specific provision</td></tr>
+<tr><td><strong>Risk Scale</strong></td><td>Moderate</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 28.0, lng: 1.7 },
     color: '#22C55E',
     topics: [
@@ -3134,13 +3349,13 @@ export const countries: Country[] = [
       { title: 'Consent Requirements', status: 'Addressed', icon: 'CheckCircle' },
       { title: 'Data Subject Rights', status: 'Addressed', icon: 'Users' },
       { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
-      { title: 'Breach Notification', status: 'Partial', icon: 'AlertCircle' },
-      { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Partial', icon: 'Users' },
+      { title: 'Breach Notification', status: 'Addressed', icon: 'AlertCircle' },
+      { title: 'DPO Requirements', status: 'Addressed', icon: 'Shield' },
+      { title: "Children's Data", status: 'Addressed', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
       { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
-      { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
-      { title: 'AI & Automated Decisions', status: 'None', icon: 'Scale' },
+      { title: 'Cookie/Tracking', status: 'None', icon: 'FileText' },
+      { title: 'AI & Automated Decisions', status: 'Partial', icon: 'Scale' },
       { title: 'Data Localisation', status: 'Partial', icon: 'Database' },
       { title: 'Significant Data Fiduciary', status: 'None', icon: 'Shield' },
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
