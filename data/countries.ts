@@ -2810,15 +2810,238 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'uzbekistan',
     name: 'Uzbekistan',
     flag: '🇺🇿',
-    lawName: 'Law on Personal Data (2019)',
-    authority: 'Personalization Agency under the Ministry of Justice / designated state authority',
+    lawName: 'Law on Personal Data (No. LRU-547, 2019)',
+    authority: 'State Personalization Center under the Cabinet of Ministers',
     region: 'Asia',
     level: 'Substantial',
-    overview: "Uzbekistan’s personal data regime, anchored in the Law on Personal Data (ZRU-547, in force since October 2019), underwent a significant liberalisation in March 2026 through amendment ZRU-1125. The revised data localisation rule is now category-specific: biometric data, genetic data, and data of users of telecommunications operators active in Uzbekistan must be stored on servers physically located within the country. All other categories of personal data may be stored and processed abroad, provided one of three conditions is met: the destination country is officially recognised as providing adequate protection; the controller adopts approved standard contractual clauses or binding corporate rules; or the controller complies with international data management standards published by the competent authority. This reform was explicitly designed to unblock the launch of international payment services including Apple Pay and Google Pay, which had been hindered by the prior blanket localisation requirement. The competent authority is the Agency for Personal Data Protection, which has intensified enforcement since 2025, conducting inspections and issuing fines to unregistered controllers. Organisations processing Uzbek data should verify registration, audit data flows by category, and reassess transfer mechanisms against the post-2026 framework rather than relying on pre-amendment compliance assumptions.",
+    overview: "Uzbekistan's data protection regime is governed by the Law on Personal Data (No. LRU-547), adopted on 2 July 2019 and in force since 1 October 2019. The law establishes a comprehensive framework for data processing, overseen by the State Personalization Center under the Cabinet of Ministers. Uzbekistan operates a mandatory notification-based registration system for personal databases in the State Register. A key feature of the law is its strict data localisation requirement (Article 27-1), mandating that personal data of Uzbek citizens be collected, systematized, and stored on technical means physically located within Uzbekistan. Cross-border transfers are permitted only to countries ensuring adequate protection or with the data subject's consent. The law is accompanied by a detailed Model Procedure for Processing Personal Data issued by the Ministry of Justice in November 2023, which provides operational guidance for controllers and operators.",
+    detailedContent: `
+<h2>What is the Law on Personal Data?</h2>
+<p>Uzbekistan's primary data protection framework is the <strong>Law on Personal Data (No. LRU-547)</strong>, adopted by the Legislative Chamber on 16 April 2019, approved by the Senate on 21 June 2019, and signed by the President on 2 July 2019. The law entered into force on <strong>1 October 2019</strong>.</p>
+<p>The purpose of the law is to regulate relations in the field of personal data processing, ensuring the protection of constitutional rights and freedoms of individuals. Where an international treaty to which Uzbekistan is a party establishes rules differing from domestic law, the rules of the international treaty prevail.</p>
+<p>In November 2023, the Ministry of Justice approved a <strong>Model Procedure for the Processing of Personal Data</strong> (registered under No. 3478), which provides detailed operational guidance to support the implementation of the Law.</p>
+
+<h2>Scope and Exclusions</h2>
+<p>The law applies to relations arising from the processing and protection of personal data, regardless of the means of processing used, including information technology. However, it does not apply to:</p>
+<ul>
+<li>Processing of personal data by an individual for personal, domestic purposes and not related to professional or commercial activity;</li>
+<li>The formation, storage, and use of documents of the National Archival Fund and other archival documents containing personal data;</li>
+<li>Processing of personal data related to information constituting state secrets;</li>
+<li>Processing of personal data obtained in the course of operational-search, intelligence, and counter-intelligence activities, combating crime, law enforcement, and counteracting the legalization of proceeds of crime.</li>
+</ul>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Information recorded on electronic, paper, and/or other tangible media relating to a specific individual or giving the possibility of their identification.</p>
+
+<h3>Personal Data Subject</h3>
+<p>An individual to whom personal data relates.</p>
+
+<h3>Personal Database</h3>
+<p>A database in the form of an information system containing personal data.</p>
+
+<h3>Processing of Personal Data</h3>
+<p>The implementation of one or a combination of actions to collect, systematize, store, modify, supplement, use, provide, distribute, transfer, anonymize, and destroy personal data.</p>
+
+<h3>Operator</h3>
+<p>A state body, individual, and/or legal entity that processes personal data.</p>
+
+<h3>Owner</h3>
+<p>A state body, individual, and/or legal entity having the right to own, use, and dispose of a personal database.</p>
+
+<h3>Special Personal Data</h3>
+<p>Data on racial or social origin, political, religious, or ideological beliefs, membership in political parties and trade unions, as well as data relating to physical or mental health, private life, and criminal record.</p>
+
+<h3>Biometric and Genetic Data</h3>
+<p>Biometric data characterizes the anatomical and physiological characteristics of the subject. Genetic data relates to inherited or acquired characteristics resulting from biological analysis.</p>
+
+<h2>State Regulation and Supervisory Authority</h2>
+<p>State regulation in the field of personal data is carried out by the <strong>Cabinet of Ministers</strong> and the <strong>authorized state body</strong>.</p>
+
+<h3>Cabinet of Ministers</h3>
+<p>The Cabinet ensures the implementation of a unified state policy, approves state programs, determines the procedure for maintaining the State Register of Personal Databases, and sets requirements for security levels, data protection, and storage of biometric/genetic data.</p>
+
+<h3>State Personalization Center</h3>
+<p>The authorized state body is the <strong>State Personalization Center</strong> under the Cabinet of Ministers. Its functions include:</p>
+<ul>
+<li>Implementing state policy in the field of personal data;</li>
+<li>Approving the model procedures for processing personal data and organizing the activities of responsible structural units;</li>
+<li>Maintaining the State Register of Personal Databases;</li>
+<li>Issuing registration certificates for personal databases;</li>
+<li>Exercising state control over compliance;</li>
+<li>Determining the necessary level of security of personal data;</li>
+<li>Issuing binding orders to eliminate violations;</li>
+<li>Cooperating with foreign authorities and international organizations.</li>
+</ul>
+
+<h2>Basic Principles of Processing</h2>
+<p>The law establishes the following fundamental principles:</p>
+<ul>
+<li>Observance of constitutional rights and freedoms of humans and citizens;</li>
+<li>Legitimacy of the purposes and methods of processing;</li>
+<li>Accuracy and reliability of personal data;</li>
+<li>Confidentiality and security of personal data;</li>
+<li>Equality of rights of subjects, owners, and operators;</li>
+<li>Security of the individual, society, and the state.</li>
+</ul>
+
+<h2>Lawful Conditions for Processing</h2>
+<p>Personal data processing is permitted in the following cases:</p>
+<ul>
+<li>The <strong>subject's consent</strong> to the processing;</li>
+<li>Processing is necessary to fulfill a <strong>contract</strong> to which the subject is a party, or to take pre-contractual measures at the subject's request;</li>
+<li>Processing is necessary to fulfill the <strong>legal obligations</strong> of the owner/operator;</li>
+<li>Processing is necessary to protect the <strong>legitimate interests</strong> of the subject or another person;</li>
+<li>Processing is necessary to exercise the <strong>rights and legitimate interests</strong> of the owner/operator or a third party, or to achieve socially significant purposes (provided rights of subjects are not violated);</li>
+<li>Processing for <strong>statistical or research purposes</strong>, subject to mandatory anonymization;</li>
+<li>The data is obtained from <strong>publicly available sources</strong>.</li>
+</ul>
+<p>If processing is necessary to protect the rights and legitimate interests of the subject, it may be carried out without consent until such consent can be obtained.</p>
+
+<h2>Consent Requirements</h2>
+<p>The subject agrees to the processing of personal data in any form that confirms the fact of its receipt. However, for the processing of <strong>special personal data</strong> and for <strong>dissemination</strong> beyond original purposes, the subject's consent must be in <strong>writing</strong>, including in the form of an electronic document.</p>
+<p>For incapacitated or limited-capacity subjects, written consent is given by the legal representative. For minors, consent is given by parents or guardians. In the event of death, consent is given by heirs if not previously provided by the subject.</p>
+<p>The subject may withdraw consent in the form in which it was given, or in writing. Upon withdrawal, the operator must destroy the data within the timeframe specified in the Model Procedure (typically by the next working day).</p>
+
+<h2>Registration of Personal Databases</h2>
+<p>Uzbekistan operates a <strong>notification-based registration system</strong>. Personal databases are subject to registration in the <strong>State Register of Personal Databases</strong>.</p>
+<p>The following databases are <strong>exempt from registration</strong>:</p>
+<ul>
+<li>Databases of public associations or religious organizations (if data is not distributed to third parties);</li>
+<li>Data made publicly available by the subject;</li>
+<li>Data containing only last name, first name, and patronymic;</li>
+<li>Data necessary for a single pass to a territory;</li>
+<li>Data included in state automated information systems;</li>
+<li>Data processed without automation;</li>
+<li>Data processed in accordance with labor law.</li>
+</ul>
+<p>Owners/operators must notify the authorized body of any change in registration data within <strong>10 calendar days</strong>.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Subjects have the following rights:</p>
+<ul>
+<li><strong>Right to know:</strong> Whether the owner/operator holds their personal data and its composition;</li>
+<li><strong>Right of access:</strong> To receive information about the processing (grounds, purposes, methods, recipients, retention periods, cross-border transfers);</li>
+<li><strong>Right to rectification:</strong> To request change or addition of data within 3 days;</li>
+<li><strong>Right to withdraw consent</strong> at any time;</li>
+<li><strong>Right to object:</strong> To temporarily suspend processing if data is incomplete, outdated, inaccurate, illegally obtained, or unnecessary;</li>
+<li><strong>Right to appeal:</strong> To the authorized body or court for protection of rights;</li>
+<li><strong>Right regarding automated decisions:</strong> Not to be subject to a decision based solely on automated processing that affects legal rights (exceptions apply);</li>
+<li><strong>Right to give consent for distribution</strong> in public sources.</li>
+</ul>
+
+<h2>Owner and Operator Obligations</h2>
+<p>Owners and operators must:</p>
+<ul>
+<li>Comply with personal data laws;</li>
+<li>Provide information upon request of the subject;</li>
+<li>Approve the composition of personal data necessary for tasks;</li>
+<li>Destroy data when purposes are achieved or consent is withdrawn;</li>
+<li>Provide evidence of consent where required;</li>
+<li>Change/add data upon documentary confirmation, or destroy if impossible;</li>
+<li>Temporarily suspend or destroy data if violations are identified;</li>
+<li>Notify subjects in writing of changes, destruction, or restrictions;</li>
+<li>Notify subjects in writing within 3 days of transferring data to a third party;</li>
+<li>Register personal databases;</li>
+<li>Take legal, organizational, and technical measures to protect data;</li>
+<li>Designate a <strong>structural unit or official</strong> responsible for processing and protection of personal data.</li>
+</ul>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>Uzbekistan does not require the appointment of a Data Protection Officer in the GDPR sense. Instead, the owner/operator must designate a <strong>structural unit or official responsible for the work related to the processing and protection of personal data</strong>, and ensure its work in accordance with the Model Procedure. This is a functional equivalent of a DPO, tailored to the local administrative context.</p>
+
+<h2>Processing of Special Personal Data</h2>
+<p>The processing of special personal data is <strong>prohibited</strong> as a general rule, with exceptions including:</p>
+<ul>
+<li>Ensuring state security from external and internal threats by the authorized state body;</li>
+<li>Written consent of the subject (including electronic form);</li>
+<li>Data published by the subject in publicly available sources;</li>
+<li>Protection of rights and legitimate interests of the subject or other persons;</li>
+<li>Activities of courts and law enforcement agencies in criminal cases and enforcement proceedings;</li>
+<li>Prosecution authorities countering money laundering and terrorism financing;</li>
+<li>State statistics bodies (with mandatory anonymization);</li>
+<li>Medical and social services, medical diagnosis, and treatment by medical professionals;</li>
+<li>Labor relations;</li>
+<li>Protection of legitimate interests of subjects with incapacity or limited capacity;</li>
+<li>Disclosure of data of candidates for elected public office;</li>
+<li>Activities of non-governmental non-profit organizations, religious organizations, political parties, or trade unions (regarding their members/employees);</li>
+<li>Processing of data of children left without parental care;</li>
+<li>Ensuring state security;</li>
+<li>Processing of criminal record data by state bodies.</li>
+</ul>
+
+<h2>Biometric and Genetic Data</h2>
+<p>Biometric and genetic data used to identify the subject may be processed only with the subject's consent, except for cases related to international treaties, administration of justice, enforcement proceedings, or other cases provided by law. The use and storage of biometric/genetic data in electronic form outside information systems may only be carried out on tangible media that exclude unauthorized access.</p>
+
+<h2>Data Localisation Requirement (Article 27-1)</h2>
+<p>This is a critical and distinctive feature of Uzbekistan's framework. When processing personal data of <strong>citizens of the Republic of Uzbekistan</strong> using information technologies (including the Internet), the owner and/or operator <strong>must ensure that such data is collected, systematized, and stored in technical means physically located on the territory of the Republic of Uzbekistan</strong>, and in personal data bases registered in the State Register.</p>
+<p>This localisation requirement is strict and applies broadly to processing activities involving Uzbek citizens' data.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>Cross-border transfer is the transfer of personal data by the owner/operator outside the territory of Uzbekistan. Transfers are permitted to foreign states that <strong>ensure adequate protection</strong> of the rights of data subjects.</p>
+<p>Transfers to states that do not provide adequate protection may be carried out only in the following cases:</p>
+<ul>
+<li>The subject's <strong>consent</strong> to the cross-border transfer;</li>
+<li>Necessary to protect the <strong>constitutional order</strong>, public order, rights and freedoms of citizens, health, and morality;</li>
+<li>Stipulated by <strong>international treaties</strong> of Uzbekistan.</li>
+</ul>
+<p>Cross-border transfer may be prohibited or restricted to protect the constitutional order, morality, health, rights, and legitimate interests of Uzbek citizens, or to ensure national defense and state security.</p>
+
+<h2>Automated Decision-Making</h2>
+<p>The subject has the right not to be subject to a decision based solely on automated processing that affects their rights and legitimate interests, except where:</p>
+<ul>
+<li>The subject has given <strong>written consent</strong>;</li>
+<li>The decision is made pursuant to an <strong>agreement</strong> between the owner and the subject;</li>
+<li>The decision is <strong>prescribed by law</strong>.</li>
+</ul>
+<p>The owner/operator must explain the decision-making procedure, provide an opportunity to object, and respond to objections within 10 days.</p>
+
+<h2>Data Security Measures</h2>
+<p>The owner/operator and third parties must take legal, organizational, and technical measures to ensure:</p>
+<ul>
+<li>Realization of the subject's right to protection from interference in private life;</li>
+<li>Integrity and safety of personal data;</li>
+<li>Confidentiality of personal data;</li>
+<li>Prevention of illegal processing.</li>
+</ul>
+<p>The Model Procedure specifies detailed technical requirements, including separating publicly available and non-public data, determining access rights, installing information security tools, maintaining event logs, using cryptographic protection, and implementing user identification/authentication.</p>
+
+<h2>Breach Notification</h2>
+<p>Uzbekistan's Law on Personal Data does not establish a specific statutory deadline for breach notification to the authorized body (unlike GDPR's 72 hours or Rwanda's 48 hours). However, the general obligations to ensure security, prevent illegal processing, and temporarily suspend processing upon identifying violations serve as the functional equivalent. The Model Procedure requires the operator to take immediate measures to prevent unauthorized access, destruction, alteration, or distribution.</p>
+
+<h2>Enforcement and Sanctions</h2>
+<p>Persons guilty of violating personal data legislation are liable in the prescribed manner under Uzbek law. The authorized body may:</p>
+<ul>
+<li>Exercise state control over compliance;</li>
+<li>Issue binding orders to eliminate violations;</li>
+<li>Determine the necessary level of security;</li>
+<li>Require blocking, suspension, or destruction of data.</li>
+</ul>
+<p>Specific penalties (administrative and criminal) are governed by the Code of Administrative Responsibility and the Criminal Code of Uzbekistan, which provide for fines and other sanctions depending on the nature and severity of the violation.</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Law of the Republic of Uzbekistan on Personal Data (No. LRU-547)</td></tr>
+<tr><td><strong>Adopted</strong></td><td>2 July 2019</td></tr>
+<tr><td><strong>In Force From</strong></td><td>1 October 2019</td></tr>
+<tr><td><strong>Regulator</strong></td><td>State Personalization Center under the Cabinet of Ministers</td></tr>
+<tr><td><strong>Registration</strong></td><td>Mandatory (State Register of Personal Databases, with exemptions)</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not required (responsible unit/official must be designated)</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td><strong>Yes</strong> (Article 27-1 — strict requirement for Uzbek citizens' data)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Adequacy-based, with consent and public interest exceptions</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>No specific statutory deadline (general security obligations apply)</td></tr>
+<tr><td><strong>Special Data</strong></td><td>Prohibited by default, with specific exceptions</td></tr>
+<tr><td><strong>Biometric/Genetic Data</strong></td><td>Consent required; secure tangible media for storage outside systems</td></tr>
+<tr><td><strong>Automated Decisions</strong></td><td>Right to object unless consent, contract, or law applies</td></tr>
+<tr><td><strong>Model Procedure</strong></td><td>Issued by Ministry of Justice (November 2023, No. 3478)</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 41.4, lng: 64.6 },
     color: '#22C55E',
     topics: [
@@ -2828,14 +3051,14 @@ export const countries: Country[] = [
       { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
       { title: 'Breach Notification', status: 'Partial', icon: 'AlertCircle' },
       { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Partial', icon: 'Users' },
+      { title: "Children's Data", status: 'Addressed', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
       { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
-      { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
-      { title: 'AI & Automated Decisions', status: 'None', icon: 'Scale' },
-      { title: 'Data Localisation', status: 'Partial', icon: 'Database' },
+      { title: 'Cookie/Tracking', status: 'None', icon: 'FileText' },
+      { title: 'AI & Automated Decisions', status: 'Partial', icon: 'Scale' },
+      { title: 'Data Localisation', status: 'Addressed', icon: 'Database' },
       { title: 'Significant Data Fiduciary', status: 'None', icon: 'Shield' },
-      { title: 'Government Data', status: 'Partial', icon: 'Building' },
+      { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
   {
