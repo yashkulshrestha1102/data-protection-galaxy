@@ -1900,32 +1900,275 @@ export const countries: Country[] = [
       { title: "Government Data", status: 'Addressed', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'rwanda',
     name: 'Rwanda',
     flag: '🇷🇼',
-    lawName: 'Law No. 058/2021 relating to the Protection of Personal Data and Privacy',
-    authority: 'National Cyber Security Authority (NCSA) / Data Protection Office',
+    lawName: 'Law No. 058/2021 on the Protection of Personal Data and Privacy',
+    authority: 'National Cyber Security Authority (NCSA)',
     region: 'Africa',
-    level: 'Substantial',
-    overview: "Rwanda’s Law No. 058/2021 on the Protection of Personal Data and Privacy, in force since 15 October 2021, is one of Africa’s most demanding data protection statutes on paper. Its most distinctive feature is Article 40, which mandates the designation of a Data Protection Officer for any processing of personal data—not merely for public authorities or large-scale processors as under the GDPR . Failure to appoint a DPO constitutes an administrative misconduct subject to fines . The supervisory authority is the National Cyber Security Authority (NCSA), a cybersecurity agency rather than an independent data protection commission . Cross-border transfers require NCSA authorisation, and personal data must be stored in Rwanda by default unless a storage-abroad certificate is obtained . Penalties reach RWF 5 million or 1% of global annual turnover for administrative violations, rising to 5% of turnover for criminal convictions . However, as of late 2026, no published enforcement decisions had been identified, raising questions about the NCSA’s practical enforcement capacity . Rwanda’s framework is ambitious in scope but remains in an early stage of regulatory maturity.",
+    level: 'Comprehensive',
+    overview: "Rwanda enacted its first comprehensive data protection legislation, Law No. 058/2021 on the Protection of Personal Data and Privacy, on 13 October 2021. The law entered into force on 15 October 2021, with a transition period that ended in October 2023. Notably, Rwanda opted not to create a separate data protection authority; instead, the National Cyber Security Authority (NCSA) serves as the supervisory authority. The law has extra-territorial scope, mandatory registration for controllers and processors, a strict 48-hour breach notification requirement, and a unique right for data subjects to designate an heir to their personal data. Penalties can reach up to 10 years' imprisonment and 5% of annual turnover for criminal offences.",
+    detailedContent: `
+<h2>What is Rwanda's Data Protection Law?</h2>
+<p>Rwanda's first comprehensive data protection legislation, <strong>Law No. 058/2021 Relating to the Protection of Personal Data and Privacy</strong>, was enacted on 13 October 2021 and officially gazetted on 15 October 2021. It came into force on the date of its publication in the Official Gazette.</p>
+<p>The law aims to protect personal data and privacy while determining the rules for their processing. It is part of Rwanda's broader strategy to build a knowledge-based economy and aligns with international best practices, drawing significant inspiration from the EU GDPR and the African Union Convention on Cyber Security and Personal Data Protection (Malabo Convention).</p>
+<p>Existing controllers and processors were given a transition period until <strong>14 October 2023</strong> to bring their operations into compliance. New controllers and processors entering the market are expected to comply immediately.</p>
+
+<h2>Constitutional Foundation</h2>
+<p>The right to privacy is enshrined in <strong>Article 23 of the Constitution of Rwanda</strong>, which guarantees that the private life, family, home, and correspondence of a person shall not be subjected to arbitrary interference. This constitutional guarantee forms the bedrock of the Data Protection Law.</p>
+
+<h2>Scope and Extra-Territorial Application</h2>
+<p>The law applies to:</p>
+<ul>
+<li>The processing of personal data by electronic or other means using an automated or non-automated platform; and</li>
+<li>A data controller, data processor, or third party who:
+  <ul>
+    <li>Is established or resides in Rwanda and processes personal data while in Rwanda; or</li>
+    <li>Is neither established nor resides in Rwanda but processes personal data of data subjects located in Rwanda.</li>
+  </ul>
+</li>
+</ul>
+<p>This extra-territorial scope goes <strong>further than the GDPR</strong> — it does not limit itself to processing related to offering goods or services or monitoring behaviour. Any organisation processing data of individuals located in Rwanda, regardless of size or volume, must comply with the law. Data processors are directly liable under this law and face almost the same obligations and sanctions as data controllers.</p>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Any information relating to an identified or identifiable natural person who can be identified, directly or indirectly, by reference to an identifier such as a name, identification number, location data, online identifier, or factors specific to the physical, psychological, genetic, mental, economic, cultural, or social identity of that person.</p>
+
+<h3>Sensitive Personal Data</h3>
+<p>Information revealing a person's:</p>
+<ul>
+<li>Race;</li>
+<li>Health status;</li>
+<li>Criminal records;</li>
+<li>Medical records;</li>
+<li>Social origin;</li>
+<li>Religious or philosophical beliefs;</li>
+<li>Political opinion;</li>
+<li>Genetic or biometric information;</li>
+<li>Sexual life; or</li>
+<li>Family details.</li>
+</ul>
+
+<h3>Other Key Terms</h3>
+<p>The law introduces several GDPR-inspired definitions, including <em>tokenisation</em> (replacing sensitive data with unique identification symbols), <em>profiling</em> (automated processing to evaluate personal aspects), and <em>pseudonymisation</em>. <em>Consent</em> must be freely given, specific, informed, and unambiguous — expressed orally, in writing, electronically, or by clear affirmative action.</p>
+
+<h2>Supervisory Authority: NCSA</h2>
+<p>Unlike many jurisdictions, Rwanda did <strong>not create a standalone data protection authority</strong>. The <strong>National Cyber Security Authority (NCSA)</strong> serves as the supervisory authority, with the power to issue mandatory and optional regulations, oversee compliance, and impose sanctions.</p>
+<p>Sector-specific regulatory authorities (such as the Rwanda Utilities Regulatory Authority for the ICT sector) may, in conjunction with NCSA, issue sector-specific regulations governing personal data and privacy protection.</p>
+
+<h2>Registration Requirement (Mandatory)</h2>
+<p>This is a distinctive feature of African data protection laws. <strong>Any person who intends to be a data controller or data processor must register with the NCSA before processing personal data.</strong> The application must include:</p>
+<ul>
+<li>Identity and designated single point of contact;</li>
+<li>Identity and address of the representative (if nominated);</li>
+<li>Description of the personal data to be processed and categories of data subjects;</li>
+<li>Whether the applicant holds or is likely to hold the types of personal data based on operating sectors;</li>
+<li>Purposes of processing;</li>
+<li>Categories of recipients to whom data will be disclosed;</li>
+<li>Countries to which data will be transferred directly or indirectly;</li>
+<li>Risks in processing and measures to prevent such risks.</li>
+</ul>
+<p>The NCSA issues a registration certificate within <strong>30 working days</strong> of receiving the application. Certificates have an expiry date determined by NCSA regulation and must be renewed within 45 working days before expiry. Changes to registered information must be reported within 15 working days.</p>
+
+<h2>Data Protection Principles</h2>
+<p>Controllers and processors must ensure that personal data:</p>
+<ul>
+<li>Are processed lawfully, fairly, and transparently;</li>
+<li>Are collected for explicit, specified, and legitimate purposes and not further processed incompatibly;</li>
+<li>Are related to the purposes for which processing was requested;</li>
+<li>Are accurate and, where necessary, kept up to date;</li>
+<li>Are kept in a form permitting identification for no longer than necessary;</li>
+<li>Are processed in compliance with data subjects' rights.</li>
+</ul>
+
+<h2>Lawful Grounds for Processing</h2>
+<p>Processing is lawful if at least one of the following applies:</p>
+<ul>
+<li>The data subject has given <strong>consent</strong> for a specified purpose (opt-in basis);</li>
+<li>Processing is necessary for the performance of a <strong>contract</strong> to which the data subject is a party, or pre-contractual measures at the data subject's request;</li>
+<li>Processing is necessary for compliance with a <strong>legal obligation</strong>;</li>
+<li>Processing is necessary to protect the <strong>vital interests</strong> of the data subject or another person;</li>
+<li>Processing is necessary for the performance of a <strong>task in the public interest</strong> or exercise of official authority;</li>
+<li>Processing is necessary for the <strong>performance of duties of a public entity</strong>;</li>
+<li>Processing is necessary for the <strong>legitimate interests</strong> of the controller or a third-party recipient (unless overridden by the data subject's rights and freedoms);</li>
+<li>Processing is for <strong>research purposes</strong> upon authorisation by the relevant institution.</li>
+</ul>
+<p>Rwanda is one of the few African countries that explicitly recognises the legitimate interests basis — most ECOWAS member states do not.</p>
+
+<h2>Children's Data</h2>
+<p>For a child under the age of <strong>16</strong>, consent must be obtained from a holder of parental responsibility. Consent is acceptable only if given in the best interest of the child. Consent is not required where processing is necessary to protect the child's vital interests.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Data subjects enjoy a comprehensive set of rights:</p>
+<ul>
+<li><strong>Right to information:</strong> About purposes, recipients, source of data, and transfers;</li>
+<li><strong>Right of access:</strong> To request a copy of personal data and a description of what the controller holds;</li>
+<li><strong>Right to object:</strong> To stop processing that causes or is likely to cause loss, sadness, or anxiety; an absolute right to object to direct marketing;</li>
+<li><strong>Right to personal data portability:</strong> To receive data in a structured, readable format and have it transmitted to another controller where technically feasible;</li>
+<li><strong>Right not to be subject to automated decision-making:</strong> Including profiling, unless based on explicit consent, contract necessity, or law authorisation;</li>
+<li><strong>Right to restriction of processing:</strong> Where accuracy is contested, processing is unlawful, or an objection is pending verification;</li>
+<li><strong>Right to erasure:</strong> Where data are no longer necessary, consent is withdrawn, an objection is upheld, or processing was unlawful;</li>
+<li><strong>Right to rectification:</strong> To correct inaccurate or incomplete personal data;</li>
+<li><strong>Right to designate an heir:</strong> A unique right — while personal data itself does not pass through succession, where the data subject left a will, they can grant an heir full or restricted rights over their personal data;</li>
+<li><strong>Right to representation:</strong> For minors under 16, persons with physical impairments, persons with medically determinable mental impairments, or where otherwise authorised in writing.</li>
+</ul>
+<p>Controllers must respond to requests within <strong>30 days</strong>. If unsatisfied, data subjects may appeal to NCSA within 30 days, and NCSA must respond within 60 days.</p>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>Controllers and processors must appoint a Data Protection Officer (DPO) where:</p>
+<ul>
+<li>Processing is carried out by a public or private corporate body or legal entity (except courts);</li>
+<li>Core activities consist of processing operations that require <strong>regular and systematic monitoring</strong> of data subjects on a <strong>large scale</strong>; or</li>
+<li>Core activities consist of <strong>large-scale processing</strong> of special categories of data or personal data relating to criminal convictions.</li>
+</ul>
+<p>The DPO must have expert knowledge of personal data protection. They may be a permanent staff member or a contractor under a service agreement. A group of undertakings may appoint a single DPO provided the DPO is easily accessible from each establishment. The DPO's contact details must be published and communicated to NCSA.</p>
+
+<h2>Controller and Processor Obligations</h2>
+<p>Key obligations include:</p>
+<ul>
+<li>Implement appropriate <strong>technical and organisational measures</strong>;</li>
+<li>Maintain a <strong>record of personal data processing operations</strong>;</li>
+<li>Carry out <strong>data protection impact assessments (DPIAs)</strong> where processing is likely to result in high risk — including systematic and extensive evaluation through automated processing, large-scale processing of sensitive data, systematic monitoring of publicly accessible areas, processing identified by NCSA as high-risk, or use of new technologies;</li>
+<li>Maintain <strong>personal data logging</strong> at least for collection, alteration, access, disclosure, combination, and erasure;</li>
+<li>Designate a <strong>representative in Rwanda</strong> if not established locally;</li>
+<li>Obtain a <strong>registration certificate</strong> before processing personal data;</li>
+<li>Provide required <strong>information to data subjects</strong> at the time of collection (identity, purposes, recipients, rights, retention period, transfers).</li>
+</ul>
+
+<h2>Data Breach Notification</h2>
+<p>Rwanda has a <strong>strict breach notification regime</strong>, shorter than the GDPR:</p>
+<ul>
+<li>Data controllers must notify the <strong>supervisory authority within 48 hours</strong> of becoming aware of a personal data breach;</li>
+<li>Data processors must notify the <strong>data controller within 48 hours</strong> of becoming aware;</li>
+<li>A detailed breach <strong>report must be submitted to NCSA within 72 hours</strong>;</li>
+<li>Where the breach is likely to result in a <strong>high risk</strong> to data subjects' rights and freedoms, the controller must communicate the breach to affected data subjects in writing or electronically;</li>
+<li>Notification to data subjects is not required if the controller has implemented protective measures rendering the breach unlikely to result in high risk, has taken measures ensuring the high risk is no longer likely, or has communicated to the public in an equally effective manner.</li>
+</ul>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>Cross-border transfers are permitted only under specific circumstances:</p>
+<ul>
+<li><strong>Authorisation from NCSA</strong> after providing proof of appropriate safeguards;</li>
+<li>The data subject has <strong>consented</strong>;</li>
+<li>The transfer is <strong>necessary</strong> for:
+  <ul>
+    <li>Performance of a contract between the data subject and controller, or pre-contractual measures;</li>
+    <li>Performance of a contract concluded in the data subject's interest;</li>
+    <li>Public interest grounds;</li>
+    <li>Establishment, exercise, or defence of a legal claim;</li>
+    <li>Protection of vital interests where the data subject is physically or legally incapable of consenting;</li>
+    <li>Compelling legitimate interests not overridden by the data subject's rights, where the transfer is not repetitive and concerns only a limited number of data subjects, and appropriate safeguards are in place;</li>
+    <li>Performance of international instruments ratified by Rwanda.</li>
+  </ul>
+</li>
+</ul>
+<p>The controller or processor must enter into a <strong>written contract</strong> with the recipient setting out roles and responsibilities. NCSA may prohibit or suspend transfers to protect data subjects' rights.</p>
+
+<h2>Data Localisation Requirement</h2>
+<p>This is a notable feature of Rwanda's framework. <strong>Personal data must be stored in Rwanda</strong>. Storage outside Rwanda is permitted <strong>only if</strong> the controller or processor holds a valid <strong>registration certificate authorising storage outside Rwanda</strong>, issued by NCSA. This effectively creates a certificate-based exemption regime for overseas storage.</p>
+
+<h2>Data Retention</h2>
+<p>Data must be retained until the purposes of processing are fulfilled. Longer retention is permitted where:</p>
+<ul>
+<li>Authorised by law;</li>
+<li>Required by a contract between parties;</li>
+<li>The data relates to a function or activity for which it was collected;</li>
+<li>Necessary for preventing, detecting, investigating, prosecuting, or punishing an offender;</li>
+<li>Necessary to protect national security;</li>
+<li>Necessary to enforce a court order;</li>
+<li>Necessary to enforce legislation relating to public revenue collection;</li>
+<li>Necessary to conduct proceedings before a court;</li>
+<li>Necessary for authorised research;</li>
+<li>The data subject has consented.</li>
+</ul>
+<p>At the end of retention, data must be destroyed in a manner that prevents reconstruction in intelligible form.</p>
+
+<h2>Enforcement and Penalties</h2>
+<p>The law provides for both administrative and criminal sanctions:</p>
+
+<h3>Administrative Sanctions</h3>
+<p>For misconducts such as failure to maintain records, failure to log processing, operating without a registration certificate, failure to report changes, failure to designate a DPO, or failure to notify a breach, controllers, processors, or third parties may be fined:</p>
+<ul>
+<li>Between <strong>RWF 2,000,000 and RWF 5,000,000</strong>, OR</li>
+<li><strong>1% of global turnover</strong> of the preceding financial year (for corporate bodies).</li>
+</ul>
+
+<h3>Criminal Sanctions</h3>
+<p>The law criminalises various offences, with penalties including:</p>
+<ul>
+<li><strong>Illegal access, collection, use, sharing, transfer, or disclosure of personal data:</strong> 1–3 years' imprisonment and/or RWF 7,000,000–10,000,000 fine;</li>
+<li><strong>Re-identification of de-identified data:</strong> 1–3 years' imprisonment and/or RWF 7,000,000–10,000,000 fine;</li>
+<li><strong>Destruction, erasure, concealment, or alteration of data:</strong> 3–5 years' imprisonment and/or RWF 7,000,000–10,000,000 fine;</li>
+<li><strong>Sale of personal data:</strong> 5–7 years' imprisonment and/or RWF 12,000,000–15,000,000 fine;</li>
+<li><strong>Illegal collection or processing of sensitive data:</strong> <strong>7–10 years' imprisonment</strong> and/or RWF 20,000,000–25,000,000 fine;</li>
+<li><strong>Providing false information during registration:</strong> 1–3 years' imprisonment and/or RWF 3,000,000–5,000,000 fine.</li>
+</ul>
+<p>Corporate bodies may be fined up to <strong>5% of annual turnover</strong> of the preceding financial year for criminal offences. Courts may also order seizure or confiscation of items used in the offence and order temporary or permanent closure of the entity or premises.</p>
+
+<h2>Dispute Resolution and Compensation</h2>
+<p>NCSA is the organ in charge of settling conflicts arising under the law. A person dissatisfied with NCSA's decision may file a case with a competent court. Anyone who suffers serious damage due to a controller's or processor's violation has the right to claim compensation in court. However, controllers/processors are exempt from liability if they prove they were not responsible for the damage.</p>
+
+<h2>Unique Features of Rwanda's Law</h2>
+<ul>
+<li><strong>No standalone DPA:</strong> NCSA serves as the supervisory authority, unlike most African jurisdictions that have established dedicated data protection authorities;</li>
+<li><strong>Mandatory registration:</strong> Both controllers and processors must register before processing data;</li>
+<li><strong>48-hour breach notification:</strong> Stricter than GDPR's 72-hour rule;</li>
+<li><strong>Right to designate an heir:</strong> A unique right that allows data subjects to grant an heir rights over their personal data after death;</li>
+<li><strong>Direct processor liability:</strong> Processors face almost the same obligations and sanctions as controllers, which is uncommon;</li>
+<li><strong>Broader extra-territorial scope:</strong> Applies to any entity processing data of individuals in Rwanda, regardless of goods/services offering or behaviour monitoring;</li>
+<li><strong>Data localisation with certification exception:</strong> Data must be stored in Rwanda unless the controller holds a certificate authorising storage abroad.</li>
+</ul>
+
+<h2>Transition and Implementation</h2>
+<p>The transition period for existing controllers and processors ended on <strong>14 October 2023</strong>. NCSA has been tasked with issuing implementing regulations on various aspects, including:</p>
+<ul>
+<li>Designation of representatives;</li>
+<li>Management and migration of data in case of business closure or change;</li>
+<li>Additional requirements for registration;</li>
+<li>Validity and renewal of registration certificates;</li>
+<li>Additional misconducts and sanctions;</li>
+<li>Additional grounds for retention and cross-border transfer.</li>
+</ul>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Law No. 058/2021 Relating to the Protection of Personal Data and Privacy</td></tr>
+<tr><td><strong>Enacted</strong></td><td>13 October 2021</td></tr>
+<tr><td><strong>In Force From</strong></td><td>15 October 2021 (published in Official Gazette)</td></tr>
+<tr><td><strong>Transition Period Ended</strong></td><td>14 October 2023</td></tr>
+<tr><td><strong>Regulator</strong></td><td>National Cyber Security Authority (NCSA)</td></tr>
+<tr><td><strong>Dedicated DPA</strong></td><td>No (NCSA serves the role)</td></tr>
+<tr><td><strong>Registration</strong></td><td>Mandatory for controllers and processors</td></tr>
+<tr><td><strong>DPO</strong></td><td>Required in specified circumstances</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>48 hours to NCSA; 72-hour report</td></tr>
+<tr><td><strong>Children's Consent Age</strong></td><td>Under 16 (parental consent required)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Authorisation, consent, or specific necessity grounds</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>Yes (with certification exception for overseas storage)</td></tr>
+<tr><td><strong>Max Administrative Fine</strong></td><td>RWF 5,000,000 or 1% of global turnover</td></tr>
+<tr><td><strong>Max Criminal Penalty</strong></td><td>Up to 10 years' imprisonment; 5% of turnover for companies</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>Right to designate an heir to personal data</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: -1.9, lng: 29.9 },
     color: '#8B5CF6',
     topics: [
-      { title: "Data Protection Authority", status: 'Addressed', icon: 'Building' },
-      { title: "Consent Requirements", status: 'Addressed', icon: 'CheckCircle' },
-      { title: "Data Subject Rights", status: 'Addressed', icon: 'Users' },
-      { title: "Cross-Border Transfer", status: 'Addressed', icon: 'Globe' },
-      { title: "Breach Notification", status: 'Addressed', icon: 'AlertCircle' },
-      { title: "DPO Requirements", status: 'Addressed', icon: 'Shield' },
+      { title: 'Data Protection Authority', status: 'Addressed', icon: 'Building' },
+      { title: 'Consent Requirements', status: 'Addressed', icon: 'CheckCircle' },
+      { title: 'Data Subject Rights', status: 'Addressed', icon: 'Users' },
+      { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
+      { title: 'Breach Notification', status: 'Addressed', icon: 'AlertCircle' },
+      { title: 'DPO Requirements', status: 'Addressed', icon: 'Shield' },
       { title: "Children's Data", status: 'Addressed', icon: 'Users' },
-      { title: "Penalties & Enforcement", status: 'Addressed', icon: 'AlertTriangle' },
-      { title: "Sector-Specific Rules", status: 'Partial', icon: 'Database' },
-      { title: "Cookie/Tracking", status: 'Partial', icon: 'FileText' },
-      { title: "AI & Automated Decisions", status: 'Partial', icon: 'Scale' },
-      { title: "Data Localisation", status: 'Partial', icon: 'Database' },
-      { title: "Significant Data Fiduciary", status: 'None', icon: 'Shield' },
-      { title: "Government Data", status: 'Addressed', icon: 'Building' },
+      { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
+      { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
+      { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
+      { title: 'AI & Automated Decisions', status: 'Addressed', icon: 'Scale' },
+      { title: 'Data Localisation', status: 'Addressed', icon: 'Database' },
+      { title: 'Significant Data Fiduciary', status: 'None', icon: 'Shield' },
+      { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
   {
