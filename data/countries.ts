@@ -2043,7 +2043,7 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'serbia',
     name: 'Serbia',
     flag: '🇷🇸',
@@ -2051,7 +2051,127 @@ export const countries: Country[] = [
     authority: 'Commissioner for Information of Public Importance and Personal Data Protection',
     region: 'Europe',
     level: 'Comprehensive',
-    overview: "Serbia’s Personal Data Protection Law (PDPA), adopted in November 2018 and in application since August 2019, is widely regarded as one of the most GDPR-aligned frameworks in the Western Balkans . The law’s provisions are nearly identical to the GDPR, covering processing principles, data subject rights, controller and processor obligations, and DPO requirements for public authorities and large-scale processors . Cross-border transfers operate through a two-tier mechanism: transfers to countries on the Serbian Government’s adequacy list—which incorporates EU adequacy decisions and Council of Europe Convention parties—proceed without prior authorization, while transfers to non-adequate jurisdictions require appropriate safeguards such as standard contractual clauses or binding corporate rules . The supervisory authority, the Commissioner for Information of Public Importance and Personal Data Protection, holds investigative, corrective, and advisory powers mirroring those of EU DPAs, including the ability to impose administrative fines and suspend data flows . Serbia adopted a Personal Data Protection Strategy for 2023–2030 and is actively pursuing EU adequacy, though a new draft law remains under consultation as of 2026 . Organizations processing Serbian data should treat compliance as functionally equivalent to GDPR obligations.",
+    overview: "Serbia's data protection framework is anchored in the Law on Personal Data Protection (PDPA), adopted in November 2018 and applicable since 21 August 2019, which replaced the outdated 2008 law. Widely regarded as one of the most GDPR-aligned frameworks in the Western Balkans, the law covers processing principles, data subject rights, controller and processor obligations, and DPO requirements. Cross-border transfers operate through a two-tier mechanism — transfers to adequate countries proceed without prior authorisation, while transfers to non-adequate jurisdictions require appropriate safeguards such as standard contractual clauses or binding corporate rules. The supervisory authority is the Commissioner for Information of Public Importance and Personal Data Protection, which holds investigative, corrective, and advisory powers. Serbia adopted a Personal Data Protection Strategy for 2023–2030 and is actively pursuing EU adequacy, though a new draft law remains under consultation as of 2026.",
+    detailedContent: `
+<h2>What is the Serbian Data Protection Law?</h2>
+<p>The Serbian Parliament enacted the <strong>new Law on Personal Data Protection in November 2018</strong> (published in the "Official Gazette of the Republic of Serbia" no. 87/2018), which became applicable as of <strong>21 August 2019</strong> (the "New DP Law"). As of that date, the New DP Law replaced and derogated the previously applicable Law on Personal Data Protection from 2008 (the "Old DP Law"), which had caused a number of ambiguities and uncertainties in practice for market participants.</p>
+<p>The long-awaited New DP Law was enacted as part of the process of accession of the Republic of Serbia to the European Union and harmonization of Serbian regulations with the <em>acquis communautaire</em>, as well as for the purpose of more efficient protection of personal data in the Republic of Serbia.</p>
+<p>Although the New DP Law reflects numerous principles envisaged under the EU General Data Protection Regulation (Regulation (EU) 2016/679, the "GDPR"), and a number of its provisions are a translation of GDPR provisions, it must be noted that this is a <strong>completely new piece of legislation</strong> that is different from the GDPR in certain aspects (e.g. the New DP Law does not include recitals from the GDPR, and it does not provide for the enormous fines prescribed under the GDPR).</p>
+
+<h2>Access to Public Information (FOI)</h2>
+<p>In Serbia, access to public information is guaranteed in the <strong>Constitution</strong> and protected by the <strong>Law on Free Access to Information of Public Importance</strong>, adopted in 2003 and amended in 2007, 2009, 2010, and 2021. The scope of the right entails that everyone in Serbia has the right to access information of public importance, to be informed whether public authorities hold specific information, whether such information is already accessible, and to obtain a copy of the requested information.</p>
+<p>The right of access to public information is defined in <strong>Article 51 of the Constitution of Serbia</strong>, which establishes the right of everybody to be informed about issues of public importance and the deriving obligation of state bodies and public organizations to guarantee access to such information.</p>
+<p>Serbia is considered among the countries with the best regulatory framework regarding access to information of public relevance: the <strong>Global Right to Information Rating</strong>, compiled by NGOs AccessInfo and Centre for Law and Democracy, ranks the country in the <strong>second position</strong> in its global ranking assessing the quality of legislative frameworks regulating FOI across the world.</p>
+<p>The latest amendments to the Law, applying as of <strong>17 February 2022</strong>, broadened the definition of public bodies bound by its provisions, strengthened the position of the Commissioner in terms of enforcement of his decisions, and enabled him to lodge misdemeanor complaints and issue misdemeanor orders.</p>
+
+<h2>Scope of the Right to Access Information</h2>
+<p>The scope of the law is valued positively especially inasmuch as it extends the right to access to information to <strong>all natural persons</strong>, notwithstanding their citizenship, temporary or permanent residence in the country. Moreover, the right to access information applies to the executive, legislative, and judicial bodies, state-owned enterprises, as well as other public authorities and private bodies that perform a public function or that receive significant public funding (Art. 3).</p>
+<p>Requests should be lodged in written form, with no need for the applicant to specify the reason for the request. The public authority shall reply without delay and <strong>within 15 days at the latest</strong>. If the requested information entails consequences for the protection of a person's life or freedom, public health and the environment, the time span at the disposal of authorities is reduced to <strong>48 hours</strong>. In cases in which the document contains information that the public has no legitimate interest to know, the applicant has the right to access other parts of the documents.</p>
+
+<h2>Limitations to the Right</h2>
+<p>Limitations to the right to access to information are defined in <strong>Article 9 of the Law</strong>, establishing that legitimate limitation may derive if the requested information:</p>
+<ul>
+<li>Exposes to risk the life, health, safety or another vital interest of a person;</li>
+<li>Obstacles the work of the judiciary;</li>
+<li>Threatens national defense, national and public safety, international relations or the government's ability to manage the national economic processes.</li>
+</ul>
+<p>Finally, classified information is excluded from the right.</p>
+
+<h2>Data Protection Authority: The Commissioner</h2>
+<p>The authority in charge of monitoring respect for the Law is the <strong>Commissioner for Information of Public Importance and Personal Data Protection</strong>. The Commissioner is an independent, second-level appeal instance: if a public authority does not respond to the request within the deadline, the applicant may lodge a complaint with the Commissioner, except in cases prescribed by this Law (Art. 16).</p>
+<p>The Commissioner is entitled by Law to issue decisions on disputed cases, and his/her decisions should be enforced by the Government of the Republic of Serbia if necessary (Art. 28). The Commissioner is appointed by the National Assembly of the Republic of Serbia on the proposal of the Committee of the National Assembly responsible for information.</p>
+<p>Aside from examining individual complaints related to violations of the right to free access to information, the Commissioner also addresses citizens' requests asking how to exercise their right to information, provides state authorities with opinions about the implementation of the law, conducts trainings for law implementation, and takes part in activities related to the EU accession process.</p>
+<p>It has been noted that a significant limitation of the right set forth in the Constitution is due to the restrictions applied to the admissibility of complaints against first-instance decisions: a complaint is not admissible if "lodged against decisions of the National Assembly, the President of the Republic, the Government of the Republic of Serbia, the Supreme Court of Serbia, the Constitutional Court, the National Bank of Serbia, and the Republic Public Prosecutor" (Art. 22).</p>
+
+<h2>Novelties Introduced by the New DP Law (2018)</h2>
+<p>The New DP Law introduced significant novelties and legislative changes in the sphere of personal data protection that commercial entities in the Serbian market need to comply with. Some of the key novelties are:</p>
+<ul>
+<li><strong>Cancellation of the Central Registry</strong> kept by the DPA, and cancellation of the obligation of data controllers to register with this Central Registry all personal data bases that they keep and maintain;</li>
+<li>An obligation on data controllers and data processors to <strong>keep internal records on personal data processing activities</strong> if they employ 250 or more persons and/or if other prescribed conditions under the law are met (e.g. processing may cause significant risk to rights and freedoms of data subjects; if processing includes special categories of personal data such as health data);</li>
+<li><strong>Change of legal grounds</strong> for personal data processing — besides the law and an informed written data subject's consent, the New DP Law sets several legal grounds on which personal data of a data subject can be processed;</li>
+<li>Data subject's rights to <strong>data portability</strong> and the so-called <strong>"right to be forgotten"</strong>;</li>
+<li>A possibility for a commercial entity to <strong>appoint a Data Protection Officer (DPO)</strong>;</li>
+<li><strong>Change of rules regarding the transfer of personal data abroad</strong> — broadening the legal grounds that allow a transfer of personal data from Serbia, recognising the possibility to enter into model contractual clauses prepared by the DPA, and allowing a Serbian company that is part of an international group of companies to be subject to Binding Corporate Rules adopted at the group level, if the DPA approves such BCRs.</li>
+</ul>
+
+<h2>Lawful Basis for Processing</h2>
+<p>Under the New DP Law, personal data may be processed on several legal grounds, including:</p>
+<ul>
+<li>The data subject's <strong>informed consent</strong> (written or otherwise);</li>
+<li>Compliance with a <strong>legal obligation</strong> of the controller;</li>
+<li>Performance of a <strong>contract</strong> to which the data subject is a party, or pre-contractual measures taken at the data subject's request;</li>
+<li>Protection of the <strong>vital interests</strong> of the data subject or another natural person;</li>
+<li>Performance of a task carried out in the <strong>public interest</strong> or in the exercise of official authority;</li>
+<li>Realisation of the <strong>legitimate interests</strong> of the controller or a third party, subject to the rights and freedoms of the data subject.</li>
+</ul>
+<p>Where processing is based on consent, the data subject has the right to <strong>withdraw consent at any time</strong>, without affecting the lawfulness of processing based on consent before its withdrawal.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Under the New DP Law, data subjects enjoy a comprehensive set of rights, including:</p>
+<ul>
+<li><strong>Right to be informed</strong> — about the identity of the controller, purposes of processing, recipients, retention period, and existence of rights;</li>
+<li><strong>Right of access</strong> — to obtain confirmation as to whether personal data concerning them is being processed, and a copy of that data;</li>
+<li><strong>Right to rectification</strong> — to have inaccurate or incomplete personal data corrected;</li>
+<li><strong>Right to erasure ("right to be forgotten")</strong> — to have personal data deleted where there is no compelling reason for continued processing;</li>
+<li><strong>Right to restriction of processing</strong> — in specified circumstances;</li>
+<li><strong>Right to data portability</strong> — to receive personal data in a structured, commonly used, machine-readable format and transmit it to another controller;</li>
+<li><strong>Right to object</strong> — to processing based on legitimate interests or for direct marketing purposes;</li>
+<li><strong>Right not to be subject to automated decision-making</strong>, including profiling, where it produces legal or similarly significant effects;</li>
+<li><strong>Right to lodge a complaint</strong> with the Commissioner.</li>
+</ul>
+
+<h2>Controller and Processor Obligations</h2>
+<p>Controllers and processors have several obligations under the New DP Law, including:</p>
+<ul>
+<li>Implementing appropriate <strong>technical and organisational measures</strong> to ensure a level of security appropriate to the risk;</li>
+<li>Maintaining <strong>internal records of processing activities</strong> (where the thresholds under the law are met);</li>
+<li>Conducting a <strong>Data Protection Impact Assessment (DPIA)</strong> where processing is likely to result in a high risk to data subjects' rights and freedoms;</li>
+<li>Notifying the Commissioner of a <strong>personal data breach without undue delay and, where feasible, within 72 hours</strong> of becoming aware of it, unless the breach is unlikely to result in a risk to data subjects;</li>
+<li>Notifying affected data subjects <strong>without undue delay</strong> where the breach is likely to result in a high risk to their rights and freedoms;</li>
+<li>Appointing a <strong>Data Protection Officer (DPO)</strong> where required by law — e.g. for public authorities, or where core activities involve large-scale systematic monitoring or large-scale processing of special categories of data;</li>
+<li>Entering into <strong>data processing agreements</strong> with processors that meet the requirements of the law.</li>
+</ul>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>The New DP Law changed the rules regarding the transfer of personal data abroad, broadening the legal grounds that allow a transfer of personal data from Serbia. Cross-border transfers operate through a <strong>two-tier mechanism</strong>:</p>
+<ul>
+<li><strong>Tier 1 — Adequate countries:</strong> Transfers to countries on the Serbian Government's adequacy list — which incorporates EU adequacy decisions and Council of Europe Convention 108 parties — proceed without prior authorisation.</li>
+<li><strong>Tier 2 — Non-adequate jurisdictions:</strong> Transfers to non-adequate countries require appropriate safeguards such as <strong>standard contractual clauses</strong> approved by the DPA, <strong>Binding Corporate Rules (BCRs)</strong> approved by the DPA (for multinational groups), or other legal grounds such as the data subject's explicit consent or the necessity of the transfer for contract performance.</li>
+</ul>
+<p>The DPA has been tasked with preparing model contractual clauses for transfers, and with maintaining the list of adequate countries. Organisations should verify the current status of these instruments with the Commissioner before relying on them.</p>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>A commercial entity may appoint a <strong>Data Protection Officer (DPO)</strong>. The appointment is mandatory where processing is carried out by a public authority or body (except for courts acting in their judicial capacity), or where the core activities of the controller or processor consist of processing operations which, by virtue of their nature, scope, and/or purposes, require regular and systematic monitoring of data subjects on a large scale, or of large-scale processing of special categories of data. The DPO must have expert knowledge of data protection law and practices and must be involved, properly and in a timely manner, in all issues relating to the protection of personal data.</p>
+
+<h2>Penalties for Non-Compliance</h2>
+<p>The penalties for non-compliance with the New DP Law are in the range of <strong>RSD 55,000 to RSD 2,150,000</strong> (approximately up to EUR 18,000) for the controller/processor and the responsible person. The New DP Law foresees a maximum fine that is two times the maximum fine prescribed under the Old DP Law — although this is still significantly lower than the enormous fines under the GDPR.</p>
+<p>The Commissioner can impose administrative fines, issue warnings, order the controller or processor to bring processing operations into compliance with the law, and impose a temporary or definitive limitation on processing or data flows.</p>
+
+<h2>Implementation Challenges and Practical Notes</h2>
+<p>Despite the novelties and changes introduced by the New DP Law, certain issues in its interpretation are likely, especially due to the fact that a number of bylaws are yet to be adopted — particularly in the sphere of transfer of personal data to other countries (e.g. the list of countries which the Serbian Government deems to have an adequate level of protection, model clauses to be prepared by the DPA, etc.).</p>
+<p>Furthermore, other national provisions needed to be aligned with the New DP Law by 2020 relating to the protection of personal data. There are also some aspects that the New DP Law does not regulate, such as <strong>video surveillance</strong>, which may be covered by separate regulations.</p>
+<p>In its annual reports, the Commissioner has noted certain limitations to the effective implementation of the Law on Access to Information, particularly insufficient accountability for violations of the Law and inefficient mechanisms of enforcement of the Commissioner's decisions. Freedom House noted in 2016 that "despite the existence of the 2004 Law on Free Access to Information of Public Importance, authorities frequently obstruct journalists' efforts to obtain public information."</p>
+
+<h2>Landmark Case: Youth Initiative for Human Rights v. Serbia</h2>
+<p>A landmark case by the European Court of Human Rights (ECtHR) related to the right to access to information in Serbia. In 2006, the Belgrade-based NGO <strong>Youth Initiative for Human Rights (YIHR)</strong> filed a request to the Serbian Security Intelligence Agency demanding information concerning the use of electronic surveillance measures by that agency in 2005. The Agency denied access to the requested information twice — first on grounds of secrecy, and then, after a binding decision by the Commissioner for Information stating that the information should be made public, by declaring that it did not hold the requested information.</p>
+<p>YIHR appealed to the ECtHR under Article 6 and Article 10 of the European Convention on Human Rights. In June 2013, the ECtHR defined as "unpersuasive" the argument used by the Agency that it did not hold the requested information, and found that the restrictions imposed by the Serbian intelligence agency were not justified by domestic law and hence constituted a <strong>violation of Article 10 of the European Convention on Human Rights</strong>.</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Law on Personal Data Protection (2018)</td></tr>
+<tr><td><strong>Adopted</strong></td><td>November 2018</td></tr>
+<tr><td><strong>Applicable From</strong></td><td>21 August 2019</td></tr>
+<tr><td><strong>Replaced</strong></td><td>Law on Personal Data Protection (2008)</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Commissioner for Information of Public Importance and Personal Data Protection</td></tr>
+<tr><td><strong>GDPR Alignment</strong></td><td>Highly aligned (translation of many GDPR provisions)</td></tr>
+<tr><td><strong>Max Fine</strong></td><td>RSD 2,150,000 (approx. EUR 18,000)</td></tr>
+<tr><td><strong>FOI Law</strong></td><td>Law on Free Access to Information of Public Importance (2003, amended 2021)</td></tr>
+<tr><td><strong>FOI Ranking</strong></td><td>2nd globally (Global Right to Information Rating)</td></tr>
+<tr><td><strong>EU Status</strong></td><td>Candidate country; pursuing EU adequacy</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 44.0, lng: 21.0 },
     color: '#22C55E',
     topics: [
@@ -2060,13 +2180,13 @@ export const countries: Country[] = [
       { title: 'Data Subject Rights', status: 'Addressed', icon: 'Users' },
       { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
       { title: 'Breach Notification', status: 'Addressed', icon: 'AlertCircle' },
-      { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Addressed', icon: 'Users' },
+      { title: 'DPO Requirements', status: 'Addressed', icon: 'Shield' },
+      { title: "Children's Data", status: 'Partial', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
       { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
       { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
       { title: 'AI & Automated Decisions', status: 'Partial', icon: 'Scale' },
-      { title: 'Data Localisation', status: 'Partial', icon: 'Database' },
+      { title: 'Data Localisation', status: 'None', icon: 'Database' },
       { title: 'Significant Data Fiduciary', status: 'None', icon: 'Shield' },
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
