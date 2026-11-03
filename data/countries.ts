@@ -2715,15 +2715,126 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'madagascar',
     name: 'Madagascar',
     flag: '🇲🇬',
     lawName: 'Law No. 2014-038 on Personal Data Protection',
-    authority: 'Commission Malagasy de l\'Informatique et des Libertés (CMIL)',
+    authority: "Commission Malagasy de l'Informatique et des Libertés (CMIL)",
     region: 'Africa',
     level: 'Substantial',
-    overview: "Madagascar’s data protection regime rests on Law No. 2014-038 of January 9, 2015, a comprehensive statute that imposes prior declaration or authorization requirements on most personal data processing activities. Enforcement is entrusted to the Commission Malagasy de l’Informatique et des Libertés (CMIL), an independent administrative authority that only became fully operational in December 2023—nearly nine years after the law’s enactment . Since then, the CMIL has begun exercising its supervisory powers, including warnings, compliance notices, authorization withdrawals, and financial sanctions of up to 5% of the previous financial year’s pre-tax turnover . Criminal penalties for processing without prior declaration or authorization range from six months to two years’ imprisonment . Organizations must also appoint a Data Protection Officer in certain cases and maintain detailed processing registers. Notably, the law does not establish a general obligation to notify the CMIL or affected individuals of data breaches—a gap that distinguishes Madagascar from GDPR-style frameworks . The 2024 ratification of the Malabo Convention signals Madagascar’s intent to align further with continental data protection standards, though domestic implementing reforms remain pending.",
+    overview: "Madagascar's data protection regime rests on Law No. 2014-038 of January 9, 2015, a comprehensive statute that imposes prior declaration or authorization requirements on most personal data processing activities. Enforcement is entrusted to the Commission Malagasy de l'Informatique et des Libertés (CMIL), an independent administrative authority that only became fully operational in December 2023—nearly nine years after the law's enactment. Since then, the CMIL has begun exercising its supervisory powers, including warnings, compliance notices, authorization withdrawals, and financial sanctions of up to 5% of the previous financial year's pre-tax turnover. Criminal penalties for processing without prior declaration or authorization range from six months to two years' imprisonment. Organizations must also appoint a Data Protection Officer in certain cases and maintain detailed processing registers. Notably, the law does not establish a general obligation to notify the CMIL or affected individuals of data breaches—a gap that distinguishes Madagascar from GDPR-style frameworks. The 2024 ratification of the Malabo Convention signals Madagascar's intent to align further with continental data protection standards, though domestic implementing reforms remain pending.",
+    detailedContent: `
+<h2>What is Law No. 2014-038?</h2>
+<p>Madagascar's data protection regime rests on <strong>Law No. 2014-038 relating to the protection of personal data</strong>, adopted by the National Assembly on 16 December 2014, promulgated by the President of the Republic on 9 January 2015, and published in the Official Gazette on 9 June 2015. The law is the main regulatory framework in Madagascar (the "Data Protection Law").</p>
+<p>The Data Protection Law has been in force for nine years, but its application is not yet fully effective, as <strong>no implementing decree has been published</strong>. Generally, the provisions of the Data Protection Law are in line with the provisions of the Malabo Convention on Data Protection, and no amendments to the Data Protection Law are currently planned.</p>
+
+<h2>Ratification of the Malabo Convention</h2>
+<p>Law no. 2024-004 ratifying the <strong>African Union Convention on Cyber Security and Personal Data Protection</strong> (the "Malabo Convention") was adopted by the Senate and the National Assembly on 21 June 2024. The law was subject to a constitutionality review in accordance with High Constitutional Court Decision no. 01-HCC/D1 dated 10 July 2024, confirming the constitutionality of the ratification law and the Malabo Convention itself. Publication in the Official Gazette of the Republic of Madagascar is still pending.</p>
+<p>The 2024 ratification of the Malabo Convention signals Madagascar's intent to align further with continental data protection standards, though domestic implementing reforms remain pending.</p>
+
+<h2>Definition of Personal Data</h2>
+<p>Personal data is any information relating to a natural person, whereby that person is or can be identified, directly or indirectly, by reference to a name, an identification number or to one or more elements specific to him/her relating to physical, physiological, psychical, economic, cultural or social.</p>
+
+<h2>Definition of Sensitive Personal Data</h2>
+<p>Sensitive personal data means data which includes information relating to:</p>
+<ul>
+<li>Racial origin;</li>
+<li>Biometric and genetic information;</li>
+<li>Political opinion;</li>
+<li>Religious belief or other convictions;</li>
+<li>Trade-union affiliation; and/or</li>
+<li>Health or sexual life.</li>
+</ul>
+
+<h2>Data Protection Authority: CMIL</h2>
+<p>The Data Protection Law provides for the creation of the <strong>Commission Malagasy sur l'Informatique et des Libertés ("CMIL")</strong>. The CMIL was established by the adoption of Decree no. 2023-1541 dated 06 December 2023 setting out CMIL's mission and organisation. A representative of the National Assembly was recently appointed to the CMIL towards the end of 2024. However, the CMIL will not be fully operational until all its members have been appointed, namely:</p>
+<ul>
+<li>A Member of the National Assembly elected at a plenary session;</li>
+<li>A senator elected by the Permanent Bureau of the Senate;</li>
+<li>A judge from the Court of Cassation elected by his peers;</li>
+<li>One administrative judge from the Conseil d'Etat elected by his peers;</li>
+<li>A financial judge from the Cour des Comptes elected by his peers;</li>
+<li>A representative of the private sector, with experience in the field of information and communication technologies, appointed by the Fédération des Chambres du Commerce et de l'Industrie;</li>
+<li>Two leading figures with expertise in information and communication technologies, appointed by the Fédération Nationale de l'ordre des ingénieurs;</li>
+<li>One person with particular expertise in human rights, appointed by the Commission Nationale Indépendante des Droits de l'Homme.</li>
+</ul>
+
+<h2>Prior Declaration and Authorisation</h2>
+<p>Except for certain data processing that is subject to exemption, authorisation, ministerial order or decree, the <strong>processing of personal data requires a prior declaration to the CMIL</strong>. The prior declaration to the CMIL shall specify, where relevant, inter alia:</p>
+<ul>
+<li>The identity and the address of the data controller (responsable du traitement);</li>
+<li>The purpose(s) of the processing;</li>
+<li>The interconnections between databases;</li>
+<li>The types of personal data processed, their origins and the categories of persons affected by the processing;</li>
+<li>The duration for which the data will be kept;</li>
+<li>The department or persons in charge of implementing the data processing;</li>
+<li>The existence of data transfer to other countries;</li>
+<li>The measures taken in order to ensure the security of the processing;</li>
+<li>The use of a data processor (sous-traitant).</li>
+</ul>
+<p>The CMIL has to issue its decision on any authorisation application <strong>2 months following receipt</strong> of the application. An additional time period of 2 months can be added to this period after decision of the President of the CMIL. The absence of decision of the CMIL during these periods is considered as a refusal of the application.</p>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>The Data Protection Law does require the appointment of a data protection officer (délégué à la protection des données à caractère personnel) in Madagascar provided that the CMIL is operational, because the appointed DPO should be notified to the CMIL. The appointment of a DPO <strong>exempts an entity from making prior declarations</strong> to the CMIL, but does not exempt an entity from requesting prior authorisation where necessary (for example, where there is a transfer of data to a country that does not provide an adequate level of protection). The DPO must be a resident of Madagascar.</p>
+
+<h2>Data Protection Principles</h2>
+<p>The following principles must be satisfied when personal data is collected and processed:</p>
+<ul>
+<li>All personal data must be processed fairly and lawfully for specific, explicit and legitimate purposes and subsequently processed in accordance with these purposes;</li>
+<li>All personal data collected must be adequate, relevant and non-excessive in view of the purposes for which it is collected;</li>
+<li>All personal data must be accurate and comprehensive and when necessary, kept up to date;</li>
+<li>All personal data must be retained no longer than is necessary for the purposes for which it is processed.</li>
+</ul>
+
+<h2>Lawful Processing Conditions</h2>
+<p>The processing of personal data must receive the data subject's prior consent or fulfill one of the following conditions:</p>
+<ul>
+<li>Compliance with a legal obligation of the data controller;</li>
+<li>The purpose of the processing is to protect the individual's life;</li>
+<li>The purpose of the processing is to carry out a public service;</li>
+<li>The processing relates to the performance of a contract to which the concerned individual is a party, or pre-contractual measures requested by that individual;</li>
+<li>Processing relates to the realisation of the legitimate interest of the data controller or the data recipient, subject to the interest and fundamental rights and liberties of the concerned individual.</li>
+</ul>
+
+<h2>Sensitive Personal Data</h2>
+<p>The conditions for processing of sensitive personal data include most of the above conditions, but contain an additional list of more restrictive conditions that must also be satisfied, such as the requirement to obtain prior consent of the data subject, or in the absence of consent where the processing is undertaken to carry out a public service and is required by law or priorly authorised by the CMIL.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>The transfer of a data subject's personal data to a third party country is allowed only if the country <strong>guarantees to individuals a sufficient level of protection</strong> in terms of privacy and fundamental rights and liberties. The sufficiency of protection is assessed by considering all the circumstances surrounding the transfer, in particular the nature of the data, the purpose and duration of the proposed processing, country of origin and country of final destination, rules of law (both general and sectorial) in force in the country in question, and any relevant codes of conduct or other rules and security measures complied with in that country.</p>
+<p>Data controllers may transfer personal data to a third country that is not deemed to offer adequate protection only if:</p>
+<ul>
+<li>The data subject consents and is duly informed of the absence of adequate protection;</li>
+<li>The transfer is necessary for the performance of a contract between the data controller and the individual, or pre-contractual measures undertaken at the individual's request;</li>
+<li>The transfer is necessary for the conclusion or performance of a contract in the interest of the individual, between the data controller and a third party;</li>
+<li>The transfer is necessary for the protection of the public interest;</li>
+<li>The transfer is necessary for consultation of a public register intended for the public's information;</li>
+<li>The transfer is necessary to comply with obligations allowing the acknowledgment, exercise or defense of a legal right.</li>
+</ul>
+<p>In all cases, the data recipient in the third party country cannot transfer personal data to another country, except with the authorisation of the first data controller and the CMIL.</p>
+
+<h2>Security Safeguards</h2>
+<p>The data controller must take all useful precautions, with respect to the nature of the data and the risk presented by the processing, to preserve the security of the data and, amongst other things, prevent alteration, corruption or access by unauthorised third parties.</p>
+
+<h2>Data Breach Notification</h2>
+<p>The Data Protection Law <strong>does not set out any general or specific obligation to notify the CMIL or the data subject</strong> in the event of a data security breach. This gap distinguishes Madagascar from GDPR-style frameworks.</p>
+
+<h2>Enforcement Powers of the CMIL</h2>
+<p>The CMIL has the power to proceed with verifications of any data processing and, as the case may be, to request a copy of every document that it considers useful in respect of verifications. The CMIL agents are authorised to carry out online inspections and on-site verifications of a data controller or a data processor.</p>
+<p>In cases where the CMIL is of the opinion that a data controller or a data processor has contravened the provisions of the Data Protection Law, it may serve, in accordance with the severity of the violation committed:</p>
+<ul>
+<li>Warnings and notices to comply with the obligations defined in the Data Protection Law;</li>
+<li>Notice of withdrawal of the authorisation;</li>
+<li>A financial sanction of up to <strong>5% of the last financial year pre-tax turnover</strong> (not deducted from tax turnover).</li>
+</ul>
+
+<h2>Criminal Penalties</h2>
+<p>The Data Protection Law provides that any processing of personal data in contravention with its provisions is considered an offence. For example, processing of personal data without prior declaration to or authorisation of the CMIL can result in <strong>imprisonment of 6 months to 2 years</strong> (Article 62 of the Data Protection Law). In addition to any penalty, the Court may order the erasure of all or part of the personal data which was the object of the processing considered an offence.</p>
+
+<h2>Electronic Marketing, Cookies & Location Data</h2>
+<p>The Data Protection Law and the Malabo Convention do not provide specific restrictions on the use of electronic marketing. However, the data subject has a <strong>right to opt out</strong> of allowing their personal data to be used for marketing purposes without providing any reason.</p>
+<p>The Data Protection Law does not yet address location data, cookies, local storage objects or other similar data-gathering tools.</p>
+`,
     coordinates: { lat: -19.0, lng: 46.7 },
     color: '#3B82F6',
     topics: [
@@ -2731,14 +2842,14 @@ export const countries: Country[] = [
       { title: 'Consent Requirements', status: 'Addressed', icon: 'CheckCircle' },
       { title: 'Data Subject Rights', status: 'Addressed', icon: 'Users' },
       { title: 'Cross-Border Transfer', status: 'Addressed', icon: 'Globe' },
-      { title: 'Breach Notification', status: 'Partial', icon: 'AlertCircle' },
-      { title: 'DPO Requirements', status: 'Partial', icon: 'Shield' },
-      { title: 'Children\'s Data', status: 'Partial', icon: 'Users' },
+      { title: 'Breach Notification', status: 'None', icon: 'AlertCircle' },
+      { title: 'DPO Requirements', status: 'Addressed', icon: 'Shield' },
+      { title: "Children's Data", status: 'Partial', icon: 'Users' },
       { title: 'Penalties & Enforcement', status: 'Addressed', icon: 'AlertTriangle' },
-      { title: 'Sector-Specific Rules', status: 'Partial', icon: 'Database' },
-      { title: 'Cookie/Tracking', status: 'Partial', icon: 'FileText' },
+      { title: 'Sector-Specific Rules', status: 'None', icon: 'Database' },
+      { title: 'Cookie/Tracking', status: 'None', icon: 'FileText' },
       { title: 'AI & Automated Decisions', status: 'None', icon: 'Scale' },
-      { title: 'Data Localisation', status: 'Partial', icon: 'Database' },
+      { title: 'Data Localisation', status: 'None', icon: 'Database' },
       { title: 'Significant Data Fiduciary', status: 'None', icon: 'Shield' },
       { title: 'Government Data', status: 'Partial', icon: 'Building' },
     ],
