@@ -27,7 +27,7 @@ const planets = [
     readTime: '5 min read',
     tags: ['Data Rights', 'Privacy'],
     gradient: 'from-blue-500/20 to-blue-600/10',
-    author: 'Dr. Ananya Sharma',
+    author: 'Rojalin Panda',
     excerpt: 'Understanding the fundamental rights of individuals under the DPDP Act 2023...'
   },
   { 
@@ -44,7 +44,7 @@ const planets = [
     readTime: '7 min read',
     tags: ['Compliance', 'Fiduciaries'],
     gradient: 'from-purple-500/20 to-purple-600/10',
-    author: 'Adv. Rajesh Kumar',
+    author: 'Shilpi Kulshrestha',
     excerpt: 'Key obligations and responsibilities of data fiduciaries...'
   },
   { 
@@ -61,7 +61,7 @@ const planets = [
     readTime: '6 min read',
     tags: ['Data Processing', 'Consent'],
     gradient: 'from-green-500/20 to-green-600/10',
-    author: 'Prof. Meera Patel',
+    author: 'Shilpi Kulshrestha',
     excerpt: 'Exploring the lawful bases for data processing under the Act...'
   },
   { 
@@ -78,7 +78,7 @@ const planets = [
     readTime: '4 min read',
     tags: ['Regulatory', 'Board'],
     gradient: 'from-yellow-500/20 to-yellow-600/10',
-    author: 'Dr. Vikram Singh',
+    author: 'Vaibhav Pasrija',
     excerpt: 'Structure and functions of the Data Protection Board...'
   },
   { 
@@ -95,7 +95,7 @@ const planets = [
     readTime: '8 min read',
     tags: ['Penalties', 'Offences'],
     gradient: 'from-red-500/20 to-red-600/10',
-    author: 'Adv. Priya Mehta',
+    author: 'Vaibhav Pasrija',
     excerpt: 'Understanding penalties and offences under the DPDP Act...'
   },
   { 
@@ -112,7 +112,7 @@ const planets = [
     readTime: '6 min read',
     tags: ['Data Transfer', 'Global'],
     gradient: 'from-cyan-500/20 to-cyan-600/10',
-    author: 'Dr. Arun Nair',
+    author: 'Shilpi Kulshrestha',
     excerpt: 'Cross-border data transfer mechanisms and compliance...'
   },
   { 
@@ -129,7 +129,7 @@ const planets = [
     readTime: '3 min read',
     tags: ['Resources', 'Guidelines'],
     gradient: 'from-indigo-500/20 to-indigo-600/10',
-    author: 'Team Legal Galaxy',
+    author: 'Team BusinezExcellence',
     excerpt: 'Essential resources for data protection compliance...'
   },
   { 
@@ -146,7 +146,7 @@ const planets = [
     readTime: '10 min read',
     tags: ['Provisions', 'Overview'],
     gradient: 'from-pink-500/20 to-pink-600/10',
-    author: 'Adv. Suman Gupta',
+    author: 'Rojalin Panda',
     excerpt: 'Complete overview of all key provisions of the Act...'
   },
 ];
