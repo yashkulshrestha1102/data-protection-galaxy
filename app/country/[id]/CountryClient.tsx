@@ -42,7 +42,7 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
     <main className="min-h-screen text-white px-4 pb-12 relative overflow-hidden pt-24 md:pt-28">
       {/* Background Gradients */}
       <div className="absolute inset-0 -z-10 bg-[#0a0a0a]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
@@ -64,13 +64,13 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
           animate={{ opacity: 1, y: 0 }}
           className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-6 backdrop-blur-md relative overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -z-10" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl -z-10" />
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
               <div className="text-6xl md:text-7xl leading-none drop-shadow-lg">{country.flag}</div>
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold text-white mb-1">{country.name}</h1>
-                <p className="text-lg text-purple-300 font-medium">{country.lawName}</p>
+                <p className="text-lg text-cyan-300 font-medium">{country.lawName}</p>
                 <div className="flex flex-wrap gap-2 mt-3">
                   <span className="px-3 py-1 rounded-full bg-white/10 text-xs text-gray-300">{country.region}</span>
                   <span className={`px-3 py-1 rounded-full border text-xs font-medium ${levelColors[country.level]}`}>
@@ -112,7 +112,7 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
         {/* Topics Grid */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6">
           <h3 className="text-lg font-semibold text-white mb-5 flex items-center gap-2 border-b border-white/10 pb-4">
-            <Shield className="w-5 h-5 text-purple-400" />
+            <Shield className="w-5 h-5 text-cyan-400" />
             14-Topic Coverage Analysis
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -156,7 +156,7 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
     className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-6"
   >
     <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-white/10 pb-4">
-      <FileText className="w-5 h-5 text-purple-400" />
+      <FileText className="w-5 h-5 text-cyan-400" />
       Detailed Guide
     </h3>
     
@@ -165,10 +165,10 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
       className="
         text-gray-300 text-sm md:text-base leading-relaxed space-y-4
         [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mt-8 [&>h2]:mb-4 [&>h2]:border-b [&>h2]:border-white/10 [&>h2]:pb-2
-        [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-purple-300 [&>h3]:mt-6 [&>h3]:mb-3
+        [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-cyan-300 [&>h3]:mt-6 [&>h3]:mb-3
         [&>p]:mb-4
         [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2 [&>ul]:mb-6
-        [&>strong]:text-purple-400 [&>strong]:font-bold
+        [&>strong]:text-cyan-400 [&>strong]:font-bold
         [&>table]:w-full [&>table]:border-collapse [&>table]:text-sm [&>table]:mb-6
         [&>table>thead>tr>th]:bg-white/10 [&>table>thead>tr>th]:text-white [&>table>thead>tr>th]:p-3 [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:border [&>table>thead>tr>th]:border-white/10
         [&>table>tbody>tr>td]:p-3 [&>table>tbody>tr>td]:border [&>table>tbody>tr>td]:border-white/10 [&>table>tbody>tr>td]:align-top
@@ -186,7 +186,7 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
             className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8"
           >
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-white/10 pb-4">
-              <span className="text-purple-400">?</span> Frequently Asked Questions
+              <span className="text-cyan-400">?</span> Frequently Asked Questions
             </h3>
             <div className="space-y-3">
               {faqs.map((faq, i) => (
@@ -196,7 +196,7 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
                 >
                   <summary className="flex items-center justify-between cursor-pointer list-none p-5">
                     <span className="text-white font-medium pr-4">{faq.q}</span>
-                    <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+                    <span className="text-cyan-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
                       +
                     </span>
                   </summary>

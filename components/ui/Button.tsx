@@ -17,10 +17,10 @@ export const Button = ({
 }: ButtonProps) => {
   const baseStyles = "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
   
-  const variants = {
-    primary: "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30",
+    const variants = {
+    primary: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30",
     secondary: "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-105",
-    outline: "border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white",
+    outline: "border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white",
     ghost: "text-white/70 hover:text-white hover:bg-white/5",
   };
 

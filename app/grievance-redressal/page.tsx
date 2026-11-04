@@ -28,7 +28,7 @@ export default function GrievanceRedressalPage() {
 
         <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-8">
           <div className="flex items-center gap-3 mb-6">
-            <Shield className="w-8 h-8 text-purple-400" />
+            <Shield className="w-8 h-8 text-cyan-400" />
             <h1 className="text-3xl font-bold text-white">Grievance Redressal</h1>
           </div>
 
@@ -42,25 +42,25 @@ export default function GrievanceRedressalPage() {
             {/* Grievance Officer Details */}
             <section>
               <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
-                <UserCheck className="w-6 h-6 text-purple-400" />
+                <UserCheck className="w-6 h-6 text-cyan-400" />
                 Grievance Officer Details
               </h2>
               <div className="bg-white/5 border border-white/20 rounded-xl p-6 space-y-3">
                 <p><strong className="text-white">Name:</strong> Shilpi Kulshrestha</p>
                 <p><strong className="text-white">Designation:</strong> Grievance Officer & Founder, Businezexcellence StartX LLP</p>
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-purple-400" />
+                  <Mail className="w-4 h-4 text-cyan-400" />
                   <strong className="text-white">Email:</strong>
-                  <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">
+                  <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-cyan-400 underline">
                     shilpi.kulshrestha@businezexcellence.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-purple-400" />
+                  <Phone className="w-4 h-4 text-cyan-400" />
                   <strong className="text-white">Phone:</strong> +91 8800138008
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-purple-400" />
+                  <Clock className="w-4 h-4 text-cyan-400" />
                   <strong className="text-white">Working Hours:</strong> Monday to Friday, 10:00 AM – 6:00 PM IST
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function GrievanceRedressalPage() {
             <section>
               <h2 className="text-2xl font-semibold text-white mb-4">How to File a Grievance</h2>
               <ol className="list-decimal pl-6 space-y-3">
-                <li>Send an email to <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">shilpi.kulshrestha@businezexcellence.com</a> with the subject line "Data Privacy Grievance".</li>
+                <li>Send an email to <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-cyan-400 underline">shilpi.kulshrestha@businezexcellence.com</a> with the subject line "Data Privacy Grievance".</li>
                 <li>Include the following details in your email:
                   <ul className="list-disc pl-6 mt-2 space-y-1">
                     <li>Your full name and contact details</li>
@@ -87,7 +87,7 @@ export default function GrievanceRedressalPage() {
             {/* Timelines */}
                         <section>
               <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
-                <Clock className="w-6 h-6 text-purple-400" />
+                <Clock className="w-6 h-6 text-cyan-400" />
                 Resolution Timelines (DPDP Rules 2025)
               </h2>
               <div className="overflow-x-auto">
@@ -154,12 +154,12 @@ export default function GrievanceRedressalPage() {
             </section>
 
             {/* Contact */}
-            <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-6">
+            <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-cyan-500/30 rounded-xl p-6">
               <h2 className="text-xl font-semibold text-white mb-3">Still Need Help?</h2>
               <p className="text-gray-300 mb-4">
                 For general inquiries (not grievances), you can contact us at:
               </p>
-              <p><strong className="text-white">Email:</strong> <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">shilpi.kulshrestha@businezexcellence.com</a></p>
+              <p><strong className="text-white">Email:</strong> <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-cyan-400 underline">shilpi.kulshrestha@businezexcellence.com</a></p>
               <p className="mt-2"><strong className="text-white">Phone:</strong> +91 8800138008</p>
             </section>
           </div>

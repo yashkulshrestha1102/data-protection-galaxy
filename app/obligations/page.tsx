@@ -317,9 +317,9 @@ export default function ObligationsPage() {
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -334,13 +334,13 @@ export default function ObligationsPage() {
 
         {/* ===== HERO ===== */}
         <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-4">
             <Shield className="w-3 h-3" />
             Business Compliance � DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Obligations of{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               Data Fiduciaries
             </span>
           </h1>
@@ -392,19 +392,19 @@ export default function ObligationsPage() {
                   className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md hover:bg-white/10 transition-all duration-300 flex flex-col h-full"
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0 border border-purple-500/30">
-                      <Icon className="w-6 h-6 text-purple-400" />
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0 border border-cyan-500/30">
+                      <Icon className="w-6 h-6 text-cyan-400" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white">
                         {item.title}
                       </h3>
-                      <span className="text-xs font-mono text-pink-400">
+                      <span className="text-xs font-mono text-blue-400">
                         {item.section}
                       </span>
                     </div>
                   </div>
-                  <p className="text-sm text-purple-300 font-medium mb-3">
+                  <p className="text-sm text-cyan-300 font-medium mb-3">
                     {item.subtitle}
                   </p>
                   <p className="text-sm text-gray-300 leading-7 flex-grow">
@@ -437,19 +437,19 @@ export default function ObligationsPage() {
                   className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0 border border-purple-500/30">
-                      <Icon className="w-6 h-6 text-purple-400" />
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0 border border-cyan-500/30">
+                      <Icon className="w-6 h-6 text-cyan-400" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 flex-wrap">
                         <h3 className="text-xl font-bold text-white">
                           {item.title}
                         </h3>
-                        <span className="text-xs font-mono text-pink-400 bg-pink-500/10 px-2 py-0.5 rounded border border-pink-500/20">
+                        <span className="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
                           {item.section}
                         </span>
                       </div>
-                      <p className="text-sm text-purple-300 mt-1">
+                      <p className="text-sm text-cyan-300 mt-1">
                         {item.subtitle}
                       </p>
                     </div>
@@ -468,7 +468,7 @@ export default function ObligationsPage() {
                           key={j}
                           className="text-sm text-gray-300 flex items-start gap-2"
                         >
-                          <span className="text-purple-400 mt-0.5">?</span>
+                          <span className="text-cyan-400 mt-0.5">?</span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -502,11 +502,11 @@ export default function ObligationsPage() {
               return (
                 <div
                   key={i}
-                  className="bg-purple-500/5 border border-purple-500/20 rounded-xl p-5"
+                  className="bg-cyan-500/5 border border-cyan-500/20 rounded-xl p-5"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0 border border-purple-500/30">
-                      <Icon className="w-5 h-5 text-purple-400" />
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center flex-shrink-0 border border-cyan-500/30">
+                      <Icon className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-white mb-1">
@@ -524,7 +524,7 @@ export default function ObligationsPage() {
 
           <div className="bg-white/5 border border-white/10 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-              <Scale className="w-5 h-5 text-purple-400" />
+              <Scale className="w-5 h-5 text-cyan-400" />
               Enhanced Obligations for SDFs
             </h3>
             <ul className="space-y-2">
@@ -567,8 +567,8 @@ export default function ObligationsPage() {
                   key={i}
                   className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
                 >
-                  <div className="w-5 h-5 rounded border-2 border-purple-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <ClipboardCheck className="w-3 h-3 text-purple-400" />
+                  <div className="w-5 h-5 rounded border-2 border-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <ClipboardCheck className="w-3 h-3 text-cyan-400" />
                   </div>
                   <span className="text-sm text-gray-300">{item}</span>
                 </div>
@@ -618,7 +618,7 @@ export default function ObligationsPage() {
             For a detailed breakdown, see our{' '}
             <Link
               href="/penalties"
-              className="text-purple-400 hover:text-purple-300 underline"
+              className="text-cyan-400 hover:text-cyan-300 underline"
             >
               full penalties guide
             </Link>
@@ -663,7 +663,7 @@ export default function ObligationsPage() {
                 className="bg-white/5 border border-white/10 rounded-xl p-5"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">
                     {i + 1}
                   </div>
                   <div>
@@ -684,7 +684,7 @@ export default function ObligationsPage() {
         <section className="mb-16">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start gap-6">
             <div className="flex-shrink-0">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-purple-500/40">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-cyan-500/40">
                 <Image
                   src="/images/profileoffounder.jpeg"
                   alt="Shilpi Kulshrestha"
@@ -695,7 +695,7 @@ export default function ObligationsPage() {
               </div>
             </div>
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-2">
+              <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-2">
                 <UserCheck className="w-3 h-3" />
                 Author
               </div>
@@ -729,7 +729,7 @@ export default function ObligationsPage() {
               >
                 <summary className="flex items-center justify-between cursor-pointer list-none">
                   <span className="text-white font-medium pr-4">{faq.q}</span>
-                  <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+                  <span className="text-cyan-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
                     +
                   </span>
                 </summary>
@@ -744,7 +744,7 @@ export default function ObligationsPage() {
         {/* ===== RELATED READING ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
+            <BookOpen className="w-6 h-6 text-cyan-400" />
             Related Topics for Businesses
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -754,7 +754,7 @@ export default function ObligationsPage() {
                 href={link.href}
                 className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all"
               >
-                <h4 className="text-sm font-medium text-white group-hover:text-purple-400 transition-colors flex items-center justify-between gap-2">
+                <h4 className="text-sm font-medium text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between gap-2">
                   {link.title}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </h4>
@@ -765,7 +765,7 @@ export default function ObligationsPage() {
         </section>
 
         {/* ===== FINAL CTA ===== */}
-        <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-8 text-center">
+        <section className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">
             Need to train your team?
           </h2>
@@ -777,7 +777,7 @@ export default function ObligationsPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/scorecard"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold hover:scale-105 transition-all"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:scale-105 transition-all"
             >
               Check Compliance ?
             </Link>

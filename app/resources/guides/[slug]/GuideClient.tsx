@@ -197,16 +197,16 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
           style={{ backgroundImage: "url('/images/home1.jpeg')" }}
         />
         <div className="absolute inset-0 bg-black/90" />
-        <div className="absolute -left-40 top-20 h-[500px] w-[500px] rounded-full bg-purple-600/10 blur-[140px]" />
+        <div className="absolute -left-40 top-20 h-[500px] w-[500px] rounded-full bg-cyan-600/10 blur-[140px]" />
         <div className="absolute right-[-150px] top-[35%] h-[500px] w-[500px] rounded-full bg-blue-600/10 blur-[140px]" />
-        <div className="absolute bottom-[-200px] left-[30%] h-[500px] w-[500px] rounded-full bg-pink-600/5 blur-[150px]" />
+        <div className="absolute bottom-[-200px] left-[30%] h-[500px] w-[500px] rounded-full bg-blue-600/5 blur-[150px]" />
         <div className="absolute inset-0 overflow-hidden">{stars}</div>
       </div>
 
       {/* READING PROGRESS */}
       <div className="fixed left-0 right-0 top-0 z-50 h-[2px] bg-white/5">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-[width] duration-150"
+          className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500 transition-[width] duration-150"
           style={{ width: `${readingProgress}%` }}
         />
       </div>
@@ -304,7 +304,7 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="relative mb-10 overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-500/[0.09] via-white/[0.02] to-purple-500/[0.05] p-6 sm:p-8"
+              className="relative mb-10 overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-500/[0.09] via-white/[0.02] to-cyan-500/[0.05] p-6 sm:p-8"
             >
               <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
               <div className="relative">
@@ -519,7 +519,7 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
               )}
 
               {/* CONTACT CTA */}
-              <div className="relative overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-purple-500/5 p-5">
+              <div className="relative overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 p-5">
                 <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-blue-500/10 blur-2xl" />
                 <div className="relative">
                   <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-blue-500/10">

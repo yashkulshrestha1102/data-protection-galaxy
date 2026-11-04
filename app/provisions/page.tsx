@@ -37,7 +37,7 @@ export default function ProvisionsPage() {
       sections: 'Sections 1-3',
       description:
         'Short title, extent, commencement, and definitions. This chapter sets the foundation � defining who a Data Principal is, who a Data Fiduciary is, what "personal data" means, and other critical terms.',
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-cyan-500 to-blue-500',
     },
     {
       icon: Users,
@@ -77,7 +77,7 @@ export default function ProvisionsPage() {
       sections: 'Sections 35-44',
       description:
         'Covers miscellaneous provisions � protections for state functions, exemptions, power to make rules, removal of difficulties, and transitional provisions.',
-      color: 'from-pink-500 to-rose-500',
+      color: 'from-blue-500 to-rose-500',
     },
   ];
 
@@ -266,9 +266,9 @@ export default function ProvisionsPage() {
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -283,13 +283,13 @@ export default function ProvisionsPage() {
 
         {/* ===== HERO ===== */}
         <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/20 border border-pink-500/30 text-xs font-medium text-pink-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs font-medium text-blue-300 mb-4">
             <BookMarked className="w-3 h-3" />
             Act Overview � DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Key Provisions of the{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">
               DPDP Act 2023
             </span>
           </h1>
@@ -421,15 +421,15 @@ export default function ProvisionsPage() {
                   className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0 border border-pink-500/30">
-                      <Icon className="w-5 h-5 text-pink-400" />
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
+                      <Icon className="w-5 h-5 text-blue-400" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 flex-wrap mb-1">
                         <h3 className="text-base font-semibold text-white">
                           {def.term}
                         </h3>
-                        <span className="text-[10px] font-mono text-pink-400 bg-pink-500/10 px-1.5 py-0.5 rounded border border-pink-500/20">
+                        <span className="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded border border-blue-500/20">
                           {def.section}
                         </span>
                       </div>
@@ -475,10 +475,10 @@ export default function ProvisionsPage() {
               <tbody className="divide-y divide-white/10">
                 {sectionMap.map((row, i) => (
                   <tr key={i} className="hover:bg-white/5 transition-colors">
-                    <td className="px-4 py-3 text-xs font-mono text-purple-400 whitespace-nowrap">
+                    <td className="px-4 py-3 text-xs font-mono text-cyan-400 whitespace-nowrap">
                       {row.chapter}
                     </td>
-                    <td className="px-4 py-3 text-xs font-mono text-pink-400 whitespace-nowrap">
+                    <td className="px-4 py-3 text-xs font-mono text-blue-400 whitespace-nowrap">
                       {row.sections}
                     </td>
                     <td className="px-4 py-3 text-sm text-white font-medium">
@@ -612,13 +612,13 @@ export default function ProvisionsPage() {
                 className="flex gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all"
               >
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
                     <Calendar className="w-5 h-5 text-white" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="text-xs font-bold text-pink-400">
+                    <span className="text-xs font-bold text-blue-400">
                       {item.date}
                     </span>
                   </div>
@@ -670,7 +670,7 @@ export default function ProvisionsPage() {
         <section className="mb-16">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start gap-6">
             <div className="flex-shrink-0">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-pink-500/40">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-blue-500/40">
                 <Image
                   src="/images/profileoffounder.jpeg"
                   alt="Shilpi Kulshrestha"
@@ -681,7 +681,7 @@ export default function ProvisionsPage() {
               </div>
             </div>
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-pink-500/20 border border-pink-500/30 text-xs font-medium text-pink-300 mb-2">
+              <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs font-medium text-blue-300 mb-2">
                 <UserCheck className="w-3 h-3" />
                 Author
               </div>
@@ -715,7 +715,7 @@ export default function ProvisionsPage() {
               >
                 <summary className="flex items-center justify-between cursor-pointer list-none">
                   <span className="text-white font-medium pr-4">{faq.q}</span>
-                  <span className="text-pink-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+                  <span className="text-blue-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
                     +
                   </span>
                 </summary>
@@ -730,7 +730,7 @@ export default function ProvisionsPage() {
         {/* ===== RELATED READING ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-pink-400" />
+            <BookOpen className="w-6 h-6 text-blue-400" />
             Related Topics
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -740,7 +740,7 @@ export default function ProvisionsPage() {
                 href={link.href}
                 className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all"
               >
-                <h4 className="text-sm font-medium text-white group-hover:text-pink-400 transition-colors flex items-center justify-between gap-2">
+                <h4 className="text-sm font-medium text-white group-hover:text-blue-400 transition-colors flex items-center justify-between gap-2">
                   {link.title}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </h4>
@@ -751,7 +751,7 @@ export default function ProvisionsPage() {
         </section>
 
         {/* ===== FINAL CTA ===== */}
-        <section className="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/30 rounded-2xl p-8 text-center">
+        <section className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">
             Want to understand the Act end-to-end?
           </h2>
@@ -762,7 +762,7 @@ export default function ProvisionsPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/scorecard"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold hover:scale-105 transition-all"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-semibold hover:scale-105 transition-all"
             >
               Take the Free Test ?
             </Link>

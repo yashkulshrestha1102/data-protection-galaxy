@@ -57,17 +57,18 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     }
   };
 
+  // ✅ PURPLE HATA KAR BLUE GRADIENT COLORS DAALE HAIN
   const getFillColor = (countryId: string) => {
     const country = countries.find(c => c.id === countryId);
-    if (!country) return "#1e1e2f"; 
+    if (!country) return "#0a1a2f"; // Default dark blue for unrecorded areas
     
     switch (country.level) {
-      case 'Comprehensive': return "#4c1d95"; 
-      case 'Substantial': return "#7c3aed"; 
-      case 'Moderate': return "#a855f7"; 
-      case 'Limited': return "#d8b4fe"; 
-      case 'None': return "#2d2d3d"; 
-      default: return "#2d2d3d";
+      case 'Comprehensive': return "#023E8A"; // Dark Blue
+      case 'Substantial': return "#0077B6";   // Medium Dark Blue
+      case 'Moderate': return "#0096C7";      // Cyan-Blue
+      case 'Limited': return "#48CAE4";       // Light Cyan
+      case 'None': return "#1e293b";          // Slate/Dark Gray
+      default: return "#1e293b";
     }
   };
 
@@ -76,8 +77,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
   return (
     <div 
       ref={containerRef} 
-      // ✅ FIX: Using h-full to fill the parent container perfectly
-      className="relative w-full h-full rounded-2xl overflow-hidden bg-[#050510] border border-white/10 shadow-2xl flex flex-col"
+      className="relative w-full h-full rounded-2xl overflow-hidden bg-[#030814] border border-white/10 shadow-2xl flex flex-col"
       onMouseMove={handleMouseMove}
     >
       
@@ -86,7 +86,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: 100, // ✅ ZOOM OUT: Reduced from 110 to 100
+            scale: 100, 
             center: [0, 25] 
           }}
           className="w-full h-full outline-none"
@@ -107,8 +107,8 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
                       onMouseEnter={(e) => handleMouseEnter(geoName, e)}
                       onMouseLeave={handleMouseLeave}
                       onClick={() => handleClick(geoName)}
-                      fill={countryId ? getFillColor(countryId) : "#1a1a2e"}
-                      stroke="#050510"
+                      fill={countryId ? getFillColor(countryId) : "#0a1a2f"}
+                      stroke="#030814" // Match background for clean borders
                       strokeWidth={0.5}
                       className={`outline-none transition-opacity duration-200 ${selectedCountryId === countryId ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
                     />
@@ -121,14 +121,14 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       </div>
 
       {/* ===== LEGEND ===== */}
-      {/* ✅ FIX: Absolute positioned at bottom so it NEVER gets cut off */}
       <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-black/70 backdrop-blur-md border-t border-white/10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 z-10">
         {[
-          { label: 'Comprehensive', color: '#4c1d95' },
-          { label: 'Substantial', color: '#7c3aed' },
-          { label: 'Moderate', color: '#a855f7' },
-          { label: 'Limited', color: '#d8b4fe' },
-          { label: 'None', color: '#2d2d3d' }
+          // ✅ Legend colors updated to match Blue Theme
+          { label: 'Comprehensive', color: '#023E8A' },
+          { label: 'Substantial', color: '#0077B6' },
+          { label: 'Moderate', color: '#0096C7' },
+          { label: 'Limited', color: '#48CAE4' },
+          { label: 'None', color: '#1e293b' }
         ].map((level) => (
           <div key={level.label} className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: level.color }} />
@@ -140,13 +140,15 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       {/* ===== TOOLTIP ===== */}
       {hoveredCountryData && (
         <div 
-          className="absolute pointer-events-none z-50 px-3 py-1.5 bg-black/90 backdrop-blur-md border border-pink-500/50 rounded-lg shadow-2xl text-xs text-white font-bold whitespace-nowrap flex items-center gap-2 transform -translate-x-1/2 -translate-y-[150%] transition-all duration-75 ease-out"
+          // ✅ Border changed to Cyan instead of Blue/Purple
+          className="absolute pointer-events-none z-50 px-3 py-1.5 bg-black/90 backdrop-blur-md border border-cyan-500/50 rounded-lg shadow-2xl text-xs text-white font-bold whitespace-nowrap flex items-center gap-2 transform -translate-x-1/2 -translate-y-[150%] transition-all duration-75 ease-out"
           style={{ left: tooltipPos.x, top: tooltipPos.y }}
         >
           <span className="text-lg">{hoveredCountryData.flag}</span>
           <div>
             <div>{hoveredCountryData.name}</div>
-            <div className="text-[9px] text-pink-300 font-normal uppercase tracking-wider">{hoveredCountryData.level}</div>
+            {/* ✅ Text color updated to Cyan */}
+            <div className="text-[9px] text-cyan-300 font-normal uppercase tracking-wider">{hoveredCountryData.level}</div>
           </div>
         </div>
       )}

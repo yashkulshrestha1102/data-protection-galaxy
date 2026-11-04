@@ -91,7 +91,7 @@ export default async function AuthorPage({
 
             {/* Info */}
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-3">
                 <UserCheck className="w-3 h-3" />
                 Author Profile
               </div>
@@ -130,13 +130,13 @@ export default async function AuthorPage({
         {author.publications && author.publications.length > 0 && (
           <section className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <BookOpen className="w-6 h-6 text-purple-400" />
+              <BookOpen className="w-6 h-6 text-cyan-400" />
               Selected Publications
             </h2>
             <ul className="space-y-3">
               {author.publications.map((pub, i) => (
                 <li key={i} className="text-gray-300 flex items-start gap-3">
-                  <span className="text-purple-400 mt-1">•</span>
+                  <span className="text-cyan-400 mt-1">•</span>
                   <span>{pub}</span>
                 </li>
               ))}
@@ -148,13 +148,13 @@ export default async function AuthorPage({
         {author.speakingEngagements && author.speakingEngagements.length > 0 && (
           <section className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <Award className="w-6 h-6 text-purple-400" />
+              <Award className="w-6 h-6 text-cyan-400" />
               Speaking & Media
             </h2>
             <ul className="space-y-3">
               {author.speakingEngagements.map((eng, i) => (
                 <li key={i} className="text-gray-300 flex items-start gap-3">
-                  <span className="text-purple-400 mt-1">•</span>
+                  <span className="text-cyan-400 mt-1">•</span>
                   <span>{eng}</span>
                 </li>
               ))}
@@ -171,7 +171,7 @@ export default async function AuthorPage({
                 key={i}
                 className="bg-white/5 border border-white/10 rounded-xl p-5 text-center"
               >
-                <Icon className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                <Icon className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
                 <div className="text-3xl font-bold text-white mb-1">
                   {stat.value}
                 </div>
@@ -184,7 +184,7 @@ export default async function AuthorPage({
         {/* ===== INSIGHTS ===== */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <FileText className="w-6 h-6 text-purple-400" />
+            <FileText className="w-6 h-6 text-cyan-400" />
             Insights by {author.name}
             <span className="text-sm font-normal text-gray-400">
               ({authorInsights.length})
@@ -195,12 +195,12 @@ export default async function AuthorPage({
               <Link
                 key={insight.slug}
                 href={`/insight/${insight.slug}`}
-                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
               >
                 <div className="inline-block px-2 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400 mb-3">
                   {insight.category}
                 </div>
-                <h3 className="text-base font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
+                <h3 className="text-base font-semibold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
                   {insight.title}
                 </h3>
                 <p className="text-sm text-gray-400 line-clamp-2 mb-3">
@@ -217,7 +217,7 @@ export default async function AuthorPage({
             <div className="text-center mt-6">
               <Link
                 href="/insight"
-                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
               >
                 View all insights <ArrowRight className="w-4 h-4" />
               </Link>
@@ -228,7 +228,7 @@ export default async function AuthorPage({
         {/* ===== GUIDES ===== */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
+            <BookOpen className="w-6 h-6 text-cyan-400" />
             Guides by {author.name}
             <span className="text-sm font-normal text-gray-400">
               ({authorGuides.length})
@@ -239,14 +239,14 @@ export default async function AuthorPage({
               <Link
                 key={guide.slug}
                 href={`/resources/guides/${guide.slug}`}
-                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
               >
                 <span
                   className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${guide.categoryColor} mb-3`}
                 >
                   {guide.category}
                 </span>
-                <h3 className="text-base font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
+                <h3 className="text-base font-semibold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
                   {guide.title}
                 </h3>
                 <p className="text-sm text-gray-400 line-clamp-2 mb-3">
@@ -264,7 +264,7 @@ export default async function AuthorPage({
         {/* ===== CASE STUDIES ===== */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <Briefcase className="w-6 h-6 text-purple-400" />
+            <Briefcase className="w-6 h-6 text-cyan-400" />
             Case Studies
             <span className="text-sm font-normal text-gray-400">
               ({authorCaseStudies.length})
@@ -275,7 +275,7 @@ export default async function AuthorPage({
               <Link
                 key={cs.slug}
                 href={`/resources/case-studies/${cs.slug}`}
-                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400">
@@ -283,7 +283,7 @@ export default async function AuthorPage({
                   </span>
                   <span className="text-xs text-gray-500">{cs.date}</span>
                 </div>
-                <h3 className="text-base font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
+                <h3 className="text-base font-semibold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
                   {cs.title}
                 </h3>
                 <p className="text-sm text-gray-400 line-clamp-2">
@@ -295,8 +295,8 @@ export default async function AuthorPage({
         </section>
 
         {/* ===== CTA ===== */}
-        <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-8 text-center">
-          <Shield className="w-10 h-10 text-purple-400 mx-auto mb-3" />
+        <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
+          <Shield className="w-10 h-10 text-cyan-400 mx-auto mb-3" />
           <h2 className="text-2xl font-bold text-white mb-3">
             Need help with DPDPA compliance?
           </h2>

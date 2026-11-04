@@ -58,7 +58,7 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="h-full max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-500/20 scrollbar-track-transparent"
+      className="h-full max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-cyan-500/20 scrollbar-track-transparent"
     >
       {/* Header */}
       <div className="flex items-start gap-4 mb-6">
@@ -71,7 +71,7 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
 
       {/* Authority */}
       <div className="flex items-start gap-3 p-4 rounded-xl bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
-        <Building className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+        <Building className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-400">Authority</p>
           <p className="text-white font-medium text-sm">{country.authority}</p>
@@ -101,12 +101,12 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-sm font-semibold text-gray-300">14-Topic Coverage</h4>
-          <span className="text-xs text-purple-400">{addressedTopics}/{totalTopics} Addressed</span>
+          <span className="text-xs text-cyan-400">{addressedTopics}/{totalTopics} Addressed</span>
         </div>
 
         <div className="w-full h-1.5 bg-white/10 rounded-full mb-4 overflow-hidden">
           <motion.div 
-            className="h-full bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"
+            className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${compliancePercentage}%` }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -159,11 +159,11 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
         </div>
       </div>
 
-      {/* ===== FIXED BUTTONS — Galaxy Theme (Purple-Pink) ===== */}
+      {/* ===== FIXED BUTTONS — Galaxy Theme (cyan-Pink) ===== */}
 <div className="flex flex-col sm:flex-row gap-3 sticky bottom-0 pt-4 -mx-2 px-2">
         <Link 
           href={`/country/${country.id}`}
-          className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium text-sm hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50"
+          className="flex-1 px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-sm hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50"
         >
           View Full Country Page
           <ExternalLink className="w-4 h-4" />

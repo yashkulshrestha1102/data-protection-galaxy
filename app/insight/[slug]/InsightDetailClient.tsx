@@ -115,10 +115,10 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
             [&_em]:text-gray-400 [&_em]:italic
 
             [&_ul]:my-5 [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:list-disc
-            [&_ul]:marker:text-purple-400
+            [&_ul]:marker:text-cyan-400
 
             [&_ol]:my-5 [&_ol]:pl-6 [&_ol]:space-y-2 [&_ol]:list-decimal
-            [&_ol]:marker:text-purple-400 [&_ol]:marker:font-semibold
+            [&_ol]:marker:text-cyan-400 [&_ol]:marker:font-semibold
 
             [&_li]:text-[15px] [&_li]:md:text-base [&_li]:leading-7 [&_li]:text-gray-300
             [&_li]:pl-1
@@ -134,7 +134,7 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
             [&_hr]:my-10 [&_hr]:border-white/10
 
             [&_code]:bg-white/10 [&_code]:px-1.5 [&_code]:py-0.5
-            [&_code]:rounded [&_code]:text-sm [&_code]:text-purple-300
+            [&_code]:rounded [&_code]:text-sm [&_code]:text-cyan-300
             [&_code]:font-mono
           "
           dangerouslySetInnerHTML={{ __html: insight.content }}
@@ -145,7 +145,7 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
         {relatedInsights.length > 0 && (
           <div>
             <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-purple-400" />
+              <BookOpen className="w-5 h-5 text-cyan-400" />
               Continue Reading — Latest Insights
             </h3>
 

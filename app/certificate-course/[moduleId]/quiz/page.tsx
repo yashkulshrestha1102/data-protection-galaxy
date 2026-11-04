@@ -75,7 +75,7 @@ export default function QuizPage() {
           <h2 className="text-3xl font-bold text-white mb-2">
             {passed ? 'Congratulations!' : 'Keep Learning!'}
           </h2>
-          <div className="text-5xl font-bold text-purple-400 mb-4">{score}%</div>
+          <div className="text-5xl font-bold text-cyan-400 mb-4">{score}%</div>
           <p className="text-gray-300 mb-6">
             {passed 
               ? `You passed! You got ${score}% correct.` 
@@ -127,7 +127,7 @@ export default function QuizPage() {
 
         <div className="bg-white/10 border border-white/20 rounded-2xl p-6 md:p-8">
           <div className="mb-6">
-            <span className="text-xs px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30">
+            <span className="text-xs px-3 py-1 rounded-full bg-purple-500/20 text-cyan-400 border border-cyan-500/30">
               Question {currentQuestion + 1}
             </span>
             <h3 className="text-xl font-bold text-white mt-3">{currentQ.question}</h3>

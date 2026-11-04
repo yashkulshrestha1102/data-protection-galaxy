@@ -333,7 +333,7 @@ export default function FormsPage() {
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
       'Notice': 'from-blue-500 to-blue-600',
-      'Consent': 'from-purple-500 to-purple-600',
+      'Consent': 'from-cyan-500 to-cyan-600',
       'Data Rights': 'from-green-500 to-green-600',
       'Breach Response': 'from-red-500 to-red-600',
       'Risk Assessment': 'from-orange-500 to-orange-600',
@@ -345,7 +345,7 @@ export default function FormsPage() {
   const getCategoryBg = (category: string) => {
     const colors: Record<string, string> = {
       'Notice': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-      'Consent': 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+      'Consent': 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
       'Data Rights': 'bg-green-500/20 text-green-400 border-green-500/30',
       'Breach Response': 'bg-red-500/20 text-red-400 border-red-500/30',
       'Risk Assessment': 'bg-orange-500/20 text-orange-400 border-orange-500/30',
@@ -360,9 +360,9 @@ export default function FormsPage() {
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         {stars}
       </div>
 
@@ -385,7 +385,7 @@ export default function FormsPage() {
           {forms.map((item) => (
             <div
               key={item.id}
-              className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 group"
+              className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20 group"
             >
               <div className="flex items-start justify-between mb-3">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getCategoryBg(item.category)}`}>
@@ -399,7 +399,7 @@ export default function FormsPage() {
                 </div>
               </div>
 
-              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all">
+              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all">
                 {item.title}
               </h3>
 
@@ -413,7 +413,7 @@ export default function FormsPage() {
                 className={`inline-flex items-center gap-1.5 text-sm transition-colors ${
                   downloading === item.title 
                     ? 'text-gray-400 cursor-not-allowed' 
-                    : 'text-blue-400 hover:text-purple-400 group-hover:translate-x-1 transition-transform'
+                    : 'text-blue-400 hover:text-cyan-400 group-hover:translate-x-1 transition-transform'
                 }`}
               >
                 {downloading === item.title ? (

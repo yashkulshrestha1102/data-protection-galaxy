@@ -99,7 +99,7 @@ export const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* ===== CONTACT BAR - TOP PE ===== */}
-      <div className="relative z-10 bg-purple-900/20 backdrop-blur-md border-b border-white/5 py-1.5 px-4">
+      <div className="relative z-10 bg-cyan-900/20 backdrop-blur-md border-b border-white/5 py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-end gap-3 md:gap-6">
           
           {/* ===== SOCIAL ICONS + PHONE + EMAIL ===== */}
@@ -138,7 +138,7 @@ export const Header = () => {
 
             {/* Phone */}
             <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-purple-400" />
+              <Phone className="w-3.5 h-3.5 text-cyan-400" />
               <a 
                 href="tel:+918800138008" 
                 className="text-xs text-white/80 hover:text-white transition-colors font-medium"
@@ -152,7 +152,7 @@ export const Header = () => {
 
             {/* Email */}
             <div className="flex items-center gap-2 hidden sm:flex">
-              <Mail className="w-3.5 h-3.5 text-purple-400" />
+              <Mail className="w-3.5 h-3.5 text-cyan-400" />
               <a 
                 href="mailto:shilpi.kulshrestha@businezexcellence.com" 
                 className="text-xs text-white/70 hover:text-white transition-colors"
@@ -201,8 +201,8 @@ export const Header = () => {
                 prefetch={true}
                 className={`text-base font-medium transition-all duration-200 ${ 
                   pathname === "/scorecard" 
-                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
-                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
+                    ? 'text-white font-bold border-b-2 border-cyan-400 pb-1' 
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-cyan-400/80 hover:font-bold hover:pb-1'
                 }`}
               >
                 Scoreboard
@@ -216,8 +216,8 @@ export const Header = () => {
                 <button
                   className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ 
                     openDropdown === 'resources' || resourcesDropdown.some(item => pathname === item.href)
-                      ? 'text-white font-bold border-b-2 border-purple-400 pb-1'
-                      : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
+                      ? 'text-white font-bold border-b-2 border-cyan-400 pb-1'
+                      : 'text-white/80 hover:text-white hover:border-b-2 hover:border-cyan-400/80 hover:font-bold hover:pb-1'
                   }`}
                 >
                   Resources
@@ -237,7 +237,7 @@ export const Header = () => {
                         prefetch={true}
                         className={`block px-4 py-2.5 text-base transition-colors ${ 
                           pathname === item.href
-                            ? 'text-white bg-purple-500/20'
+                            ? 'text-white bg-cyan-500/20'
                             : 'text-gray-300/80 hover:text-white hover:bg-white/10'
                         }`}
                       >
@@ -253,8 +253,8 @@ export const Header = () => {
                 prefetch={true}
                 className={`text-base font-medium transition-all duration-200 ${ 
                   pathname === "/generator" 
-                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
-                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
+                    ? 'text-white font-bold border-b-2 border-cyan-400 pb-1' 
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-cyan-400/80 hover:font-bold hover:pb-1'
                 }`}
               >
                 Generator
@@ -265,8 +265,8 @@ export const Header = () => {
                 prefetch={true}
                 className={`text-base font-medium transition-all duration-200 ${ 
                   pathname === "/about" 
-                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
-                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
+                    ? 'text-white font-bold border-b-2 border-cyan-400 pb-1' 
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-cyan-400/80 hover:font-bold hover:pb-1'
                 }`}
               >
                 About
@@ -277,8 +277,8 @@ export const Header = () => {
                 prefetch={true}
                 className={`text-base font-medium transition-all duration-200 ${ 
                   pathname === "/contact" 
-                    ? 'text-white font-bold border-b-2 border-purple-400 pb-1' 
-                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-purple-400/80 hover:font-bold hover:pb-1'
+                    ? 'text-white font-bold border-b-2 border-cyan-400 pb-1' 
+                    : 'text-white/80 hover:text-white hover:border-b-2 hover:border-cyan-400/80 hover:font-bold hover:pb-1'
                 }`}
               >
                 Contact
@@ -309,28 +309,28 @@ export const Header = () => {
           {isOpen && (
             <div className="md:hidden py-4 border-t border-white/10 bg-white/5 backdrop-blur-xl">
               <nav className="flex flex-col gap-1">
-                <Link href="/scorecard" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/scorecard" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
+                <Link href="/scorecard" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/scorecard" ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-white font-semibold border border-cyan-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                   Scoreboard
                 </Link>
 
                 <div className="px-4 py-1">
                   <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Resources</p>
                   {resourcesDropdown.map((item) => (
-                    <Link key={item.href} href={item.href} prefetch={true} onClick={() => setIsOpen(false)} className={`block px-4 py-2 rounded-lg transition-all text-sm ${pathname === item.href ? 'text-white bg-purple-500/20 font-semibold' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
+                    <Link key={item.href} href={item.href} prefetch={true} onClick={() => setIsOpen(false)} className={`block px-4 py-2 rounded-lg transition-all text-sm ${pathname === item.href ? 'text-white bg-cyan-500/20 font-semibold' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                       {item.label}
                     </Link>
                   ))}
                 </div>
 
-                <Link href="/generator" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/generator" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
+                <Link href="/generator" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/generator" ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-white font-semibold border border-cyan-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                   Generator
                 </Link>
 
-                <Link href="/about" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/about" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
+                <Link href="/about" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/about" ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-white font-semibold border border-cyan-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                   About
                 </Link>
 
-                <Link href="/contact" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/contact" ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white font-semibold border border-purple-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
+                <Link href="/contact" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2.5 rounded-lg transition-all ${pathname === "/contact" ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-white font-semibold border border-cyan-400/30' : 'text-gray-300/80 hover:text-white hover:bg-white/10'}`}>
                   Contact
                 </Link>
 

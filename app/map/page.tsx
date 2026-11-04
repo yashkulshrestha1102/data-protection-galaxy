@@ -75,7 +75,7 @@ export default function MapPage() {
               Back to Home
             </Link>
             <h1 className="text-3xl md:text-5xl font-bold text-white flex items-center gap-3 drop-shadow-2xl tracking-tight">
-              <GlobeIcon className="w-8 h-8 md:w-10 md:h-10 text-purple-500" />
+              <GlobeIcon className="w-8 h-8 md:w-10 md:h-10 text-cyan-500" />
               Global Privacy Map
             </h1>
             <p className="text-gray-400 mt-2 max-w-2xl text-sm md:text-base">
@@ -96,7 +96,7 @@ export default function MapPage() {
               placeholder="Search countries, laws, or authorities..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-3 pl-11 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-all text-sm"
+              className="w-full px-4 py-3 pl-11 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-all text-sm"
             />
             <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-gray-400" />
             {searchQuery && (
@@ -110,19 +110,19 @@ export default function MapPage() {
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
-              className="px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-purple-500/50 cursor-pointer w-1/2 md:w-auto"
+              className="px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-500/50 cursor-pointer w-1/2 md:w-auto"
             >
               {regions.map(r => <option key={r} value={r} className="bg-black">{r === 'All' ? 'All Regions' : r}</option>)}
             </select>
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
-              className="px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-purple-500/50 cursor-pointer w-1/2 md:w-auto"
+              className="px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-500/50 cursor-pointer w-1/2 md:w-auto"
             >
               {levels.map(l => <option key={l} value={l} className="bg-black">{l === 'All' ? 'All Levels' : l}</option>)}
             </select>
             {hasActiveFilters && (
-              <button onClick={resetFilters} className="px-4 py-3 rounded-xl bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30 transition-all text-sm font-medium whitespace-nowrap hidden md:block">
+              <button onClick={resetFilters} className="px-4 py-3 rounded-xl bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/30 transition-all text-sm font-medium whitespace-nowrap hidden md:block">
                 Reset
               </button>
             )}
@@ -154,9 +154,9 @@ export default function MapPage() {
         <div className="mt-12">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-purple-400" />
+              <MapPin className="w-5 h-5 text-cyan-400" />
               Browse Jurisdictions
-              <span className="text-xs font-normal text-purple-300 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20 ml-2">
+              <span className="text-xs font-normal text-cyan-300 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/20 ml-2">
                 {filteredCountries.length} Results
               </span>
             </h2>
@@ -169,7 +169,7 @@ export default function MapPage() {
                 onClick={() => setSelectedCountryId(country.id)}
                 className={`p-3 rounded-xl text-center transition-all border ${
                   selectedCountryId === country.id
-                    ? 'bg-purple-500/20 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)] scale-[1.02]'
+                    ? 'bg-cyan-500/20 border-cyan-500/50 shadow-[0_0_15px_rgba(168,85,247,0.3)] scale-[1.02]'
                     : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
                 }`}
               >

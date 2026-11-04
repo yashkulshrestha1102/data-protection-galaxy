@@ -646,7 +646,7 @@ export default function LawfulProcessingPage() {
                       : ex.color === 'red'
                       ? 'bg-red-500/5 border-red-500/20'
                       : ex.color === 'purple'
-                      ? 'bg-purple-500/5 border-purple-500/20'
+                      ? 'bg-purple-500/5 border-cyan-500/20'
                       : 'bg-blue-500/5 border-blue-500/20'
                   }`}
                 >
@@ -660,7 +660,7 @@ export default function LawfulProcessingPage() {
                           : ex.color === 'red'
                           ? 'text-red-400'
                           : ex.color === 'purple'
-                          ? 'text-purple-400'
+                          ? 'text-cyan-400'
                           : 'text-blue-400'
                       }`}
                     />

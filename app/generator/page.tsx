@@ -619,7 +619,7 @@ const FormField = ({ field, value, onChange }: any) => {
                 value={opt}
                 checked={value === opt}
                 onChange={handleChange}
-                className="w-4 h-4 text-purple-500 focus:ring-purple-500"
+                className="w-4 h-4 text-cyan-500 focus:ring-purple-500"
               />
               <span className="text-gray-200">{opt}</span>
             </label>
@@ -635,7 +635,7 @@ const FormField = ({ field, value, onChange }: any) => {
                 type="checkbox"
                 checked={(value || []).includes(opt)}
                 onChange={() => handleCheckboxGroup(opt)}
-                className="w-4 h-4 text-purple-500 focus:ring-purple-500 rounded"
+                className="w-4 h-4 text-cyan-500 focus:ring-purple-500 rounded"
               />
               <span className="text-sm text-gray-200">{opt}</span>
             </label>
@@ -844,7 +844,7 @@ export default function GeneratorPage() {
             transition={{ duration: 0.6 }}
             className="mb-8 bg-black/50 backdrop-blur-md rounded-2xl p-6 border border-white/20"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/30 border border-purple-400/50 text-sm font-medium text-purple-300 mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/30 border border-purple-400/50 text-sm font-medium text-cyan-300 mb-4">
               <Sparkles className="w-4 h-4" />
               Document Generator
             </div>
@@ -898,14 +898,14 @@ export default function GeneratorPage() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500/40 to-pink-500/40 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform border border-purple-400/30">
-                      <Icon className="w-5 h-5 text-purple-300" />
+                      <Icon className="w-5 h-5 text-cyan-300" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-semibold text-white group-hover:text-purple-300 transition-colors">
+                      <h3 className="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors">
                         {tool.label}
                       </h3>
                       <p className="text-xs text-gray-200 mt-1">{tool.desc}</p>
-                      <button className="mt-3 text-xs text-purple-300 hover:text-purple-200 transition-colors flex items-center gap-1 font-medium">
+                      <button className="mt-3 text-xs text-cyan-300 hover:text-purple-200 transition-colors flex items-center gap-1 font-medium">
                         Generate <ArrowRight className="w-3 h-3" />
                       </button>
                     </div>
@@ -939,7 +939,7 @@ export default function GeneratorPage() {
             <span className="text-sm text-gray-200">
               {selectedToolData?.label}
             </span>
-            <span className="text-xs px-2 py-1 rounded-full bg-purple-500/30 text-purple-300 border border-purple-400/50">
+            <span className="text-xs px-2 py-1 rounded-full bg-purple-500/30 text-cyan-300 border border-purple-400/50">
               {activeTab === 'privacy' ? 'Privacy' : 'AI Governance'}
             </span>
           </div>
@@ -1061,7 +1061,7 @@ export default function GeneratorPage() {
           <div className="bg-black/60 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                <Eye className="w-5 h-5 text-purple-400" />
+                <Eye className="w-5 h-5 text-cyan-400" />
                 Preview
               </h3>
               {generatedContent && (
@@ -1122,7 +1122,7 @@ export default function GeneratorPage() {
             transition={{ delay: 0.3 }}
             className="mt-8 bg-black/60 backdrop-blur-md border border-purple-500/50 rounded-2xl p-6 text-center max-w-2xl mx-auto shadow-xl"
           >
-            <Lock className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+            <Lock className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <h3 className="text-lg font-semibold text-white mb-1">Get Your Document</h3>
             <p className="text-gray-200 text-sm mb-4">
               Enter your email to receive the generated document instantly.

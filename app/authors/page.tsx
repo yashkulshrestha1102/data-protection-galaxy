@@ -30,7 +30,7 @@ export default function AuthorsPage() {
 
         <div className="mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 flex items-center gap-3">
-            <Users className="w-8 h-8 text-purple-400" />
+            <Users className="w-8 h-8 text-cyan-400" />
             Our Authors
           </h1>
           <p className="text-gray-300 text-lg">
@@ -43,7 +43,7 @@ export default function AuthorsPage() {
             <Link
               key={author.id}
               href={`/authors/${author.id}`}
-              className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+              className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
             >
               <div className="flex items-center gap-4">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-purple-500/40 flex-shrink-0">
@@ -56,11 +56,11 @@ export default function AuthorsPage() {
                   />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-xl font-semibold text-white group-hover:text-purple-400 transition-colors">
+                  <h2 className="text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors">
                     {author.name}
                   </h2>
                   <p className="text-sm text-gray-400 mt-1">{author.role}</p>
-                  <div className="flex items-center gap-1 text-purple-400 text-sm mt-2 font-medium">
+                  <div className="flex items-center gap-1 text-cyan-400 text-sm mt-2 font-medium">
                     View profile
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>

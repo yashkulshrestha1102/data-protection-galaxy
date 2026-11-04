@@ -56,7 +56,7 @@ export default function ConsentDashboardPage() {
 
         <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-8">
           <div className="flex items-center gap-3 mb-6">
-            <Shield className="w-8 h-8 text-purple-400" />
+            <Shield className="w-8 h-8 text-cyan-400" />
             <h1 className="text-3xl font-bold text-white">Consent Dashboard</h1>
           </div>
 
@@ -126,7 +126,7 @@ export default function ConsentDashboardPage() {
           <div className="mt-8 pt-6 border-t border-white/20 text-center">
             <p className="text-sm text-gray-400">
               Need help? Contact our Grievance Officer at{" "}
-              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">
+              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-cyan-400 underline">
                 shilpi.kulshrestha@businezexcellence.com
               </a>
             </p>

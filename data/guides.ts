@@ -77,7 +77,7 @@ export const guidesData: Guide[] = [
       </div>
 
       <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-        <div class="mb-2 text-sm font-semibold text-purple-400">RULES</div>
+        <div class="mb-2 text-sm font-semibold text-cyan-400">RULES</div>
         <div class="text-lg font-semibold text-white">DPDP Rules, 2025</div>
         <p class="mt-2 text-sm leading-6 text-gray-400">
           Detailed implementation requirements supporting the Act.
@@ -797,7 +797,7 @@ export const guidesData: Guide[] = [
       </div>
 
       <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-        <div class="mb-1 text-sm font-semibold text-purple-400">STEP 02 — ASSESS</div>
+        <div class="mb-1 text-sm font-semibold text-cyan-400">STEP 02 — ASSESS</div>
         <h3 class="text-lg font-semibold text-white">Map legal and operational requirements</h3>
         <p class="mt-2 text-sm leading-6 text-gray-400">
           Determine applicable grounds, notices, consent requirements, rights workflows,
@@ -1057,7 +1057,7 @@ export const guidesData: Guide[] = [
     title: 'GDPR Essentials for Indian Companies',
     category: 'EU Law',
     categoryIcon: 'Globe',
-    categoryColor: 'from-purple-500 to-purple-600',
+    categoryColor: 'from-cyan-500 to-cyan-600',
     excerpt: 'How EU data protection rules affect Indian businesses. Comprehensive guide to GDPR applicability, key principles, lawful bases, data subject rights, and compliance strategies for Indian IT and BPO companies.',
     content: `
       <h2>Why Indian Companies Must Care About GDPR</h2>
@@ -1220,7 +1220,7 @@ export const guidesData: Guide[] = [
     title: 'Data Protection Impact Assessment (DPIA) Guide',
     category: 'Best Practice',
     categoryIcon: 'FileText',
-    categoryColor: 'from-pink-500 to-pink-600',
+    categoryColor: 'from-blue-500 to-blue-600',
     excerpt: 'Complete guide to Data Protection Impact Assessments (DPIAs). Learn when DPIAs are required, how to conduct them, and best practices for documenting and managing risks.',
     content: `
       <h2>What is a DPIA?</h2>

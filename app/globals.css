@@ -41,9 +41,6 @@
   }
 }
 
-
-
-
 /* ===== 3D LOGO ROTATE (360) ===== */
 @layer utilities {
   .animate-logo-3d {
@@ -62,9 +59,6 @@
   }
 }
 
-
-
-
 /* ===== GLOBAL SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 8px;
@@ -77,18 +71,18 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.3);
+  background: rgba(0, 180, 216, 0.3);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(168, 85, 247, 0.5);
+  background: rgba(0, 180, 216, 0.5);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(168, 85, 247, 0.3) rgba(255, 255, 255, 0.05);
+  scrollbar-color: rgba(0, 180, 216, 0.3) rgba(255, 255, 255, 0.05); /* Fixed Purple to Blue */
 }
 
 /* ===== SMOOTH SCROLLING ===== */
@@ -98,13 +92,13 @@ html {
 
 /* ===== SELECTION ===== */
 ::selection {
-  background: rgba(168, 85, 247, 0.3);
+  background: rgba(0, 180, 216, 0.3);
   color: white;
 }
 
 /* ===== FOCUS ===== */
 *:focus-visible {
-  outline: 2px solid rgba(168, 85, 247, 0.5);
+  outline: 2px solid rgba(0, 180, 216, 0.5);
   outline-offset: 2px;
 }
 
@@ -115,30 +109,23 @@ body {
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
 
-/* Map Geography Hover Effect */
+/* ===== MAP HOVER EFFECT ===== */
 .rsm-geography {
   transition: all 250ms ease-in-out;
   outline: none;
 }
 
 .rsm-geography:hover {
-  fill: #EC4899 !important; /* Neon Pink */
+  fill: #00B4D8 !important; /* Bright Cyan Blue */
   stroke: #ffffff !important;
   stroke-width: 1px !important;
   cursor: pointer;
-  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8));
+  filter: drop-shadow(0 0 10px rgba(0, 180, 216, 0.8)); /* Cyan Glow */
 }
 
-
-
-
-
-
-
-
-/* Custom Styles for Wikipedia Content */
+/* ===== Custom Styles for Wikipedia Content ===== */
 .country-content h2 {
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
   margin-top: 2rem;
@@ -148,9 +135,9 @@ body {
 }
 
 .country-content h3 {
-  font-size: 1.25rem; /* text-xl */
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #e9d5ff; /* purple-200 */
+  color: #67e8f9; /* Changed to Cyan-300 */
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
@@ -171,7 +158,7 @@ body {
 }
 
 .country-content strong {
-  color: #d8b4fe; /* purple-300 */
+  color: #22d3ee; /* Changed to Cyan-400 */
   font-weight: 600;
 }
 
@@ -186,7 +173,7 @@ body {
   border-collapse: collapse;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
 }
 
 .country-content th {

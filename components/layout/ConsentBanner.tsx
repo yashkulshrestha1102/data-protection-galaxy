@@ -78,9 +78,9 @@ export function ConsentBanner({
         aria-label="Open cookie settings"
         title="Cookie settings"
         data-cookie-settings-trigger="true"
-        className="fixed bottom-26 left-6 z-[9998] inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/95 px-4 py-3 text-sm font-medium text-white shadow-xl backdrop-blur-md transition hover:border-purple-400 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-400"
+        className="fixed bottom-26 left-6 z-[9998] inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/95 px-4 py-3 text-sm font-medium text-white shadow-xl backdrop-blur-md transition hover:border-cyan-400 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400"
       >
-        <Cookie className="h-5 w-5 text-purple-300" aria-hidden="true" />
+        <Cookie className="h-5 w-5 text-cyan-300" aria-hidden="true" />
         Cookie settings
       </button>
     );
@@ -100,7 +100,7 @@ export function ConsentBanner({
         {/* ===== MAIN ROW ===== */}
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div className="flex items-start gap-3">
-            <Shield className="mt-1 h-6 w-6 shrink-0 text-purple-400" aria-hidden="true" />
+            <Shield className="mt-1 h-6 w-6 shrink-0 text-cyan-400" aria-hidden="true" />
             <div>
               <h2 id="cookie-consent-title" className="mb-1 text-sm font-semibold">
                 We value your privacy
@@ -110,11 +110,11 @@ export function ConsentBanner({
                 With your permission, we also use <strong className="text-white">Google Analytics cookies</strong> to
                 understand website traffic. Analytics cookies are <strong>not enabled</strong> unless you choose
                 &ldquo;Accept All&rdquo;. You can reject non-essential cookies or manage your preferences below. Read our{" "}
-                <Link href="/privacy-policy" className="text-purple-400 underline hover:text-purple-300">
+                <Link href="/privacy-policy" className="text-cyan-400 underline hover:text-cyan-300">
                   Privacy Policy
                 </Link>{" "}
                 and{" "}
-                <Link href="/consent-notice" className="text-purple-400 underline hover:text-purple-300">
+                <Link href="/consent-notice" className="text-cyan-400 underline hover:text-cyan-300">
                   Consent Notice
                 </Link>.
               </p>
@@ -152,7 +152,7 @@ export function ConsentBanner({
               disabled={isSaving}
               onClick={() => writeConsent("accepted")}
               data-cookie-consent-accept="true"
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/20 transition hover:brightness-110 disabled:opacity-60 md:flex-none"
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:brightness-110 disabled:opacity-60 md:flex-none"
             >
               <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
               Accept All
@@ -188,7 +188,7 @@ export function ConsentBanner({
               <div className="rounded-xl border border-white/10 bg-white/5 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-start gap-3">
-                    <BarChart3 className="mt-0.5 h-5 w-5 shrink-0 text-purple-400" aria-hidden="true" />
+                    <BarChart3 className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" />
                     <div>
                       <p className="text-sm font-medium text-white">Analytics Cookies</p>
                       <p className="mt-1 text-xs text-gray-400">
@@ -206,7 +206,7 @@ export function ConsentBanner({
                       onChange={(e) => setAnalyticsEnabled(e.target.checked)}
                       aria-label="Enable analytics cookies"
                     />
-                    <div className="h-6 w-11 rounded-full bg-gray-600 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-purple-500 peer-checked:after:translate-x-full"></div>
+                    <div className="h-6 w-11 rounded-full bg-gray-600 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-cyan-500 peer-checked:after:translate-x-full"></div>
                   </label>
                 </div>
               </div>
@@ -218,7 +218,7 @@ export function ConsentBanner({
                 type="button"
                 disabled={isSaving}
                 onClick={savePreferences}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/20 transition hover:brightness-110 disabled:opacity-60"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:brightness-110 disabled:opacity-60"
               >
                 <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
                 {isSaving ? "Saving..." : "Save Preferences"}

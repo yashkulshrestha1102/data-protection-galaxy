@@ -33,9 +33,9 @@ export default function CaseStudyClient({
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -92,7 +92,7 @@ export default function CaseStudyClient({
             [&_h3]:mt-8 [&_h3]:mb-4
             [&_p]:text-[15px] [&_p]:md:text-base [&_p]:leading-8 [&_p]:my-5
             [&_strong]:text-white [&_strong]:font-semibold
-            [&_ul]:my-5 [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:marker:text-purple-400
+            [&_ul]:my-5 [&_ul]:pl-6 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:marker:text-cyan-400
             [&_li]:text-[15px] [&_li]:leading-7
             [&_a]:text-blue-400 [&_a]:underline [&_a]:hover:text-blue-300
           "
@@ -100,9 +100,9 @@ export default function CaseStudyClient({
         />
 
         {/* Lessons Learned */}
-        <div className="mt-12 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-2xl p-6">
+        <div className="mt-12 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-6">
           <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-            <CheckCircle className="w-5 h-5 text-purple-400" />
+            <CheckCircle className="w-5 h-5 text-cyan-400" />
             Lessons Learned
           </h3>
           <ul className="space-y-2">
@@ -129,7 +129,7 @@ export default function CaseStudyClient({
                   className="group p-4 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all hover:scale-105"
                 >
                   <span className="text-xs text-blue-400">{related.industry}</span>
-                  <h4 className="text-sm font-medium text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all">
+                  <h4 className="text-sm font-medium text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all">
                     {related.title}
                   </h4>
                   <div className="flex items-center gap-2 text-xs text-gray-400 mt-2">

@@ -441,7 +441,7 @@ export default function PenaltiesPage() {
               <tbody className="divide-y divide-white/10">
                 {penaltyTable.map((row, i) => (
                   <tr key={i} className="hover:bg-white/5 transition-colors">
-                    <td className="px-4 py-3 text-xs font-mono text-purple-400 whitespace-nowrap">
+                    <td className="px-4 py-3 text-xs font-mono text-cyan-400 whitespace-nowrap">
                       {row.section}
                     </td>
                     <td className="px-4 py-3 text-sm text-gray-300">
@@ -635,7 +635,7 @@ export default function PenaltiesPage() {
               IT team. For a deeper dive, see our{' '}
               <Link
                 href="/insight/dpdp-act-director-liability"
-                className="text-purple-400 hover:text-purple-300 underline"
+                className="text-cyan-400 hover:text-cyan-300 underline"
               >
                 Director Liability insight
               </Link>
@@ -737,7 +737,7 @@ export default function PenaltiesPage() {
         {/* ===== RELATED READING ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
+            <BookOpen className="w-6 h-6 text-cyan-400" />
             Related Topics on Compliance
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

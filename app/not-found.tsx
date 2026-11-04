@@ -14,7 +14,7 @@ export default function NotFound() {
         </div>
         
         {/* Nebula Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
@@ -23,14 +23,14 @@ export default function NotFound() {
         
         {/* Animated Icon */}
         <div className="mx-auto w-24 h-24 mb-8 relative">
-          <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-xl animate-pulse" />
+          <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl animate-pulse" />
           <div className="relative flex items-center justify-center w-full h-full border border-white/10 bg-white/5 rounded-full backdrop-blur-md">
-            <Orbit className="w-10 h-10 text-purple-400 animate-[spin_4s_linear_infinite]" />
+            <Orbit className="w-10 h-10 text-cyan-400 animate-[spin_4s_linear_infinite]" />
           </div>
         </div>
 
         {/* 404 Text */}
-        <h1 className="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mb-4 drop-shadow-2xl">
+        <h1 className="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4 drop-shadow-2xl">
           404
         </h1>
         
@@ -46,7 +46,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/"
-            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30"
           >
             <Home className="w-5 h-5" />
             Back to Home
@@ -56,7 +56,7 @@ export default function NotFound() {
             href="/insight"
             className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all flex items-center justify-center gap-2 backdrop-blur-sm"
           >
-            <Search className="w-5 h-5 text-purple-400" />
+            <Search className="w-5 h-5 text-cyan-400" />
             Explore Insights
           </Link>
         </div>

@@ -220,7 +220,7 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                <Target className="w-5 h-5 text-purple-400" />
+                <Target className="w-5 h-5 text-cyan-400" />
               </div>
               <h3 className="text-xl font-semibold text-white">Our Vision</h3>
             </div>
@@ -255,7 +255,7 @@ export default function AboutPage() {
           className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6 md:p-8 mb-12"
         >
           <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-            <Briefcase className="w-5 h-5 text-purple-400" />
+            <Briefcase className="w-5 h-5 text-cyan-400" />
             We Specialise In
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -287,7 +287,7 @@ export default function AboutPage() {
                 className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-5 hover:bg-white/20 transition-all hover:scale-105"
               >
                 <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-3">
-                  <Icon className="w-5 h-5 text-purple-400" />
+                  <Icon className="w-5 h-5 text-cyan-400" />
                 </div>
                 <h4 className="text-sm font-semibold text-white mb-2">{item.title}</h4>
                 <p className="text-xs text-gray-300 leading-relaxed">{item.description}</p>
@@ -347,7 +347,7 @@ export default function AboutPage() {
           className="mb-12"
         >
           <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-            <Quote className="w-5 h-5 text-purple-400" />
+            <Quote className="w-5 h-5 text-cyan-400" />
             What Our Clients Say
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -359,7 +359,7 @@ export default function AboutPage() {
                 <p className="text-sm text-gray-300 italic mb-3">"{testimonial.quote}"</p>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <Users className="w-4 h-4 text-purple-400" />
+                    <Users className="w-4 h-4 text-cyan-400" />
                   </div>
                   <div>
                     <p className="text-xs font-medium text-white">{testimonial.author}</p>

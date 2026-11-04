@@ -44,7 +44,7 @@ export default function TermsPage() {
                 Legal Galaxy platform at{' '}
                 <a
                   href="https://dpdpa.businezexcellence.com"
-                  className="text-purple-400 underline"
+                  className="text-cyan-400 underline"
                 >
                   dpdpa.businezexcellence.com
                 </a>{' '}
@@ -55,15 +55,15 @@ export default function TermsPage() {
               <p className="mt-3">
                 By accessing or using the Website, you agree to be bound by these
                 Terms and our{' '}
-                <Link href="/privacy-policy" className="text-purple-400 underline">
+                <Link href="/privacy-policy" className="text-cyan-400 underline">
                   Privacy Policy
                 </Link>
                 ,{' '}
-                <Link href="/consent-notice" className="text-purple-400 underline">
+                <Link href="/consent-notice" className="text-cyan-400 underline">
                   Consent Notice
                 </Link>
                 , and{' '}
-                <Link href="/disclaimer" className="text-purple-400 underline">
+                <Link href="/disclaimer" className="text-cyan-400 underline">
                   Disclaimer
                 </Link>
                 . If you do not agree, please do not use the Website.
@@ -99,11 +99,11 @@ export default function TermsPage() {
                 <strong className="text-white">You own your personal data.</strong>{' '}
                 Nothing in these Terms transfers ownership of your personal data to
                 us. We process your personal data only as described in our{' '}
-                <Link href="/privacy-policy" className="text-purple-400 underline">
+                <Link href="/privacy-policy" className="text-cyan-400 underline">
                   Privacy Policy
                 </Link>{' '}
                 and{' '}
-                <Link href="/consent-notice" className="text-purple-400 underline">
+                <Link href="/consent-notice" className="text-cyan-400 underline">
                   Consent Notice
                 </Link>
                 .
@@ -184,7 +184,7 @@ export default function TermsPage() {
               <h2 className="text-xl font-semibold text-white mb-3">
                 5. Generated Documents — Your Responsibility
               </h2>
-              <div className="bg-purple-500/10 border border-purple-500/30 rounded-xl p-4">
+              <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4">
                 <p>
                   The Privacy Policy, Consent Notice, DPA, Retention Policy, Breach
                   Response Plan, AI Governance documents, and other templates
@@ -349,7 +349,7 @@ export default function TermsPage() {
                 information is available on our{' '}
                 <Link
                   href="/grievance-redressal"
-                  className="text-purple-400 underline"
+                  className="text-cyan-400 underline"
                 >
                   Grievance Redressal page
                 </Link>
@@ -364,7 +364,7 @@ export default function TermsPage() {
                   <strong className="text-white">Email:</strong>{' '}
                   <a
                     href="mailto:shilpi.kulshrestha@businezexcellence.com"
-                    className="text-purple-400 underline"
+                    className="text-cyan-400 underline"
                   >
                     shilpi.kulshrestha@businezexcellence.com
                   </a>
@@ -446,7 +446,7 @@ export default function TermsPage() {
                   <strong className="text-white">Email:</strong>{' '}
                   <a
                     href="mailto:shilpi.kulshrestha@businezexcellence.com"
-                    className="text-purple-400 underline"
+                    className="text-cyan-400 underline"
                   >
                     shilpi.kulshrestha@businezexcellence.com
                   </a>
@@ -455,7 +455,7 @@ export default function TermsPage() {
                   <strong className="text-white">Grievance:</strong>{' '}
                   <a
                     href="mailto:shilpi.kulshrestha@businezexcellence.com"
-                    className="text-purple-400 underline"
+                    className="text-cyan-400 underline"
                   >
                     shilpi.kulshrestha@businezexcellence.com
                   </a>

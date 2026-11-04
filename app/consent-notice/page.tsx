@@ -54,7 +54,7 @@ export default function ConsentNoticePage() {
           {/* Header and Language Selector */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
             <div className="flex items-center gap-3">
-              <Shield className="w-8 h-8 text-purple-400" />
+              <Shield className="w-8 h-8 text-cyan-400" />
                                                         <h1 className="text-3xl font-bold text-white">
                 {language === "hi" ? "सहमति सूचना (Consent Notice)" : 
                  language === "bn" ? "সম্মতি বিজ্ঞপ্তি (Consent Notice)" : 
@@ -82,7 +82,7 @@ export default function ConsentNoticePage() {
             </div>
             
             <div className="flex items-center gap-2 bg-black/40 border border-white/20 px-3 py-2 rounded-lg">
-              <Globe className="w-4 h-4 text-purple-400" />
+              <Globe className="w-4 h-4 text-cyan-400" />
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
@@ -112,7 +112,7 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">1. Introduction</h2>
                   <p>
                     This Consent Notice is issued by <strong className="text-white">Businezexcellence StartX LLP</strong> ("we", "us", "our"),
-                    operating the Legal Galaxy platform at <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a>,
+                    operating the Legal Galaxy platform at <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a>,
                     in compliance with the <strong className="text-white">Digital Personal Data Protection Act, 2023</strong> ("DPDP Act")
                     and the <strong className="text-white">DPDP Rules, 2025</strong>.
                   </p>
@@ -124,7 +124,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. Personal Data We Collect
                   </h2>
                   <p>When you submit a form on our website, we may collect:</p>
@@ -176,7 +176,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. Purpose of Processing
                   </h2>
                   <p>We process your personal data for the following specific purposes:</p>
@@ -206,7 +206,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. Your Rights as a Data Principal
                   </h2>
                   <p>Under the DPDP Act 2023, you have the following rights:</p>
@@ -224,8 +224,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. How to Withdraw Your Consent</h2>
                   <p>You can withdraw your consent at any time by:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li>Emailing us at <a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> with the subject line "Withdraw Consent".</li>
-                    <li>Writing to our Grievance Officer at <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a>.</li>
+                    <li>Emailing us at <a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> with the subject line "Withdraw Consent".</li>
+                    <li>Writing to our Grievance Officer at <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a>.</li>
                     <li>Using the "Cookie Settings" button on our website.</li>
                   </ul>
                   <p className="mt-3">
@@ -239,7 +239,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">Name:</strong> Shilpi Kulshrestha</p>
                     <p className="mt-2"><strong className="text-white">Designation:</strong> Grievance Officer & Founder, Businezexcellence StartX LLP</p>
-                    <p className="mt-2"><strong className="text-white">Email:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">Email:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">Phone:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">Response Time:</strong> Acknowledgment within 48 hours; resolution within <strong>7 working days</strong>.</p>
                   </div>
@@ -273,7 +273,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. परिचय (Introduction)</h2>
                   <p>
-                    यह सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टX LLP</strong> ("हम", "हमारा") द्वारा जारी की गई है, जो <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> पर लीगल गैलेक्सी प्लेटफॉर्म संचालित करता है, और <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन एक्ट, 2023</strong> ("DPDP Act") तथा <strong className="text-white">DPDP नियम, 2025</strong> के अनुपालन में है।
+                    यह सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टX LLP</strong> ("हम", "हमारा") द्वारा जारी की गई है, जो <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> पर लीगल गैलेक्सी प्लेटफॉर्म संचालित करता है, और <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन एक्ट, 2023</strong> ("DPDP Act") तथा <strong className="text-white">DPDP नियम, 2025</strong> के अनुपालन में है।
                   </p>
                   <p className="mt-3">
                     यह सूचना बताती है कि हम कौन सा व्यक्तिगत डेटा एकत्र करते हैं, क्यों एकत्र करते हैं, हम इसका उपयोग कैसे करते हैं, और आप अपनी सहमति कैसे वापस ले सकते हैं। सहमति चेकबॉक्स को चुनकर, आप नीचे वर्णित अनुसार अपने व्यक्तिगत डेटा के प्रसंस्करण के लिए सहमति देते हैं।
@@ -282,7 +282,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. हम कौन सा व्यक्तिगत डेटा एकत्र करते हैं
                   </h2>
                   <p>जब आप हमारी वेबसाइट पर फॉर्म सबमिट करते हैं, तो हम एकत्र कर सकते हैं:</p>
@@ -334,7 +334,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रसंस्करण का उद्देश्य
                   </h2>
                   <p>हम आपके व्यक्तिगत डेटा को निम्नलिखित विशिष्ट उद्देश्यों के लिए संसाधित करते हैं:</p>
@@ -364,7 +364,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा प्रिंसिपल के रूप में आपके अधिकार
                   </h2>
                   <p>DPDP अधिनियम 2023 के तहत, आपके पास निम्नलिखित अधिकार हैं:</p>
@@ -382,8 +382,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. अपनी सहमति कैसे वापस लें?</h2>
                   <p>आप कभी भी अपनी सहमति वापस ले सकते हैं:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> पर "Withdraw Consent" विषय के साथ ईमेल करके।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> पर हमारे शिकायत अधिकारी को लिखकर।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> पर "Withdraw Consent" विषय के साथ ईमेल करके।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> पर हमारे शिकायत अधिकारी को लिखकर।</li>
                     <li>हमारी वेबसाइट पर "कुकी सेटिंग्स" बटन का उपयोग करके।</li>
                   </ul>
                   <p className="mt-3">
@@ -397,7 +397,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">नाम:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">पदनाम:</strong> शिकायत अधिकारी और संस्थापक, बिजनेस एक्सीलेंस स्टार्टX LLP</p>
-                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">फ़ोन:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">प्रतिक्रिया समय:</strong> 48 घंटे के भीतर पावती; <strong>7 कार्य दिवसों</strong> के भीतर समाधान।</p>
                   </div>
@@ -431,7 +431,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. ভূমিকা (Introduction)</h2>
                   <p>
-                    এই সম্মতি বিজ্ঞপ্তিটি <strong className="text-white">বিজনেস এক্সিলেন্স স্টার্টএক্স এলএলপি</strong> ("আমরা", "আমাদের") দ্বারা জারি করা হয়েছে, যা <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> এ লিগ্যাল গ্যালাক্সি প্ল্যাটফর্ম পরিচালনা করে এবং <strong className="text-white">ডিজিটাল পার্সোনাল ডেটা প্রোটেকশন অ্যাক্ট, ২০২৩</strong> ("DPDP Act") এবং <strong className="text-white">DPDP বিধি, ২০২৫</strong> এর সাথে সম্মত।
+                    এই সম্মতি বিজ্ঞপ্তিটি <strong className="text-white">বিজনেস এক্সিলেন্স স্টার্টএক্স এলএলপি</strong> ("আমরা", "আমাদের") দ্বারা জারি করা হয়েছে, যা <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> এ লিগ্যাল গ্যালাক্সি প্ল্যাটফর্ম পরিচালনা করে এবং <strong className="text-white">ডিজিটাল পার্সোনাল ডেটা প্রোটেকশন অ্যাক্ট, ২০২৩</strong> ("DPDP Act") এবং <strong className="text-white">DPDP বিধি, ২০২৫</strong> এর সাথে সম্মত।
                   </p>
                   <p className="mt-3">
                     এই বিজ্ঞপ্তিটি ব্যাখ্যা করে যে আমরা কী ব্যক্তিগত ডেটা সংগ্রহ করি, কেন সংগ্রহ করি, আমরা এটি কীভাবে ব্যবহার করি এবং আপনি কীভাবে আপনার সম্মতি প্রত্যাহার করতে পারেন। সম্মতি চেকবক্স চেক করে, আপনি নীচে বর্ণিত হিসাবে আপনার ব্যক্তিগত ডেটা প্রক্রিয়াকরণে সম্মতি দেন।
@@ -440,7 +440,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. আমরা কী ব্যক্তিগত ডেটা সংগ্রহ করি
                   </h2>
                   <p>যখন আপনি আমাদের ওয়েবসাইটে একটি ফর্ম জমা দেন, আমরা সংগ্রহ করতে পারি:</p>
@@ -492,7 +492,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. প্রক্রিয়াকরণের উদ্দেশ্য
                   </h2>
                   <p>আমরা নিম্নলিখিত নির্দিষ্ট উদ্দেশ্যে আপনার ব্যক্তিগত ডেটা প্রক্রিয়া করি:</p>
@@ -522,7 +522,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ডেটা প্রিন্সিপাল হিসাবে আপনার অধিকার
                   </h2>
                   <p>DPDP আইন ২০২৩ এর অধীনে, আপনার নিম্নলিখিত অধিকার রয়েছে:</p>
@@ -540,8 +540,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. কীভাবে আপনার সম্মতি প্রত্যাহার করবেন?</h2>
                   <p>আপনি যে কোনো সময় আপনার সম্মতি প্রত্যাহার করতে পারেন:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> এ "Withdraw Consent" বিষয়ের সাথে ইমেল করে।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> এ আমাদের অভিযোগ কর্মকর্তাকে লিখে।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> এ "Withdraw Consent" বিষয়ের সাথে ইমেল করে।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> এ আমাদের অভিযোগ কর্মকর্তাকে লিখে।</li>
                     <li>আমাদের ওয়েবসাইটে "কুকি সেটিংস" বোতাম ব্যবহার করে।</li>
                   </ul>
                   <p className="mt-3">
@@ -555,7 +555,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">নাম:</strong> শিল্পী কুলশ্রেষ্ঠ</p>
                     <p className="mt-2"><strong className="text-white">পদবি:</strong> অভিযোগ কর্মকর্তা এবং প্রতিষ্ঠাতা, বিজনেস এক্সিলেন্স স্টার্টএক্স এলএলপি</p>
-                    <p className="mt-2"><strong className="text-white">ইমেল:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ইমেল:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ফোন:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">প্রতিক্রিয়া সময়:</strong> ৪৮ ঘণ্টার মধ্যে স্বীকৃতি; <strong>৭ কার্যদিবসের</strong> মধ্যে সমাধান।</p>
                   </div>
@@ -589,7 +589,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. प्रस्तावना (Introduction)</h2>
                   <p>
-                    ही संमती सूचना <strong className="text-white">बिझनेस एक्सलन्स स्टार्टएक्स एलएलपी</strong> ("आम्ही", "आमचे") द्वारे जारी केली आहे, जी <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> वर लीगल गॅलेक्सी प्लॅटफॉर्म चालवते आणि <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन अॅक्ट, २०२३</strong> ("DPDP Act") आणि <strong className="text-white">DPDP नियम, २०२५</strong> चे पालन करते.
+                    ही संमती सूचना <strong className="text-white">बिझनेस एक्सलन्स स्टार्टएक्स एलएलपी</strong> ("आम्ही", "आमचे") द्वारे जारी केली आहे, जी <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> वर लीगल गॅलेक्सी प्लॅटफॉर्म चालवते आणि <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन अॅक्ट, २०२३</strong> ("DPDP Act") आणि <strong className="text-white">DPDP नियम, २०२५</strong> चे पालन करते.
                   </p>
                   <p className="mt-3">
                     ही सूचना स्पष्ट करते की आम्ही कोणता वैयक्तिक डेटा गोळा करतो, का गोळा करतो, आम्ही तो कसा वापरतो आणि तुम्ही तुमची संमती कशी मागे घेऊ शकता. संमती चेकबॉक्स चेक करून, तुम्ही खाली वर्णन केल्यानुसार तुमच्या वैयक्तिक डेटाच्या प्रक्रियेस संमती देता.
@@ -598,7 +598,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. आम्ही कोणता वैयक्तिक डेटा गोळा करतो
                   </h2>
                   <p>जेव्हा तुम्ही आमच्या वेबसाइटवर फॉर्म सबमिट करता, तेव्हा आम्ही गोळा करू शकतो:</p>
@@ -650,7 +650,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रक्रियेचा उद्देश्य
                   </h2>
                   <p>आम्ही तुमचा वैयक्तिक डेटा खालील विशिष्ट उद्देशांसाठी प्रक्रिया करतो:</p>
@@ -680,7 +680,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा प्रिन्सिपल म्हणून तुमचे अधिकार
                   </h2>
                   <p>DPDP कायदा २०२३ अंतर्गत, तुमच्याकडे खालील अधिकार आहेत:</p>
@@ -698,8 +698,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. तुमची संमती कशी मागे घ्यावी?</h2>
                   <p>तुम्ही कोणत्याही वेळी तुमची संमती मागे घेऊ शकता:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> वर "Withdraw Consent" या विषयासह ईमेल करून.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> वर आमच्या तक्रार अधिकाऱ्याला लिहून.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> वर "Withdraw Consent" या विषयासह ईमेल करून.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> वर आमच्या तक्रार अधिकाऱ्याला लिहून.</li>
                     <li>आमच्या वेबसाइटवर "कुकी सेटिंग्ज" बटण वापरून.</li>
                   </ul>
                   <p className="mt-3">
@@ -713,7 +713,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">नाव:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">पद:</strong> तक्रार अधिकारी आणि संस्थापक, बिझनेस एक्सलन्स स्टार्टएक्स एलएलपी</p>
-                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">फोन:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">प्रतिसाद वेळ:</strong> ४८ तासांत पोच; <strong>७ कामकाजाच्या दिवसांत</strong> निराकरण.</p>
                   </div>
@@ -752,7 +752,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. పరిచయం (Introduction)</h2>
                   <p>
-                    ఈ సమ్మతి నోటీసు <strong className="text-white">బిజినెస్ ఎక్సలెన్స్ స్టార్ట్ఎక్స్ LLP</strong> ("మేము", "మా") ద్వారా జారీ చేయబడింది, ఇది <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> వద్ద లీగల్ గెలాక్సీ ప్లాట్‌ఫారమ్‌ను నిర్వహిస్తుంది మరియు <strong className="text-white">డిజిటల్ పర్సనల్ డేటా ప్రొటెక్షన్ యాక్ట్, 2023</strong> ("DPDP Act") మరియు <strong className="text-white">DPDP నియమాలు, 2025</strong>కు అనుగుణంగా ఉంది.
+                    ఈ సమ్మతి నోటీసు <strong className="text-white">బిజినెస్ ఎక్సలెన్స్ స్టార్ట్ఎక్స్ LLP</strong> ("మేము", "మా") ద్వారా జారీ చేయబడింది, ఇది <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> వద్ద లీగల్ గెలాక్సీ ప్లాట్‌ఫారమ్‌ను నిర్వహిస్తుంది మరియు <strong className="text-white">డిజిటల్ పర్సనల్ డేటా ప్రొటెక్షన్ యాక్ట్, 2023</strong> ("DPDP Act") మరియు <strong className="text-white">DPDP నియమాలు, 2025</strong>కు అనుగుణంగా ఉంది.
                   </p>
                   <p className="mt-3">
                     ఈ నోటీసు మేము ఏ వ్యక్తిగత డేటాను సేకరిస్తాము, ఎందుకు సేకరిస్తాము, మేము దానిని ఎలా ఉపయోగిస్తాము మరియు మీరు మీ సమ్మతిని ఎలా ఉపసంహరించుకోవచ్చో వివరిస్తుంది. సమ్మతి చెక్‌బాక్స్‌ను ఎంచుకోవడం ద్వారా, మీరు క్రింద వివరించిన విధంగా మీ వ్యక్తిగత డేటా ప్రాసెసింగ్‌కు సమ్మతిని ఇస్తారు.
@@ -761,7 +761,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. మేము సేకరించే వ్యక్తిగత డేటా
                   </h2>
                   <p>మీరు మా వెబ్‌సైట్‌లో ఫారమ్‌ను సమర్పించినప్పుడు, మేము సేకరించవచ్చు:</p>
@@ -813,7 +813,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. ప్రాసెసింగ్ యొక్క ప్రయోజనం
                   </h2>
                   <p>మేము మీ వ్యక్తిగత డేటాను ఈ క్రింది నిర్దిష్ట ప్రయోజనాల కోసం ప్రాసెస్ చేస్తాము:</p>
@@ -843,7 +843,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. డేటా ప్రిన్సిపాల్‌గా మీ హక్కులు
                   </h2>
                   <p>DPDP చట్టం 2023 ప్రకారం, మీకు ఈ క్రింది హక్కులు ఉన్నాయి:</p>
@@ -861,8 +861,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. మీ సమ్మతిని ఎలా ఉపసంహరించుకోవాలి?</h2>
                   <p>మీరు ఎప్పుడైనా మీ సమ్మతిని ఉపసంహరించుకోవచ్చు:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> కు "Withdraw Consent" అనే విషయంతో ఇమెయిల్ చేయడం ద్వారా.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> వద్ద మా ఫిర్యాదు అధికారికి వ్రాయడం ద్వారా.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> కు "Withdraw Consent" అనే విషయంతో ఇమెయిల్ చేయడం ద్వారా.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> వద్ద మా ఫిర్యాదు అధికారికి వ్రాయడం ద్వారా.</li>
                     <li>మా వెబ్‌సైట్‌లో "కుకీ సెట్టింగ్‌లు" బటన్‌ను ఉపయోగించడం ద్వారా.</li>
                   </ul>
                   <p className="mt-3">
@@ -876,7 +876,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">పేరు:</strong> శిల్పి కులశ్రేష్ఠ</p>
                     <p className="mt-2"><strong className="text-white">హోదా:</strong> ఫిర్యాదు అధికారి & వ్యవస్థాపకుడు, బిజినెస్ ఎక్సలెన్స్ స్టార్ట్ఎక్స్ LLP</p>
-                    <p className="mt-2"><strong className="text-white">ఇమెయిల్:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ఇమెయిల్:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ఫోన్:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">ప్రతిస్పందన సమయం:</strong> 48 గంటల్లో రసీదు; <strong>7 పని దినాలలో</strong> పరిష్కారం.</p>
                   </div>
@@ -910,7 +910,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. அறிமுகம் (Introduction)</h2>
                   <p>
-                    இந்த ஒப்புதல் அறிவிப்பு <strong className="text-white">பிசினஸ் எக்சலன்ஸ் ஸ்டார்ட்எக்ஸ் LLP</strong> ("நாங்கள்", "எங்கள்") ஆல் வழங்கப்பட்டது, இது <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> இல் லீகல் கேலக்ஸி தளத்தை இயக்குகிறது மற்றும் <strong className="text-white">டிஜிட்டல் தனிநபர் தரவு பாதுகாப்பு சட்டம், 2023</strong> ("DPDP Act") மற்றும் <strong className="text-white">DPDP விதிகள், 2025</strong> ஆகியவற்றுக்கு இணங்குகிறது.
+                    இந்த ஒப்புதல் அறிவிப்பு <strong className="text-white">பிசினஸ் எக்சலன்ஸ் ஸ்டார்ட்எக்ஸ் LLP</strong> ("நாங்கள்", "எங்கள்") ஆல் வழங்கப்பட்டது, இது <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> இல் லீகல் கேலக்ஸி தளத்தை இயக்குகிறது மற்றும் <strong className="text-white">டிஜிட்டல் தனிநபர் தரவு பாதுகாப்பு சட்டம், 2023</strong> ("DPDP Act") மற்றும் <strong className="text-white">DPDP விதிகள், 2025</strong> ஆகியவற்றுக்கு இணங்குகிறது.
                   </p>
                   <p className="mt-3">
                     இந்த அறிவிப்பு நாங்கள் எந்த தனிப்பட்ட தரவை சேகரிக்கிறோம், ஏன் சேகரிக்கிறோம், அதை எவ்வாறு பயன்படுத்துகிறோம் மற்றும் உங்கள் ஒப்புதலை எவ்வாறு திரும்பப் பெறுவது என்பதை விளக்குகிறது. ஒப்புதல் பெட்டியைத் தேர்ந்தெடுப்பதன் மூலம், கீழே விவரிக்கப்பட்டுள்ளபடி உங்கள் தனிப்பட்ட தரவைச் செயலாக்க ஒப்புதல் அளிக்கிறீர்கள்.
@@ -919,7 +919,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. நாங்கள் சேகரிக்கும் தனிப்பட்ட தரவு
                   </h2>
                   <p>நீங்கள் எங்கள் இணையதளத்தில் ஒரு படிவத்தைச் சமர்ப்பிக்கும்போது, நாங்கள் சேகரிக்கலாம்:</p>
@@ -971,7 +971,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. செயலாக்கத்தின் நோக்கம்
                   </h2>
                   <p>பின்வரும் குறிப்பிட்ட நோக்கங்களுக்காக உங்கள் தனிப்பட்ட தரவை நாங்கள் செயலாக்குகிறோம்:</p>
@@ -1001,7 +1001,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. தரவு முதன்மையராக உங்கள் உரிமைகள்
                   </h2>
                   <p>DPDP சட்டம் 2023 இன் கீழ், உங்களுக்கு பின்வரும் உரிமைகள் உள்ளன:</p>
@@ -1019,8 +1019,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. உங்கள் ஒப்புதலை எவ்வாறு திரும்பப் பெறுவது?</h2>
                   <p>எப்போது வேண்டுமானாலும் உங்கள் ஒப்புதலைத் திரும்பப் பெறலாம்:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> க்கு "Withdraw Consent" என்ற தலைப்பில் மின்னஞ்சல் அனுப்புவதன் மூலம்.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> இல் எங்கள் குறைதீர் அதிகாரிக்கு எழுதுவதன் மூலம்.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> க்கு "Withdraw Consent" என்ற தலைப்பில் மின்னஞ்சல் அனுப்புவதன் மூலம்.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> இல் எங்கள் குறைதீர் அதிகாரிக்கு எழுதுவதன் மூலம்.</li>
                     <li>எங்கள் இணையதளத்தில் "குக்கீ அமைப்புகள்" பொத்தானைப் பயன்படுத்துவதன் மூலம்.</li>
                   </ul>
                   <p className="mt-3">
@@ -1034,7 +1034,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">பெயர்:</strong> ஷில்பி குல்ஷ்ரேஷ்டா</p>
                     <p className="mt-2"><strong className="text-white">பதவி:</strong> குறைதீர் அதிகாரி & நிறுவனர், பிசினஸ் எக்சலன்ஸ் ஸ்டார்ட்எக்ஸ் LLP</p>
-                    <p className="mt-2"><strong className="text-white">மின்னஞ்சல்:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">மின்னஞ்சல்:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">தொலைபேசி:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">பதில் நேரம்:</strong> 48 மணி நேரத்தில் ஒப்புகை; <strong>7 வேலை நாட்களுக்குள்</strong> தீர்வு.</p>
                   </div>
@@ -1068,7 +1068,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. પ્રસ્તાવના (Introduction)</h2>
                   <p>
-                    આ સંમતિ સૂચના <strong className="text-white">બિઝનેસ એક્સલન્સ સ્ટાર્ટએક્સ એલએલપી</strong> ("અમે", "અમારા") દ્વારા જારી કરવામાં આવી છે, જે <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> પર લીગલ ગેલેક્સી પ્લેટફોર્મ ચલાવે છે અને <strong className="text-white">ડિજિટલ પર્સનલ ડેટા પ્રોટેક્શન એક્ટ, 2023</strong> ("DPDP Act") અને <strong className="text-white">DPDP નિયમો, 2025</strong> નું પાલન કરે છે.
+                    આ સંમતિ સૂચના <strong className="text-white">બિઝનેસ એક્સલન્સ સ્ટાર્ટએક્સ એલએલપી</strong> ("અમે", "અમારા") દ્વારા જારી કરવામાં આવી છે, જે <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> પર લીગલ ગેલેક્સી પ્લેટફોર્મ ચલાવે છે અને <strong className="text-white">ડિજિટલ પર્સનલ ડેટા પ્રોટેક્શન એક્ટ, 2023</strong> ("DPDP Act") અને <strong className="text-white">DPDP નિયમો, 2025</strong> નું પાલન કરે છે.
                   </p>
                   <p className="mt-3">
                     આ સૂચના સમજાવે છે કે અમે કયો વ્યક્તિગત ડેટા એકત્રિત કરીએ છીએ, કેમ એકત્રિત કરીએ છીએ, અમે તેનો ઉપયોગ કેવી રીતે કરીએ છીએ અને તમે તમારી સંમતિ કેવી રીતે પાછી ખેંચી શકો છો. સંમતિ ચેકબોક્સને ચેક કરીને, તમે નીચે વર્ણવ્યા મુજબ તમારા વ્યક્તિગત ડેટાની પ્રક્રિયા માટે સંમતિ આપો છો.
@@ -1077,7 +1077,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. અમે કયો વ્યક્તિગત ડેટા એકત્રિત કરીએ છીએ
                   </h2>
                   <p>જ્યારે તમે અમારી વેબસાઇટ પર ફોર્મ સબમિટ કરો છો, ત્યારે અમે એકત્રિત કરી શકીએ છીએ:</p>
@@ -1129,7 +1129,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. પ્રક્રિયાનો હેતુ
                   </h2>
                   <p>અમે તમારા વ્યક્તિગત ડેટાને નીચેના ચોક્કસ હેતુઓ માટે પ્રક્રિયા કરીએ છીએ:</p>
@@ -1159,7 +1159,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ડેટા પ્રિન્સિપાલ તરીકે તમારા અધિકારો
                   </h2>
                   <p>DPDP કાયદો 2023 હેઠળ, તમારી પાસે નીચેના અધિકારો છે:</p>
@@ -1177,8 +1177,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. તમારી સંમતિ કેવી રીતે પાછી ખેંચવી?</h2>
                   <p>તમે કોઈપણ સમયે તમારી સંમતિ પાછી ખેંચી શકો છો:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> પર "Withdraw Consent" વિષય સાથે ઇમેઇલ કરીને.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> પર અમારા ફરિયાદ અધિકારીને લખીને.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> પર "Withdraw Consent" વિષય સાથે ઇમેઇલ કરીને.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> પર અમારા ફરિયાદ અધિકારીને લખીને.</li>
                     <li>અમારી વેબસાઇટ પર "કૂકી સેટિંગ્સ" બટનનો ઉપયોગ કરીને.</li>
                   </ul>
                   <p className="mt-3">
@@ -1192,7 +1192,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">નામ:</strong> શિલ્પી કુલશ્રેષ્ઠ</p>
                     <p className="mt-2"><strong className="text-white">હોદ્દો:</strong> ફરિયાદ અધિકારી અને સ્થાપક, બિઝનેસ એક્સલન્સ સ્ટાર્ટએક્સ એલએલપી</p>
-                    <p className="mt-2"><strong className="text-white">ઇમેઇલ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ઇમેઇલ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ફોન:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">પ્રતિસાદ સમય:</strong> 48 કલાકમાં સ્વીકૃતિ; <strong>7 કાર્યકારી દિવસોમાં</strong> ઉકેલ.</p>
                   </div>
@@ -1228,7 +1228,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. تعارف (Introduction)</h2>
                   <p dir="rtl">
-                    یہ رضامندی کا نوٹس <strong className="text-white">بزنس ایکسیلنس اسٹارٹ ایکس ایل ایل پی</strong> ("ہم"، "ہمارا") کی طرف سے جاری کیا گیا ہے، جو <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> پر لیگل گلیکسی پلیٹ فارم چلاتا ہے اور <strong className="text-white">ڈیجیٹل پرسنل ڈیٹا پروٹیکشن ایکٹ، 2023</strong> ("DPDP Act") اور <strong className="text-white">DPDP رولز، 2025</strong> کی تعمیل کرتا ہے۔
+                    یہ رضامندی کا نوٹس <strong className="text-white">بزنس ایکسیلنس اسٹارٹ ایکس ایل ایل پی</strong> ("ہم"، "ہمارا") کی طرف سے جاری کیا گیا ہے، جو <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> پر لیگل گلیکسی پلیٹ فارم چلاتا ہے اور <strong className="text-white">ڈیجیٹل پرسنل ڈیٹا پروٹیکشن ایکٹ، 2023</strong> ("DPDP Act") اور <strong className="text-white">DPDP رولز، 2025</strong> کی تعمیل کرتا ہے۔
                   </p>
                   <p className="mt-3" dir="rtl">
                     یہ نوٹس بتاتا ہے کہ ہم کون سا ذاتی ڈیٹا جمع کرتے ہیں، کیوں جمع کرتے ہیں، ہم اسے کیسے استعمال کرتے ہیں، اور آپ اپنی رضامندی کیسے واپس لے سکتے ہیں۔ رضامندی کے چیک باکس کو چیک کرکے، آپ ذیل میں بیان کردہ اپنے ذاتی ڈیٹا کی کارروائی کے لیے رضامندی دیتے ہیں۔
@@ -1237,7 +1237,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. ہم کون سا ذاتی ڈیٹا جمع کرتے ہیں
                   </h2>
                   <p dir="rtl">جب آپ ہماری ویب سائٹ پر فارم جمع کرتے ہیں، تو ہم جمع کر سکتے ہیں:</p>
@@ -1289,7 +1289,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. کارروائی کا مقصد
                   </h2>
                   <p dir="rtl">ہم آپ کے ذاتی ڈیٹا کو درج ذیل مخصوص مقاصد کے لیے کارروائی کرتے ہیں:</p>
@@ -1319,7 +1319,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ڈیٹا پرنسپل کے طور پر آپ کے حقوق
                   </h2>
                   <p dir="rtl">DPDP ایکٹ 2023 کے تحت، آپ کو درج ذیل حقوق حاصل ہیں:</p>
@@ -1337,8 +1337,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. اپنی رضامندی کیسے واپس لیں؟</h2>
                   <p dir="rtl">آپ کسی بھی وقت اپنی رضامندی واپس لے سکتے ہیں:</p>
                   <ul className="list-disc pr-6 mt-3 space-y-2" dir="rtl">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> پر "Withdraw Consent" کے موضوع کے ساتھ ای میل کرکے۔</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> پر ہمارے شکایت افسر کو لکھ کر۔</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> پر "Withdraw Consent" کے موضوع کے ساتھ ای میل کرکے۔</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> پر ہمارے شکایت افسر کو لکھ کر۔</li>
                     <li>ہماری ویب سائٹ پر "کوکی سیٹنگز" بٹن کا استعمال کرکے۔</li>
                   </ul>
                   <p className="mt-3" dir="rtl">
@@ -1352,7 +1352,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4" dir="rtl">
                     <p><strong className="text-white">نام:</strong> شلپی کلشرشٹھا</p>
                     <p className="mt-2"><strong className="text-white">عہدہ:</strong> شکایت افسر اور بانی، بزنس ایکسیلنس اسٹارٹ ایکس ایل ایل پی</p>
-                    <p className="mt-2"><strong className="text-white">ای میل:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ای میل:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">فون:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">جواب کا وقت:</strong> 48 گھنٹوں میں رسید; <strong>7 کاروباری دنوں</strong> میں حل۔</p>
                   </div>
@@ -1386,7 +1386,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. ಪರಿಚಯ (Introduction)</h2>
                   <p>
-                    ಈ ಸಮ್ಮತಿ ಸೂಚನೆಯನ್ನು <strong className="text-white">ಬಿಸಿನೆಸ್ ಎಕ್ಸಲೆನ್ಸ್ ಸ್ಟಾರ್ಟ್ಎಕ್ಸ್ LLP</strong> ("ನಾವು", "ನಮ್ಮ") ನೀಡಿದೆ, ಇದು <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> ನಲ್ಲಿ ಲೀಗಲ್ ಗೆಲಾಕ್ಸಿ ಪ್ಲಾಟ್ಫಾರ್ಮ್ ಅನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ ಮತ್ತು <strong className="text-white">ಡಿಜಿಟಲ್ ಪರ್ಸನಲ್ ಡೇಟಾ ಪ್ರೊಟೆಕ್ಷನ್ ಆಕ್ಟ್, 2023</strong> ("DPDP Act") ಮತ್ತು <strong className="text-white">DPDP ನಿಯಮಗಳು, 2025</strong> ಅನ್ನು ಅನುಸರಿಸುತ್ತದೆ.
+                    ಈ ಸಮ್ಮತಿ ಸೂಚನೆಯನ್ನು <strong className="text-white">ಬಿಸಿನೆಸ್ ಎಕ್ಸಲೆನ್ಸ್ ಸ್ಟಾರ್ಟ್ಎಕ್ಸ್ LLP</strong> ("ನಾವು", "ನಮ್ಮ") ನೀಡಿದೆ, ಇದು <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> ನಲ್ಲಿ ಲೀಗಲ್ ಗೆಲಾಕ್ಸಿ ಪ್ಲಾಟ್ಫಾರ್ಮ್ ಅನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ ಮತ್ತು <strong className="text-white">ಡಿಜಿಟಲ್ ಪರ್ಸನಲ್ ಡೇಟಾ ಪ್ರೊಟೆಕ್ಷನ್ ಆಕ್ಟ್, 2023</strong> ("DPDP Act") ಮತ್ತು <strong className="text-white">DPDP ನಿಯಮಗಳು, 2025</strong> ಅನ್ನು ಅನುಸರಿಸುತ್ತದೆ.
                   </p>
                   <p className="mt-3">
                     ಈ ಸೂಚನೆಯು ನಾವು ಯಾವ ವೈಯಕ್ತಿಕ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸುತ್ತೇವೆ, ಏಕೆ ಸಂಗ್ರಹಿಸುತ್ತೇವೆ, ನಾವು ಅದನ್ನು ಹೇಗೆ ಬಳಸುತ್ತೇವೆ ಮತ್ತು ನೀವು ನಿಮ್ಮ ಸಮ್ಮತಿಯನ್ನು ಹೇಗೆ ಹಿಂಪಡೆಯಬಹುದು ಎಂಬುದನ್ನು ವಿವರಿಸುತ್ತದೆ. ಸಮ್ಮತಿ ಚೆಕ್ಬಾಕ್ಸ್ ಅನ್ನು ಚೆಕ್ ಮಾಡುವ ಮೂಲಕ, ನೀವು ಕೆಳಗೆ ವಿವರಿಸಿದಂತೆ ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಡೇಟಾದ ಸಂಸ್ಕರಣೆಗೆ ಸಮ್ಮತಿ ನೀಡುತ್ತೀರಿ.
@@ -1395,7 +1395,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. ನಾವು ಸಂಗ್ರಹಿಸುವ ವೈಯಕ್ತಿಕ ಡೇಟಾ
                   </h2>
                   <p>ನೀವು ನಮ್ಮ ವೆಬ್ಸೈಟ್ನಲ್ಲಿ ಫಾರ್ಮ್ ಸಲ್ಲಿಸಿದಾಗ, ನಾವು ಸಂಗ್ರಹಿಸಬಹುದು:</p>
@@ -1447,7 +1447,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. ಸಂಸ್ಕರಣೆಯ ಉದ್ದೇಶ
                   </h2>
                   <p>ನಾವು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಡೇಟಾವನ್ನು ಈ ಕೆಳಗಿನ ನಿರ್ದಿಷ್ಟ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಸಂಸ್ಕರಿಸುತ್ತೇವೆ:</p>
@@ -1477,7 +1477,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ಡೇಟಾ ಪ್ರಿನ್ಸಿಪಾಲ್ ಆಗಿ ನಿಮ್ಮ ಹಕ್ಕುಗಳು
                   </h2>
                   <p>DPDP ಕಾಯ್ದೆ 2023 ಅಡಿಯಲ್ಲಿ, ನಿಮಗೆ ಈ ಕೆಳಗಿನ ಹಕ್ಕುಗಳಿವೆ:</p>
@@ -1495,8 +1495,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. ನಿಮ್ಮ ಸಮ್ಮತಿಯನ್ನು ಹೇಗೆ ಹಿಂಪಡೆಯುವುದು?</h2>
                   <p>ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ಸಮ್ಮತಿಯನ್ನು ಹಿಂಪಡೆಯಬಹುದು:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> ಗೆ "Withdraw Consent" ವಿಷಯದೊಂದಿಗೆ ಇಮೇಲ್ ಮಾಡುವ ಮೂಲಕ.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> ನಲ್ಲಿ ನಮ್ಮ ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿಗೆ ಬರೆಯುವ ಮೂಲಕ.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> ಗೆ "Withdraw Consent" ವಿಷಯದೊಂದಿಗೆ ಇಮೇಲ್ ಮಾಡುವ ಮೂಲಕ.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> ನಲ್ಲಿ ನಮ್ಮ ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿಗೆ ಬರೆಯುವ ಮೂಲಕ.</li>
                     <li>ನಮ್ಮ ವೆಬ್ಸೈಟ್ನಲ್ಲಿ "ಕುಕಿ ಸೆಟ್ಟಿಂಗ್ಗಳು" ಬಟನ್ ಬಳಸುವ ಮೂಲಕ.</li>
                   </ul>
                   <p className="mt-3">
@@ -1510,7 +1510,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">ಹೆಸರು:</strong> ಶಿಲ್ಪಿ ಕುಲಶ್ರೇಷ್ಠ</p>
                     <p className="mt-2"><strong className="text-white">ಹುದ್ದೆ:</strong> ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿ ಮತ್ತು ಸಂಸ್ಥಾಪಕ, ಬಿಸಿನೆಸ್ ಎಕ್ಸಲೆನ್ಸ್ ಸ್ಟಾರ್ಟ್ಎಕ್ಸ್ LLP</p>
-                    <p className="mt-2"><strong className="text-white">ಇಮೇಲ್:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ಇಮೇಲ್:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ಫೋನ್:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">ಪ್ರತಿಕ್ರಿಯೆ ಸಮಯ:</strong> 48 ಗಂಟೆಗಳಲ್ಲಿ ಸ್ವೀಕೃತಿ; <strong>7 ಕೆಲಸದ ದಿನಗಳಲ್ಲಿ</strong> ಪರಿಹಾರ.</p>
                   </div>
@@ -1544,7 +1544,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. ആമുഖം (Introduction)</h2>
                   <p>
-                    ഈ സമ്മത വിജ്ഞാപനം <strong className="text-white">ബിസിനസ് എക്സലൻസ് സ്റ്റാർട്ട്എക്സ് LLP</strong> ("ഞങ്ങൾ", "ഞങ്ങളുടെ") നൽകുന്നതാണ്, ഇത് <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> ൽ ലീഗൽ ഗാലക്സി പ്ലാറ്റ്ഫോം പ്രവർത്തിപ്പിക്കുകയും <strong className="text-white">ഡിജിറ്റൽ പേഴ്സണൽ ഡാറ്റ പ്രൊട്ടക്ഷൻ ആക്ട്, 2023</strong> ("DPDP Act"), <strong className="text-white">DPDP ചട്ടങ്ങൾ, 2025</strong> എന്നിവ പാലിക്കുകയും ചെയ്യുന്നു.
+                    ഈ സമ്മത വിജ്ഞാപനം <strong className="text-white">ബിസിനസ് എക്സലൻസ് സ്റ്റാർട്ട്എക്സ് LLP</strong> ("ഞങ്ങൾ", "ഞങ്ങളുടെ") നൽകുന്നതാണ്, ഇത് <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> ൽ ലീഗൽ ഗാലക്സി പ്ലാറ്റ്ഫോം പ്രവർത്തിപ്പിക്കുകയും <strong className="text-white">ഡിജിറ്റൽ പേഴ്സണൽ ഡാറ്റ പ്രൊട്ടക്ഷൻ ആക്ട്, 2023</strong> ("DPDP Act"), <strong className="text-white">DPDP ചട്ടങ്ങൾ, 2025</strong> എന്നിവ പാലിക്കുകയും ചെയ്യുന്നു.
                   </p>
                   <p className="mt-3">
                     ഞങ്ങൾ ഏത് വ്യക്തിഗത ഡാറ്റ ശേഖരിക്കുന്നു, എന്തിന് ശേഖരിക്കുന്നു, ഞങ്ങൾ അത് എങ്ങനെ ഉപയോഗിക്കുന്നു, നിങ്ങൾക്ക് എങ്ങനെ സമ്മതം പിൻവലിക്കാം എന്നിവ ഈ വിജ്ഞാപനം വിശദീകരിക്കുന്നു. സമ്മത ചെക്ക്ബോക്സ് പരിശോധിച്ചുകൊണ്ട്, താഴെ വിവരിച്ചിരിക്കുന്നതുപോലെ നിങ്ങളുടെ വ്യക്തിഗത ഡാറ്റ പ്രോസസ്സ് ചെയ്യാൻ നിങ്ങൾ സമ്മതം നൽകുന്നു.
@@ -1553,7 +1553,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. ഞങ്ങൾ ശേഖരിക്കുന്ന വ്യക്തിഗത ഡാറ്റ
                   </h2>
                   <p>നിങ്ങൾ ഞങ്ങളുടെ വെബ്സൈറ്റിൽ ഒരു ഫോം സമർപ്പിക്കുമ്പോൾ, ഞങ്ങൾ ശേഖരിച്ചേക്കാം:</p>
@@ -1605,7 +1605,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. പ്രോസസ്സിംഗിന്റെ ഉദ്ദേശ്യം
                   </h2>
                   <p>ഇനിപ്പറയുന്ന നിർദ്ദിഷ്ട ഉദ്ദേശ്യങ്ങൾക്കായി ഞങ്ങൾ നിങ്ങളുടെ വ്യക്തിഗത ഡാറ്റ പ്രോസസ്സ് ചെയ്യുന്നു:</p>
@@ -1635,7 +1635,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ഡാറ്റ പ്രിൻസിപ്പലായി നിങ്ങളുടെ അവകാശങ്ങൾ
                   </h2>
                   <p>DPDP ആക്ട് 2023 പ്രകാരം, നിങ്ങൾക്ക് ഇനിപ്പറയുന്ന അവകാശങ്ങളുണ്ട്:</p>
@@ -1653,8 +1653,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. നിങ്ങളുടെ സമ്മതം എങ്ങനെ പിൻവലിക്കാം?</h2>
                   <p>നിങ്ങൾക്ക് എപ്പോൾ വേണമെങ്കിലും നിങ്ങളുടെ സമ്മതം പിൻവലിക്കാം:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> എന്നതിൽ "Withdraw Consent" എന്ന വിഷയത്തിൽ ഇമെയിൽ ചെയ്യുന്നതിലൂടെ.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> എന്നതിൽ ഞങ്ങളുടെ പരാതി ഓഫീസർക്ക് എഴുതുന്നതിലൂടെ.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> എന്നതിൽ "Withdraw Consent" എന്ന വിഷയത്തിൽ ഇമെയിൽ ചെയ്യുന്നതിലൂടെ.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> എന്നതിൽ ഞങ്ങളുടെ പരാതി ഓഫീസർക്ക് എഴുതുന്നതിലൂടെ.</li>
                     <li>ഞങ്ങളുടെ വെബ്സൈറ്റിൽ "കൂക്കി ക്രമീകരണങ്ങൾ" ബട്ടൺ ഉപയോഗിക്കുന്നതിലൂടെ.</li>
                   </ul>
                   <p className="mt-3">
@@ -1668,7 +1668,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">പേര്:</strong> ശിൽപി കുൽശ്രേഷ്ഠ</p>
                     <p className="mt-2"><strong className="text-white">പദവി:</strong> പരാതി ഓഫീസർ & സ്ഥാപകൻ, ബിസിനസ് എക്സലൻസ് സ്റ്റാർട്ട്എക്സ് LLP</p>
-                    <p className="mt-2"><strong className="text-white">ഇമെയിൽ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ഇമെയിൽ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ഫോൺ:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">പ്രതികരണ സമയം:</strong> 48 മണിക്കൂറിനുള്ളിൽ സ്വീകരണം; <strong>7 പ്രവൃത്തി ദിവസങ്ങൾക്കുള്ളിൽ</strong> പരിഹാരം.</p>
                   </div>
@@ -1703,7 +1703,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. ପରିଚୟ (Introduction)</h2>
                   <p>
-                    ଏହି ସମ୍ମତି ସୂଚନା <strong className="text-white">ବିଜନେସ୍ ଏକ୍ସିଲେନ୍ସ ଷ୍ଟାର୍ଟଏକ୍ସ LLP</strong> ("ଆମେ", "ଆମର") ଦ୍ୱାରା ଜାରି କରାଯାଇଛି, ଯାହା <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> ରେ ଲିଗାଲ ଗାଲାକ୍ସି ପ୍ଲାଟଫର୍ମ ପରିଚାଳନା କରେ ଏବଂ <strong className="text-white">ଡିଜିଟାଲ ପର୍ସନାଲ ଡାଟା ପ୍ରୋଟେକ୍ସନ ଆକ୍ଟ, 2023</strong> ("DPDP Act") ଏବଂ <strong className="text-white">DPDP ନିୟମ, 2025</strong> ଅନୁସରଣ କରେ।
+                    ଏହି ସମ୍ମତି ସୂଚନା <strong className="text-white">ବିଜନେସ୍ ଏକ୍ସିଲେନ୍ସ ଷ୍ଟାର୍ଟଏକ୍ସ LLP</strong> ("ଆମେ", "ଆମର") ଦ୍ୱାରା ଜାରି କରାଯାଇଛି, ଯାହା <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> ରେ ଲିଗାଲ ଗାଲାକ୍ସି ପ୍ଲାଟଫର୍ମ ପରିଚାଳନା କରେ ଏବଂ <strong className="text-white">ଡିଜିଟାଲ ପର୍ସନାଲ ଡାଟା ପ୍ରୋଟେକ୍ସନ ଆକ୍ଟ, 2023</strong> ("DPDP Act") ଏବଂ <strong className="text-white">DPDP ନିୟମ, 2025</strong> ଅନୁସରଣ କରେ।
                   </p>
                   <p className="mt-3">
                     ଏହି ସୂଚନା ବ୍ୟାଖ୍ୟା କରେ ଯେ ଆମେ କେଉଁ ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ସଂଗ୍ରହ କରୁ, କାହିଁକି ସଂଗ୍ରହ କରୁ, ଆମେ ଏହାକୁ କିପରି ବ୍ୟବହାର କରୁ ଏବଂ ଆପଣ କିପରି ଆପଣଙ୍କର ସମ୍ମତି ପ୍ରତ୍ୟାହାର କରିପାରିବେ। ସମ୍ମତି ଚେକବକ୍ସ ଚେକ୍ କରି, ଆପଣ ତଳେ ବର୍ଣ୍ଣିତ ଅନୁଯାୟୀ ଆପଣଙ୍କର ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ପ୍ରକ୍ରିୟାକରଣ ପାଇଁ ସମ୍ମତି ଦିଅନ୍ତି।
@@ -1712,7 +1712,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. ଆମେ କେଉଁ ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ସଂଗ୍ରହ କରୁ
                   </h2>
                   <p>ଯେତେବେଳେ ଆପଣ ଆମର ୱେବସାଇଟରେ ଏକ ଫର୍ମ ଦାଖଲ କରନ୍ତି, ଆମେ ସଂଗ୍ରହ କରିପାରିବା:</p>
@@ -1764,7 +1764,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. ପ୍ରକ୍ରିୟାକରଣର ଉଦ୍ଦେଶ୍ୟ
                   </h2>
                   <p>ଆମେ ନିମ୍ନଲିଖିତ ନିର୍ଦ୍ଦିଷ୍ଟ ଉଦ୍ଦେଶ୍ୟ ପାଇଁ ଆପଣଙ୍କ ବ୍ୟକ୍ତିଗତ ତଥ୍ୟ ପ୍ରକ୍ରିୟା କରୁ:</p>
@@ -1794,7 +1794,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ଡାଟା ପ୍ରିନ୍ସିପାଲ ଭାବରେ ଆପଣଙ୍କର ଅଧିକାର
                   </h2>
                   <p>DPDP ଆଇନ 2023 ଅଧୀନରେ, ଆପଣଙ୍କର ନିମ୍ନଲିଖିତ ଅଧିକାର ଅଛି:</p>
@@ -1812,8 +1812,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. ଆପଣଙ୍କ ସମ୍ମତି କିପରି ପ୍ରତ୍ୟାହାର କରିବେ?</h2>
                   <p>ଆପଣ ଯେକୌଣସି ସମୟରେ ଆପଣଙ୍କ ସମ୍ମତି ପ୍ରତ୍ୟାହାର କରିପାରିବେ:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> କୁ "Withdraw Consent" ବିଷୟ ସହିତ ଇମେଲ କରି।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> ରେ ଆମର ଅଭିଯୋଗ ଅଧିକାରୀଙ୍କୁ ଲେଖି।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> କୁ "Withdraw Consent" ବିଷୟ ସହିତ ଇମେଲ କରି।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> ରେ ଆମର ଅଭିଯୋଗ ଅଧିକାରୀଙ୍କୁ ଲେଖି।</li>
                     <li>ଆମର ୱେବସାଇଟରେ "କୁକି ସେଟିଂସ" ବଟନ ବ୍ୟବହାର କରି।</li>
                   </ul>
                   <p className="mt-3">
@@ -1827,7 +1827,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">ନାମ:</strong> ଶିଲ୍ପୀ କୁଲଶ୍ରେଷ୍ଠ</p>
                     <p className="mt-2"><strong className="text-white">ପଦବୀ:</strong> ଅଭିଯୋଗ ଅଧିକାରୀ ଏବଂ ପ୍ରତିଷ୍ଠାତା, ବିଜନେସ୍ ଏକ୍ସିଲେନ୍ସ ଷ୍ଟାର୍ଟଏକ୍ସ LLP</p>
-                    <p className="mt-2"><strong className="text-white">ଇମେଲ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ଇମେଲ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ଫୋନ:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">ପ୍ରତିକ୍ରିୟା ସମୟ:</strong> 48 ଘଣ୍ଟା ମଧ୍ୟରେ ସ୍ୱୀକୃତି; <strong>7 କାର୍ଯ୍ୟଦିବସ ମଧ୍ୟରେ</strong> ସମାଧାନ।</p>
                   </div>
@@ -1861,7 +1861,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. ਜਾਣ-ਪਛਾਣ (Introduction)</h2>
                   <p>
-                    ਇਹ ਸਹਿਮਤੀ ਨੋਟਿਸ <strong className="text-white">ਬਿਜ਼ਨਸ ਐਕਸੀਲੈਂਸ ਸਟਾਰਟਐਕਸ LLP</strong> ("ਅਸੀਂ", "ਸਾਡਾ") ਦੁਆਰਾ ਜਾਰੀ ਕੀਤਾ ਗਿਆ ਹੈ, ਜੋ <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> 'ਤੇ ਲੀਗਲ ਗੈਲੈਕਸੀ ਪਲੇਟਫਾਰਮ ਚਲਾਉਂਦਾ ਹੈ ਅਤੇ <strong className="text-white">ਡਿਜੀਟਲ ਪਰਸਨਲ ਡੇਟਾ ਪ੍ਰੋਟੈਕਸ਼ਨ ਐਕਟ, 2023</strong> ("DPDP Act") ਅਤੇ <strong className="text-white">DPDP ਨਿਯਮ, 2025</strong> ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ।
+                    ਇਹ ਸਹਿਮਤੀ ਨੋਟਿਸ <strong className="text-white">ਬਿਜ਼ਨਸ ਐਕਸੀਲੈਂਸ ਸਟਾਰਟਐਕਸ LLP</strong> ("ਅਸੀਂ", "ਸਾਡਾ") ਦੁਆਰਾ ਜਾਰੀ ਕੀਤਾ ਗਿਆ ਹੈ, ਜੋ <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> 'ਤੇ ਲੀਗਲ ਗੈਲੈਕਸੀ ਪਲੇਟਫਾਰਮ ਚਲਾਉਂਦਾ ਹੈ ਅਤੇ <strong className="text-white">ਡਿਜੀਟਲ ਪਰਸਨਲ ਡੇਟਾ ਪ੍ਰੋਟੈਕਸ਼ਨ ਐਕਟ, 2023</strong> ("DPDP Act") ਅਤੇ <strong className="text-white">DPDP ਨਿਯਮ, 2025</strong> ਦੀ ਪਾਲਣਾ ਕਰਦਾ ਹੈ।
                   </p>
                   <p className="mt-3">
                     ਇਹ ਨੋਟਿਸ ਦੱਸਦਾ ਹੈ ਕਿ ਅਸੀਂ ਕਿਹੜਾ ਨਿੱਜੀ ਡੇਟਾ ਇਕੱਠਾ ਕਰਦੇ ਹਾਂ, ਕਿਉਂ ਇਕੱਠਾ ਕਰਦੇ ਹਾਂ, ਅਸੀਂ ਇਸਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕਰਦੇ ਹਾਂ, ਅਤੇ ਤੁਸੀਂ ਆਪਣੀ ਸਹਿਮਤੀ ਕਿਵੇਂ ਵਾਪਸ ਲੈ ਸਕਦੇ ਹੋ। ਸਹਿਮਤੀ ਚੈੱਕਬਾਕਸ ਨੂੰ ਚੈੱਕ ਕਰਕੇ, ਤੁਸੀਂ ਹੇਠਾਂ ਦੱਸੇ ਅਨੁਸਾਰ ਆਪਣੇ ਨਿੱਜੀ ਡੇਟਾ ਦੀ ਪ੍ਰੋਸੈਸਿੰਗ ਲਈ ਸਹਿਮਤੀ ਦਿੰਦੇ ਹੋ।
@@ -1870,7 +1870,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. ਅਸੀਂ ਕਿਹੜਾ ਨਿੱਜੀ ਡੇਟਾ ਇਕੱਠਾ ਕਰਦੇ ਹਾਂ
                   </h2>
                   <p>ਜਦੋਂ ਤੁਸੀਂ ਸਾਡੀ ਵੈੱਬਸਾਈਟ 'ਤੇ ਫਾਰਮ ਜਮ੍ਹਾਂ ਕਰਦੇ ਹੋ, ਤਾਂ ਅਸੀਂ ਇਕੱਠਾ ਕਰ ਸਕਦੇ ਹਾਂ:</p>
@@ -1922,7 +1922,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. ਪ੍ਰੋਸੈਸਿੰਗ ਦਾ ਉਦੇਸ਼
                   </h2>
                   <p>ਅਸੀਂ ਤੁਹਾਡੇ ਨਿੱਜੀ ਡੇਟਾ ਨੂੰ ਹੇਠਾਂ ਦਿੱਤੇ ਖਾਸ ਉਦੇਸ਼ਾਂ ਲਈ ਪ੍ਰੋਸੈਸ ਕਰਦੇ ਹਾਂ:</p>
@@ -1952,7 +1952,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ਡੇਟਾ ਪ੍ਰਿੰਸੀਪਲ ਵਜੋਂ ਤੁਹਾਡੇ ਅਧਿਕਾਰ
                   </h2>
                   <p>DPDP ਐਕਟ 2023 ਦੇ ਤਹਿਤ, ਤੁਹਾਡੇ ਕੋਲ ਹੇਠਾਂ ਦਿੱਤੇ ਅਧਿਕਾਰ ਹਨ:</p>
@@ -1970,8 +1970,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. ਆਪਣੀ ਸਹਿਮਤੀ ਕਿਵੇਂ ਵਾਪਸ ਲੈਣੀ ਹੈ?</h2>
                   <p>ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਸਮੇਂ ਆਪਣੀ ਸਹਿਮਤੀ ਵਾਪਸ ਲੈ ਸਕਦੇ ਹੋ:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> 'ਤੇ "Withdraw Consent" ਵਿਸ਼ੇ ਨਾਲ ਈਮੇਲ ਕਰਕੇ।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> 'ਤੇ ਸਾਡੇ ਸ਼ਿਕਾਇਤ ਅਧਿਕਾਰੀ ਨੂੰ ਲਿਖ ਕੇ।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> 'ਤੇ "Withdraw Consent" ਵਿਸ਼ੇ ਨਾਲ ਈਮੇਲ ਕਰਕੇ।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> 'ਤੇ ਸਾਡੇ ਸ਼ਿਕਾਇਤ ਅਧਿਕਾਰੀ ਨੂੰ ਲਿਖ ਕੇ।</li>
                     <li>ਸਾਡੀ ਵੈੱਬਸਾਈਟ 'ਤੇ "ਕੂਕੀ ਸੈਟਿੰਗਾਂ" ਬਟਨ ਦੀ ਵਰਤੋਂ ਕਰਕੇ।</li>
                   </ul>
                   <p className="mt-3">
@@ -1985,7 +1985,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">ਨਾਮ:</strong> ਸ਼ਿਲਪੀ ਕੁਲਸ਼੍ਰੇਸ਼ਠ</p>
                     <p className="mt-2"><strong className="text-white">ਅਹੁਦਾ:</strong> ਸ਼ਿਕਾਇਤ ਅਧਿਕਾਰੀ ਅਤੇ ਸੰਸਥਾਪਕ, ਬਿਜ਼ਨਸ ਐਕਸੀਲੈਂਸ ਸਟਾਰਟਐਕਸ LLP</p>
-                    <p className="mt-2"><strong className="text-white">ਈਮੇਲ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ਈਮੇਲ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ਫ਼ੋਨ:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">ਜਵਾਬ ਸਮਾਂ:</strong> 48 ਘੰਟਿਆਂ ਵਿੱਚ ਪ੍ਰਾਪਤੀ; <strong>7 ਕੰਮਕਾਜੀ ਦਿਨਾਂ</strong> ਵਿੱਚ ਹੱਲ।</p>
                   </div>
@@ -2019,7 +2019,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. পৰিচয় (Introduction)</h2>
                   <p>
-                    এই সন্মতি জাননী <strong className="text-white">ব্যৱসায় এক্সিলেন্স ষ্টাৰ্টএক্স LLP</strong> ("আমি", "আমাৰ")-য়ে জাৰি কৰিছে, যি <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> ত লিগেল গেলে‍ক্সি প্লেটফৰ্ম পৰিচালনা কৰে আৰু <strong className="text-white">ডিজিটেল পাৰ্চনেল ডেটা প্ৰটেক্সন আইন, 2023</strong> ("DPDP Act") আৰু <strong className="text-white">DPDP নিয়ম, 2025</strong> মানি চলে।
+                    এই সন্মতি জাননী <strong className="text-white">ব্যৱসায় এক্সিলেন্স ষ্টাৰ্টএক্স LLP</strong> ("আমি", "আমাৰ")-য়ে জাৰি কৰিছে, যি <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> ত লিগেল গেলে‍ক্সি প্লেটফৰ্ম পৰিচালনা কৰে আৰু <strong className="text-white">ডিজিটেল পাৰ্চনেল ডেটা প্ৰটেক্সন আইন, 2023</strong> ("DPDP Act") আৰু <strong className="text-white">DPDP নিয়ম, 2025</strong> মানি চলে।
                   </p>
                   <p className="mt-3">
                     এই জাননীয়ে ব্যাখ্যা কৰে যে আমি কি ব্যক্তিগত ডেটা সংগ্ৰহ কৰোঁ, কিয় সংগ্ৰহ কৰোঁ, আমি ইয়াক কেনেকৈ ব্যৱহাৰ কৰোঁ আৰু আপুনি কেনেকৈ আপোনাৰ সন্মতি প্ৰত্যাহাৰ কৰিব পাৰে। সন্মতি চেকবক্স চেক কৰি, আপুনি তলত বৰ্ণনা কৰা অনুসৰি আপোনাৰ ব্যক্তিগত ডেটা প্ৰক্ৰিয়াকৰণৰ বাবে সন্মতি দিয়ে।
@@ -2028,7 +2028,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. আমি কি ব্যক্তিগত ডেটা সংগ্ৰহ কৰোঁ
                   </h2>
                   <p>যেতিয়া আপুনি আমাৰ ৱেবছাইটত এটা ফৰ্ম দাখিল কৰে, আমি সংগ্ৰহ কৰিব পাৰোঁ:</p>
@@ -2080,7 +2080,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. প্ৰক্ৰিয়াকৰণৰ উদ্দেশ্য
                   </h2>
                   <p>আমি তলত দিয়া নিৰ্দিষ্ট উদ্দেশ্যৰ বাবে আপোনাৰ ব্যক্তিগত ডেটা প্ৰক্ৰিয়া কৰোঁ:</p>
@@ -2110,7 +2110,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ডেটা প্ৰিন্সিপাল হিচাপে আপোনাৰ অধিকাৰ
                   </h2>
                   <p>DPDP আইন 2023 ৰ অধীনত, আপোনাৰ তলত দিয়া অধিকাৰ আছে:</p>
@@ -2128,8 +2128,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. আপোনাৰ সন্মতি কেনেকৈ প্ৰত্যাহাৰ কৰিব?</h2>
                   <p>আপুনি যিকোনো সময়ত আপোনাৰ সন্মতি প্ৰত্যাহাৰ কৰিব পাৰে:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> লৈ "Withdraw Consent" বিষয়ৰ সৈতে ইমেইল কৰি।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> ত আমাৰ অভিযোগ বিষয়াক লিখি।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> লৈ "Withdraw Consent" বিষয়ৰ সৈতে ইমেইল কৰি।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> ত আমাৰ অভিযোগ বিষয়াক লিখি।</li>
                     <li>আমাৰ ৱেবছাইটত "কুকি ছেটিংছ" বুটাম ব্যৱহাৰ কৰি।</li>
                   </ul>
                   <p className="mt-3">
@@ -2143,7 +2143,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">নাম:</strong> শিল্পী কুলশ্ৰেষ্ঠ</p>
                     <p className="mt-2"><strong className="text-white">পদ:</strong> অভিযোগ বিষয়া আৰু প্ৰতিষ্ঠাপক, ব্যৱসায় এক্সিলেন্স ষ্টাৰ্টএক্স LLP</p>
-                    <p className="mt-2"><strong className="text-white">ইমেইল:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ইমেইল:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ফোন:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">প্ৰতিক্ৰিয়া সময়:</strong> 48 ঘণ্টাৰ ভিতৰত স্বীকৃতি; <strong>7 কৰ্মদিৱসৰ</strong> ভিতৰত সমাধান।</p>
                   </div>
@@ -2177,7 +2177,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. परिचय (Introduction)</h2>
                   <p>
-                    ई सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टX LLP</strong> ("हम", "हमर") द्वारा जारी कएल गेल अछि, जे <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> पर लीगल गैलेक्सी प्लेटफ़ॉर्म चलाबैत अछि आ <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन एक्ट, 2023</strong> ("DPDP Act") आ <strong className="text-white">DPDP नियम, 2025</strong> क पालन करैत अछि।
+                    ई सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टX LLP</strong> ("हम", "हमर") द्वारा जारी कएल गेल अछि, जे <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> पर लीगल गैलेक्सी प्लेटफ़ॉर्म चलाबैत अछि आ <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन एक्ट, 2023</strong> ("DPDP Act") आ <strong className="text-white">DPDP नियम, 2025</strong> क पालन करैत अछि।
                   </p>
                   <p className="mt-3">
                     ई सूचना बताबैत अछि जे हम कोन व्यक्तिगत डेटा एकत्र करैत छी, कोना एकत्र करैत छी, हम एकर उपयोग कोना करैत छी, आ अहाँ अपन सहमति कोना वापस ल' सकैत छी। सहमति चेकबॉक्स क चयन करि, अहाँ नीचाँ वर्णित अनुसार अपन व्यक्तिगत डेटा क प्रसंस्करण लेल सहमति देल जाइत अछि।
@@ -2186,7 +2186,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. हम कोन व्यक्तिगत डेटा एकत्र करैत छी
                   </h2>
                   <p>जखन अहाँ हमर वेबसाइट पर फॉर्म सबमिट करैत छी, तखन हम एकत्र क' सकैत छी:</p>
@@ -2238,7 +2238,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रसंस्करण क उद्देश्य
                   </h2>
                   <p>हम अहाँक व्यक्तिगत डेटा कें निम्नलिखित विशिष्ट उद्देश्य लेल प्रसंस्करण करैत छी:</p>
@@ -2268,7 +2268,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा प्रिंसिपल क रूप में अहाँक अधिकार
                   </h2>
                   <p>DPDP अधिनियम 2023 क अंतर्गत, अहाँकँ निम्नलिखित अधिकार अछि:</p>
@@ -2286,8 +2286,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. अपन सहमति कोना वापस लेब?</h2>
                   <p>अहाँ कुनो समय अपन सहमति वापस ल' सकैत छी:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> पर "Withdraw Consent" विषय क संग ईमेल करि।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> पर हमर शिकायत अधिकारी कें लिखि।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> पर "Withdraw Consent" विषय क संग ईमेल करि।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> पर हमर शिकायत अधिकारी कें लिखि।</li>
                     <li>हमर वेबसाइट पर "कुकी सेटिंग्स" बटन क उपयोग करि।</li>
                   </ul>
                   <p className="mt-3">
@@ -2301,7 +2301,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">नाम:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">पदनाम:</strong> शिकायत अधिकारी आ संस्थापक, बिजनेस एक्सीलेंस स्टार्टX LLP</p>
-                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">फोन:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">प्रतिक्रिया समय:</strong> 48 घंटा में पावती; <strong>7 कार्य दिवस</strong> में समाधान।</p>
                   </div>
@@ -2335,7 +2335,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. ᱮᱛᱚᱦᱚᱵ (Introduction)</h2>
                   <p>
-                    ᱱᱚᱶᱟ ᱥᱚᱢᱢᱚᱛᱤ ᱱᱚᱴᱤᱥ ᱫᱚ <strong className="text-white">ᱵᱤᱡᱱᱮᱥ ᱮᱠᱥᱤᱞᱮᱱᱥ ᱥᱴᱟᱨᱴᱮᱠᱥ LLP</strong> ("ᱟᱞᱮ", "ᱟᱞᱮᱭᱟᱜ") ᱦᱚᱛᱮᱛᱮ ᱮᱢ ᱟᱠᱟᱱᱟ, ᱡᱟᱦᱟᱸ ᱫᱚ <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> ᱨᱮ ᱞᱤᱜᱟᱞ ᱜᱟᱞᱟᱠᱥᱤ ᱯᱞᱮᱴᱯᱷᱚᱨᱢ ᱪᱟᱞᱟᱭᱮᱫᱟ ᱟᱨ <strong className="text-white">ᱰᱤᱡᱤᱴᱟᱞ ᱯᱟᱨᱥᱚᱱᱟᱞ ᱰᱟᱴᱟ ᱯᱨᱚᱴᱮᱠᱥᱚᱱ ᱟᱹᱨᱤ, 2023</strong> ("DPDP Act") ᱟᱨ <strong className="text-white">DPDP ᱱᱤᱭᱚᱢ, 2025</strong> ᱠᱚ ᱯᱟᱞᱚᱱ ᱮᱫᱟ᱾
+                    ᱱᱚᱶᱟ ᱥᱚᱢᱢᱚᱛᱤ ᱱᱚᱴᱤᱥ ᱫᱚ <strong className="text-white">ᱵᱤᱡᱱᱮᱥ ᱮᱠᱥᱤᱞᱮᱱᱥ ᱥᱴᱟᱨᱴᱮᱠᱥ LLP</strong> ("ᱟᱞᱮ", "ᱟᱞᱮᱭᱟᱜ") ᱦᱚᱛᱮᱛᱮ ᱮᱢ ᱟᱠᱟᱱᱟ, ᱡᱟᱦᱟᱸ ᱫᱚ <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> ᱨᱮ ᱞᱤᱜᱟᱞ ᱜᱟᱞᱟᱠᱥᱤ ᱯᱞᱮᱴᱯᱷᱚᱨᱢ ᱪᱟᱞᱟᱭᱮᱫᱟ ᱟᱨ <strong className="text-white">ᱰᱤᱡᱤᱴᱟᱞ ᱯᱟᱨᱥᱚᱱᱟᱞ ᱰᱟᱴᱟ ᱯᱨᱚᱴᱮᱠᱥᱚᱱ ᱟᱹᱨᱤ, 2023</strong> ("DPDP Act") ᱟᱨ <strong className="text-white">DPDP ᱱᱤᱭᱚᱢ, 2025</strong> ᱠᱚ ᱯᱟᱞᱚᱱ ᱮᱫᱟ᱾
                   </p>
                   <p className="mt-3">
                     ᱱᱚᱶᱟ ᱱᱚᱴᱤᱥ ᱫᱚ ᱵᱟᱰᱟᱭᱮᱫᱟ ᱡᱮ ᱟᱞᱮ ᱪᱮᱫ ᱱᱤᱡᱮᱨᱟᱜ ᱰᱟᱴᱟ ᱡᱟᱣᱨᱟᱭᱮᱫᱟ, ᱪᱮᱫᱟᱜ ᱡᱟᱣᱨᱟᱭᱮᱫᱟ, ᱟᱞᱮ ᱚᱱᱟᱭ ᱪᱮᱫ ᱞᱮᱠᱟ ᱵᱮᱵᱷᱟᱨᱮᱫᱟ, ᱟᱨ ᱟᱢ ᱪᱮᱫ ᱞᱮᱠᱟ ᱟᱢᱟᱜ ᱥᱚᱢᱢᱚᱛᱤ ᱨᱩᱣᱟᱹᱲ ᱦᱟᱛᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱢ᱾ ᱥᱚᱢᱢᱚᱛᱤ ᱪᱮᱠᱵᱚᱠᱥ ᱪᱮᱠ ᱠᱟᱛᱮ, ᱟᱢ ᱞᱟᱛᱟᱨ ᱨᱮ ᱚᱞ ᱟᱠᱟᱱ ᱞᱮᱠᱟᱛᱮ ᱟᱢᱟᱜ ᱱᱤᱡᱮᱨᱟᱜ ᱰᱟᱴᱟ ᱯᱨᱚᱥᱮᱥ ᱞᱟᱹᱜᱤᱫ ᱥᱚᱢᱢᱚᱛᱤ ᱮᱢᱮᱫᱟᱢ᱾
@@ -2344,7 +2344,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. ᱟᱞᱮ ᱪᱮᱫ ᱱᱤᱡᱮᱨᱟᱜ ᱰᱟᱴᱟ ᱡᱟᱣᱨᱟᱭᱮᱫᱟ
                   </h2>
                   <p>ᱡᱚᱠᱷᱚᱱ ᱟᱢ ᱟᱞᱮᱭᱟᱜ ᱣᱮᱵᱥᱟᱭᱤᱴ ᱨᱮ ᱯᱷᱚᱨᱢ ᱡᱚᱢᱟᱭᱮᱫᱟᱢ, ᱟᱞᱮ ᱡᱟᱣᱨᱟ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ:</p>
@@ -2396,7 +2396,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. ᱯᱨᱚᱥᱮᱥ ᱨᱮᱭᱟᱜ ᱡᱚᱥ
                   </h2>
                   <p>ᱟᱞᱮ ᱞᱟᱛᱟᱨ ᱨᱮ ᱚᱞ ᱟᱠᱟᱱ ᱵᱤᱥᱮᱥ ᱡᱚᱥ ᱞᱟᱹᱜᱤᱫ ᱟᱢᱟᱜ ᱱᱤᱡᱮᱨᱟᱜ ᱰᱟᱴᱟ ᱯᱨᱚᱥᱮᱥ ᱞᱮᱫᱟᱭ:</p>
@@ -2426,7 +2426,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ᱰᱟᱴᱟ ᱯᱨᱤᱱᱥᱤᱯᱟᱞ ᱞᱮᱠᱟᱛᱮ ᱟᱢᱟᱜ ᱟᱹᱭᱫᱟᱹᱨ
                   </h2>
                   <p>DPDP ᱟᱹᱨᱤ 2023 ᱞᱟᱛᱟᱨ ᱨᱮ, ᱟᱢᱟᱜ ᱞᱟᱛᱟᱨ ᱨᱮ ᱚᱞ ᱟᱠᱟᱱ ᱟᱹᱭᱫᱟᱹᱨ ᱢᱮᱱᱟᱜᱼᱟ:</p>
@@ -2444,8 +2444,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. ᱟᱢᱟᱜ ᱥᱚᱢᱢᱚᱛᱤ ᱪᱮᱫ ᱞᱮᱠᱟ ᱨᱩᱣᱟᱹᱲ ᱦᱟᱛᱟᱣᱢ?</h2>
                   <p>ᱟᱢ ᱡᱟᱦᱟᱸ ᱚᱠᱛᱚ ᱟᱢᱟᱜ ᱥᱚᱢᱢᱚᱛᱤ ᱨᱩᱣᱟᱹᱲ ᱦᱟᱛᱟᱣ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱢ:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> ᱛᱮ "Withdraw Consent" ᱠᱷᱚᱵᱚᱨ ᱥᱟᱞᱟᱜ ᱤᱢᱮᱞ ᱠᱟᱛᱮ᱾</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> ᱨᱮ ᱟᱞᱮᱭᱟᱜ ᱚᱠᱥᱮᱯ ᱚᱯᱷᱤᱥᱟᱨ ᱴᱷᱮᱱ ᱚᱞ ᱠᱟᱛᱮ᱾</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> ᱛᱮ "Withdraw Consent" ᱠᱷᱚᱵᱚᱨ ᱥᱟᱞᱟᱜ ᱤᱢᱮᱞ ᱠᱟᱛᱮ᱾</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> ᱨᱮ ᱟᱞᱮᱭᱟᱜ ᱚᱠᱥᱮᱯ ᱚᱯᱷᱤᱥᱟᱨ ᱴᱷᱮᱱ ᱚᱞ ᱠᱟᱛᱮ᱾</li>
                     <li>ᱟᱞᱮᱭᱟᱜ ᱣᱮᱵᱥᱟᱭᱤᱴ ᱨᱮ "ᱠᱩᱠᱤ ᱥᱮᱴᱤᱝᱥ" ᱵᱚᱴᱚᱱ ᱵᱮᱵᱷᱟᱨ ᱠᱟᱛᱮ᱾</li>
                   </ul>
                   <p className="mt-3">
@@ -2459,7 +2459,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">ᱧᱩᱛᱩᱢ:</strong> ᱥᱤᱞᱯᱤ ᱠᱩᱞᱥᱨᱮᱥᱴᱷᱟ</p>
                     <p className="mt-2"><strong className="text-white">ᱯᱚᱫᱚ:</strong> ᱚᱠᱥᱮᱯ ᱚᱯᱷᱤᱥᱟᱨ ᱟᱨ ᱛᱷᱟᱯᱚᱱᱤᱭᱟᱹ, ᱵᱤᱡᱱᱮᱥ ᱮᱠᱥᱤᱞᱮᱱᱥ ᱥᱴᱟᱨᱴᱮᱠᱥ LLP</p>
-                    <p className="mt-2"><strong className="text-white">ᱤᱢᱮᱞ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ᱤᱢᱮᱞ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ᱯᱷᱚᱱ:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">ᱛᱮᱞᱟ ᱚᱠᱛᱚ:</strong> 48 ᱴᱟᱲᱟᱝ ᱞᱟᱛᱟᱨ ᱨᱮ ᱥᱣᱤᱠᱨᱤᱛᱤ; <strong>7 ᱠᱟᱹᱢᱤ ᱢᱟᱦᱟ</strong> ᱞᱟᱛᱟᱨ ᱨᱮ ᱥᱚᱢᱟᱫᱷᱟᱱ᱾</p>
                   </div>
@@ -2493,7 +2493,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. تعارف (Introduction)</h2>
                   <p dir="rtl">
-                    هي رضامندی نوٹس <strong className="text-white">بزنس ايڪسي لينس اسٽارٽ ايڪس ايل ايل پي</strong> ("اسان"، "اسان جو") طرفان جاري ڪيو ويو آهي، جيڪو <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> تي ليجل گليڪسي پليٽ فارم هلائي ٿو ۽ <strong className="text-white">ڊجيٽل پرسنل ڊيٽا پروٽيڪشن ايڪٽ، 2023</strong> ("DPDP Act") ۽ <strong className="text-white">DPDP ضابطن، 2025</strong> جي تعميل ڪري ٿو.
+                    هي رضامندی نوٹس <strong className="text-white">بزنس ايڪسي لينس اسٽارٽ ايڪس ايل ايل پي</strong> ("اسان"، "اسان جو") طرفان جاري ڪيو ويو آهي، جيڪو <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> تي ليجل گليڪسي پليٽ فارم هلائي ٿو ۽ <strong className="text-white">ڊجيٽل پرسنل ڊيٽا پروٽيڪشن ايڪٽ، 2023</strong> ("DPDP Act") ۽ <strong className="text-white">DPDP ضابطن، 2025</strong> جي تعميل ڪري ٿو.
                   </p>
                   <p className="mt-3" dir="rtl">
                     هي نوٽس بيان ڪري ٿو ته اسان ڪهڙو ذاتي ڊيٽا گڏ ڪريون ٿا، ڇو گڏ ڪريون ٿا، اسان ان کي ڪيئن استعمال ڪريون ٿا، ۽ توهان پنهنجي رضامندي ڪيئن واپس وٺي سگهو ٿا. رضامندي جي چيڪ باڪس کي چيڪ ڪرڻ سان، توهان هيٺ بيان ڪيل مطابق پنهنجي ذاتي ڊيٽا جي پروسيسنگ لاءِ رضامندي ڏيو ٿا.
@@ -2502,7 +2502,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. اسان ڪهڙو ذاتي ڊيٽا گڏ ڪريون ٿا
                   </h2>
                   <p dir="rtl">جڏهن توهان اسان جي ويب سائيٽ تي فارم جمع ڪريو ٿا، اسان گڏ ڪري سگهون ٿا:</p>
@@ -2554,7 +2554,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. پروسيسنگ جو مقصد
                   </h2>
                   <p dir="rtl">اسان توهان جي ذاتي ڊيٽا کي هيٺين مخصوص مقصدن لاءِ پروسيس ڪريون ٿا:</p>
@@ -2584,7 +2584,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ڊيٽا پرنسپل جي حيثيت سان توهان جا حق
                   </h2>
                   <p dir="rtl">DPDP ايڪٽ 2023 تحت، توهان کي هيٺين حقن حاصل آهن:</p>
@@ -2602,8 +2602,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. پنهنجي رضامندي ڪيئن واپس وٺجي؟</h2>
                   <p dir="rtl">توهان ڪنهن به وقت پنهنجي رضامندي واپس وٺي سگهو ٿا:</p>
                   <ul className="list-disc pr-6 mt-3 space-y-2" dir="rtl">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> تي "Withdraw Consent" جي موضوع سان اي ميل ڪري.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> تي اسان جي شڪايت آفيسر کي لکي.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> تي "Withdraw Consent" جي موضوع سان اي ميل ڪري.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> تي اسان جي شڪايت آفيسر کي لکي.</li>
                     <li>اسان جي ويب سائيٽ تي "ڪوڪي سيٽنگون" بٽڻ استعمال ڪري.</li>
                   </ul>
                   <p className="mt-3" dir="rtl">
@@ -2617,7 +2617,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4" dir="rtl">
                     <p><strong className="text-white">نالو:</strong> شلپي ڪلشرشٺا</p>
                     <p className="mt-2"><strong className="text-white">عهدو:</strong> شڪايت آفيسر ۽ باني، بزنس ايڪسي لينس اسٽارٽ ايڪس ايل ايل پي</p>
-                    <p className="mt-2"><strong className="text-white">اي ميل:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">اي ميل:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">فون:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">جواب جو وقت:</strong> 48 ڪلاڪن ۾ رسيد; <strong>7 ڪاروباري ڏينهن</strong> ۾ حل.</p>
                   </div>
@@ -2651,7 +2651,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. परिचय (Introduction)</h2>
                   <p>
-                    यो सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेन्स स्टार्टएक्स LLP</strong> ("हामी", "हाम्रो") द्वारा जारी गरिएको हो, जुन <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> मा लीगल ग्यालेक्सी प्लेटफर्म सञ्चालन गर्दछ र <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन ऐन, 2023</strong> ("DPDP Act") र <strong className="text-white">DPDP नियम, 2025</strong> को पालना गर्दछ।
+                    यो सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेन्स स्टार्टएक्स LLP</strong> ("हामी", "हाम्रो") द्वारा जारी गरिएको हो, जुन <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> मा लीगल ग्यालेक्सी प्लेटफर्म सञ्चालन गर्दछ र <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन ऐन, 2023</strong> ("DPDP Act") र <strong className="text-white">DPDP नियम, 2025</strong> को पालना गर्दछ।
                   </p>
                   <p className="mt-3">
                     यो सूचनाले हामी कुन व्यक्तिगत डेटा सङ्कलन गर्छौं, किन सङ्कलन गर्छौं, हामी यसलाई कसरी प्रयोग गर्छौं, र तपाईंले आफ्नो सहमति कसरी फिर्ता लिन सक्नुहुन्छ भनेर व्याख्या गर्दछ। सहमति चेकबक्स जाँच गरेर, तपाईं तल वर्णन गरिए अनुसार आफ्नो व्यक्तिगत डेटाको प्रशोधनको लागि सहमति दिनुहुन्छ।
@@ -2660,7 +2660,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. हामी कुन व्यक्तिगत डेटा सङ्कलन गर्छौं
                   </h2>
                   <p>जब तपाईं हाम्रो वेबसाइटमा फारम पेश गर्नुहुन्छ, हामी सङ्कलन गर्न सक्छौं:</p>
@@ -2712,7 +2712,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रशोधनको उद्देश्य
                   </h2>
                   <p>हामी तपाईंको व्यक्तिगत डेटा निम्न विशिष्ट उद्देश्यहरूको लागि प्रशोधन गर्छौं:</p>
@@ -2742,7 +2742,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा प्रिन्सिपलको रूपमा तपाईंका अधिकारहरू
                   </h2>
                   <p>DPDP ऐन 2023 अन्तर्गत, तपाईंसँग निम्न अधिकारहरू छन्:</p>
@@ -2760,8 +2760,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. आफ्नो सहमति कसरी फिर्ता लिने?</h2>
                   <p>तपाईं कुनै पनि समय आफ्नो सहमति फिर्ता लिन सक्नुहुन्छ:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> मा "Withdraw Consent" विषयको साथ इमेल गरेर।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> मा हाम्रो उजुरी अधिकृतलाई लेखेर।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> मा "Withdraw Consent" विषयको साथ इमेल गरेर।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> मा हाम्रो उजुरी अधिकृतलाई लेखेर।</li>
                     <li>हाम्रो वेबसाइटमा "कुकी सेटिङहरू" बटन प्रयोग गरेर।</li>
                   </ul>
                   <p className="mt-3">
@@ -2775,7 +2775,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">नाम:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">पद:</strong> उजुरी अधिकृत र संस्थापक, बिजनेस एक्सीलेन्स स्टार्टएक्स LLP</p>
-                    <p className="mt-2"><strong className="text-white">इमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">इमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">फोन:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">प्रतिक्रिया समय:</strong> 48 घण्टामा प्राप्ति; <strong>7 कार्य दिनभित्र</strong> समाधान।</p>
                   </div>
@@ -2809,7 +2809,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. परिचय (Introduction)</h2>
                   <p>
-                    बेबार सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टएक्स LLP</strong> ("जों", "जोंनि") द्वारा जारी खालामदों, जाय <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> आव लिगेल ग्यालेक्सी प्लेटफर्म चलायो आरो <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन आइन, 2023</strong> ("DPDP Act") आरो <strong className="text-white">DPDP नियम, 2025</strong> मानिथार।
+                    बेबार सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टएक्स LLP</strong> ("जों", "जोंनि") द्वारा जारी खालामदों, जाय <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> आव लिगेल ग्यालेक्सी प्लेटफर्म चलायो आरो <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन आइन, 2023</strong> ("DPDP Act") आरो <strong className="text-white">DPDP नियम, 2025</strong> मानिथार।
                   </p>
                   <p className="mt-3">
                     बेबार सूचनाया बाथरा होयो जे जों मा मानसि डेटा दाज्लामो, मानो दाज्लामो, जों बेखौ माबोरै बाहायो आरो नों माबोरै नोंनि सहमति फिन लानो हायो। सहमति चेकबक्स चेक खालामनानै, नों गाहायाव बुंखांनाय बादि नोंनि मानसि डेटा प्रोसेसिंगनि थाखाय सहमति होयो।
@@ -2818,7 +2818,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. जों मा मानसि डेटा दाज्लामो
                   </h2>
                   <p>जखन नों जोंनि वेबसाइटआव फर्म जमा खालामो, जों दाज्लानो हागौ:</p>
@@ -2870,7 +2870,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रोसेसिंगनि थार
                   </h2>
                   <p>जों गाहायनि बिसेस थारनि थाखाय नोंनि मानसि डेटा प्रोसेस खालामो:</p>
@@ -2900,7 +2900,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा प्रिन्सिपल हिसाबै नोंनि अधिकार
                   </h2>
                   <p>DPDP आइन 2023 नि सायाव, नोंनि गाहायनि अधिकार दं:</p>
@@ -2914,8 +2914,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. नोंनि सहमति माबोरै फिन लानो?</h2>
                   <p>नों जेब्लाबो नोंनि सहमति फिन लानो हागौ:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> आव "Withdraw Consent" बुंनानै इमेल खालामनानै।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> आव जोंनि खौरां अफिसारखौ लिरनानै।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> आव "Withdraw Consent" बुंनानै इमेल खालामनानै।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> आव जोंनि खौरां अफिसारखौ लिरनानै।</li>
                   </ul>
                   <p className="mt-3">
                     सहमति फिन लानाया सहमति फिन लानोसोम सहमतिनि सायाव प्रोसेसिंगनि आइनगोनांथिखौ असर खालामोनो। जों <strong className="text-white">30 साननि</strong> उनाव नोंनि खौरांआव खामानि लानो।
@@ -2928,7 +2928,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">मुं:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">पद:</strong> खौरां अफिसार आरो स्थापक, बिजनेस एक्सीलेंस स्टार्टएक्स LLP</p>
-                    <p className="mt-2"><strong className="text-white">इमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">इमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">फन:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">फिन जाबाब सम:</strong> 48 घन्टायाव मोनथाय; <strong>7 खामानि साननि</strong> उनाव समाधान।</p>
                   </div>
@@ -2962,7 +2962,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. परिचय (Introduction)</h2>
                   <p>
-                    एह् सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टएक्स LLP</strong> ("असीं", "साढ़ा") द्वारा जारी कीती गेदी ऐ, जेह्ड़ा <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> उप्पर लीगल गैलेक्सी प्लेटफॉर्म चलांदा ऐ ते <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन ऐक्ट, 2023</strong> ("DPDP Act") ते <strong className="text-white">DPDP नियम, 2025</strong> दा पालन करदा ऐ।
+                    एह् सहमति सूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टएक्स LLP</strong> ("असीं", "साढ़ा") द्वारा जारी कीती गेदी ऐ, जेह्ड़ा <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> उप्पर लीगल गैलेक्सी प्लेटफॉर्म चलांदा ऐ ते <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन ऐक्ट, 2023</strong> ("DPDP Act") ते <strong className="text-white">DPDP नियम, 2025</strong> दा पालन करदा ऐ।
                   </p>
                   <p className="mt-3">
                     एह् सूचना दस्सदी ऐ कि असीं कीह् निजी डेटा इकट्ठा करदे आं, कीओं इकट्ठा करदे आं, असीं इसदा किस्सै इस्तेमाल करदे आं, ते तुस अपनी सहमति किस्सै वापस लैई सकदे ओ। सहमति चेकबॉक्स चेक करियै, तुस थल्लह् दित्ते दे मताबक अपने निजी डेटे दी प्रोसेसिंग लेई सहमति देई कन्ने ओ।
@@ -2971,7 +2971,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. असीं कीह् निजी डेटा इकट्ठा करदे आं
                   </h2>
                   <p>जदूं तुस साढ़ी वेबसाइट उप्पर फॉर्म जमा करदे ओ, असीं इकट्ठा करी सकदे आं:</p>
@@ -3023,7 +3023,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रोसेसिंग दा मकसद
                   </h2>
                   <p>असीं थल्लह् दित्ते गेदे खास मकसदां लेई तुंदा निजी डेटा प्रोसेस करदे आं:</p>
@@ -3053,7 +3053,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा प्रिंसिपल दे तौर पर तुंदे हक्क
                   </h2>
                   <p>DPDP ऐक्ट 2023 दे तहत, तुसां गी थल्लह् दित्ते हक्क होंदे न:</p>
@@ -3071,8 +3071,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. अपनी सहमति किस्सै वापस लैनी ऐ?</h2>
                   <p>तुस कुसै बी समें अपनी सहमति वापस लैई सकदे ओ:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> उप्पर "Withdraw Consent" विषय कन्नै ईमेल करियै।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> उप्पर साढ़े शिकायत अधिकारी गी लिखियै।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> उप्पर "Withdraw Consent" विषय कन्नै ईमेल करियै।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> उप्पर साढ़े शिकायत अधिकारी गी लिखियै।</li>
                     <li>साढ़ी वेबसाइट उप्पर "कुकी सेटिंग्स" बटन दा इस्तेमाल करियै।</li>
                   </ul>
                   <p className="mt-3">
@@ -3086,7 +3086,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">नां:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">ओहदा:</strong> शिकायत अधिकारी ते संस्थापक, बिजनेस एक्सीलेंस स्टार्टएक्स LLP</p>
-                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">फोन:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">जवाब दा समां:</strong> 48 घैंटें च प्राप्ति; <strong>7 कम्मकाजी दिनें</strong> च हल।</p>
                   </div>
@@ -3120,7 +3120,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. प्रस्तावना (Introduction)</h2>
                   <p>
-                    ही संमती सूचना <strong className="text-white">बिझनेस एक्सलन्स स्टार्टएक्स एलएलपी</strong> ("आमी", "आमचें") हाणून जारी केल्या, जी <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> वयर लीगल गॅलेक्सी प्लॅटफॉर्म चलयता आनी <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन अॅक्ट, 2023</strong> ("DPDP Act") आनी <strong className="text-white">DPDP नियम, 2025</strong> पाळटा.
+                    ही संमती सूचना <strong className="text-white">बिझनेस एक्सलन्स स्टार्टएक्स एलएलपी</strong> ("आमी", "आमचें") हाणून जारी केल्या, जी <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> वयर लीगल गॅलेक्सी प्लॅटफॉर्म चलयता आनी <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन अॅक्ट, 2023</strong> ("DPDP Act") आनी <strong className="text-white">DPDP नियम, 2025</strong> पाळटा.
                   </p>
                   <p className="mt-3">
                     ही सूचना सांगता की आमी खंयचो वैयक्तीक डेटा एकठांय करतात, खंयच्या खातीर करतात, आमी ताचो कसो वापर करतात, आनी तुमी तुमची संमती कशी परत घेवंक शकतात. संमती चेकबॉक्स चेक करून, तुमी सकयल सांगल्या प्रमाणे तुमच्या वैयक्तीक डेटाच्या प्रक्रियेक संमती दितात.
@@ -3129,7 +3129,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. आमी खंयचो वैयक्तीक डेटा एकठांय करतात
                   </h2>
                   <p>जेन्ना तुमी आमच्या वेबसायटीचेर फॉर्म सबमिट करतात, तेन्ना आमी एकठांय करूं येतात:</p>
@@ -3181,7 +3181,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रक्रियेचो उद्देश
                   </h2>
                   <p>आमी तुमचो वैयक्तीक डेटा सकयल दिल्ल्या विशिश्ट उद्देशां खातीर प्रक्रिया करतात:</p>
@@ -3211,7 +3211,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा प्रिन्सिपल म्हणून तुमचे हक्क
                   </h2>
                   <p>DPDP कायदो 2023 अंतर्गत, तुमकां सकयल दिल्ले हक्क आसात:</p>
@@ -3229,8 +3229,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. तुमची संमती कशी परत घेवची?</h2>
                   <p>तुमी खंयच्याय वेळार तुमची संमती परत घेवंक शकतात:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> चेर "Withdraw Consent" विशय घेवन ईमेल करून.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> चेर आमच्या तक्रार अधिकाऱ्याक बरोवन.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> चेर "Withdraw Consent" विशय घेवन ईमेल करून.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> चेर आमच्या तक्रार अधिकाऱ्याक बरोवन.</li>
                     <li>आमच्या वेबसायटीचेर "कुकी सेटिंग्स" बटण वापरून.</li>
                   </ul>
                   <p className="mt-3">
@@ -3244,7 +3244,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">नांव:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">पद:</strong> तक्रार अधिकारी आनी संस्थापक, बिझनेस एक्सलन्स स्टार्टएक्स एलएलपी</p>
-                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">फोन:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">जबाबाचो वेळ:</strong> 48 वरां भितर पावती; <strong>7 कामाच्या दिसां</strong> भितर निवारण.</p>
                   </div>
@@ -3278,7 +3278,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. ꯃꯔꯤ ꯂꯥꯛꯄ (Introduction)</h2>
                   <p>
-                    ꯃꯁꯤ ꯑꯌꯥꯕ ꯄꯥꯎꯆꯦ ꯑꯁꯤ <strong className="text-white">ꯕꯤꯖꯅꯦꯁ ꯏꯛꯁꯦꯂꯦꯟꯁ ꯁ꯭ꯇꯥꯔꯠ ꯑꯦꯛꯁ LLP</strong> ("ꯑꯩꯈꯣꯌ", "ꯑꯩꯈꯣꯌꯒꯤ") ꯅ ꯄꯨꯊꯣꯛꯄ ꯑꯃꯅꯤ, ꯃꯁꯤ <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> ꯗ ꯂꯤꯒꯦꯜ ꯒꯦꯂꯛꯁꯤ ꯄ꯭ꯂꯦꯠꯐꯣꯔꯝ ꯊꯧꯕꯤꯔꯤ ꯑꯃꯁꯨꯡ <strong className="text-white">ꯗꯤꯖꯤꯇꯦꯜ ꯄꯔꯁꯣꯅꯦꯜ ꯗꯦꯇꯥ ꯄ꯭ꯔꯣꯇꯦꯛꯁꯟ ꯑꯦꯛꯇ, 2023</strong> ("DPDP Act") ꯑꯃꯁꯨꯡ <strong className="text-white">DPDP ꯔꯨꯜ, 2025</strong> ꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅ ꯏꯪ.
+                    ꯃꯁꯤ ꯑꯌꯥꯕ ꯄꯥꯎꯆꯦ ꯑꯁꯤ <strong className="text-white">ꯕꯤꯖꯅꯦꯁ ꯏꯛꯁꯦꯂꯦꯟꯁ ꯁ꯭ꯇꯥꯔꯠ ꯑꯦꯛꯁ LLP</strong> ("ꯑꯩꯈꯣꯌ", "ꯑꯩꯈꯣꯌꯒꯤ") ꯅ ꯄꯨꯊꯣꯛꯄ ꯑꯃꯅꯤ, ꯃꯁꯤ <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> ꯗ ꯂꯤꯒꯦꯜ ꯒꯦꯂꯛꯁꯤ ꯄ꯭ꯂꯦꯠꯐꯣꯔꯝ ꯊꯧꯕꯤꯔꯤ ꯑꯃꯁꯨꯡ <strong className="text-white">ꯗꯤꯖꯤꯇꯦꯜ ꯄꯔꯁꯣꯅꯦꯜ ꯗꯦꯇꯥ ꯄ꯭ꯔꯣꯇꯦꯛꯁꯟ ꯑꯦꯛꯇ, 2023</strong> ("DPDP Act") ꯑꯃꯁꯨꯡ <strong className="text-white">DPDP ꯔꯨꯜ, 2025</strong> ꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅ ꯏꯪ.
                   </p>
                   <p className="mt-3">
                     ꯄꯥꯎꯆꯦ ꯑꯁꯤꯅ ꯇꯥꯛꯂꯤ ꯃꯗꯨꯗꯤ ꯑꯩꯈꯣꯌꯅ ꯀꯔꯤ ꯄꯔꯁꯣꯅꯦꯜ ꯗꯦꯇꯥ ꯈꯣꯝꯖꯤꯜꯂꯤ, ꯀꯔꯤꯒꯤꯗꯃꯛ ꯈꯣꯝꯖꯤꯜꯂꯤ, ꯑꯩꯈꯣꯌꯅ ꯃꯁꯤ ꯀꯔꯝꯅ ꯁꯤꯖꯤꯟꯅꯒꯅꯤ, ꯑꯃꯁꯨꯡ ꯅꯍꯥꯛꯅ ꯑꯗꯨꯒꯤ ꯑꯌꯥꯕ ꯀꯔꯝꯅ ꯂꯧꯊꯣꯛꯀꯗꯒꯦ. ꯑꯌꯥꯕ ꯆꯦꯛꯕꯣꯛꯁ ꯆꯦꯛ ꯇꯧꯗꯨꯅ, ꯅꯍꯥꯛꯅ ꯃꯈꯥꯗ ꯁꯟꯗꯣꯛꯂꯤꯕꯒꯤ ꯃꯇꯨꯡ ꯏꯟꯅ ꯅꯍꯥꯛꯀꯤ ꯄꯔꯁꯣꯅꯦꯜ ꯗꯦꯇꯥ ꯄ꯭ꯔꯣꯁꯦꯁ ꯇꯧꯅꯕ ꯑꯌꯥꯕ ꯄꯤꯖꯔꯤ.
@@ -3287,7 +3287,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. ꯑꯩꯈꯣꯌꯅ ꯀꯔꯤ ꯄꯔꯁꯣꯅꯦꯜ ꯗꯦꯇꯥ ꯈꯣꯝꯖꯤꯜꯂꯤ
                   </h2>
                   <p>ꯅꯍꯥꯛꯅ ꯑꯩꯈꯣꯌꯒꯤ ꯋꯦꯕꯁꯥꯏꯠ ꯗ ꯐꯣꯔꯝ ꯄꯤꯔꯛꯄ ꯃꯇꯝꯗ, ꯑꯩꯈꯣꯌꯅ ꯈꯣꯝꯖꯤꯟꯕ ꯌꯥꯏ:</p>
@@ -3339,7 +3339,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. ꯄ꯭ꯔꯣꯁꯦꯁꯤꯡꯒꯤ ꯃꯔꯝ
                   </h2>
                   <p>ꯑꯩꯈꯣꯌꯅ ꯃꯈꯥꯗ ꯄꯤꯔꯤꯕ ꯃꯈꯥ ꯄꯥꯟꯕ ꯃꯔꯝꯁꯤꯡꯒꯤꯗꯃꯛ ꯅꯍꯥꯛꯀꯤ ꯄꯔꯁꯣꯅꯦꯜ ꯗꯦꯇꯥ ꯄ꯭ꯔꯣꯁꯦꯁ ꯇꯧꯏ:</p>
@@ -3368,7 +3368,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. ꯗꯦꯇꯥ ꯄ꯭ꯔꯤꯟꯁꯤꯄꯜ ꯑꯣꯏꯅ ꯅꯍꯥꯛꯀꯤ ꯍꯀꯁꯤꯡ
                   </h2>
                   <p>DPDP ꯑꯦꯛꯇ 2023ꯒꯤ ꯃꯈꯥꯗ, ꯅꯍꯥꯛꯇ ꯃꯈꯥꯗ ꯄꯤꯔꯤꯕ ꯍꯀꯁꯤꯡ ꯂꯩ:</p>
@@ -3386,8 +3386,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. ꯅꯍꯥꯛꯀꯤ ꯑꯌꯥꯕ ꯀꯔꯝꯅ ꯂꯧꯊꯣꯛꯀꯗꯒꯦ?</h2>
                   <p>ꯅꯍꯥꯛꯅ ꯀꯔꯝꯕ ꯃꯇꯝꯗ ꯑꯃꯥꯏ ꯅꯍꯥꯛꯀꯤ ꯑꯌꯥꯕ ꯂꯧꯊꯣꯛꯕ ꯌꯥꯏ:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> ꯗ "Withdraw Consent" ꯍꯥꯏꯕ ꯋꯥꯐꯝꯒ ꯏꯃꯦꯜ ꯊꯥꯗꯨꯅ.</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> ꯗ ꯑꯩꯈꯣꯌꯒꯤ ꯒ꯭ꯔꯤꯚꯦꯟꯁ ꯑꯣꯐꯤꯁꯔꯗ ꯏꯗꯨꯅ.</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> ꯗ "Withdraw Consent" ꯍꯥꯏꯕ ꯋꯥꯐꯝꯒ ꯏꯃꯦꯜ ꯊꯥꯗꯨꯅ.</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> ꯗ ꯑꯩꯈꯣꯌꯒꯤ ꯒ꯭ꯔꯤꯚꯦꯟꯁ ꯑꯣꯐꯤꯁꯔꯗ ꯏꯗꯨꯅ.</li>
                     <li>ꯑꯩꯈꯣꯌꯒꯤ ꯋꯦꯕꯁꯥꯏꯠ ꯗ "ꯀꯨꯀꯤ ꯁꯦꯇꯤꯡꯁ" ꯕꯇꯟ ꯁꯤꯖꯤꯟꯅꯗꯨꯅ.</li>
                   </ul>
                   <p className="mt-3">
@@ -3401,7 +3401,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">ꯃꯃꯤꯡ:</strong> ꯁꯤꯜꯄꯤ ꯀꯨꯜꯁ꯭ꯔꯦꯁ꯭ꯊ</p>
                     <p className="mt-2"><strong className="text-white">ꯊꯕꯛ:</strong> ꯒ꯭ꯔꯤꯚꯦꯟꯁ ꯑꯣꯐꯤꯁꯔ ꯑꯃꯁꯨꯡ ꯐꯥꯎꯟꯗꯔ, ꯕꯤꯖꯅꯦꯁ ꯏꯛꯁꯦꯂꯦꯟꯁ ꯁ꯭ꯇꯥꯔꯠ ꯑꯦꯛꯁ LLP</p>
-                    <p className="mt-2"><strong className="text-white">ꯏꯃꯦꯜ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ꯏꯃꯦꯜ:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">ꯐꯣꯟ:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ ꯃꯇꯝ:</strong> 48 ꯑꯋꯥꯡ ꯃꯅꯨꯡꯗ ꯑꯦꯀꯅꯣꯂꯦꯖ; <strong>7 ꯊꯕꯛ ꯅꯨꯃꯤꯠ</strong> ꯃꯅꯨꯡꯗ ꯁꯣꯜꯚ ꯇꯧꯕ.</p>
                   </div>
@@ -3435,7 +3435,7 @@ export default function ConsentNoticePage() {
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3">1. प्रास्ताविकम् (Introduction)</h2>
                   <p>
-                    इयं सहमतिसूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टX LLP</strong> ("वयम्", "अस्माकम्") द्वारा जारी कृता अस्ति, यः <a href="https://dpdpa.businezexcellence.com" className="text-purple-400 underline">dpdpa.businezexcellence.com</a> इति स्थाने लीगल गैलेक्सी मञ्चं चालयति तथा च <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन अधिनियमः, 2023</strong> ("DPDP Act") तथा <strong className="text-white">DPDP नियमाः, 2025</strong> इत्येतयोः अनुपालनं करोति।
+                    इयं सहमतिसूचना <strong className="text-white">बिजनेस एक्सीलेंस स्टार्टX LLP</strong> ("वयम्", "अस्माकम्") द्वारा जारी कृता अस्ति, यः <a href="https://dpdpa.businezexcellence.com" className="text-cyan-400 underline">dpdpa.businezexcellence.com</a> इति स्थाने लीगल गैलेक्सी मञ्चं चालयति तथा च <strong className="text-white">डिजिटल पर्सनल डेटा प्रोटेक्शन अधिनियमः, 2023</strong> ("DPDP Act") तथा <strong className="text-white">DPDP नियमाः, 2025</strong> इत्येतयोः अनुपालनं करोति।
                   </p>
                   <p className="mt-3">
                     इयं सूचना स्पष्टीकरोति यत् वयं किं व्यक्तिगतं डेटां सङ्गृह्णीमः, किमर्थं सङ्गृह्णीमः, वयं तत् कथं प्रयुञ्ज्महे, तथा च भवान् स्वसहमतिं कथं प्रत्याहर्तुं शक्नोति। सहमतिपेटिकां चित्वा, भवान् अधः वर्णितानुसारं स्वव्यक्तिगतडेटाप्रक्रियायै सहमतिं ददाति।
@@ -3444,7 +3444,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-purple-400" />
+                    <FileText className="w-5 h-5 text-cyan-400" />
                     2. वयं किं व्यक्तिगतं डेटां सङ्गृह्णीमः
                   </h2>
                   <p>यदा भवान् अस्माकं जालस्थाने पत्रकं समर्पयति, तदा वयं सङ्ग्रहीतुं शक्नुमः:</p>
@@ -3496,7 +3496,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-purple-400" />
+                    <Clock className="w-5 h-5 text-cyan-400" />
                     3. प्रक्रियायाः उद्देश्यम्
                   </h2>
                   <p>वयं भवतः व्यक्तिगतं डेटां निम्नलिखित-विशिष्ट-उद्देश्येभ्यः प्रक्रिययामः:</p>
@@ -3526,7 +3526,7 @@ export default function ConsentNoticePage() {
 
                 <section>
                   <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-purple-400" />
+                    <UserCheck className="w-5 h-5 text-cyan-400" />
                     5. डेटा-प्रधानरूपेण भवतः अधिकाराः
                   </h2>
                   <p>DPDP-अधिनियमस्य 2023 अन्तर्गतं, भवते निम्नलिखिताः अधिकाराः सन्ति:</p>
@@ -3544,8 +3544,8 @@ export default function ConsentNoticePage() {
                   <h2 className="text-xl font-semibold text-white mb-3">6. स्वसहमतिं कथं प्रत्याहर्तुम्?</h2>
                   <p>भवान् कस्मिंश्चित् अपि समये स्वसहमतिं प्रत्याहर्तुं शक्नोति:</p>
                   <ul className="list-disc pl-6 mt-3 space-y-2">
-                    <li><a href="mailto:privacy@businezexcellence.com" className="text-purple-400 underline">privacy@businezexcellence.com</a> इत्यत्र "Withdraw Consent" इति विषयेण ईमेलं प्रेषयित्वा।</li>
-                    <li><a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a> इत्यत्र अस्माकं शिकायत-अधिकारिणं लिखित्वा।</li>
+                    <li><a href="mailto:privacy@businezexcellence.com" className="text-cyan-400 underline">privacy@businezexcellence.com</a> इत्यत्र "Withdraw Consent" इति विषयेण ईमेलं प्रेषयित्वा।</li>
+                    <li><a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a> इत्यत्र अस्माकं शिकायत-अधिकारिणं लिखित्वा।</li>
                     <li>अस्माकं जालस्थाने "कुकी-सेटिङ्ग्स्" इति बटनं प्रयुज्य।</li>
                   </ul>
                   <p className="mt-3">
@@ -3559,7 +3559,7 @@ export default function ConsentNoticePage() {
                   <div className="bg-white/5 border border-white/20 rounded-xl p-5 mt-4">
                     <p><strong className="text-white">नाम:</strong> शिल्पी कुलश्रेष्ठ</p>
                     <p className="mt-2"><strong className="text-white">पदम्:</strong> शिकायत-अधिकारी तथा संस्थापकः, बिजनेस एक्सीलेंस स्टार्टX LLP</p>
-                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-purple-400 underline">grievance@businezexcellence.com</a></p>
+                    <p className="mt-2"><strong className="text-white">ईमेल:</strong> <a href="mailto:grievance@businezexcellence.com" className="text-cyan-400 underline">grievance@businezexcellence.com</a></p>
                     <p className="mt-2"><strong className="text-white">दूरभाषः:</strong> +91 8800138008</p>
                     <p className="mt-2"><strong className="text-white">प्रतिक्रिया-समयः:</strong> ४८ होरासु स्वीकृतिः; <strong>७ कार्यदिवसेषु</strong> समाधानम्।</p>
                   </div>
@@ -3598,7 +3598,7 @@ export default function ConsentNoticePage() {
                 <p className="text-gray-400 mb-4">This language is coming soon. Detailed legal sections are currently available in English, Hindi, and 20 other Indian languages.</p>
                 <button 
                   onClick={() => setLanguage("en")}
-                  className="px-6 py-2 bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-lg hover:bg-purple-500/30 transition-all"
+                  className="px-6 py-2 bg-purple-500/20 text-cyan-300 border border-cyan-500/30 rounded-lg hover:bg-purple-500/30 transition-all"
                 >
                   View in English
                 </button>

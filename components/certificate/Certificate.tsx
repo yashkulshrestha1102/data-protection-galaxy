@@ -37,7 +37,7 @@ export default function Certificate({
   const getGradeColor = (score: number) => {
     if (score >= 90) return 'text-amber-600';
     if (score >= 80) return 'text-blue-600';
-    if (score >= 70) return 'text-purple-600';
+    if (score >= 70) return 'text-cyan-600';
     return 'text-gray-600';
   };
 
@@ -79,7 +79,7 @@ export default function Certificate({
         <div className="absolute inset-6 border border-gray-100 rounded-lg" />
 
         {/* ===== DECORATIVE TOP BAR ===== */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-400 via-blue-500 to-purple-500" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-400 via-blue-500 to-cyan-500" />
 
         {/* ===== CORNER DECORATIONS ===== */}
         <div className="absolute top-8 left-8 w-10 h-10 border-t-2 border-l-2 border-amber-400/40 rounded-tl-lg" />

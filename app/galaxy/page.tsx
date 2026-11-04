@@ -37,7 +37,7 @@ const planets = [
     path: '/obligations',
     color: 'from-purple-400 to-purple-600',
     bgColor: 'bg-purple-500/20',
-    borderColor: 'border-purple-500/30',
+    borderColor: 'border-cyan-500/30',
     description: 'Responsible for ensuring compliance with the Act',
     category: 'Compliance',
     date: '14 Jul 2026',

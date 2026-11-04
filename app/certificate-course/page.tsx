@@ -223,10 +223,10 @@ export default function CertificateCoursePage() {
         {/* ===== HEADER ===== */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-400 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-400 mb-2">
               <Sparkles className="w-3 h-3" /> Complete Master Course
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white">DPDPA 2023 <span className="text-purple-400">Master Course</span></h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-white">DPDPA 2023 <span className="text-cyan-400">Master Course</span></h1>
             <p className="text-gray-300 text-sm mt-1">Complete Professional Certification Program — 20 Modules • 250+ Lessons</p>
           </div>
           <Link href="/" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10">
@@ -246,7 +246,7 @@ export default function CertificateCoursePage() {
             </div>
           </div>
           <div className="flex-1">
-            <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-2">
+            <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-purple-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-2">
               <UserCheck className="w-3 h-3" />
               Course Author
             </div>
@@ -266,7 +266,7 @@ export default function CertificateCoursePage() {
         {/* ===== STATS ===== */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           <div className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-colors">
-            <BookOpen className="w-5 h-5 text-purple-400 mx-auto mb-1" />
+            <BookOpen className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
             <div className="text-xl font-bold text-white">{fullModulesData.length}</div>
             <div className="text-xs text-gray-400">Modules</div>
           </div>
@@ -326,7 +326,7 @@ export default function CertificateCoursePage() {
                       {module.isNew && <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30">New</span>}
                       <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">{module.duration}</span>
                     </div>
-                    <h3 className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-1">{module.title}</h3>
+                    <h3 className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors line-clamp-1">{module.title}</h3>
                     <p className="text-xs text-gray-400 line-clamp-1">{module.description}</p>
                     <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
                       <span>{totalLessons} lessons</span>
@@ -342,7 +342,7 @@ export default function CertificateCoursePage() {
                       />
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all flex-shrink-0 mt-2" />
+                  <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all flex-shrink-0 mt-2" />
                 </div>
               </Link>
             );
@@ -350,8 +350,8 @@ export default function CertificateCoursePage() {
         </div>
 
         {/* ===== CERTIFICATION SECTION WITH LOCK ===== */}
-        <div className="mt-10 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6 md:p-8 text-center relative overflow-hidden">
-          <GraduationCap className="w-12 h-12 text-purple-400 mx-auto mb-3" />
+        <div className="mt-10 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-cyan-500/30 rounded-2xl p-6 md:p-8 text-center relative overflow-hidden">
+          <GraduationCap className="w-12 h-12 text-cyan-400 mx-auto mb-3" />
           <h2 className="text-2xl font-bold text-white mb-2">Ready for Certification?</h2>
           
           <div className="max-w-md mx-auto mb-4">
@@ -418,7 +418,7 @@ export default function CertificateCoursePage() {
         {/* ===== FAQ SECTION ===== */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <FileText className="w-6 h-6 text-purple-400" />
+            <FileText className="w-6 h-6 text-cyan-400" />
             Frequently Asked Questions
           </h2>
           <div className="space-y-3">
@@ -431,7 +431,7 @@ export default function CertificateCoursePage() {
               >
                 <summary className="flex items-center justify-between cursor-pointer list-none">
                   <span className="text-white font-medium pr-4">{faq.q}</span>
-                  <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">+</span>
+                  <span className="text-cyan-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">+</span>
                 </summary>
                 <p className="text-gray-300 text-sm leading-relaxed mt-3 pt-3 border-t border-white/10">
                   {faq.a}
@@ -444,7 +444,7 @@ export default function CertificateCoursePage() {
         {/* ===== RELATED LINKS ===== */}
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
+            <BookOpen className="w-6 h-6 text-cyan-400" />
             Continue Your DPDPA Journey
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -461,7 +461,7 @@ export default function CertificateCoursePage() {
                 href={link.href}
                 className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all"
               >
-                <h3 className="text-sm font-medium text-white group-hover:text-purple-400 transition-colors flex items-center justify-between gap-2">
+                <h3 className="text-sm font-medium text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between gap-2">
                   {link.title}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </h3>
@@ -477,14 +477,14 @@ export default function CertificateCoursePage() {
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#0a0a2e] border border-white/20 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative">
             <button onClick={() => setShowInstructions(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white"><X className="w-6 h-6" /></button>
-            <div className="flex items-center gap-3 mb-6"><GraduationCap className="w-8 h-8 text-purple-400" /><h2 className="text-2xl font-bold text-white">Exam Instructions</h2></div>
+            <div className="flex items-center gap-3 mb-6"><GraduationCap className="w-8 h-8 text-cyan-400" /><h2 className="text-2xl font-bold text-white">Exam Instructions</h2></div>
             <div className="space-y-4 mb-6">
               <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
                 <Clock className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                 <div><p className="text-sm font-medium text-white">Duration</p><p className="text-sm text-gray-400">{examData.duration} minutes</p></div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                <FileText className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                <FileText className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
                 <div><p className="text-sm font-medium text-white">Questions</p><p className="text-sm text-gray-400">{examData.totalQuestions} MCQs</p></div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
@@ -551,7 +551,7 @@ export default function CertificateCoursePage() {
               <div className="text-center py-8">
                 <div className="text-6xl mb-4">{examScore >= 80 ? '🎉' : '📚'}</div>
                 <h2 className="text-2xl font-bold text-white mb-2">{examScore >= 80 ? 'Congratulations!' : 'Keep Learning!'}</h2>
-                <div className="text-4xl font-bold text-purple-400 mb-4">{examScore}%</div>
+                <div className="text-4xl font-bold text-cyan-400 mb-4">{examScore}%</div>
                 <p className="text-gray-300 mb-6">{examScore >= 80 ? `✅ You passed! Certificate sent to ${candidateEmail}` : `You need ${80}% to pass. Score: ${examScore}%`}</p>
                 <button onClick={handleCloseModal} className="px-6 py-3 rounded-xl bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all">Close</button>
               </div>

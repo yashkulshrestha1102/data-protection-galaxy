@@ -61,7 +61,7 @@ export default function DpdpaVsGdprPage() {
           {/* Quick Answers (GEO Optimized) */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-10">
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <Scale className="w-6 h-6 text-purple-400" /> Quick Answers
+              <Scale className="w-6 h-6 text-cyan-400" /> Quick Answers
             </h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
@@ -81,7 +81,7 @@ export default function DpdpaVsGdprPage() {
                 <thead>
                   <tr className="border-b border-white/10">
                     <th className="py-3 px-4 text-gray-400 font-semibold text-sm">Feature</th>
-                    <th className="py-3 px-4 text-purple-400 font-semibold text-sm">DPDPA (India)</th>
+                    <th className="py-3 px-4 text-cyan-400 font-semibold text-sm">DPDPA (India)</th>
                     <th className="py-3 px-4 text-blue-400 font-semibold text-sm">GDPR (EU)</th>
                   </tr>
                 </thead>
@@ -122,7 +122,7 @@ export default function DpdpaVsGdprPage() {
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-2xl p-8 text-center">
+          <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">Need help with multi-jurisdictional compliance?</h2>
             <p className="text-gray-300 mb-6">Our experts can help you build a unified privacy program that covers both DPDPA and GDPR.</p>
             <Link href="/contact" className="px-6 py-3 rounded-xl bg-white text-black font-semibold hover:scale-105 transition-all inline-block">

@@ -37,8 +37,8 @@ export function ConsentCheckbox({
             error
               ? "border-red-500"
               : isLight
-              ? "border-gray-300 accent-purple-600"
-              : "border-white/30 accent-purple-500"
+              ? "border-gray-300 accent-cyan-600"
+              : "border-white/30 accent-cyan-500"
           }`}
         />
         <label
@@ -52,7 +52,7 @@ export function ConsentCheckbox({
             href="/consent-notice"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-400 underline hover:text-purple-300"
+            className="text-cyan-400 underline hover:text-cyan-300"
           >
             Consent Notice
           </a>{" "}
@@ -61,7 +61,7 @@ export function ConsentCheckbox({
             href="/privacy-policy"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-400 underline hover:text-purple-300"
+            className="text-cyan-400 underline hover:text-cyan-300"
           >
             Privacy Policy
           </a>

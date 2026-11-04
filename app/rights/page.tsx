@@ -264,8 +264,8 @@ export default function RightsPage() {
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -286,7 +286,7 @@ export default function RightsPage() {
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Rights of Data Principals under the{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">
               DPDP Act 2023
             </span>
           </h1>
@@ -337,14 +337,14 @@ export default function RightsPage() {
                   className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md hover:bg-white/10 transition-all duration-300 flex flex-col h-full"
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
                       <Icon className="w-6 h-6 text-blue-400" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-white">
                         {right.title}
                       </h3>
-                      <span className="text-xs text-purple-400 font-mono">
+                      <span className="text-xs text-cyan-400 font-mono">
                         {right.section}
                       </span>
                     </div>
@@ -381,7 +381,7 @@ export default function RightsPage() {
                   className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
                       <Icon className="w-6 h-6 text-blue-400" />
                     </div>
                     <div className="flex-1">
@@ -389,7 +389,7 @@ export default function RightsPage() {
                         <h3 className="text-xl font-bold text-white">
                           {right.title}
                         </h3>
-                        <span className="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                        <span className="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">
                           {right.section}
                         </span>
                       </div>
@@ -444,7 +444,7 @@ export default function RightsPage() {
                   className="flex gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all"
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
                   </div>
@@ -499,7 +499,7 @@ export default function RightsPage() {
 
         {/* ===== SECTION 4: FOR BUSINESSES ===== */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 md:p-12">
+          <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-2xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">
@@ -546,7 +546,7 @@ export default function RightsPage() {
               <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-shrink-0">
                 <Link
                   href="/scorecard"
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:scale-105 transition-all text-center text-sm"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-semibold hover:scale-105 transition-all text-center text-sm"
                 >
                   Test Your Compliance
                 </Link>
@@ -609,7 +609,7 @@ export default function RightsPage() {
                     <h3 className="text-base font-semibold text-white">
                       {scenario.title}
                     </h3>
-                    <span className="text-xs text-purple-400 font-mono">
+                    <span className="text-xs text-cyan-400 font-mono">
                       Applies: {scenario.right}
                     </span>
                   </div>
@@ -686,7 +686,7 @@ export default function RightsPage() {
         {/* ===== RELATED READING ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
+            <BookOpen className="w-6 h-6 text-cyan-400" />
             Related Topics on Data Protection
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -696,7 +696,7 @@ export default function RightsPage() {
                 href={link.href}
                 className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all"
               >
-                <h4 className="text-sm font-medium text-white group-hover:text-purple-400 transition-colors flex items-center justify-between gap-2">
+                <h4 className="text-sm font-medium text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between gap-2">
                   {link.title}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </h4>
@@ -707,7 +707,7 @@ export default function RightsPage() {
         </section>
 
         {/* ===== FINAL CTA ===== */}
-        <section className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-2xl p-8 text-center">
+        <section className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">
             Know your rights. Protect your data.
           </h2>
@@ -719,7 +719,7 @@ export default function RightsPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/scorecard"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:scale-105 transition-all"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-semibold hover:scale-105 transition-all"
             >
               Take the Free Test ?
             </Link>

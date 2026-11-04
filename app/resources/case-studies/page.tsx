@@ -35,9 +35,9 @@ export default function CaseStudiesPage() {
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         {stars}
       </div>
 
@@ -57,7 +57,7 @@ export default function CaseStudiesPage() {
             <Link
               key={item.id}
               href={`/resources/case-studies/${item.slug}`}
-              className="group bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
+              className="group bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer"
             >
               <div className="flex items-start justify-between mb-3">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30">
@@ -70,7 +70,7 @@ export default function CaseStudiesPage() {
                 </span>
               </div>
 
-              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all">
+              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all">
                 {item.title}
               </h3>
 
@@ -83,7 +83,7 @@ export default function CaseStudiesPage() {
                   <Users className="w-3 h-3" />
                   {item.impact}
                 </span>
-                <span className="text-blue-400 group-hover:text-purple-400 transition-colors text-sm flex items-center gap-1">
+                <span className="text-blue-400 group-hover:text-cyan-400 transition-colors text-sm flex items-center gap-1">
                   Read Case Study
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>

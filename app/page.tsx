@@ -261,13 +261,13 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-10"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-4">
               <Sparkles className="w-4 h-4" />
               Privacy & AI Governance
             </div>
             <h1 className="text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl">
               How ready is your organisation for the new world of<br />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 Privacy & AI Governance?
               </span>
             </h1>
@@ -277,7 +277,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
                 href="/scorecard"
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-purple-500/30 justify-center"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-lg shadow-cyan-500/30 justify-center"
               >
                 <Target className="w-5 h-5" />
                 TAKE THE FREE TEST →
@@ -300,7 +300,7 @@ export default function Home() {
             className="flex items-center justify-center gap-4 mb-12 text-sm text-gray-300"
           >
             <Link href={`/authors/${author.id}`} className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-purple-500/40">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-cyan-500/40">
                 <Image
                   src={author.image}
                   alt={author.name}
@@ -310,9 +310,9 @@ export default function Home() {
                 />
               </div>
               <div className="text-left">
-                <p className="text-white font-medium group-hover:text-purple-400 transition-colors flex items-center gap-1">
+                <p className="text-white font-medium group-hover:text-cyan-400 transition-colors flex items-center gap-1">
                   {author.name}
-                  <UserCheck className="w-3 h-3 text-purple-400" />
+                  <UserCheck className="w-3 h-3 text-cyan-400" />
                 </p>
                 <p className="text-xs text-gray-400">{author.role}</p>
               </div>
@@ -340,7 +340,7 @@ export default function Home() {
               const Icon = stat.icon;
               return (
                 <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-all">
-                  <Icon className="w-5 h-5 text-purple-400 mx-auto mb-2" />
+                  <Icon className="w-5 h-5 text-cyan-400 mx-auto mb-2" />
                   <div className="text-xl md:text-2xl font-bold text-white">{stat.number}</div>
                   <div className="text-xs text-gray-400 mt-1">{stat.label}</div>
                 </div>
@@ -356,7 +356,7 @@ export default function Home() {
             className="mb-16"
           >
             <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-3">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-3">
                 <HelpCircle className="w-4 h-4" />
                 DPDP Act 2023 — Quick Answers
               </div>
@@ -371,11 +371,11 @@ export default function Home() {
               {HOME_FAQS.map((item, i) => (
                 <details
                   key={i}
-                  className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                  className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
                 >
                   <summary className="flex items-center justify-between cursor-pointer list-none">
                     <span className="text-white font-medium pr-4 text-left">{item.q}</span>
-                    <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+                    <span className="text-cyan-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
                       +
                     </span>
                   </summary>
@@ -394,11 +394,11 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-10"
           >
-            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6">
+            <div className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-2xl p-6">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                    <Zap className="w-6 h-6 text-purple-400" />
+                  <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-6 h-6 text-cyan-400" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white">AI Document Generator</h3>
@@ -409,7 +409,7 @@ export default function Home() {
                 </div>
                 <Link
                   href="/generator"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-500/30 hover:bg-purple-500/40 border border-purple-400/30 text-purple-300 hover:text-white transition-all text-sm font-medium whitespace-nowrap"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500/30 hover:bg-cyan-500/40 border border-cyan-400/30 text-cyan-300 hover:text-white transition-all text-sm font-medium whitespace-nowrap"
                 >
                   Explore Generator
                   <ArrowRight className="w-4 h-4" />
@@ -436,7 +436,7 @@ export default function Home() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                  <BookOpen className="w-6 h-6 text-purple-400" />
+                  <BookOpen className="w-6 h-6 text-cyan-400" />
                   Latest Insights
                 </h2>
                 <p className="text-sm text-gray-400 mt-1">
@@ -445,7 +445,7 @@ export default function Home() {
               </div>
               <Link
                 href="/insight"
-                className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 whitespace-nowrap"
               >
                 View All <ArrowRight className="w-4 h-4" />
               </Link>
@@ -455,12 +455,12 @@ export default function Home() {
                 <Link
                   key={insight.slug}
                   href={`/insight/${insight.slug}`}
-                  className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                  className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
                 >
                   <div className="inline-block px-2 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400 mb-3">
                     {insight.category}
                   </div>
-                  <h3 className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors line-clamp-2 mb-2">
+                  <h3 className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
                     {insight.title}
                   </h3>
                   <p className="text-xs text-gray-400 line-clamp-2 mb-3">
@@ -485,7 +485,7 @@ export default function Home() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                  <FileText className="w-6 h-6 text-purple-400" />
+                  <FileText className="w-6 h-6 text-cyan-400" />
                   Featured Guides
                 </h2>
                 <p className="text-sm text-gray-400 mt-1">
@@ -494,7 +494,7 @@ export default function Home() {
               </div>
               <Link
                 href="/resources/guides"
-                className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 whitespace-nowrap"
               >
                 All Guides <ArrowRight className="w-4 h-4" />
               </Link>
@@ -504,7 +504,7 @@ export default function Home() {
                 <Link
                   key={guide.slug}
                   href={`/resources/guides/${guide.slug}`}
-                  className="group bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/15 hover:border-purple-500/30 transition-all"
+                  className="group bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/15 hover:border-cyan-500/30 transition-all"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold text-white bg-gradient-to-r ${guide.categoryColor}`}>
@@ -512,7 +512,7 @@ export default function Home() {
                     </span>
                     <span className="text-xs text-gray-400">{guide.readTime}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors mb-2">
                     {guide.title}
                   </h3>
                   <p className="text-sm text-gray-400 line-clamp-3 mb-4">
@@ -520,7 +520,7 @@ export default function Home() {
                   </p>
                   <div className="flex items-center justify-between text-xs text-gray-500 pt-3 border-t border-white/5">
                     <span>Updated: {guide.lastUpdated}</span>
-                    <span className="flex items-center gap-1 text-purple-400 group-hover:translate-x-1 transition-transform">
+                    <span className="flex items-center gap-1 text-cyan-400 group-hover:translate-x-1 transition-transform">
                       Read Guide <ArrowRight className="w-3 h-3" />
                     </span>
                   </div>
@@ -539,7 +539,7 @@ export default function Home() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                  <Briefcase className="w-6 h-6 text-purple-400" />
+                  <Briefcase className="w-6 h-6 text-cyan-400" />
                   Real-World Case Studies
                 </h2>
                 <p className="text-sm text-gray-400 mt-1">
@@ -548,7 +548,7 @@ export default function Home() {
               </div>
               <Link
                 href="/resources/case-studies"
-                className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 whitespace-nowrap"
+                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 whitespace-nowrap"
               >
                 View All <ArrowRight className="w-4 h-4" />
               </Link>
@@ -558,7 +558,7 @@ export default function Home() {
                 <Link
                   key={cs.slug}
                   href={`/resources/case-studies/${cs.slug}`}
-                  className="group bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                  className="group bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="inline-block px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs text-blue-400">
@@ -566,7 +566,7 @@ export default function Home() {
                     </span>
                     <span className="text-xs text-gray-500">{cs.date}</span>
                   </div>
-                  <h3 className="text-base font-semibold text-white group-hover:text-purple-400 transition-colors mb-2">
+                  <h3 className="text-base font-semibold text-white group-hover:text-cyan-400 transition-colors mb-2">
                     {cs.title}
                   </h3>
                   <p className="text-sm text-gray-400 line-clamp-2 mb-3">
@@ -805,7 +805,7 @@ export default function Home() {
     href="/consent-notice"
     target="_blank"
     rel="noopener noreferrer"
-    className="text-purple-400 underline hover:text-purple-300"
+    className="text-cyan-400 underline hover:text-cyan-300"
   >
     Consent Notice
   </a>{" "}
@@ -814,7 +814,7 @@ export default function Home() {
     href="/privacy-policy"
     target="_blank"
     rel="noopener noreferrer"
-    className="text-purple-400 underline hover:text-purple-300"
+    className="text-cyan-400 underline hover:text-cyan-300"
   >
     Privacy Policy
   </a>
@@ -850,19 +850,19 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all flex-wrap justify-center">
               <div className="flex items-center gap-2 text-gray-400">
-                <Phone className="w-4 h-4 text-purple-400" />
+                <Phone className="w-4 h-4 text-cyan-400" />
                 <span className="text-sm"> For immediate assistance, call us at:</span>
               </div>
               <a
                 href="tel:+918800138008"
-                className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+                className="text-white font-semibold hover:text-cyan-400 transition-colors text-sm"
               >
                 +91 8800138008
               </a>
               <span className="text-xs text-gray-500 hidden sm:inline">|</span>
               <a
                 href="mailto:shilpi.kulshrestha@businezexcellence.com"
-                className="text-white font-semibold hover:text-purple-400 transition-colors text-sm"
+                className="text-white font-semibold hover:text-cyan-400 transition-colors text-sm"
               >
                 shilpi.kulshrestha@businezexcellence.com
               </a>
@@ -895,9 +895,9 @@ export default function Home() {
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
-                  <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-3 border border-purple-500/30">
-                      <Icon className="w-5 h-5 text-purple-400" />
+                  <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 hover:border-cyan-500/30 transition-all">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-3 border border-cyan-500/30">
+                      <Icon className="w-5 h-5 text-cyan-400" />
                     </div>
                     <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
                     <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
@@ -915,13 +915,13 @@ export default function Home() {
             className="mb-16"
           >
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2 justify-center">
-              <Globe className="w-6 h-6 text-purple-400" />
+              <Globe className="w-6 h-6 text-cyan-400" />
               Explore the Galaxy
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center max-w-4xl mx-auto">
               {[
                 { icon: Shield, label: "Privacy", href: "/galaxy?category=privacy", color: "from-blue-500 to-blue-600" },
-                { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-purple-500 to-purple-600" },
+                { icon: Brain, label: "AI Governance", href: "/galaxy?category=ai", color: "from-cyan-500 to-cyan-600" },
                 { icon: Lock, label: "Digital Trust", href: "/galaxy?category=trust", color: "from-emerald-500 to-emerald-600" },
               ].map((item, idx) => (
                 <Link key={idx} href={item.href} className="group w-full max-w-xs">
@@ -945,7 +945,7 @@ export default function Home() {
             className="mb-16"
           >
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <BookOpen className="w-6 h-6 text-purple-400" />
+              <BookOpen className="w-6 h-6 text-cyan-400" />
               Resources
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -956,7 +956,7 @@ export default function Home() {
                 { icon: Map, label: "Map", href: "/map" },
               ].map((item, idx) => (
                 <Link key={idx} href={item.href} className="bg-white/10 border border-white/20 rounded-xl p-4 text-center hover:bg-white/15 transition-all hover:scale-105">
-                  <item.icon className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+                  <item.icon className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
                   <span className="text-sm text-white">{item.label}</span>
                 </Link>
               ))}
@@ -993,13 +993,13 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.85 }}
             className="bg-white/10 border border-white/20 rounded-2xl p-8 text-center mb-16"
           >
-            <Users className="w-12 h-12 text-purple-400 mx-auto mb-4" />
+            <Users className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-white mb-3">Built by Legal & Governance Professionals</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
               Legal Galaxy is a Privacy & AI Governance platform designed to help businesses
               understand, assess, and implement responsible data and AI practices.
             </p>
-            <Link href="/about" className="inline-block mt-4 text-purple-400 hover:text-purple-300 transition-colors text-sm">
+            <Link href="/about" className="inline-block mt-4 text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
               Learn More →
             </Link>
           </motion.div>
@@ -1011,12 +1011,12 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.9 }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-400 mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-400 mb-4">
               <Rocket className="w-4 h-4" />
               Get Started
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Don't just use AI. <span className="text-purple-400">Govern it.</span>
+              Don't just use AI. <span className="text-cyan-400">Govern it.</span>
             </h2>
             <p className="text-gray-400 max-w-xl mx-auto mb-6">
               Join businesses across India building defensible DPDPA compliance programs.
@@ -1025,7 +1025,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/scorecard"
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all inline-flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:scale-105 transition-all inline-flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30"
               >
                 <Target className="w-5 h-5" />
                 Take the Free Test →

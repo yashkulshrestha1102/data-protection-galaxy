@@ -29,7 +29,7 @@ export default function DataPrincipalRightsPage() {
 
         <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-8">
           <div className="flex items-center gap-3 mb-6">
-            <Shield className="w-8 h-8 text-purple-400" />
+            <Shield className="w-8 h-8 text-cyan-400" />
             <h1 className="text-3xl font-bold text-white">Data Principal Rights</h1>
           </div>
 
@@ -68,7 +68,7 @@ export default function DataPrincipalRightsPage() {
             <p className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
               If you face any issues, email us directly at{" "}
-              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-purple-400 underline">
+              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-cyan-400 underline">
                 shilpi.kulshrestha@businezexcellence.com
               </a>
             </p>

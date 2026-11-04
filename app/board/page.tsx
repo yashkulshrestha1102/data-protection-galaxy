@@ -210,7 +210,7 @@ export default function BoardPage() {
 
         {/* ===== HERO ===== */}
         <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-4">
             <Landmark className="w-3 h-3" />
             Regulatory Authority · DPDP Act 2023
           </div>
@@ -363,7 +363,7 @@ export default function BoardPage() {
             {/* Power 1 */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-6">
               <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-purple-400" />
+                <Shield className="w-5 h-5 text-cyan-400" />
                 (a) Investigative Powers
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -380,7 +380,7 @@ export default function BoardPage() {
             {/* Power 2 */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-6">
               <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                <Gavel className="w-5 h-5 text-purple-400" />
+                <Gavel className="w-5 h-5 text-cyan-400" />
                 (b) Adjudicatory Powers
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -396,7 +396,7 @@ export default function BoardPage() {
             {/* Power 3 */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-6">
               <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                <IndianRupee className="w-5 h-5 text-purple-400" />
+                <IndianRupee className="w-5 h-5 text-cyan-400" />
                 (c) Penalty Powers
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -414,7 +414,7 @@ export default function BoardPage() {
             {/* Power 4 */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-6">
               <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                <RefreshCw className="w-5 h-5 text-purple-400" />
+                <RefreshCw className="w-5 h-5 text-cyan-400" />
                 (d) Remedial & Corrective Powers
               </h3>
               <p className="text-gray-300 leading-relaxed">
@@ -455,7 +455,7 @@ export default function BoardPage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-1">
-                      <span className="text-xs font-bold text-purple-400">
+                      <span className="text-xs font-bold text-cyan-400">
                         STEP {item.step}
                       </span>
                     </div>
@@ -515,7 +515,7 @@ export default function BoardPage() {
           <p className="text-sm text-gray-400 mt-4">
             For a detailed breakdown of each penalty and the factors considered,
             see our{' '}
-            <Link href="/penalties" className="text-purple-400 hover:text-purple-300 underline">
+            <Link href="/penalties" className="text-cyan-400 hover:text-cyan-300 underline">
               full penalties guide
             </Link>
             .
@@ -597,7 +597,7 @@ export default function BoardPage() {
               </div>
             </div>
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-medium text-purple-300 mb-2">
+              <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-purple-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-2">
                 <UserCheck className="w-3 h-3" />
                 Author
               </div>
@@ -631,7 +631,7 @@ export default function BoardPage() {
               >
                 <summary className="flex items-center justify-between cursor-pointer list-none">
                   <span className="text-white font-medium pr-4">{faq.q}</span>
-                  <span className="text-purple-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
+                  <span className="text-cyan-400 group-open:rotate-45 transition-transform text-xl flex-shrink-0">
                     +
                   </span>
                 </summary>
@@ -646,7 +646,7 @@ export default function BoardPage() {
         {/* ===== RELATED READING ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-purple-400" />
+            <BookOpen className="w-6 h-6 text-cyan-400" />
             Related Reading
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -654,9 +654,9 @@ export default function BoardPage() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="group bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                className="group bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
               >
-                <h3 className="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors flex items-center justify-between gap-2">
+                <h3 className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between gap-2">
                   {link.title}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </h3>
@@ -667,7 +667,7 @@ export default function BoardPage() {
         </section>
 
         {/* ===== FINAL CTA ===== */}
-        <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-8 text-center">
+        <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">
             Need help understanding your obligations before the Board?
           </h2>

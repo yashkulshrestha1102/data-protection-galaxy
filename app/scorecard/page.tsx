@@ -152,7 +152,7 @@ const PieChart3D = ({ answered, total }: { answered: number; total: number }) =>
       {/* Legend */}
       <div className="flex flex-wrap justify-center gap-6 mt-6 text-sm">
         <div className="flex items-center gap-2.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 shadow-lg shadow-purple-500/30" />
+          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-600 to-blue-500 shadow-lg shadow-cyan-500/30" />
           <span className="text-gray-300">Answered <span className="text-white font-medium">{answered}</span></span>
         </div>
         <div className="flex items-center gap-2.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
@@ -223,7 +223,7 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
                   type="checkbox"
                   checked={isSelected}
                   onChange={() => toggleCategory(option)}
-                  className="w-4 h-4 text-purple-500 focus:ring-purple-500 rounded"
+                  className="w-4 h-4 text-cyan-500 focus:ring-cyan-500 rounded"
                 />
                 <span className="text-white text-sm font-medium">{option.label}</span>
                 {option.items && (
@@ -434,7 +434,7 @@ const QuestionCard = ({ question, value, onChange }: any) => {
   return (
     <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-5 h-full">
       <div className="flex items-start gap-3">
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center text-xs font-semibold text-blue-400">
+        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-xs font-semibold text-blue-400">
           {question.id}
         </div>
         <div className="flex-1">
@@ -572,7 +572,7 @@ const ResultSection = ({ answers, onReset }: any) => {
             </button>
             <Link
               href="/"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2"
             >
               Back to Home
             </Link>
@@ -638,7 +638,7 @@ const ResultSection = ({ answers, onReset }: any) => {
 
             <div className="bg-white/5 border border-white/20 rounded-xl p-6">
               <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <Mail className="w-5 h-5 text-purple-400" />
+                <Mail className="w-5 h-5 text-cyan-400" />
                 Get Your Detailed Report
               </h3>
               <p className="text-sm text-gray-400 mb-4">
@@ -655,7 +655,7 @@ const ResultSection = ({ answers, onReset }: any) => {
                       onChange={handleInputChange}
                       placeholder="John Doe"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
                     />
                   </div>
                   <div>
@@ -667,7 +667,7 @@ const ResultSection = ({ answers, onReset }: any) => {
                       onChange={handleInputChange}
                       placeholder="john@company.com"
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
                     />
                   </div>
                 </div>
@@ -680,7 +680,7 @@ const ResultSection = ({ answers, onReset }: any) => {
                       value={formData.company}
                       onChange={handleInputChange}
                       placeholder="Your Company"
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
                     />
                   </div>
                   <div>
@@ -691,7 +691,7 @@ const ResultSection = ({ answers, onReset }: any) => {
                       value={formData.designation}
                       onChange={handleInputChange}
                       placeholder="e.g., Privacy Officer"
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
                     />
                   </div>
                 </div>
@@ -710,7 +710,7 @@ const ResultSection = ({ answers, onReset }: any) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 ${
+                  className={`w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 ${
                     isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                   }`}
                 >
@@ -767,7 +767,7 @@ const ResultSection = ({ answers, onReset }: any) => {
               return (
                 <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Icon className="w-4 h-4 text-purple-400" />
+                    <Icon className="w-4 h-4 text-cyan-400" />
                     <span className="text-sm font-medium text-white">{cat.name}</span>
                     <span className="ml-auto text-sm text-gray-400">{cat.score}%</span>
                   </div>
@@ -787,7 +787,7 @@ const ResultSection = ({ answers, onReset }: any) => {
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => setShowEmailForm(true)}
-              className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+              className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30"
             >
               <Mail className="w-5 h-5" />
               Get Detailed Report
@@ -922,7 +922,7 @@ export default function ScorecardPage() {
           </div>
           <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -957,7 +957,7 @@ export default function ScorecardPage() {
           </span>
           <button
             onClick={handleNext}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all flex items-center gap-2"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-medium hover:scale-105 transition-all flex items-center gap-2"
           >
             {currentPage === totalPages - 1 ? 'See Results' : 'Next'}
             <ChevronRight className="w-4 h-4" />

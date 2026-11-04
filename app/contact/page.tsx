@@ -1108,7 +1108,7 @@ function PrivacyGuardian() {
         <div className="flex h-10 w-10 items-center justify-center rounded-full border border-purple-500/40 bg-[#000000]/80 backdrop-blur-md">
           <ShieldCheck
             size={18}
-            className="text-purple-400"
+            className="text-cyan-400"
           />
         </div>
       </div>
@@ -1387,7 +1387,7 @@ export default function ContactPage() {
               <div className="rounded-2xl border border-[#B0CDE6]/25 bg-[#000000]/55 p-4">
                 <Target
                   size={18}
-                  className="text-purple-400"
+                  className="text-cyan-400"
                 />
 
                 <p className="mt-3 text-sm font-bold text-[#FFEA93]">
@@ -1459,10 +1459,10 @@ export default function ContactPage() {
             href="mailto:shilpi.kulshrestha@businezexcellence.com"
             className="group flex items-center gap-4 px-5 py-6 transition hover:bg-[#B0CDE6]/10 sm:px-8"
           >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-500/15 to-pink-500/10">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-gradient-to-br from-purple-500/15 to-pink-500/10">
               <Mail
                 size={18}
-                className="text-purple-400"
+                className="text-cyan-400"
               />
             </div>
 
@@ -1583,7 +1583,7 @@ export default function ContactPage() {
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/15 to-pink-500/10">
                   <Clock3
                     size={18}
-                    className="text-purple-400"
+                    className="text-cyan-400"
                   />
                 </div>
 
@@ -1735,7 +1735,7 @@ export default function ContactPage() {
                 </div>
 
                 {selectedInterests.length > 0 && (
-                  <span className="rounded-full bg-gradient-to-r from-purple-500/15 to-pink-500/15 px-3 py-1 text-[10px] font-bold text-purple-300">
+                  <span className="rounded-full bg-gradient-to-r from-purple-500/15 to-pink-500/15 px-3 py-1 text-[10px] font-bold text-cyan-300">
                     {selectedInterests.length} selected
                   </span>
                 )}
@@ -1896,7 +1896,7 @@ export default function ContactPage() {
                     >
                       <ChevronDown
                         size={16}
-                        className="text-purple-400"
+                        className="text-cyan-400"
                       />
                     </span>
                   </button>
@@ -1928,7 +1928,7 @@ export default function ContactPage() {
       {/* FINAL CTA */}
 
       <section className="relative mx-auto max-w-7xl px-5 pb-12 pt-4 sm:px-8 lg:px-10 lg:pb-20">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-purple-500/30 bg-[#000000]/70 px-6 py-12 text-center shadow-[0_30px_100px_rgba(77,103,135,0.35)] sm:px-10 sm:py-16">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-cyan-500/30 bg-[#000000]/70 px-6 py-12 text-center shadow-[0_30px_100px_rgba(77,103,135,0.35)] sm:px-10 sm:py-16">
           <div className="absolute -left-20 -top-20 h-60 w-60 rounded-full bg-purple-500/15 blur-[80px]" />
 
           <div className="absolute -right-20 -top-10 h-60 w-60 rounded-full bg-pink-500/10 blur-[80px]" />

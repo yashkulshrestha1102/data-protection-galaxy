@@ -97,7 +97,7 @@ const sections = [
         <p>
           Where consent is the basis for processing, we seek it through a
           standalone{" "}
-          <Link href="/consent-notice" className="text-purple-400 underline">
+          <Link href="/consent-notice" className="text-cyan-400 underline">
             Consent Notice
           </Link>{" "}
           before the relevant processing begins. The notice explains the
@@ -123,7 +123,7 @@ const sections = [
             Emailing{" "}
             <a
               href="mailto:shilpi.kulshrestha@businezexcellence.com"
-              className="text-purple-400 underline"
+              className="text-cyan-400 underline"
             >
               shilpi.kulshrestha@businezexcellence.com
             </a>{" "}
@@ -133,7 +133,7 @@ const sections = [
             Emailing our Grievance Officer at{" "}
             <a
               href="mailto:shilpi.kulshrestha@businezexcellence.com"
-              className="text-purple-400 underline"
+              className="text-cyan-400 underline"
             >
               shilpi.kulshrestha@businezexcellence.com
             </a>;
@@ -422,7 +422,7 @@ const sections = [
         <p>
           If you have any concerns about how we process your personal data, you
           can contact our Grievance Officer. We have also published a dedicated{" "}
-          <Link href="/grievance-redressal" className="text-purple-400 underline">
+          <Link href="/grievance-redressal" className="text-cyan-400 underline">
             Grievance Redressal page
           </Link>{" "}
           that explains the complaint process in detail.
@@ -439,7 +439,7 @@ const sections = [
             <strong>Email:</strong>{" "}
             <a
               href="mailto:shilpi.kulshrestha@businezexcellence.com"
-              className="text-purple-400 underline"
+              className="text-cyan-400 underline"
             >
               shilpi.kulshrestha@businezexcellence.com
             </a>
@@ -448,7 +448,7 @@ const sections = [
             <strong>Privacy email:</strong>{" "}
             <a
               href="mailto:shilpi.kulshrestha@businezexcellence.com"
-              className="text-purple-400 underline"
+              className="text-cyan-400 underline"
             >
               shilpi.kulshrestha@businezexcellence.com
             </a>
@@ -515,14 +515,14 @@ const sections = [
           To exercise any of these rights, email{" "}
           <a
             href="mailto:shilpi.kulshrestha@businezexcellence.com"
-            className="text-purple-400 underline"
+            className="text-cyan-400 underline"
           >
             shilpi.kulshrestha@businezexcellence.com
           </a>{" "}
           or{" "}
           <a
             href="mailto:shilpi.kulshrestha@businezexcellence.com"
-            className="text-purple-400 underline"
+            className="text-cyan-400 underline"
           >
             shilpi.kulshrestha@businezexcellence.com
           </a>
