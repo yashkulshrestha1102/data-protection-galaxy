@@ -68,7 +68,7 @@ export const insightsData: Insight[] = [
         <li><a href="/resources/guides/dpdpa-2023-complete-guide" class="text-blue-400 hover:text-blue-300 underline">DPDPA 2023 Complete Guide</a> — End-to-end guide to the Act</li>
       </ul>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Vaibhav Pasrija',
     date: '22 Jul 2026',
     readTime: '8 min read',
     slug: 'dpdp-act-director-liability'
@@ -117,7 +117,7 @@ export const insightsData: Insight[] = [
         <li><a href="/resources/case-studies/data-breach-healthcare" class="text-blue-400 hover:text-blue-300 underline">Healthcare Data Breach Case Study</a> — Real-world example</li>
       </ul>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Shilpi Kulshrestha',
     date: '20 Jul 2026',
     readTime: '6 min read',
     slug: 'data-breach-response-dpdp'
@@ -162,7 +162,7 @@ export const insightsData: Insight[] = [
         <li><a href="/cross-border" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Transfers</a> — For Indian companies with EU operations</li>
       </ul>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Shilpi Kulshrestha',
     date: '18 Jul 2026',
     readTime: '10 min read',
     slug: 'gdpr-compliance-guide'
@@ -194,7 +194,7 @@ export const insightsData: Insight[] = [
         <li><a href="/map" class="text-blue-400 hover:text-blue-300 underline">Global Privacy Map</a> — Compare 90+ countries</li>
       </ul>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: '	Shilpi Kulshrestha',
     date: '16 Jul 2026',
     readTime: '7 min read',
     slug: 'cross-border-data-transfer'
@@ -222,7 +222,7 @@ export const insightsData: Insight[] = [
         <li><a href="/grievance-redressal" class="text-blue-400 hover:text-blue-300 underline">Grievance Redressal</a> — How to file a complaint</li>
       </ul>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Rojalin Panda',
     date: '14 Jul 2026',
     readTime: '9 min read',
     slug: 'data-subject-rights-guide'
@@ -247,7 +247,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Compliance is an ongoing process. Businesses must stay informed about regulatory developments and continuously improve their data protection practices.</p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Rojalin Panda',
     date: '12 Jul 2026',
     readTime: '12 min read',
     slug: 'dpdp-compliance-guide'
@@ -273,7 +273,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>Sector-specific requirements add layers of complexity to data protection compliance. Companies must adopt a sector-agnostic approach while addressing sector-specific nuances.</p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Shilpi Kulshrestha',
     date: '10 Jul 2026',
     readTime: '6 min read',
     slug: 'sector-specific-data-protection'
@@ -299,7 +299,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>AI and data protection are increasingly intertwined. Organisations must adopt a governance-first approach to AI development and deployment.</p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Shilpi Kulshrestha',
     date: '8 Jul 2026',
     readTime: '8 min read',
     slug: 'ai-and-data-protection'
@@ -326,7 +326,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>SDFs must invest in robust compliance frameworks to meet enhanced obligations. This includes dedicated resources, expert guidance, and ongoing monitoring.</p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Shilpi Kulshrestha',
     date: '6 Jul 2026',
     readTime: '11 min read',
     slug: 'significant-data-fiduciary-readiness'
@@ -352,7 +352,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>The DPO plays a critical role in ensuring DPDP Act compliance. Organisations must invest in DPO appointment and support to build a robust data protection framework.</p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Vaibhav Pasrija',
     date: '4 Jul 2026',
     readTime: '5 min read',
     slug: 'dpo-services-india'
@@ -373,7 +373,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>As India's digital economy expands, the convergence of contract law and data protection will continue to shape how agreements are formed, interpreted, and enforced. Click-wrap agreements, once a symbol of convenience, must now evolve into <strong>instruments of informed choice</strong>.</p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Shilpi Kulshrestha',
     date: '2 Jul 2026',
     readTime: '7 min read',
     slug: 'click-wrap-agreements-consent'
@@ -399,7 +399,7 @@ export const insightsData: Insight[] = [
       <h2>Conclusion</h2>
       <p>While each framework has its unique features, there is convergence around key principles: individual rights, accountability, and transparency. Multinational organisations must navigate this complex landscape with care.</p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Vaibhav Pasrija',
     date: '30 Jun 2026',
     readTime: '15 min read',
     slug: 'global-data-protection-laws'
@@ -438,7 +438,7 @@ export const insightsData: Insight[] = [
 <p>For the complete text, refer to the <strong>Digital Personal Data Protection (Removal of Difficulties) Order, 2026</strong> — <a href="https://egazette.gov.in/WriteReadData/2026/276885.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-blue-300">Official Gazette notification (S.O. 5458(E))</a>.</p>
       <p><em>This update is for general informational purposes and should not be construed as legal advice.</em></p>
     `,
-    author: 'Team Businezexcellence StartX LLP',
+    author: 'Rojalin Panda',
     date: '7 Oct 2026',
     readTime: '4 min read',
     slug: 'dpdp-removal-of-difficulties-order-2026'
