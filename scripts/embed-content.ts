@@ -4,11 +4,11 @@ import { Index } from '@upstash/vector';
 import { fullModulesData } from '../data/modules';
 import { guidesData } from '../data/guides';
 import { insightsData } from '../data/insights';
+import 'dotenv/config';
 
-// 👇 YAHAN DIRECT URL AUR TOKEN DAAL BHAI
 const index = new Index({
-  url: "https://flexible-pug-3904-us1-vector.upstash.io", 
-  token: "ABUFMGZsZXhpYmxlLXB1Zy0zOTA0LXVzMWFkbWluWTJJeU9UQmhPRE10WlRnek9TMDBOalUyTFdFM1ptSXRPRFl4TW1VNU16VTVOR1k1", 
+  url: process.env.UPSTASH_VECTOR_REST_URL!,
+  token: process.env.UPSTASH_VECTOR_REST_TOKEN!,
 });
 
 function chunkText(text: string, maxLength = 500): string[] {

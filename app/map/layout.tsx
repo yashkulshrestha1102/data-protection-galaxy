@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     description: "Interactive map of data protection and privacy laws worldwide. Compare compliance levels across 90+ countries.",
     url: `${SITE_URL}/map`,
     siteName: "Legal Galaxy",
-    images: [{ url: `${SITE_URL}/images/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/images/og-image.png`, width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Global Data Protection Laws Map",
     description: "Interactive map of data protection laws worldwide.",
-    images: [`${SITE_URL}/images/og-image.jpg`],
+    images: [`${SITE_URL}/images/og-image.png`],
   },
 };
 

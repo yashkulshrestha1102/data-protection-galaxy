@@ -1,10 +1,17 @@
 "use client";
-
+import { JsonLd } from '@/components/seo/JsonLd';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Users, ChevronRight, Briefcase } from 'lucide-react';
 import { caseStudiesData } from '@/data/case-studies';
+
+
+
+const SITE_URL = 'https://dpdpa.businezexcellence.com';
+
+
+
 
 export default function CaseStudiesPage() {
   const [stars, setStars] = useState<React.ReactNode[]>([]);
@@ -27,9 +34,26 @@ export default function CaseStudiesPage() {
     }
     setStars(starElements);
   }, []);
+    const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Data Protection Case Studies",
+    url: `${SITE_URL}/resources/case-studies`,
+    isPartOf: { "@type": "WebSite", name: "Legal Galaxy", url: SITE_URL },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: caseStudiesData.map((cs, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/resources/case-studies/${cs.slug}`,
+        name: cs.title,
+      })),
+    },
+  };
 
   return (
     <main className="min-h-screen text-white px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
+            <JsonLd data={schema} />
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>

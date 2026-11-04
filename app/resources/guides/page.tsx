@@ -1,5 +1,5 @@
 "use client";
-
+import { getGuideIcon } from '@/data/guide-icons';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -76,49 +76,48 @@ export default function GuidesPage() {
         {/* Guides Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {guidesData.map((guide, index) => {
-            const Icon = guide.categoryIcon;
-            return (
-              <motion.div
-                key={guide.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer"
-                onClick={() => window.location.href = `/resources/guides/${guide.slug}`}
-              >
-                {/* Category Tag */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${guide.categoryColor} text-white`}>
-                    <Icon className="w-3.5 h-3.5" />
-                    {guide.category}
-                  </span>
-                  <span className="text-xs text-gray-400 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    {guide.readTime}
-                  </span>
-                </div>
+  const Icon = getGuideIcon(guide.categoryIcon);
+  return (
+    <motion.div
+      key={guide.id}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <Link
+        href={`/resources/guides/${guide.slug}`}
+        className="group block h-full bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20"
+      >
+        <div className="flex items-center justify-between mb-3">
+          <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${guide.categoryColor} text-white`}>
+            <Icon className="w-3.5 h-3.5" />
+            {guide.category}
+          </span>
+          <span className="text-xs text-gray-400 flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5" />
+            {guide.readTime}
+          </span>
+        </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all">
-                  {guide.title}
-                </h3>
+        <h2 className="text-xl font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all">
+          {guide.title}
+        </h2>
 
-                {/* Excerpt */}
-                <p className="text-sm text-gray-300 leading-relaxed mb-4 line-clamp-3">
-                  {guide.excerpt}
-                </p>
+        <p className="text-sm text-gray-300 leading-relaxed mb-4 line-clamp-3">
+          {guide.excerpt}
+        </p>
 
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <span className="text-xs text-gray-400">Last updated: {guide.lastUpdated}</span>
-                  <span className="text-blue-400 group-hover:text-cyan-400 transition-colors text-sm flex items-center gap-1">
-                    Read Guide
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="flex items-center justify-between pt-4 border-t border-white/10">
+          <span className="text-xs text-gray-400">Last updated: {guide.lastUpdated}</span>
+          <span className="text-blue-400 group-hover:text-cyan-400 transition-colors text-sm flex items-center gap-1">
+            Read Guide
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </div>
+      </Link>
+    </motion.div>
+  );
+})}
         </div>
       </div>
     </main>

@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: 'Legal Galaxy',
       locale: 'en_IN',
       images: [{                        // 👈 YAHAN ADD/CHANGE KIYA
-        url: "/images/og-image.jpg",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: insight.title,
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: insight.title,
       description: insight.excerpt,
-      images: ["/images/og-image.jpg"], // 👈 YAHAN CHANGE KIYA
+      images: ["/images/og-image.png"], // 👈 YAHAN CHANGE KIYA
     },
     alternates: {
       canonical: `/insight/${insight.slug}`,

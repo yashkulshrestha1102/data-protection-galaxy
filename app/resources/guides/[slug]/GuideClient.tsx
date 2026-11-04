@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -13,35 +12,16 @@ import {
   Clock,
   Download,
   ExternalLink,
-  FileText,
   List,
   Printer,
   Share2,
   ShieldCheck,
   Sparkles,
-  Shield,
-  Globe,
-  Users,
-  Building,
-  Database,
-  Scale,
+ 
 } from "lucide-react";
-
+import { getGuideIcon } from "@/data/guide-icons";
 import { Guide } from "@/data/guides";
 
-// =========================================================
-// ICON MAP (String → Component lookup)
-// =========================================================
-
-const iconMap: Record<string, any> = {
-  Shield,
-  Globe,
-  Users,
-  Building,
-  Database,
-  Scale,
-  BookOpen,
-};
 
 // =========================================================
 // TYPES
@@ -127,7 +107,7 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
   }, [guide]);
 
   // ✅ String → Component lookup
-  const Icon = iconMap[guide.categoryIcon] || Shield;
+  const Icon = getGuideIcon(guide.categoryIcon);
 
   // =========================================================
   // DOWNLOAD PDF
@@ -486,8 +466,7 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
                   <div className="space-y-3">
                     {relatedGuides.map((relatedGuide) => {
                       // ✅ FIX: string → component lookup
-                      const RelatedIcon =
-                        iconMap[relatedGuide.categoryIcon] || Shield;
+                      const RelatedIcon = getGuideIcon(relatedGuide.categoryIcon);
                       return (
                         <Link
                           key={relatedGuide.id}

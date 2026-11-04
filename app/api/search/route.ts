@@ -1,43 +1,36 @@
-// app/api/search/route.ts
 import { NextResponse } from 'next/server';
 import { Index } from '@upstash/vector';
+import { rateLimiter } from '@/app/lib/rate-limit';
 
-// Yahan apna Upstash URL aur Token daal (jo script mein daala tha)
 const index = new Index({
-  url: "https://flexible-pug-3904-us1-vector.upstash.io",
-  token: "ABUFMGZsZXhpYmxlLXB1Zy0zOTA0LXVzMWFkbWluWTJJeU9UQmhPRE10WlRnek9TMDBOalUyTFdFM1ptSXRPRFl4TW1VNU16VTVOR1k1", 
+  url: process.env.UPSTASH_VECTOR_REST_URL!,
+  token: process.env.UPSTASH_VECTOR_REST_TOKEN!,
 });
 
 export async function POST(req: Request) {
   try {
-    const { query } = await req.json();
-
-    if (!query) {
-      return NextResponse.json({ error: 'Query is required' }, { status: 400 });
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'anonymous';
+    const { success } = await rateLimiter.limit(`search:${ip}`);
+    if (!success) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
     }
 
-    // Vector database mein search karo
-    const results = await index.query({
-      data: query,
-      topK: 5,
-      includeMetadata: true,
-    });
+    const { query } = await req.json();
+    if (!query || typeof query !== 'string' || query.length > 500) {
+      return NextResponse.json({ error: 'Valid query is required' }, { status: 400 });
+    }
 
-    // Context format karo AI ke liye
+    const results = await index.query({ data: query, topK: 5, includeMetadata: true });
+
     const context = results
-      .map((r: any) => {
-        const title = r.metadata?.title || 'No Title';
-        const content = r.data || ''; 
-        return `--- Source: ${title} ---\n${content}`;
-      })
+      .map((r: any) => `--- Source: ${r.metadata?.title || 'No Title'} ---\n${r.data || ''}`)
       .join('\n\n');
 
     return NextResponse.json({
       success: true,
       context: context || 'No relevant information found.',
-      results: results 
+      results,
     });
-
   } catch (error) {
     console.error('Search API error:', error);
     return NextResponse.json({ error: 'Search failed' }, { status: 500 });

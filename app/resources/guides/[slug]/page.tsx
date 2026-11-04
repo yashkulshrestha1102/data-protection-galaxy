@@ -52,7 +52,7 @@ export async function generateMetadata({
       authors: ["Businezexcellence StartX LLP"],
       images: [
         {
-          url: "/images/og-image.jpg", // 👈 YAHAN CHANGE KIYA
+          url: "/images/og-image.png", // 👈 YAHAN CHANGE KIYA
           width: 1200,
           height: 630,
           alt: guide.title,
@@ -63,7 +63,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: guide.title,
       description: guide.excerpt,
-      images: ["/images/og-image.jpg"], // 👈 YAHAN CHANGE KIYA
+      images: ["/images/og-image.png"], // 👈 YAHAN CHANGE KIYA
     },
   };
 }

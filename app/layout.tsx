@@ -82,9 +82,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: {
-    canonical: SITE_URL,
-  },
+
 };
 
 export default async function RootLayout({

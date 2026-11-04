@@ -1,12 +1,33 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { emailRateLimiter } from '@/app/lib/rate-limit';
+import { examData } from '@/data/modules';
 
 // Resend initialize karo
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, score, passingScore, passed } = await request.json();
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] ?? 'anonymous';
+const { success: allowed } = await emailRateLimiter.limit(`send-result:${ip}`);
+if (!allowed) {
+  return NextResponse.json({ success: false, message: 'Too many requests' }, { status: 429 });
+}
+
+const body = await request.json();
+const email = String(body.email ?? '');
+const rawName = String(body.name ?? '').trim().slice(0, 80);
+const score = Number(body.score);
+const passingScore = examData.passingScore; // server ki apni value, client ki nahi
+
+if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !rawName || !Number.isFinite(score) || score < 0 || score > 100) {
+  return NextResponse.json({ success: false, message: 'Invalid input' }, { status: 400 });
+}
+
+const passed = score >= passingScore; // server decide karega
+const name = rawName.replace(/[&<>"']/g, (c) =>
+  ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!)
+);
 
     // ===== SEND EMAIL =====
     const { data, error } = await resend.emails.send({
