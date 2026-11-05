@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown, Lock, Info, Phone, Mail } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Info, Phone, Mail } from "lucide-react";
 import { ConsultantModal } from "./ConsultantModal";
 import Image from "next/image";
 
@@ -34,27 +34,40 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-// ===== RESOURCES DROPDOWN ITEMS =====
+// ===== MAIN RESOURCES DROPDOWN =====
 const resourcesDropdown = [
   { href: "/galaxy", label: "Galaxy" },
   { href: "/insight", label: "Insights" },
-  { href: "/resources/guides", label: "Guides" }, // ✅ Map replaced with Guides
+  { href: "/resources/guides", label: "Guides" },
   { href: "/compare", label: "Compare Laws" },
+];
+
+// ===== NESTED RESOURCE LIBRARY DROPDOWN =====
+const resourceLibraryDropdown = [
+  { href: "/resources/guidelines", label: "Guidelines & Circulars" },
+  { href: "/resources/forms", label: "Forms & Templates" },
+  { href: "/resources/case-studies", label: "Case Studies" },
+  { href: "/resources/faqs", label: "FAQs" },
+  { href: "/resources/training", label: "Training Material" },
+  { href: "/resources/links", label: "External Links" },
 ];
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openNestedDropdown, setOpenNestedDropdown] = useState<boolean>(false);
   const [showLockMessage, setShowLockMessage] = useState<string | null>(null);
   const [isConsultantModalOpen, setIsConsultantModalOpen] = useState(false);
 
   const pathname = usePathname();
   
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const nestedTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (nestedTimeoutRef.current) clearTimeout(nestedTimeoutRef.current);
     };
   }, []);
 
@@ -69,6 +82,7 @@ export const Header = () => {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
+      setOpenNestedDropdown(false);
     }, 150);
   };
 
@@ -82,12 +96,23 @@ export const Header = () => {
   const handleDropdownMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
+      setOpenNestedDropdown(false);
     }, 150);
   };
 
-  const handleLockedClick = (label: string) => {
-    setShowLockMessage(`${label} section is Coming Soon. Under Maintenance!`);
-    setTimeout(() => setShowLockMessage(null), 3000);
+  // Nested Dropdown Handlers
+  const handleNestedMouseEnter = () => {
+    if (nestedTimeoutRef.current) {
+      clearTimeout(nestedTimeoutRef.current);
+      nestedTimeoutRef.current = null;
+    }
+    setOpenNestedDropdown(true);
+  };
+
+  const handleNestedMouseLeave = () => {
+    nestedTimeoutRef.current = setTimeout(() => {
+      setOpenNestedDropdown(false);
+    }, 150);
   };
 
   const handleBookConsultant = () => {
@@ -96,7 +121,7 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* ===== CONTACT BAR - TOP PE (Slimmer) ===== */}
+      {/* ===== CONTACT BAR ===== */}
       <div className="relative z-10 bg-cyan-900/20 backdrop-blur-md border-b border-white/5 py-1 px-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-end gap-3 md:gap-5">
           
@@ -132,10 +157,10 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* ===== NAVBAR (Slimmer Height & Thinner Text) ===== */}
+      {/* ===== NAVBAR ===== */}
       <div className="relative z-20 bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3"> {/* ✅ Height reduced from py-3 to py-2 */}
+          <div className="flex items-center justify-between py-3">
             
             {/* LOGO */}
             <Link href="/" className="flex flex-col group cursor-pointer" prefetch={true}>
@@ -155,30 +180,53 @@ export const Header = () => {
               </div>
             </Link>
 
-            {/* DESKTOP NAVIGATION (Thinner & Whiter) */}
+            {/* DESKTOP NAVIGATION */}
             <nav className="hidden md:flex items-center gap-6">
               <Link href="/scorecard" prefetch={true} className={`text-base font-medium transition-all duration-200 ${ pathname === "/scorecard" ? 'text-white font-medium border-b-2 border-cyan-400 pb-0.5' : 'text-white hover:text-cyan-100 hover:border-b-2 hover:border-cyan-400/50 hover:pb-0.5'}`}>
                 Scoreboard
               </Link>
 
+              {/* RESOURCES DROPDOWN WITH NESTED MENU */}
               <div className="relative" onMouseEnter={() => handleMouseEnter('resources')} onMouseLeave={handleMouseLeave}>
-                <button className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ openDropdown === 'resources' || resourcesDropdown.some(item => pathname === item.href) ? 'text-white font-bold border-b-2 border-cyan-400 pb-0.5' : 'text-white hover:text-cyan-100 hover:border-b-2 hover:border-cyan-400/50 hover:pb-0.5'}`}>
+                <button className={`text-base font-medium transition-all duration-200 flex items-center gap-1 ${ openDropdown === 'resources' || resourcesDropdown.some(item => pathname === item.href) || resourceLibraryDropdown.some(item => pathname === item.href) ? 'text-white font-bold border-b-2 border-cyan-400 pb-0.5' : 'text-white hover:text-cyan-100 hover:border-b-2 hover:border-cyan-400/50 hover:pb-0.5'}`}>
                   Resources
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${openDropdown === 'resources' ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {openDropdown === 'resources' && (
-                  <div className="absolute top-full left-0 mt-1 w-44 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl py-1.5" onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
+                  <div className="absolute top-full left-0 mt-1 w-56 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl py-1.5" onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}>
                     {resourcesDropdown.map((item) => (
                       <Link key={item.href} href={item.href} prefetch={true} className={`block px-4 py-2 text-sm transition-colors ${ pathname === item.href ? 'text-white font-medium bg-cyan-500/20' : 'text-gray-200 hover:text-white hover:bg-white/10'}`}>
                         {item.label}
                       </Link>
                     ))} 
+
+                    {/* NESTED DROPDOWN TRIGGER */}
+                    <div 
+                      className="relative"
+                      onMouseEnter={handleNestedMouseEnter}
+                      onMouseLeave={handleNestedMouseLeave}
+                    >
+                      <button className={`w-full text-left px-4 py-2 text-sm transition-colors flex items-center justify-between ${openNestedDropdown ? 'text-white bg-white/10' : 'text-gray-200 hover:text-white hover:bg-white/10'}`}>
+                        Resource Library
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+
+                      {/* NESTED DROPDOWN CONTENT (Right Side) */}
+                      {openNestedDropdown && (
+                        <div className="absolute top-0 left-full ml-1 w-56 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl py-1.5">
+                          {resourceLibraryDropdown.map((subItem) => (
+                            <Link key={subItem.href} href={subItem.href} prefetch={true} className={`block px-4 py-2 text-sm transition-colors ${ pathname === subItem.href ? 'text-white font-medium bg-cyan-500/20' : 'text-gray-200 hover:text-white hover:bg-white/10'}`}>
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
 
-              {/* ✅ MAP ADDED HERE */}
               <Link href="/map" prefetch={true} className={`text-base font-medium transition-all duration-200 ${ pathname === "/map" ? 'text-white font-medium border-b-2 border-cyan-400 pb-0.5' : 'text-white hover:text-cyan-100 hover:border-b-2 hover:border-cyan-400/50 hover:pb-0.5'}`}>
                 Map
               </Link>
@@ -208,7 +256,7 @@ export const Header = () => {
 
           {/* MOBILE NAVIGATION */}
           {isOpen && (
-            <div className="md:hidden py-3 border-t border-white/10 bg-white/5 backdrop-blur-xl">
+            <div className="md:hidden py-3 border-t border-white/10 bg-white/5 backdrop-blur-xl max-h-[80vh] overflow-y-auto">
               <nav className="flex flex-col gap-1">
                 <Link href="/scorecard" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2 rounded-lg text-sm transition-all ${pathname === "/scorecard" ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-white font-semibold' : 'text-white hover:bg-white/10'}`}>
                   Scoreboard
@@ -221,9 +269,16 @@ export const Header = () => {
                       {item.label}
                     </Link>
                   ))}
+                  
+                  {/* Mobile Resource Library */}
+                  <p className="text-[10px] text-cyan-400 uppercase tracking-wider font-semibold mt-3 mb-1">Resource Library</p>
+                  {resourceLibraryDropdown.map((item) => (
+                    <Link key={item.href} href={item.href} prefetch={true} onClick={() => setIsOpen(false)} className={`block px-4 py-1.5 rounded-lg transition-all text-sm ${pathname === item.href ? 'text-white bg-cyan-500/20 font-semibold' : 'text-white hover:bg-white/10'}`}>
+                      {item.label}
+                    </Link>
+                  ))}
                 </div>
 
-                {/* ✅ MAP ADDED HERE IN MOBILE */}
                 <Link href="/map" prefetch={true} onClick={() => setIsOpen(false)} className={`px-4 py-2 rounded-lg text-sm transition-all ${pathname === "/map" ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-white font-semibold' : 'text-white hover:bg-white/10'}`}>
                   Map
                 </Link>
@@ -248,14 +303,6 @@ export const Header = () => {
           )}
         </div>
       </div>
-
-      {/* LOCKED MESSAGE TOAST */}
-      {showLockMessage && (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 bg-black/90 border border-yellow-500/30 text-white px-6 py-3 rounded-xl shadow-2xl backdrop-blur-xl">
-          <Info className="w-5 h-5 text-yellow-400" />
-          <span className="text-sm font-medium">{showLockMessage}</span>
-        </div>
-      )}
 
       <ConsultantModal isOpen={isConsultantModalOpen} onClose={() => setIsConsultantModalOpen(false)} />
     </header>
