@@ -78,21 +78,7 @@ export default function RightsPage() {
         'The Board can investigate and impose penalties',
       ],
     },
-    {
-      icon: Globe,
-      title: 'Right to Data Portability',
-      subtitle: 'Transfer your data seamlessly.',
-      section: 'Section 13(2)',
-      description:
-        'As a Data Principal, you have the right to receive your personal data in a structured, commonly used, and machine-readable format. This allows you to seamlessly transfer your data from one Data Fiduciary to another without any technological hindrances.',
-      details: [
-        'Receive your data in a structured, machine-readable format',
-        'Transfer your data to another Data Fiduciary',
-        'The Data Fiduciary must facilitate the transfer',
-        'Applies to data provided by you or generated through your use',
-        'Not applicable where it would harm the rights of others',
-      ],
-    },
+    
     {
       icon: UserPlus,
       title: 'Right to Nominate',
@@ -142,7 +128,7 @@ export default function RightsPage() {
     {
       step: '03',
       title: 'Wait for the Response',
-      desc: 'The Data Fiduciary must respond within the time prescribed under its policy (usually 30 days). Keep records of all communications.',
+      desc: 'The Data Fiduciary must respond within the period prescribed in the DPDP Rules, 2025 (Rule 14 sets a maximum period for grievance responses). Keep records of all communications.',
       icon: Clock,
     },
     {
@@ -296,7 +282,7 @@ export default function RightsPage() {
             <strong className="text-white">Data Principal</strong>, you are no
             longer just a passive user; you are the{' '}
             <strong className="text-white">legal owner of your data</strong>. The
-            Act grants you six powerful, enforceable rights against any
+            Act grants you a set of enforceable rights against any
             organisation (Data Fiduciary) processing your information. This guide
             explains each right, how to exercise it, and what to do if your
             rights are violated.
@@ -326,7 +312,7 @@ export default function RightsPage() {
         {/* ===== 6 RIGHTS GRID ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6">
-            The 6 Data Rights at a Glance
+            Your Rights at a Glance
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {rights.map((right, index) => {
@@ -367,7 +353,7 @@ export default function RightsPage() {
             Detailed Breakdown of Each Right
           </h2>
           <p className="text-gray-300 leading-relaxed mb-8">
-            The six rights are not just abstract principles � they are enforceable
+            These rights are not just abstract principles � they are enforceable
             legal rights backed by the Data Protection Board. Here is what each
             right means in practice, including the specific actions you can take.
           </p>
@@ -529,12 +515,7 @@ export default function RightsPage() {
                       Enable easy data access, correction, and erasure workflows
                     </span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span>
-                      Build data portability features into your products
-                    </span>
-                  </li>
+                  
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
                     <span>

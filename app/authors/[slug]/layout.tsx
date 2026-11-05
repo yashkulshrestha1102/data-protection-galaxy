@@ -86,10 +86,8 @@ const personSchema = {
   ],
   // ✅ NAYA ADD KIYA: Social profiles (Apne actual links se replace kar lena)
   sameAs: [
-    "https://www.linkedin.com/company/businezexcellence-com/",
-    "https://twitter.com/legalgalaxy",  // Replace with actual Twitter if available
-    "https://www.youtube.com/@businezexcellence" // Replace with actual YouTube if available
-  ],
+  "https://www.linkedin.com/company/businezexcellence-com/",
+],
 };
 
 export default function AuthorLayout({

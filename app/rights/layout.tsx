@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "right to access DPDP",
     "right to erasure India",
     "right to be forgotten",
-    "data portability DPDP",
+    
     "grievance redressal DPDP",
     "right to nominate",
     "consent withdrawal",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "article",
     title: "Rights of Data Principals under DPDP Act 2023 | Complete Guide",
     description:
-      "6 fundamental rights under India's DPDP Act 2023 — access, correction, erasure, grievance redressal, portability, and nomination. Explained with real-world examples.",
+  "Your rights as a Data Principal under India's DPDP Act 2023: access, correction and erasure, grievance redressal, nomination and consent withdrawal, and how to exercise them.",
     url: `${SITE_URL}/rights`,
     siteName: "Legal Galaxy",
     locale: "en_IN",
@@ -156,11 +156,11 @@ const articleSchema = {
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/favicon.png`,
     },
   },
   datePublished: "2026-01-15",
-  dateModified: new Date().toISOString().split("T")[0],
+  dateModified: "2026-11-04",
   inLanguage: "en-IN",
   mainEntityOfPage: {
     "@type": "WebPage",

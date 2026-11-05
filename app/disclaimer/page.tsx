@@ -3,6 +3,14 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
+
+export const metadata = {
+  title: "Disclaimer",
+  description:
+    "Legal Galaxy provides educational content on the DPDP Act 2023. Read our disclaimer on legal advice, accuracy of information and generated documents.",
+  alternates: { canonical: "/disclaimer" },
+};
+
 export default function DisclaimerPage() {
   return (
     <div className="min-h-screen text-white px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
@@ -47,10 +55,10 @@ export default function DisclaimerPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white mb-3">5. Contact Us</h2>
-              <p><strong>Email:</strong> info@legalgalaxy.com</p>
-              <p><strong>Phone:</strong> +91 98765 43210</p>
-            </section>
+  <h2 className="text-xl font-semibold text-white mb-3">5. Contact Us</h2>
+  <p><strong>Email:</strong> <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="text-cyan-400 underline">shilpi.kulshrestha@businezexcellence.com</a></p>
+  <p><strong>Phone:</strong> <a href="tel:+918800138008" className="text-cyan-400 underline">+91 8800138008</a></p>
+</section>
           </div>
         </div>
       </div>

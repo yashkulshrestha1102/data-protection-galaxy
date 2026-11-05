@@ -56,18 +56,18 @@ export default function PenaltiesPage() {
         'Significant Data Fiduciaries have extra obligations (appointing a DPO, independent audits). Failure to fulfill these enhanced duties as notified by the government results in this penalty.',
     },
     {
-      icon: AlertTriangle,
-      title: 'Failure to Comply with Board Directions',
-      amount: 'Up to ?150 Crore',
-      description:
-        'The Data Protection Board has the power to issue interim or final directions to an organisation. If the organisation fails to comply with these official directions, a penalty can be imposed.',
-    },
+  icon: Users,
+  title: "Breach of Data Principal's Duties",
+  amount: 'Up to ₹10,000',
+  description:
+    'Data Principals also have duties under Section 15, such as not filing false or frivolous complaints and not furnishing false information. Breach of these duties can attract a penalty of up to ₹10,000.',
+},
     {
       icon: FileText,
       title: 'General Non-Compliance',
       amount: 'Up to ?50 Crore',
       description:
-        'Breach of any other terms or conditions of the DPDP Act (like failing to maintain accurate records or not providing proper notice) falls under this category.',
+        'Breach of any other provision of the Act or Rules, or of a voluntary undertaking accepted by the Board, falls under this category.',
     },
   ];
 
@@ -93,16 +93,13 @@ export default function PenaltiesPage() {
       violation: 'Non-compliance by a Significant Data Fiduciary with its additional obligations',
       penalty: '?150 Crore',
     },
-    {
-      section: 'Section 27',
-      violation: 'Failure to comply with directions issued by the Data Protection Board',
-      penalty: '?150 Crore',
-    },
+    { section: 'Section 15', violation: "Breach of duties by a Data Principal", penalty: '₹10,000' },
     {
       section: 'General',
       violation: 'Breach of any other provision of the Act not covered above',
       penalty: '?50 Crore',
     },
+    { section: 'Section 32 / General', violation: 'Breach of a voluntary undertaking accepted by the Board, or of any other provision of the Act or Rules', penalty: '₹50 Crore' },
   ];
 
   // ===== FACTORS CONSIDERED =====
@@ -169,7 +166,7 @@ export default function PenaltiesPage() {
     {
       step: '06',
       title: 'Appeal to TDSAT',
-      desc: 'Aggrieved parties can appeal to the TDSAT within 60 days. The TDSAT decision is final and binding.',
+      desc: 'Aggrieved parties can appeal to the TDSAT within 60 days.',
     },
   ];
 
@@ -177,7 +174,7 @@ export default function PenaltiesPage() {
   const faqs = [
     {
       q: 'What is the maximum penalty under the DPDP Act 2023?',
-      a: 'The maximum penalty is ?250 crore, imposed on Data Fiduciaries who fail to take reasonable security safeguards to prevent a personal data breach. This is one of the highest data protection penalties in the world.',
+      a: 'The maximum penalty is ?250 crore, imposed on Data Fiduciaries who fail to take reasonable security safeguards to prevent a personal data breach. This is one of the significant monetary penalties.',
     },
     {
       q: 'Who imposes penalties under the DPDP Act?',
@@ -610,38 +607,22 @@ export default function PenaltiesPage() {
         {/* ===== SECTION 6: DIRECTOR LIABILITY ===== */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">
-            6. Can Directors Be Personally Penalized?
-          </h2>
-          <div className="space-y-4 text-gray-300 leading-relaxed">
-            <p>
-              Yes. Under <strong className="text-white">Section 37</strong> of the
-              DPDP Act 2023, if a company commits an offence, the Board can
-              proceed against the directors, managers, and other officers who
-              were in charge of the company's affairs at the time of the
-              contravention. This is a significant shift � it means that data
-              protection is not just a corporate liability but a personal one for
-              senior management.
-            </p>
-            <p>
-              The Act provides a defence: an officer can escape liability if they
-              can prove that the contravention took place without their
-              knowledge, or that they exercised due diligence to prevent it. But
-              this defence is not easy to establish � it requires documented
-              evidence of active oversight, not just a claim of ignorance.
-            </p>
-            <p>
-              This is why we recommend that boards and senior management take a
-              hands-on approach to DPDPA compliance � not just delegate it to the
-              IT team. For a deeper dive, see our{' '}
-              <Link
-                href="/insight/dpdp-act-director-liability"
-                className="text-cyan-400 hover:text-cyan-300 underline"
-              >
-                Director Liability insight
-              </Link>
-              .
-            </p>
-          </div>
+  6. Are Directors Personally Liable?
+</h2>
+<div className="space-y-4 text-gray-300 leading-relaxed">
+  <p>
+    Penalties under the DPDP Act are imposed on the Data Fiduciary, which can be a company. The Act does not contain a separate provision making directors or officers personally liable for the company's contraventions, and it does not create criminal offences.
+  </p>
+  <p>
+    That does not mean boards can ignore data protection. Directors have duties under company law to act in good faith and with due care, a Significant Data Fiduciary's Data Protection Officer must report to the Board of Directors, and a large penalty, regulatory action or loss of customer trust can create serious governance and shareholder consequences.
+  </p>
+  <p>
+    For a deeper look, see our{' '}
+    <Link href="/insight/dpdp-act-director-liability" className="text-cyan-400 hover:text-cyan-300 underline">
+      Board and Director Responsibilities insight
+    </Link>.
+  </p>
+</div>
         </section>
 
         {/* ===== SECTION 7: PENALTIES VS GDPR ===== */}
