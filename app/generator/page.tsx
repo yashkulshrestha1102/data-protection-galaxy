@@ -583,7 +583,7 @@ const FormField = ({ field, value, onChange }: any) => {
           value={value || ''}
           onChange={handleChange}
           placeholder={field.placeholder}
-          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50 transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 focus:bg-black/50 transition-all"
         />
       );
     case 'textarea':
@@ -593,7 +593,7 @@ const FormField = ({ field, value, onChange }: any) => {
           onChange={handleChange}
           placeholder={field.placeholder}
           rows={3}
-          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50 transition-all resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 focus:bg-black/50 transition-all resize-none"
         />
       );
     case 'select':
@@ -601,7 +601,7 @@ const FormField = ({ field, value, onChange }: any) => {
         <select
           value={value || ''}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white focus:outline-none focus:border-purple-400 focus:bg-black/50 transition-all appearance-none"
+          className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white focus:outline-none focus:border-cyan-400 focus:bg-black/50 transition-all appearance-none"
         >
           {field.options.map((opt: string) => (
             <option key={opt} value={opt} className="bg-black">{opt}</option>
@@ -619,7 +619,7 @@ const FormField = ({ field, value, onChange }: any) => {
                 value={opt}
                 checked={value === opt}
                 onChange={handleChange}
-                className="w-4 h-4 text-cyan-500 focus:ring-purple-500"
+                className="w-4 h-4 text-cyan-500 focus:ring-cyan-500"
               />
               <span className="text-gray-200">{opt}</span>
             </label>
@@ -635,7 +635,7 @@ const FormField = ({ field, value, onChange }: any) => {
                 type="checkbox"
                 checked={(value || []).includes(opt)}
                 onChange={() => handleCheckboxGroup(opt)}
-                className="w-4 h-4 text-cyan-500 focus:ring-purple-500 rounded"
+                className="w-4 h-4 text-cyan-500 focus:ring-cyan-500 rounded"
               />
               <span className="text-sm text-gray-200">{opt}</span>
             </label>
@@ -844,7 +844,7 @@ export default function GeneratorPage() {
             transition={{ duration: 0.6 }}
             className="mb-8 bg-black/50 backdrop-blur-md rounded-2xl p-6 border border-white/20"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/30 border border-purple-400/50 text-sm font-medium text-cyan-300 mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/30 border border-cyan-400/50 text-sm font-medium text-cyan-300 mb-4">
               <Sparkles className="w-4 h-4" />
               Document Generator
             </div>
@@ -863,7 +863,7 @@ export default function GeneratorPage() {
               onClick={() => setActiveTab('privacy')}
               className={`px-6 py-3 rounded-xl flex items-center gap-2 font-semibold transition-all border-2 ${
                 activeTab === 'privacy'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-blue-400 shadow-lg shadow-purple-500/50'
+                  ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white border-blue-400 shadow-lg shadow-cyan-500/50'
                   : 'bg-black/50 backdrop-blur-md border-white/20 text-gray-200 hover:bg-black/70 hover:border-white/40 hover:text-white'
               }`}
             >
@@ -874,7 +874,7 @@ export default function GeneratorPage() {
               onClick={() => setActiveTab('ai')}
               className={`px-6 py-3 rounded-xl flex items-center gap-2 font-semibold transition-all border-2 ${
                 activeTab === 'ai'
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white border-purple-400 shadow-lg shadow-purple-500/50'
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-cyan-400 shadow-lg shadow-cyan-500/50'
                   : 'bg-black/50 backdrop-blur-md border-white/20 text-gray-200 hover:bg-black/70 hover:border-white/40 hover:text-white'
               }`}
             >
@@ -893,11 +893,11 @@ export default function GeneratorPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  className="bg-black/60 backdrop-blur-md border border-white/20 rounded-xl p-5 hover:bg-black/80 hover:border-purple-400/50 transition-all group cursor-pointer shadow-xl"
+                  className="bg-black/60 backdrop-blur-md border border-white/20 rounded-xl p-5 hover:bg-black/80 hover:border-cyan-400/50 transition-all group cursor-pointer shadow-xl"
                   onClick={() => setSelectedTool(tool.id)}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500/40 to-pink-500/40 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform border border-purple-400/30">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-500/40 to-blue-500/40 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform border border-cyan-400/30">
                       <Icon className="w-5 h-5 text-cyan-300" />
                     </div>
                     <div className="flex-1">
@@ -905,7 +905,7 @@ export default function GeneratorPage() {
                         {tool.label}
                       </h3>
                       <p className="text-xs text-gray-200 mt-1">{tool.desc}</p>
-                      <button className="mt-3 text-xs text-cyan-300 hover:text-purple-200 transition-colors flex items-center gap-1 font-medium">
+                      <button className="mt-3 text-xs text-cyan-300 hover:text-cyan-200 transition-colors flex items-center gap-1 font-medium">
                         Generate <ArrowRight className="w-3 h-3" />
                       </button>
                     </div>
@@ -939,7 +939,7 @@ export default function GeneratorPage() {
             <span className="text-sm text-gray-200">
               {selectedToolData?.label}
             </span>
-            <span className="text-xs px-2 py-1 rounded-full bg-purple-500/30 text-cyan-300 border border-purple-400/50">
+            <span className="text-xs px-2 py-1 rounded-full bg-cyan-500/30 text-cyan-300 border border-cyan-400/50">
               {activeTab === 'privacy' ? 'Privacy' : 'AI Governance'}
             </span>
           </div>
@@ -977,7 +977,7 @@ export default function GeneratorPage() {
                 <div
                   key={idx}
                   className={`flex-1 h-1 rounded-full transition-all ${
-                    idx <= currentStep ? 'bg-gradient-to-r from-blue-400 to-purple-400' : 'bg-white/20'
+                    idx <= currentStep ? 'bg-gradient-to-r from-blue-400 to-cyan-400' : 'bg-white/20'
                   }`}
                 />
               ))}
@@ -1028,7 +1028,7 @@ export default function GeneratorPage() {
                 <button
                   onClick={handleNext}
                   disabled={!isStepComplete()}
-                  className={`px-6 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all flex items-center gap-2 ${
+                  className={`px-6 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-medium hover:scale-105 transition-all flex items-center gap-2 ${
                     !isStepComplete() ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
@@ -1120,7 +1120,7 @@ export default function GeneratorPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-8 bg-black/60 backdrop-blur-md border border-purple-500/50 rounded-2xl p-6 text-center max-w-2xl mx-auto shadow-xl"
+            className="mt-8 bg-black/60 backdrop-blur-md border border-cyan-500/50 rounded-2xl p-6 text-center max-w-2xl mx-auto shadow-xl"
           >
             <Lock className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
             <h3 className="text-lg font-semibold text-white mb-1">Get Your Document</h3>
@@ -1147,7 +1147,7 @@ export default function GeneratorPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-black/50"
+                  className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 focus:bg-black/50"
                   required
                 />
                 
@@ -1166,7 +1166,7 @@ export default function GeneratorPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:scale-105 transition-all flex items-center gap-2 justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (
                     <>

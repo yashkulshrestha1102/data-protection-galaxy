@@ -91,7 +91,7 @@ export default function QuizPage() {
             {passed && (
               <Link 
                 href={`/certificate-course`}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium hover:scale-105 transition-all"
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:scale-105 transition-all"
               >
                 View Certificate 🏆
               </Link>
@@ -120,14 +120,14 @@ export default function QuizPage() {
 
         <div className="w-full h-1.5 bg-white/10 rounded-full mb-6 overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-300"
+            className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transition-all duration-300"
             style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}
           />
         </div>
 
         <div className="bg-white/10 border border-white/20 rounded-2xl p-6 md:p-8">
           <div className="mb-6">
-            <span className="text-xs px-3 py-1 rounded-full bg-purple-500/20 text-cyan-400 border border-cyan-500/30">
+            <span className="text-xs px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
               Question {currentQuestion + 1}
             </span>
             <h3 className="text-xl font-bold text-white mt-3">{currentQ.question}</h3>
@@ -142,7 +142,7 @@ export default function QuizPage() {
                   onClick={() => handleAnswer(idx)}
                   className={`w-full text-left px-4 py-3 rounded-xl border transition-all ${
                     isSelected
-                      ? 'border-purple-500 bg-purple-500/20 text-white'
+                      ? 'border-cyan-500 bg-cyan-500/20 text-white'
                       : 'border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
                 >
@@ -169,7 +169,7 @@ export default function QuizPage() {
               disabled={selectedOption === null}
               className={`px-6 py-2 rounded-lg font-medium transition-all ${
                 selectedOption !== null
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:scale-105'
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:scale-105'
                   : 'bg-gray-600 text-gray-400 cursor-not-allowed'
               }`}
             >

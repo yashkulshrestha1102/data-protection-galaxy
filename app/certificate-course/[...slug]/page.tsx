@@ -73,7 +73,7 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
 
           <div className="mb-8">
             <div className="flex items-center gap-3 text-sm text-gray-400 mb-2 flex-wrap">
-              <span className="px-2 py-0.5 rounded-full bg-purple-500/20 text-cyan-400 border border-cyan-500/30 text-xs">Module {module.id}</span>
+              <span className="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs">Module {module.id}</span>
               <span className="text-gray-600">•</span>
               <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {module.duration}</span>
               {module.isNew && <span className="text-xs px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 border border-green-500/30">New</span>}
@@ -162,7 +162,7 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
           </div>
 
           {module.id < fullModulesData.length && (
-            <Link href={`/certificate-course/${module.id + 1}`} className="mt-8 block p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-cyan-500/20 rounded-xl text-center hover:bg-purple-500/20 transition-colors">
+            <Link href={`/certificate-course/${module.id + 1}`} className="mt-8 block p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-xl text-center hover:bg-cyan-500/20 transition-colors">
               <span className="text-white font-medium">Next Module → {fullModulesData.find(m => m.id === module.id + 1)?.title}</span>
             </Link>
           )}
@@ -225,7 +225,7 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
           </div>
 
           <div className="w-full h-1.5 bg-white/10 rounded-full mb-6 overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all" style={{ width: `${((currentIndex + 1) / allLessons.length) * 100}%` }} />
+            <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transition-all" style={{ width: `${((currentIndex + 1) / allLessons.length) * 100}%` }} />
           </div>
 
           <div className="mb-8">
@@ -260,12 +260,12 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
                     case 'heading': return <h3 key={idx} className="text-xl font-bold text-white mt-6 mb-3">{item.content}</h3>;
                     case 'list': return <ul key={idx} className="space-y-2 mb-4">{item.items?.map((li, i) => <li key={i} className="flex items-start gap-2 text-gray-300"><span className="text-cyan-400 mt-1">•</span> {li}</li>)}</ul>;
                     case 'callout': {
-                      const styles: any = { info: 'bg-blue-500/10 border-blue-500/30 text-blue-200', warning: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-200', tip: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200', important: 'bg-purple-500/10 border-cyan-500/30 text-purple-200', danger: 'bg-red-500/10 border-red-500/30 text-red-200', note: 'bg-gray-500/10 border-gray-500/30 text-gray-200' };
+                      const styles: any = { info: 'bg-blue-500/10 border-blue-500/30 text-blue-200', warning: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-200', tip: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-200', important: 'bg-cyan-500/10 border-cyan-500/30 text-cyan-200', danger: 'bg-red-500/10 border-red-500/30 text-red-200', note: 'bg-gray-500/10 border-gray-500/30 text-gray-200' };
                       return <div key={idx} className={`p-4 rounded-lg border ${styles[item.calloutType || 'info']} mb-4`}><p className="text-sm">{item.content}</p></div>;
                     }
                     case 'example': return <div key={idx} className="bg-white/5 rounded-lg p-4 border border-white/10 mb-4"><h4 className="text-sm font-semibold text-gray-400 mb-2">💡 Example</h4><p className="text-gray-300 text-sm">{item.content}</p></div>;
                     case 'warning': return <div key={idx} className="bg-red-500/10 rounded-lg p-4 border border-red-500/30 mb-4"><h4 className="text-sm font-semibold text-red-400 mb-2">⚠️ Warning</h4><p className="text-gray-300 text-sm">{item.content}</p></div>;
-                    case 'quote': return <blockquote key={idx} className="border-l-4 border-purple-500/60 bg-white/5 px-5 py-3 my-4 rounded-r-lg italic text-gray-300">{item.content}</blockquote>;
+                    case 'quote': return <blockquote key={idx} className="border-l-4 border-cyan-500/60 bg-white/5 px-5 py-3 my-4 rounded-r-lg italic text-gray-300">{item.content}</blockquote>;
                     case 'table': return (
                       <div key={idx} className="overflow-x-auto my-4">
                         <table className="w-full border border-white/10 rounded-lg overflow-hidden">
@@ -340,10 +340,10 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
           {/* ===== AUTHOR BIO ===== */}
           <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-8 flex items-start gap-4">
             <div className="flex-shrink-0">
-              <img src={author.image} alt={author.name} className="w-14 h-14 rounded-full object-cover border-2 border-purple-500/40" />
+              <img src={author.image} alt={author.name} className="w-14 h-14 rounded-full object-cover border-2 border-cyan-500/40" />
             </div>
             <div>
-              <div className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 border border-cyan-500/30 text-cyan-300 mb-1">
+              <div className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 mb-1">
                 <UserCheck className="w-3 h-3" /> Course Author
               </div>
               <h4 className="text-sm font-semibold text-white">{author.name}</h4>
@@ -358,7 +358,7 @@ export default function CoursePage({ params }: { params: Promise<{ slug: string[
             <CompleteLessonButton lessonKey={lessonKey} moduleId={Number(moduleId)} />
 
 
-            {nextLesson ? <Link href={`/certificate-course/${moduleId}/lesson/${nextLesson.id}`} className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 w-full sm:w-auto justify-center">Next →</Link> : <Link href={`/certificate-course/${moduleId}`} className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm flex items-center gap-1 bg-purple-500/10 px-4 py-2 rounded-lg border border-cyan-500/20 hover:bg-purple-500/20 w-full sm:w-auto justify-center"><CheckCircle className="w-4 h-4" /> Complete Module</Link>}
+            {nextLesson ? <Link href={`/certificate-course/${moduleId}/lesson/${nextLesson.id}`} className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 w-full sm:w-auto justify-center">Next →</Link> : <Link href={`/certificate-course/${moduleId}`} className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm flex items-center gap-1 bg-cyan-500/10 px-4 py-2 rounded-lg border border-cyan-500/20 hover:bg-cyan-500/20 w-full sm:w-auto justify-center"><CheckCircle className="w-4 h-4" /> Complete Module</Link>}
           </div>
         </div>
       </div>

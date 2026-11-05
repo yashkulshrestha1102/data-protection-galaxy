@@ -159,7 +159,7 @@ export const CountryDetail = ({ country }: CountryDetailProps) => {
         </div>
       </div>
 
-      {/* ===== FIXED BUTTONS — Galaxy Theme (cyan-Pink) ===== */}
+      {/* ===== FIXED BUTTONS — Galaxy Theme (cyan-blue) ===== */}
 <div className="flex flex-col sm:flex-row gap-3 sticky bottom-0 pt-4 -mx-2 px-2">
         <Link 
           href={`/country/${country.id}`}

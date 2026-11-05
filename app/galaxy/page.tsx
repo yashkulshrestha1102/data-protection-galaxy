@@ -35,15 +35,15 @@ const planets = [
     name: 'Obligations of Data Fiduciaries', 
     icon: Shield, 
     path: '/obligations',
-    color: 'from-purple-400 to-purple-600',
-    bgColor: 'bg-purple-500/20',
+    color: 'from-cyan-400 to-cyan-600',
+    bgColor: 'bg-cyan-500/20',
     borderColor: 'border-cyan-500/30',
     description: 'Responsible for ensuring compliance with the Act',
     category: 'Compliance',
     date: '14 Jul 2026',
     readTime: '7 min read',
     tags: ['Compliance', 'Fiduciaries'],
-    gradient: 'from-purple-500/20 to-purple-600/10',
+    gradient: 'from-cyan-500/20 to-cyan-600/10',
     author: 'Shilpi Kulshrestha',
     excerpt: 'Key obligations and responsibilities of data fiduciaries...'
   },
@@ -137,15 +137,15 @@ const planets = [
     name: 'Key Provisions Overview', 
     icon: FileText, 
     path: '/provisions',
-    color: 'from-pink-400 to-pink-600',
-    bgColor: 'bg-pink-500/20',
-    borderColor: 'border-pink-500/30',
+    color: 'from-blue-400 to-blue-600',
+    bgColor: 'bg-blue-500/20',
+    borderColor: 'border-blue-500/30',
     description: 'Important sections of the Act at a glance',
     category: 'Overview',
     date: '8 Jul 2026',
     readTime: '10 min read',
     tags: ['Provisions', 'Overview'],
-    gradient: 'from-pink-500/20 to-pink-600/10',
+    gradient: 'from-blue-500/20 to-blue-600/10',
     author: 'Rojalin Panda',
     excerpt: 'Complete overview of all key provisions of the Act...'
   },
@@ -228,9 +228,9 @@ export default function Galaxy() {
         </div>
         
         {/* Nebula Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         
         {/* Stars */}
         {stars}
@@ -296,7 +296,7 @@ export default function Galaxy() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
                   selectedCategory === category
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/30'
                     : 'bg-white/10 border border-white/20 backdrop-blur-sm text-gray-300 hover:text-white hover:bg-white/20'
                 }`}
               >
@@ -334,7 +334,7 @@ export default function Galaxy() {
                     }}
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                       selectedCategory === category
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
+                        ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white'
                         : 'bg-white/10 border border-white/20 text-gray-300 hover:text-white'
                     }`}
                   >
@@ -379,7 +379,7 @@ export default function Galaxy() {
                 >
                   {/* ===== DIRECT CARD — NO FLOATING WRAPPER ===== */}
                   <div className={`relative p-6 rounded-2xl bg-white/10 border ${planet.borderColor} backdrop-blur-sm hover:bg-white/20 transition-all duration-500 ${
-                    isHovered ? 'shadow-2xl shadow-purple-500/20 scale-105' : ''
+                    isHovered ? 'shadow-2xl shadow-cyan-500/20 scale-105' : ''
                   }`}>
                     {/* Card Glow */}
                     <div className={`absolute -inset-1 rounded-2xl bg-gradient-to-br ${planet.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
@@ -391,7 +391,7 @@ export default function Galaxy() {
                     
                     {/* Planet Icon */}
                     <motion.div 
-                      className={`w-14 h-14 rounded-full bg-gradient-to-br ${planet.color} flex items-center justify-center mb-4 shadow-lg shadow-purple-500/20 relative z-10`}
+                      className={`w-14 h-14 rounded-full bg-gradient-to-br ${planet.color} flex items-center justify-center mb-4 shadow-lg shadow-cyan-500/20 relative z-10`}
                       animate={{
                         scale: isHovered ? 1.15 : 1,
                       }}
@@ -402,7 +402,7 @@ export default function Galaxy() {
                     
                     {/* Title */}
                     <h3 className={`text-lg font-semibold text-white transition-all duration-300 mb-2 relative z-10 ${
-                      isHovered ? 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' : ''
+                      isHovered ? 'bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent' : ''
                     }`}>
                       {planet.name}
                     </h3>
@@ -445,7 +445,7 @@ export default function Galaxy() {
                         isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
                       }`}
                     >
-                      <div className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium flex items-center gap-1">
+                      <div className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white text-xs font-medium flex items-center gap-1">
                         Explore <ChevronRight className="w-3 h-3" />
                       </div>
                     </motion.div>

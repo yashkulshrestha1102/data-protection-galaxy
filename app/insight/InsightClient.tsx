@@ -42,13 +42,13 @@ const InsightCard = ({ insight }) => {
       className="group relative bg-white/10 border border-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer"
     >
       {/* Category Tag */}
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-4">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-4">
         <Icon className="w-3.5 h-3.5" />
         {insight.category}
       </div>
       
       {/* Title */}
-      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
         {insight.title}
       </h3>
       
@@ -119,7 +119,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           onClick={() => onPageChange(page)}
           className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
             currentPage === page
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
+              ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/30'
               : 'text-gray-400 hover:text-white hover:bg-white/10'
           }`}
         >
@@ -213,9 +213,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         </div>
         
         {/* Nebula Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         
         {/* Stars */}
         {stars}
@@ -270,7 +270,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                 onClick={() => handleCategoryChange(category.id)}
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   isActive
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/30'
                     : 'bg-white/10 border border-white/20 backdrop-blur-sm text-gray-300 hover:text-white hover:bg-white/20'
                 }`}
               >
@@ -322,7 +322,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <span className="text-gray-200">Have questions about data protection?</span>
             <Link 
               href="/contact"
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all shadow-lg shadow-purple-500/30"
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-medium hover:scale-105 transition-all shadow-lg shadow-cyan-500/30"
             >
               Message Us
             </Link>

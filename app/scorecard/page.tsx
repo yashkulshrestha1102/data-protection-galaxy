@@ -1,199 +1,97 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, ChevronRight, ChevronLeft, CheckCircle, 
-  AlertCircle, FileText, Clock,
-  Shield, Users, Database, Globe, Building, Scale,
-  Sparkles, Loader2, Mail, Send, Lock, UserCheck, ChevronDown
+  FileText, Loader2, Mail, Send, ChevronDown, 
+  ShieldCheck, Sparkles, Check
 } from 'lucide-react';
 import { scorecardData, getOverallScore, getRiskLevel, getCategoryScores, getAllQuestions } from '@/data/scorecard';
 import { ConsentCheckbox } from '@/components/ui/ConsentCheckbox';
 
 // ============================================================
-// ===== BACKGROUND - ONLY IMAGE =====
+// ===== LIQUID GLASS BACKGROUND =====
 // ============================================================
 const Background = () => {
   return (
-    <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" 
-         style={{ 
-           backgroundImage: "url('/images/home1.jpeg')",
-           backgroundSize: 'cover',
-           backgroundPosition: 'center',
-         }}
-    >
-      <div className="absolute inset-0 bg-black/60" />
+    <div className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[12px]" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-400/20 rounded-full blur-[120px] mix-blend-screen" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] mix-blend-screen" />
     </div>
   );
 };
 
 // ============================================================
-// ===== 3D PIE CHART COMPONENT (SECTOR STYLE) =====
+// ===== LIQUID PROGRESS BAR =====
 // ============================================================
-const PieChart3D = ({ answered, total }: { answered: number; total: number }) => {
-  const percentage = Math.round((answered / total) * 100);
-  const unanswered = total - answered;
-  const answeredAngle = (answered / total) * 360;
-  const unansweredAngle = (unanswered / total) * 360;
+const LiquidProgress = ({ progress }: { progress: number }) => (
+  <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-md border border-white/5 shadow-inner">
+    <motion.div 
+      className="h-full bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-400 rounded-full relative"
+      initial={{ width: 0 }}
+      animate={{ width: `${progress}%` }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className="absolute inset-0 bg-white/20 rounded-full" style={{ maskImage: 'linear-gradient(to bottom, white, transparent)' }} />
+    </motion.div>
+  </div>
+);
+
+// ============================================================
+// ===== 3D GLASS SCORE RING =====
+// ============================================================
+const GlassScoreRing = ({ percentage, label, color = "#22d3ee" }: { percentage: number, label: string, color?: string }) => {
+  const radius = 60;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center">
-      {/* 3D Pie Chart Container */}
-      <div 
-        className="relative w-56 h-56"
-        style={{
-          perspective: '600px',
-          transformStyle: 'preserve-3d'
-        }}
-      >
-        {/* Shadow/Base */}
-        <div 
-          className="absolute inset-0 rounded-full blur-2xl opacity-40"
-          style={{
-            background: 'radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%)',
-            transform: 'rotateX(70deg) translateZ(-40px) scale(0.8)',
-          }}
+    <div className="relative flex flex-col items-center justify-center p-4">
+      <svg width="160" height="160" className="transform -rotate-90 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+        <circle cx="80" cy="80" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="12" fill="transparent" />
+        <motion.circle 
+          cx="80" cy="80" r={radius} 
+          stroke={color} strokeWidth="12" fill="transparent" 
+          strokeDasharray={circumference} 
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset }} 
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          strokeLinecap="round" 
         />
-        
-        {/* 3D Pie Chart */}
-        <div 
-          className="relative w-full h-full"
-          style={{
-            transform: 'rotateX(20deg) rotateY(-15deg) rotateZ(-5deg)',
-            transformStyle: 'preserve-3d',
-          }}
-        >
-          {/* SVG Pie Chart with 3D effect */}
-          <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90 drop-shadow-2xl">
-            {/* Background */}
-            <circle
-              cx="50"
-              cy="50"
-              r="40"
-              fill="none"
-              stroke="#1e1e32"
-              strokeWidth="22"
-              className="drop-shadow-lg"
-            />
-            
-            {/* Answered portion */}
-            {answered > 0 && (
-              <>
-                {/* Main slice */}
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="40"
-                  fill="none"
-                  stroke="url(#pieGradient3D)"
-                  strokeWidth="22"
-                  strokeDasharray={`${answeredAngle} ${360 - answeredAngle}`}
-                  strokeLinecap="round"
-                  className="transition-all duration-1000 ease-out"
-                  style={{
-                    filter: 'drop-shadow(0 8px 25px rgba(139, 92, 246, 0.5)) drop-shadow(0 2px 10px rgba(168, 85, 247, 0.3))',
-                  }}
-                />
-                
-                {/* 3D Edge/Highlight effect */}
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="38"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.08)"
-                  strokeWidth="4"
-                  strokeDasharray={`${answeredAngle * 0.3} ${360 - answeredAngle * 0.3}`}
-                  strokeLinecap="round"
-                  style={{
-                    transform: 'rotate(8deg)',
-                    opacity: 0.5,
-                  }}
-                />
-              </>
-            )}
-            
-            {/* Gradients */}
-            <defs>
-              <linearGradient id="pieGradient3D" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#6d28d9" />
-                <stop offset="25%" stopColor="#7c3aed" />
-                <stop offset="50%" stopColor="#8b5cf6" />
-                <stop offset="75%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#d946ef" />
-              </linearGradient>
-              
-              <radialGradient id="gloss3D" cx="35%" cy="25%" r="60%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.2)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-              </radialGradient>
-            </defs>
-          </svg>
-          
-          {/* Gloss overlay */}
-          <div 
-            className="absolute inset-0 rounded-full pointer-events-none"
-            style={{
-              background: 'radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 55%)',
-              transform: 'rotateX(5deg)',
-            }}
-          />
-        </div>
-        
-        {/* Center Text */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-4xl font-bold text-white drop-shadow-lg">{percentage}%</span>
-          <span className="text-[10px] text-gray-300 font-medium tracking-wider">COMPLETED</span>
-        </div>
-      </div>
-      
-      {/* Legend */}
-      <div className="flex flex-wrap justify-center gap-6 mt-6 text-sm">
-        <div className="flex items-center gap-2.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-600 to-blue-500 shadow-lg shadow-cyan-500/30" />
-          <span className="text-gray-300">Answered <span className="text-white font-medium">{answered}</span></span>
-        </div>
-        <div className="flex items-center gap-2.5 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
-          <div className="w-3 h-3 rounded-full bg-[#1e1e32] border border-white/5" />
-          <span className="text-gray-400">Unanswered <span className="text-white font-medium">{unanswered}</span></span>
-        </div>
+      </svg>
+      <div className="absolute flex flex-col items-center justify-center">
+        <span className="text-4xl font-extrabold text-white drop-shadow-md">{percentage}%</span>
+        <span className="text-[11px] font-bold uppercase tracking-widest text-cyan-300 mt-1">{label}</span>
       </div>
     </div>
   );
 };
 
-// ===== CHECKBOX QUESTION WITH DROPDOWN + AUTO-SELECT (Items Read-Only) =====
+// ============================================================
+// ===== CHECKBOX QUESTION (Glass Style) =====
+// ============================================================
 const CheckboxQuestion = ({ question, value, onChange }: any) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  // Toggle dropdown
   const toggleDropdown = (optionId: string) => {
     setOpenDropdown(openDropdown === optionId ? null : optionId);
   };
 
-  // Toggle category selection (auto-select all items)
   const toggleCategory = (option: any) => {
     const current = value || [];
     const allItemIds = option.items || [];
     const allSelected = allItemIds.every((item: string) => current.includes(item));
-    
-    if (allSelected) {
-      const newValue = current.filter((id: string) => !allItemIds.includes(id));
-      onChange(newValue);
-    } else {
+    if (allSelected) onChange(current.filter((id: string) => !allItemIds.includes(id)));
+    else {
       const newValue = [...current];
-      allItemIds.forEach((item: string) => {
-        if (!newValue.includes(item)) {
-          newValue.push(item);
-        }
-      });
+      allItemIds.forEach((item: string) => { if (!newValue.includes(item)) newValue.push(item); });
       onChange(newValue);
     }
   };
 
-  // Check if category is selected
   const isCategorySelected = (option: any) => {
     const current = value || [];
     const allItemIds = option.items || [];
@@ -201,55 +99,36 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       {question.options.map((option: any) => {
         const isOpen = openDropdown === option.id;
         const isSelected = isCategorySelected(option);
-        const selectedCount = (value || []).filter((item: string) => 
-          option.items?.includes(item)
-        ).length;
+        const selectedCount = (value || []).filter((item: string) => option.items?.includes(item)).length;
         const totalItems = option.items?.length || 0;
 
         return (
-          <div key={option.id} className="border border-white/10 rounded-xl overflow-hidden bg-white/5">
-            {/* ===== DROPDOWN HEADER ===== */}
-            <button
-              onClick={() => toggleDropdown(option.id)}
-              className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/5 transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                {/* ✅ Category Checkbox */}
-                <input
-                  type="checkbox"
-                  checked={isSelected}
-                  onChange={() => toggleCategory(option)}
-                  className="w-4 h-4 text-cyan-500 focus:ring-cyan-500 rounded"
-                />
-                <span className="text-white text-sm font-medium">{option.label}</span>
-                {option.items && (
-                  <span className="text-[10px] text-gray-400">
-                    ({selectedCount}/{totalItems})
-                  </span>
-                )}
+          <div key={option.id} className={`border rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-md ${isSelected ? 'border-cyan-400/50 bg-white/10 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'}`}>
+            <button onClick={() => toggleDropdown(option.id)} className="w-full px-5 py-4 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className={`w-5 h-5 rounded-full flex items-center justify-center border transition-all ${isSelected ? 'bg-cyan-400 border-cyan-400' : 'border-white/30'}`}>
+                  {isSelected && <Check className="w-3.5 h-3.5 text-black" strokeWidth={3} />}
+                </div>
+                <span className={`text-[15px] font-medium ${isSelected ? 'text-white' : 'text-gray-200'}`}>{option.label}</span>
+                {option.items && <span className="text-xs text-cyan-200/70 bg-white/10 px-2.5 py-0.5 rounded-full">{selectedCount}/{totalItems}</span>}
               </div>
-              <div className="flex items-center gap-2">
-                {isSelected && (
-                  <span className="text-[10px] text-green-400">✓ Selected</span>
-                )}
-                <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-              </div>
+              <ChevronDown className={`w-4 h-4 text-gray-300 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
 
-            {/* ===== DROPDOWN CONTENT (Items - Read Only) ===== */}
             {isOpen && option.items && (
-              <div className="px-4 pb-3 space-y-0.5 border-t border-white/5 pt-2">
-                {option.items.map((item: string, idx: number) => (
-                  <div key={idx} className="flex items-center gap-2 py-0.5 px-2">
-                    {/* ✅ NO CHECKBOX - Sirf bullet point */}
-                    <span className="text-xs text-gray-400">•</span>
-                    <span className="text-xs text-gray-300">{item}</span>
-                  </div>
-                ))}
+              <div className="px-5 pb-4 border-t border-white/10 pt-3 bg-black/20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {option.items.map((item: string, idx: number) => (
+                    <div key={idx} className="flex items-center gap-2 py-2 px-3 rounded-xl bg-white/5 border border-white/5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      <span className="text-xs text-gray-300">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -259,62 +138,33 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
   );
 };
 
-// ===== RADIO GROUP QUESTION WITH SQUARE + CIRCLE SHAPES (Buttons Aage) =====
+// ============================================================
+// ===== RADIO GROUP QUESTION =====
+// ============================================================
 const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   const handleChange = (subId: string, val: string) => {
-    const current = value || {};
-    onChange({ ...current, [subId]: val });
+    onChange({ ...(value || {}), [subId]: val });
   };
 
   return (
     <div className="space-y-3">
       {question.subOptions.map((sub: any) => (
-        <div key={sub.id} className="flex items-center gap-4 p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-          {/* ✅ BUTTONS PEHLE - Square + Circle */}
-          <div className="flex items-center gap-4 flex-shrink-0">
-            {/* YES - SQUARE */}
-            <button
-              onClick={() => handleChange(sub.id, 'Yes')}
-              className="flex flex-col items-center gap-1 group"
-              title="Select Yes (Square)"
-            >
-              <div className={`w-8 h-8 rounded-md border-2 flex items-center justify-center transition-all ${
-                (value || {})[sub.id] === 'Yes'
-                  ? 'bg-green-600 border-green-400 shadow-lg shadow-green-500/30'
-                  : 'border-gray-500 hover:border-green-400 bg-white/5'
-              }`}>
-                {(value || {})[sub.id] === 'Yes' && (
-                  <span className="text-white text-lg">✓</span>
-                )}
+        <div key={sub.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md transition-all">
+          <span className="text-sm text-gray-200 font-medium">{sub.label}</span>
+          <div className="flex items-center gap-3">
+            <button onClick={() => handleChange(sub.id, 'Yes')} className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all backdrop-blur-md ${(value || {})[sub.id] === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]' : 'border-white/10 text-gray-400 hover:bg-white/10'}`}>
+              <div className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center ${(value || {})[sub.id] === 'Yes' ? 'bg-emerald-400 border-emerald-400' : 'border-gray-500'}`}>
+                {(value || {})[sub.id] === 'Yes' && <Check className="w-2.5 h-2.5 text-black" strokeWidth={4} />}
               </div>
-              <span className={`text-[10px] ${(value || {})[sub.id] === 'Yes' ? 'text-green-400' : 'text-gray-500'}`}>
-                Yes
-              </span>
+              Yes
             </button>
-
-            {/* PARTIAL - CIRCLE */}
-            <button
-              onClick={() => handleChange(sub.id, 'Partial')}
-              className="flex flex-col items-center gap-1 group"
-              title="Select Partial (Circle)"
-            >
-              <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${
-                (value || {})[sub.id] === 'Partial'
-                  ? 'bg-yellow-600 border-yellow-400 shadow-lg shadow-yellow-500/30'
-                  : 'border-gray-500 hover:border-yellow-400 bg-white/5'
-              }`}>
-                {(value || {})[sub.id] === 'Partial' && (
-                  <span className="w-2 h-2 bg-white rounded-full" />
-                )}
+            <button onClick={() => handleChange(sub.id, 'Partial')} className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all backdrop-blur-md ${(value || {})[sub.id] === 'Partial' ? 'bg-yellow-500/20 border-yellow-400/50 text-yellow-300 shadow-[0_0_15px_rgba(234,179,8,0.2)]' : 'border-white/10 text-gray-400 hover:bg-white/10'}`}>
+              <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${(value || {})[sub.id] === 'Partial' ? 'bg-yellow-400 border-yellow-400' : 'border-gray-500'}`}>
+                {(value || {})[sub.id] === 'Partial' && <div className="w-1.5 h-1.5 bg-black rounded-full" />}
               </div>
-              <span className={`text-[10px] ${(value || {})[sub.id] === 'Partial' ? 'text-yellow-400' : 'text-gray-500'}`}>
-                Partial
-              </span>
+              Partial
             </button>
           </div>
-
-          {/* ✅ LABEL BAAD MEIN */}
-          <span className="text-sm text-white flex-1">{sub.label}</span>
         </div>
       ))}
     </div>
@@ -324,20 +174,10 @@ const RadioGroupQuestion = ({ question, value, onChange }: any) => {
 // ============================================================
 // ===== YES/NO QUESTION =====
 // ============================================================
-const YesNoQuestion = ({ question, value, onChange }: any) => (
-  <div className="flex gap-4">
+const YesNoQuestion = ({ value, onChange }: any) => (
+  <div className="grid grid-cols-2 gap-4">
     {['Yes', 'No'].map((option) => (
-      <button
-        key={option}
-        onClick={() => onChange(option)}
-        className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
-          value === option
-            ? option === 'Yes'
-              ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
-              : 'bg-red-700 text-white border border-red-500 shadow-lg shadow-red-500/30'
-            : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
-        }`}
-      >
+      <button key={option} onClick={() => onChange(option)} className={`py-4 rounded-2xl border text-[15px] font-bold transition-all backdrop-blur-md ${value === option ? (option === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.15)]' : 'bg-rose-500/20 border-rose-400/50 text-rose-300 shadow-[0_0_20px_rgba(244,63,94,0.15)]') : 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30 hover:bg-white/10'}`}>
         {option}
       </button>
     ))}
@@ -351,59 +191,33 @@ const ConditionalQuestion = ({ question, value, onChange }: any) => {
   const mainValue = value?.main || '';
   const subValue = value?.sub || {};
 
-  const handleMainChange = (val: string) => {
-    onChange({ main: val, sub: {} });
-  };
-
-  const handleSubChange = (subId: string, val: string) => {
-    onChange({ main: mainValue, sub: { ...subValue, [subId]: val } });
-  };
-
   return (
     <div className="space-y-4">
-      <div className="flex gap-4">
+      <div className="grid grid-cols-2 gap-4">
         {['Yes', 'No'].map((option) => (
-          <button
-            key={option}
-            onClick={() => handleMainChange(option)}
-            className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
-              mainValue === option
-                ? option === 'Yes'
-                  ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
-                  : 'bg-red-700 text-white border border-red-500 shadow-lg shadow-red-500/30'
-                : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
-            }`}
-          >
+          <button key={option} onClick={() => onChange({ main: option, sub: {} })} className={`py-4 rounded-2xl border text-[15px] font-bold transition-all backdrop-blur-md ${mainValue === option ? (option === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.15)]' : 'bg-rose-500/20 border-rose-400/50 text-rose-300 shadow-[0_0_20px_rgba(244,63,94,0.15)]') : 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30 hover:bg-white/10'}`}>
             {option}
           </button>
         ))}
       </div>
-      {mainValue === 'Yes' && (
-        <div className="space-y-3 ml-4 border-l-2 border-white/10 pl-4">
-          {question.subOptions.map((sub: any) => (
-            <div key={sub.id} className="flex items-center gap-4 p-2 rounded-lg bg-white/5 border border-white/10">
-              <span className="text-sm text-white flex-1">{sub.label}</span>
-              <div className="flex gap-2">
-                {['Yes', 'Partial'].map((option) => (
-                  <button
-                    key={option}
-                    onClick={() => handleSubChange(sub.id, option)}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                      (subValue || {})[sub.id] === option
-                        ? option === 'Yes'
-                          ? 'bg-green-700 text-white border border-green-500 shadow-lg shadow-green-500/30'
-                          : 'bg-yellow-700 text-white border border-yellow-500 shadow-lg shadow-yellow-500/30'
-                        : 'bg-white/10 text-gray-400 hover:bg-white/20 border border-white/10'
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
+      <AnimatePresence>
+        {mainValue === 'Yes' && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="space-y-3 pt-2">
+            {question.subOptions.map((sub: any) => (
+              <div key={sub.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                <span className="text-sm text-gray-200">{sub.label}</span>
+                <div className="flex gap-2">
+                  {['Yes', 'Partial'].map((option) => (
+                    <button key={option} onClick={() => onChange({ main: mainValue, sub: { ...subValue, [sub.id]: option } })} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${(subValue || {})[sub.id] === option ? (option === 'Yes' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/50' : 'bg-yellow-500/20 text-yellow-300 border border-yellow-400/50') : 'text-gray-400 border border-transparent hover:bg-white/10'}`}>
+                      {option}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -413,393 +227,201 @@ const ConditionalQuestion = ({ question, value, onChange }: any) => {
 // ============================================================
 const QuestionCard = ({ question, value, onChange }: any) => {
   let content;
-  
   switch (question.type) {
-    case 'checkbox':
-      content = <CheckboxQuestion question={question} value={value} onChange={onChange} />;
-      break;
-    case 'radio-group':
-      content = <RadioGroupQuestion question={question} value={value} onChange={onChange} />;
-      break;
-    case 'yes-no':
-      content = <YesNoQuestion question={question} value={value} onChange={onChange} />;
-      break;
-    case 'conditional':
-      content = <ConditionalQuestion question={question} value={value} onChange={onChange} />;
-      break;
-    default:
-      content = null;
+    case 'checkbox': content = <CheckboxQuestion question={question} value={value} onChange={onChange} />; break;
+    case 'radio-group': content = <RadioGroupQuestion question={question} value={value} onChange={onChange} />; break;
+    case 'yes-no': content = <YesNoQuestion question={question} value={value} onChange={onChange} />; break;
+    case 'conditional': content = <ConditionalQuestion question={question} value={value} onChange={onChange} />; break;
+    default: content = null;
   }
 
   return (
-    <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-5 h-full">
-      <div className="flex items-start gap-3">
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-xs font-semibold text-blue-400">
-          {question.id}
+    <div className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-6 sm:p-10 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+      <div className="mb-8">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-[11px] font-bold uppercase tracking-wider text-cyan-300 mb-5">
+          <Sparkles className="w-3.5 h-3.5" /> Question {question.id}
         </div>
-        <div className="flex-1">
-          <h4 className="text-sm font-semibold text-white mb-1">{question.text}</h4>
-          
-          {/* ✅ STYLED DESCRIPTION - Colorful & Bold */}
-          {question.description && (
-            <div className="mb-3 p-2 rounded-lg bg-white/5 border border-white/10">
-              {question.description === 'Select Square for Yes, Circle for Partial' ? (
-                <div className="flex items-center gap-3 flex-wrap text-xs">
+        <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow-sm">{question.text}</h3>
+        
+        {question.description && (
+          <div className="mt-4 p-3.5 rounded-xl bg-white/5 border border-white/10 text-sm text-gray-300 backdrop-blur-md">
+             {question.description === 'Select Square for Yes, Circle for Partial' ? (
+                <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-gray-400">Select:</span>
-                  <span className="flex items-center gap-1.5 bg-green-500/20 px-2 py-0.5 rounded-full border border-green-500/30">
-                    <span className="w-3 h-3 rounded-sm bg-green-500 inline-block" />
-                    <span className="text-green-400 font-bold">Square</span>
-                    <span className="text-white">=</span>
-                    <span className="text-white font-bold">Yes</span>
-                  </span>
+                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold"><div className="w-3 h-3 rounded-sm bg-emerald-400" /> Square = Yes</span>
                   <span className="text-gray-600">|</span>
-                  <span className="flex items-center gap-1.5 bg-yellow-500/20 px-2 py-0.5 rounded-full border border-yellow-500/30">
-                    <span className="w-3 h-3 rounded-full bg-yellow-500 inline-block" />
-                    <span className="text-yellow-400 font-bold">Circle</span>
-                    <span className="text-white">=</span>
-                    <span className="text-white font-bold">Partial</span>
-                  </span>
+                  <span className="flex items-center gap-1.5 text-yellow-400 font-bold"><div className="w-3 h-3 rounded-full bg-yellow-400" /> Circle = Partial</span>
                 </div>
               ) : (
-                <span className="text-gray-400 text-xs">{question.description}</span>
+                question.description
               )}
-            </div>
-          )}
-          
-          {content}
-        </div>
+          </div>
+        )}
       </div>
+      {content}
     </div>
   );
 };
 
 // ============================================================
-// ===== RESULT SECTION WITH 3D PIE CHART =====
+// ===== RESULT SECTION =====
 // ============================================================
 const ResultSection = ({ answers, onReset }: any) => {
-  const [showEmailForm, setShowEmailForm] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [consent, setConsent] = useState(false); // ✅ NEW
-  const [formError, setFormError] = useState<string | null>(null); // ✅ NEW
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    designation: '',
-  });
+  const [consent, setConsent] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', designation: '' });
 
   const score = getOverallScore(answers);
   const risk = getRiskLevel(score);
   const categoryScores = getCategoryScores(answers);
-  const allQuestions = getAllQuestions();
-  const totalQuestions = allQuestions.length;
-
-  let answeredCount = 0;
-  allQuestions.forEach(q => {
-    if (answers[q.id] !== undefined) {
-      const answer = answers[q.id];
-      if (typeof answer === 'object') {
-        if (Object.keys(answer).length > 0) answeredCount++;
-      } else if (answer !== undefined && answer !== null && answer !== '') {
-        answeredCount++;
-      }
-    }
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (formError) setFormError(null);
-  };
 
   const handleSubmitReport = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // ✅ Consent validation
-    if (!consent) {
-      setFormError('Please agree to the Consent Notice and Privacy Policy to proceed.');
-      return;
-    }
-    
-    setFormError(null);
+    if (!consent) return setFormError('Please agree to the Consent Notice and Privacy Policy to proceed.');
+    setFormError(null); 
     setIsSubmitting(true);
 
     try {
       const response = await fetch('/api/score-report', {
-        method: 'POST',
+        method: 'POST', 
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          score,
-          riskLevel: risk.label,
-          categoryScores,
-          answers,
-          consent: consent,                                    // ✅ NEW
-          consentTimestamp: new Date().toISOString(),          // ✅ NEW
+        body: JSON.stringify({ 
+          ...formData, 
+          score, 
+          riskLevel: risk.label, 
+          categoryScores, 
+          answers, 
+          consent, 
+          consentTimestamp: new Date().toISOString() 
         }),
       });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        setShowEmailForm(false);
-        setConsent(false);                                     // ✅ NEW
+      
+      if (response.ok) { 
+        setIsSubmitted(true); 
+        setConsent(false); 
+      } else {
+        setFormError('Server error. Please try again.');
       }
-    } catch (error) {
-      console.error('Error submitting report:', error);
-      setFormError('Something went wrong. Please try again.');
+    } catch (error) { 
+      setFormError('Something went wrong. Please try again.'); 
     }
+    
     setIsSubmitting(false);
   };
 
-  // ===== SUBMITTED STATE =====
   if (isSubmitted) {
     return (
-      <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+      <main className="min-h-screen text-white px-4 relative overflow-hidden pt-[140px] pb-16 flex items-center justify-center">
         <Background />
-        <div className="max-w-4xl mx-auto bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-8 text-center relative z-10">
-          <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-2">Report Sent! ✅</h2>
-          <p className="text-gray-300 mb-4">
-            Your detailed Privacy & AI Governance Readiness Report has been sent to <strong>{formData.email}</strong>
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={onReset}
-              className="px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-            >
-              <ArrowLeft className="w-5 h-5" />
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-lg w-full bg-white/[0.03] border border-white/10 rounded-[2rem] p-10 text-center backdrop-blur-2xl relative z-10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-400/30">
+            <CheckCircle className="w-10 h-10 text-emerald-400" />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Report Sent Successfully!</h2>
+          <p className="text-gray-300 mb-8">Your detailed report has been sent to <span className="text-white font-medium">{formData.email}</span></p>
+          <div className="flex flex-col gap-3">
+            <button onClick={onReset} className="w-full px-6 py-3.5 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]">
               Retake Assessment
             </button>
-            <Link
-              href="/"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2"
-            >
+            <Link href="/" className="w-full px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all text-center">
               Back to Home
             </Link>
           </div>
-        </div>
+        </motion.div>
       </main>
     );
   }
 
-  // ===== EMAIL FORM STATE =====
-  if (showEmailForm) {
-    return (
-      <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-        <Background />
-        
-        <div className="max-w-4xl mx-auto relative z-10">
-          {/* ===== 3D PIE CHART ===== */}
-          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 mb-6">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-              <PieChart3D answered={answeredCount} total={totalQuestions} />
-              <div>
-                <h3 className="text-lg font-semibold text-white">Assessment Progress</h3>
-                <p className="text-sm text-gray-400">{answeredCount} of {totalQuestions} questions answered</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
-            <div className="text-center mb-6">
-              <div className="text-6xl font-bold text-white mb-2">{score}%</div>
-              <div className="flex items-center justify-center gap-3">
-                <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
-                  {risk.emoji} {risk.label}
-                </span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-              {categoryScores.slice(0, 4).map((cat: any, idx: number) => (
-                <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
-                  <p className="text-xs text-gray-400">{cat.name}</p>
-                  <p className="text-lg font-bold text-white">{cat.score}%</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mb-6">
-              <h4 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center gap-2">
-                <AlertCircle className="w-4 h-4" />
-                Priority Areas
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {categoryScores.filter((cat: any) => cat.score < 60).map((cat: any, idx: number) => (
-                  <span key={idx} className="text-xs px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
-                    {cat.name}
-                  </span>
-                ))}
-                {categoryScores.filter((cat: any) => cat.score < 60).length === 0 && (
-                  <span className="text-xs text-green-400">✨ All areas are well-covered!</span>
-                )}
-              </div>
-            </div>
-
-            <div className="bg-white/5 border border-white/20 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                <Mail className="w-5 h-5 text-cyan-400" />
-                Get Your Detailed Report
-              </h3>
-              <p className="text-sm text-gray-400 mb-4">
-                Enter your details to receive a comprehensive readiness report with personalised recommendations.
-              </p>
-              <form onSubmit={handleSubmitReport} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm text-gray-300 mb-1">Full Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="John Doe"
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-gray-300 mb-1">Email Address *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="john@company.com"
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm text-gray-300 mb-1">Company Name</label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      placeholder="Your Company"
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm text-gray-300 mb-1">Designation</label>
-                    <input
-                      type="text"
-                      name="designation"
-                      value={formData.designation}
-                      onChange={handleInputChange}
-                      placeholder="e.g., Privacy Officer"
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
-                    />
-                  </div>
-                </div>
-
-                {/* ✅ CONSENT CHECKBOX */}
-                <ConsentCheckbox
-                  id="scorecard-consent"
-                  checked={consent}
-                  onChange={(val) => {
-                    setConsent(val);
-                    if (formError) setFormError(null);
-                  }}
-                  error={formError || undefined}
-                />
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:scale-105 transition-all flex items-center justify-center gap-2 ${
-                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Generating Report...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Get My Detailed Report
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  // ===== INITIAL RESULT STATE =====
   return (
-    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
+    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-[140px] pb-16">
       <Background />
       
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* ===== 3D PIE CHART ===== */}
-        <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 mb-6">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <PieChart3D answered={answeredCount} total={totalQuestions} />
-            <div>
-              <h3 className="text-lg font-semibold text-white">Assessment Progress</h3>
-              <p className="text-sm text-gray-400">{answeredCount} of {totalQuestions} questions answered</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 md:p-8">
-          <div className="text-center mb-8">
-            <div className="text-6xl font-bold text-white mb-2">{score}%</div>
-            <div className="flex items-center justify-center gap-3">
-              <span className={`px-4 py-1.5 rounded-full border ${risk.bg} ${risk.border} ${risk.color} font-medium`}>
-                {risk.emoji} {risk.label}
-              </span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            {categoryScores.map((cat: any, idx: number) => {
-              const Icon = cat.icon;
-              return (
-                <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Icon className="w-4 h-4 text-cyan-400" />
-                    <span className="text-sm font-medium text-white">{cat.name}</span>
-                    <span className="ml-auto text-sm text-gray-400">{cat.score}%</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full rounded-full transition-all duration-500 ${
-                        cat.score >= 80 ? 'bg-green-400' : cat.score >= 50 ? 'bg-yellow-400' : 'bg-red-400'
-                      }`}
-                      style={{ width: `${cat.score}%` }}
-                    />
-                  </div>
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-start">
+          
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
+            <div className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 sm:p-10 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+              <h2 className="text-sm font-bold text-cyan-300 uppercase tracking-wider mb-8 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4" /> Overall Readiness
+              </h2>
+              <div className="flex flex-col sm:flex-row items-center gap-10">
+                <GlassScoreRing percentage={score} label={risk.label} color={score > 70 ? '#10b981' : score > 40 ? '#eab308' : '#f43f5e'} />
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-3xl font-bold text-white mb-3">{risk.emoji} {risk.label}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Based on your answers, your organization's privacy and AI governance readiness is currently at <strong className="text-white">{score}%</strong>.
+                  </p>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={() => setShowEmailForm(true)}
-              className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/30"
-            >
-              <Mail className="w-5 h-5" />
-              Get Detailed Report
-            </button>
-            <button
-              onClick={onReset}
-              className="flex-1 px-6 py-3 rounded-xl bg-white/10 border border-white/10 text-white font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Retake Assessment
-            </button>
-          </div>
+            <div className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+              <h3 className="text-lg font-bold text-white mb-6">Category Breakdown</h3>
+              <div className="space-y-6">
+                {categoryScores.map((cat: any, idx: number) => {
+                  const Icon = cat.icon || ShieldCheck;
+                  return (
+                    <div key={idx}>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <Icon className="w-4 h-4 text-gray-400" />
+                          <span className="text-sm font-medium text-gray-200">{cat.name}</span>
+                        </div>
+                        <span className="text-sm font-bold text-white">{cat.score}%</span>
+                      </div>
+                      <div className="w-full h-2 bg-black/40 rounded-full overflow-hidden border border-white/5">
+                        <motion.div 
+                          initial={{ width: 0 }} animate={{ width: `${cat.score}%` }} transition={{ duration: 1, delay: 0.2 + idx * 0.1 }}
+                          className={`h-full rounded-full ${cat.score >= 80 ? 'bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : cat.score >= 50 ? 'bg-yellow-400 shadow-[0_0_10px_rgba(234,179,8,0.5)]' : 'bg-rose-400 shadow-[0_0_10px_rgba(244,63,94,0.5)]'}`} 
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 backdrop-blur-2xl lg:sticky lg:top-28 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2.5 bg-cyan-400/10 rounded-xl border border-cyan-400/20"><Mail className="w-6 h-6 text-cyan-300" /></div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Get Detailed Report</h3>
+                <p className="text-xs text-gray-400 mt-1">Sent directly to your inbox.</p>
+              </div>
+            </div>
+            
+            <form onSubmit={handleSubmitReport} className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-400 mb-1.5">Full Name *</label>
+                <input type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10 text-white text-sm focus:border-cyan-400/50 outline-none transition-colors backdrop-blur-md" placeholder="John Doe" />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-400 mb-1.5">Work Email *</label>
+                <input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10 text-white text-sm focus:border-cyan-400/50 outline-none transition-colors backdrop-blur-md" placeholder="john@company.com" />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-gray-400 mb-1.5">Company</label>
+                  <input type="text" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10 text-white text-sm focus:border-cyan-400/50 outline-none transition-colors backdrop-blur-md" placeholder="Acme Corp" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-400 mb-1.5">Designation</label>
+                  <input type="text" value={formData.designation} onChange={e => setFormData({...formData, designation: e.target.value})} className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10 text-white text-sm focus:border-cyan-400/50 outline-none transition-colors backdrop-blur-md" placeholder="Privacy Officer" />
+                </div>
+              </div>
+
+              <div className="pt-3">
+                <ConsentCheckbox id="scorecard-consent" checked={consent} onChange={(val) => { setConsent(val); if (formError) setFormError(null); }} error={formError || undefined} />
+              </div>
+
+              <button type="submit" disabled={isSubmitting} className="w-full mt-4 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-70 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                {isSubmitting ? <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</> : <><Send className="w-5 h-5" /> Send Me My Report</>}
+              </button>
+            </form>
+          </motion.div>
         </div>
       </div>
     </main>
@@ -807,159 +429,108 @@ const ResultSection = ({ answers, onReset }: any) => {
 };
 
 // ============================================================
-// ===== MAIN PAGE =====
+// ===== MAIN PAGE (Step-by-Step Wizard) =====
 // ============================================================
 export default function ScorecardPage() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, any>>({});
   const [isComplete, setIsComplete] = useState(false);
-  const [stars, setStars] = useState<React.ReactNode[]>([]);
-
-  useEffect(() => {
-    const starElements = [];
-    for (let i = 0; i < 50; i++) {
-      starElements.push(
-        <div
-          key={i}
-          className="absolute w-0.5 h-0.5 bg-white rounded-full animate-twinkle"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 5}s`,
-            opacity: Math.random() * 0.5 + 0.1,
-          }}
-        />
-      );
-    }
-    setStars(starElements);
-  }, []);
 
   const allQuestions = getAllQuestions();
   const totalQuestions = allQuestions.length;
+  const currentQuestion = allQuestions[currentQuestionIndex];
 
-  const questionsPerPage = 4;
-  const pages = [];
-  for (let i = 0; i < allQuestions.length; i += questionsPerPage) {
-    pages.push(allQuestions.slice(i, i + questionsPerPage));
-  }
-  const totalPages = pages.length;
-  const currentQuestions = pages[currentPage] || [];
-
-  const handleAnswer = (questionId: number, value: any) => {
-    setAnswers(prev => ({ ...prev, [questionId]: value }));
+  const handleAnswer = (value: any) => {
+    setAnswers(prev => ({ ...prev, [currentQuestion.id]: value }));
   };
 
   const handleNext = () => {
-    if (currentPage < totalPages - 1) {
-      setCurrentPage(prev => prev + 1);
+    if (currentQuestionIndex < totalQuestions - 1) {
+      setCurrentQuestionIndex(prev => prev + 1);
     } else {
       setIsComplete(true);
     }
   };
 
   const handlePrevious = () => {
-    if (currentPage > 0) {
-      setCurrentPage(prev => prev - 1);
-    }
+    if (currentQuestionIndex > 0) setCurrentQuestionIndex(prev => prev - 1);
   };
 
   const handleReset = () => {
     setAnswers({});
-    setCurrentPage(0);
+    setCurrentQuestionIndex(0);
     setIsComplete(false);
   };
 
-  const getAnsweredCount = () => {
-    let count = 0;
-    allQuestions.forEach(q => {
-      if (answers[q.id] !== undefined) count++;
-    });
-    return count;
-  };
-
-  const progress = Math.round((getAnsweredCount() / totalQuestions) * 100);
+  const progress = Math.round(((currentQuestionIndex + 1) / totalQuestions) * 100);
 
   if (isComplete) {
     return <ResultSection answers={answers} onReset={handleReset} />;
   }
 
   return (
-    <main className="min-h-screen text-white px-4 relative overflow-hidden pt-28 md:pt-32 pb-16">
-      {/* ✅ IMAGE BACKGROUND */}
+    <main className="min-h-screen text-white relative overflow-hidden pt-[120px] pb-16 flex flex-col">
       <Background />
 
-      {/* Stars Effect */}
-      <div className="absolute inset-0 -z-10">{stars}</div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 group">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
-
-        <motion.div 
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-sm font-semibold text-blue-400 mb-4">
-            <FileText className="w-4 h-4" />
-            Compliance Assessment
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-2xl mb-2">
-            {scorecardData.title}
-          </h1>
-          <p className="text-gray-200 drop-shadow-lg">{scorecardData.subtitle}</p>
-        </motion.div>
-
-        <div className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-4 mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-300">
-              Page {currentPage + 1} of {totalPages} ({getAnsweredCount()}/{totalQuestions} answered)
-            </span>
-            <span className="text-sm font-semibold text-white">{progress}%</span>
-          </div>
-          <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            />
+      <div className="max-w-4xl w-full mx-auto px-4 sm:px-6 relative z-10 flex-1 flex flex-col">
+        
+        <div className="flex items-center justify-between mb-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors group text-sm bg-white/5 px-4 py-2 rounded-full backdrop-blur-md border border-white/10">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Home
+          </Link>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-xs font-semibold text-cyan-300 backdrop-blur-md">
+            <FileText className="w-3.5 h-3.5" /> DPDPA Assessment
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {currentQuestions.map((question) => (
-            <QuestionCard
-              key={question.id}
-              question={question}
-              value={answers[question.id]}
-              onChange={(val: any) => handleAnswer(question.id, val)}
-            />
-          ))}
+        <div className="mb-10 bg-white/[0.03] border border-white/10 rounded-3xl p-5 backdrop-blur-xl shadow-lg">
+          <div className="flex items-center justify-between mb-3 px-1">
+            <span className="text-xs font-medium text-gray-400">Assessment Progress</span>
+            <span className="text-xs font-bold text-cyan-300 bg-cyan-400/10 px-2 py-0.5 rounded-full">{progress}%</span>
+          </div>
+          <LiquidProgress progress={progress} />
         </div>
 
-        <div className="flex justify-between mt-4">
+        <div className="flex-1 flex flex-col justify-center w-full mx-auto pb-10">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentQuestionIndex}
+              initial={{ opacity: 0, y: 15, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.98 }}
+              transition={{ duration: 0.3 }}
+            >
+              <QuestionCard
+                question={currentQuestion}
+                value={answers[currentQuestion.id]}
+                onChange={handleAnswer}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="w-full mx-auto flex items-center justify-between pt-6 border-t border-white/10">
           <button
             onClick={handlePrevious}
-            disabled={currentPage === 0}
-            className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${
-              currentPage === 0
-                ? 'text-gray-600 cursor-not-allowed'
-                : 'text-gray-400 hover:text-white hover:bg-white/10'
+            disabled={currentQuestionIndex === 0}
+            className={`px-6 py-3.5 rounded-2xl flex items-center gap-2 text-sm font-medium transition-all backdrop-blur-md ${
+              currentQuestionIndex === 0 ? 'text-gray-600 cursor-not-allowed opacity-50' : 'text-gray-200 hover:text-white bg-white/5 border border-white/10 hover:bg-white/10 shadow-lg'
             }`}
           >
-            <ChevronLeft className="w-4 h-4" />
-            Previous
+            <ChevronLeft className="w-4 h-4" /> Previous
           </button>
-          <span className="text-sm text-gray-500">
-            {currentPage + 1} / {totalPages}
-          </span>
+          
+          <div className="flex gap-2">
+            {allQuestions.map((_, idx) => (
+              <div key={idx} className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentQuestionIndex ? 'w-6 bg-cyan-400' : idx < currentQuestionIndex ? 'w-1.5 bg-cyan-400/50' : 'w-1.5 bg-white/20'}`} />
+            ))}
+          </div>
+          
           <button
             onClick={handleNext}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-medium hover:scale-105 transition-all flex items-center gap-2"
+            className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-sm font-bold hover:scale-[1.02] transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(34,211,238,0.3)]"
           >
-            {currentPage === totalPages - 1 ? 'See Results' : 'Next'}
+            {currentQuestionIndex === totalQuestions - 1 ? 'See Results' : 'Next'}
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>

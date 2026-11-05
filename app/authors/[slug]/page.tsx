@@ -58,7 +58,7 @@ export default async function AuthorPage({
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
@@ -77,7 +77,7 @@ export default async function AuthorPage({
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
             {/* Photo */}
             <div className="flex-shrink-0">
-              <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-purple-500/40 shadow-2xl shadow-purple-500/20">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-cyan-500/40 shadow-2xl shadow-cyan-500/20">
                 <Image
                   src={author.image}
                   alt={author.name}
@@ -91,7 +91,7 @@ export default async function AuthorPage({
 
             {/* Info */}
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-3">
                 <UserCheck className="w-3 h-3" />
                 Author Profile
               </div>
@@ -295,7 +295,7 @@ export default async function AuthorPage({
         </section>
 
         {/* ===== CTA ===== */}
-        <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
+        <section className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
           <Shield className="w-10 h-10 text-cyan-400 mx-auto mb-3" />
           <h2 className="text-2xl font-bold text-white mb-3">
             Need help with DPDPA compliance?
@@ -308,7 +308,7 @@ export default async function AuthorPage({
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/contact"
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-all"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:scale-105 transition-all"
             >
               Talk to an Expert →
             </Link>

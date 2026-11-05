@@ -39,9 +39,9 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
         </div>
 
         {/* Nebula Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -123,7 +123,7 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
             [&_li]:text-[15px] [&_li]:md:text-base [&_li]:leading-7 [&_li]:text-gray-300
             [&_li]:pl-1
 
-            [&_blockquote]:border-l-4 [&_blockquote]:border-purple-500/60
+            [&_blockquote]:border-l-4 [&_blockquote]:border-cyan-500/60
             [&_blockquote]:bg-white/5 [&_blockquote]:px-5 [&_blockquote]:py-3
             [&_blockquote]:my-6 [&_blockquote]:rounded-r-lg
             [&_blockquote]:italic [&_blockquote]:text-gray-300
@@ -162,7 +162,7 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
                       <RelatedIcon className="w-3 h-3" />
                       {related.category}
                     </div>
-                    <h4 className="text-sm font-medium text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all line-clamp-2">
+                    <h4 className="text-sm font-medium text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all line-clamp-2">
                       {related.title}
                     </h4>
                     <div className="flex items-center gap-2 text-xs text-gray-300 mt-2">

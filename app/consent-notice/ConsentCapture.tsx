@@ -85,7 +85,7 @@ export default function ConsentCapture({ language }: { language: string }) {
   const getText = (obj: Record<string, string>) => obj[language] || obj["en"];
 
   return (
-    <section className="mt-10 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-cyan-500/30 rounded-xl p-6 relative">
+    <section className="mt-10 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-xl p-6 relative">
       <div className="flex items-start gap-3">
         <Shield className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" />
         <div className="flex-1">
@@ -101,7 +101,7 @@ export default function ConsentCapture({ language }: { language: string }) {
               id="consent-agree-notice"
               checked={isChecked}
               onChange={handleConsent}
-              className="w-4 h-4 mt-1 accent-purple-500 cursor-pointer"
+              className="w-4 h-4 mt-1 accent-cyan-500 cursor-pointer"
             />
             <label htmlFor="consent-agree-notice" className="text-sm text-gray-300 cursor-pointer">
               {getText(translations.agree)}
@@ -109,7 +109,7 @@ export default function ConsentCapture({ language }: { language: string }) {
           </div>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 border border-cyan-500/30 text-cyan-300 text-sm transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-300 text-sm transition-all"
           >
             {getText(translations.back)}
           </Link>

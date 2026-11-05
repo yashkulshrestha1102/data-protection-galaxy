@@ -57,7 +57,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
     }
   };
 
-  // ✅ PURPLE HATA KAR BLUE GRADIENT COLORS DAALE HAIN
+  // ✅ cyan HATA KAR BLUE GRADIENT COLORS DAALE HAIN
   const getFillColor = (countryId: string) => {
     const country = countries.find(c => c.id === countryId);
     if (!country) return "#0a1a2f"; // Default dark blue for unrecorded areas
@@ -140,7 +140,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
       {/* ===== TOOLTIP ===== */}
       {hoveredCountryData && (
         <div 
-          // ✅ Border changed to Cyan instead of Blue/Purple
+          // ✅ Border changed to Cyan instead of Blue/cyan
           className="absolute pointer-events-none z-50 px-3 py-1.5 bg-black/90 backdrop-blur-md border border-cyan-500/50 rounded-lg shadow-2xl text-xs text-white font-bold whitespace-nowrap flex items-center gap-2 transform -translate-x-1/2 -translate-y-[150%] transition-all duration-75 ease-out"
           style={{ left: tooltipPos.x, top: tooltipPos.y }}
         >

@@ -3598,7 +3598,7 @@ export default function ConsentNoticePage() {
                 <p className="text-gray-400 mb-4">This language is coming soon. Detailed legal sections are currently available in English, Hindi, and 20 other Indian languages.</p>
                 <button 
                   onClick={() => setLanguage("en")}
-                  className="px-6 py-2 bg-purple-500/20 text-cyan-300 border border-cyan-500/30 rounded-lg hover:bg-purple-500/30 transition-all"
+                  className="px-6 py-2 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-lg hover:bg-cyan-500/30 transition-all"
                 >
                   View in English
                 </button>

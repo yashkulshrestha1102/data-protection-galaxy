@@ -39,7 +39,7 @@ export default function DpdpaVsGdprPage() {
       
       <main className="min-h-screen text-white px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-[#0a0a0a]">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10">
@@ -122,7 +122,7 @@ export default function DpdpaVsGdprPage() {
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
+          <div className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">Need help with multi-jurisdictional compliance?</h2>
             <p className="text-gray-300 mb-6">Our experts can help you build a unified privacy program that covers both DPDPA and GDPR.</p>
             <Link href="/contact" className="px-6 py-3 rounded-xl bg-white text-black font-semibold hover:scale-105 transition-all inline-block">

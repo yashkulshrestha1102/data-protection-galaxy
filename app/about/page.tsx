@@ -106,9 +106,9 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
         
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
         
         {stars}
       </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* CEO Photo */}
             <div className="flex-shrink-0">
-              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-purple-500/30 shadow-2xl shadow-purple-500/20">
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-cyan-500/30 shadow-2xl shadow-cyan-500/20">
                 <Image
                   src="/images/profileoffounder.jpeg"
                   alt="Shilpi Kulshrestha - Founder, BusinezExcellence"
@@ -185,7 +185,7 @@ export default function AboutPage() {
 
             {/* CEO Info */}
             <div className="flex-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-3">
                 <Shield className="w-3 h-3" />
                 Founder & CEO
               </div>
@@ -219,7 +219,7 @@ export default function AboutPage() {
             className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-6"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
                 <Target className="w-5 h-5 text-cyan-400" />
               </div>
               <h3 className="text-xl font-semibold text-white">Our Vision</h3>
@@ -286,7 +286,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
                 className="bg-white/10 border border-white/20 rounded-2xl backdrop-blur-md p-5 hover:bg-white/20 transition-all hover:scale-105"
               >
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-3">
                   <Icon className="w-5 h-5 text-cyan-400" />
                 </div>
                 <h4 className="text-sm font-semibold text-white mb-2">{item.title}</h4>
@@ -358,7 +358,7 @@ export default function AboutPage() {
               >
                 <p className="text-sm text-gray-300 italic mb-3">"{testimonial.quote}"</p>
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
                     <Users className="w-4 h-4 text-cyan-400" />
                   </div>
                   <div>
@@ -382,7 +382,7 @@ export default function AboutPage() {
             <span className="text-gray-200">Want to know more about our services?</span>
             <Link 
               href="/contact"
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium hover:scale-105 transition-all shadow-lg shadow-purple-500/30"
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-medium hover:scale-105 transition-all shadow-lg shadow-cyan-500/30"
             >
               Contact Us
             </Link>

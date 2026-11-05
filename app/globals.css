@@ -82,7 +82,7 @@
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 180, 216, 0.3) rgba(255, 255, 255, 0.05); /* Fixed Purple to Blue */
+  scrollbar-color: rgba(0, 180, 216, 0.3) rgba(255, 255, 255, 0.05); /* Fixed cyan to Blue */
 }
 
 /* ===== SMOOTH SCROLLING ===== */

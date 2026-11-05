@@ -106,7 +106,19 @@ const getActionPlan = () => [
 
 export async function POST(request: Request) {
   try {
-    const { name, email, company, score, riskLevel } = await request.json();
+    // ✅ SAFE JSON PARSING
+    let body;
+    try {
+      body = await request.json();
+    } catch (err) {
+      return NextResponse.json({ success: false, message: 'Invalid JSON body' }, { status: 400 });
+    }
+
+    const { name, email, company, score, riskLevel } = body;
+
+    if (!email) {
+      return NextResponse.json({ success: false, message: 'Email is required' }, { status: 400 });
+    }
 
     const baseScore = score || 72;
     const maturity = getMaturityLevel(baseScore);
@@ -120,7 +132,7 @@ export async function POST(request: Request) {
 
     // ===== PDF DATA =====
     const pdfData = {
-      company: company || 'Not Provided',
+      company: company || 'Not Provided',  // ✅ Safe fallback
       score: baseScore,
       riskLevel: riskLevel || 'High',
       categoryScores: categories,
@@ -133,28 +145,23 @@ export async function POST(request: Request) {
       maturity: maturity,
     };
 
-    // ===== 1. PDF GENERATE KARO (Using dynamic import with eval approach) =====
+    // ===== 1. PDF GENERATE KARO =====
     let pdfBuffer: Buffer;
     
     try {
-      // Dynamic import for server-side PDF generation
       const { renderToBuffer } = await import('@react-pdf/renderer');
       const { PDFReport } = await import('@/components/generator/PDFReport');
       
-      // Create React element manually to avoid JSX parsing issues
       const pdfElement = PDFReport({ data: pdfData });
       pdfBuffer = await renderToBuffer(pdfElement);
     } catch (pdfError) {
       console.error('PDF Generation Error:', pdfError);
-      return NextResponse.json({ 
-        success: false, 
-        message: 'Failed to generate PDF' 
-      }, { status: 500 });
+      return NextResponse.json({ success: false, message: 'Failed to generate PDF' }, { status: 500 });
     }
 
     const pdfBase64 = pdfBuffer.toString('base64');
 
-    // ===== SIMPLE EMAIL BODY =====
+    // ===== EMAIL BODY =====
     const html = `
       <!DOCTYPE html>
       <html>
@@ -192,7 +199,7 @@ export async function POST(request: Request) {
 
     // ===== EMAIL WITH PDF ATTACHMENT =====
     const { data, error } = await resend.emails.send({
-      from: 'Legal Galaxy <office@dpdpa.businezexcellence.com>',
+      from: 'Legal Galaxy <shilpi.kulshrestha@businezexcellence.com>', 
       to: [email],
       subject: '📊 Your AI Governance Assessment Report',
       html: html,
@@ -206,7 +213,7 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error('Email error:', error);
-      return NextResponse.json({ success: false, message: 'Email failed' }, { status: 500 });
+      return NextResponse.json({ success: false, message: error.message }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });

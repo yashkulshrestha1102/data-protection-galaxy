@@ -154,7 +154,7 @@ export default function GrievanceRedressalPage() {
             </section>
 
             {/* Contact */}
-            <section className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-cyan-500/30 rounded-xl p-6">
+            <section className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-xl p-6">
               <h2 className="text-xl font-semibold text-white mb-3">Still Need Help?</h2>
               <p className="text-gray-300 mb-4">
                 For general inquiries (not grievances), you can contact us at:

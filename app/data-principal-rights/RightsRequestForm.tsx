@@ -96,7 +96,7 @@ export default function RightsRequestForm() {
             onChange={handleChange}
             required
             placeholder="Your full name"
-            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
           />
         </div>
         <div>
@@ -108,7 +108,7 @@ export default function RightsRequestForm() {
             onChange={handleChange}
             required
             placeholder="you@example.com"
-            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50"
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50"
           />
         </div>
       </div>
@@ -120,7 +120,7 @@ export default function RightsRequestForm() {
           value={formData.rightType}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/20 text-white focus:outline-none focus:border-purple-400/50"
+          className="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/20 text-white focus:outline-none focus:border-cyan-400/50"
         >
           <option value="">Select a right...</option>
           <option value="Access">Right to Access (Get a copy of my data)</option>
@@ -139,7 +139,7 @@ export default function RightsRequestForm() {
           required
           rows={4}
           placeholder="Please provide details about your request (e.g., which data you want deleted, what needs correction, etc.)"
-          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-purple-400/50 resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/50 resize-none"
         />
       </div>
 
@@ -156,7 +156,7 @@ export default function RightsRequestForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:scale-100"
+        className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:scale-100"
       >
         {isSubmitting ? (
           <><Loader2 className="w-5 h-5 animate-spin" /> Submitting...</>

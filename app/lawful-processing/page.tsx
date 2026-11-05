@@ -197,7 +197,7 @@ export default function LawfulProcessingPage() {
       icon: Briefcase,
       title: 'Legitimate Use: Employment Records',
       desc: 'An employer processes employee data for payroll, benefits, and verification. This is a legitimate use under Section 7(f) � employment purposes � and does not require fresh consent.',
-      color: 'purple',
+      color: 'cyan',
     },
     {
       icon: XCircle,
@@ -293,9 +293,9 @@ export default function LawfulProcessingPage() {
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
@@ -645,8 +645,8 @@ export default function LawfulProcessingPage() {
                       ? 'bg-green-500/5 border-green-500/20'
                       : ex.color === 'red'
                       ? 'bg-red-500/5 border-red-500/20'
-                      : ex.color === 'purple'
-                      ? 'bg-purple-500/5 border-cyan-500/20'
+                      : ex.color === 'cyan'
+                      ? 'bg-cyan-500/5 border-cyan-500/20'
                       : 'bg-blue-500/5 border-blue-500/20'
                   }`}
                 >
@@ -659,7 +659,7 @@ export default function LawfulProcessingPage() {
                           ? 'text-green-400'
                           : ex.color === 'red'
                           ? 'text-red-400'
-                          : ex.color === 'purple'
+                          : ex.color === 'cyan'
                           ? 'text-cyan-400'
                           : 'text-blue-400'
                       }`}

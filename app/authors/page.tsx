@@ -46,7 +46,7 @@ export default function AuthorsPage() {
               className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-cyan-500/30 transition-all"
             >
               <div className="flex items-center gap-4">
-                <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-purple-500/40 flex-shrink-0">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-cyan-500/40 flex-shrink-0">
                   <Image
                     src={author.image}
                     alt={author.name}
