@@ -17,7 +17,7 @@ import { ConsentCheckbox } from '@/components/ui/ConsentCheckbox';
 const Background = () => {
   return (
     <div className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[12px]" />
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[12px]" />
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-400/20 rounded-full blur-[120px] mix-blend-screen" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] mix-blend-screen" />
     </div>
@@ -28,15 +28,13 @@ const Background = () => {
 // ===== LIQUID PROGRESS BAR =====
 // ============================================================
 const LiquidProgress = ({ progress }: { progress: number }) => (
-  <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-md border border-white/5 shadow-inner">
+  <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden backdrop-blur-md border border-white/5 shadow-inner">
     <motion.div 
       className="h-full bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-400 rounded-full relative"
       initial={{ width: 0 }}
       animate={{ width: `${progress}%` }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      <div className="absolute inset-0 bg-white/20 rounded-full" style={{ maskImage: 'linear-gradient(to bottom, white, transparent)' }} />
-    </motion.div>
+    />
   </div>
 );
 
@@ -50,11 +48,11 @@ const GlassScoreRing = ({ percentage, label, color = "#22d3ee" }: { percentage: 
 
   return (
     <div className="relative flex flex-col items-center justify-center p-4">
-      <svg width="160" height="160" className="transform -rotate-90 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
-        <circle cx="80" cy="80" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="12" fill="transparent" />
+      <svg width="140" height="140" className="transform -rotate-90 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+        <circle cx="70" cy="70" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="10" fill="transparent" />
         <motion.circle 
-          cx="80" cy="80" r={radius} 
-          stroke={color} strokeWidth="12" fill="transparent" 
+          cx="70" cy="70" r={radius} 
+          stroke={color} strokeWidth="10" fill="transparent" 
           strokeDasharray={circumference} 
           initial={{ strokeDashoffset: circumference }}
           animate={{ strokeDashoffset }} 
@@ -63,15 +61,15 @@ const GlassScoreRing = ({ percentage, label, color = "#22d3ee" }: { percentage: 
         />
       </svg>
       <div className="absolute flex flex-col items-center justify-center">
-        <span className="text-4xl font-extrabold text-white drop-shadow-md">{percentage}%</span>
-        <span className="text-[11px] font-bold uppercase tracking-widest text-cyan-300 mt-1">{label}</span>
+        <span className="text-3xl font-extrabold text-white drop-shadow-md">{percentage}%</span>
+        <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-300 mt-0.5">{label}</span>
       </div>
     </div>
   );
 };
 
 // ============================================================
-// ===== CHECKBOX QUESTION (Glass Style) =====
+// ===== CHECKBOX QUESTION (Fixed Checkbox) =====
 // ============================================================
 const CheckboxQuestion = ({ question, value, onChange }: any) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -99,7 +97,7 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       {question.options.map((option: any) => {
         const isOpen = openDropdown === option.id;
         const isSelected = isCategorySelected(option);
@@ -107,24 +105,53 @@ const CheckboxQuestion = ({ question, value, onChange }: any) => {
         const totalItems = option.items?.length || 0;
 
         return (
-          <div key={option.id} className={`border rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-md ${isSelected ? 'border-cyan-400/50 bg-white/10 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'}`}>
-            <button onClick={() => toggleDropdown(option.id)} className="w-full px-5 py-4 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className={`w-5 h-5 rounded-full flex items-center justify-center border transition-all ${isSelected ? 'bg-cyan-400 border-cyan-400' : 'border-white/30'}`}>
+          <div key={option.id} className={`border rounded-xl overflow-hidden transition-all duration-300 backdrop-blur-md ${isSelected ? 'border-cyan-400/50 bg-white/10' : 'border-white/10 bg-white/5 hover:border-white/20'}`}>
+            {/* Header - Checkbox on left, click to expand on right */}
+            <div className="flex items-center justify-between px-3 py-2.5">
+              <div className="flex items-center gap-3">
+                {/* ✅ FIXED: Separate Checkbox button */}
+                <button 
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); toggleCategory(option); }}
+                  className={`w-5 h-5 rounded flex items-center justify-center border transition-all ${isSelected ? 'bg-cyan-400 border-cyan-400' : 'border-white/30 hover:border-white/50'}`}
+                >
                   {isSelected && <Check className="w-3.5 h-3.5 text-black" strokeWidth={3} />}
-                </div>
-                <span className={`text-[15px] font-medium ${isSelected ? 'text-white' : 'text-gray-200'}`}>{option.label}</span>
-                {option.items && <span className="text-xs text-cyan-200/70 bg-white/10 px-2.5 py-0.5 rounded-full">{selectedCount}/{totalItems}</span>}
+                </button>
+                
+                {/* Clickable Label (Opens Dropdown) */}
+                <button 
+                  type="button"
+                  onClick={() => toggleDropdown(option.id)}
+                  className="flex items-center gap-2 text-left"
+                >
+                  <span className={`text-sm font-medium ${isSelected ? 'text-white' : 'text-gray-200'}`}>
+                    {option.label}
+                  </span>
+                  {option.items && (
+                    <span className="text-[10px] text-cyan-200/70 bg-white/10 px-2 py-0.5 rounded-full">
+                      {selectedCount}/{totalItems}
+                    </span>
+                  )}
+                </button>
               </div>
-              <ChevronDown className={`w-4 h-4 text-gray-300 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-            </button>
+              
+              {/* Chevron Button */}
+              <button 
+                type="button"
+                onClick={() => toggleDropdown(option.id)}
+                className="p-1"
+              >
+                <ChevronDown className={`w-4 h-4 text-gray-300 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
 
+            {/* Dropdown Items */}
             {isOpen && option.items && (
-              <div className="px-5 pb-4 border-t border-white/10 pt-3 bg-black/20">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="px-3 pb-3 border-t border-white/10 pt-2 bg-black/20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                   {option.items.map((item: string, idx: number) => (
-                    <div key={idx} className="flex items-center gap-2 py-2 px-3 rounded-xl bg-white/5 border border-white/5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    <div key={idx} className="flex items-center gap-2 py-1.5 px-2.5 rounded-lg bg-white/5 border border-white/5">
+                      <div className="w-1 h-1 rounded-full bg-cyan-400" />
                       <span className="text-xs text-gray-300">{item}</span>
                     </div>
                   ))}
@@ -147,20 +174,20 @@ const RadioGroupQuestion = ({ question, value, onChange }: any) => {
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       {question.subOptions.map((sub: any) => (
-        <div key={sub.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md transition-all">
+        <div key={sub.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md transition-all">
           <span className="text-sm text-gray-200 font-medium">{sub.label}</span>
-          <div className="flex items-center gap-3">
-            <button onClick={() => handleChange(sub.id, 'Yes')} className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all backdrop-blur-md ${(value || {})[sub.id] === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]' : 'border-white/10 text-gray-400 hover:bg-white/10'}`}>
-              <div className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center ${(value || {})[sub.id] === 'Yes' ? 'bg-emerald-400 border-emerald-400' : 'border-gray-500'}`}>
-                {(value || {})[sub.id] === 'Yes' && <Check className="w-2.5 h-2.5 text-black" strokeWidth={4} />}
+          <div className="flex items-center gap-2">
+            <button onClick={() => handleChange(sub.id, 'Yes')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[11px] font-semibold transition-all ${(value || {})[sub.id] === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300' : 'border-white/10 text-gray-400 hover:bg-white/10'}`}>
+              <div className={`w-3 h-3 rounded-sm border flex items-center justify-center ${(value || {})[sub.id] === 'Yes' ? 'bg-emerald-400 border-emerald-400' : 'border-gray-500'}`}>
+                {(value || {})[sub.id] === 'Yes' && <Check className="w-2 h-2 text-black" strokeWidth={4} />}
               </div>
               Yes
             </button>
-            <button onClick={() => handleChange(sub.id, 'Partial')} className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all backdrop-blur-md ${(value || {})[sub.id] === 'Partial' ? 'bg-yellow-500/20 border-yellow-400/50 text-yellow-300 shadow-[0_0_15px_rgba(234,179,8,0.2)]' : 'border-white/10 text-gray-400 hover:bg-white/10'}`}>
-              <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${(value || {})[sub.id] === 'Partial' ? 'bg-yellow-400 border-yellow-400' : 'border-gray-500'}`}>
-                {(value || {})[sub.id] === 'Partial' && <div className="w-1.5 h-1.5 bg-black rounded-full" />}
+            <button onClick={() => handleChange(sub.id, 'Partial')} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[11px] font-semibold transition-all ${(value || {})[sub.id] === 'Partial' ? 'bg-yellow-500/20 border-yellow-400/50 text-yellow-300' : 'border-white/10 text-gray-400 hover:bg-white/10'}`}>
+              <div className={`w-3 h-3 rounded-full border flex items-center justify-center ${(value || {})[sub.id] === 'Partial' ? 'bg-yellow-400 border-yellow-400' : 'border-gray-500'}`}>
+                {(value || {})[sub.id] === 'Partial' && <div className="w-1 h-1 bg-black rounded-full" />}
               </div>
               Partial
             </button>
@@ -175,9 +202,9 @@ const RadioGroupQuestion = ({ question, value, onChange }: any) => {
 // ===== YES/NO QUESTION =====
 // ============================================================
 const YesNoQuestion = ({ value, onChange }: any) => (
-  <div className="grid grid-cols-2 gap-4">
+  <div className="grid grid-cols-2 gap-3">
     {['Yes', 'No'].map((option) => (
-      <button key={option} onClick={() => onChange(option)} className={`py-4 rounded-2xl border text-[15px] font-bold transition-all backdrop-blur-md ${value === option ? (option === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.15)]' : 'bg-rose-500/20 border-rose-400/50 text-rose-300 shadow-[0_0_20px_rgba(244,63,94,0.15)]') : 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30 hover:bg-white/10'}`}>
+      <button key={option} onClick={() => onChange(option)} className={`py-3 rounded-xl border text-sm font-bold transition-all backdrop-blur-md ${value === option ? (option === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300' : 'bg-rose-500/20 border-rose-400/50 text-rose-300') : 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30 hover:bg-white/10'}`}>
         {option}
       </button>
     ))}
@@ -192,23 +219,23 @@ const ConditionalQuestion = ({ question, value, onChange }: any) => {
   const subValue = value?.sub || {};
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+    <div className="space-y-3">
+      <div className="grid grid-cols-2 gap-3">
         {['Yes', 'No'].map((option) => (
-          <button key={option} onClick={() => onChange({ main: option, sub: {} })} className={`py-4 rounded-2xl border text-[15px] font-bold transition-all backdrop-blur-md ${mainValue === option ? (option === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.15)]' : 'bg-rose-500/20 border-rose-400/50 text-rose-300 shadow-[0_0_20px_rgba(244,63,94,0.15)]') : 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30 hover:bg-white/10'}`}>
+          <button key={option} onClick={() => onChange({ main: option, sub: {} })} className={`py-3 rounded-xl border text-sm font-bold transition-all backdrop-blur-md ${mainValue === option ? (option === 'Yes' ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300' : 'bg-rose-500/20 border-rose-400/50 text-rose-300') : 'bg-white/5 border-white/10 text-gray-300 hover:border-white/30'}`}>
             {option}
           </button>
         ))}
       </div>
       <AnimatePresence>
         {mainValue === 'Yes' && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="space-y-3 pt-2">
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="space-y-2 pt-1">
             {question.subOptions.map((sub: any) => (
-              <div key={sub.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <div key={sub.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-xl bg-white/5 border border-white/10">
                 <span className="text-sm text-gray-200">{sub.label}</span>
                 <div className="flex gap-2">
                   {['Yes', 'Partial'].map((option) => (
-                    <button key={option} onClick={() => onChange({ main: mainValue, sub: { ...subValue, [sub.id]: option } })} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${(subValue || {})[sub.id] === option ? (option === 'Yes' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/50' : 'bg-yellow-500/20 text-yellow-300 border border-yellow-400/50') : 'text-gray-400 border border-transparent hover:bg-white/10'}`}>
+                    <button key={option} onClick={() => onChange({ main: mainValue, sub: { ...subValue, [sub.id]: option } })} className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold transition-all ${(subValue || {})[sub.id] === option ? (option === 'Yes' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/50' : 'bg-yellow-500/20 text-yellow-300 border border-yellow-400/50') : 'text-gray-400 border border-transparent hover:bg-white/10'}`}>
                       {option}
                     </button>
                   ))}
@@ -223,7 +250,7 @@ const ConditionalQuestion = ({ question, value, onChange }: any) => {
 };
 
 // ============================================================
-// ===== QUESTION CARD =====
+// ===== QUESTION CARD (Compact & Shrunk) =====
 // ============================================================
 const QuestionCard = ({ question, value, onChange }: any) => {
   let content;
@@ -236,21 +263,21 @@ const QuestionCard = ({ question, value, onChange }: any) => {
   }
 
   return (
-    <div className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-6 sm:p-10 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-      <div className="mb-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-[11px] font-bold uppercase tracking-wider text-cyan-300 mb-5">
-          <Sparkles className="w-3.5 h-3.5" /> Question {question.id}
+    <div className="bg-white/[0.03] border border-white/10 rounded-[1.5rem] p-4 sm:p-6 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+      <div className="mb-4">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-[10px] font-bold uppercase tracking-wider text-cyan-300 mb-3">
+          <Sparkles className="w-3 h-3" /> Question {question.id}
         </div>
-        <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight drop-shadow-sm">{question.text}</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-sm">{question.text}</h3>
         
         {question.description && (
-          <div className="mt-4 p-3.5 rounded-xl bg-white/5 border border-white/10 text-sm text-gray-300 backdrop-blur-md">
+          <div className="mt-3 p-2.5 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-300 backdrop-blur-md">
              {question.description === 'Select Square for Yes, Circle for Partial' ? (
-                <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-gray-400">Select:</span>
-                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold"><div className="w-3 h-3 rounded-sm bg-emerald-400" /> Square = Yes</span>
+                  <span className="flex items-center gap-1 text-emerald-400 font-bold"><div className="w-2.5 h-2.5 rounded-sm bg-emerald-400" /> Square = Yes</span>
                   <span className="text-gray-600">|</span>
-                  <span className="flex items-center gap-1.5 text-yellow-400 font-bold"><div className="w-3 h-3 rounded-full bg-yellow-400" /> Circle = Partial</span>
+                  <span className="flex items-center gap-1 text-yellow-400 font-bold"><div className="w-2.5 h-2.5 rounded-full bg-yellow-400" /> Circle = Partial</span>
                 </div>
               ) : (
                 question.description
@@ -469,36 +496,39 @@ export default function ScorecardPage() {
   }
 
   return (
-    <main className="min-h-screen text-white relative overflow-hidden pt-[120px] pb-16 flex flex-col">
+    <main className="min-h-screen text-white relative overflow-hidden pt-[100px] pb-6 flex flex-col justify-center">
       <Background />
 
-      <div className="max-w-4xl w-full mx-auto px-4 sm:px-6 relative z-10 flex-1 flex flex-col">
+      <div className="max-w-2xl w-full mx-auto px-4 sm:px-6 relative z-10">
         
-        <div className="flex items-center justify-between mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors group text-sm bg-white/5 px-4 py-2 rounded-full backdrop-blur-md border border-white/10">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Home
+        {/* Top Bar */}
+        <div className="flex items-center justify-between mb-4">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors group text-xs bg-white/5 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10">
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" /> Back to Home
           </Link>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-xs font-semibold text-cyan-300 backdrop-blur-md">
-            <FileText className="w-3.5 h-3.5" /> DPDPA Assessment
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-[10px] font-semibold text-cyan-300 backdrop-blur-md">
+            <FileText className="w-3 h-3" /> DPDPA Assessment
           </div>
         </div>
 
-        <div className="mb-10 bg-white/[0.03] border border-white/10 rounded-3xl p-5 backdrop-blur-xl shadow-lg">
-          <div className="flex items-center justify-between mb-3 px-1">
-            <span className="text-xs font-medium text-gray-400">Assessment Progress</span>
-            <span className="text-xs font-bold text-cyan-300 bg-cyan-400/10 px-2 py-0.5 rounded-full">{progress}%</span>
+        {/* Progress Bar */}
+        <div className="mb-4 bg-white/[0.03] border border-white/10 rounded-2xl p-3 backdrop-blur-xl shadow-lg">
+          <div className="flex items-center justify-between mb-1.5 px-1">
+            <span className="text-[11px] font-medium text-gray-400">Progress</span>
+            <span className="text-[11px] font-bold text-cyan-300 bg-cyan-400/10 px-2 py-0.5 rounded-full">{progress}%</span>
           </div>
           <LiquidProgress progress={progress} />
         </div>
 
-        <div className="flex-1 flex flex-col justify-center w-full mx-auto pb-10">
+        {/* Question Area (Shrunk) */}
+        <div className="w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentQuestionIndex}
-              initial={{ opacity: 0, y: 15, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -15, scale: 0.98 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.25 }}
             >
               <QuestionCard
                 question={currentQuestion}
@@ -509,29 +539,30 @@ export default function ScorecardPage() {
           </AnimatePresence>
         </div>
 
-        <div className="w-full mx-auto flex items-center justify-between pt-6 border-t border-white/10">
+        {/* Navigation Buttons */}
+        <div className="w-full mx-auto flex items-center justify-between pt-5 mt-2">
           <button
             onClick={handlePrevious}
             disabled={currentQuestionIndex === 0}
-            className={`px-6 py-3.5 rounded-2xl flex items-center gap-2 text-sm font-medium transition-all backdrop-blur-md ${
-              currentQuestionIndex === 0 ? 'text-gray-600 cursor-not-allowed opacity-50' : 'text-gray-200 hover:text-white bg-white/5 border border-white/10 hover:bg-white/10 shadow-lg'
+            className={`px-5 py-2.5 rounded-xl flex items-center gap-2 text-xs font-medium transition-all backdrop-blur-md ${
+              currentQuestionIndex === 0 ? 'text-gray-600 cursor-not-allowed opacity-50' : 'text-gray-200 hover:text-white bg-white/5 border border-white/10 hover:bg-white/10'
             }`}
           >
-            <ChevronLeft className="w-4 h-4" /> Previous
+            <ChevronLeft className="w-3.5 h-3.5" /> Previous
           </button>
           
-          <div className="flex gap-2">
+          <div className="hidden sm:flex gap-1.5">
             {allQuestions.map((_, idx) => (
-              <div key={idx} className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentQuestionIndex ? 'w-6 bg-cyan-400' : idx < currentQuestionIndex ? 'w-1.5 bg-cyan-400/50' : 'w-1.5 bg-white/20'}`} />
+              <div key={idx} className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentQuestionIndex ? 'w-5 bg-cyan-400' : idx < currentQuestionIndex ? 'w-1.5 bg-cyan-400/50' : 'w-1.5 bg-white/20'}`} />
             ))}
           </div>
           
           <button
             onClick={handleNext}
-            className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-sm font-bold hover:scale-[1.02] transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-xs font-bold hover:scale-[1.02] transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(34,211,238,0.3)]"
           >
             {currentQuestionIndex === totalQuestions - 1 ? 'See Results' : 'Next'}
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
