@@ -14,13 +14,13 @@ export async function GET() {
 ## Core DPDPA Topics
 
 - [DPDPA 2023 Complete Guide](${SITE_URL}/resources/guides/dpdpa-2023-complete-guide): End-to-end guide to India's Digital Personal Data Protection Act 2023 and the DPDP Rules 2025. Covers scope, consent, notice, rights, obligations, SDF, breach, retention, cross-border transfers, and compliance roadmap.
-- [Rights of Data Principals](${SITE_URL}/rights): The 6 fundamental rights under the DPDP Act — access, correction, erasure, grievance redressal, portability, nomination, and consent withdrawal.
+- [Rights of Data Principals](${SITE_URL}/rights): The rights of Data Principals under Chapter III of the DPDP Act: access to information (s.11), correction and erasure (s.12), grievance redressal (s.13) and nomination (s.14), plus consent withdrawal under s.6(4). The Act does not provide a right to data portability.
 - [Obligations of Data Fiduciaries](${SITE_URL}/obligations): The 8 core obligations every Data Fiduciary must comply with, including notice, consent, security safeguards, breach notification, and grievance redressal.
-- [Penalties & Enforcement](${SITE_URL}/penalties): Full penalty schedule — up to ₹250 crore for a personal data breach, ₹200 crore for failure to notify, ₹150 crore for SDF non-compliance, ₹50 crore for general non-compliance.
+- [Penalties & Enforcement](${SITE_URL}/penalties): Penalty schedule — up to ₹250 crore for failure to take reasonable security safeguards to prevent a personal data breach, ₹200 crore for failure to notify a breach or breach of children's data obligations, ₹150 crore for breach of Significant Data Fiduciary obligations, ₹50 crore for other breaches, and ₹10,000 for breach of a Data Principal's duties.
 - [Data Protection Board of India](${SITE_URL}/board): Composition, powers, adjudication process, penalties, and appeals to TDSAT.
 - [Cross-Border Data Transfer](${SITE_URL}/cross-border): Section 16 blacklist approach, comparison with GDPR, sectoral localisation (RBI, IRDAI, SEBI), and real-world scenarios.
 - [Lawful Processing](${SITE_URL}/lawful-processing): The two lawful bases — consent (Section 6) and legitimate uses (Section 7). Includes Consent Manager framework.
-- [Key Provisions of DPDPA](${SITE_URL}/provisions): Chapter-wise overview of all 44 sections across 6 chapters.
+- [Key Provisions of DPDPA](${SITE_URL}/provisions): Chapter-wise overview of the 44 sections of the DPDP Act, 2023.
 
 ## Free Tools
 

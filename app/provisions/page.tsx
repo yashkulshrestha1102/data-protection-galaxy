@@ -190,7 +190,7 @@ export default function ProvisionsPage() {
   const faqs = [
     {
       q: 'How many chapters and sections are there in the DPDP Act 2023?',
-      a: 'The DPDP Act 2023 has 6 chapters and 44 sections. It also has a Schedule that sets out the penalties for various violations.',
+      a: 'The DPDP Act 2023 has 9 chapters and 44 sections. It also has a Schedule that sets out the penalties for various violations.',
     },
     {
       q: 'What is Chapter I of the DPDP Act?',
@@ -296,7 +296,7 @@ export default function ProvisionsPage() {
           <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
             The Digital Personal Data Protection Act, 2023 is a{' '}
             <strong className="text-white">
-              44-section, 6-chapter legislation
+              44-section, 9-chapter legislation
             </strong>{' '}
             that fundamentally reshapes how personal data is processed in India.
             This page provides a{' '}
@@ -330,7 +330,7 @@ export default function ProvisionsPage() {
         {/* ===== CHAPTERS GRID ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6">
-            The 6 Chapters at a Glance
+            The 9 Chapters at a Glance
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {chapters.map((item, index) => {
