@@ -123,7 +123,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0a1a2f]/90 border border-white/10 rounded-3xl shadow-2xl backdrop-blur-2xl flex flex-col md:flex-row"
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-black/60 border border-white/10 rounded-3xl shadow-2xl backdrop-blur-2xl flex flex-col md:flex-row"
           >
             {/* CLOSE BUTTON */}
             <button onClick={onClose} className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all">
@@ -131,7 +131,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
             </button>
 
             {/* LEFT SIDE - INFO */}
-            <div className="w-full md:w-[40%] p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center bg-[#030814]/50">
+            <div className="w-full md:w-[40%] p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center bg-black/60">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
                 Free Talk to Our <br/><span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">DPDP Act Experts</span>
               </h2>
@@ -248,7 +248,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                   </div>
 
                   {/* ROW 7: Submit */}
-                  <button type="submit" disabled={isSubmitting} className="w-full mt-2 py-3 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition-all text-sm disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+                  <button type="submit" disabled={isSubmitting} className="w-full mt-2 py-3 rounded-xl bg-cyan-400 text-white font-bold hover:bg-cyan-300 transition-all text-sm disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(34,211,238,0.3)]">
                     {isSubmitting ? (
                       <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</>
                     ) : (
