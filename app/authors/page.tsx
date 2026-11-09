@@ -8,6 +8,9 @@ export const metadata = {
   title: "Authors | Legal Galaxy",
   description:
     "Meet the legal and privacy experts behind Legal Galaxy's DPDP Act 2023 content and resources.",
+    alternates: {
+    canonical: "/authors", 
+  },
 };
 
 export default function AuthorsPage() {

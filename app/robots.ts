@@ -1,7 +1,7 @@
 // app/robots.ts
 import type { MetadataRoute } from 'next'
 
-const DISALLOW = ['/api/', '/admin/']
+const DISALLOW = ['/api/', '/admin/','/favicon.ico']
 const AI_BOTS = [
   'GPTBot',
   'ChatGPT-User',

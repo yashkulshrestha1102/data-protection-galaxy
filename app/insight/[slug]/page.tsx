@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getInsightBySlug, getRelatedInsights } from '@/data/insights';
+import { getInsightBySlug, getRelatedInsights ,insightsData  } from '@/data/insights';
 import { defaultAuthor } from '@/data/authors';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { InsightDetailClient } from './InsightDetailClient';
@@ -9,6 +9,13 @@ const SITE_URL = 'https://dpdpa.businezexcellence.com';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+
+export async function generateStaticParams() {
+  return insightsData.map((insight) => ({
+    slug: insight.slug,
+  }));
 }
 
 // "22 Jul 2026" -> "2026-07-22" (schema ko ISO date chahiye)
@@ -42,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     keywords: [insight.category, 'DPDP Act', 'Data Protection India', 'Privacy Law'],
     authors: [{ name: insight.author }],
-    alternates: { canonical: `/insight/${insight.slug}` },
+    alternates: { canonical: `${SITE_URL}/insight/${insight.slug}` },
     openGraph: {
       type: 'article',
       title: insight.title,
