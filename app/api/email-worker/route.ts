@@ -3,18 +3,26 @@ import { Redis } from '@upstash/redis';
 import { Resend } from 'resend';
 import { verifySignatureAppRouter } from '@upstash/qstash/nextjs';
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-});
+// ✅ Lazy getters — build-time pe instantiate nahi honge
+function getRedis() {
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL!,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  });
+}
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 // Sender fixed hai, caller ko control nahi dena
 const FROM = 'Legal Galaxy <office@businezexcellence.com>';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 async function handler(request: Request) {
+  const redis = getRedis();
+  const resend = getResend();
+
   try {
     const { to, subject, html } = await request.json();
 
@@ -51,4 +59,23 @@ async function handler(request: Request) {
   }
 }
 
-export const POST = verifySignatureAppRouter(handler);
+// ✅ Build-time safe — POST ko function ke andar wrap karo
+export async function POST(request: Request) {
+  const currentKey = process.env.QSTASH_CURRENT_SIGNING_KEY;
+  const nextKey = process.env.QSTASH_NEXT_SIGNING_KEY;
+
+  if (!currentKey || !nextKey) {
+    console.error('[email-worker] QStash signing keys missing');
+    return NextResponse.json(
+      { success: false, error: 'Server configuration error' },
+      { status: 500 }
+    );
+  }
+
+  const verifiedHandler = verifySignatureAppRouter(handler, {
+    currentSigningKey: currentKey,
+    nextSigningKey: nextKey,
+  });
+
+  return verifiedHandler(request);
+}

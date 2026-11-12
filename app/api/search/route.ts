@@ -2,10 +2,17 @@ import { NextResponse } from 'next/server';
 import { Index } from '@upstash/vector';
 import { rateLimiter } from '@/app/lib/rate-limit';
 
-const index = new Index({
-  url: process.env.UPSTASH_VECTOR_REST_URL!,
-  token: process.env.UPSTASH_VECTOR_REST_TOKEN!,
-});
+// ✅ Lazy init
+let _index: Index | null = null;
+function getIndex(): Index {
+  if (!_index) {
+    _index = new Index({
+      url: process.env.UPSTASH_VECTOR_REST_URL!,
+      token: process.env.UPSTASH_VECTOR_REST_TOKEN!,
+    });
+  }
+  return _index;
+}
 
 export async function POST(req: Request) {
   try {
@@ -20,6 +27,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Valid query is required' }, { status: 400 });
     }
 
+    const index = getIndex();
     const results = await index.query({ data: query, topK: 5, includeMetadata: true });
 
     const context = results

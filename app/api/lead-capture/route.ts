@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { generatePDF } from '@/app/lib/pdf-generator';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 // ✅ Env variables for Apps Script and Email
 const SHEET_WEBHOOK_URL = process.env.GOOGLE_SHEET_WEBHOOK_URL;
@@ -362,7 +364,9 @@ Assessments shall be reviewed annually and upon significant changes.
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    console.log('📥 1. Received body:', body);
+if (process.env.NODE_ENV === 'development') {
+  console.log('📥 Received body:', { source: body.source, tool: body.tool });
+}
 
     const { source, email, tool, type, name, phone, company, formData } = body;
 
@@ -406,11 +410,12 @@ export async function POST(request: Request) {
       }
 
       // ===== SEND NOTIFICATION EMAIL =====
-      try {
-        await resend.emails.send({
-          from: FROM_EMAIL,
-          to: ['shilpi.kulshrestha@businezexcellence.com'],
-          subject: '📋 New Request for book a consultants',
+try {
+  const resend = getResend();
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: ['shilpi.kulshrestha@businezexcellence.com'],
+    subject: '📋 New Request for book a consultants',
           html: `
             <h1>New Demo Request</h1>
             <p><strong>Name:</strong> ${firstName} ${lastName}</p>
@@ -472,10 +477,11 @@ export async function POST(request: Request) {
       }
 
       // ===== ADMIN NOTIFICATION =====
-      try {
-        await resend.emails.send({
-          from: FROM_EMAIL,
-          to: [process.env.ADMIN_EMAIL || 'shilpi.kulshrestha@businezexcellence.com'],
+try {
+  const resend = getResend();
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: [process.env.ADMIN_EMAIL || 'shilpi.kulshrestha@businezexcellence.com'],
           replyTo: email,
           subject: `📬 New Contact Request from ${name}`,
           html: `
@@ -499,11 +505,12 @@ export async function POST(request: Request) {
       }
 
       // ===== USER CONFIRMATION =====
-      try {
-        await resend.emails.send({
-          from: FROM_EMAIL,
-          to: [email],
-          subject: '✅ We received your request — Legal Galaxy',
+try {
+  const resend = getResend();
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: [email],
+    subject: '✅ We received your request — Legal Galaxy',
           html: `
             <!DOCTYPE html>
             <html>
@@ -581,12 +588,13 @@ export async function POST(request: Request) {
       }
 
       // ===== SEND EMAIL TO ADMIN =====
-      try {
-        await resend.emails.send({
-          from: FROM_EMAIL,
-          to: ['shilpi.kulshrestha@businezexcellence.com', 'shilpi.kulshrestha@businezexcellence.com'],
-          replyTo: email,
-          subject: `🚨 Data Principal Rights Request: ${rightType}`,
+try {
+  const resend = getResend();
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: ['shilpi.kulshrestha@businezexcellence.com'],
+    replyTo: email,
+    subject: `🚨 Data Principal Rights Request: ${rightType}`,
           html: `
             <h2>New Data Rights Request</h2>
             <p><strong>Name:</strong> ${name}</p>
@@ -654,11 +662,12 @@ export async function POST(request: Request) {
       }
 
       // 2. Admin (Shilpi Ji) ko email bhejo
-      try {
-        await resend.emails.send({
-          from: FROM_EMAIL,
-          to: ['shilpi.kulshrestha@businezexcellence.com', 'shilpi.kulshrestha@businezexcellence.com'],
-          subject: `🚨 URGENT: Consent Withdrawal Request from ${email}`,
+try {
+  const resend = getResend();
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: ['shilpi.kulshrestha@businezexcellence.com'],
+    subject: `🚨 URGENT: Consent Withdrawal Request from ${email}`,
           html: `
             <h2>Consent Withdrawal Request</h2>
             <p>A user has requested to withdraw consent and delete their data.</p>
@@ -702,6 +711,7 @@ export async function POST(request: Request) {
     const pdfBase64 = pdfBuffer.toString('base64');
 
     // ===== SEND EMAIL =====
+    const resend = getResend();
     const { data, error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [email],

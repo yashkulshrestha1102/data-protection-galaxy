@@ -4,7 +4,7 @@ import { countries, getCountryById } from "@/data/countries";
 import CountryClient from "./CountryClient";
 import { getCountryFaqs } from "@/data/country-faqs";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";
 
 // ✅ SAFE: Prevents build crash if data has undefined entries in future
 export function generateStaticParams() {

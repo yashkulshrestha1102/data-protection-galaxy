@@ -1,7 +1,7 @@
 // app/authors/[slug]/layout.tsx
 import type { Metadata } from "next";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Shilpi Kulshrestha — Founder & Data Protection Expert",

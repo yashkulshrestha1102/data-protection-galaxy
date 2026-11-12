@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from '@/lib/constants';
+
 
 export const metadata: Metadata = {
   title: "Rights of Data Principals under DPDP Act 2023 | Complete Guide",

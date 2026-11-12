@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
+
 
 export const metadata: Metadata = {
   title: "Forms & Templates — DPDP Act Compliance Documents",
@@ -36,18 +38,18 @@ const collectionSchema = {
   name: "Forms & Templates — DPDP Act Compliance",
   description:
   "Download free DPDP Act 2023 forms and templates — privacy notices, consent forms, DSAR forms, DPIA templates, breach notification and DPO appointment letters.",
-  url: "https://dpdpa.businezexcellence.com/resources/forms",
+  url: `${SITE_URL}/resources/forms`,
   isPartOf: {
     "@type": "WebSite",
     name: "Legal Galaxy",
-    url: "https://dpdpa.businezexcellence.com",
+    url: SITE_URL,
   },
   publisher: {
     "@type": "Organization",
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: "https://dpdpa.businezexcellence.com/favicon.ico",
+      url: `${SITE_URL}/favicon.ico`,
     },
   },
   about: {

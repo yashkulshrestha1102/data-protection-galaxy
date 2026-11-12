@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { SITE_URL } from '@/lib/constants';
+
 
 export const metadata = {
   title: 'Terms of Use | Legal Galaxy',
@@ -43,7 +45,7 @@ export default function TermsPage() {
                 These Terms of Use ("Terms") govern your access to and use of the
                 Legal Galaxy platform at{' '}
                 <a
-                  href="https://dpdpa.businezexcellence.com"
+                  href={SITE_URL}
                   className="text-cyan-400 underline"
                 >
                   dpdpa.businezexcellence.com

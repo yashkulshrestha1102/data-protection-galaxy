@@ -1,5 +1,6 @@
 // app/robots.ts
 import type { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/constants'
 
 const DISALLOW = ['/api/', '/admin/','/favicon.ico']
 const AI_BOTS = [
@@ -36,6 +37,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: DISALLOW,
       })),
     ],
-    sitemap: 'https://dpdpa.businezexcellence.com/sitemap.xml',
+    sitemap: `${SITE_URL}/sitemap.xml`,
   }
 }

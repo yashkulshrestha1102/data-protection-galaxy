@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Legal Galaxy | DPDP & AI Governance Experts",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     title: "Let's Talk Privacy & AI Governance | Legal Galaxy",
     description:
       "Have questions about DPDP compliance, privacy governance or AI regulations? Connect with our experts at Legal Galaxy.",
-    url: "https://dpdpa.businezexcellence.com/contact",
+    url: `${SITE_URL}/contact`,
     siteName: "Legal Galaxy",
     type: "website",
     images: [

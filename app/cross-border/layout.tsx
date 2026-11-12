@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Cross-Border Data Transfer under DPDP Act 2023 | Section 16 Guide",

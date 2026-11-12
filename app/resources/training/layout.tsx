@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Training Material — DPDP Act Awareness & Compliance",
@@ -36,18 +37,18 @@ const collectionSchema = {
   name: "Training Material — DPDP Act Awareness",
   description:
   "Free DPDP Act 2023 training materials — videos, presentations, guides and workshops for employees, managers and compliance teams. Build privacy awareness.",
-  url: "https://dpdpa.businezexcellence.com/resources/training",
+  url: `${SITE_URL}/resources/training`,
   isPartOf: {
     "@type": "WebSite",
     name: "Legal Galaxy",
-    url: "https://dpdpa.businezexcellence.com",
+    url: SITE_URL,
   },
   publisher: {
     "@type": "Organization",
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: "https://dpdpa.businezexcellence.com/favicon.ico",
+      url: `${SITE_URL}/favicon.ico`,
     },
   },
   about: {

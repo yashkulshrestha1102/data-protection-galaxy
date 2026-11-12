@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";
 
 // Jab /board page ka content sach me update karo, tab ye date badlo
 const BOARD_PAGE_UPDATED = "2026-11-04";

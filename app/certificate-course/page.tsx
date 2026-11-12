@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 import CourseHomeClient from "./CourseHomeClient";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";
 const DESCRIPTION =
   "Free 20-module DPDP Act 2023 course with lessons, quizzes and a certificate of completion. Learn India's data protection law at your own pace.";
 

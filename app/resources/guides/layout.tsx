@@ -1,6 +1,8 @@
 // app/resources/guides/layout.tsx
 
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
+
 
 export const metadata: Metadata = {
   title: "Privacy Guides — GDPR, DPDP Act & Global Data Protection",
@@ -20,11 +22,11 @@ export default function GuidesLayout({
     name: "Privacy Guides",
 description:
   "In-depth privacy guides on GDPR, DPDP Act 2023, cross-border transfers and global data protection laws. Written by Businezexcellence privacy team.",
-      url: "https://dpdpa.businezexcellence.com/resources/guides",
+      url: `${SITE_URL}/resources/guides`,
     isPartOf: {
       "@type": "WebSite",
       name: "Legal Galaxy",
-      url: "https://dpdpa.businezexcellence.com",
+      url: SITE_URL,
     },
   };
 

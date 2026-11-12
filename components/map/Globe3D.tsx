@@ -95,7 +95,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => {
-                  const geoName = geo.properties.name || "";
+                  const geoName = geo.properties?.name || "";
                   const countryData = countries.find(c => c.name === geoName || geoName.includes(c.name) || c.name.includes(geoName));
                   
                   const countryId = countryData?.id;

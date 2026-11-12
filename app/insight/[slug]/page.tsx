@@ -5,7 +5,8 @@ import { defaultAuthor } from '@/data/authors';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { InsightDetailClient } from './InsightDetailClient';
 
-const SITE_URL = 'https://dpdpa.businezexcellence.com';
+import { SITE_URL } from '@/lib/constants';
+
 
 interface PageProps {
   params: Promise<{ slug: string }>;

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
+
 
 export const metadata: Metadata = {
   title: "External Links — Data Protection Laws & Resources",
@@ -38,18 +40,18 @@ const collectionSchema = {
   name: "External Links — Data Protection Laws & Resources",
   description:
   "Curated links to official data protection authorities and laws worldwide — MeitY, Data Protection Board, GDPR, CCPA, ICO, EDPB and UNCTAD resources.",
-  url: "https://dpdpa.businezexcellence.com/resources/links",
+  url: `${SITE_URL}/resources/links`,
   isPartOf: {
     "@type": "WebSite",
     name: "Legal Galaxy",
-    url: "https://dpdpa.businezexcellence.com",
+    url: SITE_URL,
   },
   publisher: {
     "@type": "Organization",
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: "https://dpdpa.businezexcellence.com/favicon.ico",
+      url: `${SITE_URL}/favicon.ico`,
     },
   },
   about: {

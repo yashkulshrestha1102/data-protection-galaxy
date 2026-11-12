@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SITE_URL } from "@/lib/constants";
 
 const sections = [
   {
@@ -8,8 +9,8 @@ const sections = [
       <p>
         Legal Galaxy, operated by Businezexcellence StartX LLP ("we", "our",
         or "us"), provides privacy, data protection and AI governance
-        information and tools through https://dpdpa.businezexcellence.com.
-        This policy explains how we collect, use, disclose, retain and protect
+        information and tools through{" "}
+        <a href={SITE_URL} className="text-cyan-400 underline">{SITE_URL}</a>.        This policy explains how we collect, use, disclose, retain and protect
         personal data when you visit our website, contact us or use our
         services. Our processing is subject to applicable data protection
         law, including the Digital Personal Data Protection Act, 2023 and

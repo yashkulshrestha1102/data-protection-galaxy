@@ -21,9 +21,7 @@ const geistMono = Geist_Mono({
   preload: false,
 });
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
-const SITE_DESCRIPTION =
-  "Master India's DPDP Act 2023 with free assessments, expert insights, compliance templates and AI governance tools. Built for businesses, DPOs and legal teams.";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

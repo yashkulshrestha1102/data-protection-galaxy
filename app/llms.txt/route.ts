@@ -3,8 +3,7 @@ import { fullModulesData } from '@/data/modules'
 import { insightsData } from '@/data/insights'
 import { guidesData } from '@/data/guides'
 import { countries } from '@/data/countries'
-
-const SITE_URL = 'https://dpdpa.businezexcellence.com'
+import { SITE_URL } from "@/lib/constants";
 
 export async function GET() {
   const content = `# Legal Galaxy — Privacy & AI Governance

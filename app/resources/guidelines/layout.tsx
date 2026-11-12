@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Guidelines & Circulars — DPDP Act 2023",
@@ -27,18 +28,19 @@ const collectionSchema = {
   name: "Guidelines & Circulars — DPDP Act 2023",
   description:
   "Official DPDP Act 2023 guidelines and circulars — implementation guidance, breach notification rules, DPIA guidelines and Consent Manager framework.",
-  url: "https://dpdpa.businezexcellence.com/resources/guidelines",
+  url: `${SITE_URL}/resources/guidelines`,
   isPartOf: {
     "@type": "WebSite",
     name: "Legal Galaxy",
-    url: "https://dpdpa.businezexcellence.com",
+    url: SITE_URL,
   },
   publisher: {
     "@type": "Organization",
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: "https://dpdpa.businezexcellence.com/favicon.ico",
+      url: `${SITE_URL}/favicon.ico`,
+
     },
   },
 };

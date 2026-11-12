@@ -7,7 +7,7 @@ import {
 } from "@/data/case-studies";
 import CaseStudyClient from "./CaseStudyClient";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";;
 
 export function generateStaticParams() {
   return caseStudiesData.map((cs) => ({ slug: cs.slug }));

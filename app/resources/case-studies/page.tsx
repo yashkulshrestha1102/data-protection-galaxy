@@ -8,7 +8,7 @@ import { caseStudiesData } from '@/data/case-studies';
 
 
 
-const SITE_URL = 'https://dpdpa.businezexcellence.com';
+import { SITE_URL } from "@/lib/constants";
 
 
 

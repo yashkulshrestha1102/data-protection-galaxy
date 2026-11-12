@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Legal Galaxy | DPDP Act Experts in India",
@@ -15,12 +16,12 @@ const aboutSchema = {
   name: "About Legal Galaxy",
   description:
     "Legal Galaxy is a Privacy & AI Governance platform built by Businezexcellence StartX LLP.",
-  url: "https://dpdpa.businezexcellence.com/about",
+  url: `${SITE_URL}/about`,
   mainEntity: {
     "@type": "Organization",
     name: "Legal Galaxy",
     legalName: "Businezexcellence StartX LLP",
-    url: "https://dpdpa.businezexcellence.com",
+    url: SITE_URL,
   },
 };
 

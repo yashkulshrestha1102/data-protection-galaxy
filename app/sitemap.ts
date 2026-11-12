@@ -6,7 +6,7 @@ import { caseStudiesData } from '@/data/case-studies'
 import { countries } from '@/data/countries'
 import { fullModulesData } from '@/data/modules'
 
-const SITE_URL = 'https://dpdpa.businezexcellence.com'
+import { SITE_URL } from "@/lib/constants";
 
 // Jab site ka bada content change karo, tab ye date update karna
 const SITE_UPDATED = new Date('2026-11-04')

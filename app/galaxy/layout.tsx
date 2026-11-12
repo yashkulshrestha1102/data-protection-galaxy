@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
+
 
 export const metadata: Metadata = {
   title: "Galaxy Explorer | DPDP Act Topics & Privacy Knowledge",
@@ -15,11 +17,12 @@ const collectionSchema = {
   name: "Galaxy Explorer — Data Protection Topics",
   description:
     "Explore data protection topics under India's DPDP Act 2023.",
-  url: "https://dpdpa.businezexcellence.com/galaxy",
+  url: `${SITE_URL}/galaxy`,
   isPartOf: {
     "@type": "WebSite",
     name: "Legal Galaxy",
-    url: "https://dpdpa.businezexcellence.com",
+    url: SITE_URL,
+
   },
 };
 

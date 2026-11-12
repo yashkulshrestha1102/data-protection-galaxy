@@ -7,7 +7,7 @@ import {
 } from "@/data/guides";
 import GuideClient from "./GuideClient";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";;
 
 // =========================================================
 // STATIC PARAMS (SSG)

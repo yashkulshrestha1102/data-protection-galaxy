@@ -3,7 +3,7 @@ import { insightsData } from "@/data/insights";
 import { JsonLd } from "@/components/seo/JsonLd";
 import InsightClient from "./InsightClient";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";
 
 export default function InsightPage() {
   const schema = {

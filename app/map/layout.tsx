@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { countries } from "@/data/countries";
 
-const SITE_URL = "https://dpdpa.businezexcellence.com";
+import { SITE_URL } from "@/lib/constants";;
 
 export const metadata: Metadata = {
   title: `Global Data Protection Laws Map (${countries.length}+ Countries) | Legal Galaxy`,
