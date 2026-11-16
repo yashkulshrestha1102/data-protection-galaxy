@@ -1,4 +1,4 @@
-"use client";
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 import { insightsData } from "@/data/insights";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";

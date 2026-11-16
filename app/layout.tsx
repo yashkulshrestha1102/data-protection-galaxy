@@ -136,14 +136,6 @@ export default async function RootLayout({
       "@type": "Organization",
       name: "Legal Galaxy",
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/insight?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 
   return (

@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+
+
+  async headers() {
+  return [
+    {
+      source: '/favicon.ico',
+      headers: [{ key: 'X-Robots-Tag', value: 'noindex' }],
+    },
+  ];
+},
 };
+
+
 
 export default nextConfig;

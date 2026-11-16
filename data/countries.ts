@@ -329,7 +329,7 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'japan',
     name: 'Japan',
     flag: '🇯🇵',
@@ -338,6 +338,142 @@ export const countries: Country[] = [
     region: 'Asia',
     level: 'Comprehensive',
     overview: "Japan's APPI, amended in 2022, is Asia's oldest data protection law. It establishes a national commission, provides comprehensive rights to individuals, and imposes obligations on data controllers. Japan has received adequacy recognition from the EU.",
+    detailedContent: `
+<h2>What is the APPI?</h2>
+<p>The <strong>Act on the Protection of Personal Information</strong> (Act No. 57 of 2003) — the "APPI" — is Japan's comprehensive data protection law. It was enacted in 2003 and fully enforced from <strong>1 April 2005</strong>, making it the first comprehensive data protection statute in Asia.</p>
+<p>The APPI has been substantially amended three times:</p>
+<ul>
+<li><strong>2015 amendment</strong> (fully effective 1 January 2017) — created the <strong>Personal Information Protection Commission (PPC)</strong>, introduced the "personal information database" concept, criminal penalties for data brokerage, and rules on anonymised information;</li>
+<li><strong>2020/2021 amendments</strong> (effective 1 April 2022) — introduced <strong>mandatory breach notification</strong> to the PPC for large-scale breaches, a <strong>right to data portability</strong>, stricter rules on transfers to third parties (including website cookie regulations via guidelines), and raised maximum corporate fines to ¥100 million;</li>
+<li><strong>Ongoing amendments</strong> — as of 2024–2025, further amendments addressing AI governance and My Number (national ID) data security have been under discussion following notable incidents, including the 2023 MOVEit-related leaks of My Number data.</li>
+</ul>
+
+<h2>Scope and Application</h2>
+<p>The APPI applies to <strong>business operators (个人信息取扱事業者)</strong> handling personal information — defined as information relating to a living individual that can identify them by name, date of birth, or other description, or by a unique individual identification number (the "My Number").</p>
+<p>Key scope features:</p>
+<ul>
+<li>It applies to both the <strong>private and public sectors</strong>, though public bodies are governed by a separate law (the Act on the Protection of Personal Information Held by Administrative Organs);</li>
+<li>It has <strong>extra-territorial reach</strong>: foreign businesses that acquire personal information in connection with providing goods or services to individuals in Japan are covered;</li>
+<li>The Act is complemented by <strong>sectoral guidelines</strong> — the PPC and ministries (METI, MIC, MHLW) issue binding guidelines for finance, healthcare, telecommunications, and employment;</li>
+<li>Unlike GDPR, Japan's approach remains centred on <strong>business operators' duties</strong> rather than on a comprehensive data-subject-rights architecture — though the 2022 amendments significantly strengthened individual rights.</li>
+</ul>
+
+<h2>Key Concepts and Definitions</h2>
+<h3>Personal Information</h3>
+<p>Information relating to a living individual from which a specific individual can be identified — by name, description (e.g. appearance, title, background), or a <strong>personal identification code</strong> (My Number, biometrics used for identification, and specified digital identifiers).</p>
+<h3>Personal Information Database</h3>
+<p>An assembly of information including personal information, systematically organised so that specific personal information can be retrieved — this triggers most operator obligations.</p>
+<h3>Sensitive Information (要配慮情報)</h3>
+<p>Personal information requiring special care: race, creed, social status, medical history, criminal record, fact of having been a crime victim, and other information whose handling could cause discrimination or disadvantage. The general rule is <strong>opt-in consent is required to acquire sensitive information</strong> (with exceptions for legal obligations, public health, and cooperation with authorities).</p>
+<h3>Retained Personal Data</h3>
+<p>Personal data systematically organised for disclosure — the category to which data subject rights (access, correction) primarily attach.</p>
+<h3>Anonymised and Pseudonymised Information</h3>
+<p>The 2015 amendments introduced a regulatory safe harbour for <strong>anonymously processed information (匿名加工情報)</strong> — data processed so that specific individuals cannot be identified and cannot be restored — and the 2022 amendments added <strong>pseudonymously processed information (仮名加工情報)</strong>, which can be used internally for analytics without triggering all data-subject rights, provided processing standards are met and statistics are published.</p>
+
+<h2>Lawful Processing and Consent Requirements</h2>
+<p>The APPI does not adopt GDPR's six-lawful-bases model. Instead, it operates on a purpose specification model:</p>
+<ul>
+<li>Personal information must be used <strong>within the scope of the specified purpose of use</strong>, notified or publicly announced at acquisition ("purpose specification obligation");</li>
+<li><strong>Consent (opt-in) is required for:</strong> (a) acquiring <strong>sensitive information</strong>; (b) providing personal data to <strong>third parties</strong> (with record-keeping duties for both provider and recipient); (c) transfers to <strong>third parties in foreign countries</strong>; (d) use beyond the specified purpose;</li>
+<li>Exceptions to the third-party consent requirement include: outsourcing (entrustment), joint use under published arrangements, succession of business (merger), legal obligations, protection of life/property where consent is difficult, and cooperation with government authorities.</li>
+</ul>
+<p>Consent must be obtained <strong>prior</strong> to the relevant act, must be specific, and for sensitive information must be explicit. Silence or inactivity is generally not valid consent.</p>
+
+<h2>Data Subject Rights</h2>
+<p>The APPI grants individuals:</p>
+<ul>
+<li><strong>Right to disclosure</strong> of retained personal data (access) — the operator must respond within a reasonable period; a <strong>disclosure fee</strong> may be charged per actual cost;</li>
+<li><strong>Right to correction, addition, or deletion</strong> of inaccurate retained personal data;</li>
+<li><strong>Right to cessation of use or erasure</strong> where data is used beyond purpose, acquired wrongfully, or provided to third parties in violation of the Act;</li>
+<li><strong>Right to data portability</strong> (2022 amendment) — where retained personal data is held in a structured format and transmission systems exist, individuals may request transfer to a third party in a machine-readable format;</li>
+<li><strong>Right to object to third-party provision</strong> at any time.</li>
+</ul>
+<p>There is no general right to erasure of all personal data ("right to be forgotten" style) — cessation/erasure rights apply only to unlawful processing.</p>
+
+<h2>Data Protection Officer and Compliance Programs</h2>
+<p>The APPI does <strong>not mandate a DPO</strong>, but operators handling personal information databases are expected to designate a <strong>person responsible for personal information management (個人情報保護管理者)</strong> and maintain internal management systems. The PPC's guidelines and sectoral rules effectively require documented compliance programs for larger operators, including:</p>
+<ul>
+<li>Basic policies on personal information protection (publicly announced);</li>
+<li>Organisational controls — responsible persons, training, audit;</li>
+<li>Human controls — confidentiality agreements, training programs;</li>
+<li>Physical and technical controls — access management, logging, encryption;</li>
+<li>Outsourcing management — contracts requiring equivalent protection, and the operator remains liable for entrusted processing.</li>
+</ul>
+
+<h2>Data Breach Notification</h2>
+<p>Following the 2022 amendments, breach notification is <strong>mandatory</strong>:</p>
+<ul>
+<li><strong>To the PPC</strong> — when a leak, loss, or damage of personal data involves <strong>1,000 or more individuals</strong>, the operator must notify the PPC "without delay" (in practice, immediately upon becoming aware, with details and remedial measures);</li>
+<li><strong>To affected individuals</strong> — where there is a risk of harm to rights or interests, the operator must notify affected individuals without delay (method and content are left to the operator's judgment of the harm risk);</li>
+<li>Smaller breaches do not require regulatory notification but must still be logged internally, and records may be demanded in audits;</li>
+<li>Failure to notify can result in administrative fines and criminal exposure for responsible individuals.</li>
+</ul>
+<p>Sectoral rules are stricter: financial institutions (FSA guidelines) and health providers require notification regardless of scale, and My Number data breaches carry additional reporting duties.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>The APPI restricts transfers of personal data to third parties located in foreign countries unless one of the following applies:</p>
+<ul>
+<li>The recipient country has been <strong>designated by the PPC</strong> as providing an equivalent level of protection (PPC "white-list" system — the UK and EU member states have been designated following adequacy recognition);</li>
+<li>The operator has obtained the individual's <strong>consent</strong>, after informing them of the data protection system in the destination country and the categories of protection measures taken by the recipient;</li>
+<li>The recipient has established a system conforming to Japanese standards — certified under a PPC-approved framework (akin to SCCs/BCRs), or part of a multinational group with binding internal rules recognised by the PPC.</li>
+</ul>
+<p>Transfers within the same corporate group abroad are treated as third-party provision unless an approved group-wide framework is in place. The <strong>EU–Japan adequacy decision (2019)</strong> allows free flow of personal data from the EU to Japan, with a reciprocal arrangement for Japanese companies transferring to the EU.</p>
+
+<h2>Cookies, Tracking, and Digital Marketing</h2>
+<p>The APPI itself does not regulate cookies directly. However, the PPC's 2021 <strong>Guidelines on Cookies and Similar Technologies</strong> (with METI and MIC) treat cookie IDs and similar identifiers as personal information when combined with other data, and require:</p>
+<ul>
+<li><strong>Consent or equivalent notice-and-choice</strong> for providing cookie-derived data to third parties (advertising networks) — in practice, most Japanese sites now run consent banners for third-party advertising cookies;</li>
+<li><strong>Purpose specification and opt-out mechanisms</strong> for tracking;</li>
+<li>Email marketing: opt-in consent for advertising emails (Act against Unjustifiable Premiums and Misleading Representations), with an existing-customer exception similar to the EU soft opt-in.</li>
+</ul>
+
+<h2>AI and Automated Decision-Making</h2>
+<p>The APPI has no dedicated automated decision-making provision equivalent to GDPR Article 22. The PPC has issued <strong>draft AI guidelines</strong> emphasising transparency, human oversight, and data quality for AI systems processing personal information, and the government's <strong>Hiroshima AI Process</strong> (G7 framework, 2023–2024) shapes soft-law expectations. Sector-specific rules — e.g. financial AI guidelines (FSA) — impose model risk management. Enforcement risk centres on purpose specification violations when AI processes data beyond notified purposes.</p>
+
+<h2>Enforcement and Penalties</h2>
+<p>The <strong>PPC</strong> has broad powers: guidance, recommendations, binding <strong>orders</strong> (with criminal penalties for non-compliance), on-site inspections, document demands, and administrative fines. Key penalty provisions (as amended 2022):</p>
+<ul>
+<li><strong>Administrative fines</strong> — up to <strong>¥100 million</strong> (for corporations) for violations including: unlawful provision of personal data to third parties without consent, failure to take required security measures, and false reports to the PPC. Fines are <strong>per violation</strong>;</li>
+<li><strong>Criminal penalties</strong> — for providing personal information databases for unlawful gain (data brokerage — up to 1 year imprisonment or ¥500,000 fine), non-compliance with PPC orders (up to 6 months imprisonment or ¥300,000 fine), and obstruction of inspections;</li>
+<li><strong>Name-and-shame</strong> — the PPC publicly names operators subject to recommendations and orders, a significant reputational sanction in Japan's compliance culture;</li>
+<li><strong>Business improvement orders</strong> — the PPC can order cessation of operations processing specific data.</li>
+</ul>
+<p>Notable enforcement: the PPC's action against the <strong>LINE messaging app (2021–2023)</strong> after a China-based affiliate accessed Japanese user data — resulting in business improvement orders and a government-wide app review; the <strong>Benesse data breach case (2014)</strong> which triggered the criminal data-brokerage provisions; and ongoing <strong>My Number data security investigations (2023–2025)</strong> following mass leaks via compromised vendors (including the MOVEit incident).</p>
+
+<h2>Comparison with GDPR</h2>
+<table>
+<thead>
+<tr><th>Feature</th><th>APPI (Japan)</th><th>GDPR (EU)</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Legal Basis Model</strong></td><td>Purpose specification + consent for sensitive/third-party/cross-border</td><td>Six lawful bases, accountability-based</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not mandatory (responsible person expected)</td><td>Mandatory in specified cases</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>Mandatory to PPC if 1,000+ affected; individuals if harm risk</td><td>72 hours to authority; individuals if high risk</td></tr>
+<tr><td><strong>Right to Erasure</strong></td><td>Only for unlawful processing</td><td>General right with grounds</td></tr>
+<tr><td><strong>Cross-Border</strong></td><td>PPC white-list, consent, or certified recipient system</td><td>Adequacy, SCCs, BCRs</td></tr>
+<tr><td><strong>EU Adequacy</strong></td><td>Granted 2019 (first Asian country)</td><td>—</td></tr>
+<tr><td><strong>Max Corporate Fine</strong></td><td>¥100 million per violation</td><td>€20 million or 4% of turnover</td></tr>
+</tbody>
+</table>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Act on the Protection of Personal Information (Act No. 57 of 2003)</td></tr>
+<tr><td><strong>Fully Enforced From</strong></td><td>1 April 2005</td></tr>
+<tr><td><strong>Major Amendments</strong></td><td>2015 (PPC created), 2020/2022 (breach notification, portability, cookies)</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Personal Information Protection Commission (PPC) + sectoral ministries</td></tr>
+<tr><td><strong>Core Model</strong></td><td>Purpose specification + opt-in consent for sensitive data, third-party provision, and cross-border transfer</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not mandatory; responsible person and compliance program expected</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>PPC if 1,000+ individuals; individuals if harm risk</td></tr>
+<tr><td><strong>Children's Data</strong></td><td>No special chapter; general rules apply (guidance recommends guardian consent for minors)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>PPC-designated countries, consent, or certified frameworks; EU adequacy (2019)</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>None general</td></tr>
+<tr><td><strong>Max Administrative Fine</strong></td><td>¥100 million per violation (corporations)</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>Oldest Asian comprehensive law; EU adequacy with reciprocal framework; anonymised/pseudonymised information safe harbours</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 35.0, lng: 135.0 },
     color: '#EC4899',
     topics: [
@@ -385,7 +521,7 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'singapore',
     name: 'Singapore',
     flag: '🇸🇬',
@@ -394,6 +530,146 @@ export const countries: Country[] = [
     region: 'Asia',
     level: 'Comprehensive',
     overview: "Singapore's PDPA, in effect since 2014, is a comprehensive framework for data protection. The PDPC is an active regulator that enforces compliance through advisory guidelines, enforcement decisions, and financial penalties.",
+    detailedContent: `
+<h2>What is the PDPA?</h2>
+<p>The <strong>Personal Data Protection Act 2012</strong> (the "PDPA") is Singapore's comprehensive data protection law, governing the collection, use, and disclosure of personal data by organisations. It was enacted in October 2012 and came into force in phases between <strong>January 2013 and July 2014</strong> (the Do Not Call registry provisions took effect in January 2014).</p>
+<p>The PDPA was significantly amended by the <strong>Personal Data Protection (Amendment) Act 2020</strong>, which took effect on <strong>1 February 2021</strong>. The amendments introduced mandatory breach notification, a data portability obligation (phased in from 2024), expanded consent exceptions, and dramatically increased financial penalties.</p>
+
+<h2>Scope and Application</h2>
+<p>The PDPA applies to all private sector organisations — companies, partnerships, and individuals acting in a business capacity — that collect, use, or disclose personal data in Singapore. Key scope features:</p>
+<ul>
+<li>It does <strong>not apply to the public sector</strong> — government agencies are governed by internal data-sharing rules and the Government Instruction Manual, though a Public Sector (Governance) Act imposes analogous discipline;</li>
+<li><strong>Extra-territorial reach</strong>: it applies to organisations with a Singapore link — processing data in Singapore, or processing data about individuals in Singapore from abroad;</li>
+<li>It covers personal data in both <strong>electronic and non-electronic form</strong>;</li>
+<li>Individuals acting in a personal or domestic capacity and employees acting in the course of employment (as agents of the organisation) are excluded.</li>
+</ul>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Data, whether true or not, about an individual who can be identified from that data or from that data and other information to which the organisation has or is likely to have access. Business contact information (name, title, business contact number, business address) is <strong>excluded</strong> from most PDPA obligations — a notable pro-business carve-out.</p>
+<h3>Collection, Use, and Disclosure</h3>
+<p>The three regulated acts: "collection" (gathering), "use" (processing internally), and "disclosure" (transferring to third parties). All three require a lawful basis under the PDPA's consent framework.</p>
+<h3>Organisation</h3>
+<p>Any individual, company, association, or body of persons, corporate or unincorporated — regardless of whether formed or recognised under Singapore law.</p>
+<h3>Data Protection Officer (DPO)</h3>
+<p>The PDPA requires every organisation to designate at least one <strong>data protection officer (DPO)</strong> — one of the few Asian statutes where a DPO is mandatory for all organisations, though the DPO need not be a dedicated hire and can be an existing employee.</p>
+
+<h2>The Consent Framework and Exceptions</h2>
+<p>The PDPA is consent-based at its core: organisations must obtain <strong>consent</strong> for the collection, use, or disclosure of personal data, <strong>notify individuals of the purpose</strong> before or at collection, and allow withdrawal of consent with reasonable notice.</p>
+<p>The 2020 amendments retained this structure while adding <strong>exceptions</strong> that make Singapore's regime more flexible than GDPR:</p>
+<ul>
+<li><strong>Deemed consent</strong> — by contractual necessity, or where an individual voluntarily provides data for a purpose obvious in the circumstances;</li>
+<li><strong>Deemed consent by notification</strong> — organisations may give notice of intended collection/use/disclosure and proceed if the individual does not opt out;</li>
+<li><strong>Legitimate interests exception</strong> — processing is permitted without consent where it is necessary for the organisation's legitimate interests, with a documented balancing assessment and notification duties (this mirrors GDPR's legitimate interests but with lighter documentation requirements);</li>
+<li><strong>Business improvement and research exceptions</strong> — use of data for business improvement studies or research with safeguards, without consent;</li>
+<li><strong>Scholarly/artistic/ journalistic purposes;</strong></li>
+<li><strong>Emergency, public health, and law enforcement exceptions.</strong></li>
+</ul>
+<p>Withdrawal of consent must be honoured going forward; organisations must inform individuals of the consequences of withdrawal (which may include inability to provide services).</p>
+
+<h2>Data Subject Rights</h2>
+<p>Individuals have the right to:</p>
+<ul>
+<li><strong>Access</strong> their personal data held by an organisation (with reasonable fees permitted);</li>
+<li><strong>Correction</strong> of inaccurate or incomplete personal data;</li>
+<li><strong>Withdraw consent</strong> at any time, with reasonable notice;</li>
+<li><strong>Data portability</strong> (from 2024, phased in) — the right to request transmission of personal data in a commonly used machine-readable format to another organisation, where data was provided by the individual or generated from their use of the service;</li>
+<li><strong>Object to marketing</strong> — via the Do Not Call registry for phone/SMS/fax marketing, and via withdrawal of consent for electronic marketing generally.</li>
+</ul>
+<p>There is no general right to erasure — correction and withdrawal rights cover most scenarios, but organisations may retain data where required by law or with consent already relied upon for completed purposes.</p>
+
+<h2>Do Not Call (DNC) Regime</h2>
+<p>The PDPA includes a standalone <strong>Do Not Call</strong> regime (Part IV) — Singapore was an early mover in telemarketing regulation:</p>
+<ul>
+<li>Organisations must check the DNC registry before sending marketing messages (voice calls, text, fax) to Singapore telephone numbers;</li>
+<li>Clear consent (e.g. via an opt-in) overrides DNC listing;</li>
+<li>Each breach is a <strong>separate offence</strong> — a single marketing campaign reaching thousands of numbers without DNC checks can generate thousands of offence counts;</li>
+<li>PDPC enforcement has produced significant DNC penalties, including a <strong>S$1.1 million fine against an insurance company (2023)</strong> for telemarketing violations.</li>
+</ul>
+
+<h2>Obligations of Organisations</h2>
+<p>Beyond consent, the PDPA imposes accountability duties familiar from GDPR:</p>
+<ul>
+<li><strong>Designate a DPO</strong> and publish their business contact information;</li>
+<li><strong>Notify purposes</strong> at or before collection (privacy notices);</li>
+<li><strong>Access and correction procedures</strong> — respond within a reasonable time;</li>
+<li><strong>Accuracy</strong> — reasonable effort to ensure accuracy where data will be used for decisions affecting the individual or disclosed to third parties;</li>
+<li><strong>Protection</strong> — reasonable security arrangements proportional to the harm that unauthorised access or disclosure could cause, including for data held by outsourced processors (the organisation remains liable);</li>
+<li><strong>Retention limitation</strong> — cease retaining data when it is no longer needed for legal or business purposes, or anonymise it;</li>
+<li><strong>Transfer limitation</strong> — for cross-border transfers, ensure a comparable standard of protection through contractual or other means;</li>
+<li><strong>Openness</strong> — make privacy policies publicly available.</li>
+</ul>
+<p>The PDPC expects <strong>accountability at board level</strong>: its advisory guidelines recommend data protection management programs, and enforcement decisions routinely assess whether senior management knew or should have known of non-compliance.</p>
+
+<h2>Data Breach Notification</h2>
+<p>Since 1 February 2021, breach notification is <strong>mandatory</strong>:</p>
+<ul>
+<li><strong>Notify the PDPC</strong> — as soon as practicable, but no later than <strong>3 calendar days</strong> after becoming aware of a breach that is either (a) likely to result in <strong>significant harm</strong> to affected individuals, or (b) affects <strong>500 or more individuals</strong>;</li>
+<li><strong>Notify affected individuals</strong> — where the breach is likely to result in significant harm, individuals must be notified in any manner reasonable in the circumstances;</li>
+<li>The notification must include the facts, likely consequences, remedial measures taken, and contact details;</li>
+<li>Organisations must document all breaches, not just notifiable ones — the PDPC may demand records in an investigation.</li>
+</ul>
+<p>"Significant harm" is assessed holistically — identity theft, financial loss, loss of business opportunities, or reputational damage can all qualify.</p>
+
+<h2>Cross-Border Data Transfer</h2>
+<p>The PDPA does not prohibit overseas transfers. Instead, the <strong>Transfer Limitation Obligation</strong> requires organisations transferring personal data outside Singapore (or entrusting it to a local processor) to ensure the recipient provides a <strong>comparable standard of protection</strong>, through contractual or other binding means. There is no whitelist or adequacy mechanism — the assessment is the transferring organisation's responsibility, documented for accountability.</p>
+<p>Singapore positions itself as a data hub: government initiatives (e.g. data-sharing frameworks under the Digital Economy Agreements, APEC CBPR participation) support its role as a regional transfer point. No data localisation requirements apply outside specific regulated sectors (e.g. certain MAS rules for financial institutions).</p>
+
+<h2>AI and Automated Decision-Making</h2>
+<p>The PDPA has no dedicated automated decision provision. Singapore's AI governance is <strong>soft-law-led</strong>:</p>
+<ul>
+<li><strong>Model AI Governance Framework</strong> (IMDA, 2020) — human-centric principles for responsible AI deployment, voluntary but influential;</li>
+<li><strong>Model Generative AI Governance Framework</strong> (2024) — addressing risks of generative AI including data protection, hallucination management, and intellectual property;</li>
+<li><strong>PDPC guidance on AI</strong> — the PDPC has clarified that PDPA obligations apply fully to AI systems: consent for training data collection, purpose limitation for model outputs, and the data portability right extends to machine-readable model-relevant data;</li>
+<li>Financial services: MAS principles on AI fairness (FEAT principles) for finance sector AI.</li>
+</ul>
+<p>Expect PDPA enforcement to increasingly address AI-adjacent issues: consent for scraped training data, biometric misuse, and automated profiling without notice.</p>
+
+<h2>Enforcement and Penalties</h2>
+<p>The <strong>PDPC</strong> (under the Infocomm Media Development Authority) investigates complaints, conducts proactive audits, and issues <strong>enforcement decisions</strong> that are published in detail — the PDPC's enforcement library is one of the most transparent in Asia and a key compliance resource.</p>
+<p>Financial penalties (post-2020):</p>
+<ul>
+<li>Up to <strong>SG$1 million</strong> for organisations with annual turnover in Singapore <strong>below SG$10 million</strong>;</li>
+<li>Up to <strong>10% of the organisation's annual turnover in Singapore</strong> for organisations with turnover of <strong>SG$10 million or more</strong> — Singapore adopted GDPR-style turnover-based fines years before most Asian peers;</li>
+<li>Penalty factors: the nature and gravity of the breach, the organisation's size, whether it had a data protection program, and remediation efforts.</li>
+</ul>
+<p>The PDPC can also issue <strong>warnings, directions</strong> (cease collection, destroy data, comply with access requests), and <strong>undertakings</strong> — breach of a direction or undertaking is an offence. Individuals who knowingly cause organisations to breach the PDPA, or obstruct PDPC investigations, face personal fines.</p>
+<p>Notable enforcement decisions: the <strong>S$1 million fine against Integrated Health Information Systems (2021)</strong> for a health data breach; the <strong>S$250,000 fine against K Box Entertainment (2016)</strong> — the first major PDPA penalty; <strong>SGD fines against insurance and real-estate companies</strong> for marketing and consent violations; and the growing stream of <strong>enforcement decisions on legitimate interests assessments</strong> since 2021.</p>
+
+<h2>Comparison with GDPR and Other Asian Frameworks</h2>
+<table>
+<thead>
+<tr><th>Feature</th><th>PDPA (Singapore)</th><th>GDPR (EU)</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Legal Basis Model</strong></td><td>Consent + extensive exceptions (deemed, legitimate interests, business improvement)</td><td>Six lawful bases, strict accountability</td></tr>
+<tr><td><strong>DPO</strong></td><td>Mandatory for all organisations (any employee can be DPO)</td><td>Mandatory in specified cases</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>3 calendar days to PDPC (if 500+ affected or significant harm); individuals if significant harm</td><td>72 hours to authority; individuals if high risk</td></tr>
+<tr><td><strong>Right to Erasure</strong></td><td>No general right; correction + withdrawal</td><td>General right with grounds</td></tr>
+<tr><td><strong>Data Portability</strong></td><td>Yes (from 2024, phased)</td><td>Yes (Art. 20)</td></tr>
+<tr><td><strong>Max Fine</strong></td><td>10% of Singapore turnover (SG$1m floor for small orgs)</td><td>€20m or 4% of global turnover</td></tr>
+<tr><td><strong>Public Sector</strong></td><td>Excluded from PDPA</td><td>Covered</td></tr>
+</tbody>
+</table>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Personal Data Protection Act 2012 (as amended 2020)</td></tr>
+<tr><td><strong>Enacted</strong></td><td>2012; fully in force by July 2014</td></tr>
+<tr><td><strong>Major Amendments</strong></td><td>PDP(A)A 2020 — in force 1 February 2021</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Personal Data Protection Commission (PDPC)</td></tr>
+<tr><td><strong>Core Model</strong></td><td>Consent + deemed consent + legitimate interests and business improvement exceptions</td></tr>
+<tr><td><strong>DPO</strong></td><td>Mandatory for all organisations</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>3 calendar days to PDPC (if 500+ affected or significant harm); individuals if significant harm</td></tr>
+<tr><td><strong>Children's Data</strong></td><td>No special chapter; general consent rules (minors' capacity assessed case-by-case)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Comparable protection required; no whitelist mechanism</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>None general; sectoral (MAS financial rules)</td></tr>
+<tr><td><strong>Max Administrative Fine</strong></td><td>10% of annual turnover in Singapore (SG$1m for smaller organisations)</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>DNC telemarketing registry with per-number offence counting; mandatory DPO for all; business-friendly exceptions with accountability</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 1.3, lng: 103.8 },
     color: '#EF4444',
     topics: [
@@ -581,7 +857,7 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'hong-kong',
     name: 'Hong Kong',
     flag: '🇭🇰',
@@ -590,6 +866,148 @@ export const countries: Country[] = [
     region: 'Asia',
     level: 'Substantial',
     overview: "Hong Kong's PDPO, in effect since 1996, is Asia's oldest data protection law. The PCPD is an active regulator that enforces compliance through investigations, enforcement notices, and guidance.",
+    detailedContent: `
+<h2>What is the PDPO?</h2>
+<p>The <strong>Personal Data (Privacy) Ordinance</strong> (Cap. 486) (the "PDPO") is Hong Kong's principal data protection law. It was enacted in 1995 and came into force on <strong>20 December 1996</strong>, making it one of the earliest comprehensive data protection statutes in Asia.</p>
+<p>The PDPO regulates the collection, holding, processing, and use of personal data by data users, and gives data subjects enforceable rights. It is administered by the <strong>Privacy Commissioner for Personal Data (PCPD)</strong>, an independent statutory body.</p>
+<p>The Ordinance has been significantly amended twice: in 2012 (by the Personal Data (Privacy) (Amendment) Ordinance 2012, which strengthened regulation of <strong>direct marketing</strong> and introduced criminal offences for certain misuse of personal data, in force from April 2013), and in <strong>2021</strong> (which introduced specific criminal offences against <strong>doxxing</strong> and gave the PCPD enhanced investigative powers, in force from October 2021).</p>
+
+<h2>Scope and Application</h2>
+<p>The PDPO applies to data users — persons who, either alone or jointly with others, control the collection, holding, processing, or use of personal data. It applies to both the <strong>private and public sectors</strong>, with limited exemptions (e.g. personal data held by individuals purely for personal or family affairs, and certain judicial, law enforcement, and security-related processing).</p>
+<p>Notable features of the scope:</p>
+<ul>
+<li>It applies to personal data processed by <strong>automated and non-automated means</strong>, as long as the data forms part of a "filing system" or similar;</li>
+<li>It has <strong>limited extra-territorial reach</strong> — the PDPO primarily governs data users operating in Hong Kong, but data subjects can be located anywhere;</li>
+<li>Unlike the GDPR, there is <strong>no general registration or notification requirement</strong> for data users before processing personal data.</li>
+</ul>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Any data relating directly or indirectly to a living individual, from which it is practicable to ascertain the identity of that individual, and which exists in a form in which access or processing is practicable.</p>
+<h3>Data Subject</h3>
+<p>The individual to whom the personal data relates. The PDPO protects <strong>living individuals only</strong>.</p>
+<h3>Data User</h3>
+<p>A person who, either alone or jointly or in common with other persons, controls the collection, holding, processing, or use of personal data. This is broadly equivalent to the GDPR's "controller". The PDPO does not separately regulate "processors" as a distinct regulated class in the same way as the GDPR, though data users remain responsible for their agents and contractors.</p>
+<h3>Sensitive Personal Data</h3>
+<p>The PDPO does <strong>not</strong> define a distinct category of "sensitive" personal data, and does not impose special processing conditions for health, biometric, or other sensitive categories as such. However, the PCPD's guidance and the Data Protection Principles require that extra care be taken with data whose misuse could cause significant harm, and sectoral codes of practice (e.g. for identity card numbers, biometric data, and human resource management) impose stricter standards.</p>
+
+<h2>The Six Data Protection Principles (DPPs)</h2>
+<p>The core of the PDPO is a set of six Data Protection Principles, which data users must comply with. Non-compliance does not itself create a criminal offence, but the PCPD may issue enforcement notices, and breach of an enforcement notice is an offence.</p>
+<ul>
+<li><strong>DPP1 — Purpose and Manner of Collection:</strong> Personal data must be collected for a lawful purpose directly related to the data user's function or activity; the amount of data collected must be adequate but not excessive; the data subject must be informed, on or before collection, of the purposes of use, the classes of transferees, whether providing the data is voluntary or mandatory, and of the rights of access and correction.</li>
+<li><strong>DPP2 — Accuracy and Retention:</strong> Personal data must be accurate and not kept longer than necessary for the fulfilment of the purpose for which it is used.</li>
+<li><strong>DPP3 — Use of Personal Data:</strong> Personal data must not be used for a new purpose that is not directly related to the original purpose of collection, unless the data subject has consented to the new use or the use falls within a statutory exemption.</li>
+<li><strong>DPP4 — Data Security:</strong> Appropriate security measures must be taken to protect personal data against unauthorised or accidental access, processing, erasure, loss, or use.</li>
+<li><strong>DPP5 — Openness:</strong> Data users must make publicly available the kinds of personal data they hold and their policies and practices regarding personal data.</li>
+<li><strong>DPP6 — Data Access and Correction:</strong> Data subjects have the right to ascertain whether a data user holds personal data about them, and to obtain access to that data within a reasonable time, at reasonable cost, and to request correction of inaccurate data.</li>
+</ul>
+
+<h2>Data Protection Authority: The PCPD</h2>
+<p>The <strong>Privacy Commissioner for Personal Data (PCPD)</strong> is an independent statutory body responsible for promoting and enforcing compliance with the PDPO.</p>
+<p>The PCPD's functions and powers include:</p>
+<ul>
+<li>Promoting awareness and understanding of the PDPO, including through <strong>codes of practice and guidance</strong> (e.g. on direct marketing, cross-border data transfers, biometric data, CCTV, and the use of AI);</li>
+<li>Receiving and investigating <strong>complaints</strong> from data subjects;</li>
+<li>Conducting <strong>compliance checks and inspections</strong>, and requiring production of documents and information;</li>
+<li>Issuing <strong>enforcement notices</strong> directing a data user to remedy a contravention of a Data Protection Principle — failure to comply is a criminal offence;</li>
+<li>Investigating suspected offences, including with enhanced powers under the 2021 amendments (entering premises, seizing items);</li>
+<li>Instituting or supporting <strong>criminal prosecutions</strong> for offences under the PDPO.</li>
+</ul>
+
+<h2>Consent and Lawful Use</h2>
+<p>The PDPO does not require consent as a general precondition for all processing. Processing is lawful where it is consistent with the original collection purpose (DPP3) and the collection itself complied with DPP1. <strong>Consent is required specifically for:</strong></p>
+<ul>
+<li>Using personal data for a <strong>new purpose</strong> not directly related to the original purpose of collection;</li>
+<li><strong>Direct marketing</strong> — the data subject's consent must be obtained for the first use of their personal data for direct marketing, and an opt-out mechanism must be provided on every subsequent marketing communication.</li>
+</ul>
+<p>Under the 2012 amendments, direct marketing rules were significantly strengthened: data users must notify data subjects of their intent to use or provide their data for direct marketing, provide prescribed information, and respond to opt-out requests free of charge. Using personal data in direct marketing without complying with these requirements is a <strong>criminal offence</strong>.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Data subjects under the PDPO have the right to:</p>
+<ul>
+<li><strong>Access (DPP6):</strong> To request a copy of their personal data. The data user must respond within <strong>40 days</strong> (the statutory period under the Data Protection Principle) and may charge a reasonable fee;</li>
+<li><strong>Correction:</strong> To request correction of inaccurate or incomplete personal data;</li>
+<li><strong>Opt-out of direct marketing:</strong> An absolute right to refuse the use of personal data for direct marketing at any time, without charge;</li>
+<li><strong>Withdraw consent</strong> to a new purpose for which consent was given;</li>
+<li><strong>Compensation:</strong> To sue for damages for injury caused by a contravention of the PDPO (civil claims can be brought before the courts, including in a class-action format).</li>
+</ul>
+<p>The PDPO does <strong>not</strong> provide a general right to erasure, a right to data portability, or an explicit right not to be subject to automated decision-making.</p>
+
+<h2>Data Breach Notification</h2>
+<p>The PDPO does <strong>not</strong> impose a statutory obligation to notify the PCPD or affected individuals of a data breach. However:</p>
+<ul>
+<li>DPP4 requires data users to take appropriate security measures — a breach may evidence a failure to comply, exposing the data user to an enforcement notice or civil liability;</li>
+<li>The PCPD has published a <strong>guidance note recommending</strong> that affected data users notify the PCPD and affected data subjects as soon as possible after a breach, and set out the recommended content of a breach notification;</li>
+<li>Certain sectoral regulators (e.g. the Hong Kong Monetary Authority for banks) impose <strong>mandatory breach notification</strong> requirements on regulated entities.</li>
+</ul>
+
+<h2>Cross-Border Data Transfer</h2>
+<p><strong>Section 33</strong> of the PDPO restricts the transfer of personal data outside Hong Kong unless certain conditions are met (adequate protection in the destination jurisdiction, consent, or other statutory grounds). However, this provision has <strong>never been brought into force</strong>.</p>
+<p>In practice, cross-border transfers are governed by:</p>
+<ul>
+<li>DPP1 (transparency) and DPP3 (use limitation) — data subjects must be informed if their data may be transferred, and transfers must be consistent with the original purpose;</li>
+<li>The PCPD's <strong>Guidance on Personal Data Protection in Cross-border Context</strong>, which recommends that data users adopt contractual or other measures (e.g. model contractual clauses, due diligence on the recipient) to ensure comparable protection for data transferred to jurisdictions without substantially similar laws;</li>
+<li>Sectoral rules — e.g. banks transferring data to group entities abroad must meet HKMA supervisory expectations.</li>
+</ul>
+
+<h2>AI, Profiling, and Automated Decisions</h2>
+<p>The PDPO contains no dedicated provisions on AI or automated decision-making. However, the PCPD has issued guidance on the development and use of <strong>artificial intelligence</strong> and the use of personal data in AI systems, recommending risk assessments, transparency, human oversight, and data minimisation — concepts closely modelled on international practice. Data users deploying AI for profiling or automated decisions should expect the PCPD to assess compliance through the lens of DPPs 1, 3, and 5.</p>
+
+<h2>Doxxing Offences (2021 Amendments)</h2>
+<p>The Personal Data (Privacy) (Amendment) Ordinance 2021 introduced specific criminal offences targeting <strong>doxxing</strong> — the disclosure of personal data of an individual or their family member without consent, with intent to or being reckless as to causing specified harm (threat, intimidation, harassment, or psychological harm). Penalties include:</p>
+<ul>
+<li><strong>Summary conviction:</strong> Fine of up to <strong>HK$100,000</strong> and imprisonment for up to 2 years;</li>
+<li><strong>Conviction on indictment:</strong> Fine of up to <strong>HK$1,000,000</strong> and imprisonment for up to 5 years.</li>
+</ul>
+<p>The amendments also empowered the PCPD to issue cessation notices requiring removal of doxxing content from online platforms, including outside Hong Kong.</p>
+
+<h2>Enforcement and Penalties</h2>
+<p>Enforcement is primarily conducted by the PCPD through complaints, compliance checks, and enforcement notices. Criminal liability arises mainly in specific cases:</p>
+<ul>
+<li><strong>Contravention of an enforcement notice:</strong> Fine and imprisonment for up to 2 years;</li>
+<li><strong>Direct marketing violations</strong> (using or providing personal data for direct marketing without complying with the statutory requirements): Fine of up to <strong>HK$500,000</strong> and imprisonment for up to 3 years;</li>
+<li><strong>Obtaining personal data by false pretences</strong> or from data users without consent (e.g. improper use for gain or causing loss): Fine of up to <strong>HK$1,000,000</strong> and imprisonment for up to 5 years;</li>
+<li><strong>Doxxing offences:</strong> As set out above, up to HK$1,000,000 and 5 years' imprisonment.</li>
+</ul>
+<p>In addition, data subjects may bring <strong>civil actions for compensation</strong> for damage (including injury to feelings) caused by a contravention, and the PCPD may grant legal assistance for such claims in appropriate cases.</p>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>There is <strong>no general statutory requirement</strong> to appoint a Data Protection Officer. However, the PCPD's security guidance recommends that data users designate a person responsible for data protection compliance, and the PCPD's recommended <strong>model personal data protection framework</strong> for organisations includes appointing a data protection officer or equivalent. Many larger organisations in Hong Kong appoint a DPO as a matter of good practice.</p>
+
+<h2>Comparison with GDPR</h2>
+<table>
+<thead>
+<tr><th>Feature</th><th>PDPO (Hong Kong)</th><th>GDPR (EU)</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Scope</strong></td><td>All personal data of living individuals, any sector</td><td>All personal data, including of deceased in some member states</td></tr>
+<tr><td><strong>Legal Basis</strong></td><td>Purpose limitation (original purpose); consent for new purposes and direct marketing</td><td>Six lawful bases including consent, contract, legitimate interests</td></tr>
+<tr><td><strong>Sensitive Data</strong></td><td>No special category, but sectoral guidance applies</td><td>Special categories with explicit conditions</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not mandatory (recommended)</td><td>Mandatory in specified cases</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>No statutory mandate; PCPD guidance recommends notification</td><td>Mandatory within 72 hours</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Section 33 not in force; guidance + contract measures</td><td>Adequacy or safeguards (SCCs, BCRs)</td></tr>
+<tr><td><strong>Max Fines</strong></td><td>HK$1,000,000 and 5 years (specific offences); no turnover-based fines</td><td>Up to €20 million or 4% of global turnover</td></tr>
+</tbody>
+</table>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>Personal Data (Privacy) Ordinance (Cap. 486)</td></tr>
+<tr><td><strong>Enacted</strong></td><td>1995</td></tr>
+<tr><td><strong>In Force From</strong></td><td>20 December 1996</td></tr>
+<tr><td><strong>Major Amendments</strong></td><td>2012 (direct marketing), 2021 (doxxing offences)</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Privacy Commissioner for Personal Data (PCPD)</td></tr>
+<tr><td><strong>Core Framework</strong></td><td>Six Data Protection Principles</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not mandatory</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>Not mandatory (guidance recommends notification)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Section 33 not in force; contractual measures recommended</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>None</td></tr>
+<tr><td><strong>Max Criminal Penalty</strong></td><td>Fine up to HK$1,000,000 and 5 years' imprisonment</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>Doxxing offences with extraterritorial removal notices</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 22.3, lng: 114.2 },
     color: '#22C55E',
     topics: [
@@ -697,7 +1115,7 @@ export const countries: Country[] = [
   // ============================
   // ===== EUROPE (12) =====
   // ============================
-  {
+    {
     id: 'eu',
     name: 'European Union',
     flag: '🇪🇺',
@@ -706,6 +1124,151 @@ export const countries: Country[] = [
     region: 'Europe',
     level: 'Comprehensive',
     overview: "The GDPR is the world's most influential data protection framework. It provides comprehensive rights to individuals, imposes strict obligations on data controllers and processors, and established the One-Stop-Shop mechanism for cross-border enforcement.",
+    detailedContent: `
+<h2>What is the GDPR?</h2>
+<p>The <strong>General Data Protection Regulation</strong> — Regulation (EU) 2016/679 (the "GDPR") — is the European Union's comprehensive data protection law. It was adopted on <strong>27 April 2016</strong> and has applied since <strong>25 May 2018</strong>, replacing the 1995 Data Protection Directive (95/46/EC).</p>
+<p>The GDPR directly binds all EU member states without needing national transposition, though member states may supplement it through their own laws in specified areas (e.g. employment, freedom of expression, national identification numbers), creating a harmonised core with national variations at the edges.</p>
+<p>It is the most influential data protection law in the world: dozens of jurisdictions — including Brazil (LGPD), Thailand, Kenya, and Indonesia — have modelled their frameworks on it, and it has become the de facto global benchmark for privacy compliance.</p>
+
+<h2>Scope and Territorial Application</h2>
+<p>The GDPR applies to the processing of personal data of natural persons ("data subjects") within the EU, whether the processing takes place in the EU or not. Its <strong>extra-territorial reach</strong> (Article 3) covers:</p>
+<ul>
+<li>Controllers and processors <strong>established in the EU</strong>, regardless of where the processing takes place;</li>
+<li>Controllers and processors <strong>not established in the EU</strong> where they either:
+  <ul>
+    <li>Offer goods or services to data subjects <strong>in the EU</strong> (paid or free, e.g. an app available in EU languages, accepting EU payment methods); or</li>
+    <li>Monitor the behaviour of data subjects as far as their behaviour takes place <strong>within the EU</strong> (e.g. tracking cookies, profiling, location-based analytics).</li>
+  </ul>
+</li>
+</ul>
+<p>Non-EU organisations caught by Article 3(2) must designate an <strong>EU representative</strong> (Article 27), subject to limited exceptions. The GDPR does not apply to the processing of personal data of deceased persons (member state law may extend it) or to purely household/personal activities.</p>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Any information relating to an identified or identifiable natural person — one who can be identified, directly or indirectly, by reference to an identifier such as a name, identification number, location data, online identifier, or factors specific to their physical, physiological, genetic, mental, economic, cultural, or social identity.</p>
+<h3>Special Categories (Article 9)</h3>
+<p>Personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership; genetic data; biometric data for uniquely identifying a person; and data concerning health, sex life, or sexual orientation. Processing of special categories is prohibited by default, subject to a closed list of exceptions (explicit consent, employment/social security law, vital interests, data manifestly made public, legal claims, substantial public interest, health and social care, public health, and archiving/research).</p>
+<h3>Controller</h3>
+<p>The natural or legal person, public authority, agency, or other body which, alone or jointly, determines the purposes and means of processing.</p>
+<h3>Processor</h3>
+<p>A person or entity which processes personal data on behalf of the controller, under a contract or other legal act binding it to documented instructions and specific confidentiality, security, and sub-processing obligations (Article 28).</p>
+<h3>Consent</h3>
+<p>Any freely given, specific, informed, and unambiguous indication of the data subject's wishes, by a statement or clear affirmative action. Silence, pre-ticked boxes, or inactivity do not constitute consent. The controller must be able to demonstrate consent was given, and consent must be as easy to withdraw as to give.</p>
+<h3>Personal Data Breach</h3>
+<p>A breach of security leading to the accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to, personal data transmitted, stored, or otherwise processed.</p>
+
+<h2>Principles of Processing (Article 5)</h2>
+<p>The GDPR establishes seven binding principles. The controller bears the burden of demonstrating compliance with all of them — the <strong>accountability principle</strong>.</p>
+<ul>
+<li><strong>Lawfulness, fairness, and transparency</strong> — processing must have a lawful basis and be explained to data subjects;</li>
+<li><strong>Purpose limitation</strong> — data collected for specified, explicit, and legitimate purposes must not be further processed in a manner incompatible with those purposes;</li>
+<li><strong>Data minimisation</strong> — data must be adequate, relevant, and limited to what is necessary;</li>
+<li><strong>Accuracy</strong> — data must be accurate and kept up to date;</li>
+<li><strong>Storage limitation</strong> — data kept no longer than necessary, subject to archiving, research, and legal-hold exceptions;</li>
+<li><strong>Integrity and confidentiality</strong> — appropriate security through technical and organisational measures;</li>
+<li><strong>Accountability</strong> — the controller is responsible for, and must be able to demonstrate, compliance.</li>
+</ul>
+
+<h2>Lawful Bases for Processing (Article 6)</h2>
+<p>Processing is lawful only if at least one of six bases applies:</p>
+<ul>
+<li><strong>Consent</strong> of the data subject;</li>
+<li><strong>Contract</strong> — necessary for performance of a contract with the data subject or pre-contractual steps at their request;</li>
+<li><strong>Legal obligation</strong> — compliance with a legal obligation of the controller;</li>
+<li><strong>Vital interests</strong> — protection of life;</li>
+<li><strong>Public task</strong> — performance of a task in the public interest or exercise of official authority;</li>
+<li><strong>Legitimate interests</strong> — the interests of the controller or a third party, balanced against the data subject's rights; cannot be used by public authorities in performance of their tasks.</li>
+</ul>
+<p>Controllers must determine and document the applicable basis before processing. The chosen basis shapes downstream obligations — e.g. a consent-based system must support withdrawal, while legitimate interests requires a documented balancing test (LIA).</p>
+
+<h2>Data Subject Rights (Chapter III)</h2>
+<p>The GDPR grants data subjects eight rights, which must generally be answered <strong>without undue delay and within one month</strong> (extendable by two months for complex requests):</p>
+<ul>
+<li><strong>Right to be informed</strong> (Articles 13–14) — privacy notices at collection and when data is obtained from third parties;</li>
+<li><strong>Right of access</strong> (Article 15) — confirmation of processing, a copy of the data, and information about purposes, categories, recipients, retention, and sources;</li>
+<li><strong>Right to rectification</strong> (Article 16) — correction of inaccurate or incomplete data;</li>
+<li><strong>Right to erasure ("right to be forgotten")</strong> (Article 17) — deletion where data is no longer necessary, consent is withdrawn, processing is unlawful, or the data subject objects successfully;</li>
+<li><strong>Right to restriction of processing</strong> (Article 18) — freezing processing in defined circumstances;</li>
+<li><strong>Right to data portability</strong> (Article 20) — receiving data in a structured, commonly used, machine-readable format and transmitting it to another controller, where processing is based on consent or contract and carried out by automated means;</li>
+<li><strong>Right to object</strong> (Article 21) — including an absolute right to object to direct marketing, and a qualified right to object to processing based on legitimate interests or public task;</li>
+<li><strong>Rights in relation to automated decision-making and profiling</strong> (Article 22) — data subjects generally may not be subject to decisions with legal or similarly significant effect based solely on automated processing, except for contract necessity, legal authorisation, or explicit consent, and in each case with safeguards (human intervention, right to express a point of view, contesting the decision).</li>
+</ul>
+
+<h2>Children's Data</h2>
+<p>For information society services offered directly to a child, the GDPR sets a default <strong>digital consent age of 16</strong>, which member states may lower to <strong>no less than 13</strong>. Where a child is below that age, consent must be given or authorised by the holder of parental responsibility. Controllers must make reasonable efforts to verify consent using available technology.</p>
+
+<h2>Controller and Processor Obligations</h2>
+<p>Key obligations include:</p>
+<ul>
+<li><strong>Data protection by design and by default</strong> (Article 25) — embedding privacy into processing systems and defaults from the outset;</li>
+<li><strong>Records of processing activities</strong> (Article 30) — internal records unless the organisation employs fewer than 250 persons and its processing is low-risk, occasional, and excludes special categories;</li>
+<li><strong>Security of processing</strong> (Article 32) — pseudonymisation, encryption, CIA triad of systems, regular testing and evaluation;</li>
+<li><strong>Data protection impact assessments</strong> (Article 35) — mandatory before processing likely to result in high risk, e.g. large-scale special category processing, systematic profiling, or large-scale monitoring of publicly accessible areas;</li>
+<li><strong>Prior consultation</strong> (Article 36) — where a DPIA shows high risk that cannot be mitigated, the controller must consult the supervisory authority before processing;</li>
+<li><strong>Joint controller arrangements</strong> (Article 26) and <strong>processor contracts</strong> (Article 28);</li>
+<li><strong>Representatives</strong> (Article 27) for non-EU controllers and processors.</li>
+</ul>
+
+<h2>Data Protection Officer (DPO)</h2>
+<p>A DPO must be appointed where (Article 37):</p>
+<ul>
+<li>Processing is carried out by a public authority or body (except courts acting judicially);</li>
+<li>Core activities consist of <strong>regular and systematic monitoring of data subjects on a large scale</strong>; or</li>
+<li>Core activities consist of <strong>large-scale processing of special categories of data</strong> or data relating to criminal convictions.</li>
+</ul>
+<p>The DPO must be independent, involved in all data protection issues, report to the highest management level, and not be penalised for performing their duties. Their contact details must be published and communicated to the supervisory authority. The DPO may be internal or external, and groups may share one DPO if accessibility is ensured.</p>
+
+<h2>Data Breach Notification</h2>
+<p>Controllers must notify the competent supervisory authority of a personal data breach <strong>without undue delay and, where feasible, not later than 72 hours</strong> after becoming aware of it, unless the breach is unlikely to result in a risk to individuals. Notifications made after 72 hours must be accompanied by reasons for the delay.</p>
+<p>The notification must describe the nature of the breach, the categories and approximate number of data subjects and records affected, the DPO's contact details, likely consequences, and measures taken or proposed.</p>
+<p>Where the breach is likely to result in a <strong>high risk</strong> to individuals, the controller must also <strong>communicate it to affected data subjects without undue delay</strong> in clear and plain language — unless protective measures (e.g. encryption) render the data unintelligible, subsequent measures eliminate the high risk, or individual notice would involve disproportionate effort (public communication may then substitute). Processors must notify the controller without undue delay upon becoming aware of a breach. All breaches must be documented.</p>
+
+<h2>Cross-Border Data Transfers (Chapter V)</h2>
+<p>The GDPR permits transfers of personal data outside the EU/EEA only where:</p>
+<ul>
+<li>The <strong>European Commission has adopted an adequacy decision</strong> for the destination jurisdiction (e.g. UK, Switzerland, Japan, and a list of others), periodically reviewed;</li>
+<li><strong>Appropriate safeguards</strong> are in place — Standard Contractual Clauses (SCCs, 2021 versions), Binding Corporate Rules (BCRs), codes of conduct or certification mechanisms with binding commitments, or approved ad hoc contractual clauses;</li>
+<li>A <strong>derogation</strong> applies in specific situations — explicit consent after being informed of risks, contract necessity, public interest, legal claims, vital interests, or transfer from a public register.</li>
+</ul>
+<p>Since the <strong>Schrems II</strong> judgment (2020), exporters must assess whether the destination country's laws allow the recipient to comply with EU-standard protection, and implement supplementary measures (encryption, split processing) where needed. Since the <strong>EU–US Data Privacy Framework</strong> (2023), transfers to certified US organisations are covered by an adequacy decision.</p>
+
+<h2>Cookies, Marketing, and ePrivacy</h2>
+<p>Cookie and similar tracking rules come from the <strong>ePrivacy Directive (2002/58/EC)</strong>, transposed into national law: storing or accessing information on a user's device generally requires consent, subject to strictly necessary exceptions. Enforcement is carried out by national authorities (e.g. CNIL in France fined Google and Facebook a combined €210 million in 2022 for cookie banner violations; a proposed <strong>ePrivacy Regulation</strong> to modernise and harmonise these rules has been under negotiation for years). The GDPR governs the underlying personal data processing, making cookie consent valid only when it meets GDPR standards (freely given, specific, informed, unambiguous — and refusing must be as easy as accepting).</p>
+<p><strong>Direct marketing</strong> by electronic means (email, SMS) is restricted by the ePrivacy Directive: generally requires prior consent, with a soft opt-in exception for existing customers for similar products. Objection to marketing is absolute under Article 21(2) GDPR.</p>
+
+<h2>AI and Automated Decision-Making</h2>
+<p>Beyond Article 22, the EU has enacted the <strong>EU AI Act</strong> (Regulation (EU) 2024/1689), the world's first comprehensive AI regulation, phasing in from 2025–2027. It imposes risk-based obligations on AI systems that process personal data — transparency for AI interacting with humans, strict conditions on biometric categorisation and emotion recognition, and prohibitions on certain practices (e.g. social scoring). Personal data used to develop or operate AI systems remains governed by the GDPR, and the EDPB has issued opinions on the interplay between the two regimes.</p>
+
+<h2>Enforcement: Authorities, One-Stop-Shop, and Penalties</h2>
+<p>Enforcement is by <strong>national supervisory authorities</strong> (e.g. CNIL, ICO-equivalents, Garante, DPC, AEPD, Datatilsynet) coordinated through the <strong>European Data Protection Board (EDPB)</strong>. The GDPR's <strong>One-Stop-Shop mechanism</strong>: for cross-border processing, the lead authority of the controller's or processor's main EU establishment investigates and coordinates with concerned authorities; the EDPB resolves disputes through binding decisions.</p>
+<p>Administrative fines (Article 83) are structured in tiers:</p>
+<ul>
+<li>Up to <strong>€10 million or 2% of total worldwide annual turnover</strong> (whichever is higher) — e.g. inadequate security, no DPO where required, failure to maintain records, failure to notify a breach;</li>
+<li>Up to <strong>€20 million or 4% of total worldwide annual turnover</strong> (whichever is higher) — e.g. violations of the processing principles, unlawful bases, conditions for consent, special category rules, data subject rights, and international transfer restrictions.</li>
+</ul>
+<p>Fines are issued per infringement and can be aggregated across member states. Notable enforcement: Meta (€1.2 billion, 2023, for unlawful EU–US transfers), Amazon (€746 million, Luxembourg, 2021), and numerous multi-million-euro fines by the Irish DPC against major tech platforms.</p>
+<p>Data subjects also have the right to <strong>judicial remedy</strong> and <strong>compensation</strong> (material and non-material damage) for infringement, and may mandate a <strong>non-profit body</strong> to exercise rights on their behalf (collective redress).</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Full Name</strong></td><td>General Data Protection Regulation — Regulation (EU) 2016/679</td></tr>
+<tr><td><strong>Adopted</strong></td><td>27 April 2016</td></tr>
+<tr><td><strong>Applies Since</strong></td><td>25 May 2018</td></tr>
+<tr><td><strong>Regulator</strong></td><td>National supervisory authorities + European Data Protection Board (EDPB)</td></tr>
+<tr><td><strong>Core Principles</strong></td><td>Seven principles including accountability (Article 5)</td></tr>
+<tr><td><strong>Lawful Bases</strong></td><td>Six bases — consent, contract, legal obligation, vital interests, public task, legitimate interests</td></tr>
+<tr><td><strong>DPO</strong></td><td>Mandatory for public authorities and large-scale monitoring/special category processing</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>72 hours to authority; affected individuals if high risk</td></tr>
+<tr><td><strong>Children's Consent Age</strong></td><td>16 (member states may lower to 13)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>Adequacy decisions, SCCs, BCRs, or derogations; Schrems II supplementary measures</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>None — free flow within EU is a core principle</td></tr>
+<tr><td><strong>Max Administrative Fine</strong></td><td>€20 million or 4% of global annual turnover</td></tr>
+<tr><td><strong>Max Fine Issued to Date</strong></td><td>€1.2 billion (Meta, 2023)</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>One-Stop-Shop + global extra-territorial reach; template for GDPR-style laws worldwide</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 50.0, lng: 10.0 },
     color: '#3B82F6',
     topics: [
@@ -725,7 +1288,7 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'uk',
     name: 'United Kingdom',
     flag: '🇬🇧',
@@ -734,6 +1297,130 @@ export const countries: Country[] = [
     region: 'Europe',
     level: 'Comprehensive',
     overview: "Post-Brexit, the UK has retained GDPR principles through the UK GDPR and Data Protection Act 2018. The ICO remains an active regulator, and the UK maintains its adequacy decision from the EU.",
+    detailedContent: `
+<h2>What is the UK Data Protection Framework?</h2>
+<p>Following Brexit, the United Kingdom operates a "UK GDPR" — a retained, domestically amended version of the EU GDPR — together with the <strong>Data Protection Act 2018</strong> (the "DPA 2018") and the <strong>Privacy and Electronic Communications Regulations 2003</strong> (PECR, the UK's version of the ePrivacy rules). Together these form the UK's data protection regime.</p>
+<p>The UK GDPR came into force on <strong>1 January 2021</strong> (at the end of the Brexit transition period), preserving the substance of EU law while removing EU-specific institutions (the EDPB, the One-Stop-Shop) and adapting terminology. The DPA 2018 supplements it with national provisions — including on law enforcement processing, intelligence services, exemptions, and offences.</p>
+<p>In <strong>June 2025</strong>, the <strong>Data (Use and Access) Act 2025</strong> ("DUAA") received Royal Assent, the first major reform of UK data protection law. It amends the UK GDPR, DPA 2018, and PECR — recognising "legitimate interests" lists, introducing a more flexible risk-based approach to DPIAs and data subject requests, replacing the DPO requirement with a "senior responsible individual" for certain controllers, updating scientific research provisions, relaxing certain cookie consent requirements, and raising PECR fines to UK GDPR levels. Guidance on the DUAA's phased commencement has been issued by the ICO, and organisations should track which provisions are in force at any given time.</p>
+
+<h2>Scope and Territorial Application</h2>
+<p>The UK GDPR applies to processing of personal data of individuals <strong>in the UK</strong>, with extra-territorial effect where:</p>
+<ul>
+<li>The controller or processor is established in the UK; or</li>
+<li>The controller or processor is not established in the UK but offers goods or services to individuals in the UK, or monitors their behaviour as far as it takes place in the UK.</li>
+</ul>
+<p>Non-UK controllers and processors caught by the extra-territorial provisions must appoint a <strong>UK representative</strong> (the UK equivalent of Article 27). Like the EU GDPR, purely personal or household activities are excluded.</p>
+
+<h2>Key Definitions</h2>
+<h3>Personal Data</h3>
+<p>Any information relating to an identified or identifiable living individual, directly or indirectly, by reference to an identifier or factors specific to their physical, physiological, genetic, mental, economic, cultural, or social identity. The definition mirrors the EU GDPR.</p>
+<h3>Special Category Data</h3>
+<p>Racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership; genetic data; biometric data for unique identification; and data concerning health, sex life, or sexual orientation. Processing requires a lawful basis under Article 6 <em>and</em> a separate condition under Article 9, mirroring the EU structure.</p>
+<h3>Controller, Processor, and Consent</h3>
+<p>Definitions substantially identical to the EU GDPR: the controller determines purposes and means; the processor acts on documented instructions under a contract; consent must be freely given, specific, informed, and unambiguous, and withdrawable as easily as it was given.</p>
+
+<h2>Principles and Lawful Bases</h2>
+<p>The UK GDPR preserves the seven EU-style principles (lawfulness, fairness, transparency; purpose limitation; data minimisation; accuracy; storage limitation; integrity and confidentiality; accountability), each enforceable and each carrying potential fines.</p>
+<p>The six lawful bases (Article 6) are the same as the EU GDPR: consent, contract, legal obligation, vital interests, public task, and legitimate interests. The DUAA adds a statutory recognition of certain "legitimate interests" — e.g. recognised legitimate interests such as certain public interest processing — and requires controllers to keep records of their legitimate interest assessments.</p>
+
+<h2>Data Subject Rights</h2>
+<p>Data subjects in the UK enjoy the same core rights as under the EU GDPR:</p>
+<ul>
+<li>Right to be informed (Articles 13–14);</li>
+<li>Right of access (Article 15) — one calendar month to respond, extendable by two months for complex requests;</li>
+<li>Right to rectification (Article 16);</li>
+<li>Right to erasure (Article 17);</li>
+<li>Right to restriction of processing (Article 18);</li>
+<li>Right to data portability (Article 20);</li>
+<li>Right to object (Article 21) — including the absolute right to object to direct marketing;</li>
+<li>Rights in relation to automated decision-making and profiling (Article 22).</li>
+</ul>
+<p>Under the DUAA, the approach to assessing manifestly unfounded or excessive requests is more explicitly risk-based and proportionate than the EU's, and fees for manifestly unfounded or excessive requests are retained.</p>
+
+<h2>Children's Data</h2>
+<p>The UK GDPR uses the same default digital consent age structure — <strong>16</strong> with the option for the UK to set a lower age, though the UK's own choice via the Age-Appropriate Design Code context effectively operates at <strong>13</strong> for online services through the ICO's Children's Code (the Age Appropriate Design Code), which imposes design standards on online services likely to be accessed by children — data minimisation, profiling restrictions, default private settings, and no nudge techniques. The Online Safety Act 2023 adds further child-safety obligations on platforms, enforced by Ofcom.</p>
+
+<h2>Controller and Processor Obligations</h2>
+<p>Core obligations mirror the EU GDPR: data protection by design and by default, records of processing, security of processing (including encryption and pseudonymisation), DPIAs for high-risk processing, prior consultation with the ICO where residual high risk remains, and Article 28-style processor contracts.</p>
+<p>Under the DUAA:</p>
+<ul>
+<li>The DPIA process is re-framed around a risk-based assessment ("assessment of high risk processing") rather than the EU's Article 35 formulation;</li>
+<li>Research provisions are liberalised — a broader definition of "scientific research", clearer conditions for re-use, and a new "recognised" ethical approval framework;</li>
+<li>Complaint-handling duties are added: controllers must have accessible complaint mechanisms and inform data subjects of their outcomes.</li>
+</ul>
+
+<h2>Data Protection Officer / Senior Responsible Individual</h2>
+<p>Under the original UK GDPR, a DPO was required for public authorities and for organisations whose core activities involve large-scale regular monitoring or large-scale special category processing. The <strong>DUAA replaces the DPO requirement for most private organisations</strong> with a designated <strong>"senior responsible individual"</strong> (SRI) responsible for data protection governance — though public authorities and certain public bodies retain a DPO-equivalent requirement. Organisations should verify which regime applies to them as DUAA provisions commence.</p>
+
+<h2>Data Breach Notification</h2>
+<p>Controllers must notify the ICO of a personal data breach <strong>within 72 hours</strong> of becoming aware of it where the breach is likely to result in a risk to individuals. Where the breach is likely to result in a <strong>high risk</strong>, affected individuals must be informed without undue delay. Processors must notify the controller without undue delay. Failure to notify when required is itself an offence/fineable infringement.</p>
+<p>Notable UK enforcement: British Airways (£20 million ICO fine in 2020, reduced from £183 million initially proposed, for a 2018 breach affecting ~400,000 customers); Marriott (£18.4 million in 2020, reduced from £99 million); and the ICO's £7.5 million fine against TikTok in 2025 for failing to protect children's data.</p>
+
+<h2>Cross-Border Data Transfers</h2>
+<p>The UK operates its own transfer regime:</p>
+<ul>
+<li><strong>Adequacy regulations</strong> — the UK Secretary of State may adopt adequacy regulations for destinations providing adequate protection. The UK has granted adequacy broadly to EEA countries, the EU, and a list of others (e.g. Japan, South Korea, Switzerland, Canada, and the US under the UK-US Data Bridge);</li>
+<li><strong>Appropriate safeguards</strong> — the UK has its own versions of Standard Contractual Clauses (the "IDTA" — International Data Transfer Agreement — and the UK Addendum to the EU SCCs) and recognises Binding Corporate Rules;</li>
+<li><strong>Derogations</strong> — same structure as the EU GDPR (consent, contract necessity, public interest, legal claims, vital interests).</li>
+</ul>
+<p>The EU granted the UK an <strong>adequacy decision in June 2021</strong> (with a sunset review), allowing free flow of personal data from the EU to the UK; the DUAA's reforms were assessed by the EU as not undermining the level of protection, though the adequacy decision remains subject to periodic review.</p>
+
+<h2>Cookies, Marketing, and PECR</h2>
+<p>PECR governs cookies, direct marketing by electronic means, and confidentiality of communications. Key rules:</p>
+<ul>
+<li><strong>Cookies</strong> — consent generally required for non-essential cookies, with exceptions for strictly necessary purposes. The DUAA relaxes this for certain low-risk uses (e.g. analytics-type functions meeting specified conditions), reducing banner fatigue;</li>
+<li><strong>Direct marketing</strong> — email/SMS marketing requires consent, with a soft opt-in for existing customers for similar products; unsolicited live marketing calls are restricted;</li>
+<li><strong>Caller ID and marketing lists</strong> — additional transparency requirements apply to marketing calls.</li>
+</ul>
+<p>PECR fines were historically capped at £500,000; the <strong>DUAA raises PECR penalties to the UK GDPR level of £17.5 million or 4% of turnover</strong>, dramatically increasing enforcement risk for cookie and marketing violations.</p>
+
+<h2>AI, Profiling, and Automated Decision-Making</h2>
+<p>Article 22 UK GDPR applies in the same way as the EU version. The UK has not adopted an EU AI Act equivalent; instead, it pursues a <strong>principles-based, sector-led approach to AI regulation</strong> (set out in the 2023 AI Regulation White Paper), with regulators including the ICO issuing joint guidance on AI and data protection. The ICO's guidance on AI covers transparency, explainability, and the conditions under which AI-driven decisions can be made lawfully (Article 22 conditions: contract necessity with safeguards, authorised by law, or explicit consent).</p>
+
+<h2>Enforcement and Penalties</h2>
+<p>The <strong>Information Commissioner's Office (ICO)</strong> is the independent supervisory authority for data protection, PECR, FOIA, and related regimes. The ICO has broad powers: information notices, assessment notices, enforcement notices, audit powers, monetary penalty notices, and powers to bring criminal prosecutions (e.g. for deliberate data re-identification, failing to notify breaches, or unlawfully obtaining personal data).</p>
+<p>Administrative fines under the UK GDPR:</p>
+<ul>
+<li>Up to <strong>£8.7 million or 2% of worldwide annual turnover</strong> for lesser infringements (records, DPO/SRI, security, breach notification);</li>
+<li>Up to <strong>£17.5 million or 4% of worldwide annual turnover</strong> for the most serious infringements (principles, lawful bases, consent conditions, special categories, data subject rights, transfers).</li>
+</ul>
+<p>Data subjects can sue for compensation, and the ICO can issue <strong>enforcement notices</strong> requiring specific remedial action. Notable themes of UK enforcement: marketing (PECR), health data, children's data, and data brokerage.</p>
+
+<h2>Comparison: UK GDPR vs EU GDPR</h2>
+<table>
+<thead>
+<tr><th>Feature</th><th>UK GDPR</th><th>EU GDPR</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Regulator</strong></td><td>ICO (single authority)</td><td>National DPAs + EDPB</td></tr>
+<tr><td><strong>DPO</strong></td><td>Replaced by SRI for most private orgs (DUAA)</td><td>Mandatory in specified cases</td></tr>
+<tr><td><strong>Transfers</strong></td><td>UK adequacy regs, IDTA/UK Addendum</td><td>EU adequacy decisions, EU SCCs</td></tr>
+<tr><td><strong>One-Stop-Shop</strong></td><td>None — ICO is sole lead authority</td><td>Lead DPA + OSS mechanism</td></tr>
+<tr><td><strong>Max Fine</strong></td><td>£17.5 million or 4% of global turnover</td><td>€20 million or 4% of global turnover</td></tr>
+<tr><td><strong>Cookies</strong></td><td>PECR; DUAA relaxes consent for some uses</td><td>ePrivacy Directive (national laws)</td></tr>
+<tr><td><strong>AI</strong></td><td>Principles-based, sector-led (no AI Act equivalent)</td><td>EU AI Act (comprehensive)</td></tr>
+</tbody>
+</table>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Framework</strong></td><td>UK GDPR + Data Protection Act 2018 + PECR; reformed by Data (Use and Access) Act 2025</td></tr>
+<tr><td><strong>UK GDPR In Force From</strong></td><td>1 January 2021</td></tr>
+<tr><td><strong>Regulator</strong></td><td>Information Commissioner's Office (ICO)</td></tr>
+<tr><td><strong>Lawful Bases</strong></td><td>Same six as EU GDPR; DUAA adds recognised legitimate interests</td></tr>
+<tr><td><strong>DPO / SRI</strong></td><td>DPO for public authorities; SRI for most private controllers (DUAA)</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>72 hours to ICO; individuals if high risk</td></tr>
+<tr><td><strong>Children's Data</strong></td><td>ICO Children's Code (design standards); 13+ for online services in practice</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>UK adequacy regs; IDTA or UK Addendum to EU SCCs; UK-US Data Bridge</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>None</td></tr>
+<tr><td><strong>Max Administrative Fine (UK GDPR)</strong></td><td>£17.5 million or 4% of global annual turnover</td></tr>
+<tr><td><strong>PECR Max Fine (post-DUAA)</strong></td><td>£17.5 million or 4% of global turnover</td></tr>
+<tr><td><strong>Notable Fines</strong></td><td>BA £20m; Marriott £18.4m; TikTok £7.5m (2025)</td></tr>
+<tr><td><strong>EU Adequacy</strong></td><td>Granted June 2021; reviewed periodically</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 55.0, lng: -3.0 },
     color: '#8B5CF6',
     topics: [
@@ -753,7 +1440,7 @@ export const countries: Country[] = [
       { title: 'Government Data', status: 'Addressed', icon: 'Building' },
     ],
   },
-  {
+    {
     id: 'germany',
     name: 'Germany',
     flag: '🇩🇪',
@@ -762,6 +1449,91 @@ export const countries: Country[] = [
     region: 'Europe',
     level: 'Comprehensive',
     overview: "Germany's BDSG, complemented by GDPR, provides a comprehensive data protection framework. The law includes sector-specific provisions and is enforced by the BfDI, which is an active regulator.",
+    detailedContent: `
+<h2>What is the German Framework?</h2>
+<p>Germany's data protection regime is built on <strong>two layers</strong>:</p>
+<ul>
+<li>The <strong>General Data Protection Regulation (GDPR)</strong> — directly applicable EU law, which forms the foundation of German data protection; and</li>
+<li>The <strong>Federal Data Protection Act (Bundesdatenschutzgesetz — BDSG)</strong>, which supplements the GDPR with national provisions. The BDSG was comprehensively modernised in 2018 (in force 25 May 2018) to replace the old pre-GDPR regime, and has been amended several times since, including by the <strong>Whistleblower Protection Act (HinSchG, 2023)</strong> and the <strong>Data Strategy amendments</strong>.</li>
+</ul>
+<p>The BDSG does not replace the GDPR — it fills gaps where the GDPR permits national variation: employment data processing, video surveillance, scoring, automated decisions in the public sector, freedom of information, and the structure of the supervisory authorities.</p>
+
+<h2>Scope and Application</h2>
+<p>As an EU member state, Germany is fully within GDPR's scope, including extra-territorial application. The BDSG adds:</p>
+<ul>
+<li>Detailed rules for <strong>processing employee data in employment contexts</strong> (Section 26 BDSG);</li>
+<li>Rules on <strong>video surveillance</strong> of publicly accessible spaces (Section 4 BDSG);</li>
+<li>Provisions on <strong>scoring and credit assessment</strong> (Sections 31–32);</li>
+<li>Adaptations for <strong>public bodies</strong>, churches, and the press;</li>
+<li>The Federal Data Protection Commissioner's mandate and the <strong>Freedom of Information Act</strong> (IFG).</li>
+</ul>
+
+<h2>Supervisory Authorities</h2>
+<p>Germany has one of the most decentralised data protection enforcement structures in the EU:</p>
+<ul>
+<li><strong>17 independent supervisory authorities</strong> — the <strong>BfDI (Bundesbeauftragte für den Datenschutz)</strong> at the federal level (supervising federal bodies, telecommunications, and postal services) and <strong>16 Land DPAs</strong> (one per federal state) supervising everything else;</li>
+<li>The <strong>DSK (Datenschutzkonferenz)</strong> — the conference of all 17 authorities, which coordinates positions and issues influential joint guidance (Orientierungshilfen) on cookies, video surveillance, AI, and employee monitoring;</li>
+<li><strong>Oversight of data protection officers</strong> — every DPO appointment and dismissal must be notified to the competent supervisory authority (Section 38(2) GDPR via BDSG).</li>
+</ul>
+
+<h2>Key National Provisions (BDSG Highlights)</h2>
+<h3>Employment Data (Section 26 BDSG)</h3>
+<p>Processing of employee personal data is lawful where <strong>necessary for employment purposes</strong> — performance of the employment contract, exercise of rights/obligations, detecting criminal offences where there is documented evidence of misconduct, or for legitimate interests that outweigh employee rights. Processing based on consent is only valid where the employee has a <strong>genuine free choice</strong> — which German authorities interpret narrowly given the power imbalance. <strong>Works councils (Betriebsräte)</strong> must be consulted on workplace monitoring systems, CCTV, and IT tools that process employee data, giving employee representatives a structural role no other EU country replicates in the same way.</p>
+<h3>Video Surveillance (Section 4 BDSG)</h3>
+<p>Surveillance of publicly accessible spaces is permitted only to the extent necessary for: (a) protecting public safety; (b) safeguarding legitimate interests that demonstrably outweigh individual rights (e.g. preventing theft in retail); or (c) pursuing legitimate interests relating to a specific, documented risk to property or persons. Cameras must not be positioned to monitor public roads/sidewalks more than necessary, footage must be deleted after days (not weeks), and affected persons must be clearly informed with signage listing the DPO's contact.</p>
+<h3>Scoring (Sections 31–32 BDSG)</h3>
+<p>Credit scoring (e.g. by SCHUFA, Germany's credit bureau) is permitted only using <strong>meaningful and substantiated data</strong>, and may not be based on data that produces a discriminatory effect. Fully automated decisions with legal effect (e.g. automated credit rejection) require specific safeguards under both GDPR Article 22 and BDSG Sections 37, including human review rights.</p>
+
+<h2>Data Protection Officers in Germany</h2>
+<p>Germany has the <strong>highest DPO density in Europe</strong>, for historical reasons: the old Federal Data Protection Act required DPOs for organisations processing personal data with more than nine employees using automated processing — a legacy that made DPOs a standard feature of German companies. Under GDPR Article 37, German thresholds remain relatively low in practice (authorities treat ~20 employees as a soft line), and every DPO appointment must be documented with the competent supervisory authority. The <strong>HinSchG (Whistleblower Protection Act, 2023)</strong> added a separate obligation: organisations with 50+ employees must designate a <strong>confidential ombudsman</strong> and protect whistleblower data — with a specific offence of obstructing reporting (fines up to €50,000).</p>
+
+<h2>Cookies and Tracking — The German Twist</h2>
+<p>Germany applies GDPR consent standards to cookies and trackers with particular strictness:</p>
+<ul>
+<li>The DSK's guidance and numerous DPA decisions (e.g. the <strong>Baden-Württemberg DPA</strong> rulings and the Federal Court of Justice — BGH — <strong>cookie judgment of May 2020</strong>) require <strong>active opt-in consent</strong> for non-essential cookies — no pre-ticked boxes, no "continue scrolling" consent;</li>
+<li>Analytics cookies (e.g. Google Analytics) have been held to require consent; IP anonymisation alone may not suffice if data flows to third countries;</li>
+<li>After Google Fonts rulings (Munich court, 2022 — €100 damages to a website owner for transferring the user's IP to Google without consent), German courts have enforced website-level privacy with small-claims creativity;</li>
+<li>Fines for cookie violations have been modest compared to marketing breaches elsewhere, but injunctions via competitors and consumer associations (under GDPR's Article 80 representation) are common.</li>
+</ul>
+
+<h2>Data Subject Rights and Enforcement Themes</h2>
+<p>All GDPR rights apply in Germany. German enforcement is notable for:</p>
+<ul>
+<li><strong>Access requests (Art. 15)</strong> — German DPAs enforce the right strictly; companies must provide copies of actual records, not just summaries;</li>
+<li><strong>Employee monitoring</strong> — cases on keyloggers and screenshot monitoring (e.g. the BAG — Federal Labour Court — rulings) set a high bar for proportionality;</li>
+<li><strong>Health data</strong> — strict interpretations of Article 9 in employment and insurance contexts;</li>
+<li><strong>Public sector</strong> — the BfDI has fined federal bodies (e.g. fines against the Federal Police/BKA-adjacent bodies for unlawful data retention).</li>
+</ul>
+<p>Notable German fines: the <strong>Berlin DPA's €525,000 fine against a real-estate company (2021) for retaining data on former tenants</strong> — one of the largest standalone German DPA fines — and the <strong>BfDI's €1.24 million fine against H&M subsidiary (2020, actually Hamburg DPA)</strong> for excessive employee data collection at a Nuremberg service centre, which triggered a public apology and management shake-up.</p>
+
+<h2>Cross-Border Transfers</h2>
+<p>As an EU member state, Germany applies Chapter V GDPR in full. German enforcement has been influential in this area: the DSK's Schrems II implementation guidance (2021) set an early, strict standard for supplementary measures, and German courts have invalidated individual transfers (e.g. the <strong>Wiesbaden administrative court</strong> decisions on US-based support tools). Companies transferring German employee data to US parent HR systems should expect scrutiny.</p>
+
+<h2>Data Localisation</h2>
+<p>No general data localisation requirement. Sectoral rules exist — e.g. the <strong>German Banking Act (KWG)</strong> and outsourcing rules for financial institutions require regulator notification for outsourcing, and health/telematics regulations (gematik) keep certain health data in Germany. The BDSG itself contains no localisation mandate.</p>
+
+<h2>AI and Automated Decisions</h2>
+<p>Beyond GDPR Article 22, Germany's AI landscape includes: the <strong>AI strategy amendments to the BDSG</strong> enabling regulatory sandboxes; the DSK's extensive guidance on AI and employment; and case law shaping automated employment decisions (e.g. the 2021 decisions on automated application screening requiring transparency). The EU AI Act applies directly as EU law.</p>
+
+<h2>Enforcement and Penalties</h2>
+<p>Fines follow GDPR tiers (€10m/2% and €20m/4%). German enforcement is characterised by <strong>precision over volume</strong> — fewer but well-reasoned fines, combined with labour court litigation, injunctions, and reputational pressure. The BfDI can fine federal agencies; the Land DPAs fine private sector actors. Criminal provisions exist in Section 42 BDSG (unauthorised disclosure of data with intent to enrichment or harm — imprisonment up to 3 years) and Section 43 (obstruction of supervisory authorities).</p>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Framework</strong></td><td>GDPR (directly applicable) + Federal Data Protection Act (BDSG 2018)</td></tr>
+<tr><td><strong>Regulator</strong></td><td>BfDI (federal) + 16 Land DPAs; coordinated via DSK</td></tr>
+<tr><td><strong>Unique National Rules</strong></td><td>§26 employment data, §4 video surveillance, §§31-32 scoring, works council co-determination</td></tr>
+<tr><td><strong>DPO</strong></td><td>GDPR Art. 37 thresholds; DPO appointments notified to authorities; whistleblower ombudsman (HinSchG) for 50+ employees</td></tr>
+<tr><td><strong>Cookies</strong></td><td>Strict opt-in (BGH 2020); no-nuance enforcement on analytics</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>GDPR 72-hour rule, strictly enforced</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>None general; sectoral (health telematics, banking outsourcing rules)</td></tr>
+<tr><td><strong>Max Fine</strong></td><td>GDPR tiers — €20 million or 4% of global turnover</td></tr>
+<tr><td><strong>Notable Fines</strong></td><td>H&M Hamburg €35m (2020, reduced on appeal); real-estate retention €525k; BfDI fines on federal bodies</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>Works council co-determination on employee monitoring + most decentralised DPA structure in EU</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 51.0, lng: 10.0 },
     color: '#EF4444',
     topics: [
@@ -1093,7 +1865,7 @@ export const countries: Country[] = [
   // ============================
   // ===== AMERICAS (8) =====
   // ============================
-  {
+    {
     id: 'usa',
     name: 'United States',
     flag: '🇺🇸',
@@ -1102,6 +1874,115 @@ export const countries: Country[] = [
     region: 'Americas',
     level: 'Substantial',
     overview: "The US has a patchwork of state-level data protection laws, led by California's CCPA/CPRA. Other states have followed with their own frameworks. Federal sector-specific laws apply to healthcare (HIPAA), finance (GLBA), and children (COPPA).",
+    detailedContent: `
+<h2>There Is No Single US Data Protection Law</h2>
+<p>Unlike the EU, India, or China, the United States has <strong>no comprehensive federal data protection statute</strong>. Instead, the US regime is a patchwork of:</p>
+<ul>
+<li><strong>State comprehensive privacy laws</strong> — led by California's CCPA as amended by the CPRA, followed by Virginia, Colorado, Connecticut, Utah, Texas, Montana, Oregon, and others;</li>
+<li><strong>Federal sector-specific statutes</strong> — HIPAA (health), GLBA (financial), COPPA (children), FCRA (consumer reports), VPPA (video viewing), TCPA (telemarketing);</li>
+<li><strong>Federal privacy regulation by enforcement</strong> — the FTC's authority under <strong>Section 5 of the FTC Act</strong> to police "unfair or deceptive" data practices, which has de facto created a federal privacy standard;</li>
+<li><strong>State breach notification laws</strong> — all 50 states, plus DC and territories, have their own.</li>
+</ul>
+<p>This guide focuses on the state comprehensive laws and the federal framework; organisations operating across the US must map obligations state by state and sector by sector.</p>
+
+<h2>California: CCPA and CPRA</h2>
+<p>The <strong>California Consumer Privacy Act (CCPA)</strong> took effect on <strong>1 January 2020</strong> and was substantially amended by the <strong>California Privacy Rights Act (CPRA)</strong>, effective <strong>1 January 2023</strong>. Together they form the most influential US privacy law and the template many other states followed.</p>
+<h3>Who Is Covered</h3>
+<p>The CCPA applies to for-profit businesses doing business in California that meet any of: (i) over <strong>$26.6 million</strong> in gross annual revenue; (ii) buy, sell, or share personal information of <strong>100,000+ consumers/households</strong>; or (iii) derive <strong>50% or more of revenue from selling personal information</strong>. Unlike GDPR, there is no threshold based on processing volume alone.</p>
+<h3>Core Concepts</h3>
+<ul>
+<li><strong>"Consumer"</strong> — any California resident (broadly equivalent to GDPR's data subject);</li>
+<li><strong>"Personal information"</strong> — broadly defined, but excludes publicly available and de-identified information; the CPRA added <strong>"sensitive personal information"</strong> as a defined category (SSN, financial credentials, precise geolocation, race, health data, biometric data, sexual orientation, contents of communications);</li>
+<li><strong>"Sale" and "sharing"</strong> — defined broadly to capture exchanges for monetary or other valuable consideration, and cross-context behavioural advertising regardless of payment.</li>
+</ul>
+<h3>Consumer Rights</h3>
+<ul>
+<li><strong>Right to know/access</strong> — what PI is collected, its sources, purposes, and third-party recipients (lookback up to 12 months, 24 months for accuracy of PI under CPRA);</li>
+<li><strong>Right to delete</strong> — with exceptions (e.g. completing transactions, security, legal claims);</li>
+<li><strong>Right to correct</strong> — inaccurate PI (added by CPRA);</li>
+<li><strong>Right to opt out of sale/sharing</strong> — including of cross-context behavioural advertising; the <strong>Global Privacy Control (GPC)</strong> browser signal must be honoured as a valid opt-out;</li>
+<li><strong>Right to limit sensitive personal information</strong> (CPRA);</li>
+<li><strong>Right not to be discriminated against</strong> for exercising rights (with loyalty-program exceptions).</li>
+</ul>
+<p>There is <strong>no general right to erasure of publicly available data, no data portability right as such, and no consent-first model</strong> — the CCPA is fundamentally an opt-out regime: businesses may collect and use data without consent, but consumers can stop the "sale/sharing".</p>
+<h3>California Enforcement</h3>
+<p>Enforcement is by the <strong>California Privacy Protection Agency (CPPA)</strong> — the first dedicated US privacy regulator — and the California Attorney General. Civil penalties: up to <strong>$2,500 per violation</strong>, or <strong>$7,500 per intentional violation or violations involving minors</strong>. For data breaches caused by failure to maintain reasonable security, consumers have a <strong>private right of action</strong> with statutory damages of <strong>$100–$750 per consumer per incident</strong> (or actual damages, whichever is greater) — the provision that made the CCPA famous, since a single breach can expose a company to hundreds of millions in damages.</p>
+
+<h2>Other State Comprehensive Laws</h2>
+<p>Since 2021, roughly 20 states have enacted comprehensive privacy laws. They share a common skeleton — rights to access, correct, delete, opt out of sale/targeted advertising/profiling — but differ in thresholds, exemptions, and enforcement. Key examples:</p>
+<ul>
+<li><strong>Virginia (VCDPA, 2023)</strong> — opt-in consent for processing sensitive data (unlike California's opt-out for sensitive data); no private right of action;</li>
+<li><strong>Colorado (CPA, 2023)</strong> — recognises universal opt-out signals (GPC); rulemaking by AG; consent required for sensitive data;</li>
+<li><strong>Connecticut (CTDPA, 2023)</strong> — includes data minimisation duties and a right to appeal;</li>
+<li><strong>Texas (TDPSA, 2024)</strong> — applies to all businesses regardless of revenue thresholds (small business carve-outs), making it unusually broad;</li>
+<li><strong>Montana, Oregon, Delaware, and others (2023–2025)</strong> — variations on the same theme; several recognise opt-out signals and include sensitive-data opt-in requirements.</li>
+</ul>
+<p><strong>Common threads:</strong> most apply only to businesses above revenue/volume thresholds; most are enforced exclusively by the state Attorney General (no private right of action except California's breach provision); most include GDPR-style data processor contracts; most require DPIA-style assessments for profiling/sensitive processing.</p>
+
+<h2>Federal Sectoral Laws</h2>
+<p>Federal law governs specific sectors rather than general processing:</p>
+<ul>
+<li><strong>HIPAA</strong> — health data held by covered entities (providers, insurers, clearinghouses) and their business associates; enforced by HHS OCR; breach notification within 60 days; strict security and patient rights;</li>
+<li><strong>GLBA</strong> — financial institutions; privacy notices and opt-outs for sharing with non-affiliates; Safeguards Rule requires information security programs;</li>
+<li><strong>COPPA</strong> — online services collecting data from children under 13; verifiable parental consent required; FTC-enforced, with rule updates strengthening education technology and safe-harbour provisions;</li>
+<li><strong>FCRA</strong> — consumer reporting (credit, employment, tenant screening); accuracy, dispute, and consent requirements;</li>
+<li><strong>VPPA</strong> — video viewing history;</li>
+<li><strong>TCPA</strong> — telemarketing calls/texts; prior express written consent for autodialled marketing.</li>
+</ul>
+
+<h2>The FTC as De Facto Privacy Regulator</h2>
+<p>Under <strong>Section 5 of the FTC Act</strong>, the Federal Trade Commission prohibits "unfair or deceptive acts or practices in or affecting commerce". The FTC has used this to police privacy for decades — enforcing against companies whose privacy policies misrepresent their practices, whose data security is unreasonable (the "unfairness" limb), or who make deceptive claims about data use (e.g. the Cambridge Analytica settlement, the $5 billion Facebook/ Meta 2019 order, and numerous COPPA cases).</p>
+<p>The FTC can issue <strong>20-year consent orders</strong> requiring specific compliance programs and imposing penalties of up to <strong>$51,744 per violation per day</strong> for order breaches. It has issued rules on <strong>commercial surveillance</strong> and children (the 2023 amended COPPA rule, the 2024 rule banning fake reviews and AI impersonation), and its stance on AI claims ("AI washing") has produced enforcement against exaggerated AI privacy claims.</p>
+
+<h2>Breach Notification</h2>
+<p>All 50 states require notification of data breaches involving personal information, but <strong>each state has its own trigger, definition, timeline, and regulator</strong>. Typical triggers: unauthorised acquisition of unencrypted name + SSN/driver licence/financial account. Timelines range from "without unreasonable delay" to fixed deadlines — <strong>Colorado's 30-day deadline is among the strictest</strong>; Florida requires notification within 30 days; most others use 30–60 days or "expedient" standards. Several states (e.g. New York under the SHIELD Act) also impose <strong>reasonable security program duties</strong> on businesses holding NY residents' data. For healthcare breaches, HIPAA's 60-day federal rule overlays state law.</p>
+
+<h2>Cross-Border Transfers and Data Localisation</h2>
+<p>The US has <strong>no general data localisation requirement</strong> and no general restriction on cross-border transfers — data flows freely out of the US, subject to sectoral exceptions (e.g. certain federal government data, some defence-related export controls, and CFIUS-driven restrictions on sensitive personal data of Americans when acquired by foreign adversaries — the DOJ's <strong>Data Security Program</strong> rules restrict certain bulk sensitive data transactions with China, Russia, and other covered countries).</p>
+<p>Inward transfers matter too: the EU–US Data Privacy Framework (2023) allows certified US companies to receive EU personal data; the UK-US Data Bridge covers UK data.</p>
+
+<h2>AI Regulation</h2>
+<p>US AI regulation is fragmented and rapidly evolving. Notable developments: <strong>Colorado's AI Act (2024)</strong> — the first comprehensive state AI law, imposing risk-management duties on developers/deployers of high-risk AI, with its effective date deferred to 2026 amid ongoing revisions; <strong>state laws on deepfakes and AI in elections</strong>; <strong>Illinois' BIPA</strong> — a biometric privacy law that has generated enormous class-action exposure (statutory damages of $1,000–$5,000 per violation, interpreted per scan); and <strong>federal executive actions</strong> that have shifted between prescriptive and deregulatory approaches across administrations. Companies should expect state-by-state AI obligations focused on disclosure, discrimination testing, and safety for high-risk uses.</p>
+
+<h2>DPOs, DPIAs, and Consent Models</h2>
+<ul>
+<li><strong>DPO</strong> — not generally required, though some state laws require a designated privacy contact; the CPPA's regulations encourage documented privacy programs;</li>
+<li><strong>DPIAs</strong> — required under several state laws for targeted advertising, profiling, and sensitive data processing (Colorado, Connecticut, Virginia, Texas, and others), and for AI under Colorado's AI Act;</li>
+<li><strong>Consent</strong> — the default US model is <strong>notice-and-opt-out</strong>, not GDPR-style opt-in consent, with important exceptions: opt-in for sensitive data (Virginia, Colorado, Connecticut, and others), opt-in for children (COPPA), and opt-in for telemarketing (TCPA).</li>
+</ul>
+
+<h2>Enforcement and Penalties Snapshot</h2>
+<table>
+<thead>
+<tr><th>Regime</th><th>Enforcer</th><th>Max Exposure</th></tr>
+</thead>
+<tbody>
+<tr><td>CCPA/CPRA</td><td>CPPA + CA AG</td><td>$2,500/violation; $7,500 intentional/minors; private action $100–$750/consumer for breaches</td></tr>
+<tr><td>Other state laws</td><td>State AGs</td><td>Typically $7,500/violation + injunctions; no private action (except CA)</td></tr>
+<tr><td>HIPAA</td><td>HHS OCR</td><td>Tiered fines up to ~$2 million per violation category per year</td></tr>
+<tr><td>FTC Act §5</td><td>FTC</td><td>Consent orders; ~$51,744/day per violation; consumer redress</td></tr>
+<tr><td>BIPA (IL)</td><td>Private plaintiffs + AG</td><td>$1,000–$5,000 per violation (per scan) — $650M Meta settlement; $92M TikTok settlement</td></tr>
+<tr><td>COPPA</td><td>FTC + state AGs</td><td>~$53,088 per violation per child</td></tr>
+</tbody>
+</table>
+
+<h2>Quick Summary</h2>
+<table>
+<tbody>
+<tr><td><strong>Framework</strong></td><td>State comprehensive laws (CCPA/CPRA + ~20 states) + federal sectoral laws + FTC Act §5</td></tr>
+<tr><td><strong>CCPA Effective</strong></td><td>1 January 2020; CPRA amendments 1 January 2023</td></tr>
+<tr><td><strong>Regulators</strong></td><td>California Privacy Protection Agency (CPPA); State Attorneys General; FTC (federal, sectoral)</td></tr>
+<tr><td><strong>Model</strong></td><td>Opt-out (notice and choice), with opt-in islands for sensitive data, children, and telemarketing</td></tr>
+<tr><td><strong>DPO</strong></td><td>Not generally required</td></tr>
+<tr><td><strong>Breach Notification</strong></td><td>All 50 states; timelines 30 days (CO) to 60 days (HIPAA) to "expedient"</td></tr>
+<tr><td><strong>Children</strong></td><td>COPPA (under-13, opt-in); state teen social-media laws (e.g. Utah)</td></tr>
+<tr><td><strong>Cross-Border Transfer</strong></td><td>No general restriction; DOJ Data Security Program restricts certain transfers to covered countries</td></tr>
+<tr><td><strong>Data Localisation</strong></td><td>None general; sectoral/federal exceptions</td></tr>
+<tr><td><strong>Max Fine (CCPA)</strong></td><td>$7,500 per intentional violation; $100–$750 per consumer per breach incident (private action)</td></tr>
+<tr><td><strong>Unique Feature</strong></td><td>Only major jurisdiction with no single comprehensive law — compliance is a 50-state mapping exercise</td></tr>
+</tbody>
+</table>
+`,
     coordinates: { lat: 37.0, lng: -95.0 },
     color: '#22C55E',
     topics: [
