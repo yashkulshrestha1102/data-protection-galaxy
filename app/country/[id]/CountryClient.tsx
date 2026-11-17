@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Country } from "@/data/countries";
 import { CountryFAQ } from "@/data/country-faqs";
+import Image from "next/image";
 
 const iconMap: Record<string, any> = {
   Building, CheckCircle, AlertCircle, Shield, Users, Globe,
@@ -40,17 +41,25 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
 
   return (
     <main className="min-h-screen text-white px-4 pb-12 relative overflow-hidden pt-24 md:pt-28">
-    <div className="hidden print:block text-black mb-8 border-b-2 border-black pb-4">
-    <div className="flex items-center justify-between">
-      <div>
-        <h1 className="text-2xl font-bold text-black">Legal Galaxy</h1>
-        <p className="text-sm text-gray-600">Privacy & AI Governance</p>
+      
+      {/* ===== PDF PROFESSIONAL LETTERHEAD (Only visible in Print) ===== */}
+      <div className="hidden print:block text-black mb-8 border-b-2 border-gray-300 pb-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            {/* Logo - Ensure path is correct */}
+            <img src="/logo.png" alt="Legal Galaxy Logo" className="w-12 h-12 object-contain" />
+            <div>
+              <h1 className="text-2xl font-bold text-black m-0">Legal Galaxy</h1>
+              <p className="text-sm text-gray-600 m-0">Privacy & AI Governance</p>
+            </div>
+          </div>
+          <div className="text-right text-sm text-gray-600">
+            <p className="m-0 font-semibold">Official Country Report</p>
+            <p className="m-0">Generated: {new Date().toLocaleDateString()}</p>
+            <p className="m-0">www.dpdpa.businezexcellence.com</p>
+          </div>
+        </div>
       </div>
-      <div className="text-right text-sm">
-        <p>Generated from dpdpa.businezexcellence.com</p>
-      </div>
-    </div>
-  </div>
 
       {/* Background Gradients */}
       <div className="absolute inset-0 -z-10 bg-[#0a0a0a] print:hidden">

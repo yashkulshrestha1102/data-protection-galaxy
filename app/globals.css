@@ -265,3 +265,81 @@ body {
     margin-bottom: 20px;
   }
 }
+
+
+/* =========================================
+   PROFESSIONAL PRINT STYLES (FOR PDF)
+   ========================================= */
+@media print {
+  /* 1. Page setup (Margins) */
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  /* 2. Force Background to White & Text to Black */
+  html, body {
+    background-color: #ffffff !important;
+    color: #111827 !important; /* Dark gray for readability */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 3. Hide Background Images, Animations, Navigation, and Buttons */
+  .absolute.inset-0.-z-10, 
+  .animate-pulse,
+  .animate-twinkle,
+  header, footer, nav, button, 
+  a[href^="http"]::after {
+    display: none !important;
+  }
+
+  /* 4. Fix Layout for Print */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .max-w-6xl {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 5. Style Cards, Boxes, and Tables */
+  .bg-white\/5, 
+  .bg-white\/10, 
+  .bg-black\/30,
+  .bg-black\/40,
+  .border-white\/10,
+  .border-white\/20 {
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important; /* Light Gray border */
+    box-shadow: none !important;
+    color: #111827 !important;
+  }
+
+  /* 6. Typography Fixes */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    page-break-after: avoid;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  p, span, div, li, td {
+    color: #374151 !important;
+    font-size: 11pt !important; /* Standard print font size */
+    line-height: 1.5 !important;
+  }
+
+  /* 7. Detailed Guide Content Fixes */
+  .country-content h2 { border-bottom: 1px solid #000 !important; }
+  .country-content table { border: 1px solid #000 !important; width: 100% !important; }
+  .country-content th, .country-content td { border: 1px solid #ccc !important; padding: 8px !important; }
+  
+  /* 8. Prevent page breaks inside cards */
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
