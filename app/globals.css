@@ -197,104 +197,62 @@ body {
 
 
 
-
-
-
-/* ===== PRINT STYLES (FOR PDF GENERATION) ===== */
-@media print {
-  /* 1. Background white aur text black */
-  body, main {
-    background: #ffffff !important;
-    color: #000000 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* 2. Header, Footer, Buttons, Social Icons hide karo */
-  header, 
-  footer, 
-  button, 
-  .no-print,
-  nav {
-    display: none !important;
-  }
-
-  /* 3. Animations aur background images hide */
-  .absolute.inset-0.-z-10,
-  .animate-pulse,
-  .animate-twinkle {
-    display: none !important;
-  }
-
-  /* 4. Content Box ko white karo taaki text visible ho */
-  .bg-white\/5, 
-  .bg-white\/10, 
-  .bg-black\/30,
-  .bg-black\/40 {
-    background: #ffffff !important;
-    border: 1px solid #e5e7eb !important; /* Light grey border */
-  }
-
-  /* 5. Text colors ko dark gray/black karo */
-  h1, h2, h3, h4, h5, h6 {
-    color: #111827 !important;
-    page-break-after: avoid; /* Heading ke baad page break na ho */
-  }
-
-  p, span, div, li, td, th {
-    color: #374151 !important; /* Dark grey for reading */
-  }
-
-  /* 6. Links ko black aur underline karo */
-  a {
-    color: #000000 !important;
-    text-decoration: underline !important;
-  }
-
-  /* 7. Page breaks control karo */
-  .page-break {
-    page-break-before: always;
-  }
-  
-  /* 8. PDF ke top par ek Professional Header add karna (Optional but recommended) */
-  .print-header {
-    display: block !important;
-    text-align: center;
-    border-bottom: 2px solid #000;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-}
-
-
 /* =========================================
-   PROFESSIONAL PRINT STYLES (FOR PDF)
+   FINAL PROFESSIONAL PRINT STYLES
    ========================================= */
 @media print {
-  /* 1. Page setup (Margins) */
   @page {
     size: A4;
     margin: 15mm;
   }
 
-  /* 2. Force Background to White & Text to Black */
   html, body {
     background-color: #ffffff !important;
-    color: #111827 !important; /* Dark gray for readability */
+    color: #000000 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* 3. Hide Background Images, Animations, Navigation, and Buttons */
-  .absolute.inset-0.-z-10, 
-  .animate-pulse,
-  .animate-twinkle,
-  header, footer, nav, button, 
-  a[href^="http"]::after {
+    /* Hide website header, footer, and cookie banner */
+  body > header, 
+  body > footer, 
+  .site-header, 
+  .site-footer,
+  .fixed, /* Yeh kisi bhi fixed element ko hide karega */
+  [class*="ConsentBanner"],
+  [id*="consent"],
+  [class*="cookie"],
+  [id*="cookie"] {
     display: none !important;
   }
 
-  /* 4. Fix Layout for Print */
+
+
+
+  #cookie-consent,
+  #cookie-settings,
+  [id*="cookie"],
+  [class*="cookie"],
+  [class*="consent"],
+  button[aria-label*="ookie"],
+  a[href*="cookie"],
+  .fixed.bottom-4,
+  .fixed.bottom-6,
+  .fixed.bottom-10,
+  .fixed.bottom-2 {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+
+  .absolute.inset-0.-z-10, 
+  .animate-pulse,
+  .animate-twinkle {
+    display: none !important;
+  }
+
   main {
     padding: 0 !important;
     margin: 0 !important;
@@ -306,40 +264,33 @@ body {
     padding: 0 !important;
   }
 
-  /* 5. Style Cards, Boxes, and Tables */
+  /* Card backgrounds */
   .bg-white\/5, 
   .bg-white\/10, 
   .bg-black\/30,
   .bg-black\/40,
   .border-white\/10,
   .border-white\/20 {
-    background-color: #ffffff !important;
-    border: 1px solid #d1d5db !important; /* Light Gray border */
+    background-color: #f9fafb !important; 
+    border: 1px solid #d1d5db !important; 
     box-shadow: none !important;
+    color: #000000 !important;
+  }
+
+  /* FORCE ONLY TEXT TO BE DARK (Excluding SVG) */
+  h1, h2, h3, h4, h5, h6, p, span, div, li, td, th {
     color: #111827 !important;
   }
-
-  /* 6. Typography Fixes */
+  
   h1, h2, h3, h4, h5, h6 {
-    color: #000000 !important;
+    color: #0d5466 !important;
     page-break-after: avoid;
-    margin-top: 1rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  p, span, div, li, td {
-    color: #374151 !important;
-    font-size: 11pt !important; /* Standard print font size */
-    line-height: 1.5 !important;
   }
 
-  /* 7. Detailed Guide Content Fixes */
-  .country-content h2 { border-bottom: 1px solid #000 !important; }
+  /* Table fixes */
   .country-content table { border: 1px solid #000 !important; width: 100% !important; }
-  .country-content th, .country-content td { border: 1px solid #ccc !important; padding: 8px !important; }
+  .country-content th, .country-content td { border: 1px solid #000 !important; padding: 8px !important; color: #000 !important; }
+  .country-content strong { color: #000 !important; }
   
-  /* 8. Prevent page breaks inside cards */
-  .page-break-inside-avoid {
-    page-break-inside: avoid;
-  }
+  .page-break-inside-avoid { page-break-inside: avoid; }
 }
