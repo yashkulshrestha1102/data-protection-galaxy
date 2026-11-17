@@ -40,8 +40,20 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
 
   return (
     <main className="min-h-screen text-white px-4 pb-12 relative overflow-hidden pt-24 md:pt-28">
+    <div className="hidden print:block text-black mb-8 border-b-2 border-black pb-4">
+    <div className="flex items-center justify-between">
+      <div>
+        <h1 className="text-2xl font-bold text-black">Legal Galaxy</h1>
+        <p className="text-sm text-gray-600">Privacy & AI Governance</p>
+      </div>
+      <div className="text-right text-sm">
+        <p>Generated from dpdpa.businezexcellence.com</p>
+      </div>
+    </div>
+  </div>
+
       {/* Background Gradients */}
-      <div className="absolute inset-0 -z-10 bg-[#0a0a0a]">
+      <div className="absolute inset-0 -z-10 bg-[#0a0a0a] print:hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>

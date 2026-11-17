@@ -194,3 +194,74 @@ body {
 .country-content tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.02);
 }
+
+
+
+
+
+
+/* ===== PRINT STYLES (FOR PDF GENERATION) ===== */
+@media print {
+  /* 1. Background white aur text black */
+  body, main {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 2. Header, Footer, Buttons, Social Icons hide karo */
+  header, 
+  footer, 
+  button, 
+  .no-print,
+  nav {
+    display: none !important;
+  }
+
+  /* 3. Animations aur background images hide */
+  .absolute.inset-0.-z-10,
+  .animate-pulse,
+  .animate-twinkle {
+    display: none !important;
+  }
+
+  /* 4. Content Box ko white karo taaki text visible ho */
+  .bg-white\/5, 
+  .bg-white\/10, 
+  .bg-black\/30,
+  .bg-black\/40 {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important; /* Light grey border */
+  }
+
+  /* 5. Text colors ko dark gray/black karo */
+  h1, h2, h3, h4, h5, h6 {
+    color: #111827 !important;
+    page-break-after: avoid; /* Heading ke baad page break na ho */
+  }
+
+  p, span, div, li, td, th {
+    color: #374151 !important; /* Dark grey for reading */
+  }
+
+  /* 6. Links ko black aur underline karo */
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* 7. Page breaks control karo */
+  .page-break {
+    page-break-before: always;
+  }
+  
+  /* 8. PDF ke top par ek Professional Header add karna (Optional but recommended) */
+  .print-header {
+    display: block !important;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+}
