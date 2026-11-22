@@ -248,7 +248,7 @@ export const ConsultantModal = ({ isOpen, onClose }: ConsultantModalProps) => {
                   </div>
 
                   {/* ROW 7: Submit */}
-                  <button type="submit" disabled={isSubmitting} className="w-full mt-2 py-3 rounded-xl bg-cyan-400 text-white font-bold hover:bg-cyan-300 transition-all text-sm disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+                  <button type="submit" disabled={isSubmitting} className="w-full mt-2 py-3 rounded-xl bg-cyan-400 text-white font-bold hover:bg-cyan-300 transition-all text-sm disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(70,208,155,0.3)]">
                     {isSubmitting ? (
                       <><Loader2 className="w-4 h-4 animate-spin" /> Submitting...</>
                     ) : (

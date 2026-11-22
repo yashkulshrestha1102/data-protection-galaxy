@@ -60,13 +60,13 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
   // ✅ cyan HATA KAR BLUE GRADIENT COLORS DAALE HAIN
   const getFillColor = (countryId: string) => {
     const country = countries.find(c => c.id === countryId);
-    if (!country) return "#0a1a2f"; // Default dark blue for unrecorded areas
+    if (!country) return "#071A15"; // Default dark blue for unrecorded areas
     
     switch (country.level) {
       case 'Comprehensive': return "#023E8A"; // Dark Blue
-      case 'Substantial': return "#0077B6";   // Medium Dark Blue
+      case 'Substantial': return "#0E9187";   // Medium Dark Blue
       case 'Moderate': return "#0096C7";      // Cyan-Blue
-      case 'Limited': return "#48CAE4";       // Light Cyan
+      case 'Limited': return "#7FE3B8";       // Light Cyan
       case 'None': return "#1e293b";          // Slate/Dark Gray
       default: return "#1e293b";
     }
@@ -77,7 +77,7 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
   return (
     <div 
       ref={containerRef} 
-      className="relative w-full h-full rounded-2xl overflow-hidden bg-[#030814] border border-white/10 shadow-2xl flex flex-col"
+      className="relative w-full h-full rounded-2xl overflow-hidden bg-[#03100D] border border-white/10 shadow-2xl flex flex-col"
       onMouseMove={handleMouseMove}
     >
       
@@ -107,8 +107,8 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
                       onMouseEnter={(e) => handleMouseEnter(geoName, e)}
                       onMouseLeave={handleMouseLeave}
                       onClick={() => handleClick(geoName)}
-                      fill={countryId ? getFillColor(countryId) : "#0a1a2f"}
-                      stroke="#030814" // Match background for clean borders
+                      fill={countryId ? getFillColor(countryId) : "#071A15"}
+                      stroke="#03100D" // Match background for clean borders
                       strokeWidth={0.5}
                       className={`outline-none transition-opacity duration-200 ${selectedCountryId === countryId ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
                     />
@@ -125,9 +125,9 @@ export const Globe3D = ({ onCountryClick, selectedCountryId }: Globe3DProps) => 
         {[
           // ✅ Legend colors updated to match Blue Theme
           { label: 'Comprehensive', color: '#023E8A' },
-          { label: 'Substantial', color: '#0077B6' },
+          { label: 'Substantial', color: '#0E9187' },
           { label: 'Moderate', color: '#0096C7' },
-          { label: 'Limited', color: '#48CAE4' },
+          { label: 'Limited', color: '#7FE3B8' },
           { label: 'None', color: '#1e293b' }
         ].map((level) => (
           <div key={level.label} className="flex items-center gap-1.5">

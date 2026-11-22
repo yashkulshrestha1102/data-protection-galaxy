@@ -15,12 +15,20 @@ export const Button = ({
   className,
   ...props
 }: ButtonProps) => {
-  const baseStyles = "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
-  
-    const variants = {
-    primary: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30",
-    secondary: "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-105",
-    outline: "border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white",
+  const baseStyles =
+    "btn-shine inline-flex items-center justify-center rounded-xl font-medium cursor-pointer " +
+    "transition-[transform,box-shadow,background-color,border-color,color] duration-300 " +
+    "active:translate-y-0 hover:-translate-y-0.5 " +
+    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0";
+
+  const variants = {
+    // dark text on bright sea green = best contrast (about 9:1)
+    primary:
+      "bg-cyan-400 text-black hover:bg-cyan-300 hover:shadow-lg hover:shadow-cyan-400/25",
+    secondary:
+      "glass-sea text-white hover:bg-white/10 hover:border-cyan-400/40",
+    outline:
+      "border-2 border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black",
     ghost: "text-white/70 hover:text-white hover:bg-white/5",
   };
 

@@ -28,6 +28,10 @@ import {
   Eye,
 } from 'lucide-react';
 
+import { PROVISIONS_FAQS } from '@/data/page-faqs';
+
+const LAST_UPDATED = 'November 2026';
+
 export default function ProvisionsPage() {
   // ===== CHAPTERS OVERVIEW =====
   const chapters = [
@@ -36,47 +40,71 @@ export default function ProvisionsPage() {
       title: 'Chapter I: Preliminary',
       sections: 'Sections 1-3',
       description:
-        'Short title, extent, commencement, and definitions. This chapter sets the foundation � defining who a Data Principal is, who a Data Fiduciary is, what "personal data" means, and other critical terms.',
+        'Short title, extent, commencement, definitions and the application of the Act, including its extra-territorial reach.',
       color: 'from-cyan-500 to-blue-500',
     },
     {
       icon: Users,
-      title: 'Chapter II: Obligations & Rights',
-      sections: 'Sections 4-14',
+      title: 'Chapter II: Obligations of Data Fiduciary',
+      sections: 'Sections 4-10',
       description:
-        'The heart of the Act. Covers lawful processing, notice, consent, legitimate uses, general obligations of Data Fiduciaries, children\'s data, SDF obligations, and the rights of Data Principals.',
+        'Grounds for processing, notice, consent, legitimate uses, general obligations, children\'s data and the extra duties of Significant Data Fiduciaries.',
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      icon: Globe,
-      title: 'Chapter III: Cross-Border Transfer',
-      sections: 'Section 15',
+      icon: Eye,
+      title: 'Chapter III: Rights & Duties of Data Principal',
+      sections: 'Sections 11-15',
       description:
-        'Provisions for transfer of personal data outside India. Empowers the government to restrict transfers to notified countries and sets conditions for international data flows.',
+        'The rights to information, correction and erasure, grievance redressal and nomination, plus the duties of Data Principals.',
       color: 'from-cyan-500 to-teal-500',
     },
     {
-      icon: Building,
-      title: 'Chapter IV: Data Protection Board',
-      sections: 'Sections 16-27',
+      icon: Globe,
+      title: 'Chapter IV: Special Provisions',
+      sections: 'Sections 16-17',
       description:
-        'Establishes the Data Protection Board of India � the regulatory authority. Covers composition, appointment, powers, functions, procedure, and the appeal mechanism to TDSAT.',
+        'Transfer of personal data outside India (Section 16) and the exemptions from the Act (Section 17).',
+      color: 'from-teal-500 to-cyan-500',
+    },
+    {
+      icon: Building,
+      title: 'Chapter V: Data Protection Board of India',
+      sections: 'Sections 18-26',
+      description:
+        'Establishes the Board and covers its composition, qualifications, terms of service, removal of members and staff.',
       color: 'from-yellow-500 to-orange-500',
     },
     {
-      icon: AlertTriangle,
-      title: 'Chapter V: Penalties & Adjudication',
-      sections: 'Sections 28-34',
+      icon: Scale,
+      title: 'Chapter VI: Powers, Functions & Procedure of the Board',
+      sections: 'Sections 27-28',
       description:
-        'Covers the procedure for imposing penalties, factors to be considered, and the Schedule of penalties (up to ?250 crore). This is where enforcement power is operationalised.',
+        'The Board\'s powers and functions and the procedure it follows when inquiring into complaints and breaches.',
+      color: 'from-orange-500 to-amber-500',
+    },
+    {
+      icon: Gavel,
+      title: 'Chapter VII: Appeal & Alternate Dispute Resolution',
+      sections: 'Sections 29-32',
+      description:
+        'Appeals to the TDSAT, orders and appeals to the Supreme Court, mediation, and voluntary undertakings.',
+      color: 'from-blue-500 to-teal-500',
+    },
+    {
+      icon: AlertTriangle,
+      title: 'Chapter VIII: Penalties & Adjudication',
+      sections: 'Sections 33-34',
+      description:
+        'Monetary penalties after an inquiry, the factors the Board considers, and the Schedule of amounts (from ₹10,000 up to ₹250 crore).',
       color: 'from-red-500 to-orange-500',
     },
     {
-      icon: Scale,
-      title: 'Chapter VI: Miscellaneous',
+      icon: FileText,
+      title: 'Chapter IX: Miscellaneous',
       sections: 'Sections 35-44',
       description:
-        'Covers miscellaneous provisions � protections for state functions, exemptions, power to make rules, removal of difficulties, and transitional provisions.',
+        'Protection of action taken in good faith, power to call for information, rule-making, removal of difficulties and amendments to other laws.',
       color: 'from-blue-500 to-rose-500',
     },
   ];
@@ -114,7 +142,7 @@ export default function ProvisionsPage() {
     {
       term: 'Processing',
       definition:
-        'Any operation or set of operations performed on personal data � including collection, recording, storage, retrieval, use, sharing, and deletion.',
+        'Any operation or set of operations performed on personal data — including collection, recording, storage, retrieval, use, sharing, and deletion.',
       section: 'Section 2(x)',
       icon: Layers,
     },
@@ -143,19 +171,23 @@ export default function ProvisionsPage() {
 
   // ===== SECTION-WISE MAPPING =====
   const sectionMap = [
-    { chapter: 'I', sections: '1-3', title: 'Preliminary', desc: 'Short title, extent, commencement, definitions' },
-    { chapter: 'II', sections: '4', title: 'Grounds for Processing', desc: 'Processing only for lawful purpose with consent or legitimate use' },
-    { chapter: 'II', sections: '5', title: 'Notice', desc: 'Notice requirements before obtaining consent' },
-    { chapter: 'II', sections: '6', title: 'Consent', desc: 'Consent must be free, specific, informed, unconditional, unambiguous' },
-    { chapter: 'II', sections: '7', title: 'Legitimate Uses', desc: 'Certain uses that do not require consent' },
-    { chapter: 'II', sections: '8', title: 'General Obligations', desc: 'Data Fiduciary obligations (security, breach notification, grievance redressal)' },
-    { chapter: 'II', sections: '9', title: 'Children\'s Data', desc: 'Verifiable parental consent; no behavioral tracking' },
-    { chapter: 'II', sections: '10', title: 'Significant Data Fiduciary', desc: 'Enhanced obligations for SDFs (DPO, audits, DPIA)' },
-    { chapter: 'II', sections: '11-14', title: 'Rights of Data Principals', desc: 'Access, correction, erasure, grievance redressal, portability, nomination' },
-    { chapter: 'III', sections: '15', title: 'Cross-Border Transfer', desc: 'Government may restrict transfers to notified countries' },
-    { chapter: 'IV', sections: '16-27', title: 'Data Protection Board', desc: 'Composition, powers, functions, procedure, appeals to TDSAT' },
-    { chapter: 'V', sections: '28-34', title: 'Penalties & Adjudication', desc: 'Procedure for imposing penalties; Schedule of penalties' },
-    { chapter: 'VI', sections: '35-44', title: 'Miscellaneous', desc: 'State functions, exemptions, rule-making, removal of difficulties' },
+    { chapter: 'I', sections: '1-3', title: 'Preliminary', desc: 'Short title, extent, commencement, definitions, application' },
+    { chapter: 'II', sections: '4', title: 'Grounds for Processing', desc: 'Processing only for a lawful purpose, with consent or for a legitimate use' },
+    { chapter: 'II', sections: '5', title: 'Notice', desc: 'Notice requirements that accompany a request for consent' },
+    { chapter: 'II', sections: '6', title: 'Consent', desc: 'Free, specific, informed, unconditional, unambiguous; withdrawal; Consent Managers' },
+    { chapter: 'II', sections: '7', title: 'Certain Legitimate Uses', desc: 'Closed list of situations where processing needs no consent' },
+    { chapter: 'II', sections: '8', title: 'General Obligations', desc: 'Accuracy, security safeguards, breach intimation, erasure, grievance redressal' },
+    { chapter: 'II', sections: '9', title: "Children's Data", desc: 'Verifiable parental consent; no tracking, behavioural monitoring or targeted advertising' },
+    { chapter: 'II', sections: '10', title: 'Significant Data Fiduciary', desc: 'India-based DPO, independent data auditor, periodic DPIA and audit' },
+    { chapter: 'III', sections: '11-14', title: 'Rights of Data Principals', desc: 'Information, correction and erasure, grievance redressal, nomination' },
+    { chapter: 'III', sections: '15', title: 'Duties of Data Principals', desc: 'No false complaints or false information; penalty up to ₹10,000' },
+    { chapter: 'IV', sections: '16', title: 'Cross-Border Transfer', desc: 'Allowed by default unless the Government restricts a country by notification' },
+    { chapter: 'IV', sections: '17', title: 'Exemptions', desc: 'State instrumentalities, research and statistics, startups, legal rights, and more' },
+    { chapter: 'V', sections: '18-26', title: 'Data Protection Board', desc: 'Establishment, composition, qualifications, terms, removal, staff' },
+    { chapter: 'VI', sections: '27-28', title: 'Powers & Procedure of the Board', desc: 'Inquiry, directions, hearing, digital office' },
+    { chapter: 'VII', sections: '29-32', title: 'Appeal & ADR', desc: 'Appeal to TDSAT within 60 days, mediation, voluntary undertaking' },
+    { chapter: 'VIII', sections: '33-34', title: 'Penalties & Adjudication', desc: 'Monetary penalty after inquiry; Schedule of penalties' },
+    { chapter: 'IX', sections: '35-44', title: 'Miscellaneous', desc: 'Good-faith protection, rule-making, removal of difficulties, amendments to other laws' },
   ];
 
   // ===== TIMELINE =====
@@ -164,70 +196,43 @@ export default function ProvisionsPage() {
       date: 'August 2023',
       title: 'DPDP Act 2023 Receives Presidential Assent',
       description:
-        'The Digital Personal Data Protection Act, 2023 received presidential assent on 11 August 2023. This was the culmination of years of deliberation, including the Justice B.N. Srikrishna Committee report (2018) and multiple draft bills.',
+        'The Digital Personal Data Protection Act, 2023 received presidential assent on 11 August 2023, after the Justice B.N. Srikrishna Committee report (2018) and several earlier draft bills.',
     },
     {
       date: 'January 2025',
       title: 'Draft Rules Released for Public Consultation',
       description:
-        'The Ministry of Electronics and Information Technology (MeitY) released draft rules under the DPDP Act for public consultation. Stakeholders submitted feedback on consent managers, breach notification timelines, and SDF criteria.',
+        'The Ministry of Electronics and Information Technology (MeitY) published draft DPDP Rules for public consultation and received feedback on consent managers, breach notification and Significant Data Fiduciary criteria.',
     },
     {
-      date: '2025-2026',
-      title: 'Phased Implementation of Rules',
+      date: 'November 2025',
+      title: 'DPDP Rules, 2025 Notified',
       description:
-        'The Rules will be notified in phases. Some provisions (such as SDF obligations) may be implemented later to give organisations time to prepare. Full compliance is expected within 12-24 months of notification.',
+        'The DPDP Rules, 2025 were notified and the Act began commencing in phases. The provisions setting up the Data Protection Board came into force first.',
     },
     {
-      date: '2026+',
-      title: 'Operationalisation of the Data Protection Board',
+      date: 'November 2026',
+      title: 'Consent Manager Provisions Commence',
       description:
-        'The Data Protection Board will be fully operationalised, with a Chairperson and members appointed, and the power to investigate complaints and impose penalties.',
+        'The provisions on registration and obligations of Consent Managers commence one year after the Rules were notified.',
+    },
+    {
+      date: 'May 2027',
+      title: 'Main Operational Obligations Commence',
+      description:
+        'The remaining provisions, including notice, consent, security safeguards, breach intimation and the rights of Data Principals, apply eighteen months after the Rules were notified. Check MeitY for the exact dates.',
     },
   ];
 
   // ===== FAQS =====
-  const faqs = [
-    {
-      q: 'How many chapters and sections are there in the DPDP Act 2023?',
-      a: 'The DPDP Act 2023 has 9 chapters and 44 sections. It also has a Schedule that sets out the penalties for various violations.',
-    },
-    {
-      q: 'What is Chapter I of the DPDP Act?',
-      a: 'Chapter I (Sections 1-3) is the Preliminary chapter. It covers the short title, extent, commencement, and definitions � defining key terms like Data Principal, Data Fiduciary, and personal data.',
-    },
-    {
-      q: 'What does Chapter II of the DPDP Act cover?',
-      a: 'Chapter II (Sections 4-14) covers the obligations of Data Fiduciaries and the rights of Data Principals. It includes provisions on lawful processing, notice, consent, children\'s data, SDF obligations, and rights.',
-    },
-    {
-      q: 'What is Chapter III of the DPDP Act?',
-      a: 'Chapter III (Section 15) covers cross-border transfers. It empowers the government to restrict data transfers to notified countries, though the exact list has not yet been published.',
-    },
-    {
-      q: 'What does Chapter IV of the DPDP Act establish?',
-      a: 'Chapter IV (Sections 16-27) establishes the Data Protection Board of India. It covers composition, appointment, powers, functions, procedure, and the appeal mechanism to TDSAT.',
-    },
-    {
-      q: 'What is covered in Chapter V of the DPDP Act?',
-      a: 'Chapter V (Sections 28-34) covers penalties and adjudication. It includes the procedure for imposing penalties, factors to be considered, and the Schedule of penalties (up to ?250 crore).',
-    },
-    {
-      q: 'What is the Schedule to the DPDP Act?',
-      a: 'The Schedule lists the penalties for various violations. The highest penalty is ?250 crore for failure to take reasonable security safeguards to prevent a personal data breach. The lowest is ?50 crore for general non-compliance.',
-    },
-    {
-      q: 'When did the DPDP Act 2023 come into force?',
-      a: 'The Act received presidential assent on 11 August 2023. Different provisions will come into force in phases, as notified by the Central Government. The Rules are still being finalised.',
-    },
-  ];
+  const faqs = PROVISIONS_FAQS;
 
   // ===== RELATED LINKS =====
   const relatedLinks = [
     {
       title: 'Rights of Data Principals',
       href: '/rights',
-      desc: 'Chapter II rights explained in detail.',
+      desc: 'Chapter III rights explained in detail.',
     },
     {
       title: 'Obligations of Data Fiduciaries',
@@ -237,17 +242,17 @@ export default function ProvisionsPage() {
     {
       title: 'Data Protection Board',
       href: '/board',
-      desc: 'Chapter IV � the enforcement authority.',
+      desc: 'Chapter V — the enforcement authority.',
     },
     {
       title: 'Penalties & Offences',
       href: '/penalties',
-      desc: 'Chapter V and the Schedule explained.',
+      desc: 'Chapter VIII and the Schedule explained.',
     },
     {
       title: 'Cross-Border Transfer',
       href: '/cross-border',
-      desc: 'Chapter III provisions in detail.',
+      desc: 'Chapter IV, Section 16 in detail.',
     },
     {
       title: 'DPDPA Complete Guide',
@@ -285,7 +290,7 @@ export default function ProvisionsPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs font-medium text-blue-300 mb-4">
             <BookMarked className="w-3 h-3" />
-            Act Overview � DPDP Act 2023
+            Act Overview — DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Key Provisions of the{' '}
@@ -315,10 +320,7 @@ export default function ProvisionsPage() {
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               Last updated:{' '}
-              {new Date().toLocaleDateString('en-IN', {
-                month: 'long',
-                year: 'numeric',
-              })}
+              {LAST_UPDATED}
             </span>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
@@ -374,7 +376,7 @@ export default function ProvisionsPage() {
               The DPDP Act 2023 is a{' '}
               <strong className="text-white">compact but powerful</strong>{' '}
               legislation. At 44 sections, it is shorter than the GDPR (99
-              articles) but covers similar ground � rights, obligations,
+              articles) but covers similar ground — rights, obligations,
               enforcement, and penalties. The Act is supplemented by a{' '}
               <strong className="text-white">Schedule</strong> (penalties) and
               will be further operationalised by{' '}
@@ -382,19 +384,14 @@ export default function ProvisionsPage() {
               by the Central Government.
             </p>
             <p>
-              The structure is logical: Chapter I sets the foundation (definitions),
-              Chapter II creates the rights and obligations, Chapter III handles
-              cross-border transfers, Chapter IV creates the enforcement
-              authority, Chapter V sets penalties, and Chapter VI covers
-              miscellaneous matters. This structure reflects the Act's
-              philosophy � rights and obligations are at the centre, with
+              The structure is logical: Chapter I sets the foundation (definitions), Chapter II sets the obligations of Data Fiduciaries, Chapter III the rights and duties of Data Principals, Chapter IV cross-border transfers and exemptions, Chapters V and VI the Data Protection Board, Chapter VII appeals and mediation, Chapter VIII penalties, and Chapter IX miscellaneous matters. This structure reflects the Act's
+              philosophy — rights and obligations are at the centre, with
               enforcement and penalties as the backstop.
             </p>
             <p>
-              For businesses, Chapter II is the most operationally important �
-              it defines the day-to-day obligations around notice, consent,
+              For businesses, Chapter II (Sections 4-10) is the most operationally important — it defines the day-to-day obligations around notice, consent,
               security, breach notification, and grievance redressal. For Data
-              Principals, Chapter II's rights provisions (Sections 11-14) are the
+              Principals, Chapter III's rights provisions (Sections 11-14) are the
               most relevant. For lawyers and compliance professionals, all
               chapters matter.
             </p>
@@ -450,7 +447,7 @@ export default function ProvisionsPage() {
             3. Section-Wise Map of the Act
           </h2>
           <p className="text-gray-300 leading-relaxed mb-6">
-            Here is a section-wise map of the Act � a quick reference to what
+            Here is a section-wise map of the Act — a quick reference to what
             each part of the statute covers:
           </p>
 
@@ -509,22 +506,22 @@ export default function ProvisionsPage() {
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
                 <Users className="w-5 h-5 text-blue-400" />
-                Chapter II � The Heart of the Act
+                Chapters II and III — Obligations and Rights
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Chapter II (Sections 4-14) is where the Act's substantive
-                obligations and rights live. It covers:
+                Chapter II (Sections 4-10) sets the obligations of Data Fiduciaries and Chapter III (Sections 11-15) the rights and duties of Data Principals. Together they cover:
               </p>
               <ul className="space-y-2">
                 {[
                   'Section 4: Grounds for processing (consent or legitimate use)',
-                  'Section 5: Notice requirements before obtaining consent',
-                  'Section 6: Consent � free, specific, informed, unconditional, unambiguous',
-                  'Section 7: Legitimate uses (state functions, legal obligations, medical emergencies)',
-                  'Section 8: General obligations of Data Fiduciaries (security, breach notification, grievance redressal)',
-                  'Section 9: Children\'s data � verifiable parental consent, no behavioral tracking',
-                  'Section 10: Significant Data Fiduciary obligations (DPO, audits, DPIA)',
-                  'Sections 11-14: Rights of Data Principals (access, correction, erasure, grievance redressal, portability, nomination)',
+                  'Section 5: Notice that accompanies a request for consent',
+                  'Section 6: Consent — free, specific, informed, unconditional, unambiguous; withdrawal; Consent Managers',
+                  'Section 7: Certain legitimate uses (a closed list, such as State benefits, legal obligations, medical emergencies, employment)',
+                  'Section 8: General obligations of Data Fiduciaries (accuracy, security, breach intimation, erasure, grievance redressal)',
+                  'Section 9: Children\'s data — verifiable parental consent, no tracking or targeted advertising',
+                  'Section 10: Significant Data Fiduciary obligations (DPO, independent auditor, DPIA)',
+                  'Sections 11-14: Rights of Data Principals (information, correction and erasure, grievance redressal, nomination)',
+                  'Section 15: Duties of Data Principals',
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -541,18 +538,17 @@ export default function ProvisionsPage() {
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
                 <Building className="w-5 h-5 text-yellow-400" />
-                Chapter IV � The Enforcement Authority
+                Chapters V and VI — The Enforcement Authority
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Chapter IV (Sections 16-27) establishes the Data Protection Board
-                of India. It covers:
+                Chapter V (Sections 18-26) establishes the Data Protection Board of India and Chapter VI (Sections 27-28) sets its powers and procedure. They cover:
               </p>
               <ul className="space-y-2">
                 {[
                   'Section 18: Establishment of the Board',
-                  'Section 19: Composition and appointment of Chairperson and members',
-                  'Section 20: Removal of Chairperson and members',
-                  'Sections 21-27: Powers, functions, procedure, and appeal mechanism',
+                  'Sections 19-26: Composition, qualifications, terms of service, removal of members, and staff of the Board',
+                  'Section 27: Powers and functions of the Board (inquiries, directions, penalties)',
+                  'Section 28: Procedure the Board follows (digital office, hearing, reasoned orders)',
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -569,18 +565,19 @@ export default function ProvisionsPage() {
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
                 <Gavel className="w-5 h-5 text-red-400" />
-                Chapter V � The Penalty Framework
+                Chapters VII and VIII — Appeals and Penalties
               </h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Chapter V (Sections 28-34) sets out the penalty framework. It
-                covers:
+                Chapter VII (Sections 29-32) deals with appeals and mediation and Chapter VIII (Sections 33-34) with penalties. They cover:
               </p>
               <ul className="space-y-2">
                 {[
-                  'Section 28: Penalties for various violations',
-                  'Section 33: Factors to be considered when imposing penalties',
-                  'Section 34: Appeal to TDSAT',
-                  'Schedule: The actual penalty amounts (?50 crore to ?250 crore)',
+                  'Section 29: Appeal to the TDSAT within 60 days of the Board\'s order',
+                  'Section 31: Mediation (alternate dispute resolution)',
+                  'Section 32: Voluntary undertaking accepted by the Board',
+                  'Section 33: Monetary penalty after an inquiry, and the factors considered',
+                  'Section 34: Penalties are credited to the Consolidated Fund of India',
+                  'Schedule: The penalty amounts (₹10,000 up to ₹250 crore)',
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -643,10 +640,10 @@ export default function ProvisionsPage() {
             <p>
               For <strong className="text-white">businesses</strong>, knowing the
               provisions is essential because the obligations in Chapter II are
-              not vague principles � they are specific, enforceable requirements.
+              not vague principles — they are specific, enforceable requirements.
               A failure to provide proper notice, obtain valid consent, or
               implement reasonable security safeguards can attract penalties of
-              up to ?250 crore. Compliance requires a thorough understanding of
+              up to ₹250 crore. Compliance requires a thorough understanding of
               the statute.
             </p>
             <p>
@@ -764,7 +761,7 @@ export default function ProvisionsPage() {
               href="/scorecard"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-semibold hover:scale-105 transition-all"
             >
-              Take the Free Test ?
+              Take the Free Test →
             </Link>
             <Link
               href="/resources/guides/dpdpa-2023-complete-guide"

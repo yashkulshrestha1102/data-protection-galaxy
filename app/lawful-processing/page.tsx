@@ -27,6 +27,10 @@ import {
   BookOpen,
 } from 'lucide-react';
 
+import { LAWFUL_FAQS } from '@/data/page-faqs';
+
+const LAST_UPDATED = 'November 2026';
+
 export default function LawfulProcessingPage() {
   // ===== TWO LAWFUL BASES =====
   const bases = [
@@ -43,7 +47,7 @@ export default function LawfulProcessingPage() {
       title: 'Certain Legitimate Uses',
       section: 'Section 7',
       description:
-        'The Act lists specific situations where personal data can be processed without consent. Unlike GDPR, there is no general "legitimate interests" basis � the legitimate uses are a closed list. These include state functions, legal obligations, medical emergencies, employment, and public interest.',
+        'The Act lists specific situations where personal data can be processed without consent. Unlike GDPR, there is no general "legitimate interests" basis — the legitimate uses are a closed list. These include State benefits and functions, legal obligations, medical emergencies, disasters, and employment purposes.',
       color: 'from-blue-500 to-cyan-600',
     },
   ];
@@ -55,7 +59,63 @@ export default function LawfulProcessingPage() {
       title: 'Voluntary Provision of Data',
       section: 'Section 7(a)',
       description:
-        'The Data Principal has voluntarily provided their personal data to the Data Fiduciary for a specified purpose, and has not indicated that they do not consent to such processing.',
+        'The Data Principal has voluntarily provided their personal data to the Data Fiduciary for a specified purpose and has not indicated that they do not consent to its use for that purpose.',
+    },
+    {
+      icon: Landmark,
+      title: 'State Subsidies, Benefits & Services',
+      section: 'Section 7(b)',
+      description:
+        'The State or its instrumentality processes the data to give a subsidy, benefit, service, certificate, licence or permit, where the Data Principal has previously consented or the data is already in State records.',
+    },
+    {
+      icon: Landmark,
+      title: 'State Functions & Security',
+      section: 'Section 7(c)',
+      description:
+        'Processing for the performance of a function of the State or its instrumentality under any law, or in the interest of the sovereignty, integrity and security of India.',
+    },
+    {
+      icon: FileText,
+      title: 'Legal Obligations',
+      section: 'Section 7(d)',
+      description:
+        'Fulfilling a legal obligation to disclose information to the State or its instrumentality, where the law requires it.',
+    },
+    {
+      icon: Gavel,
+      title: 'Judgments, Decrees & Orders',
+      section: 'Section 7(e)',
+      description:
+        'Processing necessary to comply with any judgment, decree or order under Indian law, or a contractual claims judgment, decree or order from outside India relating to a civil or criminal matter.',
+    },
+    {
+      icon: Heart,
+      title: 'Medical Emergencies',
+      section: 'Section 7(f)',
+      description:
+        'Responding to a medical emergency involving a threat to the life or immediate threat to the health of the Data Principal or any other individual.',
+    },
+    {
+      icon: Heart,
+      title: 'Epidemics & Public Health',
+      section: 'Section 7(g)',
+      description:
+        'Providing medical treatment or health services during an epidemic, outbreak of disease, or other threat to public health.',
+    },
+    {
+      icon: AlertTriangle,
+      title: 'Disasters & Public Order',
+      section: 'Section 7(h)',
+      description:
+        'Taking measures to ensure the safety of, or provide assistance or services to, any individual during a disaster or breakdown of public order.',
+    },
+    {
+      icon: Briefcase,
+      title: 'Employment Purposes',
+      section: 'Section 7(i)',
+      description:
+        'Processing for employment purposes, or to safeguard the employer from loss or liability, such as preventing corporate espionage or protecting trade secrets and confidential information.',
     },
   ];
 
@@ -89,7 +149,7 @@ export default function LawfulProcessingPage() {
     {
       icon: RefreshCw,
       title: 'Withdrawable',
-      desc: 'The Data Principal must be able to withdraw consent as easily as they gave it. Withdrawal must be respected immediately.',
+      desc: 'The Data Principal must be able to withdraw consent as easily as they gave it. Once consent is withdrawn, processing must stop within a reasonable time.',
     },
   ];
 
@@ -99,43 +159,64 @@ export default function LawfulProcessingPage() {
       icon: UserCheck,
       title: 'Voluntary Provision of Data',
       section: 'Section 7(a)',
-      desc: 'The Data Principal has voluntarily provided their personal data to the Data Fiduciary for a specified purpose, and has not indicated that they do not consent to such processing.',
+      desc:
+        'The Data Principal has voluntarily provided their personal data to the Data Fiduciary for a specified purpose and has not indicated that they do not consent to its use for that purpose.',
     },
     {
       icon: Landmark,
-      title: 'State Functions',
+      title: 'State Subsidies, Benefits & Services',
       section: 'Section 7(b)',
-      desc: 'Processing is necessary for the performance of any function by the State under law, including the provision of subsidies, benefits, services, certificates, licences, or permits.',
+      desc:
+        'The State or its instrumentality processes the data to give a subsidy, benefit, service, certificate, licence or permit, where the Data Principal has previously consented or the data is already in State records.',
+    },
+    {
+      icon: Landmark,
+      title: 'State Functions & Security',
+      section: 'Section 7(c)',
+      desc:
+        'Processing for the performance of a function of the State or its instrumentality under any law, or in the interest of the sovereignty, integrity and security of India.',
+    },
+    {
+      icon: FileText,
+      title: 'Legal Obligations',
+      section: 'Section 7(d)',
+      desc:
+        'Fulfilling a legal obligation to disclose information to the State or its instrumentality, where the law requires it.',
     },
     {
       icon: Gavel,
-      title: 'Legal Obligations',
-      section: 'Section 7(c)',
-      desc: 'Processing is necessary for compliance with any judgment or order of a court or tribunal, or for the performance of a legal obligation.',
+      title: 'Judgments, Decrees & Orders',
+      section: 'Section 7(e)',
+      desc:
+        'Processing necessary to comply with any judgment, decree or order under Indian law, or a contractual claims judgment, decree or order from outside India relating to a civil or criminal matter.',
     },
     {
       icon: Heart,
       title: 'Medical Emergencies',
-      section: 'Section 7(d)',
-      desc: 'Processing is necessary for a medical emergency involving a threat to the life or health of the Data Principal or any other individual.',
+      section: 'Section 7(f)',
+      desc:
+        'Responding to a medical emergency involving a threat to the life or immediate threat to the health of the Data Principal or any other individual.',
+    },
+    {
+      icon: Heart,
+      title: 'Epidemics & Public Health',
+      section: 'Section 7(g)',
+      desc:
+        'Providing medical treatment or health services during an epidemic, outbreak of disease, or other threat to public health.',
     },
     {
       icon: AlertTriangle,
-      title: 'Disasters & Public Health',
-      section: 'Section 7(e)',
-      desc: 'Processing is necessary for taking measures during a disaster or public health emergency, or for the safety of the public.',
+      title: 'Disasters & Public Order',
+      section: 'Section 7(h)',
+      desc:
+        'Taking measures to ensure the safety of, or provide assistance or services to, any individual during a disaster or breakdown of public order.',
     },
     {
       icon: Briefcase,
       title: 'Employment Purposes',
-      section: 'Section 7(f)',
-      desc: 'Processing is necessary for the purposes of employment, including recruitment, verification, and providing benefits to employees.',
-    },
-    {
-      icon: TrendingUp,
-      title: 'Public Interest',
-      section: 'Section 7(g)',
-      desc: 'Processing is necessary for research, archiving, or statistical purposes, where the data is not used to make decisions about specific individuals.',
+      section: 'Section 7(i)',
+      desc:
+        'Processing for employment purposes, or to safeguard the employer from loss or liability, such as preventing corporate espionage or protecting trade secrets and confidential information.',
     },
   ];
 
@@ -159,12 +240,12 @@ export default function LawfulProcessingPage() {
     {
       aspect: 'Notice',
       consent: 'Notice must be given before seeking consent',
-      legitimate: 'Notice requirements may be relaxed',
+      legitimate: 'No consent notice is required',
     },
     {
       aspect: 'Flexibility',
-      consent: 'Broad � can cover most processing',
-      legitimate: 'Narrow � only the listed uses',
+      consent: 'Broad — can cover most processing',
+      legitimate: 'Narrow — only the listed uses',
     },
     {
       aspect: 'Examples',
@@ -184,19 +265,19 @@ export default function LawfulProcessingPage() {
     {
       icon: Landmark,
       title: 'Legitimate Use: State Subsidies',
-      desc: 'A government department processes personal data to verify eligibility for a subsidy scheme. This is a legitimate use under Section 7(b) � state functions � and does not require consent.',
+      desc: 'A government department processes personal data to verify eligibility for a subsidy scheme. This is a legitimate use under Section 7(b) — State subsidies and benefits — and does not require consent.',
       color: 'blue',
     },
     {
       icon: Heart,
       title: 'Legitimate Use: Medical Emergency',
-      desc: 'A hospital processes a patient\'s data in an emergency without consent. This is a legitimate use under Section 7(d) � medical emergency � and is permitted.',
+      desc: 'A hospital processes a patient\'s data in an emergency without consent. This is a legitimate use under Section 7(f) — medical emergency — and is permitted.',
       color: 'red',
     },
     {
       icon: Briefcase,
       title: 'Legitimate Use: Employment Records',
-      desc: 'An employer processes employee data for payroll, benefits, and verification. This is a legitimate use under Section 7(f) � employment purposes � and does not require fresh consent.',
+      desc: 'An employer processes employee data for payroll, benefits, and verification. This is a legitimate use under Section 7(i) — employment purposes — and does not require fresh consent.',
       color: 'cyan',
     },
     {
@@ -214,40 +295,7 @@ export default function LawfulProcessingPage() {
   ];
 
   // ===== FAQS =====
-  const faqs = [
-    {
-      q: 'What are the lawful bases for processing under the DPDP Act 2023?',
-      a: 'The DPDP Act 2023 has only two lawful bases: (1) Consent of the Data Principal (Section 6), and (2) Certain Legitimate Uses listed in Section 7. Unlike GDPR, there is no general "legitimate interests" basis.',
-    },
-    {
-      q: 'What is valid consent under the DPDP Act?',
-      a: 'Consent must be free, specific, informed, unconditional, and unambiguous, with a clear affirmative action. It must be limited to the specified purpose, and the Data Principal must be able to withdraw it as easily as they gave it.',
-    },
-    {
-      q: 'What are the legitimate uses under Section 7 of the DPDP Act?',
-      a: 'Section 7 lists legitimate uses: (a) voluntary provision of data for a specified purpose, (b) state functions, (c) legal obligations, (d) medical emergencies, (e) disasters or public health emergencies, (f) employment purposes, and (g) public interest (research, archiving, statistical purposes).',
-    },
-    {
-      q: 'What is a Consent Manager under the DPDP Act?',
-      a: 'A Consent Manager is an entity registered with the Data Protection Board that acts as a single point of contact for Data Principals to give, manage, review, and withdraw consent across multiple Data Fiduciaries.',
-    },
-    {
-      q: 'Can consent be withdrawn after giving it?',
-      a: 'Yes. Under Section 6(4), a Data Principal can withdraw consent at any time. The process to withdraw must be as easy as the process to give. Withdrawal does not affect the legality of processing done before withdrawal, but the Data Fiduciary must cease processing after withdrawal.',
-    },
-    {
-      q: 'What is the difference between consent and legitimate use?',
-      a: 'Consent is an active, affirmative choice by the Data Principal. Legitimate use is a specific situation listed in Section 7 where processing can occur without consent. Legitimate uses are narrower than GDPR\'s legitimate interests � they are a closed list, not an open balancing test.',
-    },
-    {
-      q: 'What notice must a Data Fiduciary provide before seeking consent?',
-      a: 'The notice must be clear, independent, and in plain language. It must describe the personal data being collected, the specific purpose of processing, how the Data Principal can exercise their rights, and how to file a complaint with the Data Protection Board.',
-    },
-    {
-      q: 'Does the DPDP Act apply to processing for employment purposes?',
-      a: 'Yes. Section 7(f) allows processing for employment purposes, including recruitment, verification, and providing benefits to employees. However, the employer must still comply with the Act\'s other obligations � such as security safeguards and grievance redressal.',
-    },
-  ];
+  const faqs = LAWFUL_FAQS;
 
   // ===== RELATED LINKS =====
   const relatedLinks = [
@@ -312,7 +360,7 @@ export default function LawfulProcessingPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-500/30 text-xs font-medium text-green-300 mb-4">
             <CheckCircle className="w-3 h-3" />
-            Lawful Processing � DPDP Act 2023
+            Lawful Processing — DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Lawful Processing of{' '}
@@ -327,7 +375,7 @@ export default function LawfulProcessingPage() {
             (Section 6), or (2) certain{' '}
             <strong className="text-white">legitimate uses</strong> listed in
             Section 7. Unlike GDPR, there is no general "legitimate interests"
-            basis � the legitimate uses are a closed list. This guide explains
+            basis — the legitimate uses are a closed list. This guide explains
             both bases, the requirements for valid consent, the Consent Manager
             framework, and real-world examples.
           </p>
@@ -341,10 +389,7 @@ export default function LawfulProcessingPage() {
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               Last updated:{' '}
-              {new Date().toLocaleDateString('en-IN', {
-                month: 'long',
-                year: 'numeric',
-              })}
+              {LAST_UPDATED}
             </span>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
@@ -364,7 +409,7 @@ export default function LawfulProcessingPage() {
               <p className="text-sm text-gray-300 leading-relaxed">
                 The DPDP Act 2023 has only{' '}
                 <strong className="text-white">two</strong> lawful bases for
-                processing � consent and legitimate uses. Unlike GDPR, there is no
+                processing — consent and legitimate uses. Unlike GDPR, there is no
                 "contract performance", "vital interests", "public function", or
                 "legitimate interests" basis. Those concepts are folded into
                 specific legitimate uses under Section 7.
@@ -421,13 +466,13 @@ export default function LawfulProcessingPage() {
               Data Principal's{' '}
               <strong className="text-white">active, affirmative choice</strong>{' '}
               to allow processing of their personal data for a specific purpose.
-              Consent is not a one-time event � it is an ongoing relationship
+              Consent is not a one-time event — it is an ongoing relationship
               that the Data Principal can withdraw at any time.
             </p>
             <p>
               The Act sets out{' '}
               <strong className="text-white">six requirements</strong> for valid
-              consent. If any of these is missing, the consent is invalid � and
+              consent. If any of these is missing, the consent is invalid — and
               any processing based on it is unlawful.
             </p>
           </div>
@@ -494,7 +539,7 @@ export default function LawfulProcessingPage() {
               where personal data can be processed{' '}
               <strong className="text-white">without consent</strong>. These are
               called "legitimate uses." They are a{' '}
-              <strong className="text-white">closed list</strong> � if a situation
+              <strong className="text-white">closed list</strong> — if a situation
               is not listed, consent is required.
             </p>
             <p>
@@ -600,7 +645,7 @@ export default function LawfulProcessingPage() {
               Fiduciaries.
             </p>
             <p>
-              Think of it as a "consent dashboard" � instead of managing consent
+              Think of it as a "consent dashboard" — instead of managing consent
               separately with every website and app, a Data Principal can use a
               Consent Manager to manage all their consents in one place. This is
               especially useful for consumers who deal with dozens of online
@@ -831,7 +876,7 @@ export default function LawfulProcessingPage() {
               href="/scorecard"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold hover:scale-105 transition-all"
             >
-              Take the Free Test ?
+              Take the Free Test →
             </Link>
             <Link
               href="/contact"

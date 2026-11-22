@@ -16,17 +16,11 @@ export const SectionCard = ({
 }: SectionCardProps) => {
   return (
     <div className={cn("max-w-4xl mx-auto px-4 py-12", className)}>
-      {/* Glowing background effect */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl shadow-cyan-500/5">
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+      <div className="glass-sea reveal-on-scroll relative rounded-2xl p-8 md:p-12 shadow-2xl shadow-cyan-400/5">
+        <h1 className="text-gradient-sea text-4xl md:text-5xl font-bold mb-4">
           {title}
         </h1>
-        
+
         {description && (
           <p className="text-lg text-gray-300 mb-8">{description}</p>
         )}
@@ -35,4 +29,4 @@ export const SectionCard = ({
       </div>
     </div>
   );
-};
+}

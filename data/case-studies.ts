@@ -24,6 +24,7 @@ export const caseStudiesData: CaseStudy[] = [
     impact: '10,000+ records affected',
     slug: 'data-breach-healthcare',
     content: `
+      <p class="text-sm text-gray-400"><em>Illustrative scenario: this case study is a composite example prepared for learning. It is not a report of a specific real company or incident.</em></p>
       <h2>Overview</h2>
       <p>A major healthcare company experienced a data breach that exposed sensitive patient data. This case study examines the incident, its impact, and the lessons learned for compliance.</p>
       <p>If your organisation needs to build an incident response plan, refer to our <a href="/resources/guides/dpdpa-2023-complete-guide" class="text-blue-400 hover:text-blue-300 underline">DPDPA 2023 Complete Guide</a>.</p>
@@ -72,6 +73,7 @@ export const caseStudiesData: CaseStudy[] = [
     impact: '5M+ users',
     slug: 'consent-management-ecommerce',
     content: `
+      <p class="text-sm text-gray-400"><em>Illustrative scenario: this case study is a composite example prepared for learning. It is not a report of a specific real company or incident.</em></p>
       <h2>Overview</h2>
       <p>A leading e-commerce platform needed to implement a comprehensive consent management system to comply with the DPDP Act and GDPR.</p>
       <p>To understand how the law governs digital consent (click-wrap agreements), read our <a href="/insight/click-wrap-agreements-consent" class="text-blue-400 hover:text-blue-300 underline">Click-Wrap Agreements Insight</a>.</p>
@@ -120,6 +122,7 @@ export const caseStudiesData: CaseStudy[] = [
     impact: 'Global operations',
     slug: 'cross-border-compliance',
     content: `
+      <p class="text-sm text-gray-400"><em>Illustrative scenario: this case study is a composite example prepared for learning. It is not a report of a specific real company or incident.</em></p>
       <h2>Overview</h2>
       <p>A global technology company needed to ensure compliance with cross-border data transfer requirements under the DPDP Act and GDPR.</p>
       <p>Learn how to implement Standard Contractual Clauses (SCCs) and Transfer Impact Assessments in our <a href="/resources/guides/cross-border-data-transfer" class="text-blue-400 hover:text-blue-300 underline">Cross-Border Transfer Guide</a>.</p>
@@ -160,6 +163,7 @@ export const caseStudiesData: CaseStudy[] = [
     impact: 'High-risk processing',
     slug: 'dpia-implementation-finance',
     content: `
+      <p class="text-sm text-gray-400"><em>Illustrative scenario: this case study is a composite example prepared for learning. It is not a report of a specific real company or incident.</em></p>
       <h2>Overview</h2>
       <p>A financial institution needed to conduct a Data Protection Impact Assessment (DPIA) for its high-risk data processing activities.</p>
       
@@ -200,6 +204,7 @@ export const caseStudiesData: CaseStudy[] = [
     impact: '100+ requests/month',
     slug: 'data-subject-rights-handling',
     content: `
+      <p class="text-sm text-gray-400"><em>Illustrative scenario: this case study is a composite example prepared for learning. It is not a report of a specific real company or incident.</em></p>
       <h2>Overview</h2>
       <p>A consulting firm needed to handle a growing volume of data subject rights requests (DSRs).</p>
       

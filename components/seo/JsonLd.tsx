@@ -1,3 +1,4 @@
+// components/seo/JsonLd.tsx
 export function JsonLd({ data }: { data: object }) {
   return (
     <script

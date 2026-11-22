@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
+import { LAWFUL_FAQS } from "@/data/page-faqs";
 
 export const metadata: Metadata = {
   title: "Lawful Processing of Data under DPDP Act 2023 | Consent & Legitimate Uses",
@@ -56,76 +57,15 @@ export const metadata: Metadata = {
   },
 };
 
-// ===== FAQ Schema =====
+// ===== FAQ Schema (built from data/page-faqs.ts, identical to the text on the page) =====
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What are the lawful bases for processing under the DPDP Act 2023?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The DPDP Act 2023 has only two lawful bases: (1) Consent of the Data Principal (Section 6), and (2) Certain Legitimate Uses listed in Section 7. Unlike GDPR, there is no general 'legitimate interests' basis — the legitimate uses are a closed list.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is valid consent under the DPDP Act?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Consent must be free, specific, informed, unconditional, and unambiguous, with a clear affirmative action. It must be limited to the specified purpose, and the Data Principal must be able to withdraw it as easily as they gave it.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What are the legitimate uses under Section 7 of the DPDP Act?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Section 7 lists legitimate uses: (a) voluntary provision of data for a specified purpose, (b) state functions (subsidies, benefits, services), (c) legal obligations, (d) medical emergencies, (e) disasters or public health emergencies, (f) employment purposes, and (g) public interest (research, archiving, statistical purposes).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is a Consent Manager under the DPDP Act?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A Consent Manager is an entity registered with the Data Protection Board that acts as a single point of contact for Data Principals to give, manage, review, and withdraw consent across multiple Data Fiduciaries. Consent Managers must be accountable to Data Principals and must not misrepresent information.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can consent be withdrawn after giving it?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Under Section 6(4), a Data Principal can withdraw consent at any time. The process to withdraw must be as easy as the process to give. Withdrawal does not affect the legality of processing done before withdrawal, but the Data Fiduciary must cease processing after withdrawal.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is the difference between consent and legitimate use?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Consent is an active, affirmative choice by the Data Principal. Legitimate use is a specific situation listed in Section 7 where processing can occur without consent. Legitimate uses are narrower than GDPR's legitimate interests — they are a closed list, not an open balancing test.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What notice must a Data Fiduciary provide before seeking consent?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The notice must be clear, independent, and in plain language. It must describe the personal data being collected, the specific purpose of processing, how the Data Principal can exercise their rights, and how to file a complaint with the Data Protection Board.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does the DPDP Act apply to processing for employment purposes?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Section 7(f) allows processing for employment purposes, including recruitment, verification, and providing benefits to employees. However, the employer must still comply with the Act's other obligations — such as security safeguards and grievance redressal.",
-      },
-    },
-  ],
+  mainEntity: LAWFUL_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 // ===== Breadcrumb Schema =====

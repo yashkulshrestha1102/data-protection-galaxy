@@ -50,17 +50,17 @@ const faqs = [
 function DashboardMockup() {
   return (
     <div className="relative mx-auto w-full max-w-[480px]">
-      <div className="absolute -inset-4 rounded-[3rem] bg-gradient-to-tr from-[#00B4D8]/20 to-[#0077B6]/20 opacity-30 blur-2xl" />
+      <div className="absolute -inset-4 rounded-[3rem] bg-gradient-to-tr from-[#46D09B]/20 to-[#0E9187]/20 opacity-30 blur-2xl" />
       
-      <div className="relative flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-[#0a1a2f]/70 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+      <div className="relative flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-[#071A15]/70 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#00B4D8] to-[#0077B6] shadow-lg">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#46D09B] to-[#0E9187] shadow-lg">
               <ShieldCheck className="h-5 w-5 text-white" />
             </div>
             <div>
               <p className="text-sm font-semibold text-white">Privacy Operations</p>
-              <p className="text-xs text-[#48CAE4]">System Online</p>
+              <p className="text-xs text-[#7FE3B8]">System Online</p>
             </div>
           </div>
           <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -70,23 +70,23 @@ function DashboardMockup() {
 
         <div className="space-y-3">
           <div className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 transition hover:bg-white/10">
-            <MapPin className="h-4 w-4 text-[#00B4D8]" />
+            <MapPin className="h-4 w-4 text-[#46D09B]" />
             <span className="text-sm text-gray-300">Data Localization Check: Passed</span>
           </div>
           <div className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 transition hover:bg-white/10">
-            <Globe2 className="h-4 w-4 text-[#00B4D8]" />
+            <Globe2 className="h-4 w-4 text-[#46D09B]" />
             <span className="text-sm text-gray-300">Cross-Border Transfer Ready</span>
           </div>
           <div className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 transition hover:bg-white/10">
-            <Building2 className="h-4 w-4 text-[#00B4D8]" />
+            <Building2 className="h-4 w-4 text-[#46D09B]" />
             <span className="text-sm text-gray-300">SDF Obligations Mapped</span>
           </div>
         </div>
 
-        <div className="mt-4 rounded-2xl border border-[#00B4D8]/30 bg-[#030814]/80 p-4">
+        <div className="mt-4 rounded-2xl border border-[#46D09B]/30 bg-[#03100D]/80 p-4">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#00B4D8]/20">
-              <MessageSquare className="h-4 w-4 text-[#00B4D8]" />
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#46D09B]/20">
+              <MessageSquare className="h-4 w-4 text-[#46D09B]" />
             </div>
             <div>
               <p className="text-sm font-medium text-white">Need a DPIA for our new AI model.</p>
@@ -95,9 +95,9 @@ function DashboardMockup() {
           </div>
         </div>
 
-        <div className="mt-2 flex items-center justify-between rounded-xl bg-[#00B4D8]/10 p-3">
-          <span className="text-xs font-medium text-[#48CAE4]">Reply within 1 business day</span>
-          <Clock className="h-4 w-4 text-[#00B4D8]" />
+        <div className="mt-2 flex items-center justify-between rounded-xl bg-[#46D09B]/10 p-3">
+          <span className="text-xs font-medium text-[#7FE3B8]">Reply within 1 business day</span>
+          <Clock className="h-4 w-4 text-[#46D09B]" />
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@ function Field({ label, value, onChange, placeholder, type = "text", required = 
   return (
     <label className="block">
       <span className="mb-2 block text-sm font-medium text-gray-300">
-        {label} {required && <span className="text-[#00B4D8]">*</span>}
+        {label} {required && <span className="text-[#46D09B]">*</span>}
       </span>
       <input
         type={type}
@@ -116,7 +116,7 @@ function Field({ label, value, onChange, placeholder, type = "text", required = 
         required={required}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-white/10 bg-[#030814]/60 px-4 py-3.5 text-sm text-white outline-none placeholder:text-gray-500 transition duration-200 focus:border-[#00B4D8] focus:ring-1 focus:ring-[#00B4D8]/50"
+        className="w-full rounded-xl border border-white/10 bg-[#03100D]/60 px-4 py-3.5 text-sm text-white outline-none placeholder:text-gray-500 transition duration-200 focus:border-[#46D09B] focus:ring-1 focus:ring-[#46D09B]/50"
       />
     </label>
   );
@@ -169,7 +169,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden text-white selection:bg-[#00B4D8]/30 relative">
+    <main className="min-h-screen overflow-hidden text-white selection:bg-[#46D09B]/30 relative">
       
       {/* ===== HOMEPAGE BACKGROUND IMAGE ===== */}
       <div className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
@@ -179,8 +179,8 @@ export default function ContactPage() {
 
       {/* Background Ambience (Glows) */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-[10%] top-0 h-[500px] w-[500px] rounded-full bg-[#00B4D8]/10 blur-[150px]" />
-        <div className="absolute right-0 top-[20%] h-[400px] w-[400px] rounded-full bg-[#0077B6]/10 blur-[120px]" />
+        <div className="absolute -left-[10%] top-0 h-[500px] w-[500px] rounded-full bg-[#46D09B]/10 blur-[150px]" />
+        <div className="absolute right-0 top-[20%] h-[400px] w-[400px] rounded-full bg-[#0E9187]/10 blur-[120px]" />
       </div>
 
       {/* HERO SECTION */}
@@ -188,14 +188,14 @@ export default function ContactPage() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="relative z-10">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#00B4D8]/30 bg-[#00B4D8]/10 px-4 py-1.5 text-sm font-medium text-[#00B4D8] backdrop-blur-md">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#46D09B]/30 bg-[#46D09B]/10 px-4 py-1.5 text-sm font-medium text-[#46D09B] backdrop-blur-md">
               <Sparkles size={16} />
               Let's talk about your compliance goals
             </div>
             
             <h1 className="text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-[4.5rem]">
               Let's make <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-[#00B4D8] to-[#48CAE4] bg-clip-text text-transparent">privacy operational.</span>
+              <span className="bg-gradient-to-r from-[#46D09B] to-[#7FE3B8] bg-clip-text text-transparent">privacy operational.</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-gray-300">
@@ -203,9 +203,9 @@ export default function ContactPage() {
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2 max-w-xl">
-              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-[#0a1a2f]/60 p-4 backdrop-blur-md transition hover:border-[#00B4D8]/40 hover:bg-[#0a1a2f]/90">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#030814] border border-white/10 group-hover:border-[#00B4D8]/50">
-                  <Mail className="h-5 w-5 text-[#00B4D8]" />
+              <a href="mailto:shilpi.kulshrestha@businezexcellence.com" className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-[#071A15]/60 p-4 backdrop-blur-md transition hover:border-[#46D09B]/40 hover:bg-[#071A15]/90">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#03100D] border border-white/10 group-hover:border-[#46D09B]/50">
+                  <Mail className="h-5 w-5 text-[#46D09B]" />
                 </div>
                 <div>
                   <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Email</p>
@@ -213,9 +213,9 @@ export default function ContactPage() {
                 </div>
               </a>
 
-              <a href="tel:+918800138008" className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-[#0a1a2f]/60 p-4 backdrop-blur-md transition hover:border-[#00B4D8]/40 hover:bg-[#0a1a2f]/90">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#030814] border border-white/10 group-hover:border-[#00B4D8]/50">
-                  <Phone className="h-5 w-5 text-[#00B4D8]" />
+              <a href="tel:+918800138008" className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-[#071A15]/60 p-4 backdrop-blur-md transition hover:border-[#46D09B]/40 hover:bg-[#071A15]/90">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#03100D] border border-white/10 group-hover:border-[#46D09B]/50">
+                  <Phone className="h-5 w-5 text-[#46D09B]" />
                 </div>
                 <div>
                   <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Call Us</p>
@@ -246,8 +246,8 @@ export default function ContactPage() {
 
               <div className="mt-10 space-y-6">
                 <div className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#00B4D8]/20">
-                    <ShieldCheck className="h-6 w-6 text-[#00B4D8]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#46D09B]/20">
+                    <ShieldCheck className="h-6 w-6 text-[#46D09B]" />
                   </div>
                   <div>
                     <p className="text-base font-semibold text-white">Privacy-conscious approach</p>
@@ -256,8 +256,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#00B4D8]/20">
-                    <Clock className="h-6 w-6 text-[#00B4D8]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#46D09B]/20">
+                    <Clock className="h-6 w-6 text-[#46D09B]" />
                   </div>
                   <div>
                     <p className="text-base font-semibold text-white">Fast turnaround</p>
@@ -273,7 +273,7 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }} 
               viewport={{ once: true }} 
               transition={{ duration: 0.5 }} 
-              className="rounded-3xl border border-white/10 bg-[#0a1a2f]/80 p-6 shadow-2xl backdrop-blur-xl sm:p-10"
+              className="rounded-3xl border border-white/10 bg-[#071A15]/80 p-6 shadow-2xl backdrop-blur-xl sm:p-10"
             >
               <div className="grid gap-6 sm:grid-cols-2">
                 <Field label="Full name" value={form.name} onChange={(v) => updateField("name", v)} placeholder="John Doe" required />
@@ -285,7 +285,7 @@ export default function ContactPage() {
               <div className="mt-6">
                 <label className="block">
                   <span className="mb-2 block text-sm font-medium text-gray-300">
-                    How can we help? <span className="text-[#00B4D8]">*</span>
+                    How can we help? <span className="text-[#46D09B]">*</span>
                   </span>
                   <textarea
                     value={form.requirement}
@@ -293,13 +293,13 @@ export default function ContactPage() {
                     onChange={(e) => updateField("requirement", e.target.value)}
                     rows={4}
                     placeholder="Tell us about your current requirement or challenge..."
-                    className="w-full resize-none rounded-xl border border-white/10 bg-[#030814]/60 px-4 py-3.5 text-sm text-white outline-none placeholder:text-gray-500 transition duration-200 focus:border-[#00B4D8] focus:ring-1 focus:ring-[#00B4D8]/50"
+                    className="w-full resize-none rounded-xl border border-white/10 bg-[#03100D]/60 px-4 py-3.5 text-sm text-white outline-none placeholder:text-gray-500 transition duration-200 focus:border-[#46D09B] focus:ring-1 focus:ring-[#46D09B]/50"
                   />
                 </label>
               </div>
 
               <div className="mt-8">
-                <p className="mb-3 text-sm font-medium text-gray-300">Areas of interest <span className="text-[#00B4D8]">*</span></p>
+                <p className="mb-3 text-sm font-medium text-gray-300">Areas of interest <span className="text-[#46D09B]">*</span></p>
                 <div className="flex flex-wrap gap-2">
                   {INTERESTS.map((interest) => {
                     const active = selectedInterests.includes(interest);
@@ -310,8 +310,8 @@ export default function ContactPage() {
                         onClick={() => toggleInterest(interest)}
                         className={`rounded-full border px-4 py-2 text-xs font-medium transition-all duration-200 ${
                           active
-                            ? "border-[#00B4D8] bg-[#00B4D8]/20 text-[#00B4D8]"
-                            : "border-white/10 bg-[#030814]/60 text-gray-400 hover:border-white/30 hover:text-white"
+                            ? "border-[#46D09B] bg-[#46D09B]/20 text-[#46D09B]"
+                            : "border-white/10 bg-[#03100D]/60 text-gray-400 hover:border-white/30 hover:text-white"
                         }`}
                       >
                         {interest}
@@ -327,13 +327,13 @@ export default function ContactPage() {
 
               {error && <div className="mt-4 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</div>}
               {success && (
-                <div className="mt-4 flex gap-3 rounded-xl border border-[#00B4D8]/30 bg-[#00B4D8]/10 px-4 py-3 text-sm text-[#48CAE4]">
+                <div className="mt-4 flex gap-3 rounded-xl border border-[#46D09B]/30 bg-[#46D09B]/10 px-4 py-3 text-sm text-[#7FE3B8]">
                   <Check className="mt-0.5 h-5 w-5 shrink-0" />
                   <span>{success}</span>
                 </div>
               )}
 
-              <button type="submit" disabled={loading} className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#00B4D8] px-6 py-4 text-sm font-semibold text-[#030814] transition duration-200 hover:bg-[#48CAE4] disabled:opacity-70">
+              <button type="submit" disabled={loading} className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#46D09B] px-6 py-4 text-sm font-semibold text-[#03100D] transition duration-200 hover:bg-[#7FE3B8] disabled:opacity-70">
                 {loading ? "Sending..." : "Submit Request"}
                 {!loading && <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />}
               </button>
@@ -354,10 +354,10 @@ export default function ContactPage() {
             {faqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
-                <div key={faq.q} className="overflow-hidden rounded-2xl border border-white/10 bg-[#0a1a2f]/60 backdrop-blur-md">
+                <div key={faq.q} className="overflow-hidden rounded-2xl border border-white/10 bg-[#071A15]/60 backdrop-blur-md">
                   <button type="button" onClick={() => setOpenFaq(isOpen ? null : index)} className="flex w-full items-center justify-between px-6 py-5 text-left">
                     <span className="text-base font-medium text-white">{faq.q}</span>
-                    <ChevronDown className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#00B4D8]" : ""}`} />
+                    <ChevronDown className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#46D09B]" : ""}`} />
                   </button>
                   <motion.div initial={false} animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
                     <p className="px-6 pb-5 text-sm leading-relaxed text-gray-300">{faq.a}</p>

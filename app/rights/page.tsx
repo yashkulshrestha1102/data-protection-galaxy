@@ -5,30 +5,25 @@ import {
   CheckCircle,
   Shield,
   Users,
-  Globe,
-  Database,
-  FileText,
-  Scale,
-  BookOpen,
   ArrowRight,
   UserCheck,
   Calendar,
   Clock,
   Gavel,
-  XCircle,
   AlertTriangle,
   Info,
-  TrendingUp,
-  Baby,
   Ban,
-  RefreshCw,
   MessageSquare,
   UserPlus,
-  Lock,
   Eye,
   FileCheck,
-  Landmark,
+  Scale,
+  BookOpen,
 } from 'lucide-react';
+import { RIGHTS_FAQS } from '@/data/page-faqs';
+
+// Update this only when the page content is genuinely reviewed
+const LAST_UPDATED = 'November 2026';
 
 export default function RightsPage() {
   // ===== CORE RIGHTS =====
@@ -36,16 +31,16 @@ export default function RightsPage() {
     {
       icon: Users,
       title: 'Right to Access Information',
-      subtitle: 'Know exactly what data is being collected about you.',
+      subtitle: 'Know what is being done with your data.',
       section: 'Section 11',
       description:
-        'Under Section 11 of the DPDP Act, every individual has the right to request a summary of their personal data being processed by a Data Fiduciary. You can ask for the specific purposes of processing, the categories of data involved, and the identities of any other entities with whom your data has been shared. This ensures complete transparency.',
+        'Under Section 11 of the DPDP Act, a Data Principal whose data is processed on the basis of consent (or was voluntarily provided) can ask a Data Fiduciary for a summary of the personal data being processed and the processing activities, along with the identities of all other Data Fiduciaries and Data Processors with whom the data has been shared and a description of the data shared. This gives you transparency over what is happening to your data.',
       details: [
-        'You can request a summary of personal data being processed',
-        'You can ask for the purposes of processing',
-        'You can ask for the categories of data shared with third parties',
-        'You can ask for the identities of all Data Fiduciaries with whom data has been shared',
-        'The Data Fiduciary must respond within a reasonable time',
+        'You can request a summary of the personal data being processed and the processing activities',
+        'You can ask for the identities of all Data Fiduciaries and Data Processors with whom your data has been shared',
+        'You can ask for a description of the personal data that has been shared',
+        'You can request any other information the Rules prescribe',
+        'The Data Fiduciary must respond within the period prescribed in the Rules',
       ],
     },
     {
@@ -54,59 +49,58 @@ export default function RightsPage() {
       subtitle: 'Correct inaccuracies or request deletion.',
       section: 'Section 12',
       description:
-        'You have the legal right to request the correction of inaccurate, misleading, or incomplete personal data. Furthermore, you can demand the erasure of your data (Right to be Forgotten) once the purpose of collection is fulfilled, or if you withdraw your consent, unless retention is mandated by law.',
+        'You have the right to request correction of inaccurate or misleading personal data, completion of incomplete data, and updating of your data. You can also request erasure of your data (sometimes called the right to be forgotten) unless retention is necessary for the specified purpose or for compliance with a law.',
       details: [
         'You can request correction of inaccurate or misleading data',
-        'You can request completion of incomplete data',
-        'You can request erasure when the purpose is no longer served',
-        'You can request erasure when you withdraw consent',
+        'You can request completion and updating of your data',
+        'You can request erasure of your personal data',
+        'Erasure also follows when you withdraw consent and the purpose is no longer served',
         'Erasure can be refused if retention is required by law',
       ],
     },
     {
       icon: MessageSquare,
       title: 'Right to Grievance Redressal',
-      subtitle: 'A readily available mechanism to file complaints.',
+      subtitle: 'Readily available means to raise a complaint.',
       section: 'Section 13',
       description:
-        'Section 13 mandates that every Data Fiduciary must provide an easily accessible grievance redressal mechanism. If an organisation fails to resolve your complaint within a reasonable timeframe, you have the right to escalate the matter directly to the Data Protection Board of India (DPBI).',
+        'Section 13 gives you the right to readily available means of grievance redressal from a Data Fiduciary or Consent Manager for any act or omission in performing its obligations or in respect of your rights. The Data Fiduciary must respond within the prescribed period, and you must exhaust this route before approaching the Data Protection Board of India.',
       details: [
-        'Every Data Fiduciary must publish grievance officer details',
-        'You can file a complaint directly with the Data Fiduciary',
-        'The grievance must be resolved within the prescribed time',
-        'If unresolved, you can escalate to the Data Protection Board',
-        'The Board can investigate and impose penalties',
+        'Every Data Fiduciary must publish contact details of its Data Protection Officer or another person who can answer your questions',
+        'You can file a grievance directly with the Data Fiduciary or Consent Manager',
+        'The grievance must be answered within the period prescribed in the Rules',
+        'You must exhaust this route before approaching the Data Protection Board',
+        'If unresolved, you can complain to the Board, which can inquire and impose penalties',
       ],
     },
-    
     {
       icon: UserPlus,
       title: 'Right to Nominate',
-      subtitle: 'Appoint a representative for your digital rights.',
+      subtitle: 'Appoint someone to exercise your rights.',
       section: 'Section 14',
       description:
-        'In the unfortunate event of death or incapacity, you have the right to nominate another individual to exercise your rights on your behalf. This ensures that your digital legacy and privacy preferences are legally respected even in your absence.',
+        'In the event of your death or incapacity, you have the right to nominate another individual to exercise your rights on your behalf. This ensures your privacy choices continue to be respected when you are unable to act yourself.',
       details: [
-        'Nominate an individual to exercise your rights on your behalf',
-        'Applies in the event of death or incapacity',
-        'The nominee can exercise all your rights',
-        'The nomination must be made in the prescribed manner',
-        'The Data Fiduciary must honour the nomination',
+        'You can nominate any individual to exercise your rights on your behalf',
+        'Applies in the event of your death or incapacity',
+        'The nominee exercises your rights as provided in the Act and Rules',
+        'The nomination must be made in the manner prescribed',
+        'The Data Fiduciary must honour a valid nomination',
       ],
     },
     {
       icon: Ban,
       title: 'Right to Withdraw Consent',
-      subtitle: 'You are in control of your consent.',
+      subtitle: 'You stay in control of your consent.',
       section: 'Section 6(4)',
       description:
-        'If your data is being processed based on your consent, you retain the absolute right to withdraw it at any time. Once withdrawn, the Data Fiduciary must cease processing your data immediately. The process to withdraw consent must be as easy as it was to give it.',
+        'Where processing is based on your consent, you can withdraw it at any time. The ease of withdrawing must be comparable to the ease with which consent was given. Once consent is withdrawn, the Data Fiduciary must stop processing, and cause its Data Processors to stop, within a reasonable time, unless the law permits processing without consent.',
       details: [
         'You can withdraw consent at any time',
-        'The withdrawal process must be as easy as giving consent',
-        'The Data Fiduciary must cease processing immediately',
-        'Withdrawal does not affect prior lawful processing',
-        'You can request erasure after withdrawal',
+        'Withdrawal must be as easy as giving consent',
+        'The Data Fiduciary must stop processing, and cause its Data Processors to stop, within a reasonable time',
+        'Withdrawal does not affect processing done lawfully before it',
+        'You bear the consequences of withdrawal, for example a service may no longer be available',
       ],
     },
   ];
@@ -116,31 +110,31 @@ export default function RightsPage() {
     {
       step: '01',
       title: 'Identify the Data Fiduciary',
-      desc: 'Find out which organisation is processing your data. Check their privacy policy, notices, and the grievance officer details published on their website.',
+      desc: 'Find out which organisation is processing your data. Check its privacy policy, notices, and the contact details of its Data Protection Officer or grievance contact published on its website or app.',
       icon: Eye,
     },
     {
       step: '02',
       title: 'Submit a Written Request',
-      desc: 'Write to the Grievance Officer (email or physical post) clearly stating which right you want to exercise. Attach proof of identity, if required.',
+      desc: 'Write to the published grievance contact (email or post) stating clearly which right you want to exercise. Attach proof of identity if required, and keep a copy of everything you send.',
       icon: FileCheck,
     },
     {
       step: '03',
       title: 'Wait for the Response',
-      desc: 'The Data Fiduciary must respond within the period prescribed in the DPDP Rules, 2025 (Rule 14 sets a maximum period for grievance responses). Keep records of all communications.',
+      desc: 'The Data Fiduciary must respond within the period prescribed in the DPDP Rules, 2025. Keep records of all communications and the date of each.',
       icon: Clock,
     },
     {
       step: '04',
       title: 'Escalate to the Board',
-      desc: 'If the Data Fiduciary fails to respond or rejects your request unfairly, file a complaint with the Data Protection Board of India.',
+      desc: 'Once you have used the Data Fiduciary\'s grievance mechanism and the matter is not resolved, you can file a complaint with the Data Protection Board of India.',
       icon: Gavel,
     },
     {
       step: '05',
-      title: 'Seek Judicial Remedy',
-      desc: 'For serious violations, you can also approach consumer forums or constitutional courts. Legal remedies supplement the DPDP framework.',
+      title: 'Appeal if Needed',
+      desc: 'If you are aggrieved by an order of the Board, you can appeal to the Telecom Disputes Settlement and Appellate Tribunal (TDSAT) within 60 days of receiving the order.',
       icon: Scale,
     },
   ];
@@ -149,94 +143,34 @@ export default function RightsPage() {
   const limitations = [
     {
       title: 'Legal Retention Obligations',
-      desc: 'The right to erasure does not apply where retention is required by other laws � e.g., Income Tax records, RBI KYC data, or court orders.',
+      desc: 'The right to erasure does not apply where retention is required by another law, for example tax records, RBI KYC data or court orders.',
     },
     {
-      title: 'State Functions',
-      desc: 'Some rights may be limited where data processing is for state functions, national security, or public interest.',
+      title: 'Exemptions under Section 17',
+      desc: 'The Act exempts certain processing, for example by specified State instrumentalities, for prevention or investigation of offences, or for enforcing legal rights and claims.',
     },
     {
       title: 'Research and Statistics',
-      desc: 'Data processing for research, archiving, or statistical purposes may be exempt from certain rights where safeguards exist.',
+      desc: 'Processing for research, archiving or statistical purposes can be exempt from certain provisions where it is not used to take decisions specific to a Data Principal and prescribed standards are followed.',
     },
     {
       title: 'Legal Claims',
-      desc: 'Data may be retained where necessary for the establishment, exercise, or defence of legal claims.',
+      desc: 'Data may be retained and processed where necessary to establish, exercise or defend a legal right or claim.',
     },
     {
-      title: 'Rights of Others',
-      desc: 'Your rights cannot be exercised in a way that harms the rights of other individuals or the public interest.',
-    },
-  ];
-
-  // ===== FAQS =====
-  const faqs = [
-    {
-      q: 'What are the rights of a Data Principal under the DPDP Act 2023?',
-      a: 'The DPDP Act 2023 grants six core rights: (1) Right to Access information, (2) Right to Correction and Erasure, (3) Right to Grievance Redressal, (4) Right to Data Portability, (5) Right to Nominate, and (6) Right to Withdraw Consent.',
-    },
-    {
-      q: 'How do I exercise my right to access under the DPDP Act?',
-      a: 'Submit a written request to the Data Fiduciary (the organisation processing your data) asking for a summary of your personal data, the purposes of processing, and the categories of data shared with third parties. You can escalate to the Data Protection Board if unsatisfied.',
-    },
-    {
-      q: 'What is the right to erasure under the DPDP Act?',
-      a: 'The right to erasure (also known as the right to be forgotten) allows you to request deletion of your personal data once the purpose of processing is complete, or if you withdraw consent. However, erasure can be refused if retention is required by law or for legal proceedings.',
-    },
-    {
-      q: 'Can I withdraw my consent after giving it?',
-      a: 'Yes. Under Section 6(4), you can withdraw your consent at any time. Once withdrawn, the Data Fiduciary must cease processing your data (unless another legal basis applies). The process to withdraw consent must be as easy as the process to give it.',
-    },
-    {
-      q: 'What is the right to nominate under the DPDP Act?',
-      a: 'The right to nominate allows you to appoint another individual to exercise your data rights on your behalf in the event of your death or incapacity. This ensures your digital legacy is protected.',
-    },
-    {
-      q: 'How do I file a complaint under the DPDP Act?',
-      a: 'First, file a grievance with the Data Fiduciary\'s Grievance Officer. If it is not resolved within the prescribed time, escalate to the Data Protection Board of India (DPB). The Board can investigate and impose penalties up to ?250 crore.',
-    },
-    {
-      q: 'Are these rights available to everyone in India?',
-      a: 'Yes. The DPDP Act 2023 applies to all Data Principals � any individual whose personal data is processed digitally or in non-digital form subsequently digitised. However, some rights may be limited by other laws.',
-    },
-    {
-      q: 'What if a company ignores my data rights request?',
-      a: 'If a Data Fiduciary ignores or delays your request, you can file a complaint with the Data Protection Board. The Board can impose penalties up to ?50 crore for general non-compliance. You can also approach consumer forums or courts.',
+      title: 'Duties of Data Principals (Section 15)',
+      desc: 'Rights come with duties: comply with applicable laws, do not impersonate another person, do not suppress material information, do not file false or frivolous grievances, and furnish only verifiably authentic information. Breach of these duties can attract a penalty of up to ₹10,000.',
     },
   ];
 
   // ===== RELATED LINKS =====
   const relatedLinks = [
-    {
-      title: 'Obligations of Fiduciaries',
-      href: '/obligations',
-      desc: 'Learn what the law expects from businesses.',
-    },
-    {
-      title: 'Data Protection Board',
-      href: '/board',
-      desc: 'Where you can escalate unresolved complaints.',
-    },
-    {
-      title: 'Penalties & Offences',
-      href: '/penalties',
-      desc: 'What happens when rights are violated.',
-    },
-    {
-      title: 'Data Rights Insights',
-      href: '/insight/data-subject-rights-guide',
-      desc: 'Deep dive into how to enforce your rights.',
-    },
-    {
-      title: 'DPDPA Complete Guide',
-      href: '/resources/guides/dpdpa-2023-complete-guide',
-      desc: 'End-to-end guide to the Act.',
-    },
-    {
-      title: 'Lawful Processing',
-      href: '/lawful-processing',
-      desc: 'When data can be processed in the first place.',
-    },
+    { title: 'Obligations of Fiduciaries', href: '/obligations', desc: 'Learn what the law expects from businesses.' },
+    { title: 'Data Protection Board', href: '/board', desc: 'Where you can escalate unresolved complaints.' },
+    { title: 'Penalties', href: '/penalties', desc: 'What happens when obligations are violated.' },
+    { title: 'Data Rights Insights', href: '/insight/data-subject-rights-guide', desc: 'Deep dive into how rights work in practice.' },
+    { title: 'DPDPA Complete Guide', href: '/resources/guides/dpdpa-2023-complete-guide', desc: 'End-to-end guide to the Act.' },
+    { title: 'Lawful Processing', href: '/lawful-processing', desc: 'When data can be processed in the first place.' },
   ];
 
   return (
@@ -268,7 +202,7 @@ export default function RightsPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-xs font-medium text-blue-300 mb-4">
             <Users className="w-3 h-3" />
-            Data Principal Rights � DPDP Act 2023
+            Data Principal Rights — DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Rights of Data Principals under the{' '}
@@ -277,15 +211,13 @@ export default function RightsPage() {
             </span>
           </h1>
           <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
-            The Digital Personal Data Protection Act, 2023 has fundamentally
-            changed how Indian citizens interact with their digital data. As a{' '}
-            <strong className="text-white">Data Principal</strong>, you are no
-            longer just a passive user; you are the{' '}
-            <strong className="text-white">legal owner of your data</strong>. The
-            Act grants you a set of enforceable rights against any
-            organisation (Data Fiduciary) processing your information. This guide
-            explains each right, how to exercise it, and what to do if your
-            rights are violated.
+            The Digital Personal Data Protection Act, 2023 gives individuals
+            real control over their digital personal data. As a{' '}
+            <strong className="text-white">Data Principal</strong>, you are not
+            just a passive user; you have enforceable rights against any
+            organisation (Data Fiduciary) processing your information. This
+            guide explains each right, how to exercise it, its limits, and what
+            to do if your rights are not respected.
           </p>
 
           {/* Meta Row */}
@@ -296,20 +228,16 @@ export default function RightsPage() {
             </span>
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              Last updated:{' '}
-              {new Date().toLocaleDateString('en-IN', {
-                month: 'long',
-                year: 'numeric',
-              })}
+              Last updated: {LAST_UPDATED}
             </span>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              10 min read
+              9 min read
             </span>
           </div>
         </div>
 
-        {/* ===== 6 RIGHTS GRID ===== */}
+        {/* ===== RIGHTS GRID ===== */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6">
             Your Rights at a Glance
@@ -345,6 +273,11 @@ export default function RightsPage() {
               );
             })}
           </div>
+          <p className="text-sm text-gray-400 mt-4">
+            Chapter III of the Act provides four rights (Sections 11 to 14).
+            The right to withdraw consent comes from Section 6(4). The Act does
+            not include a right to data portability.
+          </p>
         </section>
 
         {/* ===== SECTION 1: DETAILED BREAKDOWN ===== */}
@@ -353,9 +286,9 @@ export default function RightsPage() {
             Detailed Breakdown of Each Right
           </h2>
           <p className="text-gray-300 leading-relaxed mb-8">
-            These rights are not just abstract principles � they are enforceable
-            legal rights backed by the Data Protection Board. Here is what each
-            right means in practice, including the specific actions you can take.
+            These rights are enforceable through the Data Protection Board.
+            Here is what each right means in practice, including the specific
+            actions you can take.
           </p>
 
           <div className="space-y-8">
@@ -398,7 +331,7 @@ export default function RightsPage() {
                           key={j}
                           className="text-sm text-gray-300 flex items-start gap-2"
                         >
-                          <span className="text-blue-400 mt-0.5">?</span>
+                          <span className="text-blue-400 mt-0.5">•</span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -416,8 +349,8 @@ export default function RightsPage() {
             How to Exercise Your Rights
           </h2>
           <p className="text-gray-300 leading-relaxed mb-8">
-            Knowing your rights is one thing; exercising them is another. Here is
-            the step-by-step process to enforce your rights against a Data
+            Knowing your rights is one thing; exercising them is another. Here
+            is the step-by-step process to enforce your rights against a Data
             Fiduciary:
           </p>
 
@@ -459,10 +392,10 @@ export default function RightsPage() {
             Limitations on These Rights
           </h2>
           <p className="text-gray-300 leading-relaxed mb-6">
-            The rights are powerful, but they are not absolute. The Act recognises
-            several situations where a Data Fiduciary can legitimately refuse or
-            limit a request. Understanding these limitations helps you set
-            realistic expectations:
+            The rights are powerful, but they are not absolute. The Act
+            recognises several situations where a Data Fiduciary can
+            legitimately refuse or limit a request. Understanding these
+            limitations helps you set realistic expectations:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -493,29 +426,35 @@ export default function RightsPage() {
                   Are you a business owner?
                 </h2>
                 <p className="text-gray-300 leading-relaxed text-sm mb-4">
-                  As a Data Fiduciary, the law requires you to build systems that
-                  respect these rights. Failure to provide these rights to your
-                  users can lead to penalties of up to{' '}
-                  <strong className="text-white">?50 crore</strong> for general
-                  non-compliance, and up to{' '}
-                  <strong className="text-white">?250 crore</strong> for data
-                  breaches. Ensure your organisation is fully compliant.
+                  As a Data Fiduciary, you need systems that respect these
+                  rights. Failing to honour them can attract a penalty of up
+                  to <strong className="text-white">₹50 crore</strong> under
+                  the Schedule to the Act, and failing to take reasonable
+                  security safeguards can attract up to{' '}
+                  <strong className="text-white">₹250 crore</strong>.
                 </p>
                 <ul className="space-y-1.5 text-sm text-gray-300">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
                     <span>
-                      Implement a proper grievance redressal mechanism with a
-                      named officer
+                      Set up a grievance redressal mechanism and publish the
+                      contact of a named person
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
                     <span>
-                      Enable easy data access, correction, and erasure workflows
+                      Build workflows for access, correction and erasure
+                      requests
                     </span>
                   </li>
-                  
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                    <span>
+                      Honour nominations and keep records of every request and
+                      response
+                    </span>
+                  </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
                     <span>
@@ -548,36 +487,41 @@ export default function RightsPage() {
             Common Scenarios: How Rights Apply
           </h2>
           <p className="text-gray-300 leading-relaxed mb-6">
-            Here are some common situations where Data Principals exercise their
-            rights:
+            Here are some common situations where Data Principals exercise
+            their rights:
           </p>
 
           <div className="space-y-4">
             {[
               {
                 title: 'You want to know what a social media platform knows about you',
-                right: 'Right to Access',
-                action: 'Submit a data access request to the platform\'s grievance officer. You can ask for a summary of your data, purposes of processing, and third parties with whom it is shared.',
+                right: 'Right to Access Information',
+                action:
+                  "Submit an access request to the platform's grievance contact. You can ask for a summary of your data, the processing activities, and the Data Fiduciaries and Data Processors with whom it is shared.",
               },
               {
                 title: 'You find inaccurate information in your bank records',
                 right: 'Right to Correction',
-                action: 'Notify the bank in writing, provide proof of the correct information, and request correction. If not corrected within a reasonable time, escalate to the RBI Ombudsman and the Data Protection Board.',
+                action:
+                  'Notify the bank in writing, provide proof of the correct information, and request correction. If it is not corrected, use the bank\'s grievance process and then escalate to the Data Protection Board.',
               },
               {
                 title: 'You want an e-commerce app to delete your account and data',
                 right: 'Right to Erasure',
-                action: 'Request account deletion and data erasure. The company must delete your data unless retention is required by law (e.g., tax records).',
+                action:
+                  'Request account deletion and data erasure. The company must erase your data unless retention is necessary for the specified purpose or required by law (for example, tax records).',
               },
               {
                 title: 'You want to stop marketing calls from a company',
                 right: 'Right to Withdraw Consent',
-                action: 'Withdraw your consent using the same channel you used to give it (e.g., unsubscribe link, account settings). The company must stop processing immediately.',
+                action:
+                  'Withdraw your consent using the same kind of channel you used to give it (unsubscribe link, account settings). The company must stop the processing within a reasonable time.',
               },
               {
                 title: 'You are unhappy with how a company handled your complaint',
                 right: 'Right to Grievance Redressal',
-                action: 'Escalate to the Data Protection Board. The Board can investigate and impose penalties on the company.',
+                action:
+                  'Once you have used the company\'s grievance mechanism, escalate to the Data Protection Board, which can inquire into the matter and impose penalties.',
               },
             ].map((scenario, i) => (
               <div
@@ -626,7 +570,7 @@ export default function RightsPage() {
                 Shilpi Kulshrestha
               </h3>
               <p className="text-sm text-gray-400 mb-2">
-                Founder, BusinezExcellence | Corporate Law & Company Secretary
+                Founder, Businezexcellence | Corporate Law & Company Secretary
                 Expert
               </p>
               <p className="text-sm text-gray-300 leading-relaxed">
@@ -645,7 +589,7 @@ export default function RightsPage() {
             Frequently Asked Questions
           </h2>
           <div className="space-y-3">
-            {faqs.map((faq, i) => (
+            {RIGHTS_FAQS.map((faq, i) => (
               <details
                 key={i}
                 className="group bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all"
@@ -702,7 +646,7 @@ export default function RightsPage() {
               href="/scorecard"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-600 text-white font-semibold hover:scale-105 transition-all"
             >
-              Take the Free Test ?
+              Take the Free Test →
             </Link>
             <Link
               href="/contact"
@@ -716,8 +660,8 @@ export default function RightsPage() {
         {/* ===== DISCLAIMER ===== */}
         <p className="text-xs text-gray-500 text-center mt-12 max-w-2xl mx-auto leading-relaxed">
           <strong>Disclaimer:</strong> This page is for educational and
-          informational purposes only. It is not legal advice. For advice on your
-          specific situation, consult a qualified legal professional.
+          informational purposes only. It is not legal advice. For advice on
+          your specific situation, consult a qualified legal professional.
         </p>
       </div>
     </main>

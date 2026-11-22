@@ -21,28 +21,28 @@ export const insightsData: Insight[] = [
     category: 'DPDP Act',
     categoryIcon: 'Shield',
     title: 'DPDP Act 2023: Director Liability, Board Responsibilities and Data Privacy Compliance for Indian Companies',
-    excerpt: 'Can directors be personally liable under India\'s DPDP Act 2023? Explore board responsibilities, CEO accountability, compliance requirements and data breach management for Indian companies.',
+    excerpt: 'Are directors personally liable under India\'s DPDP Act 2023? What the Act actually says about penalties on the Data Fiduciary, why there are no criminal offences, and what boards should still do.',
     content: `
       <h2>Introduction</h2>
       <p>The Digital Personal Data Protection Act, 2023 (DPDP Act) introduces significant compliance obligations for companies operating in India. One of the most critical questions for corporate boards and directors is: <strong>Can directors be held personally liable for data protection failures?</strong></p>
       
       <h2>Director Liability under the DPDP Act</h2>
-      <p>The DPDP Act imposes obligations on "data fiduciaries" — entities that determine the purpose and means of processing personal data. Under the Act, directors can be held personally liable if they are found to be "directly in charge of and responsible for the conduct of the business."</p>
-      
-      <h3>Key Liabilities</h3>
+      <p>The DPDP Act imposes obligations on "data fiduciaries" — entities that determine the purpose and means of processing personal data. Monetary penalties are imposed on the Data Fiduciary after an inquiry by the Data Protection Board. The Act does not contain a separate provision that makes directors or officers personally liable for a company's contraventions, and it does not create criminal offences.</p>
+
+      <h3>What this means in practice</h3>
       <ul>
-        <li><strong>Personal Penalties:</strong> Directors can be personally fined for non-compliance</li>
-        <li><strong>Disqualification:</strong> Directors may be disqualified from holding office</li>
-        <li><strong>Criminal Liability:</strong> In cases of wilful non-compliance, criminal proceedings may be initiated</li>
+        <li><strong>Penalties fall on the Data Fiduciary:</strong> up to ₹250 crore for failing to take reasonable security safeguards, with other tiers of ₹200 crore, ₹150 crore and ₹50 crore</li>
+        <li><strong>No criminal liability under this Act:</strong> the DPDP Act imposes civil monetary penalties only</li>
+        <li><strong>Company law still applies:</strong> directors owe duties of good faith and due care, and a serious breach can bring governance, shareholder and reputational consequences</li>
       </ul>
-      
+
       <h2>Board Responsibilities</h2>
       <p>Boards must ensure that their organisations have robust data protection frameworks in place. This includes:</p>
       <p>For a complete understanding of the legal framework, read our <a href="/resources/guides/dpdpa-2023-complete-guide" class="text-blue-400 hover:text-blue-300 underline">DPDPA 2023 Complete Guide</a>.</p>
       <ul>
-        <li>Appointing a Data Protection Officer (DPO)</li>
+        <li>Appointing an India-based Data Protection Officer and an independent data auditor, if the company is notified as a Significant Data Fiduciary</li>
         <li>Implementing consent management mechanisms</li>
-        <li>Conducting Data Protection Impact Assessments (DPIAs)</li>
+        <li>Carrying out periodic Data Protection Impact Assessments (a duty of Significant Data Fiduciaries)</li>
         <li>Establishing data breach response protocols</li>
       </ul>
       
@@ -54,12 +54,12 @@ export const insightsData: Insight[] = [
       <ul>
         <li><strong>Notice and Consent:</strong> Provide clear notices and obtain valid consent</li>
         <li><strong>Data Security:</strong> Implement reasonable security safeguards</li>
-        <li><strong>Data Breach Notification:</strong> Notify the Board and affected individuals within 72 hours</li>
-        <li><strong>Data Subject Rights:</strong> Enable individuals to exercise their rights</li>
+        <li><strong>Data Breach Notification:</strong> Intimate the Board and affected individuals without delay, and give the Board a detailed report within 72 hours</li>
+        <li><strong>Data Principal Rights:</strong> Enable individuals to exercise their rights</li>
       </ul>
       
       <h2>Conclusion</h2>
-      <p>Directors and boards must take proactive steps to ensure compliance with the DPDP Act. Personal liability is a real risk that can be mitigated through proper governance, training, and implementation of robust data protection frameworks.</p>
+      <p>Directors and boards must take proactive steps to ensure compliance with the DPDP Act. Although the Act itself targets the Data Fiduciary, a large penalty or breach is a board-level risk, best managed through proper governance, training and robust data protection frameworks.</p>
 
       <h2>Related Reading</h2>
       <ul>
@@ -84,7 +84,7 @@ export const insightsData: Insight[] = [
       <p>Data breaches are inevitable in today's digital landscape. The DPDP Act establishes clear timelines and requirements for breach notification. This article provides a comprehensive guide to data breach response under the DPDP Act.</p>
       
       <h2>DPDP Rule 7: Breach Notification Timeline</h2>
-      <p>Under Rule 7 of the DPDP Rules, data fiduciaries must notify the Data Protection Board within <strong>72 hours</strong> of becoming aware of a data breach.</p>
+      <p>Under Rule 7 of the DPDP Rules, 2025, a data fiduciary must intimate the Data Protection Board and each affected Data Principal <strong>without delay</strong> on becoming aware of a breach, and then give the Board a detailed report within <strong>72 hours</strong> (or a longer period the Board allows).</p>
       
       <h2>What to Tell Affected Individuals</h2>
       <p>Affected individuals must be informed of the breach, including:</p>
@@ -204,7 +204,7 @@ export const insightsData: Insight[] = [
     category: 'Data Rights',
     categoryIcon: 'Users',
     title: 'Data Subject Rights: A Comprehensive Guide for Data Fiduciaries',
-    excerpt: 'Understanding the rights of data principals under the DPDP Act. Right to access, correction, erasure, data portability, and grievance redressal mechanisms.',
+    excerpt: 'Understanding the rights of data principals under the DPDP Act. Right to information, correction and erasure, grievance redressal and nomination.',
     content: `
       <h2>Introduction</h2>
       <p>The DPDP Act grants individuals (data principals) several rights to control their personal data. Data fiduciaries must understand and implement these rights.</p>

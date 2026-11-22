@@ -48,7 +48,7 @@ const GlassScoreRing = ({ percentage, label, color = "#22d3ee" }: { percentage: 
 
   return (
     <div className="relative flex flex-col items-center justify-center p-4">
-      <svg width="140" height="140" className="transform -rotate-90 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+      <svg width="140" height="140" className="transform -rotate-90 drop-shadow-[0_0_15px_rgba(70,208,155,0.3)]">
         <circle cx="70" cy="70" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="10" fill="transparent" />
         <motion.circle 
           cx="70" cy="70" r={radius} 
@@ -349,7 +349,7 @@ const ResultSection = ({ answers, onReset }: any) => {
           <h2 className="text-2xl font-bold text-white mb-2">Report Sent Successfully!</h2>
           <p className="text-gray-300 mb-8">Your detailed report has been sent to <span className="text-white font-medium">{formData.email}</span></p>
           <div className="flex flex-col gap-3">
-            <button onClick={onReset} className="w-full px-6 py-3.5 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+            <button onClick={onReset} className="w-full px-6 py-3.5 rounded-xl bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(70,208,155,0.3)]">
               Retake Assessment
             </button>
             <Link href="/" className="w-full px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all text-center">
@@ -444,7 +444,7 @@ const ResultSection = ({ answers, onReset }: any) => {
                 <ConsentCheckbox id="scorecard-consent" checked={consent} onChange={(val) => { setConsent(val); if (formError) setFormError(null); }} error={formError || undefined} />
               </div>
 
-              <button type="submit" disabled={isSubmitting} className="w-full mt-4 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-70 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+              <button type="submit" disabled={isSubmitting} className="w-full mt-4 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold hover:scale-[1.02] transition-all flex items-center justify-center gap-2 disabled:opacity-70 shadow-[0_0_20px_rgba(70,208,155,0.3)]">
                 {isSubmitting ? <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</> : <><Send className="w-5 h-5" /> Send Me My Report</>}
               </button>
             </form>
@@ -559,7 +559,7 @@ export default function ScorecardPage() {
           
           <button
             onClick={handleNext}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-xs font-bold hover:scale-[1.02] transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(34,211,238,0.3)]"
+            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-xs font-bold hover:scale-[1.02] transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(70,208,155,0.3)]"
           >
             {currentQuestionIndex === totalQuestions - 1 ? 'See Results' : 'Next'}
             <ChevronRight className="w-3.5 h-3.5" />

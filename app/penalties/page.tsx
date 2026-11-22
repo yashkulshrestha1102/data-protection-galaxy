@@ -24,34 +24,38 @@ import {
   Info,
 } from 'lucide-react';
 
+import { PENALTIES_FAQS } from '@/data/page-faqs';
+
+const LAST_UPDATED = 'November 2026';
+
 export default function PenaltiesPage() {
   // ===== PENALTIES GRID DATA =====
   const penalties = [
     {
       icon: Shield,
       title: 'Failure to Protect Data',
-      amount: 'Up to ?250 Crore',
+      amount: 'Up to ₹250 Crore',
       description:
         'The highest penalty is reserved for Data Fiduciaries who fail to take reasonable security safeguards to prevent a personal data breach. This applies to serious breaches affecting large numbers of individuals.',
     },
     {
       icon: AlertCircle,
       title: 'Failure to Notify Breach',
-      amount: 'Up to ?200 Crore',
+      amount: 'Up to ₹200 Crore',
       description:
         'If a data breach occurs, the Data Fiduciary must notify the Data Protection Board and affected individuals. Failure to report a breach in a timely manner attracts a heavy fine.',
     },
     {
       icon: Baby,
       title: "Children's Data Violations",
-      amount: 'Up to ?200 Crore',
+      amount: 'Up to ₹200 Crore',
       description:
         'Processing the personal data of children (under 18) without verifiable parental consent, or engaging in behavioral tracking/targeted advertising directed at children, carries massive penalties.',
     },
     {
       icon: Scale,
       title: 'Significant Data Fiduciary (SDF) Non-Compliance',
-      amount: 'Up to ?150 Crore',
+      amount: 'Up to ₹150 Crore',
       description:
         'Significant Data Fiduciaries have extra obligations (appointing a DPO, independent audits). Failure to fulfill these enhanced duties as notified by the government results in this penalty.',
     },
@@ -65,7 +69,7 @@ export default function PenaltiesPage() {
     {
       icon: FileText,
       title: 'General Non-Compliance',
-      amount: 'Up to ?50 Crore',
+      amount: 'Up to ₹50 Crore',
       description:
         'Breach of any other provision of the Act or Rules, or of a voluntary undertaking accepted by the Board, falls under this category.',
     },
@@ -76,28 +80,28 @@ export default function PenaltiesPage() {
     {
       section: 'Section 8(5)',
       violation: 'Failure to take reasonable security safeguards to prevent a personal data breach',
-      penalty: '?250 Crore',
+      penalty: '₹250 Crore',
     },
     {
       section: 'Section 8(6)',
       violation: 'Failure to notify a personal data breach to the Board or affected Data Principals',
-      penalty: '?200 Crore',
+      penalty: '₹200 Crore',
     },
     {
       section: 'Section 9(1) & 9(3)',
       violation: "Processing children's personal data without verifiable parental consent, or behavioral tracking/targeted advertising at children",
-      penalty: '?200 Crore',
+      penalty: '₹200 Crore',
     },
     {
       section: 'Section 10',
       violation: 'Non-compliance by a Significant Data Fiduciary with its additional obligations',
-      penalty: '?150 Crore',
+      penalty: '₹150 Crore',
     },
     { section: 'Section 15', violation: "Breach of duties by a Data Principal", penalty: '₹10,000' },
     {
       section: 'General',
       violation: 'Breach of any other provision of the Act not covered above',
-      penalty: '?50 Crore',
+      penalty: '₹50 Crore',
     },
     { section: 'Section 32 / General', violation: 'Breach of a voluntary undertaking accepted by the Board, or of any other provision of the Act or Rules', penalty: '₹50 Crore' },
   ];
@@ -161,7 +165,7 @@ export default function PenaltiesPage() {
     {
       step: '05',
       title: 'Reasoned Order',
-      desc: 'The Board passes a reasoned order � dismissing the complaint, issuing directions, or imposing a penalty.',
+      desc: 'The Board passes a reasoned order — dismissing the complaint, issuing directions, or imposing a penalty.',
     },
     {
       step: '06',
@@ -171,40 +175,7 @@ export default function PenaltiesPage() {
   ];
 
   // ===== FAQS =====
-  const faqs = [
-    {
-      q: 'What is the maximum penalty under the DPDP Act 2023?',
-      a: 'The maximum penalty is ?250 crore, imposed on Data Fiduciaries who fail to take reasonable security safeguards to prevent a personal data breach. This is one of the significant monetary penalties.',
-    },
-    {
-      q: 'Who imposes penalties under the DPDP Act?',
-      a: 'Penalties are imposed by the Data Protection Board of India (DPB), the regulatory authority established under Section 18 of the DPDP Act 2023. The Board follows a quasi-judicial process � issuing notice, hearing the parties, and passing a reasoned order.',
-    },
-    {
-      q: 'Can penalties under the DPDP Act be appealed?',
-      a: 'Yes. Under Section 29 of the DPDP Act, any person aggrieved by an order of the Board may appeal to the Telecom Disputes Settlement and Appellate Tribunal (TDSAT) within 60 days of receiving the order.',
-    },
-    {
-      q: 'Are DPDP Act penalties imposed automatically after a breach?',
-      a: 'No. Penalties are not automatic. The Board conducts an inquiry, considers factors such as the nature and gravity of the breach, the number of Data Principals affected, the repetitiveness of the breach, and whether the Data Fiduciary took corrective action, before imposing a penalty.',
-    },
-    {
-      q: 'Can directors be personally penalized under the DPDP Act?',
-      a: 'Yes. Section 37 of the DPDP Act allows the Board to proceed against directors, managers, and other officers of a company if the offence was committed with their consent, connivance, or due to their neglect. Personal liability can attach even if the company is penalized.',
-    },
-    {
-      q: 'What is the penalty for failing to notify a data breach?',
-      a: 'Failure to notify a personal data breach to the Board and affected Data Principals can attract a penalty of up to ?200 crore. This is separate from the penalty for the breach itself, which can be up to ?250 crore.',
-    },
-    {
-      q: 'Does the DPDP Act have criminal penalties?',
-      a: 'No. The DPDP Act 2023 is a civil law � it imposes civil penalties, not criminal penalties. However, non-compliance with Board directions can attract additional civil penalties, and individuals (directors, officers) can be held personally liable.',
-    },
-    {
-      q: 'How does the DPDP Act penalty compare with GDPR?',
-      a: 'GDPR fines go up to �20 million or 4% of global annual turnover, whichever is higher. DPDP Act fines go up to ?250 crore (approximately �28 million). For large enterprises, GDPR fines can be much higher; for smaller Indian businesses, DPDP fines can be equally severe relative to their size.',
-    },
-  ];
+  const faqs = PENALTIES_FAQS;
 
   // ===== RELATED LINKS =====
   const relatedLinks = [
@@ -246,28 +217,28 @@ export default function PenaltiesPage() {
       scenario: 'Scenario A: Large-Scale Data Breach',
       description:
         'A fintech company with 5 million users suffers a breach exposing names, PAN numbers, and bank details. The company had no encryption at rest and no access controls. The Board found that reasonable security safeguards were absent.',
-      penalty: 'Up to ?250 Crore',
+      penalty: 'Up to ₹250 Crore',
       icon: Shield,
     },
     {
       scenario: 'Scenario B: Delayed Breach Notification',
       description:
         'A healthcare provider discovers a breach but delays notifying the Board and affected patients for 30 days. The breach itself was minor, but the delay prevented timely remedial action.',
-      penalty: 'Up to ?200 Crore',
+      penalty: 'Up to ₹200 Crore',
       icon: AlertCircle,
     },
     {
       scenario: 'Scenario C: Children\'s Data Violation',
       description:
         'An ed-tech platform collects data from children under 18 without verifiable parental consent, and uses behavioral tracking to serve targeted ads.',
-      penalty: 'Up to ?200 Crore',
+      penalty: 'Up to ₹200 Crore',
       icon: Baby,
     },
     {
       scenario: 'Scenario D: SDF Non-Compliance',
       description:
         'A social media platform designated as a Significant Data Fiduciary fails to appoint a Data Protection Officer, conduct independent audits, or submit a DPIA report.',
-      penalty: 'Up to ?150 Crore',
+      penalty: 'Up to ₹150 Crore',
       icon: Scale,
     },
   ];
@@ -301,7 +272,7 @@ export default function PenaltiesPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/30 text-xs font-medium text-red-300 mb-4">
             <Gavel className="w-3 h-3" />
-            Enforcement � DPDP Act 2023
+            Enforcement — DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Penalties & Offences under the{' '}
@@ -312,7 +283,7 @@ export default function PenaltiesPage() {
           <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
             The DPDP Act 2023 introduces some of the{' '}
             <strong className="text-white">highest data protection penalties in the world</strong>{' '}
-            � up to <strong className="text-white">?250 crore</strong> for a single
+            — up to <strong className="text-white">₹250 crore</strong> for a single
             violation. Unlike previous Indian privacy laws, the penalties are
             severe and designed to make organisations take data privacy seriously.
             This page breaks down every penalty, the enforcement process, the
@@ -328,10 +299,7 @@ export default function PenaltiesPage() {
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               Last updated:{' '}
-              {new Date().toLocaleDateString('en-IN', {
-                month: 'long',
-                year: 'numeric',
-              })}
+              {LAST_UPDATED}
             </span>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
@@ -363,7 +331,7 @@ export default function PenaltiesPage() {
                       </h3>
                       <div className="inline-flex items-center gap-1 text-sm font-bold text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
                         <IndianRupee className="w-3.5 h-3.5" />
-                        {item.amount.replace('Up to ?', '')} Fine
+                        {item.amount.replace('Up to ₹', '')} Fine
                       </div>
                     </div>
                   </div>
@@ -383,8 +351,8 @@ export default function PenaltiesPage() {
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p>
-              India's previous data protection framework � the Information
-              Technology Act, 2000 and its rules � imposed penalties that were,
+              India's previous data protection framework — the Information
+              Technology Act, 2000 and its rules — imposed penalties that were,
               in practice, too small to deter large organisations. Fines of a
               few lakh rupees were often seen as the cost of doing business, and
               enforcement was fragmented across multiple regulators.
@@ -394,7 +362,7 @@ export default function PenaltiesPage() {
               <strong className="text-white">single, centralised enforcement authority</strong>{' '}
               (the Data Protection Board) and a{' '}
               <strong className="text-white">penalty schedule with teeth</strong>{' '}
-              � up to ?250 crore for the most serious violations. The message is
+              — up to ₹250 crore for the most serious violations. The message is
               clear: data protection is no longer a compliance checkbox; it is a
               boardroom-level priority.
             </p>
@@ -515,7 +483,7 @@ export default function PenaltiesPage() {
             </h2>
             <p className="text-gray-300 leading-relaxed mb-8">
               Penalties are not imposed automatically. The Data Protection Board
-              follows a due process � giving the organisation a fair opportunity
+              follows a due process — giving the organisation a fair opportunity
               to be heard before any penalty is imposed. The process typically
               works as follows:
             </p>
@@ -547,7 +515,7 @@ export default function PenaltiesPage() {
               <p className="text-sm text-gray-300">
                 <strong className="text-white">Key point:</strong> The Board is
                 not bound by the Code of Civil Procedure, but it is expected to
-                follow the principles of natural justice � notice, hearing, and a
+                follow the principles of natural justice — notice, hearing, and a
                 reasoned order. Appeals against the Board's orders lie to the
                 TDSAT.
               </p>
@@ -632,19 +600,19 @@ export default function PenaltiesPage() {
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p>
-              GDPR fines go up to <strong className="text-white">�20 million</strong>{' '}
+              GDPR fines go up to <strong className="text-white">€20 million</strong>{' '}
               or <strong className="text-white">4% of global annual turnover</strong>,
-              whichever is higher. For a global enterprise with �10 billion in
-              revenue, the GDPR cap is �400 million � much higher than DPDP's
-              ?250 crore (approximately �28 million).
+              whichever is higher. For a global enterprise with €10 billion in
+              revenue, the GDPR cap is €400 million — much higher than DPDP's
+              ₹250 crore (approximately €28 million).
             </p>
             <p>
               However, for Indian SMEs and mid-market companies, the DPDP
-              penalties are equally severe relative to their size. A ?50 crore
-              penalty for an Indian company with ?200 crore revenue is a
+              penalties are equally severe relative to their size. A ₹50 crore
+              penalty for an Indian company with ₹200 crore revenue is a
               business-ending event. The DPDP Act also has a{' '}
               <strong className="text-white">broader scope</strong> in some
-              respects � for example, its rules on children's data are stricter
+              respects — for example, its rules on children's data are stricter
               than GDPR's.
             </p>
             <p>
@@ -753,7 +721,7 @@ export default function PenaltiesPage() {
               href="/scorecard"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold hover:scale-105 transition-all"
             >
-              Take the Free Test ?
+              Take the Free Test →
             </Link>
             <Link
               href="/contact"
@@ -768,7 +736,7 @@ export default function PenaltiesPage() {
         <p className="text-xs text-gray-500 text-center mt-12 max-w-2xl mx-auto leading-relaxed">
           <strong>Disclaimer:</strong> This page is for educational and
           informational purposes only. It is not legal advice. The penalty
-          amounts shown are maximums under the Act � actual penalties depend on
+          amounts shown are maximums under the Act — actual penalties depend on
           the facts of each case. For advice on your specific situation, consult
           a qualified legal professional.
         </p>

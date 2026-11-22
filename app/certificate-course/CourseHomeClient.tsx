@@ -453,7 +453,7 @@ export default function CertificateCoursePage() {
               { title: 'Core DPDPA Topics', href: '/galaxy', desc: 'Rights, obligations, penalties and more.' },
               { title: 'Free Assessment', href: '/scorecard', desc: 'Test your organisation\'s DPDPA readiness.' },
               { title: 'Latest Insights', href: '/insight', desc: 'Expert analysis on DPDPA and privacy.' },
-              { title: 'Case Studies', href: '/resources/case-studies', desc: 'Real-world compliance scenarios.' },
+              { title: 'Case Studies', href: '/resources/case-studies', desc: 'Illustrative compliance scenarios.' },
               { title: 'Document Generator', href: '/generator', desc: 'Generate DPDPA documents instantly.' },
             ].map((link) => (
               <Link

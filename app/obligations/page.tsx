@@ -28,6 +28,10 @@ import {
   RefreshCw,
 } from 'lucide-react';
 
+import { OBLIGATIONS_FAQS } from '@/data/page-faqs';
+
+const LAST_UPDATED = 'November 2026';
+
 export default function ObligationsPage() {
   // ===== 8 CORE OBLIGATIONS =====
   const obligations = [
@@ -104,7 +108,7 @@ export default function ObligationsPage() {
         'Implement organisational safeguards (policies, training, audits)',
         'Ensure Data Processors maintain equivalent standards through contracts',
         'Conduct regular security audits and penetration testing',
-        'Failure to protect data can attract up to ?250 crore penalty',
+        'Failure to protect data can attract up to ₹250 crore penalty',
       ],
     },
     {
@@ -113,13 +117,13 @@ export default function ObligationsPage() {
       subtitle: 'Report incidents immediately.',
       section: 'Section 8(6)',
       description:
-        'In the event of a personal data breach, the Data Fiduciary must notify the Data Protection Board of India and the affected Data Principals without any undue delay. The notification must detail the nature of the breach, the potential impact, and the remedial actions taken.',
+        'In the event of a personal data breach, the Data Fiduciary must intimate the Data Protection Board of India and each affected Data Principal without delay. Under Rule 7 of the DPDP Rules, 2025 it must then give the Board a detailed report within 72 hours (or longer if the Board allows).',
       details: [
-        'Notify the Data Protection Board "without undue delay"',
-        'Notify affected Data Principals without undue delay',
-        'Notification must describe the nature of the breach',
-        'Notification must describe the impact and remedial actions',
-        'Failure to notify can attract up to ?200 crore penalty',
+        'Intimate the Data Protection Board without delay',
+        'Intimate each affected Data Principal without delay',
+        'Describe the nature, extent, timing and likely impact of the breach',
+        'Send a detailed report to the Board within 72 hours (Rule 7)',
+        'Failure to notify can attract up to ₹200 crore penalty',
       ],
     },
     {
@@ -188,7 +192,7 @@ export default function ObligationsPage() {
     'Publish a clear, plain-language privacy notice on your website and app',
     'Implement a consent management system with easy withdrawal',
     'Conduct a data inventory to map what data you collect and why',
-    'Implement data minimisation � stop collecting unnecessary data',
+    'Implement data minimisation — stop collecting unnecessary data',
     'Establish a data retention schedule and purge obsolete data',
     'Implement reasonable security safeguards (encryption, access controls)',
     'Conduct regular security audits and penetration testing',
@@ -207,78 +211,45 @@ export default function ObligationsPage() {
   const consequences = [
     {
       violation: 'Failure to take reasonable security safeguards',
-      penalty: 'Up to ?250 Crore',
+      penalty: 'Up to ₹250 Crore',
       icon: Shield,
     },
     {
       violation: 'Failure to notify a personal data breach',
-      penalty: 'Up to ?200 Crore',
+      penalty: 'Up to ₹200 Crore',
       icon: AlertTriangle,
     },
     {
       violation: 'Processing children\'s data without consent',
-      penalty: 'Up to ?200 Crore',
+      penalty: 'Up to ₹200 Crore',
       icon: Baby,
     },
     {
       violation: 'SDF non-compliance',
-      penalty: 'Up to ?150 Crore',
+      penalty: 'Up to ₹150 Crore',
       icon: Scale,
     },
     {
-      violation: 'Failure to comply with Board directions',
-      penalty: 'Up to ?150 Crore',
+      violation: "Breach of a Data Principal's duties (Section 15)",
+      penalty: 'Up to ₹10,000',
       icon: Gavel,
     },
     {
-      violation: 'General non-compliance (including grievance redressal failures)',
-      penalty: 'Up to ?50 Crore',
+      violation: 'Any other contravention of the Act or Rules (including grievance redressal failures)',
+      penalty: 'Up to ₹50 Crore',
       icon: FileText,
     },
   ];
 
   // ===== FAQS =====
-  const faqs = [
-    {
-      q: 'What is a Data Fiduciary under the DPDP Act 2023?',
-      a: 'A Data Fiduciary is any person, company, or entity that alone or jointly with others determines the purpose and means of processing personal data. This includes most businesses, websites, apps, and service providers operating in India.',
-    },
-    {
-      q: 'What are the core obligations of a Data Fiduciary?',
-      a: 'The 8 core obligations are: (1) Providing clear notice before collecting data, (2) Obtaining valid consent or establishing legitimate use, (3) Data minimisation and accuracy, (4) Storage limitation, (5) Implementing reasonable security safeguards, (6) Breach notification, (7) Grievance redressal, and (8) Appointing a DPO (for SDFs).',
-    },
-    {
-      q: 'What is a Significant Data Fiduciary (SDF)?',
-      a: 'An SDF is a Data Fiduciary notified by the Central Government based on factors such as the volume and sensitivity of data processed, risk to Data Principals, impact on India\'s sovereignty, and risk to electoral democracy. SDFs have enhanced obligations, including appointing a DPO in India and conducting DPIAs.',
-    },
-    {
-      q: 'How quickly must a data breach be reported under the DPDP Act?',
-      a: 'The Act requires breach notification "without undue delay." While the exact timeline will be prescribed in the Rules, industry practice suggests notification to the Board within 72 hours and to affected Data Principals without undue delay. Failure to notify can attract a penalty of up to ?200 crore.',
-    },
-    {
-      q: 'What happens if a Data Fiduciary fails to comply with its obligations?',
-      a: 'Failure to comply can attract civil penalties ranging from ?50 crore to ?250 crore, depending on the nature of the violation. The Data Protection Board can also issue directions, order remedial measures, and proceed against directors and officers personally.',
-    },
-    {
-      q: 'Does the DPDP Act apply to small businesses?',
-      a: 'Yes. The DPDP Act applies to all Data Fiduciaries processing personal data in India, regardless of size. However, the government may exempt certain classes of Data Fiduciaries (such as startups) from certain obligations through notification, subject to safeguards.',
-    },
-    {
-      q: 'What is the role of a Data Protection Officer (DPO)?',
-      a: 'A DPO is responsible for ensuring compliance with the DPDP Act, acting as a point of contact for Data Principals and the Data Protection Board, and overseeing data protection impact assessments. For SDFs, the DPO must be based in India and report to the board of directors.',
-    },
-    {
-      q: 'Can a Data Fiduciary outsource its obligations to a Data Processor?',
-      a: 'No. While a Data Fiduciary can engage a Data Processor, the ultimate responsibility for compliance remains with the Data Fiduciary. The Fiduciary must ensure the Processor implements adequate security safeguards through a valid contract and remains liable for the Processor\'s acts.',
-    },
-  ];
+  const faqs = OBLIGATIONS_FAQS;
 
   // ===== RELATED LINKS =====
   const relatedLinks = [
     {
       title: 'Penalties for Non-Compliance',
       href: '/penalties',
-      desc: 'Learn about the fines up to ?250 crore.',
+      desc: 'Learn about the fines up to ₹250 crore.',
     },
     {
       title: 'Data Breach Response',
@@ -336,7 +307,7 @@ export default function ObligationsPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-4">
             <Shield className="w-3 h-3" />
-            Business Compliance � DPDP Act 2023
+            Business Compliance — DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Obligations of{' '}
@@ -350,9 +321,9 @@ export default function ObligationsPage() {
             that determines the purpose and means of processing personal data.
             With the power to process data comes{' '}
             <strong className="text-white">strict legal accountability</strong>.
-            The Act shifts the burden of data protection onto businesses � and
+            The Act shifts the burden of data protection onto businesses — and
             failure to comply can result in penalties of up to{' '}
-            <strong className="text-white">?250 crore</strong>. This guide covers
+            <strong className="text-white">₹250 crore</strong>. This guide covers
             all 8 core obligations, SDF obligations, a compliance checklist, and
             real-world consequences.
           </p>
@@ -366,10 +337,7 @@ export default function ObligationsPage() {
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               Last updated:{' '}
-              {new Date().toLocaleDateString('en-IN', {
-                month: 'long',
-                year: 'numeric',
-              })}
+              {LAST_UPDATED}
             </span>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
@@ -468,7 +436,7 @@ export default function ObligationsPage() {
                           key={j}
                           className="text-sm text-gray-300 flex items-start gap-2"
                         >
-                          <span className="text-cyan-400 mt-0.5">?</span>
+                          <span className="text-cyan-400 mt-0.5">•</span>
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -490,7 +458,7 @@ export default function ObligationsPage() {
               Not all Data Fiduciaries are equal. The Act creates a special
               category called{' '}
               <strong className="text-white">Significant Data Fiduciary (SDF)</strong>{' '}
-              � organisations that process large volumes of sensitive data or
+              — organisations that process large volumes of sensitive data or
               pose a higher risk to Data Principals. The Central Government
               notifies SDFs based on the following factors:
             </p>
@@ -545,7 +513,7 @@ export default function ObligationsPage() {
             </ul>
             <p className="text-sm text-gray-400 mt-4">
               Failure to comply with SDF obligations can attract a penalty of up
-              to <strong className="text-white">?150 crore</strong>.
+              to <strong className="text-white">₹150 crore</strong>.
             </p>
           </div>
         </section>
@@ -647,7 +615,7 @@ export default function ObligationsPage() {
               },
               {
                 title: 'Document everything',
-                desc: 'The Board will ask: "Did you take reasonable safeguards?" The answer must be documented � policies, audits, training records, incident logs.',
+                desc: 'The Board will ask: "Did you take reasonable safeguards?" The answer must be documented — policies, audits, training records, incident logs.',
               },
               {
                 title: 'Appoint a DPO early',
@@ -779,7 +747,7 @@ export default function ObligationsPage() {
               href="/scorecard"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:scale-105 transition-all"
             >
-              Check Compliance ?
+              Check Compliance →
             </Link>
             <Link
               href="/certificate-course"

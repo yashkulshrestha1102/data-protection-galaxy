@@ -27,6 +27,10 @@ import {
   MapPin,
 } from 'lucide-react';
 
+import { CROSS_BORDER_FAQS } from '@/data/page-faqs';
+
+const LAST_UPDATED = 'November 2026';
+
 export default function CrossBorderPage() {
   // ===== KEY CONCEPTS =====
   const concepts = [
@@ -46,7 +50,7 @@ export default function CrossBorderPage() {
       icon: Landmark,
       title: 'Government Discretion',
       description:
-        'The government can restrict transfers based on factors like national security, public interest, and risk to Data Principals. The first list of restricted countries has not yet been notified.',
+        'The Act does not list the grounds for restriction; the Central Government decides by notification. As far as we are aware, no list of restricted countries has been notified yet, so check MeitY for the latest position.',
     },
     {
       icon: Shield,
@@ -64,7 +68,7 @@ export default function CrossBorderPage() {
       icon: Gavel,
       title: 'Penalties for Violation',
       description:
-        'Transferring data to a restricted country is a violation of the DPDP Act. It can attract penalties up to ?50 crore for general non-compliance, plus remedial directions.',
+        'Transferring data to a restricted country is a contravention of the Act. Unless a more specific entry applies, it falls under the general penalty of up to ₹50 crore, plus any directions from the Board.',
     },
   ];
 
@@ -77,8 +81,8 @@ export default function CrossBorderPage() {
     },
     {
       icon: Scale,
-      title: 'Conditions on Transfer',
-      desc: 'The government may also impose conditions on transfers, such as requiring adequacy assessments or contractual safeguards.',
+      title: 'Higher-Protection Laws Preserved',
+      desc: 'Section 16(2) says the DPDP Act does not restrict any other Indian law that gives a higher degree of protection for, or restricts transfer of, personal data.',
     },
     {
       icon: Globe,
@@ -87,8 +91,8 @@ export default function CrossBorderPage() {
     },
     {
       icon: Info,
-      title: 'Factors for Restriction',
-      desc: 'The government can consider factors like national security, public interest, risk to Data Principals, and reciprocity.',
+      title: 'Grounds for Restriction',
+      desc: 'The Act does not prescribe factors. In practice, security, public interest and protection of Data Principals are the likely considerations.',
     },
     {
       icon: FileText,
@@ -182,14 +186,14 @@ export default function CrossBorderPage() {
     {
       icon: AlertTriangle,
       title: 'Scenario B: Fintech Using Payment Data',
-      desc: 'A fintech company processes payment data and wants to store it in Singapore. Under RBI regulations, payment data must be stored in India. DPDP does not override this � the fintech must comply with RBI rules.',
+      desc: 'A fintech company processes payment data and wants to store it in Singapore. Under RBI regulations, payment data must be stored in India. DPDP does not override this — the fintech must comply with RBI rules.',
       verdict: 'Not allowed (RBI)',
       color: 'red',
     },
     {
       icon: XCircle,
       title: 'Scenario C: Transfer to Restricted Country',
-      desc: 'An e-commerce company transfers customer data to a country that has been notified as restricted by the government. This is a violation of Section 16 and can attract penalties up to ?50 crore.',
+      desc: 'An e-commerce company transfers customer data to a country that has been notified as restricted by the government. This is a violation of Section 16 and can attract penalties up to ₹50 crore.',
       verdict: 'Not allowed',
       color: 'red',
     },
@@ -231,40 +235,7 @@ export default function CrossBorderPage() {
   ];
 
   // ===== FAQS =====
-  const faqs = [
-    {
-      q: 'What is Section 16 of the DPDP Act 2023?',
-      a: 'Section 16 deals with cross-border data transfers. It empowers the Central Government to restrict the transfer of personal data to specific countries or territories by notification. By default, transfers are allowed unless restricted.',
-    },
-    {
-      q: 'Is data localisation mandatory under the DPDP Act?',
-      a: 'No, the DPDP Act does not mandate general data localisation. However, the government can restrict transfers to specific countries (a "negative list" or "blacklist" approach). Specific sectoral laws (like RBI regulations) may still require localisation.',
-    },
-    {
-      q: 'How is DPDP different from GDPR on cross-border transfers?',
-      a: 'GDPR uses an "adequacy" approach � transfers are allowed only to countries deemed adequate by the EU Commission, or with safeguards like SCCs. DPDP uses a "blacklist" approach � transfers are allowed by default unless the government restricts them. DPDP is simpler but gives the government broad discretion.',
-    },
-    {
-      q: 'Can the government ban transfers to specific countries?',
-      a: 'Yes. Section 16 empowers the Central Government to restrict transfers to specific countries or territories by notification. The government can also impose conditions on transfers. The first list of restricted countries has not yet been notified.',
-    },
-    {
-      q: 'What happens if I transfer data to a restricted country?',
-      a: 'Transferring data to a restricted country is a violation of the DPDP Act. It can attract penalties under the Schedule � up to ?50 crore for general non-compliance. The Data Protection Board can also issue directions and order remedial measures.',
-    },
-    {
-      q: 'Do I need consent for cross-border transfers?',
-      a: 'Yes, if the processing is based on consent, the notice must mention that the data may be transferred outside India. The consent must cover this. If the processing is based on a legitimate use under Section 7, consent is not required, but the transfer still must comply with Section 16.',
-    },
-    {
-      q: 'What about sectoral localisation requirements?',
-      a: 'The DPDP Act does not override sectoral localisation requirements. For example, RBI\'s mandate to store payment data in India, IRDAI\'s insurance data rules, and SEBI\'s regulations for securities data continue to apply.',
-    },
-    {
-      q: 'When will the restricted countries list be notified?',
-      a: 'The government has not yet notified the list of restricted countries. The Rules under the DPDP Act are still being finalised, and the list is expected to be published once the Rules are notified. The government has indicated that it will adopt a calibrated approach.',
-    },
-  ];
+  const faqs = CROSS_BORDER_FAQS;
 
   // ===== RELATED LINKS =====
   const relatedLinks = [
@@ -329,7 +300,7 @@ export default function CrossBorderPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-xs font-medium text-cyan-300 mb-4">
             <Globe className="w-3 h-3" />
-            International Data Flows � DPDP Act 2023
+            International Data Flows — DPDP Act 2023
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Cross-Border Transfer of{' '}
@@ -339,11 +310,11 @@ export default function CrossBorderPage() {
           </h1>
           <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
             Cross-border data transfers under the DPDP Act 2023 are governed by{' '}
-            <strong className="text-white">Section 16</strong> � a single,
+            <strong className="text-white">Section 16</strong> — a single,
             powerful provision that gives the Central Government the right to{' '}
             <strong className="text-white">restrict transfers</strong> to specific
             countries by notification. Unlike GDPR's adequacy approach, DPDP uses
-            a <strong className="text-white">blacklist approach</strong> � transfers
+            a <strong className="text-white">blacklist approach</strong> — transfers
             are allowed by default unless restricted. This guide explains Section
             16, the government's power, comparison with GDPR, sectoral
             localisation, and real-world scenarios.
@@ -358,10 +329,7 @@ export default function CrossBorderPage() {
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               Last updated:{' '}
-              {new Date().toLocaleDateString('en-IN', {
-                month: 'long',
-                year: 'numeric',
-              })}
+              {LAST_UPDATED}
             </span>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
@@ -424,11 +392,11 @@ export default function CrossBorderPage() {
         {/* ===== SECTION 1: SECTION 16 DEEP DIVE ===== */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">
-            1. Section 16 � The Core Provision
+            1. Section 16 — The Core Provision
           </h2>
           <div className="space-y-4 text-gray-300 leading-relaxed mb-8">
             <p>
-              Section 16 of the DPDP Act is deceptively short � a single
+              Section 16 of the DPDP Act is deceptively short — a single
               sub-section. But it is one of the most consequential provisions in
               the Act. It gives the Central Government the power to{' '}
               <strong className="text-white">restrict transfers</strong> of
@@ -438,7 +406,7 @@ export default function CrossBorderPage() {
               Crucially, the provision is{' '}
               <strong className="text-white">enabling, not prohibitive</strong>.
               By default, transfers are allowed. The government can restrict them
-              if it considers it necessary � for national security, public
+              if it considers it necessary — for national security, public
               interest, or protection of Data Principals. This is a significant
               departure from GDPR's restrictive approach.
             </p>
@@ -665,7 +633,7 @@ export default function CrossBorderPage() {
             </p>
             <p>
               The government has indicated that it will adopt a{' '}
-              <strong className="text-white">calibrated approach</strong> �
+              <strong className="text-white">calibrated approach</strong> —
               restricting transfers only where necessary for national security,
               public interest, or protection of Data Principals. This suggests
               that most transfers will continue to be allowed, but the government
@@ -684,7 +652,7 @@ export default function CrossBorderPage() {
                 layer DPDP compliance on top of GDPR compliance
               </strong>
               . If you are already GDPR-compliant, you have most of the
-              safeguards in place. DPDP adds a layer of government discretion �
+              safeguards in place. DPDP adds a layer of government discretion —
               monitor it closely.
             </p>
           </div>
@@ -789,7 +757,7 @@ export default function CrossBorderPage() {
               href="/scorecard"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:scale-105 transition-all"
             >
-              Take the Free Test ?
+              Take the Free Test →
             </Link>
             <Link
               href="/contact"
