@@ -6,6 +6,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { ConditionalAnalytics } from "@/components/layout/ConditionalAnalytics";
+import { SiteBackground } from "@/components/ui/SiteBackground";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -151,10 +154,13 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-white min-h-screen flex flex-col`}
       >
+        <SiteBackground />
+        <ScrollProgress />
+        <SmoothScroll />
         <Header />
-        
+
         <main className="flex-1">{children}</main>
         <Footer />
 
@@ -167,4 +173,3 @@ export default async function RootLayout({
     </html>
   );
 }
-

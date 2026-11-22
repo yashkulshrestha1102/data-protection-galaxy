@@ -1,0 +1,606 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   SEA GREEN THEME — single source of truth
+   -------------------------------------------------------------------------
+   Tailwind v4 lets us REPLACE the default palette inside @theme.
+   Your code uses text-cyan-*, bg-blue-*, from-cyan-500 to-blue-600 ~1000 times.
+   By redefining cyan-* (sea green) and blue-* (deep teal) here, the whole
+   site turns sea green without touching those files.
+   Semantic colours (red = danger, yellow = warning, green = success) are NOT
+   touched on purpose.
+   ========================================================================= */
+@theme {
+  /* page surface: green-tinted ink instead of pure black (bg-black, bg-black/70 ...) */
+  --color-black: #03100d;
+
+  /* primary accent — "cyan" slot -> sea green */
+  --color-cyan-50: #effcf6;
+  --color-cyan-100: #d7f8e8;
+  --color-cyan-200: #b0f0d2;
+  --color-cyan-300: #7fe3b8;
+  --color-cyan-400: #46d09b;
+  --color-cyan-500: #0d9266;
+  --color-cyan-600: #0b7d58;
+  --color-cyan-700: #0a6648;
+  --color-cyan-800: #0e5c46;
+  --color-cyan-900: #0c4a39;
+  --color-cyan-950: #052b21;
+
+  /* secondary accent — "blue" slot -> deep sea teal */
+  --color-blue-50: #edfcf9;
+  --color-blue-100: #cff7f0;
+  --color-blue-200: #a0ede1;
+  --color-blue-300: #66dccf;
+  --color-blue-400: #2fc4b6;
+  --color-blue-500: #0e9187;
+  --color-blue-600: #0b7a72;
+  --color-blue-700: #0a6560;
+  --color-blue-800: #0f5452;
+  --color-blue-900: #0f4543;
+  --color-blue-950: #042a29;
+
+  /* same colours under a readable name for NEW code: bg-sea-400, text-sea-300 ... */
+  --color-sea-50: #effcf6;
+  --color-sea-100: #d7f8e8;
+  --color-sea-200: #b0f0d2;
+  --color-sea-300: #7fe3b8;
+  --color-sea-400: #46d09b;
+  --color-sea-500: #0d9266;
+  --color-sea-600: #0b7d58;
+  --color-sea-700: #0a6648;
+  --color-sea-800: #0e5c46;
+  --color-sea-900: #0c4a39;
+  --color-sea-950: #052b21;
+  --color-ink: #03100d;
+  --color-ink-soft: #071a15;
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===== ANIMATIONS (existing names kept so no file breaks) ===== */
+@layer utilities {
+  .animate-pulse {
+    /* softer + slower than before; blobs are huge so keep it cheap */
+    animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle var(--duration, 3s) ease-in-out infinite;
+  }
+
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+
+  .delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+
+  .animate-aurora {
+    animation: aurora 22s ease-in-out infinite alternate;
+  }
+
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 2.4s linear infinite;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes aurora {
+  0% {
+    transform: translate3d(-4%, -2%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(5%, 4%, 0) scale(1.12);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ===== 3D LOGO ROTATE (360) ===== */
+@layer utilities {
+  .animate-logo-3d {
+    animation: logo3d 5s linear infinite;
+    transform-style: preserve-3d;
+    perspective: 500px;
+  }
+}
+
+@keyframes logo3d {
+  0% {
+    transform: perspective(500px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(500px) rotateY(360deg);
+  }
+}
+
+/* =========================================================================
+   SITE BACKGROUND  (used by <SiteBackground /> in app/layout.tsx)
+   One fixed layer for the whole site. CSS only, no JS, no images.
+   ========================================================================= */
+.site-bg__base {
+  background:
+    radial-gradient(1200px 700px at 12% -10%, rgba(70, 208, 155, 0.14), transparent 60%),
+    radial-gradient(900px 600px at 95% 8%, rgba(47, 196, 182, 0.1), transparent 60%),
+    radial-gradient(1000px 700px at 50% 120%, rgba(13, 146, 102, 0.16), transparent 60%),
+    var(--color-ink);
+}
+
+.site-bg__aurora {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 9999px;
+  will-change: transform;
+}
+
+.site-bg__aurora--a {
+  top: -25vmax;
+  left: -15vmax;
+  background: radial-gradient(circle, rgba(70, 208, 155, 0.18), transparent 65%);
+  animation: aurora 24s ease-in-out infinite alternate;
+}
+
+.site-bg__aurora--b {
+  bottom: -30vmax;
+  right: -20vmax;
+  background: radial-gradient(circle, rgba(47, 196, 182, 0.14), transparent 65%);
+  animation: aurora 30s ease-in-out infinite alternate-reverse;
+}
+
+/* faint "star chart" dot grid (keeps the Galaxy idea, but calm) */
+.site-bg__grid {
+  background-image: radial-gradient(rgba(127, 227, 184, 0.16) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 25%, #000 15%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 25%, #000 15%, transparent 72%);
+  opacity: 0.55;
+}
+
+.site-bg__vignette {
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(3, 16, 13, 0.7) 100%);
+}
+
+/* STOPGAP: 42 pages still paint the old Hubble nebula photo + dark overlay.
+   These two rules hide it so every page shows the new global background.
+   Remove them once you delete that block from each page. */
+[style*="home1.jpeg"] {
+  background-image: none !important;
+}
+[style*="home1.jpeg"] > * {
+  display: none !important;
+}
+
+/* ===== REUSABLE EFFECT CLASSES ===== */
+.text-gradient-sea {
+  background-image: linear-gradient(120deg, #b0f0d2 0%, #46d09b 45%, #2fc4b6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-sea {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(127, 227, 184, 0.14);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* better than transition-all + hover:scale-105 (no layout/blur repaint) */
+.card-lift {
+  transition:
+    transform 0.4s var(--ease-out-expo),
+    border-color 0.3s ease,
+    box-shadow 0.4s ease,
+    background-color 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: rgba(70, 208, 155, 0.45);
+  box-shadow: 0 18px 40px -18px rgba(70, 208, 155, 0.35);
+}
+
+/* sheen that sweeps across a button on hover */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out-expo);
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* ===== SCROLL-DRIVEN EFFECTS (pure CSS, works inside Server Components) =====
+   Add className="reveal-on-scroll" to any block. Browsers without
+   animation-timeline support simply show the block normally. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes parallax-y {
+  from {
+    transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 38%;
+  }
+  .parallax-slow {
+    animation: parallax-y linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+  }
+}
+
+/* ===== LENIS SMOOTH SCROLL (required css) ===== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ===== GLOBAL SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(70, 208, 155, 0.35);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(70, 208, 155, 0.6);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(70, 208, 155, 0.35) rgba(255, 255, 255, 0.04);
+}
+
+/* ===== SMOOTH SCROLLING (fallback when Lenis is off, e.g. reduced motion) ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(70, 208, 155, 0.32);
+  color: white;
+}
+
+/* ===== FOCUS ===== */
+*:focus-visible {
+  outline: 2px solid rgba(70, 208, 155, 0.75);
+  outline-offset: 2px;
+}
+
+/* ===== BODY ===== */
+body {
+  background: var(--color-ink);
+  color: #fff;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* ===== MAP HOVER EFFECT ===== */
+.rsm-geography {
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.rsm-geography:hover {
+  fill: #46d09b !important; /* sea green */
+  stroke: #ffffff !important;
+  stroke-width: 1px !important;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(70, 208, 155, 0.8));
+}
+
+/* ===== Custom Styles for Wikipedia Content ===== */
+.country-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.country-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #7fe3b8;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.country-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.country-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.country-content li {
+  margin-bottom: 0.5rem;
+}
+
+.country-content strong {
+  color: #46d09b;
+  font-weight: 600;
+}
+
+.country-content em {
+  color: #e5e7eb;
+  font-style: italic;
+}
+
+/* Table Styling */
+.country-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.country-content th {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.country-content td {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  vertical-align: top;
+}
+
+.country-content tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* =========================================
+   REDUCED MOTION (accessibility)
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll,
+  .parallax-slow {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* =========================================
+   FINAL PROFESSIONAL PRINT STYLES
+   ========================================= */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  html,
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide website header, footer, cookie banner and the new global effects */
+  body > header,
+  body > footer,
+  .site-header,
+  .site-footer,
+  .site-bg,
+  .scroll-progress,
+  .fixed, /* hides any fixed element */
+  [class*="ConsentBanner"],
+  [id*="consent"],
+  [class*="cookie"],
+  [id*="cookie"] {
+    display: none !important;
+  }
+
+  #cookie-consent,
+  #cookie-settings,
+  [id*="cookie"],
+  [class*="cookie"],
+  [class*="consent"],
+  button[aria-label*="ookie"],
+  a[href*="cookie"],
+  .fixed.bottom-4,
+  .fixed.bottom-6,
+  .fixed.bottom-10,
+  .fixed.bottom-2 {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .absolute.inset-0.-z-10,
+  .animate-pulse,
+  .animate-twinkle {
+    display: none !important;
+  }
+
+  /* scroll-reveal elements must never print invisible */
+  [style*="opacity: 0"],
+  [style*="opacity:0"],
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .max-w-6xl {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Card backgrounds */
+  .bg-white\/5,
+  .bg-white\/10,
+  .bg-black\/30,
+  .bg-black\/40,
+  .border-white\/10,
+  .border-white\/20 {
+    background-color: #f9fafb !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+  }
+
+  /* FORCE ONLY TEXT TO BE DARK (Excluding SVG) */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  div,
+  li,
+  td,
+  th {
+    color: #111827 !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #0a6648 !important;
+    page-break-after: avoid;
+  }
+
+  /* Table fixes */
+  .country-content table {
+    border: 1px solid #000 !important;
+    width: 100% !important;
+  }
+  .country-content th,
+  .country-content td {
+    border: 1px solid #000 !important;
+    padding: 8px !important;
+    color: #000 !important;
+  }
+  .country-content strong {
+    color: #000 !important;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
