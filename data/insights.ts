@@ -15,7 +15,7 @@ export interface Insight {
   image?: string;
 }
 
-export const insightsData: Insight[] = [
+const rawInsights: Insight[] = [
   {
     id: 1,
     category: 'DPDP Act',
@@ -443,7 +443,80 @@ export const insightsData: Insight[] = [
     readTime: '4 min read',
     slug: 'dpdp-removal-of-difficulties-order-2026'
   },
+  {
+    id: 14,
+    category: 'DPDP Act',
+    categoryIcon: 'Shield',
+    title: 'India Launches Data Protection Board Portal: A Major Step Towards Strengthening Digital Privacy Governance',
+    excerpt: 'The official portal of the Data Protection Board of India (DPBI) went live on 13 November 2026, opening Consent Manager registration. What the portal does, what it does not yet do, and how businesses should prepare.',
+    content: `
+      <p><em>New Delhi, 17 November 2026</em></p>
+      <p>India has taken another significant step towards strengthening its digital personal data protection framework with the launch of the official online portal of the Data Protection Board of India (DPBI) on 13 November 2026.</p>
+      <p>The development marks an important milestone in the implementation of the Digital Personal Data Protection Act, 2023 (DPDPA), which aims to establish a comprehensive legal framework for protecting individuals' digital personal data while enabling organisations to process such information for lawful purposes.</p>
+      <p>The Data Protection Board of India was formally established by the Ministry of Electronics and Information Technology (MeitY) through Gazette Notification G.S.R. 844(E), dated 13 November 2025, under Section 18 of the DPDP Act, 2023. Its headquarters are designated to be in the National Capital Region.</p>
+
+      <h2>What Is the Data Protection Board of India?</h2>
+      <p>The Data Protection Board of India is a statutory body established under the DPDP Act, 2023. It is intended to function as an independent, digital-first adjudicatory authority responsible for overseeing compliance and addressing matters arising under the data protection framework.</p>
+      <p>Its key responsibilities include:</p>
+      <ul>
+        <li>Inquiring into personal data breaches and instances of non-compliance.</li>
+        <li>Addressing complaints and grievances under the DPDP Act.</li>
+        <li>Issuing directions for corrective and remedial measures.</li>
+        <li>Imposing monetary penalties for violations in accordance with the Act.</li>
+        <li>Performing other functions assigned under the applicable provisions of the Act.</li>
+      </ul>
+      <p>The Board is designed to operate through a technology-enabled and digital-by-design framework, supporting transparency, accessibility and efficient resolution of data protection matters.</p>
+
+      <h2>Official Portal Goes Live</h2>
+      <p>The launch of the official DPBI portal on 13 November 2026 represents an important step towards operationalising India's data protection ecosystem.</p>
+      <p>The portal, available at <a href="https://dpbi.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">dpbi.gov.in</a>, provides an online interface for Consent Manager registration and related information.</p>
+      <p>Consent Managers have an important role under the DPDP Act. They enable individuals, known as Data Principals, to give, manage, review and withdraw their consent through an accessible and interoperable platform. The availability of the portal is therefore a significant development for organisations planning to participate in India's emerging consent management ecosystem.</p>
+
+      <h2>What Does This Mean for Businesses?</h2>
+      <p>The establishment and digital operationalisation of the Data Protection Board signal the government's continued progress towards implementing India's data protection regime.</p>
+      <p>Businesses, startups, financial institutions, technology companies, e-commerce platforms, healthcare organisations and other entities processing digital personal data should use this development as an opportunity to strengthen their privacy and data governance practices. Organisations should focus on:</p>
+      <ul>
+        <li><strong>Data Mapping:</strong> Identifying the personal data they collect, process, store and share.</li>
+        <li><strong>Privacy Notices:</strong> Ensuring that privacy notices clearly communicate the purposes of data processing.</li>
+        <li><strong>Consent Management:</strong> Establishing appropriate mechanisms for obtaining and managing consent.</li>
+        <li><strong>Data Security:</strong> Implementing reasonable security safeguards to protect personal data.</li>
+        <li><strong>Breach Management:</strong> Developing procedures for identifying, reporting and responding to personal data breaches.</li>
+        <li><strong>Individual Rights:</strong> Establishing processes to respond to requests from Data Principals.</li>
+        <li><strong>Governance and Accountability:</strong> Assigning clear responsibilities for data protection and regulatory compliance.</li>
+      </ul>
+
+      <h2>Is the Data Protection Board Fully Operational?</h2>
+      <p>While the Board has been legally established and its online portal has gone live, its full adjudicatory functioning should be distinguished from the portal's launch.</p>
+      <p>As of 17 November 2026, publicly available information indicates that the appointment process for the Chairperson and four Members was initiated by MeitY in 2026. The recruitment process and constitution of the Board's leadership remain important steps towards its full operational readiness.</p>
+      <p>Businesses should therefore distinguish between the portal's current Consent Manager registration functionality and the Board's wider complaint-handling and enforcement responsibilities under the phased implementation of the DPDP Act.</p>
+
+      <h2>The Road Ahead for India's Data Protection Framework</h2>
+      <p>The DPDP Act, 2023, together with the Digital Personal Data Protection Rules, 2025, provides the foundation for a framework that balances individual privacy rights with the legitimate needs of businesses and organisations to process digital personal data.</p>
+      <p>For businesses, the message is clear: data protection should no longer be viewed merely as a legal formality. It should become an integral part of corporate governance, risk management, information security and business excellence. As India's digital economy continues to expand, the Data Protection Board of India is expected to play a significant role in strengthening accountability, promoting responsible data processing and building public trust in the digital ecosystem.</p>
+
+      <h2>Related Reading</h2>
+      <ul>
+        <li><a href="/provisions" class="text-blue-400 hover:text-blue-300 underline">Key Provisions of the DPDP Act</a> — chapter-wise overview, including the Board (Chapter V)</li>
+        <li><a href="/obligations" class="text-blue-400 hover:text-blue-300 underline">Obligations of Data Fiduciaries</a></li>
+        <li><a href="/penalties" class="text-blue-400 hover:text-blue-300 underline">Penalties under the DPDP Act</a> — up to ₹250 crore</li>
+        <li><a href="/lawful-processing" class="text-blue-400 hover:text-blue-300 underline">Lawful Processing and Consent Managers</a></li>
+      </ul>
+
+      <p><strong>Official references:</strong> Ministry of Electronics and Information Technology (MeitY); Digital Personal Data Protection Act, 2023; DPDP Rules, 2025; Data Protection Board of India portal: <a href="https://dpbi.gov.in/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">dpbi.gov.in</a>.</p>
+      <p><em>This update is for general informational purposes and should not be construed as legal advice.</em></p>
+    `,
+    author: 'Shilpi Kulshrestha',
+    date: '17 Nov 2026',
+    readTime: '5 min read',
+    slug: 'data-protection-board-portal-launch-2026'
+  },
 ];
+
+// Newest first, everywhere on the site (home page, insights list, sitemap, llms.txt).
+const toTime = (d: string) => new Date(d).getTime();
+export const insightsData: Insight[] = [...rawInsights].sort(
+  (a, b) => toTime(b.date) - toTime(a.date) || b.id - a.id
+);
 
 export const categories = [
   { id: 'all', label: 'All Insights', icon: BookOpen },

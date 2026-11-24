@@ -13,7 +13,7 @@ export interface CaseStudy {
   tags: string[];
 }
 
-export const caseStudiesData: CaseStudy[] = [
+const rawCaseStudies: CaseStudy[] = [
   {
     id: 1,
     title: 'Data Breach Incident in a Healthcare Company',
@@ -235,7 +235,71 @@ export const caseStudiesData: CaseStudy[] = [
     ],
     tags: ['Data Rights', 'Consulting', 'Compliance', 'DSR'],
   },
+  {
+    id: 6,
+    title: 'Helping PetBoard Bring an AI Voice Receptionist to Market Responsibly',
+    category: 'AI Governance',
+    industry: 'Pet-care Technology',
+    date: '24 Nov 2026',
+    description: 'How we structured vendor terms, the business model and DPDP Act roles for an AI voice receptionist built on a third-party AI provider, so the client could scale with compliance built into the product.',
+    impact: 'Clear legal and commercial structure ready for enterprise due diligence',
+    slug: 'petboard-ai-voice-receptionist-governance',
+    content: `
+      <p><strong>Client:</strong> PetBoard Technologies Private Limited, Bangalore<br/>
+      <strong>Sector:</strong> Pet-care technology<br/>
+      <strong>Services:</strong> AI governance &middot; DPDP Act compliance &middot; Technology contracts</p>
+
+      <h2>The Client</h2>
+      <p>PetBoard built an AI voice receptionist that answers incoming calls for pet-care businesses. The product uses a third party's AI speech and language-model APIs. After testing it with its first customer, PetBoard was ready to scale.</p>
+
+      <h2>The Challenge</h2>
+      <p>Before growing, PetBoard needed answers to four questions:</p>
+      <ul>
+        <li><strong>Vendor terms:</strong> Could it offer a product built on the third party's AI APIs to its own customers without breaching the provider's limits on resale and "Authorised Users"?</li>
+        <li><strong>Business model:</strong> Should PetBoard hold the API account and re-bill customers at cost, or should each customer hold its own account with PetBoard operating it as their agent?</li>
+        <li><strong>Data protection:</strong> Callers' voices and conversations are personal data. Who is the data fiduciary and who is the processor under the DPDP Act, 2023?</li>
+        <li><strong>Consent:</strong> How should callers be told about the AI and give consent before their calls are processed?</li>
+      </ul>
+
+      <h2>Our Approach</h2>
+      <ul>
+        <li>Traced how each call's data moves through the system, end to end</li>
+        <li>Reviewed the AI provider's terms of service against each business model</li>
+        <li>Compared the two models on liability, compliance, billing control and ease of onboarding customers</li>
+        <li>Assigned DPDP roles: the pet-care business as data fiduciary, PetBoard and the third-party AI provider as processors</li>
+        <li>Lined the advice up with PetBoard's existing Data Processing Agreement</li>
+        <li>Built caller notice and consent into the call flow</li>
+      </ul>
+
+      <h2>The Outcome</h2>
+      <ul>
+        <li>A clear legal and commercial structure for scaling</li>
+        <li>Risks under the AI vendor's terms were handled before more customers came on board</li>
+        <li>DPDP responsibilities passed down consistently from the customer to PetBoard to the AI provider</li>
+        <li>Compliance built into the product itself, not only into contracts</li>
+        <li>A structure ready for enterprise due diligence</li>
+      </ul>
+
+      <h2>Why It Matters</h2>
+      <p>Building on a third-party AI model means meeting three sets of obligations: the AI vendor's licence terms, customers' expectations, and end users' rights under data protection law. Good AI governance makes all three work together.</p>
+      <p>For the legal background, read our guides on <a href="/lawful-processing" class="text-blue-400 hover:text-blue-300 underline">lawful processing and consent</a> and <a href="/obligations" class="text-blue-400 hover:text-blue-300 underline">Data Fiduciary obligations</a>.</p>
+      <p><strong>Building an AI product?</strong> <a href="/contact" class="text-blue-400 hover:text-blue-300 underline">Talk to us</a> about getting it compliant before you scale.</p>
+    `,
+    lessons: [
+      'Check an AI vendor\'s resale and "authorised user" limits before offering a product built on its APIs',
+      'Choose the account and billing model deliberately: liability, compliance and onboarding all depend on it',
+      'Map the DPDP roles clearly: the customer as data fiduciary, the product company and AI provider as processors',
+      'Build caller notice and consent into the product flow, not only into contracts',
+    ],
+    tags: ['AI Governance', 'DPDP Act', 'Technology Contracts', 'Data Fiduciary', 'Data Processor'],
+  },
 ];
+
+// Newest first.
+const toTime = (d: string) => new Date(d).getTime();
+export const caseStudiesData: CaseStudy[] = [...rawCaseStudies].sort(
+  (a, b) => toTime(b.date) - toTime(a.date) || b.id - a.id
+);
 
 export const getCaseStudyBySlug = (slug: string) => {
   return caseStudiesData.find(c => c.slug === slug);

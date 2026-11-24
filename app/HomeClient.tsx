@@ -542,10 +542,10 @@ alt="Legal Galaxy — DPDP Act 2023 privacy and AI governance platform"
               <div>
                 <h2 className="text-2xl font-bold text-white flex items-center gap-2">
                   <Briefcase className="w-6 h-6 text-cyan-400" />
-                  Illustrative Case Scenarios
+                  Case Studies &amp; Scenarios
                 </h2>
                 <p className="text-sm text-gray-400 mt-1">
-                  Learn from actual compliance challenges and solutions
+                  Client work and illustrative compliance scenarios
                 </p>
               </div>
               <Link
@@ -892,7 +892,7 @@ alt="Legal Galaxy — DPDP Act 2023 privacy and AI governance platform"
                 { icon: Zap, title: "Free Tools", desc: "Document generator, compliance scorecard, and 20+ learning modules — all free" },
                 { icon: TrendingUp, title: "Updated Regularly", desc: "Content updated to reflect latest DPDPA rules, circulars, and enforcement actions" },
                 { icon: Globe, title: "Global Coverage", desc: `Compare privacy laws across ${countries.length}+ countries including GDPR, CCPA, and PIPL` },
-                { icon: Users, title: "Practical Focus", desc: "Illustrative case scenarios and templates you can actually use — not just theory" },
+                { icon: Users, title: "Practical Focus", desc: "Case studies and templates you can actually use — not just theory" },
                 { icon: CheckCircle, title: "No Signup Required", desc: "Start using every tool and reading every guide — no email required to begin" },
               ].map((item, idx) => {
                 const Icon = item.icon;

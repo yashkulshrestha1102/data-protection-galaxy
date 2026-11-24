@@ -58,7 +58,7 @@ export function Footer() {
               <li><Link href="/galaxy" className={linkClass}>Galaxy</Link></li>
               <li><Link href="/insight" className={linkClass}>Insights</Link></li>
               <li><Link href="/resources/guides" className={linkClass}>Guides</Link></li>
-              <li><Link href="/resources/case-studies" className={linkClass}>Case Scenarios</Link></li>
+              <li><Link href="/resources/case-studies" className={linkClass}>Case Studies</Link></li>
               <li><Link href="/map" className={linkClass}>Map</Link></li>
             </ul>
           </div>

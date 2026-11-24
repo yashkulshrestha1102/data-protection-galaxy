@@ -23,7 +23,7 @@ export default function ResourcesPage() {
     { 
       icon: Users, 
       title: 'Case Studies', 
-      description: 'Illustrative case scenarios on data protection and compliance.',
+      description: 'Client case studies and illustrative scenarios on data protection and compliance.',
       slug: 'case-studies'
     },
     { 

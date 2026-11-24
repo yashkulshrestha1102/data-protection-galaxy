@@ -72,7 +72,7 @@ ${fullModulesData
 
 ## Optional
 
-- [Case Studies](${SITE_URL}/resources/case-studies): Illustrative data protection compliance case scenarios.
+- [Case Studies](${SITE_URL}/resources/case-studies): Client case studies and illustrative data protection compliance scenarios.
 - [Guidelines & Circulars](${SITE_URL}/resources/guidelines): Official DPDP Act 2023 guidelines and circulars.
 - [Forms & Templates](${SITE_URL}/resources/forms): Downloadable DPDPA compliance forms and templates.
 - [FAQs](${SITE_URL}/resources/faqs): Frequently asked questions on India's DPDP Act 2023.

@@ -73,7 +73,7 @@ export default function CaseStudiesPage() {
 
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Case Studies</h1>
-          <p className="text-gray-300 text-lg max-w-3xl">Illustrative case scenarios on data protection and compliance under the DPDP Act 2023.</p>
+          <p className="text-gray-300 text-lg max-w-3xl">Client case studies and illustrative scenarios on data protection and compliance under the DPDP Act 2023.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
