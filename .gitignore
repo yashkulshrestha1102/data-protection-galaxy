@@ -12,3 +12,11 @@
 node_modules/
 .vercel
 
+
+.env
+.env*
+!.env.example
+*.zip
+*.log
+_lg_update*/
+get-pip.py
