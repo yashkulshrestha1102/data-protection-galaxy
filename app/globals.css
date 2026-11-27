@@ -160,58 +160,28 @@
 
 /* =========================================================================
    SITE BACKGROUND  (used by <SiteBackground /> in app/layout.tsx)
-   One fixed layer for the whole site. CSS only, no JS, no images.
+   The home page photo, fixed behind every page, with the same dark overlay
+   the home page uses (bg-black/60 + slight blur).
    ========================================================================= */
-.site-bg__base {
-  background:
-    radial-gradient(1200px 700px at 12% -10%, rgba(70, 208, 155, 0.14), transparent 60%),
-    radial-gradient(900px 600px at 95% 8%, rgba(47, 196, 182, 0.1), transparent 60%),
-    radial-gradient(1000px 700px at 50% 120%, rgba(13, 146, 102, 0.16), transparent 60%),
-    var(--color-ink);
+.site-bg__photo {
+  background: url("/images/home1.webp") center / cover no-repeat, var(--color-ink);
+  filter: blur(2px);
+  transform: scale(1.03); /* hides the soft edge the blur creates */
 }
 
-.site-bg__aurora {
-  position: absolute;
-  width: 70vmax;
-  height: 70vmax;
-  border-radius: 9999px;
-  will-change: transform;
+.site-bg__shade {
+  background: rgba(3, 16, 13, 0.6); /* same as bg-black/60 in this theme */
 }
 
-.site-bg__aurora--a {
-  top: -25vmax;
-  left: -15vmax;
-  background: radial-gradient(circle, rgba(70, 208, 155, 0.18), transparent 65%);
-  animation: aurora 24s ease-in-out infinite alternate;
-}
-
-.site-bg__aurora--b {
-  bottom: -30vmax;
-  right: -20vmax;
-  background: radial-gradient(circle, rgba(47, 196, 182, 0.14), transparent 65%);
-  animation: aurora 30s ease-in-out infinite alternate-reverse;
-}
-
-/* faint "star chart" dot grid (keeps the Galaxy idea, but calm) */
-.site-bg__grid {
-  background-image: radial-gradient(rgba(127, 227, 184, 0.16) 1px, transparent 1px);
-  background-size: 44px 44px;
-  -webkit-mask-image: radial-gradient(ellipse at 50% 25%, #000 15%, transparent 72%);
-  mask-image: radial-gradient(ellipse at 50% 25%, #000 15%, transparent 72%);
-  opacity: 0.55;
-}
-
-.site-bg__vignette {
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(3, 16, 13, 0.7) 100%);
-}
-
-/* STOPGAP: 42 pages still paint the old Hubble nebula photo + dark overlay.
-   These two rules hide it so every page shows the new global background.
-   Remove them once you delete that block from each page. */
-[style*="home1.jpeg"] {
+/* Many pages still paint their own copy of the photo (absolute, stretched to
+   the full page height, each with a different overlay). Hide those copies so
+   every page shows the one fixed background above and looks like the home page. */
+[style*="home1.jpeg"],
+[style*="home1.webp"] {
   background-image: none !important;
 }
-[style*="home1.jpeg"] > * {
+[style*="home1.jpeg"] > *,
+[style*="home1.webp"] > * {
   display: none !important;
 }
 

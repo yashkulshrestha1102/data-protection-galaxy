@@ -82,18 +82,9 @@ export default function GuidesPage() {
   };
 
   return (
-    <main className="lg-guide relative min-h-screen overflow-hidden bg-black text-white">
+    <main className="lg-guide relative min-h-screen overflow-hidden text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[620px]"
-        style={{
-          background:
-            "radial-gradient(55% 70% at 15% 0%, rgba(14,145,135,0.18), transparent 70%), radial-gradient(45% 60% at 95% 5%, rgba(70,208,155,0.1), transparent 70%)",
-        }}
-      />
 
       <div className="relative z-10 mx-auto max-w-[1200px] px-4 pb-24 pt-24 sm:px-6 lg:px-8 lg:pt-28">
         <nav aria-label="Breadcrumb" className="mb-8">

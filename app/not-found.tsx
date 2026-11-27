@@ -3,7 +3,7 @@ import { ArrowLeft, Search, Orbit, Home } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen text-white flex flex-col items-center justify-center px-4 relative overflow-hidden bg-black">
+    <main className="min-h-screen text-white flex flex-col items-center justify-center px-4 relative overflow-hidden">
       {/* ===== BACKGROUND IMAGE & GLOWS ===== */}
       <div className="absolute inset-0 -z-10">
         <div 

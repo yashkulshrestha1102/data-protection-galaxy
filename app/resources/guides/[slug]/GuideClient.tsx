@@ -155,16 +155,7 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
   );
 
   return (
-    <main className="lg-guide relative min-h-screen bg-black text-white">
-      {/* soft top glow — no heavy blur layers */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] lg-no-print"
-        style={{
-          background:
-            "radial-gradient(60% 70% at 20% 0%, rgba(14,145,135,0.16), transparent 70%), radial-gradient(50% 60% at 90% 10%, rgba(70,208,155,0.08), transparent 70%)",
-        }}
-      />
+    <main className="lg-guide relative min-h-screen text-white">
 
       {/* reading progress */}
       <div className="fixed inset-x-0 top-0 z-50 h-[3px] bg-white/[0.04] lg-no-print" aria-hidden="true">

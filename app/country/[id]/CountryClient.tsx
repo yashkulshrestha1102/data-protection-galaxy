@@ -89,7 +89,7 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
       </div>
 
       {/* Background Gradients (Print me hide) */}
-      <div className="absolute inset-0 -z-10 bg-[#0a0a0a] print:hidden">
+      <div className="absolute inset-0 -z-10 print:hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
