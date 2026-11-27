@@ -236,7 +236,7 @@ export default function InsightClient() {
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+          style={{ backgroundImage: "url('/images/home1.webp')" }}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>

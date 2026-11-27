@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 import { SITE_URL } from "@/lib/constants";
+import { ORG_ID, authorId, DPDP_ACT_SCHEMA } from "@/lib/seo";
 
 // Jab /board page ka content sach me update karo, tab ye date badlo
 const BOARD_PAGE_UPDATED = "2026-11-04";
@@ -10,7 +11,7 @@ const BOARD_PAGE_UPDATED = "2026-11-04";
 export const metadata: Metadata = {
   title: "Data Protection Board of India: DPDP Act 2023 Guide",
   description:
-    "Guide to the Data Protection Board of India under the DPDP Act 2023: composition, powers, inquiry procedure, penalties up to ₹250 crore and appeals to TDSAT.",
+    "The Data Protection Board of India under DPDP Act 2023: composition, powers, inquiry procedure, penalties up to ₹250 crore and TDSAT appeals.",
   keywords: [
     "Data Protection Board",
     "DPB India",
@@ -130,21 +131,24 @@ const breadcrumbSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  about: DPDP_ACT_SCHEMA,
   headline: "Data Protection Board of India: Composition, Powers and Appeals under the DPDP Act 2023",
   description:
     "Guide to the Data Protection Board of India under the DPDP Act 2023: composition, powers, inquiry procedure, penalties and the appeal mechanism.",
   author: {
     "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
     name: "Shilpi Kulshrestha",
     jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
     url: `${SITE_URL}/authors/shilpi-kulshrestha`,
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.png`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   datePublished: "2026-01-15",

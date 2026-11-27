@@ -1,9 +1,21 @@
+import type { Metadata } from "next";
 import Link from 'next/link';
 import { ArrowLeft, BookOpen, FileText, Users, HelpCircle, Video, Link2, ChevronRight } from 'lucide-react';
 
-export const metadata = {
-  title: 'Data Protection Resources | DPDP Act 2023',
-  description: 'Essential resources for data protection compliance under India\'s Digital Personal Data Protection Act 2023.',
+export const metadata: Metadata = {
+  title: "Data Protection Resources | DPDP Act 2023",
+  description: "Essential resources for data protection compliance under India's Digital Personal Data Protection Act 2023.",
+  alternates: { canonical: "/resources" },
+  openGraph: {
+    type: "website",
+    title: "Data Protection Resources | DPDP Act 2023 | Legal Galaxy",
+    description: "Essential resources for data protection compliance under India's Digital Personal Data Protection Act 2023.",
+    url: "/resources",
+    siteName: "Legal Galaxy",
+    locale: "en_IN",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Data Protection Resources | DPDP Act 2023" }],
+  },
+  twitter: { card: "summary_large_image", title: "Data Protection Resources | DPDP Act 2023", description: "Essential resources for data protection compliance under India's Digital Personal Data Protection Act 2023.", images: ["/images/og-image.png"] },
 };
 
 export default function ResourcesPage() {
@@ -33,6 +45,12 @@ export default function ResourcesPage() {
       slug: 'faqs'
     },
     { 
+      icon: BookOpen, 
+      title: 'Glossary', 
+      description: 'A–Z definitions of DPDP Act, privacy and AI governance terms.',
+      slug: '/glossary'
+    },
+    { 
       icon: Video, 
       title: 'Training Material', 
       description: 'Training materials and resources for data protection awareness.',
@@ -49,7 +67,7 @@ export default function ResourcesPage() {
   return (
     <main className="min-h-screen text-white px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.webp')" }}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
@@ -72,7 +90,7 @@ export default function ResourcesPage() {
             return (
               <Link
                 key={index}
-                href={`/resources/${item.slug}`}
+                href={item.slug.startsWith('/') ? item.slug : `/resources/${item.slug}`}
                 className="group bg-white/10 border border-white/20 rounded-2xl backdrop-blur-sm p-6 hover:bg-white/20 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">

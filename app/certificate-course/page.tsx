@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import CourseHomeClient from "./CourseHomeClient";
 
 import { SITE_URL } from "@/lib/constants";
+import { ORG_ID, authorId } from "@/lib/seo";
 const DESCRIPTION =
   "Free 20-module DPDP Act 2023 course with lessons, quizzes and a certificate of completion. Learn India's data protection law at your own pace.";
 
@@ -42,7 +43,7 @@ const courseSchema = {
   "@type": "Course",
   name: "DPDPA 2023 Master Course",
   description: DESCRIPTION,
-  provider: { "@type": "Organization", name: "Legal Galaxy", sameAs: SITE_URL },
+  provider: { "@type": "Organization", "@id": ORG_ID, name: "Legal Galaxy", sameAs: SITE_URL },
   educationalLevel: "Professional",
   inLanguage: "en",
   offers: {
@@ -58,6 +59,7 @@ const courseSchema = {
   },
   author: {
     "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
     name: "Shilpi Kulshrestha",
     url: `${SITE_URL}/authors/shilpi-kulshrestha`,
   },

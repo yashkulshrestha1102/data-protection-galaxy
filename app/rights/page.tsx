@@ -21,6 +21,7 @@ import {
   BookOpen,
 } from 'lucide-react';
 import { RIGHTS_FAQS } from '@/data/page-faqs';
+import { SourceNote } from "@/components/seo/SourceNote";
 
 // Update this only when the page content is genuinely reviewed
 const LAST_UPDATED = 'November 2026';
@@ -179,7 +180,7 @@ export default function RightsPage() {
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+          style={{ backgroundImage: "url('/images/home1.webp')" }}
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
@@ -235,6 +236,7 @@ export default function RightsPage() {
               9 min read
             </span>
           </div>
+          <SourceNote section="Chapter III, Sections 11–14 and Section 6(4)" />
         </div>
 
         {/* ===== RIGHTS GRID ===== */}

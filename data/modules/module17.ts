@@ -765,7 +765,7 @@ export const module17: Module = {
       lessons: [
         // -------- LESSON 1: CONSENT FOR AI TRAINING --------
         {
-          id: 1,
+          id: 6,
           title: 'Consent for AI Training: How to Obtain It',
           duration: '20 min',
           type: 'video',
@@ -912,7 +912,7 @@ export const module17: Module = {
 
         // -------- LESSON 2: PURPOSE LIMITATION IN AI --------
         {
-          id: 2,
+          id: 7,
           title: 'Purpose Limitation: When AI Use Diverges from Collection Purpose',
           duration: '18 min',
           type: 'reading',
@@ -1055,7 +1055,7 @@ export const module17: Module = {
 
         // -------- LESSON 3: DATA PRINCIPAL RIGHTS IN AI SYSTEMS --------
         {
-          id: 3,
+          id: 8,
           title: 'Data Principal Rights in AI Systems: Access, Correction, Erasure',
           duration: '22 min',
           type: 'video',
@@ -1201,7 +1201,7 @@ export const module17: Module = {
 
         // -------- LESSON 4: AUTOMATED DECISION-MAKING & DPIA FOR AI --------
         {
-          id: 4,
+          id: 9,
           title: 'Automated Decision-Making under DPDPA & DPIAs for AI Systems',
           duration: '24 min',
           type: 'video',
@@ -1360,7 +1360,7 @@ export const module17: Module = {
       lessons: [
         // -------- LESSON 1: EU AI ACT --------
         {
-          id: 1,
+          id: 10,
           title: 'EU AI Act (2024): Risk-Based Approach',
           duration: '22 min',
           type: 'video',
@@ -1506,7 +1506,7 @@ export const module17: Module = {
 
         // -------- LESSON 2: US AI EXECUTIVE ORDERS --------
         {
-          id: 2,
+          id: 11,
           title: 'US AI Executive Orders: Biden 2023 and Trump 2025 Reversal',
           duration: '18 min',
           type: 'reading',
@@ -1650,7 +1650,7 @@ export const module17: Module = {
 
         // -------- LESSON 3: CHINA'S GENERATIVE AI MEASURES --------
         {
-          id: 3,
+          id: 12,
           title: 'China\'s Generative AI Measures (2023): CAC Registration',
           duration: '18 min',
           type: 'reading',
@@ -1795,7 +1795,7 @@ export const module17: Module = {
 
         // -------- LESSON 4: INDIA'S PATH --------
         {
-          id: 4,
+          id: 13,
           title: 'India\'s Path: NITI Aayog, IndiaAI Mission, and the Future AI Law',
           duration: '20 min',
           type: 'reading',

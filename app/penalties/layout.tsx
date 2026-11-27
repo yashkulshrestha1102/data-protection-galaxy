@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
 import { PENALTIES_FAQS } from "@/data/page-faqs";
+import { ORG_ID, LOGO_URL, authorId, DPDP_ACT_SCHEMA } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Penalties under the DPDP Act 2023 | Up to ₹250 Crore, Section-wise",
   description:
-    "Section-wise penalty schedule under India's DPDP Act 2023: up to ₹250 crore for security failures, ₹200 crore for breach notification and children's data, ₹150 crore for SDFs, ₹50 crore for other contraventions, and ₹10,000 for Data Principal duties. How the Board imposes penalties and how appeals to TDSAT work.",
+    "DPDP Act 2023 penalties: up to ₹250 crore for security failures, ₹200 crore for breach notice and children's data, ₹150 crore for SDFs. Appeals to TDSAT.",
   keywords: [
     "DPDP Act penalties",
     "DPDP Act 250 crore penalty",
@@ -62,6 +63,31 @@ const breadcrumbSchema = {
   ],
 };
 
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  about: DPDP_ACT_SCHEMA,
+  headline: "Penalties under the DPDP Act 2023 — Section-wise Guide",
+  description:
+    "DPDP Act 2023 penalties: up to ₹250 crore for security failures, ₹200 crore for breach notice and children's data, ₹150 crore for SDFs. Appeals to TDSAT.",
+  author: {
+    "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
+    name: "Shilpi Kulshrestha",
+    url: `${SITE_URL}/authors/shilpi-kulshrestha`,
+  },
+  publisher: {
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: "Legal Galaxy",
+    logo: { "@type": "ImageObject", url: LOGO_URL },
+  },
+  datePublished: "2026-01-15",
+  dateModified: "2026-11-04",
+  inLanguage: "en-IN",
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/penalties` },
+};
+
 export default function PenaltiesLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -72,6 +98,10 @@ export default function PenaltiesLayout({ children }: { children: React.ReactNod
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c") }}
       />
       {children}
     </>

@@ -174,7 +174,7 @@ export default function GuideClient({ guide, relatedGuides }: GuideClientProps) 
       <div className="pointer-events-none absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-[0.08]"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+          style={{ backgroundImage: "url('/images/home1.webp')" }}
         />
         <div className="absolute inset-0 bg-black/90" />
         <div className="absolute -left-40 top-20 h-[500px] w-[500px] rounded-full bg-cyan-600/10 blur-[140px]" />

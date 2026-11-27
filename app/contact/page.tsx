@@ -172,7 +172,7 @@ export default function ContactPage() {
     <main className="min-h-screen overflow-hidden text-white selection:bg-[#46D09B]/30 relative">
       
       {/* ===== HOMEPAGE BACKGROUND IMAGE ===== */}
-      <div className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+      <div className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.webp')" }}>
         {/* Dark overlay taaki image dikhe par text clear padhe */}
         <div className="absolute inset-0 bg-black/75 backdrop-blur-[3px]" />
       </div>

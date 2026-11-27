@@ -8,7 +8,15 @@ import {
 } from 'lucide-react';
 import { countries, getRegions, getLevels, getCountryById } from '@/data/countries';
 
-import { Globe3D } from '@/components/map/Globe3D';
+import dynamic from 'next/dynamic';
+
+// The 3D globe (three.js) is heavy, so it loads after the page text is ready.
+const Globe3D = dynamic(() => import('@/components/map/Globe3D').then((m) => m.Globe3D), {
+  ssr: false,
+  loading: () => (
+    <div className="flex-1 flex items-center justify-center text-sm text-gray-400">Loading interactive globe…</div>
+  ),
+});
 import { CountryDetail } from '@/components/map/CountryDetail';
 
 export default function MapPage() {
@@ -62,7 +70,7 @@ export default function MapPage() {
 
   return (
     <main className="min-h-screen text-white px-4 pb-12 relative overflow-hidden pt-28 md:pt-32">
-      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.webp')" }}>
         <div className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-sm" />
       </div>
 

@@ -8,6 +8,7 @@ import {
 import GuideClient from "./GuideClient";
 
 import { SITE_URL } from "@/lib/constants";;
+import { ORG_ID } from "@/lib/seo";
 
 // =========================================================
 // STATIC PARAMS (SSG)
@@ -99,10 +100,11 @@ export default async function GuideDetailPage({
     },
     publisher: {
       "@type": "Organization",
+      "@id": ORG_ID,
       name: "Legal Galaxy",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/favicon.ico`,
+        url: `${SITE_URL}/images/logo.png`,
       },
     },
     datePublished: guide.lastUpdated,
@@ -113,7 +115,7 @@ export default async function GuideDetailPage({
     },
     image: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/images/home1.jpeg`,
+      url: `${SITE_URL}/images/home1.webp`,
       width: 1200,
       height: 630,
     },

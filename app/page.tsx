@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     absolute: "DPDP Act Compliance India: Free Scorecard & Course | Legal Galaxy",
   },
   description:
-    "Master India's DPDP Act 2023 with a free compliance scorecard, 20-module course, privacy policy templates and AI governance tools for businesses, DPOs and legal teams.",
+    "Master India's DPDP Act 2023 with a free compliance scorecard, 20-module course, policy templates and AI governance tools for businesses and DPOs.",
   alternates: { canonical: "/" },
 };
 

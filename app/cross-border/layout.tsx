@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
 import { CROSS_BORDER_FAQS } from "@/data/page-faqs";
+import { ORG_ID, authorId, DPDP_ACT_SCHEMA } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Cross-Border Data Transfer under DPDP Act 2023 | Section 16 Guide",
   description:
-    "Complete guide to cross-border data transfers under India's DPDP Act 2023. Learn about Section 16, the government's blacklist power, comparison with GDPR, real-world scenarios, and compliance requirements for international data flows.",
+    "Cross-border data transfers under DPDP Act 2023: Section 16's blacklist power, sector rules, GDPR comparison and what businesses must do.",
   keywords: [
     "DPDP cross-border transfer",
     "Section 16 DPDP",
@@ -83,20 +84,23 @@ const breadcrumbSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  about: DPDP_ACT_SCHEMA,
   headline: "Cross-Border Data Transfer under the DPDP Act 2023 — Section 16 Guide",
   description:
-    "Complete guide to cross-border data transfers under India's DPDP Act 2023 — Section 16, government blacklist power, GDPR comparison, and compliance requirements.",
+    "Cross-border data transfers under DPDP Act 2023: Section 16's blacklist power, sector rules, GDPR comparison and what businesses must do.",
   author: {
     "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
     name: "Shilpi Kulshrestha",
     jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   datePublished: "2026-01-15",

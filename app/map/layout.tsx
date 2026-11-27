@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/constants";;
 
 export const metadata: Metadata = {
   title: `Global Data Protection Laws Map (${countries.length}+ Countries) | Legal Galaxy`,
-  description: `Explore and compare data protection and privacy laws across ${countries.length}+ jurisdictions. Interactive map featuring GDPR, DPDP Act 2023, CCPA, PIPL, and more global privacy frameworks.`,
+  description: `Compare data protection laws across ${countries.length}+ countries on an interactive map: GDPR, DPDP Act 2023, CCPA, PIPL and more.`,
   alternates: {
     canonical: `${SITE_URL}/map`,
   },

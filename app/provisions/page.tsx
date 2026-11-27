@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 
 import { PROVISIONS_FAQS } from '@/data/page-faqs';
+import { SourceNote } from "@/components/seo/SourceNote";
 
 const LAST_UPDATED = 'November 2026';
 
@@ -267,7 +268,7 @@ export default function ProvisionsPage() {
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+          style={{ backgroundImage: "url('/images/home1.webp')" }}
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
@@ -327,6 +328,7 @@ export default function ProvisionsPage() {
               9 min read
             </span>
           </div>
+          <SourceNote section="Chapters I–IX, Sections 1–44" />
         </div>
 
         {/* ===== CHAPTERS GRID ===== */}

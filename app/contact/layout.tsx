@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Contact Legal Galaxy | DPDP & AI Governance Experts",
 
   description:
-    "Connect with Legal Galaxy experts for DPDP Act 2023 compliance, GDPR, privacy governance, DPIA assessments, AI governance and enterprise privacy solutions. Get expert assistance within 1 business day.",
+    "Talk to Legal Galaxy experts about DPDP Act 2023 compliance, GDPR, DPIAs and AI governance. We reply within 1 business day.",
 
   keywords: [
     "Contact Legal Galaxy",

@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { InsightDetailClient } from './InsightDetailClient';
 
 import { SITE_URL } from '@/lib/constants';
+import { ORG_ID, authorId } from "@/lib/seo";
 
 
 interface PageProps {
@@ -93,17 +94,18 @@ export default async function InsightDetailPage({ params }: PageProps) {
     headline: insight.title,
     description: truncate(insight.excerpt),
     author: isShilpi
-      ? { '@type': 'Person', name: defaultAuthor.name, url: `${SITE_URL}/authors/${defaultAuthor.id}` }
-      : { '@type': 'Organization', name: insight.author, url: SITE_URL },
+      ? { '@type': 'Person', "@id": authorId("shilpi-kulshrestha"), name: defaultAuthor.name, url: `${SITE_URL}/authors/${defaultAuthor.id}` }
+      : { '@type': 'Person', name: insight.author.trim(), worksFor: { '@id': ORG_ID } },
     publisher: {
       '@type': 'Organization',
+      "@id": ORG_ID,
       name: 'Legal Galaxy',
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.png` },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` },
     },
-    ...(iso ? { datePublished: iso, dateModified: iso } : {}),
+    ...(iso ? { datePublished: iso, dateModified: toISO(insight.updated) ?? iso } : {}),
     articleSection: insight.category,
     inLanguage: 'en-IN',
-    image: `${SITE_URL}/images/og-image.png`,
+    image: `${url}/opengraph-image`,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   };
 

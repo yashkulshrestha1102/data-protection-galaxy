@@ -2,11 +2,12 @@
 import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
+import { authorId } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Shilpi Kulshrestha — Founder & Data Protection Expert",
   description:
-    "Shilpi Kulshrestha is a corporate lawyer with over a decade of experience in data protection, company law, and regulatory compliance. Learn more about her work at Legal Galaxy.",
+    "Shilpi Kulshrestha, CS and LLB, is a corporate lawyer with 10+ years in data protection, company law and DPDP Act compliance. Founder of Legal Galaxy.",
   keywords: [
     "Shilpi Kulshrestha",
     "data protection expert India",
@@ -47,6 +48,7 @@ export const metadata: Metadata = {
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": authorId("shilpi-kulshrestha"),
   name: "Shilpi Kulshrestha",
   jobTitle: "Founder & Corporate Law Expert",
   worksFor: {

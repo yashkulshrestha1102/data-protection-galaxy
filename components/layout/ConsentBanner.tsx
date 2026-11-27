@@ -9,8 +9,10 @@ type ConsentStatus = "accepted" | "rejected" | null;
 
 export function ConsentBanner({
   initialConsentStatus,
+  onConsentChange,
 }: {
   initialConsentStatus: ConsentStatus;
+  onConsentChange?: (status: Exclude<ConsentStatus, null>) => void;
 }) {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(initialConsentStatus === null);
@@ -50,6 +52,9 @@ export function ConsentBanner({
         }
       }
     }
+
+    // Tell the page (ConsentGate) so analytics loads or stays off right away
+    onConsentChange?.(status);
 
     // Banner hide + preferences reset
     setIsVisible(false);

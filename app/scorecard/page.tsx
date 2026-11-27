@@ -16,7 +16,7 @@ import { ConsentCheckbox } from '@/components/ui/ConsentCheckbox';
 // ============================================================
 const Background = () => {
   return (
-    <div className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+    <div className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.webp')" }}>
       <div className="absolute inset-0 bg-black/50 backdrop-blur-[12px]" />
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-400/20 rounded-full blur-[120px] mix-blend-screen" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] mix-blend-screen" />
@@ -510,6 +510,17 @@ export default function ScorecardPage() {
             <FileText className="w-3 h-3" /> DPDPA Assessment
           </div>
         </div>
+
+        {/* Page heading + intro (shown on the first question; tells search engines what this page is) */}
+        {currentQuestionIndex === 0 && (
+          <div className="mb-4 text-center">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">DPDPA Compliance Scorecard</h1>
+            <p className="mt-2 text-sm text-gray-300 leading-relaxed">
+              Answer {totalQuestions} quick questions to check how ready your organisation is for India&apos;s DPDP Act 2023.
+              The test covers {scorecardData.categories.map((c) => c.name).join(", ")}. Free, no signup needed.
+            </p>
+          </div>
+        )}
 
         {/* Progress Bar */}
         <div className="mb-4 bg-white/[0.03] border border-white/10 rounded-2xl p-3 backdrop-blur-xl shadow-lg">

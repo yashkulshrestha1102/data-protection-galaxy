@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { ORG_ID } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Training Material — DPDP Act Awareness & Compliance",
   description:
-    "Training materials and resources for data protection awareness under the DPDP Act 2023 — videos, presentations, guides and workshops for employees and managers.",
+    "DPDP Act 2023 training material for employees and managers: videos, presentations, guides and workshop resources for privacy awareness.",
   keywords: [
     "DPDP Act training",
     "Data protection training India",
@@ -45,10 +46,11 @@ const collectionSchema = {
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   about: {

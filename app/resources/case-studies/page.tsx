@@ -56,7 +56,7 @@ export default function CaseStudiesPage() {
             <JsonLd data={schema} />
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.webp')" }}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />

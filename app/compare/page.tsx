@@ -1,10 +1,22 @@
 // app/compare/page.tsx
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Scale, ArrowRight } from "lucide-react";
 
-export const metadata = {
-  title: "Compare Global Data Protection Laws | Legal Galaxy",
-  description: "Compare India's DPDP Act 2023 with GDPR, CCPA, and other global privacy laws. Understand key differences in consent, penalties, and data subject rights.",
+export const metadata: Metadata = {
+  title: "Compare Global Data Protection Laws",
+  description: "Compare India's DPDP Act 2023 with GDPR, CCPA and other global privacy laws: consent, penalties and data subject rights side by side.",
+  alternates: { canonical: "/compare" },
+  openGraph: {
+    type: "website",
+    title: "Compare Global Data Protection Laws | Legal Galaxy",
+    description: "Compare India's DPDP Act 2023 with GDPR, CCPA and other global privacy laws: consent, penalties and data subject rights side by side.",
+    url: "/compare",
+    siteName: "Legal Galaxy",
+    locale: "en_IN",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Compare Global Data Protection Laws" }],
+  },
+  twitter: { card: "summary_large_image", title: "Compare Global Data Protection Laws", description: "Compare India's DPDP Act 2023 with GDPR, CCPA and other global privacy laws: consent, penalties and data subject rights side by side.", images: ["/images/og-image.png"] },
 };
 
 const comparisons = [

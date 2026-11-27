@@ -48,7 +48,7 @@ export default function CountryClient({ country, faqs = [] }: CountryClientProps
           
           {/* Left Side: Logo & Name */}
           <div className="flex items-center gap-4">
-            <img src="/favicon.ico" alt="Legal Galaxy Logo" className="w-14 h-14 object-contain rounded-full" />
+            <img src="/images/logo.png" alt="Legal Galaxy Logo" className="w-14 h-14 object-contain rounded-full" />
             <div>
               <h1 className="text-2xl font-bold text-black m-0">Legal Galaxy</h1>
               <p className="text-sm text-gray-600 m-0">Privacy & AI Governance</p>

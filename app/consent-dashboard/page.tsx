@@ -44,7 +44,7 @@ export default function ConsentDashboardPage() {
 
   return (
     <main className="min-h-screen text-white px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.webp')" }}>
         <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
       </div>
 

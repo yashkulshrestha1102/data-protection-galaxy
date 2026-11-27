@@ -5,7 +5,7 @@ import { ArrowLeft, Shield, CheckCircle, Mail, AlertCircle } from "lucide-react"
 import RightsRequestForm from "./RightsRequestForm";
 
 export const metadata = {
-  title: "Data Principal Rights Request | Legal Galaxy",
+  title: "Data Principal Rights Request",
   description:
     "Exercise your data rights under the DPDP Act 2023. Request access, correction, or erasure of your personal data.",
   alternates: { canonical: "/data-principal-rights" },
@@ -14,7 +14,7 @@ export const metadata = {
 export default function DataPrincipalRightsPage() {
   return (
     <main className="min-h-screen text-white px-4 pt-28 md:pt-32 pb-16 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.jpeg')" }}>
+      <div className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/home1.webp')" }}>
         <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
       </div>
 

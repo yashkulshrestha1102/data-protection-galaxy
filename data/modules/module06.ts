@@ -1674,7 +1674,7 @@ export const module06: Module = {
               year: '2023',
             },
             {
-              title: 'Indian Penal Code, 1860 — Sections 419 (Cheating by Personation) and 420 (Cheating)',
+              title: 'Indian Penal Code, 1860 — Sections 419 (Cheating by Personation) and 420 (Cheating) (now replaced by the Bharatiya Nyaya Sanhita, 2023 from 1 July 2024; the equivalent BNS sections apply)',
               source: 'Government of India',
               year: '1860',
             },
@@ -1792,7 +1792,7 @@ export const module06: Module = {
               year: '2023',
             },
             {
-              title: 'Indian Penal Code, 1860 — Sections 182, 211, 419, 420',
+              title: 'Indian Penal Code, 1860 — Sections 182, 211, 419, 420 (now replaced by the Bharatiya Nyaya Sanhita, 2023 from 1 July 2024; the equivalent BNS sections apply)',
               source: 'Government of India',
               year: '1860',
             },
@@ -1867,7 +1867,7 @@ export const module06: Module = {
             },
             {
               id: 'sec-3',
-              title: 'Indian Penal Code — Criminal Liability',
+              title: 'Indian Penal Code — Criminal Liability (now replaced by the Bharatiya Nyaya Sanhita, 2023 from 1 July 2024; the equivalent BNS sections apply)',
               content: [
                 {
                   type: 'paragraph',
@@ -1924,7 +1924,7 @@ export const module06: Module = {
               year: '2019',
             },
             {
-              title: 'Indian Penal Code, 1860 — Sections 419, 420, 463, 464, 499, 500',
+              title: 'Indian Penal Code, 1860 — Sections 419, 420, 463, 464, 499, 500 (now replaced by the Bharatiya Nyaya Sanhita, 2023 from 1 July 2024; the equivalent BNS sections apply)',
               source: 'Government of India',
               year: '1860',
             },

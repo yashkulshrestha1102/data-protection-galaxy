@@ -33,7 +33,7 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+          style={{ backgroundImage: "url('/images/home1.webp')" }}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
@@ -86,6 +86,12 @@ export function InsightDetailClient({ insight, relatedInsights }: ClientProps) {
             <Calendar className="w-4 h-4" />
             {insight.date}
           </span>
+          {insight.updated && insight.updated !== insight.date && (
+            <span className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              Updated: {insight.updated}
+            </span>
+          )}
           <span className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
             {insight.readTime}

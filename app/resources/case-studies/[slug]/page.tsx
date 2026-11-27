@@ -8,6 +8,7 @@ import {
 import CaseStudyClient from "./CaseStudyClient";
 
 import { SITE_URL } from "@/lib/constants";;
+import { ORG_ID } from "@/lib/seo";
 
 export function generateStaticParams() {
   return caseStudiesData.map((cs) => ({ slug: cs.slug }));
@@ -79,10 +80,11 @@ export default async function CaseStudyDetailPage({
     },
     publisher: {
       "@type": "Organization",
+      "@id": ORG_ID,
       name: "Legal Galaxy",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/favicon.ico`,
+        url: `${SITE_URL}/images/logo.png`,
       },
     },
     datePublished: caseStudy.date,
@@ -93,7 +95,7 @@ export default async function CaseStudyDetailPage({
     },
     image: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/images/home1.jpeg`,
+      url: `${SITE_URL}/images/home1.webp`,
       width: 1200,
       height: 630,
     },

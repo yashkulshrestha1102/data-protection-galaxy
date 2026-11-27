@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { cookies } from "next/headers";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ConsentBanner } from "@/components/layout/ConsentBanner";
-import { ConditionalAnalytics } from "@/components/layout/ConditionalAnalytics";
+import { ConsentGate } from "@/components/layout/ConsentGate";
 import { SiteBackground } from "@/components/ui/SiteBackground";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
@@ -25,6 +23,7 @@ const geistMono = Geist_Mono({
 });
 
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
+import { ORG_ID, WEBSITE_ID, LOGO_URL, authorId } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -46,9 +45,12 @@ export const metadata: Metadata = {
   creator: "Legal Galaxy",
   publisher: "Businezexcellence StartX LLP",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
@@ -92,22 +94,30 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-  const cookieStore = await cookies();
-  const rawConsent = cookieStore.get("cookie-consent")?.value;
-  const consentStatus =
-    rawConsent === "accepted" || rawConsent === "rejected" ? rawConsent : null;
-  const hasAnalyticsConsent = consentStatus === "accepted";
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
+    alternateName: ["Legal Galaxy by Businezexcellence", "Legal Galaxy — DPDP Act compliance platform"],
     legalName: "Businezexcellence StartX LLP",
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: LOGO_URL,
+      width: 256,
+      height: 256,
     },
+    image: `${SITE_URL}/images/og-image.png`,
+    founder: { "@id": authorId("shilpi-kulshrestha") },
+    knowsAbout: [
+      "Digital Personal Data Protection Act, 2023",
+      "Digital Personal Data Protection Rules, 2025",
+      "Data privacy compliance",
+      "AI governance",
+      "GDPR",
+    ],
     description: SITE_DESCRIPTION,
     foundingDate: "2026",
     sameAs: [
@@ -132,13 +142,12 @@ export default async function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEBSITE_ID,
     name: "Legal Galaxy",
     alternateName: "Legal Galaxy — Privacy & AI Governance",
     url: SITE_URL,
-    publisher: {
-      "@type": "Organization",
-      name: "Legal Galaxy",
-    },
+    inLanguage: "en-IN",
+    publisher: { "@id": ORG_ID },
   };
 
   return (
@@ -165,8 +174,8 @@ export default async function RootLayout({
         <Footer />
 
 
-        <ConsentBanner initialConsentStatus={consentStatus} />
-        {hasAnalyticsConsent && <ConditionalAnalytics gaId={gaId} />}
+        {/* consent is read in the browser so every page can be pre-rendered */}
+        <ConsentGate gaId={gaId} />
 
         
       </body>

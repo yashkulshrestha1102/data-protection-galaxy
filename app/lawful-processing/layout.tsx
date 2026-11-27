@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
 import { LAWFUL_FAQS } from "@/data/page-faqs";
+import { ORG_ID, authorId, DPDP_ACT_SCHEMA } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Lawful Processing of Data under DPDP Act 2023 | Consent & Legitimate Uses",
   description:
-    "Learn the two lawful bases for processing personal data under India's DPDP Act 2023 — consent (Section 6) and legitimate uses (Section 7). Includes consent manager, notice requirements, and real-world examples.",
+    "The two lawful bases under DPDP Act 2023: consent (Section 6) and legitimate uses (Section 7), with notice rules, Consent Managers and examples.",
   keywords: [
     "lawful processing DPDP",
     "DPDP consent",
@@ -83,20 +84,23 @@ const breadcrumbSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  about: DPDP_ACT_SCHEMA,
   headline: "Lawful Processing of Data under the DPDP Act 2023 — Consent & Legitimate Uses",
   description:
-    "Complete guide to lawful processing under India's DPDP Act 2023 — consent (Section 6) and legitimate uses (Section 7), consent manager, notice requirements, and real-world examples.",
+    "The two lawful bases under DPDP Act 2023: consent (Section 6) and legitimate uses (Section 7), with notice rules, Consent Managers and examples.",
   author: {
     "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
     name: "Shilpi Kulshrestha",
     jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   datePublished: "2026-01-15",

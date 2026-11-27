@@ -3,6 +3,7 @@ import { fullModulesData } from '@/data/modules'
 import { insightsData } from '@/data/insights'
 import { guidesData } from '@/data/guides'
 import { countries } from '@/data/countries'
+import { caseStudiesData } from '@/data/case-studies'
 import { SITE_URL } from "@/lib/constants";
 
 export async function GET() {
@@ -70,8 +71,25 @@ ${fullModulesData
 - [Author: Shilpi Kulshrestha](${SITE_URL}/authors/shilpi-kulshrestha): Founder & Corporate Law Expert with a decade of experience in data protection, company law, and regulatory compliance.
 - [Contact](${SITE_URL}/contact): Talk to DPDP Act compliance experts.
 
+## Case Studies
+
+${caseStudiesData
+  .map(
+    (cs) =>
+      `- [${cs.title}](${SITE_URL}/resources/case-studies/${cs.slug}): ${cs.industry}. ${cs.description.slice(0, 170)}...`
+  )
+  .join('\n')}
+
+## Law Comparisons
+
+- [DPDPA vs GDPR](${SITE_URL}/compare/dpdpa-vs-gdpr): Consent, lawful bases, rights, penalties, transfers and DPOs compared.
+- [DPDPA vs CCPA (CPRA)](${SITE_URL}/compare/dpdpa-vs-ccpa): Opt-in consent vs opt-out, consumer rights and penalties compared.
+- [DPDPA vs PIPL (China)](${SITE_URL}/compare/dpdpa-vs-pipl): Localisation, cross-border transfers and penalties compared.
+
 ## Optional
 
+- [Glossary](${SITE_URL}/glossary): A–Z definitions of DPDP Act, privacy and AI governance terms, each linked to the course lesson that explains it.
+- [Full text for AI tools](${SITE_URL}/llms-full.txt): Complete text of the guides, case studies, insights and FAQs in one plain-text file.
 - [Case Studies](${SITE_URL}/resources/case-studies): Client case studies and illustrative data protection compliance scenarios.
 - [Guidelines & Circulars](${SITE_URL}/resources/guidelines): Official DPDP Act 2023 guidelines and circulars.
 - [Forms & Templates](${SITE_URL}/resources/forms): Downloadable DPDPA compliance forms and templates.

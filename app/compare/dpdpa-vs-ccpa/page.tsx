@@ -1,9 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Scale, CheckCircle } from "lucide-react";
 
-export const metadata = {
-  title: "DPDPA vs CCPA (CPRA): Key Differences Explained | Legal Galaxy",
-  description: "Compare India's DPDP Act 2023 vs California's CCPA/CPRA. Learn about differences in consumer rights, opt-out mechanisms, penalties, and business obligations.",
+export const metadata: Metadata = {
+  title: "DPDPA vs CCPA (CPRA): Key Differences Explained",
+  description: "DPDP Act 2023 vs California's CCPA/CPRA: opt-in consent vs opt-out, consumer rights, penalties and business obligations compared.",
+  alternates: { canonical: "/compare/dpdpa-vs-ccpa" },
+  openGraph: {
+    type: "website",
+    title: "DPDPA vs CCPA (CPRA): Key Differences Explained | Legal Galaxy",
+    description: "DPDP Act 2023 vs California's CCPA/CPRA: opt-in consent vs opt-out, consumer rights, penalties and business obligations compared.",
+    url: "/compare/dpdpa-vs-ccpa",
+    siteName: "Legal Galaxy",
+    locale: "en_IN",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "DPDPA vs CCPA (CPRA): Key Differences Explained" }],
+  },
+  twitter: { card: "summary_large_image", title: "DPDPA vs CCPA (CPRA): Key Differences Explained", description: "DPDP Act 2023 vs California's CCPA/CPRA: opt-in consent vs opt-out, consumer rights, penalties and business obligations compared.", images: ["/images/og-image.png"] },
 };
 
 const faqs = [

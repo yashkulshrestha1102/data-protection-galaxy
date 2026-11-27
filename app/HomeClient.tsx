@@ -244,7 +244,7 @@ export default function Home() {
   {/* ===== BACKGROUND — next/image se LCP fix ===== */}
   <div className="absolute inset-0 -z-10">
     <Image
-      src="/images/home1.jpeg"
+      src="/images/home1.webp"
 alt="Legal Galaxy — DPDP Act 2023 privacy and AI governance platform"
       fill
       priority

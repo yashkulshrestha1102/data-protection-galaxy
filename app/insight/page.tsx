@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import InsightClient from "./InsightClient";
 
 import { SITE_URL } from "@/lib/constants";
+import { ORG_ID } from "@/lib/seo";
 
 export default function InsightPage() {
   const schema = {
@@ -14,7 +15,7 @@ export default function InsightPage() {
       "In-depth analysis on India's DPDP Act 2023, GDPR and global privacy law.",
     url: `${SITE_URL}/insight`,
     isPartOf: { "@type": "WebSite", name: "Legal Galaxy", url: SITE_URL },
-    publisher: { "@type": "Organization", name: "Legal Galaxy", url: SITE_URL },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "Legal Galaxy", url: SITE_URL },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: insightsData.length,

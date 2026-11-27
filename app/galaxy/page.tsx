@@ -220,7 +220,7 @@ export default function Galaxy() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/home1.jpeg')",
+            backgroundImage: "url('/images/home1.webp')",
           }}
         >
           {/* Dark Overlay */}

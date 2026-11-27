@@ -23,6 +23,7 @@ import {
   Calendar,
   Quote,
 } from 'lucide-react';
+import { SourceNote } from "@/components/seo/SourceNote";
 
 export default function BoardPage() {
   // ===== QUICK HIGHLIGHTS =====
@@ -189,7 +190,7 @@ export default function BoardPage() {
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+          style={{ backgroundImage: "url('/images/home1.webp')" }}
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         </div>
@@ -236,13 +237,14 @@ export default function BoardPage() {
             </span>
             <span className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              Last updated: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
+              Last updated: November 2026
             </span>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
               8 min read
             </span>
           </div>
+          <SourceNote section="Chapter V, Sections 18–26" />
         </div>
 
         {/* ===== QUICK HIGHLIGHTS (Original Cards) ===== */}

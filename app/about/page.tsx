@@ -100,7 +100,7 @@ export default function AboutPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/home1.jpeg')",
+            backgroundImage: "url('/images/home1.webp')",
           }}
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
@@ -125,8 +125,8 @@ export default function AboutPage() {
           {/* Hero Image Background */}
           <div className="relative h-[350px] md:h-[450px] w-full">
             <Image
-              src="/images/about-hero.jpg" // Yahan apni hero image ka path daalo
-              alt="Legal Galaxy Team"
+              src="/images/home1.webp" // about-hero.jpg did not exist; using the site background until a team photo is added
+              alt=""
               fill
               className="object-cover"
               priority
@@ -197,13 +197,13 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                 <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs text-gray-300">
-                  ?? Corporate Law
+                  Corporate Law
                 </span>
                 <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs text-gray-300">
-                  ?? Company Secretary
+                  Company Secretary
                 </span>
                 <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs text-gray-300">
-                  ?? Business Legal Solutions
+                  Business Legal Solutions
                 </span>
               </div>
             </div>

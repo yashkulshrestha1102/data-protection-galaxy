@@ -23,7 +23,7 @@ const ImageBackground = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/home1.jpeg')",
+          backgroundImage: "url('/images/home1.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -230,12 +230,13 @@ Maintain a detailed record of the breach and response.
 ## 1. Purpose
 This procedure outlines how ${formData.orgName || '[Organisation Name]'} handles data subject rights requests.
 
-## 2. Rights Covered
-- Right to Access
-- Right to Correction
-- Right to Erasure
-- Right to Portability
-- Right to Object
+## 2. Rights Covered (DPDP Act 2023)
+- Right to Access information about personal data (Section 11)
+- Right to Correction, Completion and Updating (Section 12)
+- Right to Erasure (Section 12)
+- Right to Grievance Redressal (Section 13)
+- Right to Nominate (Section 14)
+- Right to Withdraw Consent at any time (Section 6(4))
 
 ## 3. Request Process
 1. Submit request via email or portal

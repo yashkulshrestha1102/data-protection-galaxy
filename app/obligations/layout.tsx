@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
 import { OBLIGATIONS_FAQS } from "@/data/page-faqs";
+import { ORG_ID, authorId, DPDP_ACT_SCHEMA } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Obligations of Data Fiduciaries under DPDP Act 2023 | Complete Guide",
   description:
-    "Learn about the 8 core obligations of Data Fiduciaries under India's DPDP Act 2023 — notice, consent, data minimisation, security safeguards, breach reporting, grievance redressal, and SDF obligations. Includes compliance checklist.",
+    "The 8 core obligations of Data Fiduciaries under DPDP Act 2023: notice, consent, security, breach reporting, grievances and SDF duties, plus a checklist.",
   keywords: [
     "Data Fiduciary obligations",
     "DPDP Act 2023 obligations",
@@ -83,20 +84,23 @@ const breadcrumbSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  about: DPDP_ACT_SCHEMA,
   headline: "Obligations of Data Fiduciaries under the DPDP Act 2023 — Complete Guide",
   description:
-    "Complete guide to the 8 core obligations of Data Fiduciaries under India's DPDP Act 2023 — notice, consent, security, breach reporting, SDF obligations, and compliance checklist.",
+    "The 8 core obligations of Data Fiduciaries under DPDP Act 2023: notice, consent, security, breach reporting, grievances and SDF duties, plus a checklist.",
   author: {
     "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
     name: "Shilpi Kulshrestha",
     jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   datePublished: "2026-01-15",

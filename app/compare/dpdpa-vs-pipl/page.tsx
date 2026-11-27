@@ -1,9 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Scale } from "lucide-react";
 
-export const metadata = {
-  title: "DPDPA vs PIPL (China): Key Differences Explained | Legal Galaxy",
-  description: "Compare India's DPDP Act 2023 vs China's Personal Information Protection Law (PIPL). Learn about differences in data localisation, cross-border transfers, penalties, and regulatory authorities.",
+export const metadata: Metadata = {
+  title: "DPDPA vs PIPL (China): Key Differences Explained",
+  description: "DPDP Act 2023 vs China's PIPL: data localisation, cross-border transfers, penalties and regulators compared side by side.",
+  alternates: { canonical: "/compare/dpdpa-vs-pipl" },
+  openGraph: {
+    type: "website",
+    title: "DPDPA vs PIPL (China): Key Differences Explained | Legal Galaxy",
+    description: "DPDP Act 2023 vs China's PIPL: data localisation, cross-border transfers, penalties and regulators compared side by side.",
+    url: "/compare/dpdpa-vs-pipl",
+    siteName: "Legal Galaxy",
+    locale: "en_IN",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "DPDPA vs PIPL (China): Key Differences Explained" }],
+  },
+  twitter: { card: "summary_large_image", title: "DPDPA vs PIPL (China): Key Differences Explained", description: "DPDP Act 2023 vs China's PIPL: data localisation, cross-border transfers, penalties and regulators compared side by side.", images: ["/images/og-image.png"] },
 };
 
 const faqs = [

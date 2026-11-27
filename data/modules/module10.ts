@@ -791,7 +791,7 @@ export const module10: Module = {
                 },
                 {
                   type: 'heading',
-                  content: 'Indian Penal Code — Criminal Liability',
+                  content: 'Indian Penal Code — Criminal Liability (now replaced by the Bharatiya Nyaya Sanhita, 2023 from 1 July 2024; the equivalent BNS sections apply)',
                 },
                 {
                   type: 'paragraph',
@@ -903,7 +903,7 @@ export const module10: Module = {
               year: '2013',
             },
             {
-              title: 'Indian Penal Code — Sections 405, 415, 420, 120A',
+              title: 'Indian Penal Code — Sections 405, 415, 420, 120A (now replaced by the Bharatiya Nyaya Sanhita, 2023 from 1 July 2024; the equivalent BNS sections apply)',
               source: 'Government of India',
               year: '1860',
             },

@@ -1,6 +1,24 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { SITE_URL } from "@/lib/constants";
+import type { Metadata } from "next";
+
+const PP_DESCRIPTION =
+  "How Legal Galaxy (Businezexcellence StartX LLP) collects, uses and protects personal data under the DPDP Act 2023, and how to exercise your rights.";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: PP_DESCRIPTION,
+  alternates: { canonical: "/privacy-policy" },
+  openGraph: {
+    type: "website",
+    title: "Privacy Policy | Legal Galaxy",
+    description: PP_DESCRIPTION,
+    url: "/privacy-policy",
+    siteName: "Legal Galaxy",
+    locale: "en_IN",
+  },
+};
 
 const sections = [
   {
@@ -604,7 +622,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen relative overflow-hidden px-4 pt-28 pb-16 text-white md:pt-32">
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+        style={{ backgroundImage: "url('/images/home1.webp')" }}
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />

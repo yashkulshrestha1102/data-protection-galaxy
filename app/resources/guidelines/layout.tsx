@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { ORG_ID } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Guidelines & Circulars — DPDP Act 2023",
   description:
-    "Official guidelines and circulars issued by the Data Protection Board under the DPDP Act 2023. Implementation guidance, breach notification rules, DPIA guidelines and more.",
+    "Guidelines and circulars under the DPDP Act 2023: implementation guidance, breach notification rules, DPIA guidance and more, in one place.",
   keywords: [
     "DPDP Act guidelines",
     "Data Protection Board circulars",
@@ -36,10 +37,11 @@ const collectionSchema = {
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/images/logo.png`,
 
     },
   },

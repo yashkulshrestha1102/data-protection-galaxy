@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
 import { RIGHTS_FAQS } from "@/data/page-faqs";
+import { ORG_ID, authorId, DPDP_ACT_SCHEMA } from "@/lib/seo";
 
 
 export const metadata: Metadata = {
   title: "Rights of Data Principals under DPDP Act 2023 | Complete Guide",
   description:
-    "Understand your four core rights as a Data Principal under India's DPDP Act 2023. Learn about the right to information, correction and erasure, grievance redressal, and nomination — with real-world examples and how to exercise them.",
+    "Your 4 rights as a Data Principal under DPDP Act 2023: information, correction and erasure, grievance redressal and nomination, and how to use them.",
   keywords: [
     "DPDP Act rights",
     "Data Principal rights",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     type: "article",
     title: "Rights of Data Principals under DPDP Act 2023 | Complete Guide",
     description:
-  "Your rights as a Data Principal under India's DPDP Act 2023: access, correction and erasure, grievance redressal, nomination and consent withdrawal, and how to exercise them.",
+  "Your 4 rights as a Data Principal under DPDP Act 2023: information, correction and erasure, grievance redressal and nomination, and how to use them.",
     url: `${SITE_URL}/rights`,
     siteName: "Legal Galaxy",
     locale: "en_IN",
@@ -84,20 +85,23 @@ const breadcrumbSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  about: DPDP_ACT_SCHEMA,
   headline: "Rights of Data Principals under the DPDP Act 2023 — Complete Guide",
   description:
     "Complete guide to the data rights under India's DPDP Act 2023 — information, correction and erasure, grievance redressal, and nomination.",
   author: {
     "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
     name: "Shilpi Kulshrestha",
     jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.png`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   datePublished: "2026-01-15",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { ORG_ID } from "@/lib/seo";
 
 
 export const metadata: Metadata = {
@@ -46,10 +47,11 @@ const collectionSchema = {
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   about: {

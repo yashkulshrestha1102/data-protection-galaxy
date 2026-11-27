@@ -8,7 +8,7 @@ export default function NotFound() {
       <div className="absolute inset-0 -z-10">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-          style={{ backgroundImage: "url('/images/home1.jpeg')" }}
+          style={{ backgroundImage: "url('/images/home1.webp')" }}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>

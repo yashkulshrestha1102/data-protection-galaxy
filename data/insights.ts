@@ -10,6 +10,8 @@ export interface Insight {
   content: string;
   author: string;
   date: string;
+  /** Optional "last updated" date (e.g. '27 Nov 2026'). Set it whenever an insight is revised. */
+  updated?: string;
   readTime: string;
   slug: string;
   image?: string;
@@ -194,7 +196,7 @@ const rawInsights: Insight[] = [
         <li><a href="/map" class="text-blue-400 hover:text-blue-300 underline">Global Privacy Map</a> — Compare 90+ countries</li>
       </ul>
     `,
-    author: '	Shilpi Kulshrestha',
+    author: 'Shilpi Kulshrestha',
     date: '16 Jul 2026',
     readTime: '7 min read',
     slug: 'cross-border-data-transfer'

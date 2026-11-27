@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/constants";
 import { PROVISIONS_FAQS } from "@/data/page-faqs";
+import { ORG_ID, authorId, DPDP_ACT_SCHEMA } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Key Provisions of DPDP Act 2023 | Chapter-Wise Overview",
   description:
-    "Complete chapter-wise overview of India's DPDP Act 2023. Learn about all 9 chapters, key sections, important definitions, rights, obligations, the Data Protection Board, penalties, and cross-border transfer provisions.",
+    "Chapter-wise overview of the DPDP Act 2023: all 9 chapters and 44 sections, key definitions, rights, obligations, the Board and penalties.",
   keywords: [
     "DPDP Act chapters",
     "DPDP Act sections",
@@ -83,20 +84,23 @@ const breadcrumbSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  about: DPDP_ACT_SCHEMA,
   headline: "Key Provisions of the DPDP Act 2023 — Chapter-Wise Overview",
   description:
     "Complete chapter-wise overview of India's DPDP Act 2023 — all 9 chapters, key sections, definitions, rights, obligations, and penalties.",
   author: {
     "@type": "Person",
+    "@id": authorId("shilpi-kulshrestha"),
     name: "Shilpi Kulshrestha",
     jobTitle: "Founder & Corporate Law Expert, BusinezExcellence",
   },
   publisher: {
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "Legal Galaxy",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/favicon.ico`,
+      url: `${SITE_URL}/images/logo.png`,
     },
   },
   datePublished: "2026-01-15",

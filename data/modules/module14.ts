@@ -1240,7 +1240,7 @@ export const module14: Module = {
       lessons: [
         // -------- LESSON 1: Designing a DSAR Intake Process --------
         {
-          id: 1,
+          id: 6,
           title: 'Designing a DSAR Intake Process',
           duration: '16 min',
           type: 'video',
@@ -1431,7 +1431,7 @@ export const module14: Module = {
 
         // -------- LESSON 2: Identity Verification for DSARs --------
         {
-          id: 2,
+          id: 7,
           title: 'Identity Verification for DSARs',
           duration: '15 min',
           type: 'video',
@@ -1620,7 +1620,7 @@ export const module14: Module = {
 
         // -------- LESSON 3: Search and Retrieval Across Systems --------
         {
-          id: 3,
+          id: 8,
           title: 'Search and Retrieval Across Systems',
           duration: '17 min',
           type: 'video',
@@ -1828,7 +1828,7 @@ export const module14: Module = {
 
         // -------- LESSON 4: Response Templates and SLAs --------
         {
-          id: 4,
+          id: 9,
           title: 'Response Templates and SLAs',
           duration: '15 min',
           type: 'video',
@@ -2000,7 +2000,7 @@ export const module14: Module = {
       lessons: [
         // -------- LESSON 1: Building a Privacy Program from Scratch --------
         {
-          id: 1,
+          id: 10,
           title: 'Building a Privacy Program from Scratch',
           duration: '18 min',
           type: 'video',
@@ -2206,7 +2206,7 @@ export const module14: Module = {
 
         // -------- LESSON 2: Privacy Maturity Models --------
         {
-          id: 2,
+          id: 11,
           title: 'Privacy Maturity Models',
           duration: '16 min',
           type: 'video',
@@ -2385,7 +2385,7 @@ export const module14: Module = {
 
         // -------- LESSON 3: Budgeting for Privacy Programs --------
         {
-          id: 3,
+          id: 12,
           title: 'Budgeting for Privacy Programs',
           duration: '15 min',
           type: 'video',
@@ -2599,7 +2599,7 @@ export const module14: Module = {
 
         // -------- LESSON 4: Privacy as a Business Enabler --------
         {
-          id: 4,
+          id: 13,
           title: 'Privacy as a Business Enabler',
           duration: '15 min',
           type: 'video',

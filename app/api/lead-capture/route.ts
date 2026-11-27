@@ -30,7 +30,6 @@ Under DPDPA, you have the following rights:
 • Right to Access your personal data
 • Right to Correction of inaccurate data
 • Right to Erasure (Right to be forgotten)
-• Right to Data Portability
 • Right to Withdraw Consent at any time
 • Right to Grievance Redressal
 • Right to Nominate a representative
@@ -156,8 +155,6 @@ ${formData.orgName || '[Organisation Name]'} respects and facilitates the exerci
 • Right to Access
 • Right to Correction
 • Right to Erasure
-• Right to Data Portability
-• Right to Object
 • Right to Withdraw Consent
 • Right to Nomination
 • Right to Grievance Redressal

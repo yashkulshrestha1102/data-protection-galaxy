@@ -9,7 +9,7 @@ import { fullModulesData } from '@/data/modules'
 import { SITE_URL } from "@/lib/constants";
 
 // Jab site ka bada content change karo, tab ye date update karna
-const SITE_UPDATED = new Date('2026-11-04')
+const SITE_UPDATED = new Date('2026-11-27')
 
 // "23 Feb 2026" ya "2026-02-23" dono parse ho jaate hain
 function toDate(value?: string): Date {
@@ -49,6 +49,7 @@ const staticPaths = [
   '/compare/dpdpa-vs-pipl', // page exist na kare to ye line hata do
   '/authors',
   '/authors/shilpi-kulshrestha',
+  '/glossary',
   '/data-principal-rights',
   '/consent-notice',
   '/grievance-redressal',
@@ -65,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const insightPages = insightsData.map((i) => ({
     url: `${SITE_URL}/insight/${i.slug}`,
-    lastModified: toDate(i.date),
+    lastModified: toDate(i.updated ?? i.date),
   }))
 
   const guidePages = guidesData.map((g) => ({
@@ -88,6 +89,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: SITE_UPDATED,
   }))
 
+  // Every lesson now has its own title, description and canonical
+  const lessonPages = fullModulesData.flatMap((m) =>
+    m.chapters.flatMap((ch) =>
+      ch.lessons.map((l) => ({
+        url: `${SITE_URL}/certificate-course/${m.id}/lesson/${l.id}`,
+        lastModified: SITE_UPDATED,
+      })),
+    ),
+  )
+
   return [
     ...staticPages,
     ...insightPages,
@@ -95,5 +106,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudyPages,
     ...countryPages,
     ...modulePages,
+    ...lessonPages,
   ]
 }
