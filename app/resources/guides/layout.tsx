@@ -1,42 +1,15 @@
 // app/resources/guides/layout.tsx
 
-import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/constants";
+import { Source_Serif_4 } from "next/font/google";
 
+// Editorial serif used only for guide headings and lead paragraphs.
+const guideSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-guide-serif",
+});
 
-export const metadata: Metadata = {
-  title: "Privacy Guides — GDPR, DPDP Act & Global Data Protection",
-description:
-  "In-depth privacy guides on GDPR, DPDP Act 2023, cross-border transfers and global data protection laws. Written by Businezexcellence privacy team.",
-    alternates: { canonical: "/resources/guides" },
-};
-
-export default function GuidesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Privacy Guides",
-description:
-  "In-depth privacy guides on GDPR, DPDP Act 2023, cross-border transfers and global data protection laws. Written by Businezexcellence privacy team.",
-      url: `${SITE_URL}/resources/guides`,
-    isPartOf: {
-      "@type": "WebSite",
-      name: "Legal Galaxy",
-      url: SITE_URL,
-    },
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {children}
-    </>
-  );
+export default function GuidesLayout({ children }: { children: React.ReactNode }) {
+  return <div className={guideSerif.variable}>{children}</div>;
 }

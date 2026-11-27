@@ -70,7 +70,13 @@ This content is for educational/informational purposes only and does not constit
     parts.push(
       `## ${g.title}\nURL: ${SITE_URL}/resources/guides/${g.slug}\nCategory: ${g.category} · Last updated: ${g.lastUpdated}\n\n` +
         (g.keyTakeaways?.length ? `Key takeaways:\n${g.keyTakeaways.map((k) => `- ${k}`).join('\n')}\n\n` : '') +
-        toText(g.content),
+        toText(g.content) +
+        (g.faqs?.length && !g.faqsInContent
+          ? `\n\nFrequently asked questions:\n${g.faqs.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n\n')}`
+          : '') +
+        (g.sources?.length && !g.sourcesInContent
+          ? `\n\nSources:\n${g.sources.map((src, i) => `[${i + 1}] ${src.title} — ${src.publisher} — ${src.url}`).join('\n')}`
+          : ''),
     )
   }
 
