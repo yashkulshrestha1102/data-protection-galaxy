@@ -20,3 +20,5 @@ node_modules/
 *.log
 _lg_update*/
 get-pip.py
+
+codebase-dump.txt
